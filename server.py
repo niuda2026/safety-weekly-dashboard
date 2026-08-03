@@ -54,22 +54,29 @@ def sync_to_github():
     if git_dir and os.path.isdir(git_dir):
         env["PATH"] = git_dir + os.pathsep + env.get("PATH", "")
 
+    import time
     try:
         subprocess.run([git_exe, "add", "-A"], cwd=project_dir, capture_output=True, timeout=10, env=env)
         subprocess.run(
             [git_exe, "commit", "-m", f"数据同步 {__import__('datetime').datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"],
             cwd=project_dir, capture_output=True, timeout=10, env=env
         )
-        result = subprocess.run(
-            [git_exe, "push", "origin", "main"],
-            cwd=project_dir, capture_output=True, timeout=30, text=True, env=env
-        )
-        if result.returncode == 0:
-            return True, "同步成功"
-        else:
-            return False, result.stderr.strip() or "推送失败"
-    except subprocess.TimeoutExpired:
-        return False, "推送超时，请检查网络后重试"
+        # 重试最多3次 push，GitHub 网络不稳定
+        last_error = ""
+        for attempt in range(3):
+            try:
+                result = subprocess.run(
+                    [git_exe, "push", "origin", "main"],
+                    cwd=project_dir, capture_output=True, timeout=60, text=True, env=env
+                )
+                if result.returncode == 0:
+                    return True, "同步成功"
+                last_error = result.stderr.strip() or "推送失败"
+            except subprocess.TimeoutExpired:
+                last_error = "推送超时"
+            if attempt < 2:
+                time.sleep(5)
+        return False, last_error
     except FileNotFoundError:
         return False, "未找到 Git，请确认 Git 已安装"
 
