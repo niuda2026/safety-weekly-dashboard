@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安全数据实时查询看板 - 亮色版</title>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+            --primary: #3b82f6;
+            --secondary: #8b5cf6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #06b6d4;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --text-lighter: #94a3b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--card-border);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+        
+        .subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Upload Section */
+        .upload-section {
+            background: var(--card-bg);
+            border: 3px dashed var(--card-border);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .upload-section:hover {
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .upload-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+        
+        .upload-text {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .file-name {
+            color: var(--primary);
+            font-weight: 600;
+            display: none;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        
+        /* Button Styles */
+        .btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Status Messages */
+        .status-msg {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+            font-weight: 500;
+        }
+        
+        .status-msg.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border-left: 4px solid var(--success);
+            display: block;
+        }
+        
+        .status-msg.error {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            border-left: 4px solid var(--danger);
+            display: block;
+        }
+        
+        .status-msg.info {
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--info);
+            border-left: 4px solid var(--info);
+            display: block;
+        }
+        
+        /* Tabs */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 25px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 5px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-btn {
+            padding: 12px 24px;
+            background: transparent;
+            color: var(--text-light);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.95rem;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .tab-btn:hover {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--text);
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+        
+        /* Tab Panels */
+        .tab-panel {
+            display: none;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-panel.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .panel-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--info));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Controls */
+        .controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .search-box {
+            padding: 10px 15px;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            background: white;
+            color: var(--text);
+            min-width: 250px;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .select-box {
+            padding: 10px 15px;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            background: white;
+            color: var(--text);
+            min-width: 150px;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+        
+        /* Data Tables */
+        .table-container {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        
+        .data-table th {
+            background: #f1f5f9;
+            color: var(--text);
+            text-align: left;
+            padding: 15px;
+            font-weight: 600;
+            border-bottom: 2px solid var(--card-border);
+            position: sticky;
+            top: 0;
+            white-space: nowrap;
+        }
+        
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        .data-table tr:hover {
+            background: #f8fafc;
+        }
+        
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* Metric Styling */
+        .metric-cell {
+            font-weight: 600;
+        }
+        
+        .metric-good {
+            color: var(--success);
+        }
+        
+        .metric-warn {
+            color: var(--warning);
+        }
+        
+        .metric-bad {
+            color: var(--danger);
+        }
+        
+        .metric-percent {
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .stat-card {
+            background: white;
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+        
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--info));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .stat-icon {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-light);
+        }
+        
+        .empty-icon {
+            font-size: 4rem;
+            opacity: 0.4;
+            margin-bottom: 20px;
+        }
+        
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+        
+        .empty-state p {
+            max-width: 500px;
+            margin: 0 auto 20px;
+        }
+        
+        /* Loading Indicator */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(59, 130, 246, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Data Info */
+        .data-info {
+            background: #f8fafc;
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .data-info strong {
+            color: var(--primary);
+        }
+        
+        /* Detail Link */
+        .detail-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .detail-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Filter Row */
+        .filter-row {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        /* Dashboard */
+        .dashboard {
+            display: none;
+        }
+        
+        input[type="file"] {
+            display: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .panel-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .controls {
+                width: 100%;
+            }
+            
+            .search-box, .select-box {
+                min-width: 100%;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tab-btn {
+                min-width: calc(50% - 10px);
+            }
+            
+            .tab-panel {
+                padding: 20px 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tab-btn {
+                min-width: 100%;
+            }
+            
+            .upload-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>安全数据实时查询看板</h1>
+            <p class="subtitle">集成安全权益、站长评级、履约、事故四大看板 | 支持Excel文件上传与实时数据查询</p>
+        </div>
+
+        <!-- Status Messages -->
+        <div id="statusMsg" class="status-msg"></div>
+
+        <!-- File Upload -->
+        <div id="uploadSection" class="upload-section" onclick="document.getElementById('excelFile').click()">
+            <div class="upload-icon">📊</div>
+            <p class="upload-text">点击或拖拽上传包含安全数据的 Excel 文件 (.xlsx, .xls)</p>
+            <button class="btn" onclick="event.stopPropagation(); document.getElementById('excelFile').click();">
+                <span>📁 选择文件</span>
+            </button>
+            <p id="fileName" class="file-name"></p>
+            <input type="file" id="excelFile" accept=".xlsx,.xls" onchange="handleFileSelect(event)">
+            
+            <div class="data-info" style="margin-top: 20px; text-align: left;">
+                <p><strong>📋 文件要求：</strong></p>
+                <p>• 文件应包含以下Sheet（名称可包含关键词）：</p>
+                <p>&nbsp;&nbsp;• <strong>安全权益</strong>：权益类数据看板、戴盔系带、有灯路口超速等</p>
+                <p>&nbsp;&nbsp;• <strong>站长评级</strong>：站长安全评级看板、闯红灯率、里程逆行率等</p>
+                <p>&nbsp;&nbsp;• <strong>履约数据</strong>：履约类数据看板、标准化率、驳回数等</p>
+                <p>&nbsp;&nbsp;• <strong>安全事故</strong>：安全事故看板、保险数、事故率等</p>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="loading">
+            <div class="loading-spinner"></div>
+            <p>正在解析数据，请稍候...</p>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard" class="dashboard">
+            <!-- Stats Summary -->
+            <div class="stats-grid" id="statsGrid"></div>
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('safety')">
+                    <span>🛡️ 安全权益</span>
+                </button>
+                <button class="tab-btn" onclick="switchTab('rating')">
+                    <span>⭐ 站长评级</span>
+                </button>
+                <button class="tab-btn" onclick="switchTab('compliance')">
+                    <span>📋 履约数据</span>
+                </button>
+                <button class="tab-btn" onclick="switchTab('accident')">
+                    <span>🚨 安全事故</span>
+                </button>
+            </div>
+
+            <!-- Safety Panel -->
+            <div id="panel-safety" class="tab-panel active">
+                <div class="panel-header">
+                    <h2 class="panel-title">安全权益数据看板</h2>
+                    <div class="controls">
+                        <input type="text" id="safetySearch" class="search-box" placeholder="搜索站点、大区或分区..." onkeyup="filterTable('safety')">
+                        <select id="safetyRegionFilter" class="select-box" onchange="filterTable('safety')">
+                            <option value="">所有大区</option>
+                        </select>
+                        <button class="btn btn-sm" onclick="exportData('safety')">📥 导出</button>
+                    </div>
+                </div>
+                
+                <div class="data-info" id="safetyDataInfo">
+                    已加载 <strong>0</strong> 条安全权益数据
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table" id="safetyTable">
+                        <thead>
+                            <tr>
+                                <th>大区</th>
+                                <th>分区</th>
+                                <th>城市</th>
+                                <th>站点</th>
+                                <th>权益得分</th>
+                                <th>戴盔系带率</th>
+                                <th>有灯路口超速率</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="7" style="text-align: center; color: var(--text-light); padding: 40px;">
+                                    请上传Excel文件查看安全权益数据
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Rating Panel -->
+            <div id="panel-rating" class="tab-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">站长安全评级看板</h2>
+                    <div class="controls">
+                        <input type="text" id="ratingSearch" class="search-box" placeholder="搜索站点..." onkeyup="filterTable('rating')">
+                        <button class="btn btn-sm" onclick="exportData('rating')">📥 导出</button>
+                    </div>
+                </div>
+                
+                <div class="data-info" id="ratingDataInfo">
+                    已加载 <strong>0</strong> 条站长评级数据
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table" id="ratingTable">
+                        <thead>
+                            <tr>
+                                <th>站点</th>
+                                <th>闯红灯率</th>
+                                <th>得分</th>
+                                <th>里程逆行率</th>
+                                <th>得分</th>
+                                <th>综合评级</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="6" style="text-align: center; color: var(--text-light); padding: 40px;">
+                                    请上传Excel文件查看站长评级数据
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Compliance Panel -->
+            <div id="panel-compliance" class="tab-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">履约数据看板</h2>
+                    <div class="controls">
+                        <input type="text" id="complianceSearch" class="search-box" placeholder="搜索区域或站点..." onkeyup="filterTable('compliance')">
+                        <button class="btn btn-sm" onclick="exportData('compliance')">📥 导出</button>
+                    </div>
+                </div>
+                
+                <div class="data-info" id="complianceDataInfo">
+                    已加载 <strong>0</strong> 条履约数据
+                </div>
+                
+                <div class="filter-row">
+                    <button class="btn btn-sm btn-outline" onclick="showSubSource('dress')">👔 服装标准</button>
+                    <button class="btn btn-sm btn-outline" onclick="showSubSource('meeting')">📅 早会驳回</button>
+                    <button class="btn btn-sm btn-outline" onclick="showSubSource('check')">✓ 子项检核</button>
+                    <button class="btn btn-sm btn-outline" onclick="showSubSource('disinfect')">🧼 餐箱消毒</button>
+                    <button class="btn btn-sm btn-outline" onclick="showSubSource('health')">🏥 健康证违规</button>
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table" id="complianceTable">
+                        <thead>
+                            <tr>
+                                <th>区域</th>
+                                <th>站点</th>
+                                <th>标准化率</th>
+                                <th>早会驳回数</th>
+                                <th>装备不合格数</th>
+                                <th>健康证违规</th>
+                                <th>处罚金额</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="7" style="text-align: center; color: var(--text-light); padding: 40px;">
+                                    请上传Excel文件查看履约数据
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Accident Panel -->
+            <div id="panel-accident" class="tab-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">安全事故看板</h2>
+                    <div class="controls">
+                        <input type="text" id="accidentSearch" class="search-box" placeholder="搜索区域..." onkeyup="filterTable('accident')">
+                        <button class="btn btn-sm" onclick="exportData('accident')">📥 导出</button>
+                    </div>
+                </div>
+                
+                <div class="data-info" id="accidentDataInfo">
+                    已加载 <strong>0</strong> 条事故数据
+                </div>
+                
+                <div class="table-container">
+                    <table class="data-table" id="accidentTable">
+                        <thead>
+                            <tr>
+                                <th>区域</th>
+                                <th>上报保险数</th>
+                                <th>小额事故数</th>
+                                <th>总赔付金额</th>
+                                <th>百万单事故率</th>
+                                <th>成本明细</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="6" style="text-align: center; color: var(--text-light); padding: 40px;">
+                                    请上传Excel文件查看事故数据
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="empty-state">
+            <div class="empty-icon">📈</div>
+            <h3>等待数据加载</h3>
+            <p>请上传包含安全数据的 Excel 文件以生成可视化看板。</p>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-light);">
+                支持 .xlsx 和 .xls 格式文件，文件应包含安全权益、站长评级等数据表
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // 全局数据存储
+        let allData = {
+            safety: [],       // 安全权益数据
+            rating: [],       // 站长评级数据
+            compliance: [],   // 履约数据
+            accident: []      // 事故数据
+        };
+        
+        // 处理文件选择
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            // 显示文件名
+            document.getElementById('fileName').textContent = `已选择: ${file.name}`;
+            document.getElementById('fileName').style.display = 'block';
+            
+            // 显示加载状态
+            showLoading(true);
+            showStatus('正在解析 Excel 文件，请稍候...', 'info');
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    parseWorkbook(workbook);
+                } catch (err) {
+                    showLoading(false);
+                    showStatus('文件解析失败: ' + err.message, 'error');
+                    console.error('解析错误:', err);
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        }
+        
+        // 解析 Excel 工作簿
+        function parseWorkbook(workbook) {
+            const sheetNames = workbook.SheetNames;
+            console.log('文件中的所有 Sheet:', sheetNames);
+            
+            // 清空旧数据
+            allData = { safety: [], rating: [], compliance: [], accident: [] };
+            
+            // 解析每个 Sheet
+            sheetNames.forEach(sheetName => {
+                const sheet = workbook.Sheets[sheetName];
+                
+                // 使用 sheet_to_json 获取原始数据
+                const rawData = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: '' });
+                
+                if (rawData.length < 2) return;
+                
+                // 获取表头
+                const headers = rawData[0];
+                console.log(`Sheet "${sheetName}" 的表头:`, headers);
+                
+                // 从第2行开始解析数据
+                for (let i = 1; i < rawData.length; i++) {
+                    const rowData = rawData[i];
+                    const rowObject = {};
+                    
+                    // 将行数据转换为对象
+                    headers.forEach((header, index) => {
+                        if (header) {
+                            rowObject[header] = rowData[index] || '';
+                        }
+                    });
+                    
+                    // 根据 Sheet 名称判断数据类型
+                    const lowerName = sheetName.toLowerCase();
+                    
+                    if (lowerName.includes('权益') || lowerName.includes('安全') || lowerName.includes('戴盔') || lowerName.includes('超速')) {
+                        const safetyData = parseSafetyData(rowObject, sheetName);
+                        if (safetyData) allData.safety.push(safetyData);
+                    } else if (lowerName.includes('站长') || lowerName.includes('评级') || lowerName.includes('闯红灯') || lowerName.includes('逆行')) {
+                        const ratingData = parseRatingData(rowObject, sheetName);
+                        if (ratingData) allData.rating.push(ratingData);
+                    } else if (lowerName.includes('履约') || lowerName.includes('合规') || lowerName.includes('标准化') || lowerName.includes('驳回')) {
+                        const complianceData = parseComplianceData(rowObject, sheetName);
+                        if (complianceData) allData.compliance.push(complianceData);
+                    } else if (lowerName.includes('事故') || lowerName.includes('保险') || lowerName.includes('赔付') || lowerName.includes('百万单')) {
+                        const accidentData = parseAccidentData(rowObject, sheetName);
+                        if (accidentData) allData.accident.push(accidentData);
+                    }
+                }
+            });
+            
+            console.log('解析结果:', allData);
+            
+            // 初始化看板
+            initDashboard();
+        }
+        
+        // 解析安全权益数据
+        function parseSafetyData(row, sheetName) {
+            // 尝试多种可能的列名
+            const station = getValue(row, ['站点', '主站名称', '配送站点', '站名', '站点名称']);
+            if (!station) return null;
+            
+            return {
+                大区: getValue(row, ['大区', '区域', '地区', 'Area', 'Region']),
+                分区: getValue(row, ['分区', '片区', 'Zone']),
+                城市: getValue(row, ['城市', 'City']),
+                站点: station,
+                权益得分: parseFloat(getValue(row, ['权益得分', '得分', '安全得分', 'score', '权益分']) || 0),
+                戴盔系带率: parsePercentage(getValue(row, ['戴盔系带', '戴盔系带率', '戴盔率', '头盔率', '戴盔系带合格率'])),
+                有灯路口超速率: parsePercentage(getValue(row, ['有灯路口超速', '有灯路口超速率', '超速率', '路口超速', '超速违规率'])),
+                原始数据: row
+            };
+        }
+        
+        // 解析站长评级数据
+        function parseRatingData(row, sheetName) {
+            const station = getValue(row, ['站点', '主站名称', '配送站点', '站名']);
+            if (!station) return null;
+            
+            return {
+                站点: station,
+                闯红灯率: parsePercentage(getValue(row, ['闯红灯率', '闯红灯', '红灯率', '闯红灯违规率'])),
+                闯红灯得分: parseFloat(getValue(row, ['得分', '闯红灯得分', '红灯得分', '闯红灯分数']) || 0),
+                里程逆行率: parsePercentage(getValue(row, ['里程逆行率', '里程逆行', '逆行率', '逆行违规率'])),
+                逆行得分: parseFloat(getValue(row, ['逆行得分', '里程逆行得分', '逆行分数', '得分2']) || 0),
+                综合评级: calculateRating(
+                    parsePercentage(getValue(row, ['闯红灯率', '闯红灯'])),
+                    parsePercentage(getValue(row, ['里程逆行率', '里程逆行']))
+                ),
+                原始数据: row
+            };
+        }
+        
+        // 解析履约数据
+        function parseComplianceData(row, sheetName) {
+            const area = getValue(row, ['区域', '大区', '地区', 'Area']);
+            const station = getValue(row, ['站点', '主站名称', '配送站点']);
+            
+            if (!area && !station) return null;
+            
+            return {
+                区域: area,
+                站点: station,
+                标准化率: parsePercentage(getValue(row, ['标准化率', '标准率', '合规率'])),
+                早会驳回数: parseInt(getValue(row, ['早会驳回数', '上周驳回数', '驳回数', '早会问题数']) || 0),
+                装备不合格数: parseInt(getValue(row, ['装备不合格数', '装备问题数', '装备违规数']) || 0),
+                健康证违规: parseInt(getValue(row, ['健康证违规数', '健康证问题', '健康证不合格']) || 0),
+                处罚金额: parseFloat(getValue(row, ['处罚金额', '罚款金额', '罚金']) || 0),
+                原始数据: row
+            };
+        }
+        
+        // 解析事故数据
+        function parseAccidentData(row, sheetName) {
+            const area = getValue(row, ['区域', '大区', '地区']);
+            if (!area) return null;
+            
+            return {
+                区域: area,
+                上报保险数: parseInt(getValue(row, ['上报保险数', '保险数', '保险案件数']) || 0),
+                小额事故数: parseInt(getValue(row, ['小额事故数', '小事故数', '轻微事故数']) || 0),
+                总赔付金额: parseFloat(getValue(row, ['总赔付金额', '赔付金额', '赔偿金额', '赔付总额']) || 0),
+                百万单事故率: parseFloat(getValue(row, ['百万单事故率', '事故率', '百万单事故数']) || 0),
+                原始数据: row
+            };
+        }
+        
+        // 通用函数：获取值（尝试多个可能的键名）
+        function getValue(row, possibleKeys) {
+            for (const key of possibleKeys) {
+                if (row[key] !== undefined && row[key] !== '' && row[key] !== null) {
+                    return row[key];
+                }
+            }
+            return '';
+        }
+        
+        // 解析百分比值
+        function parsePercentage(value) {
+            if (typeof value === 'number') return value / 100;
+            if (!value) return 0;
+            
+            const str = String(value).trim().replace('%', '');
+            const num = parseFloat(str);
+            return isNaN(num) ? 0 : num / 100;
+        }
+        
+        // 计算综合评级
+        function calculateRating(redLightRate, reverseRate) {
+            if (redLightRate <= 0.05 && reverseRate <= 0.03) return 'A';
+            if (redLightRate <= 0.1 && reverseRate <= 0.05) return 'B';
+            if (redLightRate <= 0.15 && reverseRate <= 0.08) return 'C';
+            return 'D';
+        }
+        
+        // 初始化看板
+        function initDashboard() {
+            showLoading(false);
+            
+            const hasSafetyData = allData.safety.length > 0;
+            const hasRatingData = allData.rating.length > 0;
+            const hasComplianceData = allData.compliance.length > 0;
+            const hasAccidentData = allData.accident.length > 0;
+            
+            if (hasSafetyData || hasRatingData || hasComplianceData || hasAccidentData) {
+                document.getElementById('uploadSection').style.display = 'none';
+                document.getElementById('emptyState').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                
+                // 更新统计数据
+                updateStats();
+                
+                // 渲染表格
+                renderSafetyTable();
+                renderRatingTable();
+                renderComplianceTable();
+                renderAccidentTable();
+                
+                // 初始化筛选器
+                initRegionFilter();
+                
+                // 显示成功消息
+                const msgParts = [];
+                if (hasSafetyData) msgParts.push(`${allData.safety.length} 条安全权益`);
+                if (hasRatingData) msgParts.push(`${allData.rating.length} 条站长评级`);
+                if (hasComplianceData) msgParts.push(`${allData.compliance.length} 条履约`);
+                if (hasAccidentData) msgParts.push(`${allData.accident.length} 条事故`);
+                
+                showStatus(`✅ 数据加载完成！已加载 ${msgParts.join('，')} 数据`, 'success');
+            } else {
+                showLoading(false);
+                showStatus('⚠️ 文件中未找到标准格式的安全数据。请检查文件格式。', 'error');
+            }
+        }
+        
+        // 更新统计数据
+        function updateStats() {
+            const statsGrid = document.getElementById('statsGrid');
+            
+            const stats = [
+                { icon: '🛡️', value: allData.safety.length, label: '安全权益站点', color: 'var(--primary)' },
+                { icon: '⭐', value: allData.rating.length, label: '站长评级', color: 'var(--warning)' },
+                { icon: '📋', value: allData.compliance.length, label: '履约区域', color: 'var(--info)' },
+                { icon: '🚨', value: allData.accident.length, label: '事故区域', color: 'var(--danger)' }
+            ];
+            
+            statsGrid.innerHTML = stats.map(stat => `
+                <div class="stat-card">
+                    <div class="stat-icon">${stat.icon}</div>
+                    <div class="stat-value" style="color: ${stat.color}">${stat.value}</div>
+                    <div class="stat-label">${stat.label}</div>
+                </div>
+            `).join('');
+        }
+        
+        // 渲染安全权益表格
+        function renderSafetyTable() {
+            const tbody = document.querySelector('#safetyTable tbody');
+            const dataInfo = document.getElementById('safetyDataInfo');
+            
+            if (allData.safety.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" style="text-align: center; color: var(--text-light); padding: 40px;">
+                            未找到安全权益数据
+                        </td>
+                    </tr>
+                `;
+                dataInfo.innerHTML = '未找到安全权益数据';
+                return;
+            }
+            
+            dataInfo.innerHTML = `已加载 <strong>${allData.safety.length}</strong> 条安全权益数据`;
+            
+            tbody.innerHTML = allData.safety.map(row => {
+                const helmetClass = getRateClass(row.戴盔系带率, 0.97, 'higher');
+                const speedClass = getRateClass(row.有灯路口超速率, 0.04, 'lower');
+                
+                return `
+                    <tr>
+                        <td>${row.大区 || '-'}</td>
+                        <td>${row.分区 || '-'}</td>
+                        <td>${row.城市 || '-'}</td>
+                        <td>${row.站点 || '-'}</td>
+                        <td class="metric-cell">${row.权益得分.toFixed(1)}</td>
+                        <td class="metric-cell ${helmetClass}">${(row.戴盔系带率 * 100).toFixed(2)}%</td>
+                        <td class="metric-cell ${speedClass}">${(row.有灯路口超速率 * 100).toFixed(2)}%</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        // 渲染站长评级表格
+        function renderRatingTable() {
+            const tbody = document.querySelector('#ratingTable tbody');
+            const dataInfo = document.getElementById('ratingDataInfo');
+            
+            if (allData.rating.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align: center; color: var(--text-light); padding: 40px;">
+                            未找到站长评级数据
+                        </td>
+                    </tr>
+                `;
+                dataInfo.innerHTML = '未找到站长评级数据';
+                return;
+            }
+            
+            dataInfo.innerHTML = `已加载 <strong>${allData.rating.length}</strong> 条站长评级数据`;
+            
+            tbody.innerHTML = allData.rating.map(row => {
+                const redLightClass = getRateClass(row.闯红灯率, 0.23, 'lower');
+                const reverseClass = getRateClass(row.里程逆行率, 0.03, 'lower');
+                const ratingClass = getRatingClass(row.综合评级);
+                
+                return `
+                    <tr>
+                        <td>${row.站点 || '-'}</td>
+                        <td class="metric-cell ${redLightClass}">${(row.闯红灯率 * 100).toFixed(2)}%</td>
+                        <td>${row.闯红灯得分.toFixed(1)}</td>
+                        <td class="metric-cell ${reverseClass}">${(row.里程逆行率 * 100).toFixed(2)}%</td>
+                        <td>${row.逆行得分.toFixed(1)}</td>
+                        <td class="metric-cell ${ratingClass}">${row.综合评级}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        // 渲染履约表格
+        function renderComplianceTable() {
+            const tbody = document.querySelector('#complianceTable tbody');
+            const dataInfo = document.getElementById('complianceDataInfo');
+            
+            if (allData.compliance.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" style="text-align: center; color: var(--text-light); padding: 40px;">
+                            未找到履约数据
+                        </td>
+                    </tr>
+                `;
+                dataInfo.innerHTML = '未找到履约数据';
+                return;
+            }
+            
+            dataInfo.innerHTML = `已加载 <strong>${allData.compliance.length}</strong> 条履约数据`;
+            
+            tbody.innerHTML = allData.compliance.map(row => {
+                const standardClass = getRateClass(row.标准化率, 0.95, 'higher');
+                
+                return `
+                    <tr>
+                        <td>${row.区域 || '-'}</td>
+                        <td>${row.站点 || '-'}</td>
+                        <td class="metric-cell ${standardClass}">${(row.标准化率 * 100).toFixed(2)}%</td>
+                        <td>${row.早会驳回数}</td>
+                        <td>${row.装备不合格数}</td>
+                        <td>${row.健康证违规}</td>
+                        <td>¥${row.处罚金额.toFixed(2)}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        // 渲染事故表格
+        function renderAccidentTable() {
+            const tbody = document.querySelector('#accidentTable tbody');
+            const dataInfo = document.getElementById('accidentDataInfo');
+            
+            if (allData.accident.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align: center; color: var(--text-light); padding: 40px;">
+                            未找到事故数据
+                        </td>
+                    </tr>
+                `;
+                dataInfo.innerHTML = '未找到事故数据';
+                return;
+            }
+            
+            dataInfo.innerHTML = `已加载 <strong>${allData.accident.length}</strong> 条事故数据`;
+            
+            tbody.innerHTML = allData.accident.map(row => {
+                const accidentClass = getRateClass(row.百万单事故率 / 100, 5, 'lower');
+                
+                return `
+                    <tr>
+                        <td>${row.区域 || '-'}</td>
+                        <td>${row.上报保险数}</td>
+                        <td>${row.小额事故数}</td>
+                        <td>¥${row.总赔付金额.toFixed(2)}</td>
+                        <td class="metric-cell ${accidentClass}">${row.百万单事故率.toFixed(2)}</td>
+                        <td><a class="detail-link" onclick="showAccidentDetail('${row.区域}')">查看</a></td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        // 获取率值样式类
+        function getRateClass(rate, target, direction) {
+            if (direction === 'higher') {
+                return rate >= target ? 'metric-good' : rate >= target * 0.9 ? 'metric-warn' : 'metric-bad';
+            } else {
+                return rate <= target ? 'metric-good' : rate <= target * 1.1 ? 'metric-warn' : 'metric-bad';
+            }
+        }
+        
+        // 获取评级样式类
+        function getRatingClass(rating) {
+            switch(rating) {
+                case 'A': return 'metric-good';
+                case 'B': return 'metric-warn';
+                case 'C': return 'metric-warn';
+                case 'D': return 'metric-bad';
+                default: return '';
+            }
+        }
+        
+        // 初始化大区筛选器
+        function initRegionFilter() {
+            const filter = document.getElementById('safetyRegionFilter');
+            filter.innerHTML = '<option value="">所有大区</option>';
+            
+            // 获取所有不重复的大区
+            const regions = [...new Set(allData.safety
+                .map(row => row.大区)
+                .filter(Boolean)
+                .sort())];
+            
+            regions.forEach(region => {
+                const option = document.createElement('option');
+                option.value = region;
+                option.textContent = region;
+                filter.appendChild(option);
+            });
+        }
+        
+        // 表格筛选
+        function filterTable(tableType) {
+            const searchId = tableType + 'Search';
+            const regionFilterId = tableType + 'RegionFilter';
+            const searchTerm = document.getElementById(searchId)?.value.toLowerCase() || '';
+            const regionFilter = document.getElementById(regionFilterId)?.value || '';
+            
+            const rows = document.querySelectorAll(`#${tableType}Table tbody tr`);
+            let visibleCount = 0;
+            
+            rows.forEach(row => {
+                const rowText = row.textContent.toLowerCase();
+                const region = row.cells[0]?.textContent || '';
+                const matchSearch = rowText.includes(searchTerm);
+                const matchRegion = !regionFilter || region === regionFilter;
+                
+                if (matchSearch && matchRegion) {
+                    row.style.display = '';
+                    visibleCount++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+            
+            // 更新数据信息
+            const dataInfo = document.getElementById(`${tableType}DataInfo`);
+            if (dataInfo) {
+                const total = allData[tableType].length;
+                dataInfo.innerHTML = `已加载 <strong>${total}</strong> 条数据，显示 <strong>${visibleCount}</strong> 条`;
+            }
+        }
+        
+        // 切换标签页
+        function switchTab(tabName) {
+            // 更新按钮状态
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            // 更新面板状态
+            document.querySelectorAll('.tab-panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+            document.getElementById(`panel-${tabName}`).classList.add('active');
+        }
+        
+        // 显示事故详情
+        function showAccidentDetail(region) {
+            const regionData = allData.accident.find(r => r.区域 === region);
+            if (!regionData) return;
+            
+            alert(`${region} 事故详情：
+上报保险数: ${regionData.上报保险数}
+小额事故数: ${regionData.小额事故数}
+总赔付金额: ¥${regionData.总赔付金额.toFixed(2)}
+百万单事故率: ${regionData.百万单事故率.toFixed(2)}`);
+        }
+        
+        // 显示子数据源
+        function showSubSource(sourceType) {
+            const sourceNames = {
+                dress: '服装标准数据',
+                meeting: '早会驳回清单',
+                check: '子项检核明细',
+                disinfect: '餐箱消毒违约档位',
+                health: '健康证违规报表'
+            };
+            
+            alert(`此功能需要独立的 ${sourceNames[sourceType]} 文件支持。\n\n如需查看详细数据，请准备相应的 Excel 文件并上传。`);
+        }
+        
+        // 导出数据
+        function exportData(dataType) {
+            const data = allData[dataType];
+            if (!data || data.length === 0) {
+                alert('没有数据可导出');
+                return;
+            }
+            
+            const worksheet = XLSX.utils.json_to_sheet(data.map(item => item.原始数据));
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, dataType);
+            
+            const fileName = `安全数据_${dataType}_${new Date().toISOString().split('T')[0]}.xlsx`;
+            XLSX.writeFile(workbook, fileName);
+            
+            showStatus(`✅ ${dataType} 数据已导出为 ${fileName}`, 'success');
+        }
+        
+        // 显示加载状态
+        function showLoading(show) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+        }
+        
+        // 显示状态消息
+        function showStatus(msg, type) {
+            const el = document.getElementById('statusMsg');
+            el.textContent = msg;
+            el.className = 'status-msg ' + (type || 'info');
+            
+            // 5秒后自动清除消息
+            setTimeout(() => {
+                el.style.opacity = '0';
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.display = 'none';
+                }, 300);
+            }, 5000);
+        }
+        
+        // 文件拖放支持
+        const uploadZone = document.getElementById('uploadSection');
+        uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.style.borderColor = 'var(--primary)';
+            uploadZone.style.transform = 'translateY(-5px)';
+        });
+        
+        uploadZone.addEventListener('dragleave', () => {
+            uploadZone.style.borderColor = 'var(--card-border)';
+            uploadZone.style.transform = 'translateY(0)';
+        });
+        
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.style.borderColor = 'var(--card-border)';
+            uploadZone.style.transform = 'translateY(0)';
+            
+            if (e.dataTransfer.files.length) {
+                document.getElementById('excelFile').files = e.dataTransfer.files;
+                handleFileSelect({ target: { files: e.dataTransfer.files } });
+            }
+        });
+    </script>
+</body>
+</html>
