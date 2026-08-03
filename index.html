@@ -264,6 +264,7 @@
             <input type="file" id="excelFile" accept=".xlsx,.xls">
             <button class="upload-btn" style="background:#059669;margin-left:4px;" onclick="downloadAllData()">下载所有数据</button>
             <button class="upload-btn" style="background:#6b7280;margin-left:4px;" onclick="clearSavedData()">恢复默认数据</button>
+            <button class="upload-btn" style="background:#7c3aed;margin-left:4px;" onclick="syncToPublic()">同步到公网</button>
             <div class="header-badge" id="headerDataDate">数据加载中</div>
         </div>
     </div>
@@ -2170,6 +2171,91 @@ function downloadAllData() {
         console.error('下载失败:', error);
         alert('下载失败: ' + error.message);
     }
+}
+
+async function syncToPublic() {
+    const btn = document.querySelector('[onclick="syncToPublic()"]');
+    const savedData = localStorage.getItem('dashboardData');
+    const savedDetail = localStorage.getItem('dashboardDetail');
+
+    if (!savedData && !savedDetail) {
+        alert('当前无新数据需要同步，请先上传Excel');
+        return;
+    }
+
+    btn.textContent = '同步中...';
+    btn.disabled = true;
+
+    const payload = {};
+    const coreNames = {
+        safety: 'safety_rights',
+        rating: 'station_rating',
+        compliance: 'compliance',
+        accident: 'accident'
+    };
+    const detailNames = {
+        meeting: 'meeting_reject',
+        inspection: 'inspection_detail',
+        disinfect: 'disinfect_data',
+        equipment: 'equipment_rate',
+        equipmentDetail: 'equipment_detail',
+        health: 'health_violation',
+        helmet: 'helmet_data',
+        clothing: 'clothing_data',
+        redlight: 'redlight_data',
+        reverse: 'reverse_data',
+        speeding: 'speeding_data',
+        equipmentCheck: 'equipment_check',
+        dataTreasure: 'data_treasure'
+    };
+
+    if (savedData) {
+        const data = JSON.parse(savedData);
+        for (const [key, filename] of Object.entries(coreNames)) {
+            const arr = data[key];
+            if (arr && arr.length > 0) {
+                const headers = Object.keys(arr[0]);
+                const rows = arr.map(obj => headers.map(h => (obj[h] !== undefined && obj[h] !== null) ? obj[h] : ''));
+                payload[filename + '.json'] = [headers, ...rows];
+            }
+        }
+    }
+
+    if (savedDetail) {
+        const detail = JSON.parse(savedDetail);
+        for (const [key, filename] of Object.entries(detailNames)) {
+            const arr = detail[key];
+            if (arr && arr.length > 0) {
+                payload[filename + '.json'] = arr;
+            }
+        }
+    }
+
+    if (Object.keys(payload).length === 0) {
+        alert('当前无新数据需要同步，请先上传Excel');
+        btn.textContent = '同步到公网';
+        btn.disabled = false;
+        return;
+    }
+
+    try {
+        const resp = await fetch('/sync', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        const result = await resp.json();
+        if (result.status === 'ok') {
+            alert('同步成功！' + Object.keys(payload).length + ' 个文件已更新并推送到公网。\n1-2 分钟后刷新 https://niuda2026.github.io/safety-weekly-dashboard/ 即可看到最新数据。');
+        } else {
+            alert('同步失败：' + result.message);
+        }
+    } catch (e) {
+        alert('同步请求失败，请确认本地服务器已启动（双击 start_server.bat）：' + e.message);
+    }
+
+    btn.textContent = '同步到公网';
+    btn.disabled = false;
 }
 
 async function loadData() {
