@@ -331,7 +331,7 @@
             <th>里程逆行率<span class="target">≤3%</span></th><th>得分</th>
             <th>第1周</th><th>第2周</th><th>第3周</th><th>第4周</th><th>第5周</th>
             <th class="day-header-reverse">6/10</th><th class="day-header-reverse">6/11</th><th class="day-header-reverse">6/12</th><th class="day-header-reverse">6/13</th><th class="day-header-reverse">6/14</th><th class="day-header-reverse">6/15</th><th class="day-header-reverse">6/16</th>
-            <th>服装标准化<span class="target">100%</span></th><th>服装得分</th>
+            <th>工装检核率<span class="target">≥80%</span></th><th>美团工服率<span class="target">≥92%</span></th><th>得分<span class="target">-5~0分</span></th>
         </tr></thead><tbody></tbody></table></div>
     </div>
 
@@ -822,7 +822,7 @@ function processSafety(raw) {
     return result;
 }
 
-// Rating: 0-3=region, 4=redlight, 5=score, 6-10=rl weeks, 12-18=rl days, 20=reverse, 21=score, 22-26=rv weeks, 28-34=rv days, 36=clothing, 37=clothing score
+// Rating: 0-3=region, 4=redlight, 5=score, 6-10=rl weeks, 12-18=rl days, 20=reverse, 21=score, 22-26=rv weeks, 28-34=rv days, 36=clothing_rate, 37=meituan_rate, 38=clothing_score
 function processRating(raw) {
     const result = [];
     // Use dynamic day labels (TODAY()-7 to TODAY()-1)
@@ -838,7 +838,7 @@ function processRating(raw) {
             里程逆行率: r[20], 逆行得分: r[21],
             逆行周: [r[22], r[23], r[24], r[25], r[26]],
             逆行日: [r[28], r[29], r[30], r[31], r[32], r[33], r[34]],
-            服装标准化: r[36], 服装得分: r[37],
+            工装检核率: r[36], 美团工服率: r[37], 服装得分: r[38],
             日标签: dayLabels
         });
     }
@@ -1188,7 +1188,7 @@ function renderSafetyTable(data) {
 function renderRatingTable(data) {
     const tbody = document.querySelector('#ratingTable tbody');
     const info = document.getElementById('ratingInfo');
-    if (!data.length) { tbody.innerHTML = '<tr class="empty-row"><td colspan="34">暂无数据</td></tr>'; info.textContent = '暂无数据'; return; }
+    if (!data.length) { tbody.innerHTML = '<tr class="empty-row"><td colspan="35">暂无数据</td></tr>'; info.textContent = '暂无数据'; return; }
     info.innerHTML = '共 <strong>' + data.length + '</strong> 条记录';
     
     // Update day headers dynamically from data
@@ -1217,7 +1217,7 @@ function renderRatingTable(data) {
         '<td>' + rateBadge(r.里程逆行率, 0.03, 'lower') + '</td><td>' + num(r.逆行得分, 2) + '</td>' +
         r.逆行周.map(w => '<td>' + weekCell(w, 0.03, 'lower') + '</td>').join('') +
         r.逆行日.map(d => '<td>' + weekCell(d, 0.03, 'lower') + '</td>').join('') +
-        '<td>' + rateBadge(r.服装标准化, 1.0, 'higher') + '</td><td>' + num(r.服装得分, 1) + '</td>' +
+        '<td>' + rateBadge(r.工装检核率, 0.80, 'higher') + '</td><td>' + rateBadge(r.美团工服率, 0.92, 'higher') + '</td><td>' + num(r.服装得分, 0) + '</td>' +
     '</tr>';
     }).join('');
 }
@@ -2003,7 +2003,8 @@ function renderAll() {
     renderSafetyScoreAttention(store.safety);
     renderAttention('ratingAttention', store.rating, [
         { key: '闯红灯率', target: 0.23, direction: 'lower', label: '闯红灯率', color: 'red' },
-        { key: '里程逆行率', target: 0.03, direction: 'lower', label: '里程逆行率', color: 'yellow' }
+        { key: '里程逆行率', target: 0.03, direction: 'lower', label: '里程逆行率', color: 'yellow' },
+        { key: '服装得分', target: 0, direction: 'lower', label: '服装扣分', color: 'yellow' }
     ], '重点关注（极尾部达成）');
     renderComplianceFineAttention(getFilteredData('compliance'));
     renderAttention('accidentAttention', store.accident.filter(r => r.大区 || r.分区), [
@@ -2079,7 +2080,7 @@ function downloadAllData() {
         }
         
         // 站长评级数据 - 定义列头
-        const ratingHeaders = ['大区', '分区', '区域', '站点', '闯红灯率达成', '闯红灯得分', '闯红灯第1周', '闯红灯第2周', '闯红灯第3周', '闯红灯第4周', '闯红灯第5周', '闯红灯趋势', '闯红灯日1', '闯红灯日2', '闯红灯日3', '闯红灯日4', '闯红灯日5', '闯红灯日6', '闯红灯日7', '闯红灯趋势2', '逆行率达成', '逆行得分', '逆行第1周', '逆行第2周', '逆行第3周', '逆行第4周', '逆行第5周', '逆行趋势', '逆行日1', '逆行日2', '逆行日3', '逆行日4', '逆行日5', '逆行日6', '逆行日7', '逆行趋势2', '服装标准化达成', '服装得分'];
+        const ratingHeaders = ['大区', '分区', '区域', '站点', '闯红灯率达成', '闯红灯得分', '闯红灯第1周', '闯红灯第2周', '闯红灯第3周', '闯红灯第4周', '闯红灯第5周', '闯红灯趋势', '闯红灯日1', '闯红灯日2', '闯红灯日3', '闯红灯日4', '闯红灯日5', '闯红灯日6', '闯红灯日7', '闯红灯趋势2', '逆行率达成', '逆行得分', '逆行第1周', '逆行第2周', '逆行第3周', '逆行第4周', '逆行第5周', '逆行趋势', '逆行日1', '逆行日2', '逆行日3', '逆行日4', '逆行日5', '逆行日6', '逆行日7', '逆行趋势2', '工装检核率达成', '美团工服率达成', '得分'];
         if (store.rating && store.rating.length > 0) {
             const ratingArray = objectToArray(store.rating, ratingHeaders);
             const wsRating = XLSX.utils.aoa_to_sheet(ratingArray);
