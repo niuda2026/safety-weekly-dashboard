@@ -1,0 +1,7 @@
+backup/
+*.bak_*
+index_backup_*
+index_20*
+server.py
+start_server.bat
+sync.bat
