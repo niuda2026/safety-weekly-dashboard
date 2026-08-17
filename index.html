@@ -1350,6 +1350,37 @@ function getDetailWeeklyRedlight(siteName) {
     return { labels: labels, values: values };
 }
 
+function getDetailWeeklyReverse(siteName) {
+    const detail = store.detailData && store.detailData.reverse;
+    if (!detail || detail.length < 2) return { labels: [], values: [] };
+    const headers = detail[0];
+    const nameIdx = headers.indexOf('配送站点名称');
+    const weekIdx = headers.indexOf('本月第几周');
+    const cntIdx = headers.indexOf('考核逆行里程');
+    const totalIdx = headers.indexOf('行驶里程');
+    if (nameIdx < 0 || weekIdx < 0 || cntIdx < 0 || totalIdx < 0) return { labels: [], values: [] };
+    // 站点名规范化：去除"集约配送-"前缀便于匹配明细
+    const normName = String(siteName).replace(/^集约配送[-—]/, '');
+    const weeks = {};
+    for (let i = 1; i < detail.length; i++) {
+        const r = detail[i];
+        const dName = String(r[nameIdx]);
+        if (dName !== siteName && dName !== normName) continue;
+        const w = r[weekIdx];
+        if (w === undefined || w === null || w === '') continue;
+        const cnt = parseFloat(r[cntIdx]);
+        const total = parseFloat(r[totalIdx]);
+        if (isNaN(cnt) || isNaN(total) || total <= 0) continue;
+        if (!weeks[w]) weeks[w] = { cnt: 0, total: 0 };
+        weeks[w].cnt += cnt;
+        weeks[w].total += total;
+    }
+    const keys = Object.keys(weeks).sort((a, b) => Number(a) - Number(b));
+    const labels = keys.map(k => '第' + k + '周');
+    const values = keys.map(k => (weeks[k].total > 0 ? weeks[k].cnt / weeks[k].total : null));
+    return { labels: labels, values: values };
+}
+
 function renderAttention(containerId, data, metrics, customTitle, allData) {
     const el = document.getElementById(containerId);
     if (!data.length) { el.innerHTML = ''; return; }
@@ -1611,15 +1642,17 @@ function renderGroupedSitesWithChart(grouped, colorClass, metricName, target, un
                 html += '<div class="attention-site-row" onclick="filterTableBySite(\'' + site.name.replace(/'/g, "\\'") + '\')">';
                 html += '<div class="attention-site-info">';
                 html += '<div class="attention-site-name">' + site.name + '</div>';
-                if (metricName === '闯红灯率') {
-                    // 优先取 station_rating.json 周维度修正值（item.闯红灯周，数组形式）最后一个非空值
+                if (metricName === '闯红灯率' || metricName === '里程逆行率') {
+                    const _isRl = metricName === '闯红灯率';
+                    // 优先取 station_rating.json 周维度修正值（闯红灯周/逆行周，数组形式）最后一个非空值
                     let _src = null;
                     if (Array.isArray(site.weeklyData)) {
                         _src = site.weeklyData.filter(v => v !== null && v !== undefined && v !== '' && v !== '-');
                     }
                     // 无有效值时回退明细表聚合
                     if (!_src || _src.length === 0) {
-                        _src = getDetailWeeklyRedlight(site.name).values.filter(v => v !== null && v !== undefined && v !== '' && v !== '-');
+                        const _agg = _isRl ? getDetailWeeklyRedlight(site.name) : getDetailWeeklyReverse(site.name);
+                        _src = _agg.values.filter(v => v !== null && v !== undefined && v !== '' && v !== '-');
                     }
                     const _last = _src.length ? _src[_src.length - 1] : null;
                     let _pct = '-';
@@ -3118,7 +3151,8 @@ async function loadData() {
             equipment: 'data/equipment_rate.json',
             equipmentDetail: 'data/equipment_detail.json',
             health: 'data/health_violation.json',
-            redlight: 'data/redlight_data.json'
+            redlight: 'data/redlight_data.json',
+            reverse: 'data/reverse_data.json'
         };
         // Load detail data from JSON files, always refreshing from disk (data/ is authoritative)
         // 始终从磁盘刷新明细数据，避免旧 localStorage 缓存阻隔最新明细
