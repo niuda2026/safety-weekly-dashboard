@@ -62,7 +62,7 @@
         .tab-btn.active { background: var(--primary); color: #fff; box-shadow: 0 2px 8px rgba(37,99,235,0.3); }
 
         /* Tab Panel */
-        .tab-panel { display: none; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; }
+        .tab-panel { display: none; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: clip; }
         .tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
 
@@ -119,7 +119,7 @@
         .attention-chart-wrapper { position: relative; height: 280px; }
         
         /* Category Tabs */
-        .attention-category-tabs { display: flex; gap: 4px; background: #fff; border-radius: 8px; padding: 4px; margin-bottom: 16px; border: 1px solid #e5e7eb; }
+        .attention-category-tabs { display: flex; gap: 4px; background: #fff; border-radius: 8px; padding: 4px; margin-bottom: 16px; border: 1px solid #e5e7eb; position: sticky; top: var(--tabs-sticky-top, 84px); z-index: 60; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
         .attention-category-tab { flex: 1; padding: 10px 16px; background: transparent; color: var(--text-light); border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: all 0.25s; text-align: center; }
         .attention-category-tab:hover { background: #f1f5f9; color: var(--text); }
         .attention-category-tab.active { background: var(--primary); color: #fff; box-shadow: 0 2px 8px rgba(37,99,235,0.3); }
@@ -3237,6 +3237,17 @@ async function loadData() {
         toast('数据加载失败: ' + err.message, 'error');
     }
 }
+
+// 子tab行吸顶：动态计算 header 高度作为 top 偏移
+function updateTabsStickyTop() {
+    var header = document.querySelector('.header');
+    if (header) {
+        document.documentElement.style.setProperty('--tabs-sticky-top', header.offsetHeight + 'px');
+    }
+}
+window.addEventListener('load', updateTabsStickyTop);
+window.addEventListener('resize', updateTabsStickyTop);
+updateTabsStickyTop();
 
 loadData();
 </script>
