@@ -1,607 +1,4 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>安全权益履约周报看板</title>
-    <!-- 本地库优先（8421 /_libs/ 直供，毫秒级）；公网静态托管无此路径时自动回退 CDN -->
-    <script src="/_libs/xlsx-0.18.5.full.min.js" onerror="var s=document.createElement('script');s.src='https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js';document.head.appendChild(s)"></script>
-    <script src="/_libs/html2canvas-1.4.1.min.js" onerror="var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';document.head.appendChild(s)"></script>
-    <script src="/_libs/chart.umd-4.4.7.min.js" onerror="var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';document.head.appendChild(s)"></script>
-    <style>
-        :root {
-            --bg: #f0f4f8; --card-bg: #ffffff; --card-border: #e2e8f0;
-            --primary: #2563eb; --primary-light: #dbeafe;
-            --success: #059669; --success-light: #d1fae5;
-            --warning: #d97706; --warning-light: #fef3c7;
-            --danger: #dc2626; --danger-light: #fee2e2;
-            --info: #0891b2; --info-light: #cffafe;
-            --text: #1e293b; --text-light: #64748b; --text-lighter: #94a3b8;
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-            --radius: 12px;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; line-height: 1.6; min-height: 100vh; }
 
-        /* Header */
-        .header { background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #3b82f6 100%); color: #fff; padding: 24px 32px 18px; box-shadow: 0 4px 20px rgba(37,99,235,0.3); position: sticky; top: 0; z-index: 100; }
-        .header-inner { max-width: 1600px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-        .header h1 { font-size: 1.6rem; font-weight: 800; }
-        .header .meta { font-size: 0.85rem; opacity: 0.85; margin-top: 4px; }
-        .header-right { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-        .header-badge { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; }
-        .upload-btn { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.35); color: #fff; padding: 7px 18px; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: background 0.2s; }
-        .upload-btn:hover { background: rgba(255,255,255,0.3); }
-        #excelFile { display: none; }
-        .upload-progress { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; padding: 4px 10px; }
-        .upload-progress .bar { width: 130px; height: 8px; background: rgba(255,255,255,0.2); border-radius: 4px; overflow: hidden; }
-        .upload-progress .bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #facc15, #34d399); border-radius: 4px; transition: width 0.25s ease; }
-        .upload-progress .text { font-size: 0.75rem; font-weight: 600; white-space: nowrap; min-width: 52px; text-align: center; }
-        .upload-progress .text.busy { color: #facc15; animation: uploadPulse 1s infinite; }
-        @keyframes uploadPulse { 50% { opacity: 0.5; } }
-
-        /* Container */
-        .container { max-width: 1600px; margin: 0 auto; padding: 24px 24px 48px; }
-
-        /* Stats Grid */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 20px; }
-        .stat-card { background: var(--card-bg); border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow-sm); border: 1px solid var(--card-border); transition: transform 0.2s; }
-        .stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-        .stat-card .head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-        .stat-card .icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
-        .stat-card .label { font-size: 0.95rem; font-weight: 700; color: var(--text); white-space: nowrap; }
-        .stat-card .sub { font-size: 0.78rem; color: var(--text-light); margin-top: 4px; line-height: 1.55; }
-
-        /* Tabs */
-        .tabs { display: flex; gap: 4px; background: var(--card-bg); border-radius: var(--radius); padding: 5px; border: 1px solid var(--card-border); margin-bottom: 20px; overflow-x: auto; }
-        .tab-btn { padding: 10px 20px; background: transparent; color: var(--text-light); border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem; white-space: nowrap; transition: all 0.25s; }
-        .tab-btn:hover { background: #f1f5f9; color: var(--text); }
-        .tab-btn.active { background: var(--primary); color: #fff; box-shadow: 0 2px 8px rgba(37,99,235,0.3); }
-
-        /* Tab Panel */
-        .tab-panel { display: none; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: clip; }
-        .tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
-        /* 保险看板 iframe（复刻自履约安全工作台） */
-        .insurance-frame { width: 100%; height: calc(100vh - 120px); min-height: 720px; border: none; border-radius: 10px; background: #fff; display: block; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
-        @keyframes fadeIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
-
-        /* Panel Header */
-        .panel-header { padding: 18px 24px 14px; border-bottom: 1px solid var(--card-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-        .panel-title { font-size: 1.15rem; font-weight: 700; }
-        .controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-
-        /* Form Controls */
-        .search-box { padding: 7px 12px; border: 1px solid var(--card-border); border-radius: 8px; background: #fff; font-size: 0.88rem; min-width: 180px; transition: border-color 0.2s, box-shadow 0.2s; }
-        .search-box:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
-        .select-box { padding: 7px 12px; border: 1px solid var(--card-border); border-radius: 8px; background: #fff; font-size: 0.88rem; cursor: pointer; min-width: 120px; }
-        .btn-clear-filter { padding: 7px 16px; border: 1px solid var(--primary); border-radius: 8px; background: #fff; color: var(--primary); font-size: 0.88rem; cursor: pointer; font-weight: 500; transition: all 0.2s; }
-        .btn-clear-filter:hover { background: var(--primary); color: #fff; }
-
-        /* Attention Box */
-        .attention-box { margin: 16px 24px; padding: 16px 20px; background: linear-gradient(135deg, #fff7ed, #fef2f2); border: 1px solid #fed7aa; border-radius: 10px; }
-        .attention-box h4 { font-size: 0.92rem; color: #ff6b35; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
-        .attention-section { margin-bottom: 12px; }
-        .attention-section:last-child { margin-bottom: 0; }
-        .attention-section-title { font-size: 0.85rem; font-weight: 600; color: #374151; margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px dashed #d1d5db; }
-        .attention-list { display: flex; flex-wrap: wrap; gap: 8px; }
-        .attention-tag { padding: 3px 10px; border-radius: 4px; font-size: 0.78rem; font-weight: 600; white-space: nowrap; }
-        .attention-tag.red { background: var(--danger-light); color: var(--danger); }
-        .attention-tag.yellow { background: var(--warning-light); color: var(--warning); }
-        .attention-tag.orange { background: #ffedd5; color: #ea580c; }
-        .no-deduction-tip { padding: 12px 20px; background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: 1px solid #86efac; border-radius: 8px; color: #166534; font-size: 0.92rem; font-weight: 500; text-align: center; }
-        .score-area-group { background: #f8fafc; border-radius: 8px; padding: 10px 14px; margin-bottom: 10px; border: 1px solid #e2e8f0; }
-        .score-area-title { font-weight: 700; font-size: 0.95rem; color: #1e3a5f; margin-bottom: 8px; padding-left: 8px; border-left: 3px solid #2563eb; }
-        .score-city-group { margin-top: 6px; padding-left: 12px; }
-        .score-city-header { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
-        .score-city-name { font-weight: 700; font-size: 0.88rem; color: #1a1a1a; }
-        .score-city-count { font-size: 0.78rem; color: #94a3b8; }
-        .score-site-list { display: flex; flex-wrap: wrap; gap: 5px; padding-left: 8px; }
-        .attention-tag b { font-weight: 700; }
-
-        /* Attention Analysis - New Design */
-        .attention-analysis { margin: 16px 24px; padding: 20px; background: linear-gradient(135deg, #f8fafc, #f1f5f9); border: 1px solid #e2e8f0; border-radius: 12px; }
-        .attention-analysis-title { font-size: 1rem; font-weight: 700; color: #ff6b35; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; padding-bottom: 12px; border-bottom: 2px solid #2563eb; }
-        
-        /* Stats Overview Cards */
-        .attention-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 12px; }
-        .attention-stat-card { background: #fff; border-radius: 8px; padding: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; text-align: center; transition: transform 0.2s; }
-        .attention-stat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .attention-stat-value { font-size: 1.5rem; font-weight: 800; line-height: 1.2; }
-        .attention-stat-value.red { color: var(--danger); }
-        .attention-stat-value.orange { color: var(--warning); }
-        .attention-stat-value.blue { color: var(--primary); }
-        .attention-stat-label { font-size: 0.78rem; color: var(--text-light); margin-top: 4px; }
-        
-        /* Chart Container */
-        .attention-chart-container { background: #fff; border-radius: 8px; padding: 16px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; }
-        .attention-chart-title { font-size: 0.9rem; font-weight: 600; color: #374151; margin-bottom: 12px; }
-        .attention-chart-wrapper { position: relative; height: 280px; }
-        
-        /* Category Tabs */
-        .attention-category-tabs { display: flex; gap: 4px; background: #fff; border-radius: 8px; padding: 4px; margin-bottom: 16px; border: 1px solid #e5e7eb; position: sticky; top: var(--tabs-sticky-top, 84px); z-index: 60; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
-        .attention-category-tab { flex: 1; padding: 10px 16px; background: transparent; color: var(--text-light); border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: all 0.25s; text-align: center; }
-        .attention-category-tab:hover { background: #f1f5f9; color: var(--text); }
-        .attention-category-tab.active { background: var(--primary); color: #fff; box-shadow: 0 2px 8px rgba(37,99,235,0.3); }
-        
-        /* Category Content */
-        .attention-category-content { display: none; background: #fff; border-radius: 8px; padding: 16px; border: 1px solid #e5e7eb; }
-        .attention-category-content.active { display: block; animation: fadeIn 0.3s ease; }
-        .attention-category-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #e5e7eb; }
-        .attention-category-title { font-size: 0.9rem; font-weight: 700; color: #1e3a5f; }
-        .attention-target-tip { margin-left: 10px; font-size: 0.72rem; font-weight: 600; color: #ff6b35; background: rgba(255, 107, 53, 0.1); padding: 2px 8px; border-radius: 10px; vertical-align: middle; }
-        .attention-category-count { font-size: 0.78rem; color: var(--text-light); background: #f1f5f9; padding: 4px 10px; border-radius: 12px; }
-        .attention-site-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
-        .attention-site-card { background: #f8fafc; border-radius: 6px; padding: 10px 12px; border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.2s; }
-        .attention-site-card:hover { background: #f1f5f9; border-color: var(--primary); transform: translateY(-1px); }
-        .attention-site-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-        .attention-site-name { font-weight: 600; font-size: 0.85rem; color: #334155; }
-        .attention-site-value { font-weight: 700; font-size: 0.85rem; }
-        .attention-site-value.red { color: var(--danger); }
-        .attention-site-value.orange { color: var(--warning); }
-        .attention-site-detail { font-size: 0.75rem; color: var(--text-light); }
-        .attention-site-info { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; min-width: 140px; flex-shrink: 0; }
-        .attention-site-weekly { font-size: 0.72rem; color: var(--text-lighter); margin-top: 2px; white-space: nowrap; }
-        .attention-site-city { font-size: 0.75rem; color: var(--text-lighter); margin-bottom: 4px; }
-        .attention-site-chart-wrapper { height: 60px; margin-top: 6px; }
-        
-        /* Group Block Styles */
-        .attention-group-block { background: #fff; border-radius: 8px; padding: 12px; margin-bottom: 12px; border: 1px solid #e2e8f0; }
-        .attention-group-title { font-size: 0.88rem; font-weight: 700; color: #1e3a5f; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; gap: 8px; }
-        .attention-group-count { font-size: 0.75rem; color: var(--text-light); font-weight: 500; background: #f1f5f9; padding: 2px 8px; border-radius: 10px; }
-        .attention-group-sites { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
-        
-        /* Region Module Styles - 按大区横向排列 */
-        .attention-region-module { background: #fff; border-radius: 10px; padding: 16px; margin-bottom: 16px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.04); }
-        .attention-region-header { font-size: 1rem; font-weight: 800; color: #1e3a5f; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 3px solid #2563eb; display: flex; align-items: center; gap: 10px; }
-        .attention-region-badge { font-size: 0.78rem; font-weight: 600; color: #fff; background: #2563eb; padding: 3px 12px; border-radius: 12px; }
-        .attention-city-block { margin-bottom: 12px; }
-        .attention-city-block:last-child { margin-bottom: 0; }
-        .attention-city-title { font-size: 0.85rem; font-weight: 700; color: #374151; margin-bottom: 8px; padding-left: 8px; border-left: 3px solid #3b82f6; }
-        .attention-site-row { display: flex; align-items: center; gap: 12px; padding: 8px 12px; background: #f8fafc; border-radius: 6px; margin-bottom: 6px; border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.2s; }
-        .attention-site-row:hover { background: #f1f5f9; border-color: var(--primary); }
-        .attention-site-row:last-child { margin-bottom: 0; }
-        .attention-site-row-name { font-weight: 600; font-size: 0.85rem; color: #334155; min-width: 180px; flex-shrink: 0; }
-        .attention-site-row-value { font-weight: 700; font-size: 0.9rem; min-width: 70px; text-align: right; flex-shrink: 0; }
-        .attention-site-row-value.red { color: var(--danger); }
-        .attention-site-row-value.orange { color: var(--warning); }
-        .attention-site-row-chart { flex: 1; min-width: 200px; height: 50px; }
-        .attention-site-row-detail { font-size: 0.75rem; color: var(--text-light); min-width: 150px; flex-shrink: 0; }
-
-        /* Region Card Layout - 每个城市占满整行，站点横向排列 */
-        .attention-site-grid { display: flex; flex-direction: column; gap: 12px; }
-        .attention-region-card { background: #fff; border-radius: 8px; padding: 12px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); width: 100%; flex-shrink: 0; }
-        .attention-region-card .attention-region-header { font-size: 0.95rem; font-weight: 800; color: #1e3a5f; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid #2563eb; display: flex; align-items: center; gap: 8px; }
-        .attention-region-card .attention-region-count { font-size: 0.75rem; font-weight: 600; color: #fff; background: #2563eb; padding: 2px 10px; border-radius: 10px; }
-        .attention-region-card .attention-region-content { display: flex; flex-direction: column; gap: 10px; }
-        .attention-region-card .attention-city-block { background: #f8fafc; border-radius: 6px; padding: 10px; border: 1px solid #e2e8f0; }
-        .attention-region-card .attention-city-title { font-size: 0.8rem; font-weight: 700; color: #374151; margin-bottom: 8px; padding-left: 6px; border-left: 3px solid #3b82f6; }
-        .attention-region-card .attention-city-sites { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .attention-region-card .attention-site-row { display: flex; align-items: center; gap: 10px; padding: 8px 10px; background: #fff; border-radius: 6px; border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.2s; }
-        .attention-region-card .attention-site-row:hover { background: #f1f5f9; border-color: var(--primary); }
-        .attention-region-card .attention-site-name { font-weight: 600; font-size: 0.78rem; color: #334155; min-width: 120px; flex-shrink: 0; }
-        .attention-region-card .attention-site-info { min-width: 120px; }
-        .attention-region-card .attention-site-weekly { font-size: 0.7rem; }
-        .attention-region-card .attention-site-value { font-weight: 700; font-size: 0.88rem; min-width: 60px; text-align: right; flex-shrink: 0; }
-        .attention-region-card .attention-site-value.red { color: var(--danger); }
-        .attention-region-card .attention-site-value.orange { color: var(--warning); }
-        .attention-region-card .attention-site-chart { flex: 1; min-width: 100px; height: 55px; position: relative; }
-        .site-chart-tooltip { position: absolute; top: calc(100% + 3px); left: 50%; transform: translateX(-50%); z-index: 10; background: rgba(0,0,0,0.8); color: #fff; font-size: 10px; line-height: 1.3; padding: 4px 8px; border-radius: 4px; pointer-events: none; white-space: nowrap; opacity: 0; transition: opacity 0.15s; }
-        .attention-region-card .attention-site-detail { font-size: 0.68rem; color: var(--text-light); flex-shrink: 0; }
-        .attention-region-card .attention-site-row.clothing-site-row { flex-wrap: wrap; align-items: center; }
-        .attention-region-card .attention-city-sites.clothing-city-sites { display: flex; flex-wrap: wrap; }
-        .attention-region-card .attention-city-sites.clothing-city-sites .attention-site-row { width: fit-content; min-width: 0; flex: 1 1 calc(33.333% - 14px); max-width: calc(33.333% - 14px); box-sizing: border-box; }
-        .attention-region-card .attention-site-row.clothing-site-row .attention-site-name { flex: 0 1 auto; min-width: 0; word-break: break-all; white-space: normal; line-height: 1.35; }
-        .attention-region-card .attention-site-row.clothing-site-row .attention-site-detail { flex-basis: 100%; flex-shrink: 1; word-break: break-all; white-space: normal; line-height: 1.35; margin-top: 2px; }
-        .attention-region-card .attention-site-row.clothing-site-row .clothing-score-badge { margin-left: auto; flex-shrink: 0; align-self: center; font-size: 0.72rem; font-weight: 700; padding: 2px 10px; border-radius: 10px; white-space: nowrap; }
-        .clothing-score-badge.neg { color: #c62828; background: #fdecea; border: 1px solid #f3c1bd; }
-        .clothing-score-badge.zero { color: #2e7d32; background: #e8f5e9; border: 1px solid #a5d6a7; }
-        .clothing-score-badge.na { color: #94a3b8; background: #f1f5f9; border: 1px solid #e2e8f0; }
-
-        /* Compliance Fine Attention - Card Layout */
-        .fine-area-group { background: #f8fafc; border-radius: 8px; padding: 12px 14px; margin-bottom: 10px; border: 1px solid #e2e8f0; }
-        .fine-area-title { font-weight: 700; font-size: 0.95rem; color: #1e3a5f; margin-bottom: 8px; padding-left: 8px; border-left: 3px solid #2563eb; }
-        .fine-site-card { background: #fff; border-radius: 6px; padding: 8px 12px; margin-bottom: 6px; border: 1px solid #e5e7eb; display: flex; align-items: flex-start; gap: 10px; }
-        .fine-site-card:last-child { margin-bottom: 0; }
-        .fine-site-info { min-width: 0; }
-        .fine-site-name { font-weight: 600; font-size: 0.85rem; color: #334155; }
-        .fine-site-total { font-weight: 700; font-size: 0.85rem; margin-left: 6px; }
-        .fine-site-total.red { color: var(--danger); }
-        .fine-site-total.yellow { color: var(--warning); }
-        .fine-site-total.green { color: var(--success); }
-        .fine-items-row { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
-        .fine-item { font-size: 0.75rem; padding: 2px 7px; border-radius: 3px; background: #fef3c7; color: #92400e; white-space: nowrap; }
-
-
-        /* Total Company Box (Compliance) */
-        .total-company-box { margin: 16px 24px; padding: 18px 22px; background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #93c5fd; border-radius: 10px; }
-        .total-company-box h4 { font-size: 0.95rem; color: var(--primary); margin-bottom: 12px; }
-        .total-company-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
-        .total-item { text-align: center; }
-        .total-item .val { font-size: 1.2rem; font-weight: 800; color: var(--primary); }
-        .total-item .lbl { font-size: 0.78rem; color: var(--text-light); }
-
-        /* Data Table */
-        .table-wrap { overflow-x: auto; overflow-y: auto; max-height: 65vh; }
-        .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-        .data-table th { background: #f8fafc; color: var(--text); text-align: left; padding: 10px 12px; font-weight: 600; border-bottom: 2px solid var(--card-border); white-space: nowrap; position: sticky; top: 0; z-index: 2; box-shadow: 0 1px 0 var(--card-border); }
-        .data-table th.wrap-th { white-space: normal; word-break: break-all; line-height: 1.3; min-width: 70px; vertical-align: middle; }
-        .data-table th .target { font-weight: 400; color: var(--text-lighter); font-size: 0.75rem; display: block; }
-        /* Day header color coding */
-        .data-table th.day-header-helmet { background: #dbeafe; color: #1e40af; }
-        .data-table th.day-header-speed { background: #fef3c7; color: #92400e; }
-        .data-table th.day-header-redlight { background: #fce7f3; color: #9d174d; }
-        .data-table th.day-header-reverse { background: #e0e7ff; color: #3730a3; }
-        /* Sticky columns for compliance table */
-        #complianceTable .sticky-col { position: sticky; background: #fff; }
-        #complianceTable thead .sticky-col { background: #f8fafc; }
-        #complianceTable .sticky-col.col-0 { z-index: 5; }
-        #complianceTable .sticky-col.col-1 { z-index: 6; }
-        #complianceTable .sticky-col.col-2 { z-index: 8; }
-        #complianceTable .sticky-col.col-3 { z-index: 7; border-right: 2px solid var(--card-border); box-shadow: 2px 0 4px rgba(0,0,0,0.06); }
-        #complianceTable thead .sticky-col.col-0 { z-index: 15; }
-        #complianceTable thead .sticky-col.col-1 { z-index: 16; }
-        #complianceTable thead .sticky-col.col-2 { z-index: 18; }
-        #complianceTable thead .sticky-col.col-3 { z-index: 17; }
-        #complianceTable .city-row .sticky-col { background: #e8f0fe; }
-        #complianceTable tbody tr:hover .sticky-col { background: #f8fafc; }
-        #complianceTable .city-row:hover .sticky-col { background: #dde7f8; }
-        /* Sticky columns for accident table */
-        #accidentTable .sticky-col { position: sticky; background: #fff; }
-        #accidentTable thead .sticky-col { background: #f8fafc; }
-        #accidentTable .sticky-col.col-0 { z-index: 5; }
-        #accidentTable .sticky-col.col-1 { z-index: 6; }
-        #accidentTable .sticky-col.col-2 { z-index: 8; border-right: 2px solid var(--card-border); box-shadow: 2px 0 4px rgba(0,0,0,0.06); }
-        #accidentTable thead .sticky-col.col-0 { z-index: 15; }
-        #accidentTable thead .sticky-col.col-1 { z-index: 16; }
-        #accidentTable thead .sticky-col.col-2 { z-index: 18; }
-        #accidentTable .city-row .sticky-col { background: #e8f0fe; }
-        #accidentTable tbody tr:hover .sticky-col { background: #f8fafc; }
-        #accidentTable .city-row:hover .sticky-col { background: #dde7f8; }
-        /* 安全事故明细表：表格 + 表头全边框（2026-09-27 用户要求，对齐履约板边框观感） */
-        #accidentTable th { border: 1px solid #8FB8DA; }
-        #accidentTable td { border: 1px solid #e3edf7; }
-        /* ===== 安全事故层级表（对齐履约达成处罚-周度样式，2026-09-27） ===== */
-        #accidentTable .sticky-col.col-3 { z-index: 7; border-right: 2px solid var(--card-border); box-shadow: 2px 0 4px rgba(0,0,0,0.06); }
-        #accidentTable thead .sticky-col.col-3 { z-index: 17; }
-        #accidentTable td, #accidentTable th { white-space: nowrap; }
-        .acc-orders-meta { font-size: 12px; color: #64748b; margin-right: auto; }
-        .acc-sub-tab-bar { display: flex; align-items: center; gap: 8px; padding: 8px 16px; background: #EAF2F9; border-bottom: 1px solid #8FB8DA; flex-wrap: wrap; }
-        .acc-sub-label { font-size: 12px; color: #1a2e45; font-weight: 600; }
-        .acc-lv { padding: 4px 12px; border-radius: 4px; border: 1px solid #0B4F8A; background: #0B4F8A; color: #fff; font-size: 12px; cursor: pointer; font-weight: 500; }
-        .acc-lv.active { background: #fff; color: #0B4F8A; }
-        .acc-lv-reset { padding: 4px 10px; border-radius: 4px; border: 1px solid #94a3b8; background: #fff; color: #475569; font-size: 12px; cursor: pointer; }
-        .acc-sep { width: 1px; height: 18px; background: #c7d7e6; }
-        .acc-edit-hint { font-size: 11px; color: #64748b; margin-left: auto; }
-        .acc-filter-bar { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding: 10px 16px; background: #F2F7FB; border-bottom: 1px solid #8FB8DA; }
-        .acc-filter-bar label { font-size: 12px; color: #1a2e45; font-weight: 600; }
-        .ms-wrap { position: relative; display: inline-block; vertical-align: top; }
-        .ms-btn { display: flex; align-items: center; justify-content: space-between; min-width: 90px; max-width: 160px; padding: 5px 8px; background: #fff; border: 1px solid #8FB8DA; border-radius: 4px; font-size: 12px; color: #1a2e45; cursor: pointer; user-select: none; gap: 4px; }
-        .ms-arrow { font-size: 9px; color: #5a7a99; transition: transform .15s; }
-        .ms-wrap.open .ms-arrow { transform: rotate(180deg); }
-        .ms-drop { display: none; position: absolute; top: calc(100% + 2px); left: 0; min-width: 120px; max-width: 220px; max-height: 220px; overflow-y: auto; background: #fff; border: 1px solid #8FB8DA; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,.12); z-index: 9999; padding: 4px 0; }
-        .ms-wrap.open .ms-drop { display: block; }
-        .ms-item { display: flex; align-items: center; gap: 6px; padding: 5px 10px; font-size: 12px; color: #1a2e45; cursor: pointer; white-space: nowrap; }
-        .ms-item:hover { background: #EAF2F9; }
-        .ms-item input[type=checkbox] { margin: 0; cursor: pointer; accent-color: #0B4F8A; }
-        .ms-item.checked { background: #e8f5e9; font-weight: 600; }
-        #accidentTable tr.acc-total td { background: #dbeafe !important; font-weight: 700; color: #0A3D6B; border-bottom: 2px solid #8FB8DA; }
-        #accidentTable tr.acc-area td { background: #F0F6FC !important; font-weight: 700; color: #0B4F8A; }
-        #accidentTable tr.acc-city td { background: #F2F7FB !important; font-weight: 500; color: #1E88E5; font-style: italic; }
-        #accidentTable tr.acc-site:nth-child(even) td { background: #f8fafc; }
-        #accidentTable tr.acc-site:hover td { background: #f0f7ff; }
-        #accidentTable tr.acc-new td.name-cell::after { content: '新'; display: inline-block; margin-left: 4px; font-size: 9px; background: #f59e0b; color: #fff; border-radius: 3px; padding: 0 4px; vertical-align: middle; }
-        .acc-edit-cell { cursor: pointer; }
-        .acc-edit-cell:hover { outline: 1px dashed #0B4F8A; background: #fffbe6 !important; }
-        .acc-edit-cell .acc-pencil { font-size: 9px; opacity: .35; margin-left: 2px; }
-        .acc-cell-input { width: 68px; border: 1px solid #0B4F8A; border-radius: 3px; padding: 1px 4px; font-size: 12px; text-align: right; outline: none; }
-        .cft { display: inline-block; margin-left: 4px; font-size: 9px; color: #5a7a99; opacity: .55; cursor: pointer; vertical-align: middle; line-height: 1; user-select: none; }
-        .cft.on { color: #e11d48; opacity: 1; font-weight: 700; }
-        .acc-col-dd { position: fixed; z-index: 99999; background: #fff; border: 1px solid #d4dde6; border-radius: 10px; box-shadow: 0 10px 32px rgba(15,40,80,.22); min-width: 230px; max-width: 300px; font-size: 12px; color: #333; overflow: hidden; }
-        .acc-col-dd .pdd-title { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: #F2F7FB; font-weight: 700; color: #0A3D6B; }
-        .acc-col-dd .pdd-close { cursor: pointer; font-size: 16px; line-height: 1; color: #64748b; }
-        .acc-col-dd .pdd-search { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-bottom: 1px solid #eef2f6; }
-        .acc-col-dd .pdd-search input { flex: 1; border: 1px solid #cbd5e1; border-radius: 4px; padding: 3px 6px; font-size: 12px; }
-        .acc-col-dd .pdd-bar { display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; background: #fafcfe; }
-        .acc-col-dd .pdd-all { color: #0B4F8A; cursor: pointer; font-weight: 600; }
-        .acc-col-dd .pdd-count { color: #64748b; font-size: 11px; }
-        .acc-col-dd .pdd-list { max-height: 240px; overflow-y: auto; padding: 4px 0; }
-        .acc-col-dd .pdd-list label { display: flex; align-items: center; gap: 6px; padding: 5px 12px; cursor: pointer; white-space: nowrap; }
-        .acc-col-dd .pdd-list label:hover { background: #EAF2F9; }
-        .acc-col-dd .pdd-num { margin-left: auto; color: #94a3b8; font-size: 11px; }
-        .acc-col-dd .pdd-foot { padding: 6px 12px; color: #94a3b8; font-size: 11px; border-top: 1px solid #eef2f6; }
-        .acc-col-dd .pdd-empty { padding: 14px; text-align: center; color: #94a3b8; }
-        .data-table th .col-filter-wrap { position: relative; display: inline-block; margin-left: 4px; }
-        .data-table th .col-filter-btn { background: none; border: 1px solid transparent; border-radius: 3px; cursor: pointer; font-size: 0.7rem; color: var(--text-lighter); padding: 1px 4px; transition: all 0.15s; }
-        .data-table th .col-filter-btn:hover { background: #e2e8f0; color: var(--text); }
-        .data-table th .col-filter-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-        .col-filter-dropdown { position: fixed; z-index: 999999; background: #fff; border: 1px solid var(--card-border); border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); min-width: 140px; max-height: 400px; overflow-y: auto; padding: 6px 0; font-weight: 400; }
-        .col-filter-dropdown .cf-item { padding: 5px 12px; cursor: pointer; font-size: 0.82rem; display: flex; align-items: center; gap: 6px; }
-        .col-filter-dropdown .cf-item:hover { background: #f1f5f9; }
-        .col-filter-dropdown .cf-item.checked .cf-check { color: var(--primary); }
-        .col-filter-dropdown .cf-check { font-size: 0.75rem; color: #cbd5e1; }
-        .col-filter-dropdown .cf-item.all-item { border-bottom: 1px solid var(--card-border); margin-bottom: 4px; padding-bottom: 8px; }
-        .col-filter-dropdown .cf-actions { display: flex; gap: 4px; padding: 6px 12px; border-top: 1px solid var(--card-border); margin-top: 4px; }
-        .col-filter-dropdown .cf-actions button { flex: 1; padding: 4px 8px; border-radius: 4px; border: none; cursor: pointer; font-size: 0.78rem; }
-        .col-filter-dropdown .cf-ok { background: var(--primary); color: #fff; }
-        .col-filter-dropdown .cf-ok:hover { background: #1d4ed8; }
-        .col-filter-dropdown .cf-clear { background: #f1f5f9; color: var(--text); }
-        .col-filter-dropdown .cf-clear:hover { background: #e2e8f0; }
-        .data-table td { padding: 8px 12px; border-bottom: 1px solid #f1f5f9; white-space: nowrap; }
-        .data-table tbody tr:hover { background: #f8fafc; }
-        .data-table tbody tr:last-child td { border-bottom: none; }
-        .data-table td.week-cell { color: var(--text-light); font-size: 0.82rem; }
-
-        /* Metric styling */
-        .metric-good { color: var(--success); font-weight: 700; }
-        .metric-warn { color: var(--warning); font-weight: 700; }
-        .metric-bad { color: var(--danger); font-weight: 700; }
-        .badge { display: inline-block; padding: 2px 9px; border-radius: 10px; font-size: 0.78rem; font-weight: 600; }
-        .badge-good { background: var(--success-light); color: var(--success); }
-        .badge-warn { background: var(--warning-light); color: var(--warning); }
-        .badge-bad { background: var(--danger-light); color: var(--danger); }
-        .badge-info { background: var(--info-light); color: var(--info); }
-        .city-row { background: #e8f0fe !important; }
-        .city-row td { font-weight: 600; }
-        .city-row td.name-cell { position: relative; color: var(--primary); }
-        .city-row.area-row td.name-cell::after { content: '▲区域汇总'; display: inline-block; margin-left: 4px; font-size: 0.6rem; background: #6366f1; color: #fff; border-radius: 3px; padding: 0 4px; vertical-align: middle; font-weight: 500; letter-spacing: 0.5px; }
-        .city-row.real-city td.name-cell::after { content: '▲城市汇总'; display: inline-block; margin-left: 4px; font-size: 0.6rem; background: var(--primary); color: #fff; border-radius: 3px; padding: 0 4px; vertical-align: middle; font-weight: 500; letter-spacing: 0.5px; }
-
-        /* Clickable penalty */
-        .penalty-link { color: var(--primary); cursor: pointer; text-decoration: underline; font-weight: 600; }
-        .penalty-link:hover { color: #1d4ed8; }
-
-        /* Data Info */
-        .data-info { padding: 8px 24px; font-size: 0.82rem; color: var(--text-light); background: #fafbfc; border-bottom: 1px solid var(--card-border); }
-        .data-info strong { color: var(--primary); }
-
-        /* Modal */
-        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 3000; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(3px); animation: fadeIn 0.2s ease; }
-        .modal { background: #fff; border-radius: 14px; max-width: 95vw; max-height: 85vh; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
-        .modal-header { padding: 16px 20px; border-bottom: 1px solid var(--card-border); display: flex; justify-content: space-between; align-items: center; }
-        .modal-header h3 { font-size: 1rem; font-weight: 700; }
-        .modal-close { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: var(--text-light); padding: 4px 8px; border-radius: 6px; }
-        .modal-close:hover { background: #f1f5f9; }
-        .modal-body { padding: 16px 20px; overflow-y: auto; }
-        .modal-body table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
-        .modal-body th { background: #f8fafc; padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--card-border); white-space: nowrap; }
-        .modal-body td { padding: 7px 10px; border-bottom: 1px solid #f1f5f9; white-space: nowrap; }
-        .modal-body tr:hover { background: #f8fafc; }
-        .modal-empty { text-align: center; padding: 40px; color: var(--text-lighter); }
-
-        /* Loading */
-        .loading-overlay { position: fixed; inset: 0; background: rgba(255,255,255,0.85); display: flex; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(4px); }
-        .loading-overlay.hidden { display: none; }
-        .spinner { width: 44px; height: 44px; border: 4px solid #e2e8f0; border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .loading-text { margin-top: 14px; color: var(--text-light); font-weight: 500; }
-
-        /* Toast */
-        .toast { position: fixed; top: 20px; right: 20px; padding: 12px 18px; border-radius: 10px; font-weight: 500; font-size: 0.88rem; z-index: 2000; animation: slideIn 0.3s ease; box-shadow: var(--shadow); max-width: 380px; }
-        .toast-success { background: var(--success-light); color: var(--success); border-left: 4px solid var(--success); }
-        .toast-error { background: var(--danger-light); color: var(--danger); border-left: 4px solid var(--danger); }
-        @keyframes slideIn { from { transform: translateX(100%); opacity:0; } to { transform: translateX(0); opacity:1; } }
-
-        /* Zoom Controls */
-        .zoom-controls { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); padding: 4px 10px; border-radius: 20px; }
-        .zoom-btn { background: rgba(255,255,255,0.2); border: none; color: #fff; width: 26px; height: 26px; border-radius: 50%; cursor: pointer; font-size: 1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-        .zoom-btn:hover { background: rgba(255,255,255,0.35); }
-        .zoom-level { color: #fff; font-size: 0.8rem; min-width: 40px; text-align: center; }
-        .screenshot-btn { background: #059669; border: 1px solid rgba(255,255,255,0.35); color: #fff; padding: 7px 16px; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: background 0.2s; }
-        .screenshot-btn:hover { background: #047857; }
-        .screenshot-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-
-        /* Page Zoom */
-        .page-wrapper { transform-origin: top center; transition: transform 0.2s ease; }
-
-        .empty-row td { text-align: center; padding: 40px !important; color: var(--text-lighter); }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header h1 { font-size: 1.2rem; }
-            .container { padding: 12px 10px 32px; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .panel-header { padding: 14px 16px; }
-            .search-box { min-width: 100%; }
-            .controls { width: 100%; }
-        }
-    </style>
-</head>
-<body>
-<div id="loadingOverlay" class="loading-overlay">
-    <div style="text-align:center"><div class="spinner"></div><div class="loading-text">正在加载数据，请稍候...</div></div>
-</div>
-
-<!-- Header -->
-<div class="header">
-    <div class="header-inner">
-        <div>
-            <h1>安全权益履约周报看板 <span style="color:#facc15;font-size:inherit;margin-left:12px;">提数据=降处罚</span></h1>
-            <div class="meta">安全权益 | 站长评级 | 履约数据 | 安全事故 | 保险赔付补贴监控 | 保险赔付率解读</div>
-        </div>
-        <div class="header-right">
-            <div class="zoom-controls">
-                <button class="zoom-btn" onclick="zoomOut()" title="缩小">−</button>
-                <span class="zoom-level" id="zoomLevel">100%</span>
-                <button class="zoom-btn" onclick="zoomIn()" title="放大">+</button>
-                <button class="zoom-btn" onclick="zoomReset()" title="重置" style="font-size:0.7rem;">1:1</button>
-            </div>
-            <button class="screenshot-btn" id="screenshotBtn" onclick="takeScreenshot()">截图</button>
-            <label class="upload-btn" for="excelFile">上传Excel数据</label>
-            <input type="file" id="excelFile" accept=".xlsx,.xls">
-            <div class="upload-progress" id="uploadProgress" style="display:none;">
-                <div class="bar"><div class="bar-fill" id="uploadProgressBar"></div></div>
-                <span class="text" id="uploadProgressText">0%</span>
-            </div>
-            <button class="upload-btn" style="background:#059669;margin-left:4px;" onclick="downloadAllData()">下载所有数据</button>
-            <button class="upload-btn" style="background:#6b7280;margin-left:4px;" onclick="clearSavedData()">恢复默认数据</button>
-            <div class="header-badge" id="headerDataDate">数据加载中</div>
-        </div>
-    </div>
-</div>
-
-<!-- Main -->
-<div class="page-wrapper" id="pageWrapper">
-<div class="container">
-    <div class="stats-grid" id="statsGrid"></div>
-    <div class="stats-grid" id="statsGridInsurance" style="display:none"></div>
-    <div class="tabs">
-        <button class="tab-btn active" data-tab="safety">安全权益</button>
-        <button class="tab-btn" data-tab="rating">站长评级</button>
-        <button class="tab-btn" data-tab="compliance">履约数据</button>
-        <button class="tab-btn" data-tab="accident">安全事故</button>
-        <button class="tab-btn" data-tab="insurance-monitor">保险赔付补贴监控</button>
-        <button class="tab-btn" data-tab="insurance-rate">保险赔付率解读</button>
-    </div>
-
-    <!-- Safety -->
-    <div id="panel-safety" class="tab-panel active">
-        <div class="panel-header">
-            <div class="panel-title">安全权益数据看板</div>
-            <div class="controls">
-                <input type="text" id="safetySearch" class="search-box" placeholder="搜索...">
-                <select id="safetyRegion" class="select-box"><option value="">全部大区</option></select>
-                <select id="safetyZone" class="select-box"><option value="">全部分区</option></select>
-                <select id="safetyCity" class="select-box"><option value="">全部城市</option></select>
-                <select id="safetyStation" class="select-box"><option value="">全部站点</option></select>
-                <button class="btn-clear-filter" onclick="clearFilter('safety')">清除筛选</button>
-            </div>
-        </div>
-        <div id="safetyAttention"></div>
-        <div class="data-info" id="safetyInfo" style="display:none">加载中...</div>
-        <div class="table-wrap" style="display:none"><table class="data-table" id="safetyTable"><thead><tr id="safetyTableHeader">
-            <th>大区</th><th>分区</th><th>城市</th><th>站点</th>
-            <th>权益得分</th>
-            <th>戴盔系带率<span class="target">≥97%</span></th>
-            <th class="wrap-th">戴盔系带率权益得分</th>
-            <th>第1周</th><th>第2周</th><th>第3周</th><th>第4周</th><th>第5周</th>
-            <th class="day-header-helmet">6/10</th><th class="day-header-helmet">6/11</th><th class="day-header-helmet">6/12</th><th class="day-header-helmet">6/13</th><th class="day-header-helmet">6/14</th><th class="day-header-helmet">6/15</th><th class="day-header-helmet">6/16</th>
-            <th>有灯路口超速率<span class="target">≤4%</span></th>
-            <th class="wrap-th">有灯路口超速率权益得分</th>
-            <th>第1周</th><th>第2周</th><th>第3周</th><th>第4周</th><th>第5周</th>
-            <th class="day-header-speed">6/10</th><th class="day-header-speed">6/11</th><th class="day-header-speed">6/12</th><th class="day-header-speed">6/13</th><th class="day-header-speed">6/14</th><th class="day-header-speed">6/15</th><th class="day-header-speed">6/16</th>
-        </tr></thead><tbody></tbody></table></div>
-        <div class="table-wrap"><iframe id="equityFrame" src="/equity-board/index.html" style="width:100%;height:78vh;border:0"></iframe></div>
-    </div>
-
-    <!-- Rating -->
-    <div id="panel-rating" class="tab-panel">
-        <div class="panel-header">
-            <div class="panel-title">站长安全评级看板</div>
-            <div class="controls">
-                <input type="text" id="ratingSearch" class="search-box" placeholder="搜索...">
-                <select id="ratingRegion" class="select-box"><option value="">全部大区</option></select>
-                <select id="ratingZone" class="select-box"><option value="">全部分区</option></select>
-                <select id="ratingCity" class="select-box"><option value="">全部城市</option></select>
-                <select id="ratingStation" class="select-box"><option value="">全部站点</option></select>
-                <button class="btn-clear-filter" onclick="clearFilter('rating')">清除筛选</button>
-            </div>
-        </div>
-        <div id="ratingAttention"></div>
-        <div class="data-info" id="ratingInfo" style="display:none">加载中...</div>
-        <div class="table-wrap" style="display:none"><table class="data-table" id="ratingTable"><thead><tr id="ratingTableHeader">
-            <th>大区</th><th>分区</th><th>城市</th><th>站点</th>
-            <th>闯红灯率<span class="target">≤23%</span></th><th>得分</th>
-            <th>第1周</th><th>第2周</th><th>第3周</th><th>第4周</th><th>第5周</th>
-            <th class="day-header-redlight">6/10</th><th class="day-header-redlight">6/11</th><th class="day-header-redlight">6/12</th><th class="day-header-redlight">6/13</th><th class="day-header-redlight">6/14</th><th class="day-header-redlight">6/15</th><th class="day-header-redlight">6/16</th>
-            <th>里程逆行率<span class="target">≤3%</span></th><th>得分</th>
-            <th>第1周</th><th>第2周</th><th>第3周</th><th>第4周</th><th>第5周</th>
-            <th class="day-header-reverse">6/10</th><th class="day-header-reverse">6/11</th><th class="day-header-reverse">6/12</th><th class="day-header-reverse">6/13</th><th class="day-header-reverse">6/14</th><th class="day-header-reverse">6/15</th><th class="day-header-reverse">6/16</th>
-            <th>工装检核率<span class="target">≥80%</span></th><th>美团工服率<span class="target">≥92%</span></th><th>美团工服率扣分</th>
-        </tr></thead><tbody></tbody></table></div>
-        <!-- 嵌入交通安全分组「站长安全评级看板」站维度明细表（只读透出，数据随源自动同步） -->
-        <div class="table-wrap"><iframe id="ratingFrame" src="/equity-board/rating.html" style="width:100%;height:82vh;border:0"></iframe></div>
-    </div>
-
-    <!-- Compliance -->
-    <div id="panel-compliance" class="tab-panel">
-        <div class="panel-header">
-            <div class="panel-title">履约类数据看板</div>
-            <div class="controls">
-                <input type="text" id="complianceSearch" class="search-box" placeholder="搜索...">
-                <select id="complianceRegion" class="select-box"><option value="">全部大区</option></select>
-                <select id="complianceZone" class="select-box"><option value="">全部分区</option></select>
-                <select id="complianceArea" class="select-box"><option value="">全部区域</option></select>
-                <button class="btn-clear-filter" onclick="clearFilter('compliance')">清除筛选</button>
-            </div>
-        </div>
-        <div id="complianceTotal"></div>
-        <div id="complianceAttention"></div>
-        <div class="data-info" id="complianceInfo">加载中...</div>
-        <!-- 原自带明细表隐藏（数据仍驱动 KPI 卡片/重点关注/导出）；明细表改嵌履约项目看板「履约达成处罚-周度」原样子面板 -->
-        <div class="table-wrap" style="display:none"><table class="data-table" id="complianceTable"><thead><tr>
-            <th class="sticky-col col-0">大区</th><th class="sticky-col col-1">分区</th><th class="sticky-col col-2 name-cell">区域</th>
-            <th class="sticky-col col-3">甲方预计总罚款</th>
-            <th>早会驳回数</th><th>早会罚款</th>
-            <th>自检驳回</th><th>自检罚款</th>
-            <th>督导驳回</th><th>督导罚款</th>
-            <th>餐箱标准化率<span class="target">≥95%</span></th><th>不达标罚款</th>
-            <th>虚假消毒数</th><th>虚假消毒罚款</th>
-            <th>装备不合格数</th><th>装备罚款</th>
-            <th>装备合规率</th>
-            <th>健康证处罚金额</th>
-        </tr></thead><tbody></tbody></table></div>
-        <!-- 嵌入履约项目看板「履约达成处罚-周度」原样明细表（只读透出，数据随源自动同步；切到本 Tab 才懒加载） -->
-        <div class="table-wrap"><iframe id="framePenalty" data-src="/penalty-board/" src="about:blank" style="width:100%;height:82vh;border:0"></iframe></div>
-    </div>
-
-    <!-- Accident（2026-09-27 改版：对齐履约达成处罚-周度的组织层级表样式与筛选） -->
-    <div id="panel-accident" class="tab-panel">
-        <div class="panel-header">
-            <div class="panel-title">安全事故看板</div>
-            <div class="controls">
-                <span id="accOrdersMeta" class="acc-orders-meta"></span>
-                <button class="btn-clear-filter" onclick="clearFilter('accident')">清除筛选</button>
-            </div>
-        </div>
-        <div id="accidentSummaryCards"></div>
-        <div class="data-info" id="accidentInfo">加载中...</div>
-        <div class="acc-sub-tab-bar">
-            <span class="acc-sub-label">显示层级：</span>
-            <button class="acc-lv active" id="acc-lv-subregion" onclick="accToggleView('subregion')">区域行</button>
-            <button class="acc-lv active" id="acc-lv-merchant" onclick="accToggleView('merchant')">城市行</button>
-            <button class="acc-lv active" id="acc-lv-site" onclick="accToggleView('site')">站点行</button>
-            <span class="acc-sep"></span>
-            <button class="acc-lv-reset" onclick="accResetView()">全部显示</button>
-            <span class="acc-edit-hint">✏️ 上报保险数 / 小额事故数 / 公司承担 / 骑手承担 / 工单迟报数 / 保险超时数 可直接点击单元格填写（Enter 保存 · Esc 取消，自动持久化）</span>
-        </div>
-        <div class="acc-filter-bar" id="accFilterBar">
-            <label>大区</label><div class="ms-wrap" id="ms-acc-region"><div class="ms-btn" onclick="accToggleMs('region')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
-            <label>区域</label><div class="ms-wrap" id="ms-acc-subregion"><div class="ms-btn" onclick="accToggleMs('subregion')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
-            <label>城市</label><div class="ms-wrap" id="ms-acc-city"><div class="ms-btn" onclick="accToggleMs('city')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
-            <label>站点</label><div class="ms-wrap" id="ms-acc-site"><div class="ms-btn" onclick="accToggleMs('site')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
-        </div>
-        <div class="table-wrap"><table class="data-table" id="accidentTable">
-            <thead id="accThead"></thead><tbody id="accTbody"></tbody>
-        </table></div>
-    </div>
-
-    <!-- 保险赔付补贴监控（复刻自履约安全工作台） -->
-    <div id="panel-insurance-monitor" class="tab-panel">
-        <iframe class="insurance-frame" id="frameInsuranceMonitor"
-                data-src="insurance_subsidy_monitor.html" src="about:blank"></iframe>
-    </div>
-
-    <!-- 保险赔付率解读（复刻自履约安全工作台） -->
-    <div id="panel-insurance-rate" class="tab-panel">
-        <iframe class="insurance-frame" id="frameInsuranceRate"
-                data-src="insurance_rate_analysis.html" src="about:blank"></iframe>
-    </div>
-</div><!-- end container -->
-</div><!-- end page-wrapper -->
-
-<!-- Modal for detail -->
-<div id="modalOverlay" class="modal-overlay" style="display:none">
-    <div class="modal">
-        <div class="modal-header"><h3 id="modalTitle">明细</h3><button class="modal-close" onclick="closeModal()">&times;</button></div>
-        <div class="modal-body" id="modalBody"></div>
-    </div>
-</div>
-
-<script>
 // ===== Zoom Controls =====
 let currentZoom = 1;
 const ZOOM_STEP = 0.1;
@@ -2673,6 +2070,8 @@ var ACC_COLS = [
 var ACC_COMPUTED = ['迟报罚款', '超时罚款', '百万单事故数'];
 var ACC_SUM_COLS = ['上报保险数','小额事故数','公司承担','骑手承担','工单迟报数','迟报罚款','保险超时数','超时罚款','上周完成单量'];
 var accState = { region: [], subregion: [], city: [], site: [] };
+var ACC_SEARCH = '';      // 面板头部搜索框（与 KPI 卡 + 明细表联动）
+var ACC_HDR_IDS = ['accidentSearch','accidentRegion','accidentZone','accidentCity','accidentStation'];
 var ACC_COL_FILTER = {};
 var accView = { subregion: true, merchant: true, site: true };
 var ACC_VIEWROWS = [];
@@ -2917,6 +2316,60 @@ function accToggleMs(key) {
 function accClearAll() {
     ['region', 'subregion', 'city', 'site'].forEach(function(d) { accState[d] = []; });
     ACC_COL_FILTER = {};
+    ACC_SEARCH = '';
+    ACC_HDR_IDS.forEach(function(id) { var el = document.getElementById(id); if (el) el.value = ''; });
+    renderAccidentTab();
+}
+
+// ---------- 面板头部筛选（与其他页面一致：搜索 + 大区/区域/城市/站点 级联下拉） ----------
+// 头部筛选与明细表筛选**共用同一份 accState**：改任一处，KPI 汇总卡与明细表同步联动。
+function accHeaderVals() {
+    function v(id) { var el = document.getElementById(id); return el ? (el.value || '') : ''; }
+    return { search: v('accidentSearch'), region: v('accidentRegion'), zone: v('accidentZone'), city: v('accidentCity'), station: v('accidentStation') };
+}
+function accFillSelect(id, options, placeholder, cur) {
+    var sel = document.getElementById(id);
+    if (!sel) return;
+    sel.innerHTML = '<option value="">' + placeholder + '</option>' +
+        options.map(function(o) { return '<option value="' + esc(o) + '">' + esc(o) + '</option>'; }).join('');
+    sel.value = (cur && options.indexOf(cur) >= 0) ? cur : '';
+}
+// forceVals 省略时读取 DOM 当前值；renderAccidentTab 会传入由 accState 推导的值，保证两处筛选始终一致
+function accFillHeaderSelects(forceVals) {
+    var v = forceVals || accHeaderVals();
+    var rows = ACC_VIEWROWS || [];
+    var regions = [], zones = [], cities = [], stations = [];
+    function uniq(arr, val) { if (val && arr.indexOf(val) < 0) arr.push(val); }
+    rows.forEach(function(r) { uniq(regions, r.大区); });
+    rows.forEach(function(r) {
+        if (v.region && r.大区 !== v.region) return;
+        uniq(zones, r.分区);
+    });
+    rows.forEach(function(r) {
+        if (v.region && r.大区 !== v.region) return;
+        if (v.zone && r.分区 !== v.zone) return;
+        uniq(cities, r.__城市);
+    });
+    rows.forEach(function(r) {
+        if (v.region && r.大区 !== v.region) return;
+        if (v.zone && r.分区 !== v.zone) return;
+        if (v.city && r.__城市 !== v.city) return;
+        uniq(stations, r.__站点);
+    });
+    var byZh = function(a, b) { return a.localeCompare(b, 'zh'); };
+    accFillSelect('accidentRegion', accSortRegions(regions), '全部大区', v.region);
+    accFillSelect('accidentZone', zones.sort(byZh), '全部区域', v.zone);
+    accFillSelect('accidentCity', cities.sort(byZh), '全部城市', v.city);
+    accFillSelect('accidentStation', stations.sort(byZh), '全部站点', v.station);
+}
+// 头部下拉/搜索框变更 → 写入 accState → 重渲染（KPI 卡 + 明细表一起联动）
+function accHeaderFilter() {
+    var v = accHeaderVals();
+    ACC_SEARCH = v.search || '';
+    accState.region = v.region ? [v.region] : [];
+    accState.subregion = v.zone ? [v.zone] : [];
+    accState.city = v.city ? [v.city] : [];
+    accState.site = v.station ? [v.station] : [];
     renderAccidentTab();
 }
 
@@ -3035,6 +2488,7 @@ function accPass(r) {
     if (rs.length && rs.indexOf(r.大区) < 0) return false;
     if (ss.length && ss.indexOf(r.分区) < 0) return false;
     if (r.__level === 'company') return true;
+    if (r._match === false) return false;   // 头部搜索框未命中（命中行的祖先链已一并保留）
     for (var ck in ACC_COL_FILTER) {
         var sel = ACC_COL_FILTER[ck];
         if (sel && sel.length && sel.indexOf(accColDisp(ck, r.eff[ck])) < 0) return false;
@@ -3074,19 +2528,23 @@ function accidentSummaryHtml() {
     if (!company) return '';
     var html = accKpiBox('总公司汇总 - ' + ACC_COMPANY, company.eff, false);
     var rs = accState.region, ss = accState.subregion, cs = accState.city, sts = accState.site;
+    // KPI 与明细表同口径：统一叠加 accPass（头部下拉 + 搜索框 + 列筛选）
+    function f(level, extra) {
+        return rows.filter(function(r) { return r.__level === level && extra(r) && accPass(r); });
+    }
     if (sts.length) {
-        html += accKpiBox('站点汇总（' + sts.length + ' 站）', accAgg(rows.filter(function(r) { return r.__level === 'site' && sts.indexOf(r.__站点) >= 0; })), true);
+        html += accKpiBox('站点汇总（' + sts.length + ' 站）', accAgg(f('site', function(r) { return sts.indexOf(r.__站点) >= 0; })), true);
     } else if (cs.length) {
-        html += accKpiBox('城市汇总（' + esc(cs.join('、')) + '）', accAgg(rows.filter(function(r) { return r.__level === 'city' && cs.indexOf(r.__城市) >= 0; })), true);
+        html += accKpiBox('城市汇总（' + esc(cs.join('、')) + '）', accAgg(f('city', function(r) { return cs.indexOf(r.__城市) >= 0; })), true);
     } else if (ss.length) {
-        html += accKpiBox('区域汇总（' + esc(ss.join('、')) + '）', accAgg(rows.filter(function(r) { return r.__level === 'area' && ss.indexOf(r.分区) >= 0; })), true);
+        html += accKpiBox('区域汇总（' + esc(ss.join('、')) + '）', accAgg(f('area', function(r) { return ss.indexOf(r.分区) >= 0; })), true);
     } else if (rs.length) {
-        html += accKpiBox('大区汇总（' + esc(rs.join('、')) + '）', accAgg(rows.filter(function(r) { return r.__level === 'area' && rs.indexOf(r.大区) >= 0; })), true);
+        html += accKpiBox('大区汇总（' + esc(rs.join('、')) + '）', accAgg(f('area', function(r) { return rs.indexOf(r.大区) >= 0; })), true);
     } else {
         var seen = {}, order = [];
-        rows.forEach(function(r) { if (r.__level === 'area' && r.大区 && !seen[r.大区]) { seen[r.大区] = 1; order.push(r.大区); } });
+        f('area', function(r) { return !!r.大区; }).forEach(function(r) { if (!seen[r.大区]) { seen[r.大区] = 1; order.push(r.大区); } });
         accSortRegions(order).forEach(function(rg) {
-            html += accKpiBox('大区汇总 - ' + rg, accAgg(rows.filter(function(r) { return r.__level === 'area' && r.大区 === rg; })), true);
+            html += accKpiBox('大区汇总 - ' + rg, accAgg(f('area', function(r) { return r.大区 === rg; })), true);
         });
     }
     return html;
@@ -3154,13 +2612,18 @@ function renderAccidentTab() {
     theadHtml += '</tr>';
     thead.innerHTML = theadHtml;
 
-    var meta = document.getElementById('accOrdersMeta');
-    if (meta) {
-        if (ORDERS_SITE && ORDERS_SITE.meta) {
-            meta.textContent = '上周完成单量源：' + ORDERS_SITE.meta.source_file + '（' + (ORDERS_SITE.meta.date_range || '') + '，' + ORDERS_SITE.meta.station_count + '站）';
-        } else {
-            meta.textContent = '上周完成单量源：暂无 data/orders_site.json（待跑 _build_orders_site.py 抓M盘）';
-        }
+    // 头部搜索框命中判定：命中行的整条祖先链一并保留，保证层级完整（公司行恒显示）
+    var q = String(ACC_SEARCH || '').trim().toLowerCase();
+    if (q) {
+        ACC_VIEWROWS.forEach(function(r) { r._match = false; });
+        ACC_VIEWROWS.forEach(function(r) {
+            var txt = [r.大区, r.分区, r.区域, r.__城市, r.__站点].filter(Boolean).join(' ').toLowerCase();
+            if (txt.indexOf(q) < 0) return;
+            var cur = r;
+            while (cur) { cur._match = true; cur = cur._parent; }
+        });
+    } else {
+        ACC_VIEWROWS.forEach(function(r) { r._match = true; });
     }
 
     if (!ACC_VIEWROWS.length) {
@@ -3204,6 +2667,15 @@ function renderAccidentTab() {
     // 筛选下拉重建（放在表格渲染后，选项随 ACC_VIEWROWS 变化）
     ['region', 'subregion', 'city', 'site'].forEach(function(d) {
         accBuildDrop(d, accidentOptions(d), accState[d]);
+    });
+
+    // 面板头部下拉与明细表筛选同源：由 accState 反推头部选中值并级联重建选项
+    accFillHeaderSelects({
+        search: ACC_SEARCH,
+        region: accState.region.length === 1 ? accState.region[0] : '',
+        zone: accState.subregion.length === 1 ? accState.subregion[0] : '',
+        city: accState.city.length === 1 ? accState.city[0] : '',
+        station: accState.site.length === 1 ? accState.site[0] : ''
     });
 }
 
@@ -3667,7 +3139,9 @@ function loadInsuranceFrame(tab) {
 }
 
 // Filter events
-['safety','rating','compliance','accident'].forEach(type => {
+// 注：accident 不走这里——它用面板头部下拉（accHeaderFilter）与明细表多选筛选（accMsCheck）
+//     共用 accState 的专用链路，套用通用级联会按 store.accident 的 城市/站点 字段把下拉清空。
+['safety','rating','compliance'].forEach(type => {
     const searchEl = document.getElementById(type + 'Search');
     const regionEl = document.getElementById(type + 'Region');
     const zoneEl = document.getElementById(type + 'Zone');
@@ -3696,6 +3170,26 @@ function loadInsuranceFrame(tab) {
     if (stationEl) stationEl.addEventListener('change', () => applyFilter(type));
     if (areaEl) areaEl.addEventListener('change', () => applyFilter(type));
 });
+
+// 安全事故 Tab：面板头部筛选（搜索 + 大区→区域→城市→站点 级联）+ 清除筛选，
+// 与下方 KPI 汇总卡、明细表共用 accState，任一处改动三方同步联动。
+(function bindAccidentHeaderFilters() {
+    var chain = ['accidentRegion', 'accidentZone', 'accidentCity', 'accidentStation'];
+    var searchEl = document.getElementById('accidentSearch');
+    if (searchEl) searchEl.addEventListener('input', accHeaderFilter);
+    chain.forEach(function(id, i) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener('change', function() {
+            // 上级变更后清空所有下级，避免出现「大区已换、城市还是旧大区下的」空结果
+            for (var j = i + 1; j < chain.length; j++) {
+                var down = document.getElementById(chain[j]);
+                if (down) down.value = '';
+            }
+            accHeaderFilter();
+        });
+    });
+})();
 
 // ===== File Upload =====
 function setUploadProgress(pct, text, busy) {
@@ -4303,6 +3797,3 @@ async function loadPenaltyCompliance() {
         console.warn('[履约处罚周度] 加载失败，沿用 compliance.json 数据:', e);
     }
 }
-</script>
-</body>
-</html>
