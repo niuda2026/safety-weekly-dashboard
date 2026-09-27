@@ -1,0 +1,77 @@
+{
+  "station_rating.json": {
+    "sheet": "站长安全评级看板",
+    "rows": 224,
+    "cols": 39
+  },
+  "safety_rights.json": {
+    "sheet": "权益类数据看板",
+    "rows": 224,
+    "cols": 37
+  },
+  "compliance.json": {
+    "sheet": "履约类数据看板",
+    "rows": 226,
+    "cols": 18
+  },
+  "accident.json": {
+    "sheet": "安全事故看板",
+    "rows": 223,
+    "cols": 14
+  },
+  "helmet_data.json": {
+    "sheet": "戴盔系带数据",
+    "rows": 5973,
+    "cols": 22
+  },
+  "speeding_data.json": {
+    "sheet": "超速数据",
+    "rows": 5973,
+    "cols": 22
+  },
+  "redlight_data.json": {
+    "sheet": "闯红灯数据",
+    "rows": 13328,
+    "cols": 15
+  },
+  "reverse_data.json": {
+    "sheet": "逆行数据",
+    "rows": 5577,
+    "cols": 15
+  },
+  "equipment_rate.json": {
+    "sheet": "服装标准化率",
+    "rows": 49,
+    "cols": 12
+  },
+  "equipment_detail.json": {
+    "sheet": "装备不合规明细",
+    "rows": 27,
+    "cols": 25
+  },
+  "meeting_reject.json": {
+    "sheet": "早会-驳回清单",
+    "rows": 23,
+    "cols": 33
+  },
+  "inspection_detail.json": {
+    "sheet": "子项检核明细",
+    "rows": 6926,
+    "cols": 29
+  },
+  "data_treasure.json": {
+    "sheet": "数据宝",
+    "rows": 193,
+    "cols": 9
+  },
+  "disinfect_data.json": {
+    "sheet": "餐箱消毒违约档位",
+    "rows": 185,
+    "cols": 12
+  },
+  "health_violation.json": {
+    "sheet": "健康证违规报表（T-1月）",
+    "rows": 8,
+    "cols": 12
+  }
+}

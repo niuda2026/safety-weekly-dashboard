@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>保险赔付率方案解读</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif; }
+body { background:#f5f7fa; color:#303133; min-height:100vh; }
+
+.header { background:linear-gradient(135deg,#0b1f4d 0%,#123c7e 60%,#1e5cb3 100%); color:#fff; padding:18px 24px 0; }
+.header .h-top { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; }
+.header h1 { font-size:20px; font-weight:700; }
+.header .sub { font-size:12px; opacity:.8; margin-top:4px; }
+.header .meta { font-size:12px; opacity:.75; text-align:right; }
+.period-tabs { display:flex; gap:8px; margin-top:14px; flex-wrap:wrap; }
+.period-tab { padding:9px 18px; background:rgba(255,255,255,.12); color:#fff; border-radius:8px 8px 0 0; cursor:pointer; font-size:13px; border:1px solid transparent; border-bottom:none; transition:all .2s; }
+.period-tab:hover { background:rgba(255,255,255,.2); }
+.period-tab.active { background:#f5f7fa; color:#1e5cb3; font-weight:600; border-color:#1e5cb3; }
+.period-tab .badge { display:inline-block; margin-left:6px; padding:1px 8px; border-radius:10px; font-size:11px; background:rgba(255,255,255,.25); }
+.period-tab.active .badge { background:#1e5cb3; color:#fff; }
+.period-tab.future { opacity:.85; }
+
+/* 摘要卡 */
+.summary { display:grid; grid-template-columns:repeat(6,1fr); gap:10px; padding:16px 24px 4px; }
+@media (max-width:1100px){ .summary{ grid-template-columns:repeat(3,1fr);} }
+@media (max-width:640px){ .summary{ grid-template-columns:repeat(2,1fr);} }
+.s-card { background:#fff; border-radius:10px; padding:12px 14px; box-shadow:0 1px 4px rgba(0,0,0,.06); min-width:0; }
+.s-card .lbl { font-size:12px; color:#909399; }
+.s-card .val { font-size:18px; font-weight:700; margin-top:4px; color:#1e5cb3; word-break:break-all; }
+.s-card .sub { font-size:11px; color:#909399; margin-top:3px; }
+.c-orange { color:#e6a23c !important; } .c-green { color:#67c23a !important; } .c-red { color:#f56c6c !important; } .c-gray { color:#909399 !important; }
+
+/* 主区 */
+.content { padding:14px 24px 24px; display:grid; grid-template-columns: 1fr 360px; gap:14px; }
+@media (max-width:1100px){ .content{ grid-template-columns:1fr; } }
+
+.panel { background:#fff; border-radius:10px; padding:16px 18px; box-shadow:0 1px 4px rgba(0,0,0,.06); margin-bottom:14px; }
+.panel:last-child { margin-bottom:0; }
+.panel h3 { font-size:15px; color:#303133; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid #ebeef5; display:flex; justify-content:space-between; align-items:center; }
+.panel h3 .hd-tag { font-size:11px; color:#909399; font-weight:400; }
+
+/* 时间轴（结算周期） */
+.timeline { position:relative; padding:8px 0 4px 22px; }
+.timeline::before { content:""; position:absolute; left:6px; top:8px; bottom:8px; width:2px; background:#dcdfe6; }
+.tl-item { position:relative; margin-bottom:14px; padding-left:14px; }
+.tl-item::before { content:""; position:absolute; left:-19px; top:6px; width:12px; height:12px; border-radius:50%; background:#fff; border:3px solid #1e5cb3; }
+.tl-item .tl-title { font-size:14px; font-weight:600; color:#1e5cb3; }
+.tl-item .tl-meta { font-size:12px; color:#909399; margin-top:2px; }
+.tl-item .tl-pay { display:inline-block; margin-top:4px; padding:2px 10px; background:#f0f9eb; color:#67c23a; border-radius:10px; font-size:12px; font-weight:600; }
+
+/* 手风琴 */
+.acc { border:1px solid #ebeef5; border-radius:8px; overflow:hidden; }
+.acc-item { border-bottom:1px solid #ebeef5; }
+.acc-item:last-child { border-bottom:none; }
+.acc-hd { padding:12px 16px; background:#fafbfc; cursor:pointer; display:flex; justify-content:space-between; align-items:center; user-select:none; transition:background .15s; }
+.acc-hd:hover { background:#f0f2f7; }
+.acc-hd .acc-title { font-size:14px; font-weight:600; color:#303133; }
+.acc-hd .acc-title .acc-num { color:#1e5cb3; margin-right:6px; }
+.acc-hd .acc-arrow { color:#909399; transition:transform .2s; font-size:14px; }
+.acc-item.open .acc-arrow { transform:rotate(90deg); }
+.acc-bd { display:none; padding:14px 18px 18px; background:#fff; }
+.acc-item.open .acc-bd { display:block; }
+.acc-bd p { font-size:13px; line-height:1.85; color:#303133; margin-bottom:8px; text-indent:2em; }
+.acc-bd ol, .acc-bd ul { padding-left:24px; font-size:13px; line-height:1.85; color:#303133; }
+.acc-bd ol li, .acc-bd ul li { margin-bottom:4px; }
+.acc-bd .def-list { background:#fafbfc; border-left:3px solid #1e5cb3; padding:10px 14px; border-radius:0 6px 6px 0; margin:8px 0; }
+.acc-bd .def-list b { color:#1e5cb3; }
+.acc-bd .form-box { background:#f0f7ff; border:1px dashed #1e5cb3; border-radius:6px; padding:12px 16px; margin:10px 0; font-size:14px; font-family:"Consolas","Monaco",monospace; color:#1e5cb3; text-align:center; font-weight:600; }
+.acc-bd .note { background:#fdf6ec; border-left:3px solid #e6a23c; padding:8px 12px; font-size:12px; color:#a05a00; border-radius:0 4px 4px 0; margin:8px 0; }
+.acc-bd .term-num { color:#1e5cb3; font-weight:700; margin-right:4px; }
+
+/* 表格 */
+.tbl { width:100%; border-collapse:collapse; font-size:13px; margin:10px 0; }
+.tbl th, .tbl td { padding:10px 12px; border:1px solid #ebeef5; text-align:center; }
+.tbl th { background:#f7f8fa; color:#606266; font-weight:600; }
+.tbl td { color:#303133; }
+.tbl .hl { background:#f0f9eb; color:#67c23a; font-weight:600; }
+.tbl .warn { color:#e6a23c; font-weight:600; }
+.tbl .danger { color:#f56c6c; font-weight:600; }
+
+/* 侧栏 */
+.side .quick-info dt { font-size:12px; color:#909399; margin-top:8px; }
+.side .quick-info dt:first-child { margin-top:0; }
+.side .quick-info dd { font-size:13px; color:#303133; margin-top:2px; word-break:break-all; }
+
+.legend { display:flex; flex-wrap:wrap; gap:8px; font-size:12px; color:#606266; margin-bottom:8px; }
+.legend .lg { padding:2px 10px; border-radius:10px; background:#f4f4f5; }
+
+/* 数据来源 */
+.source { background:#fafbfc; border-radius:6px; padding:10px 14px; font-size:12px; color:#606266; margin-top:8px; line-height:1.7; }
+.source b { color:#1e5cb3; }
+
+/* 多周期对比表 */
+.cmp-table th, .cmp-table td { padding:8px 10px; }
+.cmp-table th { background:#f7f8fa; }
+.cmp-table .col-now { background:#f0f7ff; font-weight:600; }
+.cmp-table .col-future { color:#909399; font-style:italic; }
+
+.no-data { color:#909399; font-size:13px; padding:14px; text-align:center; }
+
+/* ===== 变化点对比（多周期专题） ===== */
+.diff-panel { background:linear-gradient(180deg,#fff 60%,#f7faff); border:1px solid #d6e4ff; }
+.diff-panel h3 { color:#1e5cb3; }
+.diff-summary { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:10px; }
+@media (max-width:800px){ .diff-summary{ grid-template-columns:1fr;} }
+.diff-stat { background:#fff; border-radius:8px; padding:10px 14px; border:1px solid #ebeef5; }
+.diff-stat .lbl { font-size:12px; color:#909399; }
+.diff-stat .val { font-size:18px; font-weight:700; margin-top:3px; }
+.diff-stat .sub { font-size:11px; color:#606266; margin-top:2px; line-height:1.5; }
+.diff-stat.big { border:1px solid #1e5cb3; background:#f0f7ff; }
+.diff-stat.big .val { color:#1e5cb3; }
+
+.diff-list { display:grid; gap:10px; margin-top:8px; }
+.diff-card { background:#fff; border:1px solid #ebeef5; border-radius:8px; padding:12px 14px; border-left:4px solid #1e5cb3; }
+.diff-card.major { border-left-color:#f56c6c; background:#fff8f8; }
+.diff-card.minor { border-left-color:#67c23a; background:#f8fcf8; }
+.diff-card .diff-hd { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.diff-card .diff-title { font-size:14px; font-weight:700; color:#1e5cb3; }
+.diff-card.major .diff-title { color:#f56c6c; }
+.diff-card .diff-tag { font-size:11px; padding:2px 10px; border-radius:10px; background:#ecf5ff; color:#1e5cb3; }
+.diff-card.major .diff-tag { background:#fef0f0; color:#f56c6c; }
+.diff-card.minor .diff-tag { background:#f0f9eb; color:#67c23a; }
+.diff-card .diff-body { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:start; font-size:13px; }
+@media (max-width:780px){ .diff-card .diff-body{ grid-template-columns:1fr; } }
+.diff-side { padding:8px 12px; border-radius:6px; background:#fafbfc; }
+.diff-side b { display:block; color:#909399; font-size:11px; margin-bottom:4px; font-weight:600; }
+.diff-side.old b { color:#909399; }
+.diff-side.new b { color:#67c23a; }
+.diff-side .v { color:#303133; line-height:1.7; }
+.diff-arrow { display:flex; align-items:center; justify-content:center; color:#1e5cb3; font-size:18px; font-weight:700; }
+
+.diff-old { color:#909399; text-decoration:line-through; }
+.diff-new { color:#67c23a; font-weight:600; }
+
+/* 公式框（用于新版复杂公式） */
+.formula-box { background:#f0f7ff; border:1px dashed #1e5cb3; border-radius:6px; padding:10px 16px; margin:8px 0; font-size:14px; font-family:"Consolas","Monaco",monospace; color:#1e5cb3; text-align:center; font-weight:600; }
+.formula-box b { color:#0b1f4d; }
+.formula-sub { color:#909399; font-size:12px; margin-top:4px; font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif; text-align:center; }
+
+.dim-tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; background:#ecf5ff; color:#1e5cb3; margin-right:6px; vertical-align:middle; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="h-top">
+    <div>
+      <h1>📑 保险赔付率方案解读</h1>
+      <div class="sub">专送合作商骑手保障补贴考核方案 · 制度原文与口径拆解</div>
+    </div>
+    <div class="meta">
+      制度来源：美团配送 / 安全治理部<br>
+      维护：兴达履约安全工作台
+      <div style="margin-top:8px;">
+        <button id="shot-btn" onclick="capturePage()" style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.45);color:#fff;font-size:12px;padding:5px 14px;border-radius:6px;cursor:pointer;">📸 截图</button>
+      </div>
+    </div>
+  </div>
+  <div class="period-tabs" id="periodTabs"></div>
+</div>
+
+<!-- 摘要卡 -->
+<div class="summary" id="summary"></div>
+
+<!-- 主体 -->
+<div class="content">
+  <div>
+    <!-- 多周期关键变化点（始终置顶，仅当 ≥2 周期显示） -->
+    <div class="panel diff-panel" id="diffPanel" style="display:none;">
+      <h3>两周期关键变化点 <span class="hd-tag" id="diffTag"></span></h3>
+      <div class="diff-summary" id="diffSummary"></div>
+      <div class="diff-list" id="diffList"></div>
+    </div>
+
+    <!-- 时间轴：结算周期 -->
+    <div class="panel">
+      <h3>结算周期（4个3月分段）<span class="hd-tag" id="periodRangeTag"></span></h3>
+      <div class="timeline" id="timeline"></div>
+    </div>
+
+    <!-- 多周期对比卡 -->
+    <div class="panel" id="cmpPanel" style="display:none;">
+      <h3>多周期关键口径对比</h3>
+      <table class="tbl cmp-table" id="cmpTable"></table>
+    </div>
+
+    <!-- 章节手风琴 -->
+    <div class="panel">
+      <h3>方案正文 <span class="hd-tag">点击章节展开</span></h3>
+      <div class="acc" id="acc"></div>
+    </div>
+  </div>
+
+  <!-- 侧栏 -->
+  <div class="side">
+    <div class="panel">
+      <h3>本期速查</h3>
+      <dl class="quick-info" id="quickInfo"></dl>
+    </div>
+    <div class="panel">
+      <h3>制度迭代</h3>
+      <table class="tbl">
+        <thead><tr><th>条款</th><th>迭代点</th></tr></thead>
+        <tbody id="iterTbl"></tbody>
+      </table>
+    </div>
+    <div class="panel">
+      <h3>数据来源</h3>
+      <div class="source" id="sourceBox"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   多周期方案数据（可扩展，新加一个 period 即可）
+   字段含义见 PERIOD_SCHEMA 注释
+   ============================================================ */
+const PERIODS = [
+  {
+    key: "2025-09-01~2026-08-31",
+    label: "2025.09 - 2026.08",
+    fullLabel: "2025年9月1日 - 2026年8月31日",
+    docNo: "MTPS-ZS-QB-V2-20260159",
+    status: "ended",     // ended | current | future
+    iteration: "本期为迭代版（补贴发放月份调整）",
+    summary: {
+      周期: { val: "12个月", sub: "4个3月结算周期" },
+      考核范围: { val: "全部加盟总商", sub: "特殊保护：日均<2万单不参与" },
+      基础指标: { val: "已报预估赔付率", sub: "商保 / 职伤双轨" },
+      结算频率: { val: "每3月一次", sub: "1/4/7/10月底发放" },
+      补贴上限: { val: "100% 保费", sub: "赔付率=目标时全额" },
+      激励门槛: { val: "赔付率<80%", sub: "且职伤系数=1.0" }
+    },
+    periods: [
+      { idx: "Q1", range: "9月-11月", calcMonth: "12月", payMonth: "次年1月底" },
+      { idx: "Q2", range: "12月-次年2月", calcMonth: "3月", payMonth: "4月底" },
+      { idx: "Q3", range: "3月-5月", calcMonth: "6月", payMonth: "7月底" },
+      { idx: "Q4", range: "6月-8月", calcMonth: "9月", payMonth: "10月底" }
+    ],
+    subsTable: {
+      title: "基础补贴比例（按已报预估赔付率区间）",
+      head: ["已报预估赔付率区间", "补贴比例规则"],
+      rows: [
+        ["(0, n)", "max(50%保费, 保费 + (n-赔付率) × 保费)  →  全额或加额补贴", "hl"],
+        ["= n (目标值)", "100% 保费  →  全额补贴", "hl"],
+        ["(n, +∞)", "0%  →  不再发放基础补贴", "danger"]
+      ],
+      notes: [
+        "n = 当季度推送的赔付率目标值，按新/老商保分别推送",
+        "目标推送节奏：9月初 / 12月初 / 3月初 / 6月初"
+      ]
+    },
+    coefTable: {
+      title: "结算系数（仅职伤区域）",
+      head: ["职伤百万单确认量区间", "结算系数"],
+      rows: [
+        ["< 6", "1.0", "hl"],
+        ["6 ≤ x < 8", "0.9", "warn"],
+        ["≥ 8", "0.8", "danger"]
+      ],
+      notes: ["非职伤（老商保）区域结算系数默认 1.0"]
+    },
+    punishTable: {
+      title: "转嫁保险费用违约分级",
+      head: ["违约级别", "转嫁骑手数（城市商维度）", "处理"],
+      rows: [
+        ["一般违约", "≤ 10 人", "解除 2,000 单合作关系", "warn"],
+        ["严重违约", "11 ~ 50 人", "解除 4,000 单合作关系", "danger"],
+        ["严重违约", "> 50 人", "解除 6,000 单合作关系", "danger"],
+        ["重大违约", "1 年内未整改再犯 > 5 人", "城市商维度整商退出", "danger"]
+      ]
+    },
+    quickInfo: [
+      ["制度编号", "MTPS-ZS-QB-V2-20260159"],
+      ["适用对象", "全部在平台购保的加盟总商"],
+      ["考核周期", "2025.09.01 - 2026.08.31"],
+      ["结算频次", "每 3 个月一次"],
+      ["补贴发放", "次月底（1/4/7/10 月）"],
+      ["最终清算", "考核周期结束 YTD 累计，多退少补"]
+    ],
+    iterationRows: [
+      ["第四条 / 4 / 4.1", "补贴发放月份调整"]
+    ],
+    sections: [
+      {
+        title: "总则",
+        blocks: [
+          { kind: "h", text: "1. 目的" },
+          { kind: "p", text: "为规范合作商雇主责任险管理，提升骑手保障水平，鼓励合作商增强安全管理能力，杜绝转嫁保险成本行为，依据业务实际制定本考核方案。本方案以赔付率考核为核心，结合瞒报迟报、转嫁行为等检核情况，引导合作商优化管理、承担雇主责任，促进合作生态健康发展。" },
+          { kind: "h", text: "2. 适用范围" },
+          { kind: "p", text: "本规范适用于与美团配送相关主体（包括但不限于\"上海三快智送科技有限公司\"）签署《配送服务合同》的专送合作商。" },
+          { kind: "h", text: "3. 名词解释" },
+          { kind: "def", items: [
+            ["商保", "即雇主责任险。在职伤区域为新商保，主要保障职伤覆盖范围之外的场景（如订单外的骑手人伤和三者人伤等）；在非职伤区域为老商保，主要保障骑手人伤、三者人伤和物损等。"],
+            ["保费", "指雇主责任险的含税保费金额（即商实际投保金额）。在计算已报预估赔付率时，采用不含税保费作为分母。"],
+            ["已报预估赔付率", "指合作商在考核周期内，商保已报案件的预估赔付金额与该周期内商保不含税保费总额的比例，简称\"赔付率\"。已报预估赔付金额 = 已结案案件实际赔付金额 + 已上报未结案案件预估赔付金额（以保险平台预估模型输出为准）。"],
+            ["职伤", "保障遭受职业伤害的新就业形态人员获得医疗救治和经济补偿，分散职业伤害风险。（引用人社部发〔2025〕24 号文）"],
+            ["职伤百万单确认量", "指合作商在考核周期内，发生且被确认为职业伤害的案件数量 ÷ 该周期内合作商运单量（以百万单为计算单位）。"],
+            ["结算周期", "在考核周期内，每三个月为一个单位的雇主责任险补贴结算时段。共划分四个周期：9-11月、12月-次年2月、3-5月、6-8月。"]
+          ]}
+        ]
+      },
+      {
+        title: "管理职责",
+        blocks: [
+          { kind: "ol", items: [
+            "履约业务部 / 合作商管理组 / 结构规划组：负责对本规范进行更新、审核、解释、管理等工作。",
+            "安全治理部 / 安全运营组、安全治理部 / 安全规划组、履约业务部 / 合作商管理组 / 商管运营组：负责提供本标准所需相应考核周期内合作商的数据结果。",
+            "履约业务部 / 华北大区 & 华东大区 & 华南大区 & 中南大区：负责考核过程和风险的监控、信息真实性的审核，并应满足本方案中规定的其他要求。"
+          ]}
+        ]
+      },
+      {
+        title: "考核规则",
+        blocks: [
+          { kind: "h", text: "1. 考核范围" },
+          { kind: "p", text: "适用于所有在平台购保的加盟总商。" },
+          { kind: "h", text: "2. 考核周期" },
+          { kind: "p", text: "考核周期为 2025 年 9 月 1 日至 2026 年 8 月 31 日，结算周期为每三个月一次。" },
+          { kind: "h", text: "3. 考核内容" },
+          { kind: "p", text: "本方案覆盖商保和职伤两类保险，分别作为骑手保障补贴金额的基础依据和结算系数：" },
+          { kind: "tbl", head: ["类型", "指标", "计算口径", "用途"], rows: [
+            ["商保", "已报预估赔付率", "已报案件预估赔付金额 ÷ 不含税保费", "决定骑手保障补贴的基础比例"],
+            ["职伤", "职伤百万单确认量", "确认职伤案件量 ÷ 运单量 × 100万", "仅适用于职伤区域，作为补贴金额的结算系数"]
+          ]},
+          { kind: "h", text: "3.1 指标说明" },
+          { kind: "ol", items: [
+            "<b>新商保护：</b>总商首单日期所在的当期结算周期，不纳入考核范围。保护期结束后，根据保护期内赔付率的实际达成情况，设定考核周期内的下个季度目标。",
+            "<b>总商合并：</b>总商合并涉及收并购总商，被收并购方退出时按结算周期正常结算；收并购方需对被收并购商的数据进行合并，并以合并后的总商数据及目标为依据进行计算。",
+            "<b>特殊保护：</b>每个结算周期日均配送单量均值低于 2 万单的加盟总商，当期结算周期不参与考核，按 100% 保费补贴结算。"
+          ]},
+          { kind: "h", text: "3.2 数据来源" },
+          { kind: "p", text: "查询路径：<b>美团配送烽火台 → 阅数 → 安全数据中心 → 保险成本监控</b>。" },
+          { kind: "p", text: "查询时间：每个结算周期结束，以次月第 2 个工作日导出数据结果为准（数据统计截止导出数据前一天）。举例：3-5 月结算周期结束，数据以 6 月 2 日（6 月第 2 个工作日）导出的数据结果为准，数据统计截止 6 月 1 日。" }
+        ]
+      },
+      {
+        title: "补贴规则",
+        blocks: [
+          { kind: "p", text: "通过合作商已报预估赔付率和职伤百万单确认量（仅职伤区域）的考核指标达成结果，确定合作商骑手保障最终补贴金额。" },
+          { kind: "h", text: "1. 基础补贴金额" },
+          { kind: "tbl", head: ["指标名称", "基础补贴逻辑"], rows: [
+            ["已报预估赔付率（n 为目标）", "根据合作商考核周期内的保险已报预估赔付率，按区间确定基础补贴金额"]
+          ]},
+          { kind: "h", text: "2. 基础补贴比例（区间对照）" },
+          { kind: "dynTbl", key: "subsTable" },
+          { kind: "h", text: "3. 结算系数（仅职伤区域）" },
+          { kind: "dynTbl", key: "coefTable" },
+          { kind: "h", text: "4. 计算口径" },
+          { kind: "ol", items: [
+            "基础补贴金额 = 保费 × 基础补贴比例，职伤（新商保）与非职伤（老商保）区域分别计算。",
+            "合作商骑手保障补贴最终结算金额 = 结算系数 × 新商保基础补贴金额 + 老商保基础补贴金额。"
+          ]},
+          { kind: "note", text: "非职伤即老商保区域的结算系数默认为 1.0。" },
+          { kind: "h", text: "5. 补贴周期与发放" },
+          { kind: "ol", items: [
+            "<b>阶段性结算：</b>补贴按每 3 个月为单位进行阶段性结算，每个季度结算周期评定结果公布后，经核算的补贴金额将在结算周期结束次月体现在邮资账单中，并于每年 1 月、4 月、7 月、10 月的月底前以骑手保障补贴的形式完成发放。",
+            "<b>最终清算（多退少补）：</b>骑手保障补贴金额，以考核周期结束时的 YTD 累计总额为基础，完成补贴的最终清算。每次季度结算时，以截至该季度末的 YTD 累计数据为依据，减去上一季度已结算的金额后，得出本季度应结算的补贴金额。",
+            "<b>季度结算公式：</b>每季度应结算补贴金额 = 截至本季度末 YTD 累计应补贴金额 − 截至上季度末已实际结算补贴金额（考核周期内第一个结算季度，上季度末已实际结算补贴金额默认为 0 元）。"
+          ]},
+          { kind: "h", text: "6. 目标相同/不同的合并规则" },
+          { kind: "ol", items: [
+            "若四个季度目标均相同，则根据四个季度的 YTD 累计赔付率达成与目标值，直接核算 YTD 累计应补贴金额。",
+            "若每个季度目标均较上季度有变化，则分别根据每季度赔付率达成与当季度目标核算当季度应补贴金额，各季度补贴金额加总后得到 YTD 累计应补贴金额。",
+            "若连续两个或以上季度目标相同，则目标相同的连续季度合并计算（例如四个季度目标为 200%、150%、150%、200%，则一季度和四季度单独算、二三季度合并算）。"
+          ]},
+          { kind: "note", text: "目标相同但季度不连续的，不适用合并规则，仍按各季度单独计算。" }
+        ]
+      },
+      {
+        title: "奖惩规则",
+        blocks: [
+          { kind: "h", text: "1. 激励规则" },
+          { kind: "p", text: "在整体考核周期内，对于保险已报预估赔付率管控好（赔付率 < 80%）且职伤案件量合理（结算系数 = 1.0）的合作商，可额外获得一定比例保费的一次性激励金额，具体激励办法将在考核周期结束后，最后一次数据结果中体现。" },
+          { kind: "h", text: "2. 禁止行为及处罚" },
+          { kind: "p", text: "<b>2.1 瞒报/迟报：</b>考核周期内，合作商不得出现保险未报 / 保险迟报等行为。若核实存在瞒报 / 迟报，将按照《合作商安全管理规范》进行问责。" },
+          { kind: "p", text: "<b>2.2 转嫁保险费用：</b>合作商不得以任何形式向配送人员摊派、转嫁、收取任何保险费用，或趁机违规扣款（包含保险服务类费用、保险超赔赔付费用等变相费用），也不得以任何形式强制要求购买碎屏险、传染病险、猝死险等额外保险。违反者按《加盟合作商配送人员薪酬保障管理标准》根据涉及人数进行阶梯处罚：" },
+          { kind: "dynTbl", key: "punishTable" }
+        ]
+      },
+      {
+        title: "附则",
+        blocks: [
+          { kind: "ol", items: [
+            "本方案在双方合作期间内持续有效；双方合作合同到期续期或换签的，本方案有效期自动顺延至续签或换签合同的有效期。如因换签 / 续签操作导致新合作合同未能及时签署，只要双方认可继续合作，则本方案依然有效，双方应予遵守。",
+            "本方案在合作商工作台公示并经专送合作商确认后即生效，本方案属于《配送服务合同》的组成部分。",
+            "本方案最终解释权归美团配送履约业务部 / 合作商管理组所有。"
+          ]}
+        ]
+      }
+    ]
+  },
+
+  /* ============================================================
+     下一周期：2026.09 - 2027.08（来源 PDF 残缺，PNG 完整版）
+     ============================================================ */
+  {
+    key: "2026-09-01~2027-08-31",
+    label: "2026.09 - 2027.08",
+    fullLabel: "2026年9月1日 - 2027年8月31日",
+    docNo: "MTPS-ZS-QB-V3-20260234",
+    status: "current",
+    iteration: "本期重构：赔付率权重 100%→60%，新增安全过程指标 40% 权重；补贴周期改M+1预拨50%；新增违规扣款全额取消规则",
+    summary: {
+      周期: { val: "12个月", sub: "考核期 2026.09.01 - 2027.08.31" },
+      考核范围: { val: "全部加盟总商", sub: "特殊保护：日均<2万单不参与" },
+      基础指标: { val: "60%赔付率+40%安全过程", sub: "商保结果+路口/闯灯/头盔/逆行" },
+      结算频率: { val: "M+1预拨50%+季度清算", sub: "季度内首月不拨、第2/3月各拨上月50%" },
+      补贴上限: { val: "按指标得分率", sub: "加权得分率×含税保费（不再按区间）" },
+      激励门槛: { val: "赔付率<80%", sub: "维持原规则" }
+    },
+    periods: [
+      { idx: "Q1", range: "9月-11月", calcMonth: "12月", payMonth: "次年1月底（多退少补清算）" },
+      { idx: "Q2", range: "12月-次年2月", calcMonth: "3月", payMonth: "4月底（多退少补清算）" },
+      { idx: "Q3", range: "3月-5月", calcMonth: "6月", payMonth: "7月底（多退少补清算）" },
+      { idx: "Q4", range: "6月-8月", calcMonth: "9月", payMonth: "10月底（多退少补清算）" }
+    ],
+    /* 新版"按指标得分率计算"，替代旧版 subsTable */
+    subsTable: {
+      title: "补贴最终结算金额 = 各指标加权得分率 × 含税保费",
+      head: ["指标", "权重", "计分规则"],
+      rows: [
+        ["已报预估赔付率（商保结果）", "60%", "(0,n)=100；[n,+∞)=min(max((n-赔付率+1)×100, 60), 100)", "hl"],
+        ["路口超速率", "15%", "[兜底值, +∞)=60 分", "warn"],
+        ["闯红灯率", "10%", "[0, 满分值]=100 分", "hl"],
+        ["戴盔系带率", "10%", "(满分值, 100%]=100；[0, 兜底值)=60", "hl"],
+        ["逆行率", "5%", "[满分值, 兜底值] 等比例线性计分", ""]
+      ],
+      notes: [
+        "n = 当季度推送的赔付率目标值，按区域难度下发",
+        "安全过程指标目标值按总商维度下发",
+        "职伤百万单确认量由「结算系数」改为「观察指标」，仅观测、不入结算"
+      ]
+    },
+    /* 新版 coefTable 退化为"观察指标参考档位" */
+    coefTable: {
+      title: "职伤百万单确认量（观察指标，不入结算）",
+      head: ["职伤百万单确认量区间", "档位"],
+      rows: [
+        ["< 6", "1.0（参考）", "hl"],
+        ["6 ≤ x < 8", "0.9（参考）", "warn"],
+        ["≥ 8", "0.8（参考）", "warn"]
+      ],
+      notes: ["暂停作为结算系数，仅作持续追踪合作商职伤风险水平，纳入风险评级"]
+    },
+    /* 新版惩处：违规扣款全额取消 + 阶梯处罚双轨 */
+    punishTable: {
+      title: "违规行为处罚（违规扣款 + 转嫁保险双轨）",
+      head: ["违规行为", "规则", "处理"],
+      rows: [
+        ["保险未报 / 迟报", "—", "按《合作商安全管理规范》问责", "warn"],
+        ["转嫁保险费用", "≤ 10 人（城市商维度）", "解除 2,000 单合作关系", "warn"],
+        ["转嫁保险费用", "11 ~ 50 人", "解除 4,000 单合作关系", "danger"],
+        ["转嫁保险费用", "> 50 人", "解除 6,000 单合作关系", "danger"],
+        ["转嫁保险费用", "1 年内未整改再犯 > 5 人", "城市商维度整商退出", "danger"],
+        ["违规扣款（碎屏/传染病/猝死等）", "发生当期", "取消当月总商维度全量保险补贴（已预结下期补扣）", "danger"]
+      ]
+    },
+    quickInfo: [
+      ["制度编号", "MTPS-ZS-QB-V3-20260234"],
+      ["适用对象", "全部在平台购保的加盟总商"],
+      ["考核周期", "2026.09.01 - 2027.08.31"],
+      ["结算频次", "每 3 个月一次（季度内 M+1 预拨 50%）"],
+      ["补贴发放", "1/4/7/10 月底（季度清算后）"],
+      ["最终清算", "本季度单独达成 + 往期回修正（两段式）"]
+    ],
+    iterationRows: [
+      ["第三条 / 2 考核周期", "考核周期为 2026 年 9 月 1 日至 2027 年 8 月 31 日"],
+      ["第三条 / 3 考核内容", "赔付率权重 100%→60%，新增安全过程指标 40%（路口超速 15%+ 闯红灯 10%+ 戴盔系带 10%+ 逆行 5%）"],
+      ["第三条 / 4 计分规则", "赔付率目标按区域难度下发，安全指标目标按总商维度下发"],
+      ["第四条 / 1 计算口径", "按区间直接算补贴金额 → 按指标加权得分率计算"],
+      ["第四条 / 2 补贴周期与预拨", "新增 M+1 预拨 50% + 季度多退少补；首月不拨、第2/3月各拨上月 50%"],
+      ["第五条 / 2 违规扣款", "新增\"违规扣款发生当期总商维度全量保险补贴取消\"规则（未结算停止发放、已预结下期补扣）"]
+    ],
+    sections: [
+      {
+        title: "总则",
+        blocks: [
+          { kind: "h", text: "1. 目的" },
+          { kind: "p", text: "为规范合作商雇主责任险管理，提升骑手保障水平，鼓励合作商增强安全管理能力，杜绝转嫁保险成本行为，依据业务实际制定本考核方案。本方案以 <b>赔付率结果指标与安全过程管控指标相结合</b> 的方式进行考核，推动合作商主动降低事故发生率，同时结合瞒报迟报、转嫁行为等检核情况，督促合作商优化管理、承担雇主责任，促进合作生态健康发展。" },
+          { kind: "h", text: "2. 适用范围" },
+          { kind: "p", text: "本规范适用于与美团配送相关主体（包括但不限于\"上海三快智送科技有限公司\"）签署《配送服务合同》的专送合作商。" },
+          { kind: "h", text: "3. 名词解释" },
+          { kind: "def", items: [
+            ["商保", "即雇主责任险。在职伤区域为新商保，主要保障职伤覆盖范围之外的场景（如订单外的骑手人伤和三者人伤等）；在非职伤区域为老商保，主要保障骑手人伤、三者人伤和物损等。"],
+            ["保费", "指雇主责任险的含税保费金额（即商实际投保金额）。在计算已报预估赔付率时，采用不含税保费作为分母。"],
+            ["已报预估赔付率", "指合作商在考核周期内，商保已报案件的预估赔付金额与该周期内商保不含税保费总额的比例，简称\"赔付率\"。已报预估赔付金额 = 已结案案件的实际赔付金额 + 已上报未结案案件的预估赔付金额（以保险平台预估模型输出为准）。"],
+            ["职伤", "保障遭受职业伤害的新就业形态人员获得医疗救治和经济补偿，分散职业伤害风险。（引用人社部发〔2025〕24 号文）"],
+            ["职伤百万单确认量", "指合作商在考核周期内，发生且被确认为职业伤害的案件数量 ÷ 该周期内合作商运单量（以百万单为计算单位）。"],
+            ["<b style='color:#f56c6c'>安全过程指标</b>", "指反映合作商在骑手安全管理过程中管控水平的量化指标，包括路口超速率、闯红灯率、戴盔系带率、逆行率，作为考核补贴的过程性依据，与赔付率结果指标共同决定最终补贴比例。"],
+            ["结算周期", "在考核周期内，每三个月为一个单位的雇主责任险补贴结算时段。共划分四个周期：9-11月、12月-次年2月、3-5月、6-8月。"],
+            ["<b style='color:#f56c6c'>预估</b>", "指在结算周期内，按月度提前发放的部分骑手保障补贴，用于缓解合作商资金垫付压力，预估金额在本季度结算时纳入多退少补的清算范围。"],
+            ["<b style='color:#f56c6c'>保险违规扣款</b>", "指合作商以任何形式向配送人员摊派、转嫁、收取保险费用，或以保险超赔赔付费用等变相费用名义扣款的行为。"]
+          ]}
+        ]
+      },
+      {
+        title: "管理职责",
+        blocks: [
+          { kind: "ol", items: [
+            "美团配送方负责本方案的更新、审核、解释与管理，提供考核周期内合作商的数据结果，并开展考核过程及风险监控、信息真实性审核，并履行本方案规定的其他职责。"
+          ]}
+        ]
+      },
+      {
+        title: "考核规则",
+        blocks: [
+          { kind: "h", text: "1. 考核范围" },
+          { kind: "p", text: "适用于所有在平台购保的加盟总商。" },
+          { kind: "h", text: "2. 考核周期" },
+          { kind: "p", text: "考核周期为 <b>2026 年 9 月 1 日至 2027 年 8 月 31 日</b>，结算周期为每三个月一次。" },
+          { kind: "h", text: "3. 考核内容（重大调整）" },
+          { kind: "p", text: "本方案覆盖商保结果指标与安全过程指标两大模块，共同决定骑手保障补贴的最终结算比例：" },
+          { kind: "tbl", head: ["类型", "指标名称", "权重", "计算口径"], rows: [
+            ["商保结果指标", "已报预估赔付率", "60%", "已报预估赔付率 = 统计周期内已报案预估赔付金额 ÷ 不含税保费"],
+            ["安全过程指标", "路口超速率", "15%", "路口超速率 = 已超速通过路口的次数 ÷ 弓通过路口的次数"],
+            ["安全过程指标", "闯红灯率", "10%", "闯红灯率 = 直行通过路口闯红灯次数 ÷ 直行通过路口次数"],
+            ["安全过程指标", "戴盔系带率", "10%", "戴盔系带率 = Σ日（戴盔系带图像量 ÷ 戴盔系带可识别图像量）≥90% 的骑手量 ÷ Σ日戴盔系带有效采集图像量 ≥1 的骑手量"],
+            ["安全过程指标", "逆行率", "5%", "逆行率 = Σ每日骑手路段逆行里程 ÷ Σ每日骑手路段行驶里程"],
+            ["职伤指标", "职伤百万单确认量", "观察", "职伤百万单确认量 = 统计周期内发生的确认属于职伤的案件量 ÷ 运单量 × 100 万"]
+          ]},
+          { kind: "note", text: "职伤百万单确认量：本期考核周期内<strong>暂停作为结算系数与补贴金额计算</strong>，但继续进行数据观测和记录。观测期间，职伤百万单确认量数据将在每个结算周期结束后同步推送至合作商总商负责人，用于持续追踪合作商职伤风险水平。后续是否恢复为补贴结算系数，将结合观测数据进行评估并提前通知。" },
+          { kind: "h", text: "3.1 指标说明" },
+          { kind: "ol", items: [
+            "<b>新商保护：</b>总商首单日期所在的当期结算周期，不纳入考核范围。保护期结束后，自下一结算周期起，按总商以及所在区域目标值参与考核。",
+            "<b>总商合并：</b>总商合并涉及收并购总商，被收并购方退出时按结算周期正常结算；收并购方需对被收并购商的数据进行合并，并以合并后的总商数据及目标为依据进行计算。",
+            "<b>特殊保护：</b>每个结算周期日均配送单量均值低于 2 万单的加盟总商，当期结算周期不参与考核，按 100% 保费补贴结算。"
+          ]},
+          { kind: "h", text: "3.2 数据来源" },
+          { kind: "p", text: "查询路径：<b>美团配送烽火台 → 阅数 → 安全数据中心 → 保险成本监控 - 对商 / 美团配送烽火台 → 阅数 → 安全数据中心 → 交通 - 商数据监控</b>。" },
+          { kind: "p", text: "查询时间：每个结算周期结束，以次月第 2 个工作日导出数据为准。举例：9-11 月结算周期结束后，该周期考核指标数据结果，以 12 月 2 日（12 月第 2 个工作日）导出数据为准。" },
+          { kind: "h", text: "4. 计分规则" },
+          { kind: "h", text: "4.1 商保已报预估赔付率" },
+          { kind: "tbl", head: ["指标名称", "赔付率区间（n 为目标值）", "计算逻辑"], rows: [
+            ["已报预估赔付率", "① 区域商考得分（按区域商已报预估赔付率达成水平计算）", "① 区域商考得分 + ② 总商商考得分 = 总商商考得分"],
+            ["", "(0, n]", "100"],
+            ["", "[n, +∞)", "min(max((n-赔付率+1)×100, 60), 100)"]
+          ]},
+          { kind: "note", text: "① 商保已报预估赔付率按区域难度下发目标值，将按季度通过烽火台，推送至合作商总商负责人；② 目标推送节奏为 9 月初推送 9-11 月目标，12 月初推送 12 月-次年 2 月目标，3 月初推送 3-5 月目标，6 月初推送 6-8 月目标。" },
+          { kind: "h", text: "4.2 安全过程指标" },
+          { kind: "tbl", head: ["指标名称", "计分规则"], rows: [
+            ["闯红灯率", "[0, 满分值]：100 分"],
+            ["路口超速率", "[兜底值, +∞)：60 分"],
+            ["逆行率", "[满分值, 兜底值]：等比例线性计分"],
+            ["戴盔系带率", "(满分值, 100%]：100 分；[0, 兜底值)：60 分"]
+          ]},
+          { kind: "note", text: "各安全过程指标的满分值、兜底值将依据各难度区域下发，且分数将通过弹窗方式推送至合作商总商负责人；推送节奏与发单指标下发节奏一致。" },
+          { kind: "h", text: "4.3 职伤百万单确认量（观察）" },
+          { kind: "tbl", head: ["指标名称", "计分规则"], rows: [
+            ["职伤百万单确认量", "职伤百万单确认量 < 6 时，结算系数为 1.0（参考）"],
+            ["", "6 ≤ 职伤百万单确认量 < 8 时，结算系数为 0.9（参考）"],
+            ["", "职伤百万单确认量 ≥ 8 时，结算系数为 0.8（参考）"]
+          ]}
+        ]
+      },
+      {
+        title: "补贴规则",
+        blocks: [
+          { kind: "h", text: "1. 计算口径（重大调整）" },
+          { kind: "p", text: "合作商骑手保障补贴最终结算金额 = 各指标加权得分率 × 含税保费（职伤百万单确认量暂不作为结算系数参与计算，但继续数据观测）。" },
+          { kind: "formula-box", text: "各指标加权得分率 = (已报预估赔付率加权得分 × 60% + 路口超速得分 × 15% + 闯红灯率得分 × 10% + 戴盔系带率得分 × 10% + 逆行率得分 × 5%) / 100" },
+          { kind: "h", text: "2. 补贴周期与预拨规则（重大调整）" },
+          { kind: "p", text: "补贴按每 3 个月为单位进行阶段性结算，实行\"<b>M + 1 预拨 50% + 季度多退少补</b>\"的结算方式。" },
+          { kind: "ol", items: [
+            "<b>预拨：</b>每个结算周期内，第 1 个月不预拨；第 2、3 个月各预结上月保费的 50%，预拨金额体现在上月邮资账单中。<i>注：若涉及乌鲁木齐城市，预估保费随其他城市发放。</i>",
+            "<b>季度结算：</b>每个结算周期结束后，以该季度累计考核数据为依据，计算本季度应结算的补贴总额，减去本季度内已预结的金额，得出本季度应补（或应退）的补贴金额；经核算的补贴金额将在结算周期结束次月体现在邮资账单中，并于每年 1 月、4 月、7 月、10 月的月底前以骑手保障补贴的形式完成发放。",
+            "<b>骑手保障补贴按季度结算周期分别核算，实行\"多退少补\"</b>。本季度应结算金额 = 本季度单独达成的应补金额 + 往期结算周期的回修正金额。因赔付率数据持续更新，此前已结算周期的应补金额发生变化时，需在本季度内补齐或向同差额部分。其中，本考核周期内回溯修正金额按各季度独立的赔付率及安全过程指标目标核算。上一考核周期（2025 年 9 月 - 2026 年 8 月）按原方案 YTD 累计口径结算，计算口径、目标值及补贴规则均以原方案为准。在核算本考核周期季度结算结果时，同步以截至当期的最新已报预估赔付率对上一考核周期的已结算金额进行回溯核算，产生的差额并入本考核周期当期结算金额中一并多退少补，直至上一考核周期所有已报案件结清，赔付金额不再变化为止。"
+          ]},
+          { kind: "h", text: "测算举例" },
+          { kind: "p", text: "假设某商的商保费费为 100 元/月，以 9-11 月为一个季度：" },
+          { kind: "ol", items: [
+            "<b>M+1 预拨部分：</b>9 月（季度第 1 个月）：不预结；10 月（季度第 2 个月）：9 月邮资账单中预拨 9 月保费金额的 50%，100×50% = 50 元；11 月（季度第 3 个月）：10 月邮资账单中预拨 10 月保费金额的 50%，100×50% = 50 元。",
+            "<b>季度核算部分（9-11 月）：</b>假设 9 月综合考核得分 100 分，补贴比例 100%，9 月应结算金额为 100 元；10 月综合考核得分 80 分，补贴比例 80%，10 月应结算金额为 80 元；11 月综合考核得分 70 分，补贴比例 70%，11 月应结算金额为 70 元。本季度累计应结算金额 = 100 + 80 + 70 = 250 元；本季度已预结金额 = 50（10 月预结）+ 50（11 月预结）= 100 元；本季度应补金额 = 250 - 100 = 150 元（体现在 12 月邮资账单中，与下季度 1 月预拨 50 元同时体现）。"
+          ]},
+          { kind: "h", text: "3. 追回规则" },
+          { kind: "p", text: "合作商在结算周期内进入退出流程的，本发放的预估及待结算补贴予以冻结；已预结但尚未走完当前结算流程的金额，优先用于抵扣该合作商截至退出时点按最新赔付率及安全过程指标重新核算的应得补贴与已发放金额之间的差额；抵扣后仍有余额的，从合作商邮资账单中予以追回。" },
+          { kind: "note", text: "进入退出流程的时间节点，主动退出以邮件审批通过为准，被动退出以申诉截止日为准。" }
+        ]
+      },
+      {
+        title: "奖惩规则",
+        blocks: [
+          { kind: "h", text: "1. 瞒报 / 迟报处罚" },
+          { kind: "p", text: "考核周期内，合作商不得出现保险未报 / 保险迟报等行为，在事故事件发生后，若核实合作商存在保险迟报 / 未报的，将按照《合作商安全管理规范》进行问责。" },
+          { kind: "h", text: "2. 违规扣款与转嫁处罚（重大调整）" },
+          { kind: "p", text: "合作商不得以任何形式，向配送人员摊派、转嫁、收取任何保险费用，或趁机违规扣款，包含但不限于以保险服务类费用、保险超赔赔付费用等变相费用的名义收取。不得以任何形式强制要求配送人员购买碎屏险、传染病险、猝死险等额外保险。" },
+          { kind: "p", text: "<b>新增规则：</b>经核实合作商存在保险违规扣款行为的，除按照《加盟合作商配送人员薪酬保障管理标准》进行问责外，同时将取消合作商违规扣款实际发生当月结算周期内的全部保险补贴。其中，未结算的补贴停止发放，已预结补贴在下个结算周期的预结金额中进行补扣，<b>两项处罚叠加执行，不予相互抵扣</b>。" },
+          { kind: "p", text: "转嫁保险费用按涉及人数进行阶梯处罚：" },
+          { kind: "dynTbl", key: "punishTable" }
+        ]
+      },
+      {
+        title: "附则",
+        blocks: [
+          { kind: "ol", items: [
+            "本方案在双方合作期间内持续有效，双方合作合同到期续期或换签的，本方案有效期自动顺延至续签或换签合同的有效期。如因换签或续签的操作导致新合作合同未能及时签署，只要双方认可继续合作，则本方案依然有效，双方应予遵守。",
+            "本方案在合作商工作台公示并经专送合作商确认后即生效，本方案属于《配送服务合同》的一部分，与《配送服务合同》具有同等法律效力。",
+            "考核周期内如考核方案变更，将以《专送合作商骑手保障补贴考核方案补充规定》的形式在合作商工作台公示，经专送合作商确认后即生效。",
+            "如对本方案内容有意见或建议，合作商可通过烽火台 → 合作商工作台 - 商服务平台进行反馈。"
+          ]}
+        ]
+      }
+    ]
+  }
+];
+
+/* 未来周期占位（用户给到再填充数据，UI已显示"暂无"） */
+const FUTURE_PLACEHOLDER = {
+  status: "future",
+  label: "下一周期",
+  fullLabel: "新周期方案待同步",
+  emptyMsg: "下一周期方案待同步，收到后将自动并入此页面"
+};
+
+/* ============================================================
+   渲染
+   ============================================================ */
+const state = { currentIdx: 1 };
+
+function renderTabs(){
+  const tabs = document.getElementById('periodTabs');
+  tabs.innerHTML = '';
+  PERIODS.forEach((p, i) => {
+    const t = document.createElement('div');
+    t.className = 'period-tab' + (i === state.currentIdx ? ' active' : '') + (p.status === 'future' ? ' future' : '');
+    const statusBadge = p.status === 'ended' ? '<span class="badge">已结束</span>'
+                      : p.status === 'current' ? '<span class="badge">进行中</span>'
+                      : p.status === 'future' ? '<span class="badge">下一周期</span>' : '';
+    t.innerHTML = p.fullLabel + statusBadge;
+    t.onclick = () => { state.currentIdx = i; renderAll(); };
+    tabs.appendChild(t);
+  });
+  // 占位（如果只有一个周期，加一个"下一周期"占位）
+  if (PERIODS.length === 1) {
+    const t = document.createElement('div');
+    t.className = 'period-tab future';
+    t.innerHTML = FUTURE_PLACEHOLDER.fullLabel + '<span class="badge">待同步</span>';
+    t.style.opacity = '.55';
+    t.title = FUTURE_PLACEHOLDER.emptyMsg;
+    tabs.appendChild(t);
+  }
+}
+
+function renderSummary(){
+  const p = PERIODS[state.currentIdx];
+  const box = document.getElementById('summary');
+  box.innerHTML = '';
+  Object.entries(p.summary).forEach(([k, v]) => {
+    const c = document.createElement('div');
+    c.className = 's-card';
+    c.innerHTML = `<div class="lbl">${k}</div><div class="val">${v.val}</div><div class="sub">${v.sub||''}</div>`;
+    box.appendChild(c);
+  });
+  document.getElementById('periodRangeTag').textContent = p.fullLabel;
+}
+
+function renderTimeline(){
+  const p = PERIODS[state.currentIdx];
+  const tl = document.getElementById('timeline');
+  tl.innerHTML = '';
+  p.periods.forEach(q => {
+    const it = document.createElement('div');
+    it.className = 'tl-item';
+    it.innerHTML = `<div class="tl-title">${q.idx} · ${q.range}</div>
+      <div class="tl-meta">数据导出：${q.calcMonth}第2个工作日  ·  补贴发放：<span class="tl-pay">${q.payMonth}</span></div>`;
+    tl.appendChild(it);
+  });
+}
+
+function renderQuickInfo(){
+  const p = PERIODS[state.currentIdx];
+  const q = document.getElementById('quickInfo');
+  q.innerHTML = p.quickInfo.map(([k,v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('');
+  // 制度迭代（迭代点）——从 PERIODS 数据读取，兼容多周期
+  const tbl = document.getElementById('iterTbl');
+  const rows = p.iterationRows || [];
+  if (rows.length === 0) {
+    tbl.innerHTML = '<tr><td colspan="2" class="no-data">本期未发现新迭代点</td></tr>';
+  } else {
+    tbl.innerHTML = rows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('');
+  }
+  // 数据来源
+  const srcLines = p.sections.find(s => s.title === '考核规则');
+  const dataSrc = srcLines ? srcLines.blocks.filter(b => b.kind === 'h' && b.text.includes('数据来源')).length : 0;
+  document.getElementById('sourceBox').innerHTML = `
+    <b>查询路径：</b>美团配送烽火台 → 阅数 → 安全数据中心<br>
+    <b>导出时间：</b>每结算周期次月第 2 个工作日<br>
+    <b>口径截止：</b>导出前一天<br>
+    <b>补贴形态：</b>邮资账单中的"骑手保障补贴"
+  `;
+}
+
+/* ============================================================
+   两周期变化点对比（>=2 周期时自动渲染）
+   ============================================================ */
+function renderDiff(){
+  const panel = document.getElementById('diffPanel');
+  const summaryBox = document.getElementById('diffSummary');
+  const listBox = document.getElementById('diffList');
+  if (PERIODS.length < 2) { panel.style.display = 'none'; return; }
+  panel.style.display = '';
+  const oldP = PERIODS[0];
+  const newP = PERIODS[state.currentIdx] === PERIODS[0] ? PERIODS[PERIODS.length-1] : PERIODS[state.currentIdx];
+  const refP = PERIODS[state.currentIdx]; // 当前选中作为"新版"
+  // 选定对比：取当前选中与最旧一版
+  const cmp = PERIODS.length >= 2 ? [PERIODS[0], PERIODS[PERIODS.length-1]] : PERIODS;
+  document.getElementById('diffTag').textContent = `${cmp[0].label}  →  ${cmp[1].label}`;
+
+  // 顶部 3 张摘要卡
+  summaryBox.innerHTML = `
+    <div class="diff-stat big">
+      <div class="lbl">权重重构</div>
+      <div class="val">100% → 60%</div>
+      <div class="sub">赔付率权重下降 40pp，新增 4 项安全过程指标合计 40%</div>
+    </div>
+    <div class="diff-stat big">
+      <div class="lbl">结算方式</div>
+      <div class="val">YTD累计 → M+1预拨+季度清算</div>
+      <div class="sub">新增季度内月度预拨 50% 机制，缓解合作商资金垫付压力</div>
+    </div>
+    <div class="diff-stat big">
+      <div class="lbl">惩处加强</div>
+      <div class="val">违规扣款 → 当期全量取消</div>
+      <div class="sub">违规扣款发生当月总商维度全量保险补贴取消（未结算停发/已预结下期补扣）</div>
+    </div>
+  `;
+
+  // 7 条变化卡片（按重要程度排序）
+  const items = [
+    {
+      tag: "考核周期",
+      title: "考核周期顺延 1 年",
+      level: "minor",
+      old: "2025年9月1日 - 2026年8月31日",
+      new: "2026年9月1日 - 2027年8月31日"
+    },
+    {
+      tag: "考核内容",
+      title: "新增安全过程指标（40% 权重）",
+      level: "major",
+      old: "<span class='dim-tag'>商保 100%</span>仅赔付率一项",
+      new: "<span class='dim-tag'>商保 60%</span>+ 路口超速15% + 闯红灯10% + 戴盔系带10% + 逆行5%"
+    },
+    {
+      tag: "计算口径",
+      title: "补贴金额由\"按区间\"改为\"按指标得分率\"",
+      level: "major",
+      old: "基础补贴 = 保费 × 区间比例（赔付率单独决定）",
+      new: "最终补贴 = 各指标加权得分率 × 含税保费（5项指标加权）"
+    },
+    {
+      tag: "补贴周期",
+      title: "新增 M+1 预拨 50% 机制",
+      level: "major",
+      old: "季度结算后次月发放（无月度预拨）",
+      new: "季度内首月不拨、第2/3月各预拨上月保费 50%，季度末清算"
+    },
+    {
+      tag: "清算口径",
+      title: "YTD 累计 → 本季单独+往期回修正",
+      level: "minor",
+      old: "YTD 累计应补贴 − 上季已结算",
+      new: "本季单独应补 + 往期回修正（两段式）"
+    },
+    {
+      tag: "职伤指标",
+      title: "职伤百万单确认量由结算系数改为观察指标",
+      level: "minor",
+      old: "作为补贴金额结算系数（1.0/0.9/0.8 三档）",
+      new: "暂停作为结算系数，仅作数据观测（纳入风险评级）"
+    },
+    {
+      tag: "违规处罚",
+      title: "新增\"违规扣款全额取消\"硬约束",
+      level: "major",
+      old: "（无对应条款）",
+      new: "违规扣款发生当月总商维度全量保险补贴取消；未结算停止发放，已预结下期补扣，两项叠加执行"
+    }
+  ];
+
+  listBox.innerHTML = items.map(it => {
+    const cls = it.level === 'major' ? 'major' : (it.level === 'minor' ? 'minor' : '');
+    const tagTxt = it.level === 'major' ? '重大变化' : (it.level === 'minor' ? '一般调整' : '未变化');
+    return `<div class="diff-card ${cls}">
+      <div class="diff-hd">
+        <div class="diff-title">【${it.tag}】${it.title}</div>
+        <div class="diff-tag">${tagTxt}</div>
+      </div>
+      <div class="diff-body">
+        <div class="diff-side old"><b>旧版 (${cmp[0].label})</b><div class="v">${it.old}</div></div>
+        <div class="diff-arrow">→</div>
+        <div class="diff-side new"><b>新版 (${cmp[1].label})</b><div class="v">${it.new}</div></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderTable(cfg){
+  if (!cfg) return '';
+  let html = `<div class="legend">${(cfg.notes||[]).map(n=>`<span class="lg">${n}</span>`).join('')}</div>`;
+  html += `<table class="tbl"><thead><tr>${cfg.head.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>`;
+  cfg.rows.forEach(r => {
+    const cls = r[2] || '';
+    html += `<tr>${r.slice(0,2).map(c=>`<td class="${cls}">${c}</td>`).join('')}</tr>`;
+  });
+  html += '</tbody></table>';
+  return html;
+}
+
+function renderSections(){
+  const p = PERIODS[state.currentIdx];
+  const acc = document.getElementById('acc');
+  acc.innerHTML = '';
+  p.sections.forEach((sec, idx) => {
+    const item = document.createElement('div');
+    item.className = 'acc-item' + (idx === 0 ? ' open' : '');
+    const num = ['一','二','三','四','五','六'][idx] || (idx+1);
+    item.innerHTML = `<div class="acc-hd">
+        <span class="acc-title"><span class="acc-num">${num}、</span>${sec.title}</span>
+        <span class="acc-arrow">▶</span>
+      </div><div class="acc-bd"></div>`;
+    item.querySelector('.acc-hd').onclick = () => item.classList.toggle('open');
+    const bd = item.querySelector('.acc-bd');
+    sec.blocks.forEach(b => {
+      let el;
+      switch(b.kind){
+        case 'h': el = document.createElement('div'); el.innerHTML = `<p style="text-indent:0;font-weight:600;color:#1e5cb3;margin-top:6px;">${b.text}</p>`; bd.appendChild(el); break;
+        case 'p': el = document.createElement('p'); el.innerHTML = b.text; bd.appendChild(el); break;
+        case 'ol': el = document.createElement('ol'); el.innerHTML = b.items.map(x=>`<li>${x}</li>`).join(''); bd.appendChild(el); break;
+        case 'ul': el = document.createElement('ul'); el.innerHTML = b.items.map(x=>`<li>${x}</li>`).join(''); bd.appendChild(el); break;
+        case 'def': el = document.createElement('div'); el.className = 'def-list'; el.innerHTML = b.items.map(([k,v])=>`<div><b>${k}：</b>${v}</div>`).join(''); bd.appendChild(el); break;
+        case 'tbl': el = document.createElement('table'); el.className = 'tbl'; el.innerHTML = `<thead><tr>${b.head.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${b.rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody>`; bd.appendChild(el); break;
+        case 'dynTbl': el = document.createElement('div'); el.innerHTML = renderTable(p[b.key]); bd.appendChild(el); break;
+        case 'note': el = document.createElement('div'); el.className = 'note'; el.innerHTML = b.text; bd.appendChild(el); break;
+        case 'formula-box': el = document.createElement('div'); el.className = 'formula-box'; el.innerHTML = b.text; bd.appendChild(el); break;
+      }
+    });
+    acc.appendChild(item);
+  });
+}
+
+function renderCompare(){
+  // 多周期对比（若有2个及以上周期）
+  const panel = document.getElementById('cmpPanel');
+  const tbl = document.getElementById('cmpTable');
+  if (PERIODS.length < 2) { panel.style.display = 'none'; return; }
+  panel.style.display = '';
+  const rows = [
+    ['考核周期', PERIODS.map(p => p.fullLabel)],
+    ['制度编号', PERIODS.map(p => p.docNo || '-')],
+    ['迭代要点', PERIODS.map(p => p.iteration || '-')],
+    ['结算次数', PERIODS.map(p => p.periods.length + ' 次（每3月）')],
+    ['激励门槛', PERIODS.map(p => p.summary.激励门槛 ? p.summary.激励门槛.val : '-')],
+    ['补贴发放', PERIODS.map(p => p.periods.map(q=>q.payMonth).join(' / '))]
+  ];
+  let html = '<thead><tr><th>维度</th>';
+  PERIODS.forEach((p, i) => { html += `<th class="${i===state.currentIdx?'col-now':''}">${p.label}</th>`; });
+  html += '</tr></thead><tbody>';
+  rows.forEach(r => {
+    html += '<tr><td><b>' + r[0] + '</b></td>';
+    r[1].forEach((c, i) => {
+      html += `<td class="${i===state.currentIdx?'col-now':''}">${c}</td>`;
+    });
+    html += '</tr>';
+  });
+  html += '</tbody>';
+  tbl.innerHTML = html;
+}
+
+function renderAll(){
+  renderTabs();
+  renderSummary();
+  renderTimeline();
+  renderQuickInfo();
+  renderSections();
+  renderCompare();
+  renderDiff();
+}
+
+renderAll();
+
+// ===== 整页截图（仅本看板页面）=====
+function capturePage(){
+  if (typeof html2canvas === 'undefined') {
+    alert('截图库未加载，请检查网络后刷新重试');
+    return;
+  }
+  var btn = document.getElementById('shot-btn');
+  var oldHtml = btn ? btn.innerHTML : '';
+  if (btn) { btn.disabled = true; btn.innerHTML = '⏳ 截图中...'; }
+  var prevY = window.scrollY || document.documentElement.scrollTop || 0;
+  window.scrollTo(0, 0);
+  html2canvas(document.body, {
+    backgroundColor: '#eef2f7',
+    useCORS: true,
+    scale: Math.min(window.devicePixelRatio || 1, 2),
+    windowWidth: document.documentElement.scrollWidth,
+    windowHeight: window.innerHeight
+  }).then(function(canvas){
+    var pad = function(n){ return (n < 10 ? '0' : '') + n; };
+    var d = new Date();
+    var name = '保险赔付率方案解读_' + d.getFullYear() + pad(d.getMonth()+1) + pad(d.getDate())
+             + '_' + pad(d.getHours()) + pad(d.getMinutes()) + '.png';
+    var a = document.createElement('a');
+    a.download = name;
+    a.href = canvas.toDataURL('image/png');
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }).catch(function(e){
+    alert('截图失败：' + (e && e.message ? e.message : e));
+  }).finally(function(){
+    window.scrollTo(0, prevY);
+    if (btn) { btn.disabled = false; btn.innerHTML = oldHtml; }
+  });
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+C:\Users\牛艳朝\.workbuddy\binaries\python\envs\default\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+C:\Users\牛艳朝\.workbuddy\binaries\python\envs\default\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Conditional Formatting extension is not supported and will be removed
+  warn(msg)
+C:\Users\牛艳朝\.workbuddy\binaries\python\envs\default\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Sparkline Group extension is not supported and will be removed
+  warn(msg)
+station_rating.json OK 224 rows
+safety_rights.json OK 224 rows
+compliance.json OK 226 rows
+accident.json OK 223 rows
+helmet_data.json OK 5973 rows
+speeding_data.json OK 5973 rows
+redlight_data.json OK 13328 rows
+reverse_data.json OK 5577 rows
+equipment_rate.json OK 49 rows
+equipment_detail.json OK 27 rows
+meeting_reject.json OK 23 rows
+inspection_detail.json OK 6926 rows
+data_treasure.json OK 193 rows
+disinfect_data.json OK 185 rows
+health_violation.json OK 8 rows
+DONE

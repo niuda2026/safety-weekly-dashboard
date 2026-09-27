@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>专送合作商骑手保障补贴考核看板</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.6}
+.container{max-width:1500px;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:30px 40px;border-radius:12px;margin-bottom:24px}
+.header h1{font-size:24px;font-weight:600;margin-bottom:6px}
+.header .sub{font-size:14px;opacity:.7}
+.summary-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px}
+.summary-card{background:#fff;border-radius:10px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.summary-card .label{font-size:13px;color:#666;margin-bottom:8px}
+.summary-card .value{font-size:22px;font-weight:700;color:#1a1a2e}
+.summary-card .value.highlight{color:#e65100}
+.summary-card .sub-value{font-size:12px;color:#999;margin-top:4px}
+.merchant-info{background:#e8f0fe;border-left:4px solid #0B4F8A;padding:16px 20px;border-radius:8px;margin-bottom:16px;font-size:14px;color:#555}
+.merchant-info strong{color:#1a1a2e}
+.section-toggle{background:#fff;border-radius:10px;padding:16px 24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06);cursor:pointer;user-select:none;display:flex;align-items:center;justify-content:space-between;transition:background .2s}
+.section-toggle:hover{background:#fafafa}
+.section-toggle h3{font-size:16px;font-weight:600;color:#1a1a2e}
+.section-toggle .arrow{font-size:14px;color:#888;transition:transform .3s}
+.section-toggle .arrow.open{transform:rotate(90deg)}
+.section-body{margin-bottom:20px}
+.month-table-wrap{background:#fff;border-radius:0 0 10px 10px;padding:0 16px 16px;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.month-table{width:100%;border-collapse:collapse;font-size:12px;min-width:auto;table-layout:auto}
+.month-table th{background:#f5f5f5;color:#555;font-weight:600;padding:8px 6px;text-align:left;border-bottom:2px solid #ddd;white-space:normal;word-break:keep-all;position:sticky;top:0;z-index:10;font-size:11px}
+.month-table td{padding:7px 6px;border-bottom:1px solid #f0f0f0;white-space:nowrap;font-size:12px}
+.month-table tr:hover{background:#fafafa}
+.month-table .num{text-align:right}
+.month-table th.num{text-align:right}
+.month-table .month-col{font-weight:600;background:#fafafa;width:36px;white-space:nowrap}
+.month-table .total-row td{background:#e8f0fe;font-weight:600;border-top:2px solid #0B4F8A}
+.month-table .highlight-val{color:#e65100;font-size:14px}
+.period-card{background:#fff;border-radius:10px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06);overflow:hidden}
+.period-header{padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.period-header.risk-green{background:#e8f5e9;color:#2e7d32;border-bottom:2px solid #c8e6c9}
+.period-header.risk-orange{background:#fff3e0;color:#e65100;border-bottom:2px solid #ffe0b2}
+.period-header.risk-red{background:#fce4ec;color:#c62828;border-bottom:2px solid #ffcdd2}
+.period-header h2{font-size:17px;font-weight:600}
+.risk-label{font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600}
+.risk-green .risk-label{background:#c8e6c9;color:#2e7d32}
+.risk-orange .risk-label{background:#ffe0b2;color:#e65100}
+.risk-red .risk-label{background:#ffcdd2;color:#c62828}
+.period-body{padding:20px 24px}
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.metric{background:#fafafa;border-radius:8px;padding:14px 16px}
+.metric-label{font-size:12px;color:#888;margin-bottom:4px}
+.metric-value{font-size:16px;font-weight:600;color:#1a1a2e}
+.metric-value.highlight{color:#e65100}
+.insurance-group{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.insurance-block{background:#fafafa;border-radius:8px;padding:14px 16px}
+.insurance-block h4{font-size:14px;margin-bottom:10px;color:#333}
+.tag{font-size:11px;background:#eaf2fa;color:#0B4F8A;padding:2px 8px;border-radius:10px;font-weight:400;margin-left:6px}
+.sub-metrics{display:flex;gap:20px;font-size:13px;color:#666;flex-wrap:wrap}
+.sub-metrics .pass{color:#2e7d32}
+.sub-metrics .fail{color:#c62828}
+.btn-screenshot{background:#fff;color:#0B4F8A;border:1.5px solid #0B4F8A;padding:8px 18px;border-radius:6px;font-size:13px;cursor:pointer;white-space:nowrap;transition:all .2s;font-family:inherit}
+.btn-screenshot:hover{background:#0B4F8A;color:#fff}
+.cross-validation{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.cross-validation h3{font-size:15px;color:#1a1a2e;margin-bottom:12px}
+.cross-validation .cv-row{display:flex;gap:30px;font-size:13px;color:#666;flex-wrap:wrap}
+.cross-validation .cv-row .pass{color:#2e7d32;font-weight:600}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
+.badge.green{background:#e8f5e9;color:#2e7d32}
+.badge.red{background:#fce4ec;color:#c62828}
+.footer{text-align:center;padding:20px;font-size:12px;color:#999;margin-top:10px}
+.footer p{margin:4px 0}
+@media(max-width:768px){
+.metrics-grid{grid-template-columns:repeat(2,1fr)}
+.insurance-group{grid-template-columns:1fr}
+.summary-cards{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+    <h1>专送合作商骑手保障补贴考核看板</h1>
+    <div class="sub">YTD累计清算 · 基于考核方案 V2-20260159</div>
+</div>
+
+<div class="merchant-info" style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+    <span>考核对象：<strong>兴必达（江苏）网络科技有限公司</strong>（商总ID: 4889）&nbsp;|&nbsp;下属城市商：<strong>28</strong> 个 &nbsp;|&nbsp;考核周期：<strong>2025.9.1 — 2026.8.31</strong></span>
+    <button class="btn-screenshot" onclick="screenshotPage()" title="页面截图">&#x1F4F7; 页面截图</button>
+</div>
+
+<div class="summary-cards">
+    <div class="summary-card">
+        <div class="label">累计运单量</div>
+        <div class="value">101,419,462 单</div>
+    </div>
+    <div class="summary-card">
+        <div class="label">总保费（不含税）</div>
+        <div class="value">¥5,637,381</div>
+        <div class="sub-value">新商保 ¥4,187,575 · 老商保 ¥1,449,806</div>
+    </div>
+    <div class="summary-card">
+        <div class="label">合计补贴金额</div>
+        <div class="value highlight">¥5,374,189</div>
+        <div class="sub-value">补贴占比 95.3%</div>
+    </div>
+    <div class="summary-card">
+        <div class="label">职伤确认案件量</div>
+        <div class="value">91 件</div>
+        <div class="sub-value">2026年1月-7月累计</div>
+    </div>
+</div>
+
+<!-- ===== 月度补贴明细 ===== -->
+<div class="section-toggle" onclick="toggleSection('monthly-section')">
+    <h3>&#x1F4C5; 月度补贴明细（2026年1月-7月）</h3>
+    <span class="arrow open" id="arrow-monthly-section">&#x25B6;</span>
+</div>
+<div class="section-body" id="monthly-section">
+    <div class="month-table-wrap">
+        <table class="month-table">
+            <thead>
+                <tr>
+                    <th>月份</th>
+                    <th class="num">运单量</th>
+                    <th class="num">新商保保费</th>
+                    <th class="num">新商保赔付率</th>
+                    <th class="num">达标</th>
+                    <th class="num">新商保补贴</th>
+                    <th class="num">老商保保费</th>
+                    <th class="num">老商保赔付率</th>
+                    <th class="num">达标</th>
+                    <th class="num">老商保补贴</th>
+                    <th class="num">职伤百万单</th>
+                    <th class="num">结算系数</th>
+                    <th class="num">当月补贴合计</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+<td class="month-col">1月</td>
+<td class="num">11,387,768</td>
+<td class="num">573,279</td>
+<td class="num"><span class="badge green">218.3%</span></td>
+<td class="num">达标</td>
+<td class="num">573,279</td>
+<td class="num">239,541</td>
+<td class="num"><span class="badge red">407.9%</span></td>
+<td class="num">超标</td>
+<td class="num">119,770</td>
+<td class="num">1.23</td>
+<td class="num">1.00</td>
+<td class="num"><b>693,049</b></td>
+</tr><tr>
+<td class="month-col">2月</td>
+<td class="num">12,523,398</td>
+<td class="num">512,559</td>
+<td class="num"><span class="badge green">230.3%</span></td>
+<td class="num">达标</td>
+<td class="num">512,559</td>
+<td class="num">213,887</td>
+<td class="num"><span class="badge green">218.2%</span></td>
+<td class="num">达标</td>
+<td class="num">213,887</td>
+<td class="num">0.80</td>
+<td class="num">1.00</td>
+<td class="num"><b>726,446</b></td>
+</tr><tr>
+<td class="month-col">3月</td>
+<td class="num">19,537,175</td>
+<td class="num">570,336</td>
+<td class="num"><span class="badge green">169.7%</span></td>
+<td class="num">达标</td>
+<td class="num">570,336</td>
+<td class="num">234,541</td>
+<td class="num"><span class="badge green">247.6%</span></td>
+<td class="num">达标</td>
+<td class="num">234,541</td>
+<td class="num">0.72</td>
+<td class="num">1.00</td>
+<td class="num"><b>804,876</b></td>
+</tr><tr>
+<td class="month-col">4月</td>
+<td class="num">11,556,352</td>
+<td class="num">553,529</td>
+<td class="num"><span class="badge green">156.0%</span></td>
+<td class="num">达标</td>
+<td class="num">553,529</td>
+<td class="num">230,344</td>
+<td class="num"><span class="badge green">300.6%</span></td>
+<td class="num">达标</td>
+<td class="num">230,344</td>
+<td class="num">1.73</td>
+<td class="num">1.00</td>
+<td class="num"><b>783,873</b></td>
+</tr><tr>
+<td class="month-col">5月</td>
+<td class="num">13,322,368</td>
+<td class="num">581,594</td>
+<td class="num"><span class="badge green">133.0%</span></td>
+<td class="num">达标</td>
+<td class="num">581,594</td>
+<td class="num">244,654</td>
+<td class="num"><span class="badge green">190.7%</span></td>
+<td class="num">达标</td>
+<td class="num">244,654</td>
+<td class="num">1.50</td>
+<td class="num">1.00</td>
+<td class="num"><b>826,248</b></td>
+</tr><tr>
+<td class="month-col">6月</td>
+<td class="num">18,982,305</td>
+<td class="num">604,263</td>
+<td class="num"><span class="badge green">106.11%</span></td>
+<td class="num">达标</td>
+<td class="num">604,263</td>
+<td class="num">286,839</td>
+<td class="num"><span class="badge red">524.0%</span></td>
+<td class="num">超标</td>
+<td class="num">143,420</td>
+<td class="num">0.63</td>
+<td class="num">1.00</td>
+<td class="num"><b>747,682</b></td>
+</tr><tr>
+<td class="month-col">7月</td>
+<td class="num">14,110,096</td>
+<td class="num">792,015</td>
+<td class="num"><span class="badge green">114.7%</span></td>
+<td class="num">达标</td>
+<td class="num">792,015</td>
+<td class="num">0</td>
+<td class="num"><span class="badge green">0.0%</span></td>
+<td class="num">达标</td>
+<td class="num">0</td>
+<td class="num">0.07</td>
+<td class="num">1.00</td>
+<td class="num"><b>792,015</b></td>
+</tr>
+                <tr class="total-row">
+<td class="month-col"><b>7个月合计</b></td>
+<td class="num"><b>101,419,462</b></td>
+<td class="num"><b>4,187,575</b></td>
+<td class="num"><b>157.3%</b></td>
+<td class="num"><b>达标</b></td>
+<td class="num"><b>4,187,575</b></td>
+<td class="num"><b>1,449,806</b></td>
+<td class="num"><b>323.3%</b></td>
+<td class="num"><b>达标</b></td>
+<td class="num"><b>1,186,616</b></td>
+<td class="num"><b>-</b></td>
+<td class="num"><b>-</b></td>
+<td class="num highlight-val"><b>5,374,189</b></td>
+</tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ===== 季度视图 ===== -->
+<div class="section-toggle" onclick="toggleSection('quarterly-section')">
+    <h3>&#x1F4CA; 季度结算视图（各月相加）</h3>
+    <span class="arrow open" id="arrow-quarterly-section">&#x25B6;</span>
+</div>
+<div class="section-body" id="quarterly-section">
+    
+    <div class="period-card">
+        <div class="period-header risk-green">
+            <h2>12月-2月 结算周期</h2>
+            <span class="risk-label">达标</span>
+        </div>
+        <div class="period-body">
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-label">总运单量</div>
+                    <div class="metric-value">23,911,166 单</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">总保费</div>
+                    <div class="metric-value">¥1,539,266</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">职伤百万单确认量</div>
+                    <div class="metric-value">1.00 <span style="font-size:13px;font-weight:400;color:#888">(系数 1.00)</span></div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">最终补贴</div>
+                    <div class="metric-value highlight">¥1,419,496</div>
+                </div>
+            </div>
+            <div class="insurance-group">
+                <div class="insurance-block">
+                    <h4>新商保 <span class="tag">目标 260%</span></h4>
+                    <div class="sub-metrics">
+                        <span>保费: ¥1,085,838</span>
+                        <span>赔付率: <b class="pass">224.0%</b></span>
+                        <span>基础补贴: ¥1,085,838</span>
+                    </div>
+                </div>
+                <div class="insurance-block">
+                    <h4>老商保 <span class="tag">目标 350%</span></h4>
+                    <div class="sub-metrics">
+                        <span>保费: ¥453,428</span>
+                        <span>赔付率: <b class="pass">318.4%</b></span>
+                        <span>基础补贴: ¥333,657</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="period-card">
+        <div class="period-header risk-green">
+            <h2>3月-5月 结算周期</h2>
+            <span class="risk-label">达标</span>
+        </div>
+        <div class="period-body">
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-label">总运单量</div>
+                    <div class="metric-value">44,415,895 单</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">总保费</div>
+                    <div class="metric-value">¥2,414,997</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">职伤百万单确认量</div>
+                    <div class="metric-value">1.22 <span style="font-size:13px;font-weight:400;color:#888">(系数 1.00)</span></div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">最终补贴</div>
+                    <div class="metric-value highlight">¥2,414,997</div>
+                </div>
+            </div>
+            <div class="insurance-group">
+                <div class="insurance-block">
+                    <h4>新商保 <span class="tag">目标 260%</span></h4>
+                    <div class="sub-metrics">
+                        <span>保费: ¥1,705,458</span>
+                        <span>赔付率: <b class="pass">152.7%</b></span>
+                        <span>基础补贴: ¥1,705,458</span>
+                    </div>
+                </div>
+                <div class="insurance-block">
+                    <h4>老商保 <span class="tag">目标 350%</span></h4>
+                    <div class="sub-metrics">
+                        <span>保费: ¥709,539</span>
+                        <span>赔付率: <b class="pass">245.2%</b></span>
+                        <span>基础补贴: ¥709,539</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="period-card">
+        <div class="period-header risk-orange">
+            <h2>6月-8月 结算周期</h2>
+            <span class="risk-label">超标·系数正常</span>
+        </div>
+        <div class="period-body">
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-label">总运单量</div>
+                    <div class="metric-value">33,092,401 单</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">总保费</div>
+                    <div class="metric-value">¥1,683,117</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">职伤百万单确认量</div>
+                    <div class="metric-value">0.39 <span style="font-size:13px;font-weight:400;color:#888">(系数 1.00)</span></div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">最终补贴</div>
+                    <div class="metric-value highlight">¥1,539,697</div>
+                </div>
+            </div>
+            <div class="insurance-group">
+                <div class="insurance-block">
+                    <h4>新商保 <span class="tag">目标 260%</span></h4>
+                    <div class="sub-metrics">
+                        <span>保费: ¥1,396,278</span>
+                        <span>赔付率: <b class="pass">111.0%</b></span>
+                        <span>基础补贴: ¥1,396,278</span>
+                    </div>
+                </div>
+                <div class="insurance-block">
+                    <h4>老商保 <span class="tag">目标 350%</span></h4>
+                    <div class="sub-metrics">
+                        <span>保费: ¥286,839</span>
+                        <span>赔付率: <b class="fail">524.0%</b></span>
+                        <span>基础补贴: ¥143,420</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cross-validation">
+    <h3>交叉验证（与官方2026年6月阶段性结果公示）</h3>
+    <div class="cv-row">
+        <span>新商保: 保费 <span class="pass">604,263</span> | 赔付率 <span class="pass">106.11%</span> ≤ 260% → 全额补贴 <span class="pass">604,263 ✓</span></span>
+        <span>老商保: 保费 <span class="pass">286,839</span> | 赔付率 <span class="pass">524.0%</span> > 350% → max(50%×286839, 286839+2.86×(3.50-5.24)) = <span class="pass">143,420 ✓</span></span>
+        <span>合计补贴: <span class="pass">747,682 ✓</span></span>
+    </div>
+    <div class="cv-row" style="margin-top:8px;color:#888;font-size:12px;">
+        <span>修正说明：6月原测算值(723,600)与官方公示(747,682)差24,082，原因是Excel中保费由"赔款÷赔付率"反推产生近似误差，已用官方保费/赔付率替换6月数据。</span>
+    </div>
+</div>
+
+<div class="footer">
+    <p>测算结果仅供参考，最终以平台结算数据为准</p>
+    <p>数据来源：商保险成本_新职伤 & 商保险成本_商保（2026年1月-7月日级数据）| 统计日期：2026-07-27 15:37</p>
+    <p>考核方案依据：《专送合作商骑手保障补贴考核方案》MTPS-ZS-QB-V2-20260159 · 补贴按月计算，季度/全年为各月相加</p>
+</div>
+
+</div>
+
+<script>
+function toggleSection(id) {
+    var el = document.getElementById(id);
+    var arrow = document.getElementById('arrow-' + id);
+    if (el.style.display === 'none') {
+        el.style.display = 'block';
+        arrow.classList.add('open');
+    } else {
+        el.style.display = 'none';
+        arrow.classList.remove('open');
+    }
+}
+function screenshotPage() {
+    var btn = document.querySelector('.btn-screenshot');
+    btn.textContent = '截图生成中...';
+    btn.disabled = true;
+    if (typeof html2canvas === 'undefined') {
+        alert('html2canvas 加载失败，请检查网络连接后重试');
+        btn.textContent = '📷 页面截图';
+        btn.disabled = false;
+        return;
+    }
+    var el = document.querySelector('.container');
+    html2canvas(el, {scale:2,useCORS:true,allowTaint:true,backgroundColor:'#f0f2f5'}).then(function(canvas){
+        var link = document.createElement('a');
+        var now = new Date();
+        var ts = now.getFullYear().toString()+('0'+(now.getMonth()+1)).slice(-2)+('0'+now.getDate()).slice(-2)+'_'+('0'+now.getHours()).slice(-2)+('0'+now.getMinutes()).slice(-2)+('0'+now.getSeconds()).slice(-2);
+        link.download = '专送合作商骑手保障补贴考核看板_截图_'+ts+'.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        btn.textContent = '📷 页面截图';
+        btn.disabled = false;
+    }).catch(function(e){
+        alert('截图失败：'+e.message);
+        btn.textContent = '📷 页面截图';
+        btn.disabled = false;
+    });
+}
+</script>
+</body>
+</html>
