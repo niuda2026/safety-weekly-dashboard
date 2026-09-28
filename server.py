@@ -167,6 +167,27 @@ def sync_to_github():
 class SyncHandler(http.server.SimpleHTTPRequestHandler):
     """自定义 HTTP 请求处理器"""
 
+    # ── 2026-09-27 新增：全站统一注入 Access-Control-Allow-Origin（去重，不会重复发两次）。
+    #    用途：履约项目看板（8777/file:// 打开）点周度罚款/驳回数值时，跨域拉取本服务
+    #    /data/*.json 源明细；嵌入 8421 的 iframe 走同源不受影响。只加响应头，不改任何业务逻辑。
+    def send_response(self, code, message=None):
+        self._acao_sent = False
+        super().send_response(code, message)
+
+    def send_header(self, keyword, value):
+        if str(keyword).lower() == "access-control-allow-origin":
+            if getattr(self, "_acao_sent", False):
+                return
+            self._acao_sent = True
+        super().send_header(keyword, value)
+
+    def end_headers(self):
+        # 注意：这里不能提前置 _acao_sent=True，否则下方 send_header 会被去重判断当成
+        # 「已发过」直接 return，导致头永远写不出去（2026-09-27 踩坑）。置位交给 send_header。
+        if not getattr(self, "_acao_sent", False):
+            self.send_header("Access-Control-Allow-Origin", "*")
+        super().end_headers()
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=os.path.dirname(os.path.abspath(__file__)), **kwargs)
 

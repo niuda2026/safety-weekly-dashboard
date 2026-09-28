@@ -278,6 +278,9 @@
         .acc-edit-hint { font-size: 11px; color: #64748b; margin-left: auto; }
         .acc-filter-bar { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding: 10px 16px; background: #F2F7FB; border-bottom: 1px solid #8FB8DA; }
         .acc-filter-bar label { font-size: 12px; color: #1a2e45; font-weight: 600; }
+        .acc-filter-bar .acc-clear-btn { margin-left: 4px; }
+        .acc-filter-bar .acc-dt-search { width: 230px; padding: 6px 10px; border: 1px solid #c5d5e5; border-radius: 6px; font-size: 12.5px; background: #fff; }
+        .acc-filter-bar .acc-dt-search:focus { outline: none; border-color: #2e7dc4; box-shadow: 0 0 0 2px rgba(46,125,196,.12); }
         .ms-wrap { position: relative; display: inline-block; vertical-align: top; }
         .ms-btn { display: flex; align-items: center; justify-content: space-between; min-width: 90px; max-width: 160px; padding: 5px 8px; background: #fff; border: 1px solid #8FB8DA; border-radius: 4px; font-size: 12px; color: #1a2e45; cursor: pointer; user-select: none; gap: 4px; }
         .ms-arrow { font-size: 9px; color: #5a7a99; transition: transform .15s; }
@@ -553,7 +556,11 @@
         <div class="panel-header">
             <div class="panel-title">安全事故看板</div>
             <div class="controls">
-                <span id="accOrdersMeta" class="acc-orders-meta"></span>
+                <input type="text" id="accidentSearch" class="search-box" placeholder="搜索...">
+                <select id="accidentRegion" class="select-box"><option value="">全部大区</option></select>
+                <select id="accidentZone" class="select-box"><option value="">全部区域</option></select>
+                <select id="accidentCity" class="select-box"><option value="">全部城市</option></select>
+                <select id="accidentStation" class="select-box"><option value="">全部站点</option></select>
                 <button class="btn-clear-filter" onclick="clearFilter('accident')">清除筛选</button>
             </div>
         </div>
@@ -573,6 +580,8 @@
             <label>区域</label><div class="ms-wrap" id="ms-acc-subregion"><div class="ms-btn" onclick="accToggleMs('subregion')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
             <label>城市</label><div class="ms-wrap" id="ms-acc-city"><div class="ms-btn" onclick="accToggleMs('city')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
             <label>站点</label><div class="ms-wrap" id="ms-acc-site"><div class="ms-btn" onclick="accToggleMs('site')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
+            <input type="text" id="accDtSearch" class="acc-dt-search" placeholder="🔍 搜索大区/区域/城市/站点" oninput="accDtSearchInput(this.value)">
+            <button class="btn-clear-filter acc-clear-btn" onclick="accClearAll()">清除筛选</button>
         </div>
         <div class="table-wrap"><table class="data-table" id="accidentTable">
             <thead id="accThead"></thead><tbody id="accTbody"></tbody>
@@ -2673,6 +2682,8 @@ var ACC_COLS = [
 var ACC_COMPUTED = ['迟报罚款', '超时罚款', '百万单事故数'];
 var ACC_SUM_COLS = ['上报保险数','小额事故数','公司承担','骑手承担','工单迟报数','迟报罚款','保险超时数','超时罚款','上周完成单量'];
 var accState = { region: [], subregion: [], city: [], site: [] };
+var ACC_SEARCH = '';      // 面板头部搜索框（与 KPI 卡 + 明细表联动）
+var ACC_HDR_IDS = ['accidentSearch','accidentRegion','accidentZone','accidentCity','accidentStation'];
 var ACC_COL_FILTER = {};
 var accView = { subregion: true, merchant: true, site: true };
 var ACC_VIEWROWS = [];
@@ -2914,9 +2925,80 @@ function accToggleMs(key) {
     document.querySelectorAll('.ms-wrap.open').forEach(function(w) { w.classList.remove('open'); });
     if (!wasOpen) wrap.classList.add('open');
 }
+// ---------- 明细表筛选行内搜索框（2026-09-28 新增：站点下拉后、清除筛选前） ----------
+// 与面板头部搜索框共用同一 ACC_SEARCH：任一处输入，两框同步，KPI 卡 + 明细表一起联动。
+function accDtSearchInput(v) {
+    ACC_SEARCH = v || '';
+    accSyncSearchInputs();
+    renderAccidentTab();
+}
+function accSyncSearchInputs() {
+    // 双向同步两个搜索框；跳过正在输入的框，避免光标跳动
+    ['accidentSearch', 'accDtSearch'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el && document.activeElement !== el && el.value !== ACC_SEARCH) el.value = ACC_SEARCH;
+    });
+}
 function accClearAll() {
     ['region', 'subregion', 'city', 'site'].forEach(function(d) { accState[d] = []; });
     ACC_COL_FILTER = {};
+    ACC_SEARCH = '';
+    ACC_HDR_IDS.forEach(function(id) { var el = document.getElementById(id); if (el) el.value = ''; });
+    var dt = document.getElementById('accDtSearch');
+    if (dt) dt.value = '';
+    renderAccidentTab();
+}
+
+// ---------- 面板头部筛选（与其他页面一致：搜索 + 大区/区域/城市/站点 级联下拉） ----------
+// 头部筛选与明细表筛选**共用同一份 accState**：改任一处，KPI 汇总卡与明细表同步联动。
+function accHeaderVals() {
+    function v(id) { var el = document.getElementById(id); return el ? (el.value || '') : ''; }
+    return { search: v('accidentSearch'), region: v('accidentRegion'), zone: v('accidentZone'), city: v('accidentCity'), station: v('accidentStation') };
+}
+function accFillSelect(id, options, placeholder, cur) {
+    var sel = document.getElementById(id);
+    if (!sel) return;
+    sel.innerHTML = '<option value="">' + placeholder + '</option>' +
+        options.map(function(o) { return '<option value="' + esc(o) + '">' + esc(o) + '</option>'; }).join('');
+    sel.value = (cur && options.indexOf(cur) >= 0) ? cur : '';
+}
+// forceVals 省略时读取 DOM 当前值；renderAccidentTab 会传入由 accState 推导的值，保证两处筛选始终一致
+function accFillHeaderSelects(forceVals) {
+    var v = forceVals || accHeaderVals();
+    var rows = ACC_VIEWROWS || [];
+    var regions = [], zones = [], cities = [], stations = [];
+    function uniq(arr, val) { if (val && arr.indexOf(val) < 0) arr.push(val); }
+    rows.forEach(function(r) { uniq(regions, r.大区); });
+    rows.forEach(function(r) {
+        if (v.region && r.大区 !== v.region) return;
+        uniq(zones, r.分区);
+    });
+    rows.forEach(function(r) {
+        if (v.region && r.大区 !== v.region) return;
+        if (v.zone && r.分区 !== v.zone) return;
+        uniq(cities, r.__城市);
+    });
+    rows.forEach(function(r) {
+        if (v.region && r.大区 !== v.region) return;
+        if (v.zone && r.分区 !== v.zone) return;
+        if (v.city && r.__城市 !== v.city) return;
+        uniq(stations, r.__站点);
+    });
+    var byZh = function(a, b) { return a.localeCompare(b, 'zh'); };
+    accFillSelect('accidentRegion', accSortRegions(regions), '全部大区', v.region);
+    accFillSelect('accidentZone', zones.sort(byZh), '全部区域', v.zone);
+    accFillSelect('accidentCity', cities.sort(byZh), '全部城市', v.city);
+    accFillSelect('accidentStation', stations.sort(byZh), '全部站点', v.station);
+}
+// 头部下拉/搜索框变更 → 写入 accState → 重渲染（KPI 卡 + 明细表一起联动）
+function accHeaderFilter() {
+    var v = accHeaderVals();
+    ACC_SEARCH = v.search || '';
+    accSyncSearchInputs();   // 头部输入 → 同步明细筛选行搜索框
+    accState.region = v.region ? [v.region] : [];
+    accState.subregion = v.zone ? [v.zone] : [];
+    accState.city = v.city ? [v.city] : [];
+    accState.site = v.station ? [v.station] : [];
     renderAccidentTab();
 }
 
@@ -3035,6 +3117,7 @@ function accPass(r) {
     if (rs.length && rs.indexOf(r.大区) < 0) return false;
     if (ss.length && ss.indexOf(r.分区) < 0) return false;
     if (r.__level === 'company') return true;
+    if (r._match === false) return false;   // 头部搜索框未命中（命中行的祖先链已一并保留）
     for (var ck in ACC_COL_FILTER) {
         var sel = ACC_COL_FILTER[ck];
         if (sel && sel.length && sel.indexOf(accColDisp(ck, r.eff[ck])) < 0) return false;
@@ -3074,19 +3157,23 @@ function accidentSummaryHtml() {
     if (!company) return '';
     var html = accKpiBox('总公司汇总 - ' + ACC_COMPANY, company.eff, false);
     var rs = accState.region, ss = accState.subregion, cs = accState.city, sts = accState.site;
+    // KPI 与明细表同口径：统一叠加 accPass（头部下拉 + 搜索框 + 列筛选）
+    function f(level, extra) {
+        return rows.filter(function(r) { return r.__level === level && extra(r) && accPass(r); });
+    }
     if (sts.length) {
-        html += accKpiBox('站点汇总（' + sts.length + ' 站）', accAgg(rows.filter(function(r) { return r.__level === 'site' && sts.indexOf(r.__站点) >= 0; })), true);
+        html += accKpiBox('站点汇总（' + sts.length + ' 站）', accAgg(f('site', function(r) { return sts.indexOf(r.__站点) >= 0; })), true);
     } else if (cs.length) {
-        html += accKpiBox('城市汇总（' + esc(cs.join('、')) + '）', accAgg(rows.filter(function(r) { return r.__level === 'city' && cs.indexOf(r.__城市) >= 0; })), true);
+        html += accKpiBox('城市汇总（' + esc(cs.join('、')) + '）', accAgg(f('city', function(r) { return cs.indexOf(r.__城市) >= 0; })), true);
     } else if (ss.length) {
-        html += accKpiBox('区域汇总（' + esc(ss.join('、')) + '）', accAgg(rows.filter(function(r) { return r.__level === 'area' && ss.indexOf(r.分区) >= 0; })), true);
+        html += accKpiBox('区域汇总（' + esc(ss.join('、')) + '）', accAgg(f('area', function(r) { return ss.indexOf(r.分区) >= 0; })), true);
     } else if (rs.length) {
-        html += accKpiBox('大区汇总（' + esc(rs.join('、')) + '）', accAgg(rows.filter(function(r) { return r.__level === 'area' && rs.indexOf(r.大区) >= 0; })), true);
+        html += accKpiBox('大区汇总（' + esc(rs.join('、')) + '）', accAgg(f('area', function(r) { return rs.indexOf(r.大区) >= 0; })), true);
     } else {
         var seen = {}, order = [];
-        rows.forEach(function(r) { if (r.__level === 'area' && r.大区 && !seen[r.大区]) { seen[r.大区] = 1; order.push(r.大区); } });
+        f('area', function(r) { return !!r.大区; }).forEach(function(r) { if (!seen[r.大区]) { seen[r.大区] = 1; order.push(r.大区); } });
         accSortRegions(order).forEach(function(rg) {
-            html += accKpiBox('大区汇总 - ' + rg, accAgg(rows.filter(function(r) { return r.__level === 'area' && r.大区 === rg; })), true);
+            html += accKpiBox('大区汇总 - ' + rg, accAgg(f('area', function(r) { return r.大区 === rg; })), true);
         });
     }
     return html;
@@ -3154,13 +3241,18 @@ function renderAccidentTab() {
     theadHtml += '</tr>';
     thead.innerHTML = theadHtml;
 
-    var meta = document.getElementById('accOrdersMeta');
-    if (meta) {
-        if (ORDERS_SITE && ORDERS_SITE.meta) {
-            meta.textContent = '上周完成单量源：' + ORDERS_SITE.meta.source_file + '（' + (ORDERS_SITE.meta.date_range || '') + '，' + ORDERS_SITE.meta.station_count + '站）';
-        } else {
-            meta.textContent = '上周完成单量源：暂无 data/orders_site.json（待跑 _build_orders_site.py 抓M盘）';
-        }
+    // 头部搜索框命中判定：命中行的整条祖先链一并保留，保证层级完整（公司行恒显示）
+    var q = String(ACC_SEARCH || '').trim().toLowerCase();
+    if (q) {
+        ACC_VIEWROWS.forEach(function(r) { r._match = false; });
+        ACC_VIEWROWS.forEach(function(r) {
+            var txt = [r.大区, r.分区, r.区域, r.__城市, r.__站点].filter(Boolean).join(' ').toLowerCase();
+            if (txt.indexOf(q) < 0) return;
+            var cur = r;
+            while (cur) { cur._match = true; cur = cur._parent; }
+        });
+    } else {
+        ACC_VIEWROWS.forEach(function(r) { r._match = true; });
     }
 
     if (!ACC_VIEWROWS.length) {
@@ -3205,6 +3297,16 @@ function renderAccidentTab() {
     ['region', 'subregion', 'city', 'site'].forEach(function(d) {
         accBuildDrop(d, accidentOptions(d), accState[d]);
     });
+
+    // 面板头部下拉与明细表筛选同源：由 accState 反推头部选中值并级联重建选项
+    accFillHeaderSelects({
+        search: ACC_SEARCH,
+        region: accState.region.length === 1 ? accState.region[0] : '',
+        zone: accState.subregion.length === 1 ? accState.subregion[0] : '',
+        city: accState.city.length === 1 ? accState.city[0] : '',
+        station: accState.site.length === 1 ? accState.site[0] : ''
+    });
+    accSyncSearchInputs();   // 任何筛选变化后，两个搜索框与 ACC_SEARCH 保持一致
 }
 
 // 兼容旧调用点（renderAll / applyFilter）：新模块主函数为 renderAccidentTab，这里做透传别名
@@ -3667,7 +3769,9 @@ function loadInsuranceFrame(tab) {
 }
 
 // Filter events
-['safety','rating','compliance','accident'].forEach(type => {
+// 注：accident 不走这里——它用面板头部下拉（accHeaderFilter）与明细表多选筛选（accMsCheck）
+//     共用 accState 的专用链路，套用通用级联会按 store.accident 的 城市/站点 字段把下拉清空。
+['safety','rating','compliance'].forEach(type => {
     const searchEl = document.getElementById(type + 'Search');
     const regionEl = document.getElementById(type + 'Region');
     const zoneEl = document.getElementById(type + 'Zone');
@@ -3696,6 +3800,26 @@ function loadInsuranceFrame(tab) {
     if (stationEl) stationEl.addEventListener('change', () => applyFilter(type));
     if (areaEl) areaEl.addEventListener('change', () => applyFilter(type));
 });
+
+// 安全事故 Tab：面板头部筛选（搜索 + 大区→区域→城市→站点 级联）+ 清除筛选，
+// 与下方 KPI 汇总卡、明细表共用 accState，任一处改动三方同步联动。
+(function bindAccidentHeaderFilters() {
+    var chain = ['accidentRegion', 'accidentZone', 'accidentCity', 'accidentStation'];
+    var searchEl = document.getElementById('accidentSearch');
+    if (searchEl) searchEl.addEventListener('input', accHeaderFilter);
+    chain.forEach(function(id, i) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener('change', function() {
+            // 上级变更后清空所有下级，避免出现「大区已换、城市还是旧大区下的」空结果
+            for (var j = i + 1; j < chain.length; j++) {
+                var down = document.getElementById(chain[j]);
+                if (down) down.value = '';
+            }
+            accHeaderFilter();
+        });
+    });
+})();
 
 // ===== File Upload =====
 function setUploadProgress(pct, text, busy) {

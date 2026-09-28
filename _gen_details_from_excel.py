@@ -133,6 +133,44 @@ DETAIL_SPECS = [
     ("health_violation.json", "健康证违规报表",  12, None,      {0, 4}),
 ]
 
+def fix_health_expired_inspection(data):
+    """健康证/回执单过期 处罚金额按截图标准重算（2026-09-28 用户口径，线下站点检核处罚）：
+    证件不符 N元/人次 —— 人数（本站此类驳回人次）≤4→300 / ≤9→400 / >9→500。
+    站长行写「罚款」列，督导行（区域督导/总部员工）写「督导罚款」列。返回改动行数。"""
+    if not data or len(data) < 2:
+        return 0
+    hdr = data[0]
+    def col(name):
+        for i, h in enumerate(hdr):
+            if str(h or "").strip() == name:
+                return i
+        return -1
+    i_item, i_reason = col("检核子项"), col("质检原因")
+    i_site, i_role = col("站点名称"), col("提交人岗位")
+    i_fine, i_sfine = col("罚款"), col("督导罚款")
+    if min(i_item, i_reason, i_site, i_role, i_fine, i_sfine) < 0:
+        return 0
+    def is_hit(r):
+        item = str(r[i_item] or "")
+        reason = str(r[i_reason] or "")
+        return (("健康证" in item) or ("健康证" in reason)) and \
+               any(k in reason for k in ("回执单过期", "过期", "证件不符"))
+    hits = [r for r in data[1:] if is_hit(r)]
+    cnt = {}
+    for r in hits:
+        k = str(r[i_site] or "").strip()
+        cnt[k] = cnt.get(k, 0) + 1
+    changed = 0
+    for r in hits:
+        k = str(r[i_site] or "").strip()
+        n = 300 if cnt[k] <= 4 else (400 if cnt[k] <= 9 else 500)
+        role = str(r[i_role] or "")
+        tgt = i_fine if role == "站长" else i_sfine
+        if r[tgt] != n:
+            r[tgt] = n
+            changed += 1
+    return changed
+
 def main():
     wb = load_workbook(EXCEL, read_only=True, data_only=True)
     report = {}
@@ -147,11 +185,15 @@ def main():
                 continue
             data.append(transform_data_row(r, dt_cols))
             kept += 1
+        fixed = 0
+        if jname == "inspection_detail.json":
+            fixed = fix_health_expired_inspection(data)
         path = os.path.join(DATA_DIR, jname)
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
         report[jname] = {"sheet": sheet, "rows": len(data), "kept": kept, "dropped_blank": dropped}
-        print(jname, "OK <-", sheet, "| kept", kept, "| dropped_blank", dropped)
+        print(jname, "OK <-", sheet, "| kept", kept, "| dropped_blank", dropped,
+              ("| 健康证过期罚金修正 %d 行" % fixed) if fixed else "")
     wb.close()
     print("DONE", json.dumps(report, ensure_ascii=False))
 

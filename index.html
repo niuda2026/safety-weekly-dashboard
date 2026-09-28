@@ -279,6 +279,8 @@
         .acc-filter-bar { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding: 10px 16px; background: #F2F7FB; border-bottom: 1px solid #8FB8DA; }
         .acc-filter-bar label { font-size: 12px; color: #1a2e45; font-weight: 600; }
         .acc-filter-bar .acc-clear-btn { margin-left: 4px; }
+        .acc-filter-bar .acc-dt-search { width: 230px; padding: 6px 10px; border: 1px solid #c5d5e5; border-radius: 6px; font-size: 12.5px; background: #fff; }
+        .acc-filter-bar .acc-dt-search:focus { outline: none; border-color: #2e7dc4; box-shadow: 0 0 0 2px rgba(46,125,196,.12); }
         .ms-wrap { position: relative; display: inline-block; vertical-align: top; }
         .ms-btn { display: flex; align-items: center; justify-content: space-between; min-width: 90px; max-width: 160px; padding: 5px 8px; background: #fff; border: 1px solid #8FB8DA; border-radius: 4px; font-size: 12px; color: #1a2e45; cursor: pointer; user-select: none; gap: 4px; }
         .ms-arrow { font-size: 9px; color: #5a7a99; transition: transform .15s; }
@@ -578,6 +580,7 @@
             <label>区域</label><div class="ms-wrap" id="ms-acc-subregion"><div class="ms-btn" onclick="accToggleMs('subregion')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
             <label>城市</label><div class="ms-wrap" id="ms-acc-city"><div class="ms-btn" onclick="accToggleMs('city')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
             <label>站点</label><div class="ms-wrap" id="ms-acc-site"><div class="ms-btn" onclick="accToggleMs('site')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
+            <input type="text" id="accDtSearch" class="acc-dt-search" placeholder="🔍 搜索大区/区域/城市/站点" oninput="accDtSearchInput(this.value)">
             <button class="btn-clear-filter acc-clear-btn" onclick="accClearAll()">清除筛选</button>
         </div>
         <div class="table-wrap"><table class="data-table" id="accidentTable">
@@ -2922,11 +2925,27 @@ function accToggleMs(key) {
     document.querySelectorAll('.ms-wrap.open').forEach(function(w) { w.classList.remove('open'); });
     if (!wasOpen) wrap.classList.add('open');
 }
+// ---------- 明细表筛选行内搜索框（2026-09-28 新增：站点下拉后、清除筛选前） ----------
+// 与面板头部搜索框共用同一 ACC_SEARCH：任一处输入，两框同步，KPI 卡 + 明细表一起联动。
+function accDtSearchInput(v) {
+    ACC_SEARCH = v || '';
+    accSyncSearchInputs();
+    renderAccidentTab();
+}
+function accSyncSearchInputs() {
+    // 双向同步两个搜索框；跳过正在输入的框，避免光标跳动
+    ['accidentSearch', 'accDtSearch'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el && document.activeElement !== el && el.value !== ACC_SEARCH) el.value = ACC_SEARCH;
+    });
+}
 function accClearAll() {
     ['region', 'subregion', 'city', 'site'].forEach(function(d) { accState[d] = []; });
     ACC_COL_FILTER = {};
     ACC_SEARCH = '';
     ACC_HDR_IDS.forEach(function(id) { var el = document.getElementById(id); if (el) el.value = ''; });
+    var dt = document.getElementById('accDtSearch');
+    if (dt) dt.value = '';
     renderAccidentTab();
 }
 
@@ -2975,6 +2994,7 @@ function accFillHeaderSelects(forceVals) {
 function accHeaderFilter() {
     var v = accHeaderVals();
     ACC_SEARCH = v.search || '';
+    accSyncSearchInputs();   // 头部输入 → 同步明细筛选行搜索框
     accState.region = v.region ? [v.region] : [];
     accState.subregion = v.zone ? [v.zone] : [];
     accState.city = v.city ? [v.city] : [];
@@ -3286,6 +3306,7 @@ function renderAccidentTab() {
         city: accState.city.length === 1 ? accState.city[0] : '',
         station: accState.site.length === 1 ? accState.site[0] : ''
     });
+    accSyncSearchInputs();   // 任何筛选变化后，两个搜索框与 ACC_SEARCH 保持一致
 }
 
 // 兼容旧调用点（renderAll / applyFilter）：新模块主函数为 renderAccidentTab，这里做透传别名
