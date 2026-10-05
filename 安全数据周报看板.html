@@ -582,6 +582,7 @@
             <label>站点</label><div class="ms-wrap" id="ms-acc-site"><div class="ms-btn" onclick="accToggleMs('site')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
             <input type="text" id="accDtSearch" class="acc-dt-search" placeholder="🔍 搜索大区/区域/城市/站点" oninput="accDtSearchInput(this.value)">
             <button class="btn-clear-filter acc-clear-btn" onclick="accClearAll()">清除筛选</button>
+            <button class="btn-clear-filter acc-clear-btn" style="background:#fff3f0;border-color:#ff7875;color:#d4380d;font-weight:600" onclick="accWipeManual()" title="清空明细表全部手填的事故数/金额（自动备份后清空），用于新一周填写">🧹 清空事故数/金额</button>
         </div>
         <div class="table-wrap"><table class="data-table" id="accidentTable">
             <thead id="accThead"></thead><tbody id="accTbody"></tbody>
@@ -3219,6 +3220,34 @@ function accSaveManual() {
             if (j && j.status !== 'ok') console.warn('手填数据保存告警:', j.message);
         }).catch(function(e) { console.warn('手填数据保存失败（当前页面已生效，刷新可能回退）:', e); });
     } catch (e) { console.warn('accSaveManual异常', e); }
+}
+
+// ---------- 一键清空本周手填事故数/金额（2026-10-05 新增，新周填写前用） ----------
+// 清空 ACC_MANUAL（上报保险数/小额事故数/公司承担/骑手承担/工单迟报数/保险超时数），
+// 计算列（迟报罚款/超时罚款/百万单事故数）随之归零；上周完成单量取 orders_site.json 不受影响。
+// 清空前自动把当前数据备份到 data/accident_manual_backup_<YYYY-MM-DD>.json（经 /sync）。
+function accWipeManual() {
+    var n = 0;
+    Object.keys(ACC_MANUAL).forEach(function(k) {
+        Object.keys(ACC_MANUAL[k] || {}).forEach(function(c) { if (ACC_MANUAL[k][c] !== null) n++; });
+    });
+    if (!n) { alert('明细表当前没有已填写的事故数/金额，无需清理。'); return; }
+    if (!confirm('确定清空明细表里全部手填的事故数和金额吗？\n\n共 ' + n + ' 项（上报保险数 / 小额事故数 / 公司承担 / 骑手承担 / 工单迟报数 / 保险超时数，迟报/超时罚款随之归零）。\n\n清空前会自动备份当前数据到 data/accident_manual_backup_<日期>.json。')) return;
+    try {
+        var d = new Date();
+        var bakName = 'accident_manual_backup_' + d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2) + '.json';
+        var bak = {};
+        bak[bakName] = ACC_MANUAL;
+        fetch('/sync', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(bak) })
+            .then(function(r) { return r.json(); })
+            .then(function(j) { console.log('清理前备份完成:', bakName, j && j.message); })
+            .catch(function(e) { console.warn('备份失败（清空继续）:', e); });
+    } catch (e) { console.warn('备份异常（清空继续）', e); }
+    ACC_MANUAL = {};
+    accSaveManual();
+    accidentPrepare();
+    renderAccidentTab();
+    alert('已清空 ' + n + ' 项手填数据（原数据已备份），现在可以开始填写新一周的数据了。');
 }
 
 // ---------- 主渲染 ----------

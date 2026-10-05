@@ -139,18 +139,6 @@ body { background:#f5f7fa; color:#303133; min-height:100vh; }
 .formula-sub { color:#909399; font-size:12px; margin-top:4px; font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif; text-align:center; }
 
 .dim-tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; background:#ecf5ff; color:#1e5cb3; margin-right:6px; vertical-align:middle; }
-
-/* 数据口径说明 */
-.caliber-wrap { font-size:13px; color:#2c3e50; line-height:1.75; }
-.caliber-sub { font-weight:700; color:#0B4F8A; margin:14px 0 8px; font-size:13.5px; }
-.caliber-sub:first-child { margin-top:2px; }
-.caliber-tbl { width:100%; border-collapse:collapse; }
-.caliber-tbl th,.caliber-tbl td { border:1px solid #d7e3f0; padding:7px 10px; text-align:left; vertical-align:top; font-size:12.5px; }
-.caliber-tbl th { background:#0B4F8A; color:#fff; font-weight:600; white-space:nowrap; }
-.caliber-tbl tbody tr:nth-child(even) td { background:#f5f9fd; }
-.caliber-list { margin:0; padding-left:20px; }
-.caliber-list li { margin:4px 0; }
-.caliber-note { margin-top:12px; padding:9px 12px; border-left:4px solid #e6a23c; background:#fdf6ec; border-radius:4px; font-size:12.5px; color:#7a5a1e; }
 </style>
 </head>
 <body>
@@ -195,44 +183,6 @@ body { background:#f5f7fa; color:#303133; min-height:100vh; }
     <div class="panel" id="cmpPanel" style="display:none;">
       <h3>多周期关键口径对比</h3>
       <table class="tbl cmp-table" id="cmpTable"></table>
-    </div>
-
-    <!-- 数据口径说明 -->
-    <div class="panel" id="caliberPanel">
-      <h3>数据口径说明 <span class="hd-tag">BI官方口径 + 本地核算口径（2026-09-08 核实）</span></h3>
-      <div class="caliber-wrap">
-        <div class="caliber-sub">一、BI 官方指标口径（来源：BI 保险成本监控 · 数据口径说明）</div>
-        <table class="tbl caliber-tbl">
-          <thead><tr><th style="width:64px">类别</th><th style="width:170px">指标</th><th>口径定义</th></tr></thead>
-          <tbody>
-            <tr><td rowspan="6">商保</td><td><b>已报预估赔付率</b></td><td>已报预估赔付金额 ÷ 保费。<b>模型预估数据，非最终实际赔付率</b>，预估值每天会变（随着案件进展会趋于实际值）</td></tr>
-            <tr><td>已决赔付率</td><td>已决赔付金额 ÷ 保费</td></tr>
-            <tr><td>已报预估赔付金额</td><td>统计周期内发生的上报商保案件预估产生的赔付金额。模型预估数据，非最终实际赔付金额</td></tr>
-            <tr><td>已决赔付金额</td><td>统计周期内发生的商保案件已决赔付的金额</td></tr>
-            <tr><td>已报事故量</td><td>统计周期内发生的上报商保的事故量</td></tr>
-            <tr><td>已决事故量</td><td>统计周期内发生的上报商保案件中达到结案状态的事故量</td></tr>
-            <tr><td rowspan="2">职伤</td><td>确认职业伤害案件量</td><td>统计周期内发生且已确认为职业伤害的案件量</td></tr>
-            <tr><td>职伤百万单确认量</td><td>确认职业伤害案件量 ÷ 职伤单量 × 一百万</td></tr>
-          </tbody>
-        </table>
-
-        <div class="caliber-sub">二、时间维度口径（2026-09-08 用手动导出数据逐格核实）</div>
-        <ul class="caliber-list">
-          <li>BI 的「天」= <b>事故发生日期</b>（按事故发生时间统计），不是报案日期也不是结算日期；</li>
-          <li>每个日期行里的金额 / 事故量是<b>当天新增</b>，不是累计值（青岛事故量 1,1,1,2；秦皇岛金额 12226→7869→15072 有涨有跌，可证非累计）；</li>
-          <li><b>单日赔付率 = 当日已报预估赔付金额 ÷ 当日保费</b>（用导出表反推分母验证，40 个样本极稳定）。</li>
-        </ul>
-
-        <div class="caliber-sub">三、月累计赔付率核算口径（本工作台 V3 看板采用）</div>
-        <ul class="caliber-list">
-          <li><b>月累计赔付率 = Σ当月各日已报预估赔付金额 ÷ (K × Σ当月各日保费)</b>，即按保费加权的累计口径——绝不能取某一天的率，也不能对日率做简单平均；</li>
-          <li><b>K ≈ 0.9434</b>：BI 赔付率的保费分母 ≈ 我方抓取保费的 0.9434 倍（40 个样本 0.9413~0.9448）。V3 看板用每日保费明细<b>运行时自动校准</b> K，不写死；</li>
-          <li>区域 / 总商行 = 辖内城市<b>金额求和、保费求和</b>后相除（保费加权），城市行同理；某城市当月暂无保费时退化为「最早有值一天」并标注；</li>
-          <li>显示量级：BI 返回的是比率（如 2.0156 = 201.56%），看板统一 ×100 显示；目标值（155%~250%）同为 ×100 量级，可直接比较。</li>
-        </ul>
-
-        <div class="caliber-note">⚠️ 常见误读：把某一天的「已报预估赔付率」直接当月累计值，会严重虚高（如河南某单日 789%，当月累计实际 55.9%）。预估口径每天会随案件进展变化，复核时以 BI 当日最新导出为准。</div>
-      </div>
     </div>
 
     <!-- 章节手风琴 -->
@@ -967,6 +917,6 @@ function capturePage(){
   });
 }
 </script>
-<script src="../_libs/html2canvas-1.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </body>
 </html>

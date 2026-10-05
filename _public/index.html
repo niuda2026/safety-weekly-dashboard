@@ -7,13 +7,10 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>安全权益履约周报看板</title>
-    <script src="https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <!-- 云服务 SDK（@dev 通道，仅发布域名启用云端功能） -->
-    <script src="https://cdn.jsdelivr.net/npm/@tencent-ai/workbuddy-cloud-sdk@dev/lib/index.global.js"></script>
-    <script src="cloud_config.js"></script>
-    <script src="cloud_integration.js"></script>
+    <!-- 本地库优先（8421 /_libs/ 直供，毫秒级）；公网静态托管无此路径时自动回退 CDN -->
+    <script src="/_libs/xlsx-0.18.5.full.min.js" onerror="var s=document.createElement('script');s.src='https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js';document.head.appendChild(s)"></script>
+    <script src="/_libs/html2canvas-1.4.1.min.js" onerror="var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';document.head.appendChild(s)"></script>
+    <script src="/_libs/chart.umd-4.4.7.min.js" onerror="var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js';document.head.appendChild(s)"></script>
     <style>
         :root {
             --bg: #f0f4f8; --card-bg: #ffffff; --card-border: #e2e8f0;
@@ -199,6 +196,10 @@
         .attention-region-card .attention-city-sites.clothing-city-sites .attention-site-row { width: fit-content; min-width: 0; flex: 1 1 calc(33.333% - 14px); max-width: calc(33.333% - 14px); box-sizing: border-box; }
         .attention-region-card .attention-site-row.clothing-site-row .attention-site-name { flex: 0 1 auto; min-width: 0; word-break: break-all; white-space: normal; line-height: 1.35; }
         .attention-region-card .attention-site-row.clothing-site-row .attention-site-detail { flex-basis: 100%; flex-shrink: 1; word-break: break-all; white-space: normal; line-height: 1.35; margin-top: 2px; }
+        .attention-region-card .attention-site-row.clothing-site-row .clothing-score-badge { margin-left: auto; flex-shrink: 0; align-self: center; font-size: 0.72rem; font-weight: 700; padding: 2px 10px; border-radius: 10px; white-space: nowrap; }
+        .clothing-score-badge.neg { color: #c62828; background: #fdecea; border: 1px solid #f3c1bd; }
+        .clothing-score-badge.zero { color: #2e7d32; background: #e8f5e9; border: 1px solid #a5d6a7; }
+        .clothing-score-badge.na { color: #94a3b8; background: #f1f5f9; border: 1px solid #e2e8f0; }
 
         /* Compliance Fine Attention - Card Layout */
         .fine-area-group { background: #f8fafc; border-radius: 8px; padding: 12px 14px; margin-bottom: 10px; border: 1px solid #e2e8f0; }
@@ -260,6 +261,62 @@
         #accidentTable .city-row .sticky-col { background: #e8f0fe; }
         #accidentTable tbody tr:hover .sticky-col { background: #f8fafc; }
         #accidentTable .city-row:hover .sticky-col { background: #dde7f8; }
+        /* 安全事故明细表：表格 + 表头全边框（2026-09-27 用户要求，对齐履约板边框观感） */
+        #accidentTable th { border: 1px solid #8FB8DA; }
+        #accidentTable td { border: 1px solid #e3edf7; }
+        /* ===== 安全事故层级表（对齐履约达成处罚-周度样式，2026-09-27） ===== */
+        #accidentTable .sticky-col.col-3 { z-index: 7; border-right: 2px solid var(--card-border); box-shadow: 2px 0 4px rgba(0,0,0,0.06); }
+        #accidentTable thead .sticky-col.col-3 { z-index: 17; }
+        #accidentTable td, #accidentTable th { white-space: nowrap; }
+        .acc-orders-meta { font-size: 12px; color: #64748b; margin-right: auto; }
+        .acc-sub-tab-bar { display: flex; align-items: center; gap: 8px; padding: 8px 16px; background: #EAF2F9; border-bottom: 1px solid #8FB8DA; flex-wrap: wrap; }
+        .acc-sub-label { font-size: 12px; color: #1a2e45; font-weight: 600; }
+        .acc-lv { padding: 4px 12px; border-radius: 4px; border: 1px solid #0B4F8A; background: #0B4F8A; color: #fff; font-size: 12px; cursor: pointer; font-weight: 500; }
+        .acc-lv.active { background: #fff; color: #0B4F8A; }
+        .acc-lv-reset { padding: 4px 10px; border-radius: 4px; border: 1px solid #94a3b8; background: #fff; color: #475569; font-size: 12px; cursor: pointer; }
+        .acc-sep { width: 1px; height: 18px; background: #c7d7e6; }
+        .acc-edit-hint { font-size: 11px; color: #64748b; margin-left: auto; }
+        .acc-filter-bar { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding: 10px 16px; background: #F2F7FB; border-bottom: 1px solid #8FB8DA; }
+        .acc-filter-bar label { font-size: 12px; color: #1a2e45; font-weight: 600; }
+        .acc-filter-bar .acc-clear-btn { margin-left: 4px; }
+        .acc-filter-bar .acc-dt-search { width: 230px; padding: 6px 10px; border: 1px solid #c5d5e5; border-radius: 6px; font-size: 12.5px; background: #fff; }
+        .acc-filter-bar .acc-dt-search:focus { outline: none; border-color: #2e7dc4; box-shadow: 0 0 0 2px rgba(46,125,196,.12); }
+        .ms-wrap { position: relative; display: inline-block; vertical-align: top; }
+        .ms-btn { display: flex; align-items: center; justify-content: space-between; min-width: 90px; max-width: 160px; padding: 5px 8px; background: #fff; border: 1px solid #8FB8DA; border-radius: 4px; font-size: 12px; color: #1a2e45; cursor: pointer; user-select: none; gap: 4px; }
+        .ms-arrow { font-size: 9px; color: #5a7a99; transition: transform .15s; }
+        .ms-wrap.open .ms-arrow { transform: rotate(180deg); }
+        .ms-drop { display: none; position: absolute; top: calc(100% + 2px); left: 0; min-width: 120px; max-width: 220px; max-height: 220px; overflow-y: auto; background: #fff; border: 1px solid #8FB8DA; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,.12); z-index: 9999; padding: 4px 0; }
+        .ms-wrap.open .ms-drop { display: block; }
+        .ms-item { display: flex; align-items: center; gap: 6px; padding: 5px 10px; font-size: 12px; color: #1a2e45; cursor: pointer; white-space: nowrap; }
+        .ms-item:hover { background: #EAF2F9; }
+        .ms-item input[type=checkbox] { margin: 0; cursor: pointer; accent-color: #0B4F8A; }
+        .ms-item.checked { background: #e8f5e9; font-weight: 600; }
+        #accidentTable tr.acc-total td { background: #dbeafe !important; font-weight: 700; color: #0A3D6B; border-bottom: 2px solid #8FB8DA; }
+        #accidentTable tr.acc-area td { background: #F0F6FC !important; font-weight: 700; color: #0B4F8A; }
+        #accidentTable tr.acc-city td { background: #F2F7FB !important; font-weight: 500; color: #1E88E5; font-style: italic; }
+        #accidentTable tr.acc-site:nth-child(even) td { background: #f8fafc; }
+        #accidentTable tr.acc-site:hover td { background: #f0f7ff; }
+        #accidentTable tr.acc-new td.name-cell::after { content: '新'; display: inline-block; margin-left: 4px; font-size: 9px; background: #f59e0b; color: #fff; border-radius: 3px; padding: 0 4px; vertical-align: middle; }
+        .acc-edit-cell { cursor: pointer; }
+        .acc-edit-cell:hover { outline: 1px dashed #0B4F8A; background: #fffbe6 !important; }
+        .acc-edit-cell .acc-pencil { font-size: 9px; opacity: .35; margin-left: 2px; }
+        .acc-cell-input { width: 68px; border: 1px solid #0B4F8A; border-radius: 3px; padding: 1px 4px; font-size: 12px; text-align: right; outline: none; }
+        .cft { display: inline-block; margin-left: 4px; font-size: 9px; color: #5a7a99; opacity: .55; cursor: pointer; vertical-align: middle; line-height: 1; user-select: none; }
+        .cft.on { color: #e11d48; opacity: 1; font-weight: 700; }
+        .acc-col-dd { position: fixed; z-index: 99999; background: #fff; border: 1px solid #d4dde6; border-radius: 10px; box-shadow: 0 10px 32px rgba(15,40,80,.22); min-width: 230px; max-width: 300px; font-size: 12px; color: #333; overflow: hidden; }
+        .acc-col-dd .pdd-title { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: #F2F7FB; font-weight: 700; color: #0A3D6B; }
+        .acc-col-dd .pdd-close { cursor: pointer; font-size: 16px; line-height: 1; color: #64748b; }
+        .acc-col-dd .pdd-search { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-bottom: 1px solid #eef2f6; }
+        .acc-col-dd .pdd-search input { flex: 1; border: 1px solid #cbd5e1; border-radius: 4px; padding: 3px 6px; font-size: 12px; }
+        .acc-col-dd .pdd-bar { display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; background: #fafcfe; }
+        .acc-col-dd .pdd-all { color: #0B4F8A; cursor: pointer; font-weight: 600; }
+        .acc-col-dd .pdd-count { color: #64748b; font-size: 11px; }
+        .acc-col-dd .pdd-list { max-height: 240px; overflow-y: auto; padding: 4px 0; }
+        .acc-col-dd .pdd-list label { display: flex; align-items: center; gap: 6px; padding: 5px 12px; cursor: pointer; white-space: nowrap; }
+        .acc-col-dd .pdd-list label:hover { background: #EAF2F9; }
+        .acc-col-dd .pdd-num { margin-left: auto; color: #94a3b8; font-size: 11px; }
+        .acc-col-dd .pdd-foot { padding: 6px 12px; color: #94a3b8; font-size: 11px; border-top: 1px solid #eef2f6; }
+        .acc-col-dd .pdd-empty { padding: 14px; text-align: center; color: #94a3b8; }
         .data-table th .col-filter-wrap { position: relative; display: inline-block; margin-left: 4px; }
         .data-table th .col-filter-btn { background: none; border: 1px solid transparent; border-radius: 3px; cursor: pointer; font-size: 0.7rem; color: var(--text-lighter); padding: 1px 4px; transition: all 0.15s; }
         .data-table th .col-filter-btn:hover { background: #e2e8f0; color: var(--text); }
@@ -375,9 +432,6 @@
                 <button class="zoom-btn" onclick="zoomIn()" title="放大">+</button>
                 <button class="zoom-btn" onclick="zoomReset()" title="重置" style="font-size:0.7rem;">1:1</button>
             </div>
-            <button class="upload-btn" style="background:#7c3aed;margin-left:4px;" onclick="cloudAnalyze()">🤖 AI解读</button>
-            <button class="upload-btn" style="background:#2563eb;margin-left:4px;" id="cloudLoginBtn" onclick="openLoginModal()">登录云端</button>
-            <span id="cloudUserBadge" style="margin-left:6px;font-size:0.8rem;color:#2563eb;display:none;"></span>
             <button class="screenshot-btn" id="screenshotBtn" onclick="takeScreenshot()">截图</button>
             <label class="upload-btn" for="excelFile">上传Excel数据</label>
             <input type="file" id="excelFile" accept=".xlsx,.xls">
@@ -420,8 +474,8 @@
             </div>
         </div>
         <div id="safetyAttention"></div>
-        <div class="data-info" id="safetyInfo">加载中...</div>
-        <div class="table-wrap"><table class="data-table" id="safetyTable"><thead><tr id="safetyTableHeader">
+        <div class="data-info" id="safetyInfo" style="display:none">加载中...</div>
+        <div class="table-wrap" style="display:none"><table class="data-table" id="safetyTable"><thead><tr id="safetyTableHeader">
             <th>大区</th><th>分区</th><th>城市</th><th>站点</th>
             <th>权益得分</th>
             <th>戴盔系带率<span class="target">≥97%</span></th>
@@ -433,6 +487,7 @@
             <th>第1周</th><th>第2周</th><th>第3周</th><th>第4周</th><th>第5周</th>
             <th class="day-header-speed">6/10</th><th class="day-header-speed">6/11</th><th class="day-header-speed">6/12</th><th class="day-header-speed">6/13</th><th class="day-header-speed">6/14</th><th class="day-header-speed">6/15</th><th class="day-header-speed">6/16</th>
         </tr></thead><tbody></tbody></table></div>
+        <div class="table-wrap"><iframe id="equityFrame" src="/equity-board/index.html" style="width:100%;height:78vh;border:0"></iframe></div>
     </div>
 
     <!-- Rating -->
@@ -449,8 +504,8 @@
             </div>
         </div>
         <div id="ratingAttention"></div>
-        <div class="data-info" id="ratingInfo">加载中...</div>
-        <div class="table-wrap"><table class="data-table" id="ratingTable"><thead><tr id="ratingTableHeader">
+        <div class="data-info" id="ratingInfo" style="display:none">加载中...</div>
+        <div class="table-wrap" style="display:none"><table class="data-table" id="ratingTable"><thead><tr id="ratingTableHeader">
             <th>大区</th><th>分区</th><th>城市</th><th>站点</th>
             <th>闯红灯率<span class="target">≤23%</span></th><th>得分</th>
             <th>第1周</th><th>第2周</th><th>第3周</th><th>第4周</th><th>第5周</th>
@@ -460,6 +515,8 @@
             <th class="day-header-reverse">6/10</th><th class="day-header-reverse">6/11</th><th class="day-header-reverse">6/12</th><th class="day-header-reverse">6/13</th><th class="day-header-reverse">6/14</th><th class="day-header-reverse">6/15</th><th class="day-header-reverse">6/16</th>
             <th>工装检核率<span class="target">≥80%</span></th><th>美团工服率<span class="target">≥92%</span></th><th>美团工服率扣分</th>
         </tr></thead><tbody></tbody></table></div>
+        <!-- 嵌入交通安全分组「站长安全评级看板」站维度明细表（只读透出，数据随源自动同步） -->
+        <div class="table-wrap"><iframe id="ratingFrame" src="/equity-board/rating.html" style="width:100%;height:82vh;border:0"></iframe></div>
     </div>
 
     <!-- Compliance -->
@@ -477,7 +534,8 @@
         <div id="complianceTotal"></div>
         <div id="complianceAttention"></div>
         <div class="data-info" id="complianceInfo">加载中...</div>
-        <div class="table-wrap"><table class="data-table" id="complianceTable"><thead><tr>
+        <!-- 原自带明细表隐藏（数据仍驱动 KPI 卡片/重点关注/导出）；明细表改嵌履约项目看板「履约达成处罚-周度」原样子面板 -->
+        <div class="table-wrap" style="display:none"><table class="data-table" id="complianceTable"><thead><tr>
             <th class="sticky-col col-0">大区</th><th class="sticky-col col-1">分区</th><th class="sticky-col col-2 name-cell">区域</th>
             <th class="sticky-col col-3">甲方预计总罚款</th>
             <th>早会驳回数</th><th>早会罚款</th>
@@ -489,32 +547,46 @@
             <th>装备合规率</th>
             <th>健康证处罚金额</th>
         </tr></thead><tbody></tbody></table></div>
+        <!-- 嵌入履约项目看板「履约达成处罚-周度」原样明细表（只读透出，数据随源自动同步；切到本 Tab 才懒加载） -->
+        <div class="table-wrap"><iframe id="framePenalty" data-src="/penalty-board/" src="about:blank" style="width:100%;height:82vh;border:0"></iframe></div>
     </div>
 
-    <!-- Accident -->
+    <!-- Accident（2026-09-27 改版：对齐履约达成处罚-周度的组织层级表样式与筛选） -->
     <div id="panel-accident" class="tab-panel">
         <div class="panel-header">
             <div class="panel-title">安全事故看板</div>
             <div class="controls">
                 <input type="text" id="accidentSearch" class="search-box" placeholder="搜索...">
                 <select id="accidentRegion" class="select-box"><option value="">全部大区</option></select>
-                <select id="accidentZone" class="select-box"><option value="">全部分区</option></select>
-                <select id="accidentArea" class="select-box"><option value="">全部区域</option></select>
+                <select id="accidentZone" class="select-box"><option value="">全部区域</option></select>
+                <select id="accidentCity" class="select-box"><option value="">全部城市</option></select>
+                <select id="accidentStation" class="select-box"><option value="">全部站点</option></select>
                 <button class="btn-clear-filter" onclick="clearFilter('accident')">清除筛选</button>
             </div>
         </div>
         <div id="accidentSummaryCards"></div>
         <div class="data-info" id="accidentInfo">加载中...</div>
-        <div class="table-wrap"><table class="data-table" id="accidentTable"><thead><tr>
-            <th class="sticky-col col-0">大区</th><th class="sticky-col col-1">分区</th><th class="sticky-col col-2 name-cell">区域</th>
-            <th>上报保险数</th><th>小额事故数</th>
-            <th>公司承担</th><th>骑手承担</th>
-            <th>工单迟报数</th><th>迟报罚款</th>
-            <th>保险超时数</th><th>超时罚款</th>
-            <th>上周完成单量</th>
-            <th>百万单事故数<span class="target">≤5</span></th>
-            <th>小额赔付单均</th>
-        </tr></thead><tbody></tbody></table></div>
+        <div class="acc-sub-tab-bar">
+            <span class="acc-sub-label">显示层级：</span>
+            <button class="acc-lv active" id="acc-lv-subregion" onclick="accToggleView('subregion')">区域行</button>
+            <button class="acc-lv active" id="acc-lv-merchant" onclick="accToggleView('merchant')">城市行</button>
+            <button class="acc-lv active" id="acc-lv-site" onclick="accToggleView('site')">站点行</button>
+            <span class="acc-sep"></span>
+            <button class="acc-lv-reset" onclick="accResetView()">全部显示</button>
+            <span class="acc-edit-hint">✏️ 上报保险数 / 小额事故数 / 公司承担 / 骑手承担 / 工单迟报数 / 保险超时数 可直接点击单元格填写（Enter 保存 · Esc 取消，自动持久化）</span>
+        </div>
+        <div class="acc-filter-bar" id="accFilterBar">
+            <label>大区</label><div class="ms-wrap" id="ms-acc-region"><div class="ms-btn" onclick="accToggleMs('region')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
+            <label>区域</label><div class="ms-wrap" id="ms-acc-subregion"><div class="ms-btn" onclick="accToggleMs('subregion')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
+            <label>城市</label><div class="ms-wrap" id="ms-acc-city"><div class="ms-btn" onclick="accToggleMs('city')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
+            <label>站点</label><div class="ms-wrap" id="ms-acc-site"><div class="ms-btn" onclick="accToggleMs('site')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
+            <input type="text" id="accDtSearch" class="acc-dt-search" placeholder="🔍 搜索大区/区域/城市/站点" oninput="accDtSearchInput(this.value)">
+            <button class="btn-clear-filter acc-clear-btn" onclick="accClearAll()">清除筛选</button>
+            <button class="btn-clear-filter acc-clear-btn" style="background:#fff3f0;border-color:#ff7875;color:#d4380d;font-weight:600" onclick="accWipeManual()" title="清空明细表全部手填的事故数/金额（自动备份后清空），用于新一周填写">🧹 清空事故数/金额</button>
+        </div>
+        <div class="table-wrap"><table class="data-table" id="accidentTable">
+            <thead id="accThead"></thead><tbody id="accTbody"></tbody>
+        </table></div>
     </div>
 
     <!-- 保险赔付补贴监控（复刻自履约安全工作台） -->
@@ -1182,7 +1254,7 @@ function renderSafetyScoreAttention(data) {
                 city: (r.城市 || '').trim(),
                 region: (r.大区 || '').trim(),
                 zone: (r.分区 || '').trim(),
-                value: (isNaN(hScore) ? 0 : hScore).toFixed(2),
+                value: (isNaN(hScore) ? 0 : Math.round(hScore * 100) / 100).toFixed(2),
                 rate: hRate,
                 weeklyData: r.戴盔周 || []
             });
@@ -1193,7 +1265,7 @@ function renderSafetyScoreAttention(data) {
                 city: (r.城市 || '').trim(),
                 region: (r.大区 || '').trim(),
                 zone: (r.分区 || '').trim(),
-                value: (isNaN(sScore) ? 0 : sScore).toFixed(2),
+                value: (isNaN(sScore) ? 0 : Math.round(sScore * 100) / 100).toFixed(2),
                 rate: sRate,
                 weeklyData: r.超速周 || []
             });
@@ -1209,7 +1281,7 @@ function renderSafetyScoreAttention(data) {
     }
 
     // 大区统计（基于全量数据，不受筛选影响）：平均戴盔系带率/平均超速率 + 对应扣分站点数
-    const allSiteRows = (store.safety || []).filter(r => {
+    const allSiteRows = getSafetyAttentionRows().filter(r => {
         const city = (r.城市 || '').trim();
         const station = (r.站点 || '').trim();
         return station && !(city && station && city === station);
@@ -1293,9 +1365,316 @@ function renderSafetyScoreAttention(data) {
     html += '</div>';
     el.innerHTML = html;
 
-    // 渲染周维度折线图
-    renderSiteCharts('safetyAttention', 0, helmetWarnings, '戴盔系带率', 0.97, '%');
-    renderSiteCharts('safetyAttention', 1, speedWarnings, '灯路口超速率', 0.04, '%');
+    // 渲染周维度折线图（懒渲染：激活tab立即分批画，非激活tab切过去再画）
+    queueSiteCharts('safetyAttention', 0, helmetWarnings, '戴盔系带率', 0.97, '%');
+    queueSiteCharts('safetyAttention', 1, speedWarnings, '灯路口超速率', 0.04, '%');
+}
+
+// ===== 安全权益「重点关注」数据源切换（2026-09-26）=====
+// 优先取交通安全安全权益看板站维度明细(TAB1_ROWS)，随源 data.js 自动更新；
+// 未加载时回退原 store.safety(safety_rights.json)，保证任何时刻都有数据。
+// 周维度折线图：由 dayNumDen 日分子/分母按「本月第几周」(周一起始，1日~首个周日为第1周)分组，
+// 每周 Σnum/Σden —— 绝不对日率求均值（口径红线）。
+function weekOfMonth(dateStr) {
+    // dateStr 形如 "09-08"（MM-DD），基于当前年份计算星期
+    var parts = String(dateStr).split('-');
+    var m = parseInt(parts[0], 10), d = parseInt(parts[1], 10);
+    if (isNaN(m) || isNaN(d)) return null;
+    var now = new Date();
+    var dow1 = new Date(now.getFullYear(), m - 1, 1).getDay(); // 1日是周几（Sun=0）
+    var firstSunday = 1 + ((7 - dow1) % 7);                    // 第1周的最后一个周日
+    return d <= firstSunday ? 1 : Math.ceil((d - firstSunday) / 7) + 1;
+}
+function aggregateWeekly(dayNumDen) {
+    var weeks = {};
+    Object.keys(dayNumDen || {}).forEach(function (k) {
+        var w = weekOfMonth(k);
+        var nd = dayNumDen[k];
+        if (!w || !nd || nd.length < 2) return;
+        var num = parseFloat(nd[0]), den = parseFloat(nd[1]);
+        if (isNaN(num) || isNaN(den) || den <= 0) return;
+        if (!weeks[w]) weeks[w] = { num: 0, den: 0 };
+        weeks[w].num += num;
+        weeks[w].den += den;
+    });
+    var keys = Object.keys(weeks).sort(function (a, b) { return Number(a) - Number(b); });
+    var CN = ['第一周', '第二周', '第三周', '第四周', '第五周'];
+    return {
+        labels: keys.map(function (k) { return CN[Number(k) - 1] || ('第' + k + '周'); }),
+        values: keys.map(function (k) { return weeks[k].den > 0 ? weeks[k].num / weeks[k].den : null; })
+    };
+}
+// 与交通安全「安全权益看板」明细表同口径的得分公式（入参为百分数，如 96.97 表示 96.97%）
+// scoreHelmet: r>=0.97→0；r>0.95→(r-0.95)*25-0.5；否则 -0.5（与旧 calcHelmetScore 的 (r-0.92)*10-0.5 不同！）
+function scoreHelmetEquity(ratePct) {
+    if (ratePct === null || ratePct === undefined || isNaN(ratePct)) return null;
+    var r = ratePct / 100;
+    if (r >= 0.97) return 0;
+    if (r > 0.95) return (r - 0.95) * 25 - 0.5;
+    return -0.5;
+}
+function scoreSpeedEquity(ratePct) {
+    if (ratePct === null || ratePct === undefined || isNaN(ratePct)) return null;
+    var r = ratePct / 100;
+    if (r <= 0.04) return 0;
+    if (r < 0.05) return (r - 0.04) * (-20);
+    if (r === 0.05) return -0.2;
+    if (r < 0.075) return (r - 0.05) * (-32) - 0.2;
+    return -1;
+}
+function getSafetyAttentionRows() {
+    if (window.TAB1_ROWS && Array.isArray(window.TAB1_ROWS)) {
+        return window.TAB1_ROWS
+            .filter(function (r) { return r.level === 'site'; })
+            .map(function (r) {
+                return {
+                    站点: r.name,
+                    城市: r.city,
+                    大区: r.region,
+                    分区: r.subregion,
+                    戴盔系带率: r.helmet_rate / 100,
+                    超速率: r.speed_rate / 100,
+                    戴盔得分: scoreHelmetEquity(r.helmet_rate),
+                    超速得分: scoreSpeedEquity(r.speed_rate),
+                    戴盔周: aggregateWeekly(r.helmet_dayNumDen),
+                    超速周: aggregateWeekly(r.speed_dayNumDen)
+                };
+            });
+    }
+    return (window.store && window.store.safety) || [];
+}
+
+// 动态加载站维度数据（带时间戳 + no-store，确保拿到最新 slim 版）
+function loadEquityDataScript() {
+    return new Promise(function (resolve, reject) {
+        var s = document.createElement('script');
+        s.src = '/equity-board/data.js?t=' + Date.now();
+        s.onload = function () { try { s.remove(); } catch (e) {} resolve(); };
+        s.onerror = function () { try { s.remove(); } catch (e) {} reject(); };
+        document.head.appendChild(s);
+    });
+}
+
+// 刷新安全权益「重点关注」模块（取值成功后自动更新）
+function refreshSafetyAttention() {
+    return loadEquityDataScript()
+        .then(function () { applySafetyTabFilter(); })
+        .catch(function () { applySafetyTabFilter(); });
+}
+
+// ===== 安全权益tab筛选栏（2026-09-26）：联动「重点关注」模块 + iframe明细表 =====
+function getSafetyFilterValues() {
+    const g = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+    return {
+        search: g('safetySearch').toLowerCase(),
+        region: g('safetyRegion'),
+        zone: g('safetyZone'),
+        city: g('safetyCity'),
+        station: g('safetyStation')
+    };
+}
+// 筛选「重点关注」模块数据 + 同步到 iframe 明细表
+function applySafetyTabFilter() {
+    populateSafetyCascade();
+    const f = getSafetyFilterValues();
+    let rows = getSafetyAttentionRows();
+    if (f.region) rows = rows.filter(r => (r.大区 || '') === f.region);
+    if (f.zone) rows = rows.filter(r => (r.分区 || '') === f.zone);
+    if (f.city) rows = rows.filter(r => (r.城市 || '') === f.city);
+    if (f.station) rows = rows.filter(r => (r.站点 || '') === f.station);
+    if (f.search) rows = rows.filter(r =>
+        [r.大区, r.分区, r.城市, r.站点].filter(Boolean).join(' ').toLowerCase().includes(f.search));
+    renderSafetyScoreAttention(rows);
+    pushSafetyFilterToFrame(f);
+}
+// 把筛选条件写进同源 iframe（安全权益看板）的 sfState.equity 并触发它的筛选
+function pushSafetyFilterToFrame(f) {
+    const frame = document.getElementById('equityFrame');
+    const w = frame && frame.contentWindow;
+    if (!w || !w.sfState || !w.sfState.equity || typeof w.applyFilter !== 'function') return;
+    let site = f.station ? [f.station] : [];
+    let city = f.city ? [f.city] : [];
+    // 搜索框：优先匹配站点名；无匹配时回退匹配城市名（明细表本身无搜索框，映射到多选条件）
+    if (f.search && !site.length) {
+        const siteRows = (w.METRIC_CFG && w.METRIC_CFG.equity && w.METRIC_CFG.equity.rows || []).filter(r => r.level === 'site');
+        const matchedSites = [...new Set(siteRows.map(r => r.name).filter(n => n && n.toLowerCase().indexOf(f.search) >= 0))];
+        if (matchedSites.length) { site = matchedSites; }
+        else {
+            const matchedCities = [...new Set(siteRows.map(r => r.city).filter(c => c && c.toLowerCase().indexOf(f.search) >= 0))];
+            if (matchedCities.length && !city.length) city = matchedCities;
+        }
+    }
+    w.sfState.equity = {
+        region: f.region ? [f.region] : [],
+        subregion: f.zone ? [f.zone] : [],
+        city: city,
+        site: site,
+        date: []
+    };
+    try { w.initStationFilters('equity'); } catch (e) { }
+    try { w.applyFilter('equity'); } catch (e) { }
+}
+// 级联下拉选项：从站维度 TAB1_ROWS 填充（大区→分区→城市→站点），保留当前已选值
+function fillSafetySelect(sel, opts, keep, placeholder) {
+    if (!sel) return;
+    sel.innerHTML = '<option value="">' + placeholder + '</option>' +
+        opts.map(o => '<option value="' + o + '"' + (o === keep ? ' selected' : '') + '>' + o + '</option>').join('');
+}
+function populateSafetyCascade() {
+    const rows = getSafetyAttentionRows();
+    const regionEl = document.getElementById('safetyRegion');
+    if (!regionEl) return;
+    const zoneEl = document.getElementById('safetyZone');
+    const cityEl = document.getElementById('safetyCity');
+    const stationEl = document.getElementById('safetyStation');
+    const region = regionEl.value, zone = zoneEl ? zoneEl.value : '', city = cityEl ? cityEl.value : '';
+    const uniq = arr => [...new Set(arr)].filter(Boolean).sort((a, b) => a.localeCompare(b, 'zh'));
+    fillSafetySelect(regionEl, sortRegionOrder([...new Set(rows.map(r => r.大区))].filter(Boolean)), region, '全部大区');
+    let sub = region ? rows.filter(r => r.大区 === region) : rows;
+    fillSafetySelect(zoneEl, uniq(sub.map(r => r.分区)), zone, '全部分区');
+    let ct = zone ? sub.filter(r => r.分区 === zone) : sub;
+    fillSafetySelect(cityEl, uniq(ct.map(r => r.城市)), city, '全部城市');
+    let st = city ? ct.filter(r => r.城市 === city) : ct;
+    fillSafetySelect(stationEl, uniq(st.map(r => r.站点)), stationEl ? stationEl.value : '', '全部站点');
+}
+
+// ===== 站长评级tab筛选栏（2026-09-27）：联动「重点关注」模块 + iframe明细表（数据源 TAB2_ROWS 站维度）=====
+function getRatingAttentionRows() {
+    if (window.TAB2_ROWS && Array.isArray(window.TAB2_ROWS)) {
+        // 美团工服率/工装检核率：来自 slim data.js 的 RATING_CLOTHING_ROWS（护航服装 ESCORT_DATA 站级聚合，口径同源评级看板 buildClothingRows）
+        const clothMap = {};
+        if (window.RATING_CLOTHING_ROWS && Array.isArray(window.RATING_CLOTHING_ROWS)) {
+            window.RATING_CLOTHING_ROWS.forEach(function (c) {
+                if (c && c.level === 'site' && c.name) clothMap[c.name] = c;
+            });
+        }
+        return window.TAB2_ROWS
+            .filter(function (r) { return r.level === 'site'; })
+            .map(function (r) {
+                const c = clothMap[r.name] || null;
+                const row = {
+                    站点: r.name,
+                    城市: r.city,
+                    大区: r.region,
+                    分区: r.subregion,
+                    闯红灯率: r.redlight_rate / 100,
+                    里程逆行率: r.reverse_rate / 100,
+                    闯红灯周: aggregateWeekly(r.redlight_dayNumDen).values,
+                    逆行周: aggregateWeekly(r.reverse_dayNumDen).values
+                };
+                if (c) {
+                    row.工装检核率 = (c.cloth_den > 0 && c.cloth_rate !== null && c.cloth_rate !== undefined) ? c.cloth_rate / 100 : null;
+                    row.美团工服率 = (c.vis_den > 0 && c.vis_rate !== null && c.vis_rate !== undefined) ? c.vis_rate / 100 : null;
+                    row.美团工服周 = (c.vis_dayNumDen && Object.keys(c.vis_dayNumDen).length) ? aggregateWeekly(c.vis_dayNumDen).values : [];
+                }
+                return row;
+            });
+    }
+    return (window.store && window.store.rating) || [];
+}
+function getRatingFilterValues() {
+    const g = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+    return {
+        search: g('ratingSearch').toLowerCase(),
+        region: g('ratingRegion'),
+        zone: g('ratingZone'),
+        city: g('ratingCity'),
+        station: g('ratingStation')
+    };
+}
+function applyRatingTabFilter() {
+    populateRatingCascade();
+    const f = getRatingFilterValues();
+    let rows = getRatingAttentionRows();
+    if (f.region) rows = rows.filter(r => (r.大区 || '') === f.region);
+    if (f.zone) rows = rows.filter(r => (r.分区 || '') === f.zone);
+    if (f.city) rows = rows.filter(r => (r.城市 || '') === f.city);
+    if (f.station) rows = rows.filter(r => (r.站点 || '') === f.station);
+    if (f.search) rows = rows.filter(r =>
+        [r.大区, r.分区, r.城市, r.站点].filter(Boolean).join(' ').toLowerCase().includes(f.search));
+    renderRatingAttention(rows);
+    pushRatingFilterToFrame(f);
+}
+function renderRatingAttention(rows) {
+    const all = getRatingAttentionRows();
+    renderAttention('ratingAttention', rows, [
+        { key: '闯红灯率', target: 0.23, direction: 'lower', label: '闯红灯率', color: 'red' },
+        { key: '里程逆行率', target: 0.03, direction: 'lower', label: '里程逆行率', color: 'yellow' },
+        { key: '美团工服率', target: 0.92, direction: 'higher', label: '美团工服率', color: 'blue' }
+    ], '重点关注（闯红灯率尾部站 | 里程逆行率尾部站 | 美团工服率扣分站）', all);
+}
+// 把筛选条件写进同源 iframe（站长安全评级看板）的 sfState.rating 并触发它的筛选
+// 关键：源看板 onload 末尾有 renderStation('equity')（无 equity-tbody，是失效调用），
+// 真正能让 iframe 显示「闯红灯率/逆行率」明细表的是 applyFilter('rating')。
+// 因此这里必须：(1) 等 iframe 自身脚本就绪；(2) 强制切到 main（闯红灯/逆行）视图；(3) 调 applyFilter('rating')。
+function pushRatingFilterToFrame(f) {
+    const frame = document.getElementById('ratingFrame');
+    const w = frame && frame.contentWindow;
+    if (!w) return;
+    const doPush = function () {
+        try { if (typeof w.switchClothingView === 'function') w.switchClothingView('main'); } catch (e) { }
+        if (!w.sfState || !w.sfState.rating || typeof w.applyFilter !== 'function') return;
+        let site = f.station ? [f.station] : [];
+        let city = f.city ? [f.city] : [];
+        // 搜索框：优先匹配站点名；无匹配时回退匹配城市名（明细表本身无搜索框，映射到多选条件）
+        if (f.search && !site.length) {
+            const siteRows = ((w.METRIC_CFG && w.METRIC_CFG.rating && w.METRIC_CFG.rating.rows) || []).filter(r => r.level === 'site');
+            const matchedSites = [...new Set(siteRows.map(r => r.name).filter(n => n && n.toLowerCase().indexOf(f.search) >= 0))];
+            if (matchedSites.length) { site = matchedSites; }
+            else {
+                const matchedCities = [...new Set(siteRows.map(r => r.city).filter(c => c && c.toLowerCase().indexOf(f.search) >= 0))];
+                if (matchedCities.length && !city.length) city = matchedCities;
+            }
+        }
+        w.sfState.rating = {
+            region: f.region ? [f.region] : [],
+            subregion: f.zone ? [f.zone] : [],
+            city: city,
+            site: site,
+            date: []
+        };
+        try { w.initStationFilters('rating'); } catch (e) { }
+        try { w.applyFilter('rating'); } catch (e) { }
+    };
+    const ready = function () {
+        return !!(w && w.sfState && w.sfState.rating && typeof w.applyFilter === 'function'
+            && w.METRIC_CFG && w.METRIC_CFG.rating && w.METRIC_CFG.rating.rows);
+    };
+    if (ready()) { doPush(); return; }
+    // iframe 尚未完成自身 onload：轮询等待就绪后再推，避免首屏空表
+    if (frame._ratingPushTimer) return;
+    frame._ratingPushTimer = setInterval(function () {
+        if (ready()) {
+            clearInterval(frame._ratingPushTimer); frame._ratingPushTimer = null; doPush();
+        }
+    }, 250);
+    setTimeout(function () {
+        if (frame._ratingPushTimer) { clearInterval(frame._ratingPushTimer); frame._ratingPushTimer = null; }
+    }, 20000);
+}
+// 级联下拉选项：从站维度 TAB2_ROWS 填充（大区→分区→城市→站点），保留当前已选值
+function populateRatingCascade() {
+    const rows = getRatingAttentionRows();
+    const regionEl = document.getElementById('ratingRegion');
+    if (!regionEl) return;
+    const zoneEl = document.getElementById('ratingZone');
+    const cityEl = document.getElementById('ratingCity');
+    const stationEl = document.getElementById('ratingStation');
+    const region = regionEl.value, zone = zoneEl ? zoneEl.value : '', city = cityEl ? cityEl.value : '';
+    const uniq = arr => [...new Set(arr)].filter(Boolean).sort((a, b) => a.localeCompare(b, 'zh'));
+    fillSafetySelect(regionEl, sortRegionOrder([...new Set(rows.map(r => r.大区))].filter(Boolean)), region, '全部大区');
+    let sub = region ? rows.filter(r => r.大区 === region) : rows;
+    fillSafetySelect(zoneEl, uniq(sub.map(r => r.分区)), zone, '全部分区');
+    let ct = zone ? sub.filter(r => r.分区 === zone) : sub;
+    fillSafetySelect(cityEl, uniq(ct.map(r => r.城市)), city, '全部城市');
+    let st = city ? ct.filter(r => r.城市 === city) : ct;
+    fillSafetySelect(stationEl, uniq(st.map(r => r.站点)), stationEl ? stationEl.value : '', '全部站点');
+}
+// 刷新站长评级「重点关注」模块（取值成功后自动更新）
+function refreshRatingAttention() {
+    return loadEquityDataScript()
+        .then(function () { applyRatingTabFilter(); })
+        .catch(function () { applyRatingTabFilter(); });
 }
 
 // 渲染分组站点（安全权益戴盔/超速）- 大区卡片横向排列，站点行带周维度折线图
@@ -1327,7 +1706,7 @@ function renderGroupedSafetySites(grouped, prefix, containerId) {
                 html += '<div class="attention-site-info">';
                 html += '<div class="attention-site-name">' + site.name + '</div>';
                 html += '<div class="attention-site-value ' + cls + '">' + site.value + '分</div>';
-                html += '<div class="attention-site-detail">' + (prefix === 'hl' ? '戴盔系带率:' : '有灯路口超速率:') + pctShort(site.rate) + '</div>';
+                html += '<div class="attention-site-detail">' + (prefix === 'hl' ? '戴盔系带率:' : '有灯路口超速率:') + (function (v) { var n = parseFloat(v); return isNaN(n) ? '-' : (n <= 1 ? (n * 100).toFixed(2) : n.toFixed(2)) + '%'; })(site.rate) + '</div>';
                 html += '</div>';
                 html += '<div class="attention-site-chart"><canvas id="siteChart_' + siteId + '" width="140" height="60"></canvas></div>';
                 html += '</div>';
@@ -1411,39 +1790,34 @@ function renderAttention(containerId, data, metrics, customTitle, allData) {
     // Determine the name key: 站点 for safety/rating, 区域 for compliance/accident
     const nameKey = data[0].站点 !== undefined ? '站点' : (data[0].区域 !== undefined ? '区域' : null);
     // Only look at site-level rows (rows that have a specific name and are not aggregation rows)
+    // 保护站点（集约/蓝海/兼职/瑞晨南郊/当月新接站）不参与考核 → 不进重点关注（口径同源评级看板 isProtectedSite）
     const siteRows = data.filter(r => {
         if (!nameKey) return false;
         const name = r[nameKey];
-        return name && name.trim() !== '' && name.trim() !== (r.城市 || '') && name.trim() !== (r.分区 || '') && name.trim() !== (r.大区 || '');
+        if (!name || name.trim() === '' || name.trim() === (r.城市 || '') || name.trim() === (r.分区 || '') || name.trim() === (r.大区 || '')) return false;
+        return !isProtectedSite(name);
     });
     // 大区卡统计基于全量数据（与安全权益联动逻辑一致：大区卡不受筛选影响，下方明细随筛选联动）
     const statsRows = allData ? allData.filter(r => {
         if (!nameKey) return false;
         const name = r[nameKey];
-        return name && name.trim() !== '' && name.trim() !== (r.城市 || '') && name.trim() !== (r.分区 || '') && name.trim() !== (r.大区 || '');
+        if (!name || name.trim() === '' || name.trim() === (r.城市 || '') || name.trim() === (r.分区 || '') || name.trim() === (r.大区 || '')) return false;
+        return !isProtectedSite(name);
     }) : siteRows;
 
     // 分类收集问题站点
     const redLightWarnings = [];  // 闯红灯率尾部站
     const reverseWarnings = [];   // 逆行尾部站
-    const clothingWarnings = [];  // 服装扣分站
+    const clothingWarnings = [];  // 美团工服率扣分站
 
     for (const m of metrics) {
         const items = siteRows.filter(r => {
             const v = parseFloat(r[m.key]);
             if (isNaN(v)) return false;
-            // 特殊处理服装得分：负数表示扣分
-            if (m.key === '服装得分') {
-                return v < 0;
-            }
             const norm = v > 1 ? v / 100 : v;
             return m.direction === 'higher' ? norm < m.target : norm > m.target;
         }).sort((a, b) => {
             const va = parseFloat(a[m.key]), vb = parseFloat(b[m.key]);
-            // 特殊处理服装得分：按扣分从多到少排序
-            if (m.key === '服装得分') {
-                return va - vb; // 负数越小（扣分越多）排前面
-            }
             const na = va > 1 ? va/100 : va, nb = vb > 1 ? vb/100 : vb;
             return m.direction === 'higher' ? na - nb : nb - na;
         });
@@ -1457,46 +1831,45 @@ function renderAttention(containerId, data, metrics, customTitle, allData) {
             const zone = item.分区 || '';
             
             if (m.key === '闯红灯率') {
-                // 优先使用 station_rating.json 中已修正的周维度字段（r[6]~r[10]，对应 Excel G~K 列）
+                // 周维度数据（数组）：优先用明细表聚合的周累计；无效时回退详情
                 const rw = item.闯红灯周 && item.闯红灯周.some(v => v !== null && v !== undefined && v !== '' && v !== '-')
                     ? item.闯红灯周
                     : getDetailWeeklyRedlight(name);
                 redLightWarnings.push({ name, city, region, zone, value: pct(item[m.key]), weeklyData: rw });
             } else if (m.key === '里程逆行率') {
                 reverseWarnings.push({ name, city, region, zone, value: pct(item[m.key]), weeklyData: item.逆行周 || [] });
-            } else if (m.key === '服装得分') {
-                // 服装扣分站显示工装检核率和美团工服率（转换为百分比）
-                const 工装检核率 = item.工装检核率 !== null && item.工装检核率 !== undefined && item.工装检核率 !== '' 
-                    ? (parseFloat(item.工装检核率) * 100).toFixed(1) + '%' 
-                    : '-';
-                const 美团工服率 = item.美团工服率 !== null && item.美团工服率 !== undefined && item.美团工服率 !== '' 
-                    ? (parseFloat(item.美团工服率) * 100).toFixed(1) + '%' 
-                    : '-';
-                clothingWarnings.push({ 
-                    name, 
-                    city, 
-                    region,
-                    zone,
-                    value: v.toFixed(2),
-                    工装检核率: 工装检核率,
-                    美团工服率: 美团工服率
+            } else if (m.key === '美团工服率') {
+                // 美团工服率扣分站：显示工装检核率和美团工服率（口径：护航服装 ESCORT_DATA 聚合，目标 ≥92%）
+                const cr = item.工装检核率;
+                const mr = item.美团工服率;
+                const fmtRate = v => {
+                    if (v === null || v === undefined || v === '' || v === '-') return '-';
+                    const n = parseFloat(v);
+                    return isNaN(n) ? '-' : (n > 1 ? n : n * 100).toFixed(2) + '%';
+                };
+                // 得分：与源评级看板 scoreVisRule 同口径（工装<80%→-5；工服≥92%→0；>90→-2；>88→-3；>85→-4；否则-5）
+                const _c = (cr === null || cr === undefined || cr === '') ? NaN : parseFloat(cr);
+                const _m = (mr === null || mr === undefined || mr === '') ? NaN : parseFloat(mr);
+                clothingWarnings.push({
+                    name, city, region, zone,
+                    value: fmtRate(mr),
+                    工装检核率: fmtRate(cr),
+                    美团工服率: fmtRate(mr),
+                    得分: scoreVisRule(isNaN(_c) ? null : (_c > 1 ? _c : _c * 100), isNaN(_m) ? null : (_m > 1 ? _m : _m * 100))
                 });
             }
         }
     }
 
     // 如果没有任何问题站点，显示无扣分提示
-    if (!redLightWarnings.length && !reverseWarnings.length && !clothingWarnings.length) { 
-        el.innerHTML = '<div class="attention-box"><h4> ' + (customTitle || '重点关注（未达标站点）') + '</h4><div class="no-warning">✅ 无扣分站点</div></div>'; 
-        return; 
+    if (!redLightWarnings.length && !reverseWarnings.length && !clothingWarnings.length) {
+        el.innerHTML = '<div class="attention-box"><h4> ' + (customTitle || '重点关注（未达标站点）') + '</h4><div class="no-warning">✅ 无扣分站点</div></div>';
+        return;
     }
 
     // 计算统计数据
     const totalWarnings = redLightWarnings.length + reverseWarnings.length + clothingWarnings.length;
     const uniqueSites = new Set([...redLightWarnings, ...reverseWarnings, ...clothingWarnings].map(w => w.name));
-    const avgScore = clothingWarnings.length > 0 
-        ? (clothingWarnings.reduce((sum, w) => sum + parseFloat(w.value), 0) / clothingWarnings.length).toFixed(2)
-        : '0';
 
     const title = customTitle || '重点关注（未达标站点）';
     let html = '<div class="attention-analysis">';
@@ -1578,37 +1951,33 @@ function renderAttention(containerId, data, metrics, customTitle, allData) {
         html += '<div class="no-deduction-tip">✅ 无里程逆行率尾部站</div>';
     }
     html += '</div>';
-    
+
     // Tab 2: 美团工服率扣分站
     html += '<div id="attentionCategory_2_' + containerId + '" class="attention-category-content">';
     if (clothingWarnings.length > 0) {
-        // 按大区聚合美团工服率与扣分站点数（数据基于 station_rating.json：美团工服率=r[37]、服装得分=r[38]；扣分=美团工服率<92% 或 服装得分<0；基于全量数据，不受筛选影响）
-        const regionStats = {};
+        // 5大区扣分站点统计卡（美团工服率<92% 计为扣分；基于全量数据，不受筛选影响）
+        const clRegionCnt = {};
         statsRows.forEach(r => {
-            const region = r.大区 || '';
-            if (!region) return;
-            const uf = parseFloat(r.美团工服率);
-            const score = parseFloat(r.服装得分);
-            const ufValid = !isNaN(uf);
-            const scoreValid = !isNaN(score);
-            if (!ufValid && !scoreValid) return;
-            if (!regionStats[region]) regionStats[region] = { sum: 0, cnt: 0, deduct: 0 };
-            if (ufValid) { regionStats[region].sum += uf; regionStats[region].cnt++; }
-            if ((ufValid && uf < 0.92) || (scoreValid && score < 0)) regionStats[region].deduct++;
+            const v = parseFloat(r['美团工服率']);
+            if (isNaN(v)) return;
+            const norm = v > 1 ? v / 100 : v;
+            if (norm < 0.92) {
+                const region = r.大区 || '';
+                clRegionCnt[region] = (clRegionCnt[region] || 0) + 1;
+            }
         });
         html += '<div class="attention-stats" style="grid-template-columns:repeat(5,1fr);">';
         ['华北一区', '华北二区', '华北三区', '华东大区', '中南大区'].forEach(region => {
-            const s = regionStats[region] || { sum: 0, cnt: 0, deduct: 0 };
+            const cnt = clRegionCnt[region] || 0;
             html += '<div class="attention-stat-card" style="display:flex;align-items:center;justify-content:space-between;text-align:left;padding:10px 12px;">';
             html += '<span style="font-weight:700;color:#1e3a5f;font-size:0.88rem;">' + region + '</span>';
-            html += '<span style="font-size:0.78rem;color:#64748b;">扣分站点 <b style="color:#ef4444;font-size:0.95rem;">' + s.deduct + '</b> 个</span>';
+            html += '<span style="font-size:0.78rem;color:#64748b;">扣分站点 <b style="color:#ef4444;font-size:0.95rem;">' + cnt + '</b> 个</span>';
             html += '</div>';
         });
         html += '</div>';
-        
         // 按大区、城市分组排序站点
         const grouped = groupByRegionCity(clothingWarnings);
-        html += '<div class="attention-category-header"><div class="attention-category-title">美团工服率得分 < 0 的站点（按大区/城市分组）<span class="attention-target-tip">工装检核率目标≥80% | 美团工服率目标≥92%</span></div><div class="attention-category-count">' + clothingWarnings.length + ' 个站点</div></div>';
+        html += '<div class="attention-category-header"><div class="attention-category-title">美团工服率 &lt; 92% 的站点（按大区/城市分组）<span class="attention-target-tip">工装检核率目标≥80% | 美团工服率目标≥92%</span></div><div class="attention-category-count">' + clothingWarnings.length + ' 个站点</div></div>';
         html += '<div class="attention-site-grid">';
         html += renderGroupedClothingSites(grouped);
         html += '</div>';
@@ -1616,13 +1985,13 @@ function renderAttention(containerId, data, metrics, customTitle, allData) {
         html += '<div class="no-deduction-tip">✅ 无美团工服率扣分站</div>';
     }
     html += '</div>';
-    
+
     html += '</div>';
     el.innerHTML = html;
     
-    // 渲染每个站点的周维度小图表
-    renderSiteCharts(containerId, 0, redLightWarnings, '闯红灯率', 23, '%');
-    renderSiteCharts(containerId, 1, reverseWarnings, '里程逆行率', 3, '%');
+    // 渲染每个站点的周维度小图表（懒渲染：激活tab立即分批画，非激活tab切过去再画）
+    queueSiteCharts(containerId, 0, redLightWarnings, '闯红灯率', 23, '%');
+    queueSiteCharts(containerId, 1, reverseWarnings, '里程逆行率', 3, '%');
 }
 
 // 按大区、城市分组
@@ -1636,6 +2005,77 @@ function groupByRegionCity(warnings) {
         grouped[region][city].push(w);
     });
     return grouped;
+}
+
+// 美团工服率得分（口径与源「站长安全评级看板」scoreVisRule 完全一致，入参为百分数）
+// 工装检核率<80% → -5；工服率≥92% → 0；>90 → -2；>88 → -3；>85 → -4；否则 -5
+// 保护规则（与源「站长安全评级看板」逐字同口径）：当月新接站（以系统首单日期为准）、蓝海拓展站、集约站、兼职站及新疆瑞晨【乌鲁木齐】南郊站不参与评价
+// 自动识别：站名以"集约配送"开头=集约站；站名含"蓝海"=蓝海拓展站；站名含"兼职"=兼职站；站名含"瑞晨"且含"南郊"=新疆瑞晨南郊站
+// 名单补充：PROTECTED_SITES 可手动维护无法按站名自动识别的受保护站点（如当月新接站，按首单日期名单填入）
+var PROTECTED_SITES = [];
+function isProtectedSite(siteName) {
+    if (!siteName) return false;
+    if (PROTECTED_SITES.indexOf(siteName) >= 0) return true;
+    if (siteName.indexOf('集约配送') === 0) return true;
+    if (siteName.indexOf('蓝海') >= 0) return true;
+    if (siteName.indexOf('兼职') >= 0) return true;
+    if (siteName.indexOf('瑞晨') >= 0 && siteName.indexOf('南郊') >= 0) return true;
+    return false;
+}
+
+function scoreVisRule(clothRate, visRate) {
+    if (clothRate === null || clothRate === undefined || isNaN(clothRate)) return null;
+    if (visRate === null || visRate === undefined || isNaN(visRate)) return null;
+    if (clothRate < 80) return -5;
+    if (visRate >= 92) return 0;
+    if (visRate > 90) return -2;
+    if (visRate > 88) return -3;
+    if (visRate > 85) return -4;
+    return -5;
+}
+
+// 渲染分组站点（美团工服率扣分站）- 大区卡片横向排列，内部横向流动（无周图表，仅工装/工服两率明细）
+function renderGroupedClothingSites(grouped) {
+    let html = '';
+    // 固定大区排序
+    const regionOrder = ['华北一区', '华北二区', '华北三区', '华东大区', '中南大区'];
+    const allRegions = Object.keys(grouped).sort();
+    const orderedRegions = [...regionOrder.filter(r => grouped[r]), ...allRegions.filter(r => !regionOrder.includes(r))];
+
+    orderedRegions.forEach(region => {
+        const cities = grouped[region];
+        const regionTotal = Object.values(cities).reduce((sum, sites) => sum + sites.length, 0);
+
+        html += '<div class="attention-region-card">';
+        html += '<div class="attention-region-header">' + region + '<span class="attention-region-count">' + regionTotal + '个站点</span></div>';
+        html += '<div class="attention-region-content">';
+
+        Object.keys(cities).sort((a, b) => String(a).localeCompare(String(b), 'zh-Hans-CN')).forEach(city => {
+            const sites = cities[city];
+            html += '<div class="attention-city-block">';
+            html += '<div class="attention-city-title">' + city + ' (' + sites.length + ')</div>';
+            html += '<div class="attention-city-sites clothing-city-sites">';
+            sites.forEach(site => {
+                // 美团工服率越低扣分越多：<80% 标红
+                const vNum = parseFloat(site.value);
+                const isDanger = !isNaN(vNum) && vNum < 80;
+                const cls = isDanger ? 'red' : 'orange';
+                html += '<div class="attention-site-row clothing-site-row" onclick="filterTableBySite(\'' + site.name.replace(/'/g, "\\'") + '\')">';
+                html += '<div class="attention-site-name">' + site.name + '</div>';
+                html += '<div class="attention-site-value ' + cls + '">' + site.value + '</div>';
+                // 得分徽标（同源评级看板评分口径：负分红、0分绿）
+                const _sc = (site.得分 === null || site.得分 === undefined || isNaN(site.得分)) ? null : site.得分;
+                html += '<div class="clothing-score-badge ' + (_sc === null ? 'na' : (_sc < 0 ? 'neg' : 'zero')) + '" title="评分规则：工装检核率<80%记-5分；工服率≥92%记0分，90%~92%记-2分，88%~90%记-3分，85%~88%记-4分，<85%记-5分">' + (_sc === null ? '-' : (_sc > 0 ? '+' : '') + _sc.toFixed(2) + '分') + '</div>';
+                html += '<div class="attention-site-detail">工装检核率:' + site.工装检核率 + ' 美团工服率:' + site.美团工服率 + '</div>';
+                html += '</div>';
+            });
+            html += '</div></div>';
+        });
+
+        html += '</div></div>';
+    });
+
+    return html;
 }
 
 // 渲染分组站点（闯红灯率/里程逆行率）- 大区卡片横向排列，内部横向流动
@@ -1681,7 +2121,7 @@ function renderGroupedSitesWithChart(grouped, colorClass, metricName, target, un
                     let _pct = '-';
                     if (_last !== null) {
                         const _v = parseFloat(_last);
-                        if (!isNaN(_v)) _pct = (_v > 1 ? _v : _v * 100).toFixed(1) + '%';
+                        if (!isNaN(_v)) _pct = (_v > 1 ? _v : _v * 100).toFixed(2) + '%';
                     }
                     html += '<div class="attention-site-weekly">上周达成率：' + _pct + '</div>';
                 }
@@ -1698,51 +2138,11 @@ function renderGroupedSitesWithChart(grouped, colorClass, metricName, target, un
     return html;
 }
 
-// 渲染分组站点（服装扣分）- 大区卡片横向排列
-function renderGroupedClothingSites(grouped) {
-    let html = '';
-    // 固定大区排序
-    const regionOrder = ['华北一区', '华北二区', '华北三区', '华东大区', '中南大区'];
-    const allRegions = Object.keys(grouped).sort();
-    const orderedRegions = [...regionOrder.filter(r => grouped[r]), ...allRegions.filter(r => !regionOrder.includes(r))];
-    
-    let siteIndex = 0;
-    orderedRegions.forEach(region => {
-        const cities = grouped[region];
-        const regionTotal = Object.values(cities).reduce((sum, sites) => sum + sites.length, 0);
-        
-        html += '<div class="attention-region-card">';
-        html += '<div class="attention-region-header">' + region + '<span class="attention-region-count">' + regionTotal + '个站点</span></div>';
-        html += '<div class="attention-region-content">';
-        
-        Object.keys(cities).sort().forEach(city => {
-            const sites = cities[city];
-            html += '<div class="attention-city-block">';
-            html += '<div class="attention-city-title">' + city + ' (' + sites.length + ')</div>';
-            html += '<div class="attention-city-sites clothing-city-sites">';
-            sites.forEach(site => {
-                const isDanger = parseFloat(site.value) < -3;
-                const cls = isDanger ? 'red' : 'orange';
-                html += '<div class="attention-site-row clothing-site-row" onclick="filterTableBySite(\'' + site.name.replace(/'/g, "\\'") + '\')">';
-                html += '<div class="attention-site-name">' + site.name + '</div>';
-                html += '<div class="attention-site-value ' + cls + '">' + site.value + '分</div>';
-                html += '<div class="attention-site-detail">工装检核率:' + site.工装检核率 + ' 美团工服率:' + site.美团工服率 + '</div>';
-                html += '</div>';
-            });
-            html += '</div></div>';
-        });
-        
-        html += '</div></div>';
-    });
-    
-    return html;
-}
-
 // 渲染每个站点的周维度小图表
-function renderSiteCharts(containerId, tabIndex, warnings, metricName, target, unit) {
+// chunkFrom/chunkTo（可选）：只渲染 sorted 数组的 [chunkFrom, chunkTo) 区间，供分批渲染用（canvas 编号与全量一致）
+function renderSiteCharts(containerId, tabIndex, warnings, metricName, target, unit, chunkFrom, chunkTo) {
     const weekLabels = ['第一周', '第二周', '第三周', '第四周', '第五周'];
-    let chartIndex = 0;
-    
+
     // 按大区→城市排序，与renderGroupedSitesWithChart中的顺序一致（固定大区序 + 中文城市名拼音序）
     const regionOrder = ['华北一区', '华北二区', '华北三区', '华东大区', '中南大区'];
     const sorted = [...warnings].sort((a, b) => {
@@ -1753,12 +2153,14 @@ function renderSiteCharts(containerId, tabIndex, warnings, metricName, target, u
         if (ia !== ib) return ia - ib;
         return String(a.city || '').localeCompare(String(b.city || ''), 'zh-Hans-CN');
     });
-    
-    sorted.forEach(w => {
-        const canvasId = 'siteChart_' + containerId + '_' + (metricName === '闯红灯率' ? 'rl' : metricName === '里程逆行率' ? 'rv' : metricName === '戴盔系带率' ? 'hl' : metricName === '灯路口超速率' ? 'sp' : 'rv') + '_' + chartIndex;
+    const startI = (typeof chunkFrom === 'number') ? chunkFrom : 0;
+    const endI = (typeof chunkTo === 'number') ? Math.min(chunkTo, sorted.length) : sorted.length;
+
+    for (let ci = startI; ci < endI; ci++) {
+        const w = sorted[ci];
+        const canvasId = 'siteChart_' + containerId + '_' + (metricName === '闯红灯率' ? 'rl' : metricName === '里程逆行率' ? 'rv' : metricName === '戴盔系带率' ? 'hl' : metricName === '灯路口超速率' ? 'sp' : 'rv') + '_' + ci;
         const canvas = document.getElementById(canvasId);
-        chartIndex++;
-        if (!canvas) return;
+        if (!canvas) continue;
         
         // 销毁旧图表实例
         const existingChart = Chart.getChart(canvas);
@@ -1805,7 +2207,7 @@ function renderSiteCharts(containerId, tabIndex, warnings, metricName, target, u
                         position: 'nearest',
                         callbacks: {
                             label: function(context) {
-                                return context.parsed.y.toFixed(1) + unit;
+                                return context.parsed.y.toFixed(2) + unit;
                             }
                         },
                         external: function(context) {
@@ -1845,7 +2247,35 @@ function renderSiteCharts(containerId, tabIndex, warnings, metricName, target, u
                 }
             }
         });
-    });
+    }
+}
+
+// ===== 重点关注图表懒渲染 + 分批渲染（2026-09-27）=====
+// 问题：首屏对全部 tab 的全部站点一次性 new Chart（几十上百个实例），阻塞主线程 20 秒+，
+//       且隐藏 tab 里的 canvas 尺寸为 0，画了也白画。
+// 方案：只有当前激活 tab 的图表立即分批渲染（每批 3 个，让出主线程）；
+//       非激活 tab 的图表先入队，switchAttentionCategory 切到时再画。
+var _pendingAttentionCharts = {};
+function queueSiteCharts(containerId, tabIndex, warnings, metricName, target, unit) {
+    var key = containerId + '_' + tabIndex;
+    _pendingAttentionCharts[key] = { containerId: containerId, tabIndex: tabIndex, warnings: warnings, metricName: metricName, target: target, unit: unit };
+    var content = document.getElementById('attentionCategory_' + tabIndex + '_' + containerId);
+    if (content && content.classList.contains('active')) _renderAttentionTabCharts(key);
+    // 非激活 tab：等 switchAttentionCategory 切换时再画
+}
+function _renderAttentionTabCharts(key) {
+    var job = _pendingAttentionCharts[key];
+    if (!job || !job.warnings || !job.warnings.length) { delete _pendingAttentionCharts[key]; return; }
+    delete _pendingAttentionCharts[key];
+    var BATCH = 3;
+    var i = 0;
+    (function batch() {
+        if (i >= job.warnings.length) return;
+        var to = Math.min(i + BATCH, job.warnings.length);
+        renderSiteCharts(job.containerId, job.tabIndex, job.warnings, job.metricName, job.target, job.unit, i, to);
+        i = to;
+        setTimeout(batch, 0);
+    })();
 }
 
 // 切换重点关注分类
@@ -1862,6 +2292,10 @@ function switchAttentionCategory(containerId, index) {
     contents.forEach((content, i) => {
         content.classList.toggle('active', i === index);
     });
+
+    // 懒渲染：切到的 tab 若有排队图表则立即分批渲染
+    var key = containerId + '_' + index;
+    if (_pendingAttentionCharts[key]) _renderAttentionTabCharts(key);
 }
 
 // 点击重点关注标签时筛选明细表
@@ -2167,9 +2601,10 @@ function renderComplianceTable(data) {
 
     tbody.innerHTML = displayData.map(r => {
         const areaKey = esc(r.区域 || '');
-        // Identify row level
+        // Identify row level（注意：此时大区/分区已被 fillHierarchy 填充，不能再依赖 !r.大区/!r.分区，
+        // 改按名称形态判定：城市行不含"兴必达"/"站"，且不是大区/分区汇总行本身）
         const isAreaSum = r.大区 && r.区域 === r.分区;
-        const isCitySum = !isAreaSum && !r.大区 && !r.分区 && r.区域 && !r.区域.includes('兴必达') && !r.区域.includes('站') && r.区域 !== '兴必达（江苏）网络科技有限公司';
+        const isCitySum = !isAreaSum && r.区域 && r.区域 !== r.分区 && r.区域 !== '兴必达（江苏）网络科技有限公司' && !r.区域.includes('兴必达') && !r.区域.includes('站');
         const rowClass = isAreaSum ? 'city-row area-row' : isCitySum ? 'city-row real-city' : '';
         const rowLevel = isAreaSum ? 'area' : isCitySum ? 'city' : 'station';
         return '<tr' + (rowClass ? ' class="' + rowClass + '"' : '') + '>' +
@@ -2216,121 +2651,696 @@ function penaltyLink(val, areaKey, type, level) {
     return '<span class="penalty-link" onclick="showDetail(\'' + esc(areaKey).replace(/'/g, "\\'") + '\',\'' + type + '\',\'' + (level || '') + '\')">' + amount + '</span>';
 }
 
-function renderAccidentTable(data) {
-    const tbody = document.querySelector('#accidentTable tbody');
-    const info = document.getElementById('accidentInfo');
-    const summaryEl = document.getElementById('accidentSummaryCards');
-    if (!data.length) { tbody.innerHTML = '<tr class="empty-row"><td colspan="14">暂无数据</td></tr>'; info.textContent = '暂无数据'; summaryEl.innerHTML = ''; return; }
+// ===== 安全事故明细表（组织层级版，2026-09-27）=====
+// 对齐履约达成处罚-周度表样式：4 冻结列（大区/区域/城市/站点名称）+ 级联多选筛选 +
+// 显示层级按钮 + 列筛选三角；KPI 汇总卡逻辑沿用旧 renderAccidentTable（计数/金额求和、百万单事故数取平均）。
+// 上周完成单量：站维度取 data/orders_site.json（M盘 _数据明细_*(日期)*.xlsx 每周更新，_build_orders_site.py 生成）：
+//   站点行=文件值（站点名精确匹配 → 「集约配送-」前缀兜底）；城市/区域/总公司行=表内子行求和；
+//   源里有而表里没有的站（如 天津金光/张家口金悦）按站点名【城市】自动补行到对应城市下。
+// 手填列（上报保险数/小额事故数/公司承担/骑手承担/工单迟报数/保险超时数）：点击单元格编辑，
+//   Enter 保存 / Esc 取消，经 POST /sync 持久化到 data/accident_manual.json（行键=大区|分区|区域）。
+//   上层行=子行求和，该行手填过则优先用手填值。
+// 迟报罚款/超时罚款/百万单事故数：用户公式（2026-09-27）见 ACC_COMPUTED 注释，仅站点行按公式算，上层行由聚合得出。
+//   小额赔付单均：用户要求移除该列（2026-09-27）。
+var ACC_COMPANY = '兴必达（江苏）网络科技有限公司';
+var ACC_REGION_ORDER = ['华北一区','华北二区','华北三区','华东大区','中南大区'];
+var ACC_COLS = [
+    {key:'上报保险数', label:'上报保险数', fmt:'num', edit:true},
+    {key:'小额事故数', label:'小额事故数', fmt:'num', edit:true},
+    {key:'公司承担', label:'公司承担', fmt:'money', edit:true},
+    {key:'骑手承担', label:'骑手承担', fmt:'money', edit:true},
+    {key:'工单迟报数', label:'工单迟报数', fmt:'num', edit:true},
+    {key:'迟报罚款', label:'迟报罚款', fmt:'money', computed:true},
+    {key:'保险超时数', label:'保险超时数', fmt:'num', edit:true},
+    {key:'超时罚款', label:'超时罚款', fmt:'money', computed:true},
+    {key:'上周完成单量', label:'上周完成单量', fmt:'num'},
+    {key:'百万单事故数', label:'百万单事故数', fmt:'badge', computed:true}
+];
+// 计算列（用户公式 2026-09-27）：覆盖 Excel 原值，仅站点行按公式算，上层行由聚合得出
+//   迟报罚款 = 工单迟报数 * 1000 元
+//   超时罚款 = 保险超时数 * 1000 元
+//   百万单事故数 = 上报保险数 / 上周完成单量 * 1000000（分母缺失/为0则记空）
+var ACC_COMPUTED = ['迟报罚款', '超时罚款', '百万单事故数'];
+var ACC_SUM_COLS = ['上报保险数','小额事故数','公司承担','骑手承担','工单迟报数','迟报罚款','保险超时数','超时罚款','上周完成单量'];
+var accState = { region: [], subregion: [], city: [], site: [] };
+var ACC_SEARCH = '';      // 面板头部搜索框（与 KPI 卡 + 明细表联动）
+var ACC_HDR_IDS = ['accidentSearch','accidentRegion','accidentZone','accidentCity','accidentStation'];
+var ACC_COL_FILTER = {};
+var accView = { subregion: true, merchant: true, site: true };
+var ACC_VIEWROWS = [];
+var ACC_MANUAL = {};   // data/accident_manual.json（手填单元格持久化）
+var ORDERS_SITE = null; // data/orders_site.json（M盘站维度完成单量）
 
-    // Get current filter state
-    const curRegion = document.getElementById('accidentRegion')?.value || '';
-    const curZone = document.getElementById('accidentZone')?.value || '';
-    const curArea = document.getElementById('accidentArea')?.value || '';
+function accNum(v) {
+    if (v === '' || v === null || v === undefined || v === '-' || v === 'NULL') return null;
+    var n = parseFloat(v);
+    return isNaN(n) ? null : n;
+}
+function accRowKey(dq, fq, area) { return dq + '|' + fq + '|' + area; }
+function accFmt(fmt, v) {
+    if (fmt === 'badge') {
+        if (v === null || v === undefined) return '<span class="badge badge-good">-</span>';
+        var n = v > 100 ? v / 100 : v;
+        var cls = n <= 5 ? 'badge-good' : n <= 6 ? 'badge-warn' : 'badge-bad';
+        return '<span class="badge ' + cls + '">' + v.toFixed(2) + '</span>';
+    }
+    if (v === null || v === undefined) return '-';
+    if (fmt === 'money') return money(v);
+    return num(v);
+}
+function accSortRegions(opts) {
+    return opts.slice().sort(function(a, b) {
+        var ia = ACC_REGION_ORDER.indexOf(a), ib = ACC_REGION_ORDER.indexOf(b);
+        if (ia === -1 && ib === -1) return a.localeCompare(b, 'zh');
+        if (ia === -1) return 1;
+        if (ib === -1) return -1;
+        return ia - ib;
+    });
+}
 
-    // Always use full store data for total company row
-    const totalRow = store.accident.find(r => r.区域 === '兴必达（江苏）网络科技有限公司' && !r.大区 && !r.分区);
-    let summaryHtml = '';
-    if (totalRow) {
-        const accRate = parseFloat(totalRow.百万单事故数) || 0;
-        const normRate = accRate > 100 ? accRate / 100 : accRate;
-        const accCls = normRate <= 5 ? 'badge-good' : normRate <= 6 ? 'badge-warn' : 'badge-bad';
-        summaryHtml = '<div class="total-company-box"><h4>总公司汇总 - 兴必达（江苏）网络科技有限公司</h4><div class="total-company-grid">' +
-            '<div class="total-item"><div class="val">' + num(totalRow.上报保险数) + '</div><div class="lbl">上报保险数</div></div>' +
-            '<div class="total-item"><div class="val">' + num(totalRow.小额事故数) + '</div><div class="lbl">小额事故数</div></div>' +
-            '<div class="total-item"><div class="val">' + money(totalRow.公司承担) + '</div><div class="lbl">公司承担金额</div></div>' +
-            '<div class="total-item"><div class="val">' + money(totalRow.骑手承担) + '</div><div class="lbl">骑手承担金额</div></div>' +
-            '<div class="total-item"><div class="val">' + num(totalRow.工单迟报数) + '</div><div class="lbl">工单迟报数</div></div>' +
-            '<div class="total-item"><div class="val">' + money(totalRow.迟报罚款) + '</div><div class="lbl">迟报罚款</div></div>' +
-            '<div class="total-item"><div class="val">' + num(totalRow.保险超时数) + '</div><div class="lbl">保险超时数</div></div>' +
-            '<div class="total-item"><div class="val">' + money(totalRow.超时罚款) + '</div><div class="lbl">超时罚款</div></div>' +
-            '<div class="total-item"><div class="val">' + num(totalRow.上周完成单量) + '</div><div class="lbl">上周完成单量</div></div>' +
-            '<div class="total-item"><div class="val"><span class="badge ' + accCls + '">' + num(totalRow.百万单事故数, 2) + '</span></div><div class="lbl">百万单事故数</div></div>' +
-            '<div class="total-item"><div class="val">' + money(totalRow.小额赔付单均) + '</div><div class="lbl">小额赔付单均</div></div>' +
-        '</div></div>';
+// ---------- 视图模型：层级推导 + 单量 overlay + 手填合并 + 自底向上聚合 ----------
+function accidentPrepare() {
+    var src = store.accident || [];
+    var rows = [];
+    var lastArea = null, lastCity = null, companyRow = null;
+    src.forEach(function(r0) {
+        var area = String(r0.区域 || '').trim();
+        var dq = String(r0.大区 || '').trim(), fq = String(r0.分区 || '').trim();
+        if (!area && !dq && !fq) return;
+        var lv;
+        if (area === ACC_COMPANY && !dq && !fq) lv = 'company';
+        else if (area && area === fq) lv = 'area';
+        else if (area && area.indexOf('站') < 0 && area.indexOf('兴必达') < 0) lv = 'city';
+        else lv = 'site';
+        var m = lv === 'site' ? area.match(/【(.+?)】/) : null;
+        var row = {
+            __level: lv,
+            __站点: lv === 'site' ? area : '',
+            __城市: lv === 'city' ? area : (m ? m[1] : ''),
+            大区: dq, 分区: fq, 区域: area,
+            key: accRowKey(dq, fq, area),
+            base: {}, eff: {}, man: {}, _kids: [], _parent: null, _new: false
+        };
+        ACC_COLS.forEach(function(c) { row.base[c.key] = accNum(r0[c.key]); });
+        if (lv === 'company') companyRow = row;
+        if (lv === 'area') { lastArea = row; lastCity = null; }
+        if (lv === 'city') { lastCity = row; }
+        row._parent = lv === 'site' ? (lastCity || lastArea) : (lv === 'city' ? (lastArea || companyRow) : (lv === 'area' ? companyRow : null));
+        rows.push(row);
+    });
+    rows.forEach(function(r) { if (r._parent && r._parent !== r) r._parent._kids.push(r); });
 
-        // 大区维度汇总 - responsive to filters
-        const areaOrder = ['华北一区','华北二区','华北三区','华东大区','中南大区'];
-        const fullData = store.accident;
-        const fields = [
-            {key:'上报保险数', label:'上报保险数', fmt: num},
-            {key:'小额事故数', label:'小额事故数', fmt: num},
-            {key:'公司承担', label:'公司承担金额', fmt: money},
-            {key:'骑手承担', label:'骑手承担金额', fmt: money},
-            {key:'工单迟报数', label:'工单迟报数', fmt: num},
-            {key:'迟报罚款', label:'迟报罚款', fmt: money},
-            {key:'保险超时数', label:'保险超时数', fmt: num},
-            {key:'超时罚款', label:'超时罚款', fmt: money},
-            {key:'上周完成单量', label:'上周完成单量', fmt: num},
-            {key:'百万单事故数', label:'百万单事故数', fmt: v => { const n = parseFloat(v)||0; const r = n>100?n/100:n; return '<span class="badge '+(r<=5?'badge-good':r<=6?'badge-warn':'badge-bad')+'">'+num(v,2)+'</span>'; }},
-            {key:'小额赔付单均', label:'小额赔付单均', fmt: money},
-        ];
-
-        // Build list of cards to show
-        let accCards = [];
-        if (curArea) {
-            const aggRows = fullData.filter(r => r.区域 === curArea && r.区域 !== '兴必达（江苏）网络科技有限公司');
-            accCards.push({title: '区域汇总 - ' + curArea, rows: aggRows});
-        } else if (curZone) {
-            const aggRows = fullData.filter(r => r.分区 === curZone && r.区域 !== '兴必达（江苏）网络科技有限公司');
-            accCards.push({title: '分区汇总 - ' + curZone, rows: aggRows});
-        } else if (curRegion) {
-            const aggRows = fullData.filter(r => r.大区 === curRegion && r.区域 === r.分区);
-            accCards.push({title: '大区汇总 - ' + curRegion, rows: aggRows});
-        } else {
-            let allAreas = [...new Set(fullData.filter(r => r.大区 && r.大区.trim()).map(r => r.大区))];
-            allAreas.sort((a,b) => {
-                const ia = areaOrder.indexOf(a), ib = areaOrder.indexOf(b);
-                if (ia === -1 && ib === -1) return a.localeCompare(b);
-                if (ia === -1) return 1;
-                if (ib === -1) return -1;
-                return ia - ib;
-            });
-            allAreas.forEach(area => {
-                const aggRows = fullData.filter(r => r.大区 === area && r.区域 === r.分区);
-                accCards.push({title: '大区汇总 - ' + area, rows: aggRows});
-            });
-        }
-
-        accCards.forEach(card => {
-            if (!card.rows.length) return;
-            const agg = {};
-            fields.forEach(f => {
-                if (f.key === '百万单事故数') {
-                    const vals = card.rows.map(r => parseFloat(r[f.key])).filter(v => !isNaN(v));
-                    agg[f.key] = vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : 0;
-                } else {
-                    agg[f.key] = card.rows.reduce((s,r) => s + (parseFloat(r[f.key])||0), 0);
-                }
-            });
-            summaryHtml += '<div class="total-company-box" style="background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border-color:#7dd3fc;margin-top:10px"><h4>' + card.title + '</h4><div class="total-company-grid">' +
-                fields.map(f => '<div class="total-item"><div class="val">' + f.fmt(agg[f.key]) + '</div><div class="lbl">' + f.label + '</div></div>').join('') +
-            '</div></div>';
+    // 上周完成单量 overlay（站点行）：精确名 → 「集约配送-」前缀兜底
+    var consumed = {};
+    if (ORDERS_SITE && ORDERS_SITE.sites) {
+        rows.forEach(function(row) {
+            if (row.__level !== 'site') return;
+            if (ORDERS_SITE.sites[row.区域] !== undefined) {
+                row.base['上周完成单量'] = ORDERS_SITE.sites[row.区域];
+                consumed[row.区域] = true;
+            } else if (ORDERS_SITE.sites['集约配送-' + row.区域] !== undefined) {
+                row.base['上周完成单量'] = ORDERS_SITE.sites['集约配送-' + row.区域];
+                consumed['集约配送-' + row.区域] = true;
+            }
+        });
+        // 源里新增站点自动补行（按站点名【城市】挂到对应城市行下）
+        var inserts = [];
+        Object.keys(ORDERS_SITE.sites).forEach(function(name) {
+            if (consumed[name]) return;
+            var bare = name.replace(/^集约配送-/, '');
+            if (bare !== name && (consumed[bare] || rows.some(function(r) { return r.区域 === bare; }))) { consumed[name] = true; return; }
+            var m = name.match(/【(.+?)】/);
+            if (!m) return;
+            var cityRow = null;
+            for (var i = 0; i < rows.length; i++) {
+                if (rows[i].__level === 'city' && rows[i].区域 === m[1]) { cityRow = rows[i]; break; }
+            }
+            if (!cityRow) return;
+            inserts.push({ city: cityRow, name: name, v: ORDERS_SITE.sites[name] });
+            consumed[name] = true;
+        });
+        inserts.forEach(function(ins) {
+            var idx = -1;
+            for (var i = rows.length - 1; i >= 0; i--) {
+                if (rows[i] === ins.city) { idx = i; break; }
+                if (rows[i].__level === 'site' && rows[i]._parent === ins.city) { idx = i; break; }
+            }
+            var dq = ins.city.大区, fq = ins.city.分区;
+            var nr = {
+                __level: 'site', __站点: ins.name, __城市: ins.city.区域,
+                大区: dq, 分区: fq, 区域: ins.name,
+                key: accRowKey(dq, fq, ins.name),
+                base: {}, eff: {}, man: {}, _kids: [], _parent: ins.city, _new: true
+            };
+            ACC_COLS.forEach(function(c) { nr.base[c.key] = null; });
+            nr.base['上周完成单量'] = ins.v;
+            rows.splice(idx + 1, 0, nr);
+            ins.city._kids.push(nr);
         });
     }
-    summaryEl.innerHTML = summaryHtml;
 
-    info.innerHTML = '共 <strong>' + data.length + '</strong> 条记录';
-    const displayData = data.filter(r => r.区域 !== '兴必达（江苏）网络科技有限公司' || r.大区 || r.分区);
-    tbody.innerHTML = displayData.map(r => {
-        const accRate = r.百万单事故数;
-        const normRate = accRate > 100 ? accRate / 100 : accRate;
-        const accCls = normRate <= 5 ? 'badge-good' : normRate <= 6 ? 'badge-warn' : 'badge-bad';
-        // Identify row level
-        const isAreaSum = r.大区 && r.区域 === r.分区;
-        const isCitySum = !isAreaSum && !r.大区 && !r.分区 && r.区域 && !r.区域.includes('兴必达') && !r.区域.includes('站') && r.区域 !== '兴必达（江苏）网络科技有限公司';
-        const rowClass = isAreaSum ? 'city-row area-row' : isCitySum ? 'city-row real-city' : '';
-        return '<tr' + (rowClass ? ' class="' + rowClass + '"' : '') + '>' +
-            '<td class="sticky-col col-0">' + esc(r.大区) + '</td><td class="sticky-col col-1">' + esc(r.分区) + '</td><td class="sticky-col col-2 name-cell">' + esc(r.区域) + '</td>' +
-            '<td>' + num(r.上报保险数) + '</td><td>' + num(r.小额事故数) + '</td>' +
-            '<td>' + money(r.公司承担) + '</td><td>' + money(r.骑手承担) + '</td>' +
-            '<td>' + num(r.工单迟报数) + '</td><td>' + money(r.迟报罚款) + '</td>' +
-            '<td>' + num(r.保险超时数) + '</td><td>' + money(r.超时罚款) + '</td>' +
-            '<td>' + num(r.上周完成单量) + '</td>' +
-            '<td><span class="badge ' + accCls + '">' + num(r.百万单事故数, 2) + '</span></td>' +
-            '<td>' + money(r.小额赔付单均) + '</td>' +
-        '</tr>';
-    }).join('');
+    // 手填数据合并（行键=大区|分区|区域）
+    rows.forEach(function(row) {
+        var me = ACC_MANUAL[row.key];
+        if (me) ACC_COLS.forEach(function(c) {
+            if (ACC_COMPUTED.indexOf(c.key) >= 0) return; // 计算列不接收手填，一律以公式为准
+            if (me[c.key] !== undefined && me[c.key] !== null) {
+                row.base[c.key] = accNum(me[c.key]);
+                row.man[c.key] = true;
+            }
+        });
+    });
+
+    // 计算列（用户公式 2026-09-27）：仅站点行按公式覆盖 Excel 原值；上层行由下方聚合得出
+    //   迟报罚款 = 工单迟报数 × 1000 元；超时罚款 = 保险超时数 × 1000 元；
+    //   百万单事故数 = 上报保险数 ÷ 上周完成单量 × 1,000,000（分母缺失/为0记空）
+    rows.forEach(function(r) {
+        if (r.__level !== 'site') return;
+        var lateCnt = accNum(r.base['工单迟报数']);
+        r.base['迟报罚款'] = (lateCnt != null) ? lateCnt * 1000 : null;
+        var timeoutCnt = accNum(r.base['保险超时数']);
+        r.base['超时罚款'] = (timeoutCnt != null) ? timeoutCnt * 1000 : null;
+        var insCnt = accNum(r.base['上报保险数']);
+        var orders = accNum(r.base['上周完成单量']);
+        if (insCnt != null && orders != null && orders !== 0) {
+            r.base['百万单事故数'] = insCnt / orders * 1000000;
+        } else {
+            r.base['百万单事故数'] = null;
+        }
+    });
+
+    // 自底向上聚合：站点=原值；上层=手填过用手填值，否则 Σ子行（百万单事故数取平均），无子行值回退原值
+    for (var i = rows.length - 1; i >= 0; i--) {
+        (function(r) {
+            ACC_COLS.forEach(function(c) {
+                var k = c.key;
+                if (r.__level === 'site') { r.eff[k] = r.base[k]; return; }
+                if (r.man[k]) { r.eff[k] = r.base[k]; return; }
+                var vals = [], sum = 0;
+                r._kids.forEach(function(kid) {
+                    var v = kid.eff[k];
+                    if (v !== null && v !== undefined) { vals.push(v); sum += v; }
+                });
+                if (!vals.length) { r.eff[k] = r.base[k]; return; }
+                r.eff[k] = (k === '百万单事故数') ? sum / vals.length : sum;
+            });
+        })(rows[i]);
+    }
+    // 大区排序（用户固定规则，长期有效）：总商汇总恒最前 → 华北一区→华北二区→华北三区→华东大区→中南大区；
+    // 未收录的大区排最后（zh 拼音序）；同一大区内保持原相对层级顺序（稳定排序，不打散 区域→城市→站点）
+    rows.sort(function(a, b) {
+        if (a.__level === 'company') return -1;
+        if (b.__level === 'company') return 1;
+        var ia = ACC_REGION_ORDER.indexOf(a.大区), ib = ACC_REGION_ORDER.indexOf(b.大区);
+        if (ia === ib) return 0;
+        if (ia === -1) return 1;
+        if (ib === -1) return -1;
+        return ia - ib;
+    });
+    ACC_VIEWROWS = rows;
+    return rows;
 }
+
+// ---------- 级联多选筛选（大区/区域/城市/站点） ----------
+function accidentOptions(dim) {
+    var rs = accState.region, ss = accState.subregion, cs = accState.city;
+    var set = {}, opts = [];
+    ACC_VIEWROWS.forEach(function(r) {
+        var v = null;
+        if (dim === 'region') v = r.大区;
+        else if (dim === 'subregion') { if (rs.length && rs.indexOf(r.大区) < 0) return; v = r.分区; }
+        else if (dim === 'city') {
+            if (rs.length && rs.indexOf(r.大区) < 0) return;
+            if (ss.length && ss.indexOf(r.分区) < 0) return;
+            v = r.__城市;
+        } else if (dim === 'site') {
+            if (rs.length && rs.indexOf(r.大区) < 0) return;
+            if (ss.length && ss.indexOf(r.分区) < 0) return;
+            if (cs.length && cs.indexOf(r.__城市) < 0) return;
+            v = r.__站点;
+        }
+        if (!v) return;
+        if (!set[v]) { set[v] = 1; opts.push(v); }
+    });
+    if (dim === 'region') return accSortRegions(opts);
+    return opts.sort(function(a, b) { return a.localeCompare(b, 'zh'); });
+}
+function accBuildDrop(key, options, state) {
+    var wrap = document.getElementById('ms-acc-' + key);
+    if (!wrap) return;
+    var drop = wrap.querySelector('.ms-drop');
+    var html = '';
+    options.forEach(function(opt) {
+        var checked = state.indexOf(opt) >= 0;
+        html += '<div class="ms-item' + (checked ? ' checked' : '') + '" onclick="accMsItemClick(\'' + key + '\',\'' + esc(opt) + '\')"><input type="checkbox" value="' + esc(opt) + '"' + (checked ? ' checked' : '') + ' onchange="accMsCheck(\'' + key + '\',\'' + esc(opt) + '\')">' + esc(opt) + '</div>';
+    });
+    drop.innerHTML = html || '<div class="ms-item">无可选项</div>';
+    // 下拉内部点击不冒泡到 document，保证勾选多项时下拉保持张开（多选）
+    drop.onclick = function(e) { e.stopPropagation(); };
+    var lbl = wrap.querySelector('.ms-label');
+    if (state.length === 0) lbl.textContent = '全部';
+    else if (state.length <= 2) lbl.textContent = state.join(',');
+    else lbl.textContent = state.length + '项';
+}
+function accMsItemClick(key, val) {
+    if (event && event.target && event.target.tagName === 'INPUT') return;
+    accMsCheck(key, val);
+}
+function accMsCheck(key, val) {
+    var st = accState[key];
+    var idx = st.indexOf(val);
+    if (idx >= 0) st.splice(idx, 1); else st.push(val);
+    // 级联：剔除在最新选项集中已无效的已选值，再重建下拉
+    ['region', 'subregion', 'city', 'site'].forEach(function(d) {
+        var opts = accidentOptions(d);
+        accState[d] = accState[d].filter(function(v) { return opts.indexOf(v) >= 0; });
+    });
+    renderAccidentTab();
+}
+function accToggleMs(key) {
+    // 阻止冒泡：否则 document 级「点击空白处收起」会把刚张开的下拉立刻关掉
+    if (typeof event !== 'undefined' && event && event.stopPropagation) event.stopPropagation();
+    var wrap = document.getElementById('ms-acc-' + key);
+    if (!wrap) return;
+    var wasOpen = wrap.classList.contains('open');
+    document.querySelectorAll('.ms-wrap.open').forEach(function(w) { w.classList.remove('open'); });
+    if (!wasOpen) wrap.classList.add('open');
+}
+// ---------- 明细表筛选行内搜索框（2026-09-28 新增：站点下拉后、清除筛选前） ----------
+// 与面板头部搜索框共用同一 ACC_SEARCH：任一处输入，两框同步，KPI 卡 + 明细表一起联动。
+function accDtSearchInput(v) {
+    ACC_SEARCH = v || '';
+    accSyncSearchInputs();
+    renderAccidentTab();
+}
+function accSyncSearchInputs() {
+    // 双向同步两个搜索框；跳过正在输入的框，避免光标跳动
+    ['accidentSearch', 'accDtSearch'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el && document.activeElement !== el && el.value !== ACC_SEARCH) el.value = ACC_SEARCH;
+    });
+}
+function accClearAll() {
+    ['region', 'subregion', 'city', 'site'].forEach(function(d) { accState[d] = []; });
+    ACC_COL_FILTER = {};
+    ACC_SEARCH = '';
+    ACC_HDR_IDS.forEach(function(id) { var el = document.getElementById(id); if (el) el.value = ''; });
+    var dt = document.getElementById('accDtSearch');
+    if (dt) dt.value = '';
+    renderAccidentTab();
+}
+
+// ---------- 面板头部筛选（与其他页面一致：搜索 + 大区/区域/城市/站点 级联下拉） ----------
+// 头部筛选与明细表筛选**共用同一份 accState**：改任一处，KPI 汇总卡与明细表同步联动。
+function accHeaderVals() {
+    function v(id) { var el = document.getElementById(id); return el ? (el.value || '') : ''; }
+    return { search: v('accidentSearch'), region: v('accidentRegion'), zone: v('accidentZone'), city: v('accidentCity'), station: v('accidentStation') };
+}
+function accFillSelect(id, options, placeholder, cur) {
+    var sel = document.getElementById(id);
+    if (!sel) return;
+    sel.innerHTML = '<option value="">' + placeholder + '</option>' +
+        options.map(function(o) { return '<option value="' + esc(o) + '">' + esc(o) + '</option>'; }).join('');
+    sel.value = (cur && options.indexOf(cur) >= 0) ? cur : '';
+}
+// forceVals 省略时读取 DOM 当前值；renderAccidentTab 会传入由 accState 推导的值，保证两处筛选始终一致
+function accFillHeaderSelects(forceVals) {
+    var v = forceVals || accHeaderVals();
+    var rows = ACC_VIEWROWS || [];
+    var regions = [], zones = [], cities = [], stations = [];
+    function uniq(arr, val) { if (val && arr.indexOf(val) < 0) arr.push(val); }
+    rows.forEach(function(r) { uniq(regions, r.大区); });
+    rows.forEach(function(r) {
+        if (v.region && r.大区 !== v.region) return;
+        uniq(zones, r.分区);
+    });
+    rows.forEach(function(r) {
+        if (v.region && r.大区 !== v.region) return;
+        if (v.zone && r.分区 !== v.zone) return;
+        uniq(cities, r.__城市);
+    });
+    rows.forEach(function(r) {
+        if (v.region && r.大区 !== v.region) return;
+        if (v.zone && r.分区 !== v.zone) return;
+        if (v.city && r.__城市 !== v.city) return;
+        uniq(stations, r.__站点);
+    });
+    var byZh = function(a, b) { return a.localeCompare(b, 'zh'); };
+    accFillSelect('accidentRegion', accSortRegions(regions), '全部大区', v.region);
+    accFillSelect('accidentZone', zones.sort(byZh), '全部区域', v.zone);
+    accFillSelect('accidentCity', cities.sort(byZh), '全部城市', v.city);
+    accFillSelect('accidentStation', stations.sort(byZh), '全部站点', v.station);
+}
+// 头部下拉/搜索框变更 → 写入 accState → 重渲染（KPI 卡 + 明细表一起联动）
+function accHeaderFilter() {
+    var v = accHeaderVals();
+    ACC_SEARCH = v.search || '';
+    accSyncSearchInputs();   // 头部输入 → 同步明细筛选行搜索框
+    accState.region = v.region ? [v.region] : [];
+    accState.subregion = v.zone ? [v.zone] : [];
+    accState.city = v.city ? [v.city] : [];
+    accState.site = v.station ? [v.station] : [];
+    renderAccidentTab();
+}
+
+// ---------- 显示层级 ----------
+function accToggleView(k) {
+    accView[k] = !accView[k];
+    var b = document.getElementById('acc-lv-' + k);
+    if (b) b.classList.toggle('active', accView[k]);
+    renderAccidentTab();
+}
+function accResetView() {
+    accView = { subregion: true, merchant: true, site: true };
+    ['subregion', 'merchant', 'site'].forEach(function(k) {
+        var b = document.getElementById('acc-lv-' + k);
+        if (b) b.classList.add('active');
+    });
+    renderAccidentTab();
+}
+
+// ---------- 列筛选三角（口径同履约板 penaltyColFilter） ----------
+function accColDisp(key, v) { return (v === null || v === undefined) ? '-' : String(v); }
+function accTri(key) {
+    var f = ACC_COL_FILTER[key];
+    return '<span class="cft' + (f && f.length ? ' on' : '') + '" title="点击筛选该列数值" onclick="accColFilterClick(event,\'' + key + '\')">▼</span>';
+}
+function accColFilterClick(ev, key) {
+    if (ev) ev.stopPropagation();
+    var old = document.getElementById('accColDD');
+    if (old) { var same = old.dataset.key === key; old.remove(); if (same) return; }
+    var rows = ACC_VIEWROWS.filter(function(r) { return r.__level !== 'company'; });
+    var cntMap = {};
+    rows.forEach(function(r) { var d = accColDisp(key, r.eff[key]); cntMap[d] = (cntMap[d] || 0) + 1; });
+    var list = Object.keys(cntMap).sort(function(a, b) {
+        var na = parseFloat(a), nb = parseFloat(b);
+        if (isNaN(na) && isNaN(nb)) return a.localeCompare(b, 'zh');
+        if (isNaN(na)) return 1;
+        if (isNaN(nb)) return -1;
+        return nb - na;
+    });
+    var sel = ACC_COL_FILTER[key] || [];
+    var col = null;
+    ACC_COLS.forEach(function(c) { if (c.key === key) col = c; });
+    var html = '<div class="pdd-title"><span>筛选 · ' + esc(col ? col.label : key) + '</span><span class="pdd-close" title="关闭" onclick="document.getElementById(\'accColDD\').remove()">×</span></div>' +
+        '<div class="pdd-search"><span>🔍</span><input type="text" placeholder="搜索本列取值..." oninput="accColDdSearch(this.value)"></div>' +
+        '<div class="pdd-bar"><span class="pdd-all" onclick="accColDdAll(event,\'' + key + '\')">全选(不限)</span><span class="pdd-count" id="accPddCount"></span></div><div class="pdd-list">';
+    list.forEach(function(d) {
+        html += '<label data-v="' + esc(d) + '"><input type="checkbox" ' + (sel.indexOf(d) >= 0 ? 'checked' : '') + ' onchange="accColDdChange(\'' + key + '\',\'' + esc(d) + '\',this.checked)"> ' + esc(d) + '<span class="pdd-num">' + cntMap[d] + '</span></label>';
+    });
+    if (!list.length) html += '<div class="pdd-empty">无可筛选项</div>';
+    html += '</div><div class="pdd-foot">勾选即生效；点「全选(不限)」清除本列筛选</div>';
+    var dd = document.createElement('div');
+    dd.id = 'accColDD';
+    dd.className = 'acc-col-dd';
+    dd.dataset.key = key;
+    dd.innerHTML = html;
+    dd.onclick = function(e) { e.stopPropagation(); };
+    document.body.appendChild(dd);
+    accColDdCount(key);
+    var rect = (ev.currentTarget || ev.target).getBoundingClientRect();
+    var left = Math.max(8, rect.left - 40);
+    if (left + 260 > window.innerWidth) left = window.innerWidth - 268;
+    dd.style.left = left + 'px';
+    var top = rect.bottom + 4;
+    if (top + dd.offsetHeight > window.innerHeight - 8) top = Math.max(8, rect.top - dd.offsetHeight - 4);
+    dd.style.top = top + 'px';
+    var inp = dd.querySelector('.pdd-search input');
+    if (inp) inp.focus();
+}
+function accColDdCount(key) {
+    var el = document.getElementById('accPddCount');
+    var dd = document.getElementById('accColDD');
+    var total = dd ? dd.querySelectorAll('.pdd-list label').length : 0;
+    var st = ACC_COL_FILTER[key] || [];
+    if (el) el.textContent = '已选 ' + st.length + ' 项 / 共 ' + total + ' 项';
+}
+function accColDdSearch(q) {
+    var dd = document.getElementById('accColDD');
+    if (!dd) return;
+    q = String(q || '').trim().toLowerCase();
+    var visible = 0;
+    dd.querySelectorAll('.pdd-list label').forEach(function(lb) {
+        var hit = !q || lb.textContent.toLowerCase().indexOf(q) >= 0;
+        lb.style.display = hit ? '' : 'none';
+        if (hit) visible++;
+    });
+    var empty = dd.querySelector('.pdd-empty');
+    if (empty) empty.style.display = visible ? 'none' : '';
+}
+function accColDdAll(ev, key) {
+    if (ev) ev.stopPropagation();
+    ACC_COL_FILTER[key] = [];
+    var dd = document.getElementById('accColDD');
+    if (dd) dd.querySelectorAll('.pdd-list input[type=checkbox]').forEach(function(c) { c.checked = false; });
+    accColDdCount(key);
+    renderAccidentTab();
+}
+function accColDdChange(key, val, checked) {
+    var st = ACC_COL_FILTER[key];
+    if (!st) st = ACC_COL_FILTER[key] = [];
+    var i = st.indexOf(val);
+    if (checked && i < 0) st.push(val);
+    if (!checked && i >= 0) st.splice(i, 1);
+    accColDdCount(key);
+    renderAccidentTab();
+}
+document.addEventListener('click', function() {
+    var dd = document.getElementById('accColDD');
+    if (dd) dd.remove();
+    // 点击空白处收起所有张开的筛选下拉
+    document.querySelectorAll('.ms-wrap.open').forEach(function(w) { w.classList.remove('open'); });
+});
+
+// ---------- 行过滤（口径同履约板 passFilter：大区/区域作用于所有行，公司行始终展示） ----------
+function accPass(r) {
+    var rs = accState.region, ss = accState.subregion, cs = accState.city, sts = accState.site;
+    if (rs.length && rs.indexOf(r.大区) < 0) return false;
+    if (ss.length && ss.indexOf(r.分区) < 0) return false;
+    if (r.__level === 'company') return true;
+    if (r._match === false) return false;   // 头部搜索框未命中（命中行的祖先链已一并保留）
+    for (var ck in ACC_COL_FILTER) {
+        var sel = ACC_COL_FILTER[ck];
+        if (sel && sel.length && sel.indexOf(accColDisp(ck, r.eff[ck])) < 0) return false;
+    }
+    if (r.__level === 'area') return true;
+    if (cs.length && cs.indexOf(r.__城市) < 0) return false;
+    if (sts.length && sts.indexOf(r.__站点) < 0) return false;
+    return true;
+}
+
+// ---------- KPI 汇总卡（沿用旧逻辑：计数/金额求和、百万单事故数取平均；随筛选联动） ----------
+function accAgg(rs) {
+    var out = {};
+    ACC_SUM_COLS.forEach(function(c) {
+        out[c] = rs.reduce(function(s, r) { return s + (r.eff[c] || 0); }, 0);
+    });
+    var vals = rs.map(function(r) { return r.eff['百万单事故数']; }).filter(function(v) { return v !== null && v !== undefined; });
+    out['百万单事故数'] = vals.length ? vals.reduce(function(a, b) { return a + b; }, 0) / vals.length : 0;
+    return out;
+}
+function accKpiBox(title, agg, highlight) {
+    var accRate = agg['百万单事故数'] || 0;
+    var normRate = accRate > 100 ? accRate / 100 : accRate;
+    var accCls = normRate <= 5 ? 'badge-good' : normRate <= 6 ? 'badge-warn' : 'badge-bad';
+    var style = highlight ? ' style="background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border-color:#7dd3fc;margin-top:10px"' : '';
+    var inner = '';
+    ACC_COLS.forEach(function(c) {
+        var label = c.fmt === 'badge' ? c.label + '<span class="target">≤5</span>' : c.label;
+        inner += '<div class="total-item"><div class="val">' + accFmt(c.fmt, agg[c.key]) + '</div><div class="lbl">' + label + '</div></div>';
+    });
+    return '<div class="total-company-box"' + style + '><h4>' + esc(title) + '</h4><div class="total-company-grid">' + inner + '</div></div>';
+}
+function accidentSummaryHtml() {
+    var rows = ACC_VIEWROWS;
+    var company = null;
+    rows.forEach(function(r) { if (r.__level === 'company') company = r; });
+    if (!company) return '';
+    var html = accKpiBox('总公司汇总 - ' + ACC_COMPANY, company.eff, false);
+    var rs = accState.region, ss = accState.subregion, cs = accState.city, sts = accState.site;
+    // KPI 与明细表同口径：统一叠加 accPass（头部下拉 + 搜索框 + 列筛选）
+    function f(level, extra) {
+        return rows.filter(function(r) { return r.__level === level && extra(r) && accPass(r); });
+    }
+    if (sts.length) {
+        html += accKpiBox('站点汇总（' + sts.length + ' 站）', accAgg(f('site', function(r) { return sts.indexOf(r.__站点) >= 0; })), true);
+    } else if (cs.length) {
+        html += accKpiBox('城市汇总（' + esc(cs.join('、')) + '）', accAgg(f('city', function(r) { return cs.indexOf(r.__城市) >= 0; })), true);
+    } else if (ss.length) {
+        html += accKpiBox('区域汇总（' + esc(ss.join('、')) + '）', accAgg(f('area', function(r) { return ss.indexOf(r.分区) >= 0; })), true);
+    } else if (rs.length) {
+        html += accKpiBox('大区汇总（' + esc(rs.join('、')) + '）', accAgg(f('area', function(r) { return rs.indexOf(r.大区) >= 0; })), true);
+    } else {
+        var seen = {}, order = [];
+        f('area', function(r) { return !!r.大区; }).forEach(function(r) { if (!seen[r.大区]) { seen[r.大区] = 1; order.push(r.大区); } });
+        accSortRegions(order).forEach(function(rg) {
+            html += accKpiBox('大区汇总 - ' + rg, accAgg(f('area', function(r) { return r.大区 === rg; })), true);
+        });
+    }
+    return html;
+}
+
+// ---------- 手填单元格编辑 + 持久化（POST /sync → data/accident_manual.json） ----------
+function accCellEdit(ev, key, colKey) {
+    ev.stopPropagation();
+    var td = ev.currentTarget;
+    if (td.querySelector('input')) return;
+    var row = null;
+    ACC_VIEWROWS.forEach(function(r) { if (r.key === key) row = r; });
+    if (!row) return;
+    var oldVal = row.base[colKey];
+    td.setAttribute('data-old', td.innerHTML);
+    td.innerHTML = '<input class="acc-cell-input" value="' + (oldVal === null || oldVal === undefined ? '' : oldVal) + '">';
+    var inp = td.querySelector('input');
+    inp.focus();
+    inp.select();
+    var cancelled = false;
+    inp.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') { inp.blur(); }
+        else if (e.key === 'Escape') { cancelled = true; td.innerHTML = td.getAttribute('data-old'); }
+    });
+    inp.addEventListener('blur', function() {
+        if (cancelled) return;
+        var v = inp.value.trim();
+        var numV = (v === '') ? '' : (isNaN(parseFloat(v)) ? '' : parseFloat(v));
+        if (!ACC_MANUAL[key]) ACC_MANUAL[key] = {};
+        ACC_MANUAL[key][colKey] = numV;
+        accSaveManual();
+        accidentPrepare();
+        renderAccidentTab();
+    });
+}
+function accSaveManual() {
+    try {
+        fetch('/sync', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 'accident_manual.json': ACC_MANUAL })
+        }).then(function(r) { return r.json(); }).then(function(j) {
+            if (j && j.status !== 'ok') console.warn('手填数据保存告警:', j.message);
+        }).catch(function(e) { console.warn('手填数据保存失败（当前页面已生效，刷新可能回退）:', e); });
+    } catch (e) { console.warn('accSaveManual异常', e); }
+}
+
+// ---------- 一键清空本周手填事故数/金额（2026-10-05 新增，新周填写前用） ----------
+// 清空 ACC_MANUAL（上报保险数/小额事故数/公司承担/骑手承担/工单迟报数/保险超时数），
+// 计算列（迟报罚款/超时罚款/百万单事故数）随之归零；上周完成单量取 orders_site.json 不受影响。
+// 清空前自动把当前数据备份到 data/accident_manual_backup_<YYYY-MM-DD>.json（经 /sync）。
+function accWipeManual() {
+    var n = 0;
+    Object.keys(ACC_MANUAL).forEach(function(k) {
+        Object.keys(ACC_MANUAL[k] || {}).forEach(function(c) { if (ACC_MANUAL[k][c] !== null) n++; });
+    });
+    if (!n) { alert('明细表当前没有已填写的事故数/金额，无需清理。'); return; }
+    if (!confirm('确定清空明细表里全部手填的事故数和金额吗？\n\n共 ' + n + ' 项（上报保险数 / 小额事故数 / 公司承担 / 骑手承担 / 工单迟报数 / 保险超时数，迟报/超时罚款随之归零）。\n\n清空前会自动备份当前数据到 data/accident_manual_backup_<日期>.json。')) return;
+    try {
+        var d = new Date();
+        var bakName = 'accident_manual_backup_' + d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2) + '.json';
+        var bak = {};
+        bak[bakName] = ACC_MANUAL;
+        fetch('/sync', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(bak) })
+            .then(function(r) { return r.json(); })
+            .then(function(j) { console.log('清理前备份完成:', bakName, j && j.message); })
+            .catch(function(e) { console.warn('备份失败（清空继续）:', e); });
+    } catch (e) { console.warn('备份异常（清空继续）', e); }
+    ACC_MANUAL = {};
+    accSaveManual();
+    accidentPrepare();
+    renderAccidentTab();
+    alert('已清空 ' + n + ' 项手填数据（原数据已备份），现在可以开始填写新一周的数据了。');
+}
+
+// ---------- 主渲染 ----------
+function renderAccidentTab() {
+    var tbody = document.getElementById('accTbody');
+    var thead = document.getElementById('accThead');
+    var info = document.getElementById('accidentInfo');
+    var summaryEl = document.getElementById('accidentSummaryCards');
+    if (!tbody || !thead) return;
+    accidentPrepare();
+
+    var theadHtml = '<tr>' +
+        '<th class="sticky-col col-0" style="left:0;min-width:80px">大区</th>' +
+        '<th class="sticky-col col-1" style="left:80px;min-width:90px">区域</th>' +
+        '<th class="sticky-col col-2" style="left:170px;min-width:70px">城市</th>' +
+        '<th class="sticky-col col-3" style="left:240px;min-width:150px">站点名称</th>';
+    ACC_COLS.forEach(function(c) {
+        theadHtml += '<th style="white-space:nowrap">' + esc(c.label) + (c.fmt === 'badge' ? '<span class="target">≤5</span>' : '') + accTri(c.key) + '</th>';
+    });
+    theadHtml += '</tr>';
+    thead.innerHTML = theadHtml;
+
+    // 头部搜索框命中判定：命中行的整条祖先链一并保留，保证层级完整（公司行恒显示）
+    var q = String(ACC_SEARCH || '').trim().toLowerCase();
+    if (q) {
+        ACC_VIEWROWS.forEach(function(r) { r._match = false; });
+        ACC_VIEWROWS.forEach(function(r) {
+            var txt = [r.大区, r.分区, r.区域, r.__城市, r.__站点].filter(Boolean).join(' ').toLowerCase();
+            if (txt.indexOf(q) < 0) return;
+            var cur = r;
+            while (cur) { cur._match = true; cur = cur._parent; }
+        });
+    } else {
+        ACC_VIEWROWS.forEach(function(r) { r._match = true; });
+    }
+
+    if (!ACC_VIEWROWS.length) {
+        tbody.innerHTML = '<tr class="empty-row"><td colspan="15">暂无数据</td></tr>';
+        info.textContent = '暂无数据';
+        summaryEl.innerHTML = '';
+        return;
+    }
+
+    var html = '';
+    var siteCount = 0, visible = 0;
+    ACC_VIEWROWS.forEach(function(r) {
+        if (!accPass(r)) return;
+        var hide = '';
+        if (r.__level === 'area' && !accView.subregion) hide = 'none';
+        if (r.__level === 'city' && !accView.merchant) hide = 'none';
+        if (r.__level === 'site' && !accView.site) hide = 'none';
+        var cls = r.__level === 'company' ? 'acc-total' : r.__level === 'area' ? 'acc-area' : r.__level === 'city' ? 'acc-city' : 'acc-site';
+        if (r._new) cls += ' acc-new';
+        if (r.__level === 'site') siteCount++;
+        visible++;
+        html += '<tr class="' + cls + '"' + (hide ? ' style="display:none"' : '') + '>';
+        html += '<td class="sticky-col col-0" style="left:0;min-width:80px">' + esc(r.大区 || '') + '</td>';
+        html += '<td class="sticky-col col-1" style="left:80px;min-width:90px">' + esc(r.分区 || '') + '</td>';
+        html += '<td class="sticky-col col-2" style="left:170px;min-width:70px">' + esc(r.__城市 || '') + '</td>';
+        html += '<td class="sticky-col col-3" style="left:240px;min-width:150px">' + (r.__level === 'company' ? '总商汇总' : esc(r.区域)) + '</td>';
+        ACC_COLS.forEach(function(c) {
+            var v = r.eff[c.key];
+            if (c.edit) {
+                html += '<td class="rn acc-edit-cell" title="点击填写" onclick="accCellEdit(event,\'' + r.key + '\',\'' + c.key + '\')">' + accFmt(c.fmt, v) + '<span class="acc-pencil">✏</span></td>';
+            } else {
+                html += '<td class="rn">' + accFmt(c.fmt, v) + '</td>';
+            }
+        });
+        html += '</tr>';
+    });
+    tbody.innerHTML = html;
+    summaryEl.innerHTML = accidentSummaryHtml();
+    info.innerHTML = '共 <strong>' + visible + '</strong> 条记录（站点 ' + siteCount + ' 个）';
+
+    // 筛选下拉重建（放在表格渲染后，选项随 ACC_VIEWROWS 变化）
+    ['region', 'subregion', 'city', 'site'].forEach(function(d) {
+        accBuildDrop(d, accidentOptions(d), accState[d]);
+    });
+
+    // 面板头部下拉与明细表筛选同源：由 accState 反推头部选中值并级联重建选项
+    accFillHeaderSelects({
+        search: ACC_SEARCH,
+        region: accState.region.length === 1 ? accState.region[0] : '',
+        zone: accState.subregion.length === 1 ? accState.subregion[0] : '',
+        city: accState.city.length === 1 ? accState.city[0] : '',
+        station: accState.site.length === 1 ? accState.site[0] : ''
+    });
+    accSyncSearchInputs();   // 任何筛选变化后，两个搜索框与 ACC_SEARCH 保持一致
+}
+
+// 兼容旧调用点（renderAll / applyFilter）：新模块主函数为 renderAccidentTab，这里做透传别名
+function renderAccidentTable(data) { renderAccidentTab(); }
+
 
 // ===== Detail Modal =====
 function showTotalFineDetail(areaKey, dataStr) {
@@ -2382,24 +3392,29 @@ function showDetail(areaKey, type, level) {
     };
     title.textContent = titles[type] || '明细数据';
 
+    // 空值安全工具：S=去空格字符串；eqOrContains=双方非空且相等/包含（同组织层级匹配）
+    const S = v => String(v == null ? '' : v).trim();
+    const eqOrContains = (a, b) => { a = S(a); b = S(b); return !!a && !!b && (a === b || a.indexOf(b) !== -1 || b.indexOf(a) !== -1); };
+
     if (type === 'meeting') {
         const data = store.detailData.meeting || [];
-        // Filter by area/city matching
+        // Filter by area/city matching（严格按行层级过滤，跳过关键字段全空的幻影行）
         const filtered = data.filter((r, i) => {
             if (i === 0) return false;
-            const station = String(r[7] || '');
-            const region = String(r[11] || '');
-            const city = String(r[12] || '');
+            const station = S(r[7]);
+            const region = S(r[11]);
+            const city = S(r[12]);
+            if (!station && !region && !city) return false;
             // 根据行级别匹配
             if (level === 'station') {
-                return station === areaKey || station.includes(areaKey) || areaKey.includes(station);
+                return !!station && eqOrContains(station, areaKey);
             } else if (level === 'city') {
-                return city === areaKey || city.includes(areaKey) || areaKey.includes(city);
+                return !!city && eqOrContains(city, areaKey);
             } else if (level === 'area') {
-                return region === areaKey || region.includes(areaKey) || areaKey.includes(region);
+                return !!region && eqOrContains(region, areaKey);
             }
-            // 兜底：模糊匹配
-            return station.includes(areaKey) || region.includes(areaKey) || city.includes(areaKey) || areaKey.includes(city) || areaKey.includes(region);
+            // 无层级时兜底：任一字段命中
+            return eqOrContains(station, areaKey) || eqOrContains(region, areaKey) || eqOrContains(city, areaKey);
         });
         if (!filtered.length) { html = '<div class="modal-empty">该区域暂无早会驳回记录</div>'; }
         else {
@@ -2411,21 +3426,22 @@ function showDetail(areaKey, type, level) {
         const data = store.detailData.inspection || [];
         const filtered = data.filter((r, i) => {
             if (i === 0) return false;
-            const station = String(r[7] || '');
-            const region = String(r[2] || '');
-            const city = String(r[4] || '');
-            const role = String(r[10] || '');
-            const result = String(r[12] || '');
-            // 根据行级别匹配
+            const station = S(r[7]);
+            const region = S(r[2]);
+            const city = S(r[4]);
+            const role = S(r[10]);
+            const result = S(r[12]);
+            if (!station && !region && !city) return false;
+            // 根据行级别严格匹配（站点行只看站点列、城市行只看城市列、区域行只看区域列）
             let matchArea = false;
             if (level === 'station') {
-                matchArea = station === areaKey || station.includes(areaKey) || areaKey.includes(station);
+                matchArea = !!station && eqOrContains(station, areaKey);
             } else if (level === 'city') {
-                matchArea = city === areaKey || city.includes(areaKey) || areaKey.includes(city);
+                matchArea = !!city && eqOrContains(city, areaKey);
             } else if (level === 'area') {
-                matchArea = region === areaKey || region.includes(areaKey) || areaKey.includes(region);
+                matchArea = !!region && eqOrContains(region, areaKey);
             } else {
-                matchArea = station.includes(areaKey) || region.includes(areaKey) || city.includes(areaKey) || areaKey.includes(city);
+                matchArea = eqOrContains(station, areaKey) || eqOrContains(region, areaKey) || eqOrContains(city, areaKey);
             }
             if (type === 'inspection_self') return matchArea && role === '站长' && result === '驳回';
             return matchArea && (role === '区域督导' || role === '总部员工') && result === '驳回';
@@ -2440,19 +3456,20 @@ function showDetail(areaKey, type, level) {
         const data = store.detailData.disinfect || [];
         const filtered = data.filter((r, i) => {
             if (i === 0) return false;
-            const station = String(r[0] || '');
-            const region = String(r[3] || '');
-            const city = String(r[2] || '');
+            const station = S(r[0]);
+            const region = S(r[3]);
+            const city = S(r[2]);
+            if (!station && !region && !city) return false;
             // 根据行级别匹配
             if (level === 'station') {
-                return station === areaKey || station.includes(areaKey) || areaKey.includes(station);
+                return !!station && eqOrContains(station, areaKey);
             } else if (level === 'city') {
-                return city === areaKey || city.includes(areaKey) || areaKey.includes(city);
+                return !!city && eqOrContains(city, areaKey);
             } else if (level === 'area') {
-                return region === areaKey || region.includes(areaKey) || areaKey.includes(region);
+                return !!region && eqOrContains(region, areaKey);
             }
-            // 兜底：模糊匹配
-            return station.includes(areaKey) || region.includes(areaKey) || city.includes(areaKey) || areaKey.includes(city) || areaKey.includes(region);
+            // 兜底：任一字段命中
+            return eqOrContains(station, areaKey) || eqOrContains(region, areaKey) || eqOrContains(city, areaKey);
         });
         if (!filtered.length) { html = '<div class="modal-empty">该区域暂无餐箱消毒违约记录</div>'; }
         else {
@@ -2464,19 +3481,20 @@ function showDetail(areaKey, type, level) {
         const data = store.detailData.equipmentDetail || [];
         const filtered = data.filter((r, i) => {
             if (i === 0) return false; // Skip header row
-            const virtualRegion = String(r[3] || ''); // D列虚拟区域名称
-            const cityName = String(r[7] || ''); // H列配送城市名称
-            const stationName = String(r[12] || ''); // M列配送站点名称
+            const virtualRegion = S(r[3]); // D列虚拟区域名称
+            const cityName = S(r[7]); // H列配送城市名称
+            const stationName = S(r[12]); // M列配送站点名称
+            if (!stationName && !virtualRegion && !cityName) return false;
             // 根据行级别匹配
             if (level === 'station') {
-                return stationName === areaKey || stationName.includes(areaKey) || areaKey.includes(stationName);
+                return !!stationName && eqOrContains(stationName, areaKey);
             } else if (level === 'city') {
-                return cityName === areaKey || cityName.includes(areaKey) || areaKey.includes(cityName);
+                return !!cityName && eqOrContains(cityName, areaKey);
             } else if (level === 'area') {
-                return virtualRegion === areaKey || virtualRegion.includes(areaKey) || areaKey.includes(virtualRegion);
+                return !!virtualRegion && eqOrContains(virtualRegion, areaKey);
             }
-            // 兜底：模糊匹配
-            return stationName.includes(areaKey) || virtualRegion.includes(areaKey) || cityName.includes(areaKey) || areaKey.includes(cityName);
+            // 兜底：任一字段命中
+            return eqOrContains(stationName, areaKey) || eqOrContains(virtualRegion, areaKey) || eqOrContains(cityName, areaKey);
         });
         if (!filtered.length) { html = '<div class="modal-empty">该区域暂无装备不合规明细记录</div>'; }
         else {
@@ -2488,25 +3506,28 @@ function showDetail(areaKey, type, level) {
         const data = store.detailData.health || [];
         const filtered = data.filter((r, i) => {
             if (i === 0) return false;
-            const regionName = String(r[2] || '');
-            const stationName = String(r[4] || '');
+            const regionName = S(r[2]);
+            const stationName = S(r[4]);
+            if (!regionName && !stationName) return false;
             // 根据行级别匹配
             if (level === 'station') {
-                return stationName === areaKey || stationName.includes(areaKey) || areaKey.includes(stationName);
+                return !!stationName && eqOrContains(stationName, areaKey);
             } else if (level === 'city') {
                 // 健康证数据没有城市列，用区域名称匹配
-                return regionName === areaKey || regionName.includes(areaKey) || areaKey.includes(regionName);
+                return !!regionName && eqOrContains(regionName, areaKey);
             } else if (level === 'area') {
-                return regionName === areaKey || regionName.includes(areaKey) || areaKey.includes(regionName);
+                return !!regionName && eqOrContains(regionName, areaKey);
             }
-            // 兜底：模糊匹配
-            return regionName.includes(areaKey) || stationName.includes(areaKey) || areaKey === '全部';
+            // 兜底：任一字段命中
+            return eqOrContains(regionName, areaKey) || eqOrContains(stationName, areaKey);
         });
-        const rows = filtered.length ? filtered : data.slice(1);
-        html = '<table><thead><tr><th>日期</th><th>区域名称</th><th>站点名称</th><th>骑手姓名</th><th>违规类型</th><th>处罚金额</th></tr></thead><tbody>' +
-            rows.map(r => '<tr><td>' + esc(r[0]) + '</td><td>' + esc(r[2]) + '</td><td>' + esc(r[4]) + '</td><td>' + esc(r[6]) + '</td><td>' + esc(r[8]) + '</td><td>' + money(r[10]) + '</td></tr>').join('') +
-        '</tbody></table>';
-        if (!filtered.length && data.length > 1) html = '<div class="modal-empty" style="margin-bottom:8px">未匹配到当前区域，以下为全部健康证违规记录</div>' + html;
+        if (!filtered.length) {
+            html = '<div class="modal-empty">该区域暂无健康证违规记录</div>';
+        } else {
+            html = '<table><thead><tr><th>日期</th><th>区域名称</th><th>站点名称</th><th>骑手姓名</th><th>违规类型</th><th>处罚金额</th></tr></thead><tbody>' +
+                filtered.map(r => '<tr><td>' + esc(r[0]) + '</td><td>' + esc(r[2]) + '</td><td>' + esc(r[4]) + '</td><td>' + esc(r[6]) + '</td><td>' + esc(r[8]) + '</td><td>' + money(r[10]) + '</td></tr>').join('') +
+            '</tbody></table>';
+        }
     }
 
     body.innerHTML = html;
@@ -2598,6 +3619,10 @@ function populateSelect(id, options) {
 }
 
 function updateCascadingFilters(type) {
+    // 安全权益tab：级联选项从站维度 TAB1_ROWS 填充（非旧 store.safety）
+    if (type === 'safety') { populateSafetyCascade(); return; }
+    // 站长评级tab：级联选项从站维度 TAB2_ROWS 填充（非旧 store.rating）
+    if (type === 'rating') { populateRatingCascade(); return; }
     const regionEl = document.getElementById(type + 'Region');
     const zoneEl = document.getElementById(type + 'Zone');
     const cityEl = document.getElementById(type + 'City');
@@ -2670,25 +3695,44 @@ function getFilteredData(type) {
 }
 
 function applyFilter(type) {
+    // 安全权益/站长评级 tab：本地大表已隐藏，改由 iframe 明细表 + 重点关注模块驱动
+    if (type === 'safety') { applySafetyTabFilter(); return; }
+    if (type === 'rating') { applyRatingTabFilter(); return; }
     const data = getFilteredData(type);
-    const renderMap = { safety: renderSafetyTable, rating: renderRatingTable, compliance: renderComplianceTable, accident: renderAccidentTable };
-    const tableMap = { safety: 'safetyTable', rating: 'ratingTable', compliance: 'complianceTable', accident: 'accidentTable' };
+    const renderMap = { compliance: renderComplianceTable, accident: renderAccidentTable };
+    const tableMap = { compliance: 'complianceTable', accident: 'accidentTable' };
     renderMap[type](data);
-    // Update attention section for safety tab
-    if (type === 'safety') renderSafetyScoreAttention(data);
-    if (type === 'rating') renderAttention('ratingAttention', data, [
-        { key: '闯红灯率', target: 0.23, direction: 'lower', label: '闯红灯率', color: 'red' },
-        { key: '里程逆行率', target: 0.03, direction: 'lower', label: '里程逆行率', color: 'yellow' },
-        { key: '服装得分', target: 0, direction: 'lower', label: '服装得分', color: 'orange' }
-    ], '重点关注（闯红灯率尾部站 | 里程逆行率尾部站 | 美团工服率扣分站）', store.rating);
     if (type === 'compliance') renderComplianceFineAttention(data);
     // Re-apply column filters and sticky layout after table re-render
     applyColFilters(tableMap[type]);
     if (type === 'compliance') setTimeout(() => updateStickyLeft('complianceTable'), 0);
     if (type === 'accident') setTimeout(() => updateStickyLeft('accidentTable'), 0);
+    // 把周报履约类 KPI 筛选（大区/分区）同步推送到嵌入的周度明细表 iframe，保证联动
+    if (type === 'compliance') syncPenaltyIframe();
+}
+
+// 跨 frame 联动：周报「履约类数据看板」的 KPI 筛选（大区/分区）推送到嵌入的周度明细表 iframe，
+// 使 KPI 卡片与嵌入明细表按同一筛选条件同步过滤。双方均来自 8421 同源，可直接访问 contentWindow。
+function syncPenaltyIframe() {
+    const frame = document.getElementById('framePenalty');
+    if (!frame || !frame.contentWindow) return;
+    try {
+        const win = frame.contentWindow;
+        if (typeof win.penaltyInitFilters !== 'function' || typeof win.renderPenaltyTab !== 'function') return;
+        const region = (document.getElementById('complianceRegion')?.value || '').trim();
+        const zone = (document.getElementById('complianceZone')?.value || '').trim();
+        // 周报「大区」→ 周度明细表「大区」；周报「分区」→ 周度明细表「区域（分区）」
+        // 周报「区域」在周度明细表无对应筛选维度，仅驱动隐藏的原周报表，此处忽略以免误清空
+        win.sfState['region-penalty-week'] = region ? [region] : [];
+        win.sfState['subregion-penalty-week'] = zone ? [zone] : [];
+        win.penaltyInitFilters('week');
+        win.renderPenaltyTab('week');
+    } catch (e) { /* 跨 frame 尚未就绪时静默跳过，下次筛选/iframe 加载会再触发 */ }
 }
 
 function clearFilter(type) {
+    // 安全事故 tab：筛选/层级/列筛选均由新模块自管，直接走 accClearAll（旧 accidentRegion 等下拉已移除）
+    if (type === 'accident') { accClearAll(); return; }
     // Clear search box
     const searchEl = document.getElementById(type + 'Search');
     if (searchEl) searchEl.value = '';
@@ -2748,11 +3792,15 @@ function loadInsuranceFrame(tab) {
     if (!frame) return;
     if (frame.dataset.loaded === '1') return;
     frame.dataset.loaded = '1';
+    // 履约类明细表 iframe 加载完成后，按当前周报筛选条件同步一次
+    if (tab === 'compliance') frame.onload = () => { setTimeout(syncPenaltyIframe, 300); };
     frame.src = frame.dataset.src + '?t=' + Date.now();
 }
 
 // Filter events
-['safety','rating','compliance','accident'].forEach(type => {
+// 注：accident 不走这里——它用面板头部下拉（accHeaderFilter）与明细表多选筛选（accMsCheck）
+//     共用 accState 的专用链路，套用通用级联会按 store.accident 的 城市/站点 字段把下拉清空。
+['safety','rating','compliance'].forEach(type => {
     const searchEl = document.getElementById(type + 'Search');
     const regionEl = document.getElementById(type + 'Region');
     const zoneEl = document.getElementById(type + 'Zone');
@@ -2781,6 +3829,26 @@ function loadInsuranceFrame(tab) {
     if (stationEl) stationEl.addEventListener('change', () => applyFilter(type));
     if (areaEl) areaEl.addEventListener('change', () => applyFilter(type));
 });
+
+// 安全事故 Tab：面板头部筛选（搜索 + 大区→区域→城市→站点 级联）+ 清除筛选，
+// 与下方 KPI 汇总卡、明细表共用 accState，任一处改动三方同步联动。
+(function bindAccidentHeaderFilters() {
+    var chain = ['accidentRegion', 'accidentZone', 'accidentCity', 'accidentStation'];
+    var searchEl = document.getElementById('accidentSearch');
+    if (searchEl) searchEl.addEventListener('input', accHeaderFilter);
+    chain.forEach(function(id, i) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener('change', function() {
+            // 上级变更后清空所有下级，避免出现「大区已换、城市还是旧大区下的」空结果
+            for (var j = i + 1; j < chain.length; j++) {
+                var down = document.getElementById(chain[j]);
+                if (down) down.value = '';
+            }
+            accHeaderFilter();
+        });
+    });
+})();
 
 // ===== File Upload =====
 function setUploadProgress(pct, text, busy) {
@@ -2913,8 +3981,6 @@ function processWorkbook(wb) {
         }));
         localStorage.setItem('dashboardDetail', JSON.stringify(store.detailData));
         localStorage.setItem('dashboardDataTime', new Date().toISOString());
-        // 云端增强：上传解析后顺便保存到云端（已登录则生效，失败不阻塞本地）
-        if (window.cloudSaveReport) { window.cloudSaveReport().catch(function(err){ console.warn('云端保存(后台)失败', err); }); }
     } catch(e) {
         console.warn('localStorage保存失败，数据仅在当前会话有效', e);
     }
@@ -2936,34 +4002,26 @@ function processWorkbook(wb) {
 function renderAll() {
     renderStats();
     renderSafetyTable(store.safety);
-    renderRatingTable(store.rating);
     renderComplianceTable(store.compliance);
     renderAccidentTable(store.accident);
 
-    // Attention
-    renderSafetyScoreAttention(store.safety);
-    renderAttention('ratingAttention', store.rating, [
-        { key: '闯红灯率', target: 0.23, direction: 'lower', label: '闯红灯率', color: 'red' },
-        { key: '里程逆行率', target: 0.03, direction: 'lower', label: '里程逆行率', color: 'yellow' },
-        { key: '服装得分', target: 0, direction: 'lower', label: '服装得分', color: 'orange' }
-    ], '重点关注（闯红灯率尾部站 | 里程逆行率尾部站 | 美团工服率扣分站）');
+    // Attention（权益/评级均来自站维度明细表，数据加载后由 refresh 定时拉取最新）
+    applySafetyTabFilter();
+    applyRatingTabFilter();
     renderComplianceFineAttention(getFilteredData('compliance'));
     // 安全事故 Tab 的「重点关注（未达标站点）」卡片已按用户要求移除
 
     // Populate filters
-    ['safety','rating'].forEach(type => {
-        populateSelect(type + 'Region', getUnique(store[type], '大区'));
-        updateCascadingFilters(type);
-    });
-    ['compliance','accident'].forEach(type => {
-        populateSelect(type + 'Region', getUnique(store[type], '大区'));
-        updateCascadingFilters(type);
-    });
+    populateSafetyCascade();
+    populateRatingCascade();
+    // 安全事故 tab 用自管多级筛选（accBuildDrop），不再走 compliance 的级联下拉体系
+    populateSelect('complianceRegion', getUnique(store.compliance, '大区'));
+    updateCascadingFilters('compliance');
 
-    // Init column filters
-    ['safetyTable','ratingTable','complianceTable','accidentTable'].forEach(initColFilters);
+    // Init column filters（安全事故表由新模块自带 ACC_COL_FILTER 列筛选，不纳入通用体系）
+    ['safetyTable','ratingTable','complianceTable'].forEach(initColFilters);
     // Re-apply any active column filters after render
-    ['safetyTable','ratingTable','complianceTable','accidentTable'].forEach(applyColFilters);
+    ['safetyTable','ratingTable','complianceTable'].forEach(applyColFilters);
     // Update sticky column positions for compliance and accident tables
     setTimeout(() => { updateStickyLeft('complianceTable'); updateStickyLeft('accidentTable'); }, 0);
 }
@@ -3126,14 +4184,6 @@ async function syncToPublic() {
     btn.textContent = '同步中...';
     btn.disabled = true;
 
-    // 云端优先：已登录则直接保存到云端（团队在发布地址即可看最新数据），本地 /sync 仅本机兜底
-    if (window.cloudSaveReport) {
-      try {
-        var cloudOk = await window.cloudSaveReport();
-        if (cloudOk) { btn.textContent = '同步到云端'; btn.disabled = false; return; }
-      } catch(e) { console.warn('云端同步失败，回退本地 /sync', e); }
-    }
-
     const payload = {};
     const coreNames = {
         safety: 'safety_rights',
@@ -3282,6 +4332,17 @@ async function loadData() {
             console.warn('磁盘 JSON 加载失败，回退到本地缓存:', e);
         }
 
+        // 加载安全事故明细表所需的可选数据：站维度完成单量(M盘) + 手填单元格持久化（缺失不阻断）
+        try {
+            const [osResp, amResp] = await Promise.all([
+                fetch('data/orders_site.json?t=' + Date.now(), { cache: 'no-store' }),
+                fetch('data/accident_manual.json?t=' + Date.now(), { cache: 'no-store' }).catch(() => null)
+            ]);
+            if (osResp && osResp.ok) { try { ORDERS_SITE = await osResp.json(); } catch (e) { console.warn('orders_site.json 解析失败:', e); } }
+            if (amResp && amResp.ok) { try { ACC_MANUAL = await amResp.json(); } catch (e) { console.warn('accident_manual.json 解析失败:', e); } }
+            if (!ACC_MANUAL || typeof ACC_MANUAL !== 'object') ACC_MANUAL = {};
+        } catch (e) { /* 可选数据缺失，忽略 */ }
+
         // 仅当磁盘 JSON 加载失败时，才回退到 localStorage 旧数据
         if (!diskLoaded && savedData) {
             const parsed = JSON.parse(savedData);
@@ -3317,11 +4378,10 @@ async function loadData() {
             });
         }
 
-        // 云端增强：若云端存在已发布的最新数据，则覆盖本地包并刷新（公开可读，无需登录）
-        try { if (await cloudLoadReport()) {
-            if (Array.isArray(store.safety)) { store.safety.forEach(function(r){ if (r.戴盔得分 == null || r.戴盔得分 === '' || r.戴盔得分 === '-') r.戴盔得分 = calcHelmetScore(r.戴盔系带率); if (r.超速得分 == null || r.超速得分 === '' || r.超速得分 === '-') r.超速得分 = calcSpeedScore(r.超速率); }); }
-        } } catch(e) { console.warn('云端叠加失败', e); }
         renderAll();
+        // 履约达成处罚周度：从只读透出的 penalty_weekly.js 覆盖合规面板数据
+        // （明细表 + KPI 卡片 + 重点关注 直接从此数据取值；仅读取不改写原工作台文件）
+        loadPenaltyCompliance();
         document.getElementById('loadingOverlay').classList.add('hidden');
         // Update date display for default data (use current date)
         updateDataDateDisplay(null);
@@ -3345,6 +4405,57 @@ window.addEventListener('resize', updateTabsStickyTop);
 updateTabsStickyTop();
 
 loadData();
+
+// 安全权益「重点关注」模块：从明细表(TAB1_ROWS)取值，并定时自动更新
+// 2026-09-27 提速：不再挂 window.load——主页 load 会被 iframe 内 225 行大表的重渲染拖住 7~20 秒；
+// 重点关注的数据来自主页自己加载的 /equity-board/data.js（毫秒级就绪），与 iframe 无关，直接立即渲染。
+refreshSafetyAttention();
+refreshRatingAttention();
+setInterval(refreshSafetyAttention, 5 * 60 * 1000);
+setInterval(refreshRatingAttention, 5 * 60 * 1000);
+
+// ===== 履约达成处罚周度（只读透出 D:\兴达数据库\履约项目\penalty_weekly.js）=====
+// 周报看板「履约数据」面板（明细表 + 总公司/大区 KPI 卡片 + 重点关注）直接从此数据取值（2026-09-27 新增）。
+// 仅读取，绝不改写履约工作台任何文件。
+async function loadPenaltyCompliance() {
+    try {
+        const resp = await fetch('/penalty-board/penalty_weekly.js?t=' + Date.now(), { cache: 'no-store' });
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        const text = await resp.text();
+        // 解析 PENALTY_WEEKLY_ROWS（含 var 声明，用 Function 沙箱取出数组）
+        const rows = (new Function(text + '\n;return PENALTY_WEEKLY_ROWS;'))();
+        if (!Array.isArray(rows) || !rows.length) throw new Error('空数据');
+        const F = (v) => (v === undefined || v === '' || v === null) ? 0 : v;
+        const blankRate = (v) => (v === '' || v === undefined || v === null) ? '' : v;
+        const mapped = rows.map(r => ({
+            大区: r['大区'] || '', 分区: r['分区'] || '', 区域: r['区域'] || '',
+            甲方预计总罚款: F(r['上周预计总罚款']),
+            早会驳回数: F(r['上周驳回数']), 早会罚款: F(r['上周罚款']),
+            自检驳回: F(r['上周自检驳回']), 自检罚款: F(r['上周自检罚款']),
+            督导驳回: F(r['上周督导履约驳回']), 督导罚款: F(r['上周督导履约罚款']),
+            标准化率: blankRate(r['标准化率']),
+            标准化不达标罚款: F(r['标准化率不达标违约金额']),
+            虚假消毒数: F(r['虚假消毒数']), 虚假消毒罚款: F(r['虚假消毒罚款']),
+            装备不合格数: F(r['装备不合格数']), 装备罚款: F(r['装备罚款']),
+            装备合规率: blankRate(r['装备标准化合规率']),
+            健康证处罚金额: F(r['健康证处罚金额'])
+        }));
+        fillHierarchy(mapped, ['大区', '分区']);
+        store.compliance = mapped;
+        // 重渲染合规面板（明细表 + 总公司/大区 KPI 卡片 + 区域卡片）
+        renderComplianceTable(store.compliance);
+        // 重点关注（城市罚款合计）
+        renderComplianceFineAttention(getFilteredData('compliance'));
+        // 刷新合规筛选下拉
+        if (typeof populateSelect === 'function') {
+            populateSelect('complianceRegion', getUnique(store.compliance, '大区'));
+            updateCascadingFilters('compliance');
+        }
+        console.log('[履约处罚周度] 已从 penalty_weekly.js 加载', mapped.length, '行');
+    } catch (e) {
+        console.warn('[履约处罚周度] 加载失败，沿用 compliance.json 数据:', e);
+    }
+}
 </script>
 </body>
 </html>
