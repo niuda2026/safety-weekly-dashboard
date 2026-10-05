@@ -88,6 +88,7 @@ def _ensure_equity_slim():
         r = subprocess.run(
             [node, EQUITY_SLIM_BUILDER, TRAFFIC_DATA_JS, tmp, escort_js],
             capture_output=True, timeout=120,
+            creationflags=0x08000000,  # CREATE_NO_WINDOW：pythonw 环境下防止弹黑窗
         )
         if r.returncode != 0 or not os.path.isfile(tmp):
             return False
@@ -138,11 +139,15 @@ def sync_to_github():
         env["PATH"] = git_dir + os.pathsep + env.get("PATH", "")
 
     import time
+    # CREATE_NO_WINDOW：8421 由 pythonw（无控制台）启动时，子进程 git.exe 会被
+    # Windows 分配新控制台并弹出黑窗口（Windows Terminal 接管）。必须显式禁止建窗。
+    NO_WINDOW = 0x08000000
     try:
-        subprocess.run([git_exe, "add", "-A"], cwd=project_dir, capture_output=True, timeout=10, env=env)
+        subprocess.run([git_exe, "add", "-A"], cwd=project_dir, capture_output=True, timeout=10, env=env,
+                       creationflags=NO_WINDOW)
         subprocess.run(
             [git_exe, "commit", "-m", f"数据同步 {__import__('datetime').datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"],
-            cwd=project_dir, capture_output=True, timeout=10, env=env
+            cwd=project_dir, capture_output=True, timeout=10, env=env, creationflags=NO_WINDOW
         )
         # 重试最多3次 push，GitHub 网络不稳定
         last_error = ""
@@ -150,7 +155,8 @@ def sync_to_github():
             try:
                 result = subprocess.run(
                     [git_exe, "push", "origin", "main"],
-                    cwd=project_dir, capture_output=True, timeout=60, text=True, env=env
+                    cwd=project_dir, capture_output=True, timeout=60, text=True, env=env,
+                    creationflags=NO_WINDOW
                 )
                 if result.returncode == 0:
                     return True, "同步成功"
