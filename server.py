@@ -49,8 +49,8 @@ PENALTY_WEEKLY_JS = "penalty_weekly.js"
 PENALTY_BOARD_HTML = "兴达履约项目看板.html"
 PENALTY_JS_WHITELIST = {
     "penalty_weekly.js", "penalty_monthly.js", "box_rider_data.js", "data.js",
-    "inspection_data.js", "knife_rider_data.js", "morning_review_data.js",
-    "充换电血压_data.js",
+    "inspection_data.js", "inspection_daily_data.js", "knife_rider_data.js",
+    "morning_review_data.js", "充换电血压_data.js",
 }
 
 
@@ -413,10 +413,19 @@ class SyncHandler(http.server.SimpleHTTPRequestHandler):
             '<style>.header,.tab-bar,#summary-cards-penalty-week,#summary-cards-penalty-month'
             '{display:none!important}'
             '#panel-safety > .sub-tab-bar{display:none!important}</style>'
-            '<script>(function(){function go(){try{'
-            'if(typeof switchTab==="function"&&typeof switchSafetySub==="function"){'
-            'switchTab("safety");switchSafetySub("penalty-week");}'
-            'else{setTimeout(go,300);}}catch(e){setTimeout(go,500);}}'
+            # 2026-10-11 加固：switchTab 与 switchSafetySub 拆成独立 try（此前 switchTab 渲染
+            # 巡检子页读缺失数据抛错会把整个 try 块打断，导致永远停在默认的巡检平台子页）；
+            # 并在切换后校验实际激活子页，未落到 penalty-week 则有限次重试。
+            '<script>(function(){var n=0;function go(){n++;'
+            'if(typeof switchTab!=="function"||typeof switchSafetySub!=="function"){'
+            'if(n<40)setTimeout(go,300);return;}'
+            'try{switchTab("safety");}catch(e){}'
+            'try{switchSafetySub("penalty-week");}catch(e){}'
+            'var act=document.querySelector(\'#panel-safety [data-csub].active\');'
+            'var pnl=document.getElementById("sub-penalty-week");'
+            'if(!act||act.getAttribute("data-csub")!=="penalty-week"'
+            '||!pnl||!pnl.classList.contains("active")){'
+            'if(n<40)setTimeout(go,500);}}'
             'if(document.readyState==="complete"){setTimeout(go,150);}'
             'else{window.addEventListener("load",function(){setTimeout(go,150);});}})();</script>'
         )
@@ -503,9 +512,154 @@ class SyncHandler(http.server.SimpleHTTPRequestHandler):
         super().do_GET()
 
 
+# ===== 8770 M盘BI注入服务看门狗（2026-10-06）=====
+# 保险V3看板「从M盘更新BI数据」依赖 127.0.0.1:8770 注入服务。该服务此前仅靠
+# HKCU Run/双击bat 拉起，掉线后无人兜底。8421 是开机自启的持久进程，由它每60s
+# 探测 8770，掉线即以 DETACHED+DEVNULL 拉起（子进程随 8421 常驻，不被会话回收）。
+_MBI_PYW = r"D:\兴达数据库\py_env\Scripts\pythonw.exe"
+_MBI_SRV = r"D:\兴达数据库\bi_insurance\_bi_m_service.py"
+
+
+def _mbi_alive():
+    """探测 8770 是否有进程监听。"""
+    try:
+        s = socket.create_connection(("127.0.0.1", 8770), timeout=1.5)
+        s.close()
+        return True
+    except OSError:
+        return False
+
+
+def _mbi_start():
+    """拉起 8770 注入服务（DETACHED_PROCESS|NEW_GROUP|NO_WINDOW + DEVNULL 三件套）。"""
+    if not (os.path.isfile(_MBI_PYW) and os.path.isfile(_MBI_SRV)):
+        return
+    try:
+        flags = 0x00000008 | 0x00000200 | 0x08000000
+        si = subprocess.STARTUPINFO()
+        si.dwFlags = subprocess.STARTF_USESHOWWINDOW
+        subprocess.Popen([_MBI_PYW, _MBI_SRV], cwd=os.path.dirname(_MBI_SRV),
+                         creationflags=flags, startupinfo=si,
+                         stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
+                         stderr=subprocess.DEVNULL)
+        print("[watchdog] 8770 掉线，已重新拉起 M盘BI注入服务")
+    except Exception as e:
+        print("[watchdog] 拉起 8770 失败: %r" % e)
+
+
+def _mbi_watchdog():
+    time.sleep(20)  # 等本服务先稳定
+    while True:
+        try:
+            if not _mbi_alive():
+                _mbi_start()
+        except Exception:
+            pass
+        time.sleep(60)
+
+
+# ===== 可视化大屏数据自动重建（2026-10-06 实时化）=====
+# 上游任一源文件（交通安全/履约/护航/地图/理赔/BI latest/保费/data_center）更新后，
+# 60 秒内自动跑 node build_screen_data.js 重建 _大屏数据.js；
+# 大屏页面自身每 60s 轮询拉取新数据热渲染 → 形成实时闭环。
+# 只读源文件 + 只写大屏自己的 _大屏数据.js，不碰 8768/定时任务/抓取链路。
+_XD_ROOT     = r"D:\兴达数据库"
+_SCREEN_DIR  = os.path.join(_XD_ROOT, "可视化大屏")
+_SCREEN_OUT  = os.path.join(_SCREEN_DIR, "_大屏数据.js")
+_SCREEN_SRCS = [
+    os.path.join(_XD_ROOT, "交通安全行为看板", "data.js"),
+    os.path.join(_XD_ROOT, "履约项目", "data.js"),
+    os.path.join(_XD_ROOT, "护航服装", "data.js"),
+    os.path.join(_XD_ROOT, "全国站点地图", "data.js"),
+    os.path.join(_XD_ROOT, "美团保险", "insurance_data.js"),
+    os.path.join(_XD_ROOT, "骑手保障补贴", "bi_data", "latest.json"),
+    os.path.join(_XD_ROOT, "bi_insurance", "premium_latest.json"),
+    os.path.join(_XD_ROOT, "data_center.json"),
+    # ---- 第二屏（项目总览）新增源 ----
+    os.path.join(_XD_ROOT, "在职骑手详情", "health_cert_data.js"),
+    os.path.join(_XD_ROOT, "履约项目", "充换电血压_data.js"),
+    os.path.join(_XD_ROOT, "履约项目", "box_rider_data.js"),
+    os.path.join(_XD_ROOT, "履约项目", "knife_rider_data.js"),
+    os.path.join(_XD_ROOT, "履约项目", "morning_review_data.js"),
+    os.path.join(_XD_ROOT, "履约项目", "penalty_weekly.js"),
+    os.path.join(_XD_ROOT, "110工单", "110_data.js"),
+    os.path.join(_XD_ROOT, "考核文件库", "checkup_files_data.js"),
+]
+_SCREEN_STATE = {"fail_until": 0.0}
+_NODE_CANDIDATES = [
+    r"C:\nodejs\node-v20.19.2-win-x64\node.exe",
+]
+
+
+def _find_node():
+    for p in _NODE_CANDIDATES:
+        if os.path.isfile(p):
+            return p
+    try:
+        import glob as _glob
+        hits = _glob.glob(os.path.join(os.path.expanduser("~"), ".workbuddy",
+                                       "binaries", "node", "versions", "*", "node.exe"))
+        if hits:
+            return sorted(hits)[-1]
+    except Exception:
+        pass
+    return None
+
+
+def _screen_srcs_fresh():
+    """上游是否有比 _大屏数据.js 更新的源文件；返回 (bool, newest_mtime)。"""
+    try:
+        out_m = os.path.getmtime(_SCREEN_OUT)
+    except OSError:
+        return True, 0.0
+    newest = 0.0
+    for f in _SCREEN_SRCS:
+        try:
+            m = os.path.getmtime(f)
+        except OSError:
+            continue
+        newest = max(newest, m)
+    return newest > out_m + 2, newest  # 2s 容差
+
+
+def _screen_rebuild():
+    node = _find_node()
+    if not node:
+        return
+    try:
+        flags = 0x08000000  # CREATE_NO_WINDOW
+        r = subprocess.run([node, "build_screen_data.js"], cwd=_SCREEN_DIR,
+                           capture_output=True, text=True, timeout=180,
+                           creationflags=flags)
+        if r.returncode == 0:
+            print("[screen] 大屏数据已自动重建: " + (r.stdout or "").strip().splitlines()[-1][:120])
+        else:
+            _SCREEN_STATE["fail_until"] = time.time() + 300
+            print("[screen] 重建失败(退出码 %s)，5 分钟后再试: %s" % (r.returncode, (r.stderr or "")[:150]))
+    except Exception as e:
+        _SCREEN_STATE["fail_until"] = time.time() + 300
+        print("[screen] 重建异常: %r" % e)
+
+
+def _screen_watchdog():
+    time.sleep(35)  # 错开 8770 看门狗首拍
+    while True:
+        try:
+            if time.time() >= _SCREEN_STATE["fail_until"]:
+                fresh, _ = _screen_srcs_fresh()
+                if fresh:
+                    _screen_rebuild()
+        except Exception:
+            pass
+        time.sleep(60)
+
+
 if __name__ == "__main__":
     # 端口可用参数覆盖：python server.py [lan] [端口]，默认 8421
     # 使用 ThreadingHTTPServer 支持多连接并发（避免被 WorkBuddy/Edge 等长连接阻塞）
+    import threading
+    threading.Thread(target=_mbi_watchdog, daemon=True).start()
+    threading.Thread(target=_screen_watchdog, daemon=True).start()
     import re
     port = 8421
     bind_host = "127.0.0.1"
