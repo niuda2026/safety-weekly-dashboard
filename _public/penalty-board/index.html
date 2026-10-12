@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-CN">
-<head><style>.header,.tab-bar,#summary-cards-penalty-week,#summary-cards-penalty-month{display:none!important}#panel-safety > .sub-tab-bar{display:none!important}</style><script>(function(){function go(){try{if(typeof switchTab==="function"&&typeof switchSafetySub==="function"){switchTab("safety");switchSafetySub("penalty-week");}else{setTimeout(go,300);}}catch(e){setTimeout(go,500);}}if(document.readyState==="complete"){setTimeout(go,150);}else{window.addEventListener("load",function(){setTimeout(go,150);});}})();</script>
+<head><style>.header,.tab-bar,#summary-cards-penalty-week,#summary-cards-penalty-month{display:none!important}#panel-safety > .sub-tab-bar{display:none!important}</style><script>(function(){var n=0;function go(){n++;if(typeof switchTab!=="function"||typeof switchSafetySub!=="function"){if(n<40)setTimeout(go,300);return;}try{switchTab("safety");}catch(e){}try{switchSafetySub("penalty-week");}catch(e){}var act=document.querySelector('#panel-safety [data-csub].active');var pnl=document.getElementById("sub-penalty-week");if(!act||act.getAttribute("data-csub")!=="penalty-week"||!pnl||!pnl.classList.contains("active")){if(n<40)setTimeout(go,500);}}if(document.readyState==="complete"){setTimeout(go,150);}else{window.addEventListener("load",function(){setTimeout(go,150);});}})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>兴达丨履约项目看板</title>
@@ -992,7 +992,7 @@ tr.cb-row-noup:hover td{background:#ffefef}
   <div class="pagination" id="pagination-rider"></div>
 </div>
 
-<script src="/equity-board/data.js?t=1791694748972"></script>
+<script src="/equity-board/data.js?t=1791700143650"></script>
 <script src="/penalty-board/data.js"></script>
 <script src="/penalty-board/chargebp_data.js"></script>
 <script src="/penalty-board/knife_rider_data.js"></script>

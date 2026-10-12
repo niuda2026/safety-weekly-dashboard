@@ -51,7 +51,8 @@ SLIM_OUT = os.path.join(PROJECT, "data", "equity_slim_data.js")
 PUB_SLIM = os.path.join(PUB, "equity-board", "data.js")
 
 PEN_JS = ["penalty_weekly.js", "penalty_monthly.js", "data.js", "knife_rider_data.js",
-          "box_rider_data.js", "inspection_data.js", "morning_review_data.js"]
+          "box_rider_data.js", "inspection_data.js", "inspection_daily_data.js",
+          "morning_review_data.js"]
 
 
 def log(msg):
@@ -147,14 +148,23 @@ def build_penalty_index():
     # 4) ../_libs → /_libs
     text = re.sub(r'src="\.\./_libs/([^"]+)"', r'src="/_libs/\1"', text)
     # 5) 注入与 server.py 完全一致的隐藏样式 + 自动切到 履约安全检查→履约达成处罚-周度
+    #    2026-10-11 加固：switchTab 与 switchSafetySub 拆成独立 try（此前 switchTab 渲染巡检子页
+    #    读缺失数据抛错会把整个 try 块打断，导致永远停在默认的巡检平台子页）；并在切换后校验实际
+    #    激活子页，未落到 penalty-week 则有限次重试。务必让 inspection_daily_data.js 随 PEN_JS 落地。
     inject = (
         '<style>.header,.tab-bar,#summary-cards-penalty-week,#summary-cards-penalty-month'
         '{display:none!important}'
         '#panel-safety > .sub-tab-bar{display:none!important}</style>'
-        '<script>(function(){function go(){try{'
-        'if(typeof switchTab==="function"&&typeof switchSafetySub==="function"){'
-        'switchTab("safety");switchSafetySub("penalty-week");}'
-        'else{setTimeout(go,300);}}catch(e){setTimeout(go,500);}}'
+        '<script>(function(){var n=0;function go(){n++;'
+        'if(typeof switchTab!=="function"||typeof switchSafetySub!=="function"){'
+        'if(n<40)setTimeout(go,300);return;}'
+        'try{switchTab("safety");}catch(e){}'
+        'try{switchSafetySub("penalty-week");}catch(e){}'
+        'var act=document.querySelector(\'#panel-safety [data-csub].active\');'
+        'var pnl=document.getElementById("sub-penalty-week");'
+        'if(!act||act.getAttribute("data-csub")!=="penalty-week"'
+        '||!pnl||!pnl.classList.contains("active")){'
+        'if(n<40)setTimeout(go,500);}}'
         'if(document.readyState==="complete"){setTimeout(go,150);}'
         'else{window.addEventListener("load",function(){setTimeout(go,150);});}})();</script>'
     )
