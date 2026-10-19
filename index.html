@@ -110,6 +110,10 @@
         .attention-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 12px; }
         .attention-stat-card { background: #fff; border-radius: 8px; padding: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; text-align: center; transition: transform 0.2s; }
         .attention-stat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        /* 大区汇总卡点击联动筛选（2026-10-19） */
+        .attention-stat-card.region-clickable { cursor: pointer; }
+        .attention-stat-card.region-clickable:hover { border-color: #3b82f6; box-shadow: 0 4px 10px rgba(59,130,246,0.28); }
+        .attention-stat-card.region-active { background: #eff6ff; border-color: #3b82f6; box-shadow: inset 0 0 0 1px #3b82f6, 0 2px 6px rgba(59,130,246,0.18); }
         .attention-stat-value { font-size: 1.5rem; font-weight: 800; line-height: 1.2; }
         .attention-stat-value.red { color: var(--danger); }
         .attention-stat-value.orange { color: var(--warning); }
@@ -1318,14 +1322,11 @@ function renderSafetyScoreAttention(data) {
     // Tab 0: 戴盔系带率扣分站
     html += '<div id="attentionCategory_0_safetyAttention" class="attention-category-content active">';
     if (helmetWarnings.length > 0) {
-        // 5大区统计卡
+        // 5大区统计卡（数字=全量口径；点击卡片联动大区筛选）
         html += '<div class="attention-stats" style="grid-template-columns:repeat(5,1fr);">';
         areaOrder.forEach(area => {
             const s = regionStats.helmet[area] || { sum: 0, cnt: 0, deduct: 0 };
-            html += '<div class="attention-stat-card" style="display:flex;align-items:center;justify-content:space-between;text-align:left;padding:10px 12px;">';
-            html += '<span style="font-weight:700;color:#1e3a5f;font-size:0.88rem;">' + area + '</span>';
-            html += '<span style="font-size:0.78rem;color:#64748b;">权益扣分站 <b style="color:#ef4444;font-size:0.95rem;">' + s.deduct + '</b> 个</span>';
-            html += '</div>';
+            html += renderRegionStatCard(area, s.deduct, '权益扣分站', attentionCurRegion('safety'), 'safety');
         });
         html += '</div>';
 
@@ -1345,10 +1346,7 @@ function renderSafetyScoreAttention(data) {
         html += '<div class="attention-stats" style="grid-template-columns:repeat(5,1fr);">';
         areaOrder.forEach(area => {
             const s = regionStats.speed[area] || { sum: 0, cnt: 0, deduct: 0 };
-            html += '<div class="attention-stat-card" style="display:flex;align-items:center;justify-content:space-between;text-align:left;padding:10px 12px;">';
-            html += '<span style="font-weight:700;color:#1e3a5f;font-size:0.88rem;">' + area + '</span>';
-            html += '<span style="font-size:0.78rem;color:#64748b;">超速扣分站 <b style="color:#ef4444;font-size:0.95rem;">' + s.deduct + '</b> 个</span>';
-            html += '</div>';
+            html += renderRegionStatCard(area, s.deduct, '超速扣分站', attentionCurRegion('safety'), 'safety');
         });
         html += '</div>';
 
@@ -1460,6 +1458,34 @@ function refreshSafetyAttention() {
     return loadEquityDataScript()
         .then(function () { applySafetyTabFilter(); })
         .catch(function () { applySafetyTabFilter(); });
+}
+
+// ===== 重点关注「大区汇总卡」点击联动筛选栏（2026-10-19）=====
+// 点击大区卡 = 把该大区写进对应 tab 的「大区」下拉并触发筛选
+// （模块内问题站点列表 + iframe 明细表一起联动）；再点同一个卡取消筛选。
+// 统计口径不变：卡片数字始终基于全量数据（不受筛选影响），只联动不高亮数据源。
+function attentionRegionCardClick(tabPrefix, region) {
+    const sel = document.getElementById(tabPrefix + 'Region');
+    if (!sel) return;
+    sel.value = (sel.value === region) ? '' : region;  // 再点同一个 = 取消
+    if (tabPrefix === 'rating') { if (typeof applyRatingTabFilter === 'function') applyRatingTabFilter(); }
+    else { if (typeof applySafetyTabFilter === 'function') applySafetyTabFilter(); }
+}
+function renderRegionStatCard(area, cnt, cntLabel, curRegion, tabPrefix) {
+    const active = curRegion === area;
+    const cls = 'attention-stat-card region-clickable' + (active ? ' region-active' : '');
+    return '<div class="' + cls + '" title="点击按' + area + '筛选问题数据与明细表（再点一次取消）"' +
+        ' onclick="attentionRegionCardClick(\'' + tabPrefix + '\', \'' + area + '\')"' +
+        ' style="display:flex;align-items:center;justify-content:space-between;text-align:left;padding:10px 12px;' +
+        (active ? 'background:#eff6ff;border-color:#3b82f6;' : '') + '">' +
+        '<span style="font-weight:700;color:#1e3a5f;font-size:0.88rem;">' + area + (active ? ' <span style="color:#3b82f6;" title="点击取消筛选">✕</span>' : '') + '</span>' +
+        '<span style="font-size:0.78rem;color:#64748b;">' + cntLabel + ' <b style="color:#ef4444;font-size:0.95rem;">' + cnt + '</b> 个</span>' +
+        '</div>';
+}
+// 当前大区筛选值（tabPrefix = safety | rating）
+function attentionCurRegion(tabPrefix) {
+    const el = document.getElementById(tabPrefix + 'Region');
+    return el ? (el.value || '').trim() : '';
 }
 
 // ===== 安全权益tab筛选栏（2026-09-26）：联动「重点关注」模块 + iframe明细表 =====
@@ -1601,7 +1627,7 @@ function renderRatingAttention(rows) {
         { key: '闯红灯率', target: 0.23, direction: 'lower', label: '闯红灯率', color: 'red' },
         { key: '里程逆行率', target: 0.03, direction: 'lower', label: '里程逆行率', color: 'yellow' },
         { key: '美团工服率', target: 0.92, direction: 'higher', label: '美团工服率', color: 'blue' }
-    ], '重点关注（闯红灯率尾部站 | 里程逆行率尾部站 | 美团工服率扣分站）', all);
+    ], '重点关注（闯红灯率尾部站 | 里程逆行率尾部站 | 美团工服率扣分站）', all, 'rating');
 }
 // 把筛选条件写进同源 iframe（站长安全评级看板）的 sfState.rating 并触发它的筛选
 // 关键：源看板 onload 末尾有 renderStation('equity')（无 equity-tbody，是失效调用），
@@ -1783,7 +1809,9 @@ function getDetailWeeklyReverse(siteName) {
     return { labels: labels, values: values };
 }
 
-function renderAttention(containerId, data, metrics, customTitle, allData) {
+function renderAttention(containerId, data, metrics, customTitle, allData, regionTabPrefix) {
+    // regionTabPrefix（'rating' 等）：传入则大区汇总卡可点击联动对应 tab 的大区筛选下拉
+    const curRegion = regionTabPrefix ? attentionCurRegion(regionTabPrefix) : '';
     const el = document.getElementById(containerId);
     if (!data.length) { el.innerHTML = ''; return; }
 
@@ -1901,10 +1929,7 @@ function renderAttention(containerId, data, metrics, customTitle, allData) {
         html += '<div class="attention-stats" style="grid-template-columns:repeat(5,1fr);">';
         ['华北一区', '华北二区', '华北三区', '华东大区', '中南大区'].forEach(region => {
             const cnt = rlRegionCnt[region] || 0;
-            html += '<div class="attention-stat-card" style="display:flex;align-items:center;justify-content:space-between;text-align:left;padding:10px 12px;">';
-            html += '<span style="font-weight:700;color:#1e3a5f;font-size:0.88rem;">' + region + '</span>';
-            html += '<span style="font-size:0.78rem;color:#64748b;">尾部站 <b style="color:#ef4444;font-size:0.95rem;">' + cnt + '</b> 个</span>';
-            html += '</div>';
+            html += renderRegionStatCard(region, cnt, '尾部站', curRegion, regionTabPrefix);
         });
         html += '</div>';
         // 按大区、城市分组排序站点
@@ -1935,10 +1960,7 @@ function renderAttention(containerId, data, metrics, customTitle, allData) {
         html += '<div class="attention-stats" style="grid-template-columns:repeat(5,1fr);">';
         ['华北一区', '华北二区', '华北三区', '华东大区', '中南大区'].forEach(region => {
             const cnt = rvRegionCnt[region] || 0;
-            html += '<div class="attention-stat-card" style="display:flex;align-items:center;justify-content:space-between;text-align:left;padding:10px 12px;">';
-            html += '<span style="font-weight:700;color:#1e3a5f;font-size:0.88rem;">' + region + '</span>';
-            html += '<span style="font-size:0.78rem;color:#64748b;">尾部站 <b style="color:#ef4444;font-size:0.95rem;">' + cnt + '</b> 个</span>';
-            html += '</div>';
+            html += renderRegionStatCard(region, cnt, '尾部站', curRegion, regionTabPrefix);
         });
         html += '</div>';
         // 按大区、城市分组排序站点
@@ -1969,10 +1991,7 @@ function renderAttention(containerId, data, metrics, customTitle, allData) {
         html += '<div class="attention-stats" style="grid-template-columns:repeat(5,1fr);">';
         ['华北一区', '华北二区', '华北三区', '华东大区', '中南大区'].forEach(region => {
             const cnt = clRegionCnt[region] || 0;
-            html += '<div class="attention-stat-card" style="display:flex;align-items:center;justify-content:space-between;text-align:left;padding:10px 12px;">';
-            html += '<span style="font-weight:700;color:#1e3a5f;font-size:0.88rem;">' + region + '</span>';
-            html += '<span style="font-size:0.78rem;color:#64748b;">扣分站点 <b style="color:#ef4444;font-size:0.95rem;">' + cnt + '</b> 个</span>';
-            html += '</div>';
+            html += renderRegionStatCard(region, cnt, '扣分站点', curRegion, regionTabPrefix);
         });
         html += '</div>';
         // 按大区、城市分组排序站点
