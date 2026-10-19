@@ -245,7 +245,7 @@ class SyncHandler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
 
     # ===== 安全权益看板 只读暴露 =====
-    def _serve_traffic_file(self, root, rel_path):
+    def _serve_traffic_file(self, root, rel_path, extra_inject=""):
         """从 root 只读返回单个文件，带路径穿越防护；失败一律 404。"""
         rel = unquote(rel_path)  # 解码 %E5%AE%89... 之类的中文/特殊字符
         rel = rel.replace("\\", "/")
@@ -294,6 +294,8 @@ class SyncHandler(http.server.SimpleHTTPRequestHandler):
                           '.header,.tab-bar,'
                           '#summary-cards-equity,#summary-cards-rating,#summary-cards-clothing'
                           '{display:none!important}</style>')
+                if extra_inject:
+                    inject += extra_inject
                 if "<head>" in text:
                     text = text.replace("<head>", "<head>" + inject, 1)
                 else:
