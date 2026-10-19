@@ -41,6 +41,30 @@ HUHU_FU_DIR = r"D:\兴达数据库\护航服装"
 INSURANCE_DIR = r"D:\兴达数据库\骑手保障补贴"
 INSURANCE_V3 = "专送合作商骑手保障补贴考核看板_2026_V3.html"
 
+# 交通安全四项内嵌筛选联动脚本（/four-board 注入，仅内存改写、不改工作台原文件）：
+# 接收父页（保险V3）postMessage {type:'xd-four-filter', region:[], subregion:[], city:[]}
+# 并套到四项看板的 sfState.four 上；值先与看板数据求交集，防口径不一致把表筛空。
+# 同时支持 URL 参数初始过滤（?city=合肥,xx）。
+_FOUR_FILTER_INJECT = (
+    '<script>(function(){'
+    'function dist(key,level){var rows=(typeof METRIC_CFG!=="undefined"&&METRIC_CFG.four)?METRIC_CFG.four.rows:[];'
+    'var s={};rows.forEach(function(r){if(level&&r.level!==level)return;var v=r[key];if(v)s[v]=1;});'
+    'return Object.keys(s);}'
+    'function apply(f){try{'
+    'if(typeof sfState==="undefined"||!sfState.four||typeof initStationFilters!=="function"||typeof applyFilter!=="function")return false;'
+    '["region","subregion","city"].forEach(function(k){'
+    'var opts=dist(k,k==="city"?"merchant":"subregion");'
+    'sfState.four[k]=(f[k]||[]).filter(function(v){return opts.indexOf(v)>=0;});});'
+    'initStationFilters("four");applyFilter("four");return true;}catch(e){return false;}}'
+    'window.addEventListener("message",function(ev){var d=ev.data||{};'
+    'if(d.type!=="xd-four-filter")return;'
+    'var n=0;(function go(){if(apply(d)||n++>50)return;setTimeout(go,300);})();});'
+    'try{var q=new URLSearchParams(location.search),f={};'
+    '["region","subregion","city"].forEach(function(k){var v=q.get(k);if(v)f[k]=v.split(",").filter(Boolean);});'
+    'if(Object.keys(f).length){var m=0;(function go(){if(apply(f)||m++>50)return;setTimeout(go,300);})();}}catch(e){}'
+    '})();</script>'
+)
+
 # 履约达成处罚周度（履约项目看板）只读透出（2026-09-27 新增）
 # 把 D:\兴达数据库\履约项目\penalty_weekly.js 透出给周报看板，绝不改写原工作台任何文件。
 PENALTY_PROJECT_DIR = r"D:\兴达数据库\履约项目"
@@ -488,6 +512,16 @@ class SyncHandler(http.server.SimpleHTTPRequestHandler):
             return
         if path.startswith("/insurance-live/"):
             self._serve_nostore_file(INSURANCE_DIR, path[len("/insurance-live/"):])
+            return
+        # 交通安全四项-站维度（保险V3「交通安全四项」维度内嵌）：透出工作台真身看板。
+        # 注意：这里 data.js 走全量真身（与工作台同一文件，数据天然同步），
+        # 与 /equity-board/data.js 的站维度精简版不同——四项站维度表由全量骑手明细聚合，精简版会算不出。
+        if path in ("/four-board", "/four-board/"):
+            self._serve_traffic_file(TRAFFIC_BOARD_DIR, "骑手交通行为明细看板.html",
+                                     extra_inject=_FOUR_FILTER_INJECT)
+            return
+        if path.startswith("/four-board/"):
+            self._serve_traffic_file(TRAFFIC_BOARD_DIR, path[len("/four-board/"):])
             return
         # 履约达成处罚周度（履约项目看板）只读透出：绝不改写原工作台任何文件
         if path in ("/penalty-board", "/penalty-board/"):
