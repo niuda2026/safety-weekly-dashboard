@@ -121,12 +121,18 @@ def backup(path):
 
 
 def meeting_window():
-    """从早会源文件名解析周窗口 (start_date, end_date)"""
+    """「上周」固定口径 = 上周一 ~ 上周日（2026-10-15 定稿）。
+
+    旧逻辑从早会文件名解析区间，当时导出恰为一周；2026-10-15 起 M盘早会文件
+    改为「整月至今」导出（文件名区间=整月），文件名区间不再等于周窗口——
+    早会/检核明细、装备过滤一律改用上周一~上周日，与 _build_penalty_m.py 一致。
+    返回 (src, 上周一, 上周日)。
+    """
     f = find_newest("_报备和日常早会驳回清单_")
-    m = re.search(r"(\d{4}-\d{2}-\d{2})-(\d{4}-\d{2}-\d{2})", os.path.basename(f))
-    if not m:
-        raise ValueError("早会文件名无法解析窗口: " + f)
-    a, b = datetime.date(*map(int, m.group(1).split("-"))), datetime.date(*map(int, m.group(2).split("-")))
+    d = datetime.date.today()
+    mon = d - datetime.timedelta(days=d.weekday())          # 本周一
+    a = mon - datetime.timedelta(days=7)                    # 上周一
+    b = a + datetime.timedelta(days=6)                      # 上周日
     return f, a, b
 
 
@@ -139,6 +145,7 @@ def gen_meeting(dry):
            "审核不通过数量", "早会出勤率"] + [""] * 12
     out = [hdr]
     total = 0
+    dropped = [0]
     for r in read_sheet(src):
         if str(r.get("状态") or "") != "审核不通过":
             continue
@@ -146,6 +153,10 @@ def gen_meeting(dry):
         if not s:
             continue
         d = ymd(r.get("早会时间")) or ymd(r.get("提交时间"))
+        # ⚠️ 2026-10-15 定稿：只保留上周（周一~周日）明细，剔除窗口外
+        if d is None or not (w0 <= d <= w1):
+            dropped[0] += 1
+            continue
         n = int(num(r.get("审核不通过数量")) or 1)
         typ = str(r.get("早会类型") or "")
         item = str(r.get("审核不通过项目") or "")
@@ -173,7 +184,8 @@ def gen_meeting(dry):
             n, att,
         ] + [""] * 12
         out.append(row)
-    print("[meeting_reject.json] %d 行, 罚款合计 %d (窗口 %s~%s)" % (len(out) - 1, total, w0, w1))
+    print("[meeting_reject.json] %d 行, 罚款合计 %d (窗口 %s~%s, 剔除窗口外 %d)"
+          % (len(out) - 1, total, w0, w1, dropped[0]))
     if not dry:
         p = os.path.join(DATA_DIR, "meeting_reject.json")
         backup(p)
@@ -190,13 +202,20 @@ def check_item_fine(item):
     return it, CHECK_ITEM_DEFAULT
 
 
-def gen_inspection(dry):
+def gen_inspection(dry, w0=None, w1=None):
     src = find_newest("_【巡检平台站点检核】_子项检核明细查询_")
     rows = [r for r in read_sheet(src)
             if str(r.get("最终检核结果") or "") == "驳回"
             and str(r.get("申诉审核结果") or "") != "申诉通过"
             and "安全员" not in str(r.get("提交人岗位") or "")
             and str(r.get("站点名称") or "").strip()]
+    # ⚠️ 2026-10-15 定稿：只保留上周（周一~周日）明细，剔除窗口外
+    if w0 is not None:
+        before = len(rows)
+        rows = [r for r in rows
+                if (lambda d: d is not None and w0 <= d <= w1)(ymd(r.get("日期")))]
+        print("[inspection_detail] 按上周窗口 %s~%s 保留 %d / 剔除 %d"
+              % (w0, w1, len(rows), before - len(rows)))
     # 健康证过期/证件不符 → 按站人次分档
     def is_health_tier(r):
         item = str(r.get("检核子项") or "")
@@ -330,10 +349,10 @@ def gen_equipment(dry, w0, w1):
 def main():
     dry = "--dry-run" in sys.argv
     print("== 周报明细 JSON 重建（M盘源，%s）==" % ("dry-run" if dry else "写入"))
-    gen_meeting(dry)
-    gen_inspection(dry)
-    gen_disinfect(dry)
     _src, w0, w1 = meeting_window()
+    gen_meeting(dry)
+    gen_inspection(dry, w0, w1)
+    gen_disinfect(dry)
     gen_equipment(dry, w0, w1)
     print("DONE")
 

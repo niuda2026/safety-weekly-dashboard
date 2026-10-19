@@ -119,6 +119,8 @@ table.dt thead{background:transparent}
 /* ─── 视图切换 Sub-Tab-Bar ─── */
 .sub-tab-bar{display:flex;align-items:center;gap:8px;padding:8px 16px;background:#EAF2F9;border-bottom:1px solid #8FB8DA;flex-wrap:wrap}
 .sub-tab-bar .sub-tab-label{font-size:12px;color:#4F6E87;font-weight:600;margin-right:4px}
+.data-updated{margin-left:12px;font-size:12px;color:#4F6E87;font-weight:600;white-space:nowrap;padding-right:16px;align-self:center}
+.data-updated b{color:#0B4F8A}
 .sub-tab-sep{width:1px;height:18px;background:#B3D0E8;margin:0 4px}
 .lv-btn{padding:4px 12px;border-radius:4px;border:1px solid #0B4F8A;background:#0B4F8A;color:#fff;font-size:12px;cursor:pointer;transition:all .2s;font-weight:500}
 .lv-btn:not(.active){background:transparent;color:#4F6E87;border-color:#90a4ae}
@@ -613,7 +615,8 @@ tr.cb-row-noup:hover td{background:#ffefef}
     <button class="lv-btn active" id="lv-btn-site" onclick="toggleViewBtn('site')">站点行</button>
     <span class="sub-tab-sep"></span>
     <button class="lv-btn-reset" id="lv-btn-reset" onclick="resetViewBtns()">全部显示</button>
-    <button class="btn-rules" onclick="openEquipRulesModal()">骑手装备处罚规则</button>
+    <button class="btn-rules" style="margin-left:auto" onclick="openEquipRulesModal()">骑手装备处罚规则</button>
+    <span class="data-updated" id="data-updated-equip">数据更新于 <b>--</b></span>
   </div>
 <div class="filter-bar" id="filter-bar-equip">
     <label>大区</label><div class="ms-wrap" id="ms-region-equip"><div class="ms-btn" onclick="toggleMs('region-equip')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
@@ -901,6 +904,7 @@ tr.cb-row-noup:hover td{background:#ffefef}
   <div class="cb-subtab-bar">
     <div class="cb-subtab active" data-t="site" onclick="trSwitchSub('site')">🏢 站维度达成</div>
     <div class="cb-subtab" data-t="rider" onclick="trSwitchSub('rider')">🛵 骑手维度明细<span class="cb-cnt" id="trCntRider">-</span></div>
+    <span class="data-updated" id="data-updated-training" style="margin-left:auto">数据更新于 <b>--</b></span>
   </div>
 
   <!-- ══ 子Tab1：站维度达成 ══ -->
@@ -992,7 +996,7 @@ tr.cb-row-noup:hover td{background:#ffefef}
   <div class="pagination" id="pagination-rider"></div>
 </div>
 
-<script src="/equity-board/data.js?t=1791700143650"></script>
+<script src="/equity-board/data.js?t=1791772650733"></script>
 <script src="/penalty-board/data.js"></script>
 <script src="/penalty-board/chargebp_data.js"></script>
 <script src="/penalty-board/knife_rider_data.js"></script>
@@ -5903,6 +5907,12 @@ window.onload = function() {
   METRIC_CFG.clothing.target = 95;
   METRIC_CFG.rating = { rows: (typeof TAB2_ROWS !== 'undefined') ? TAB2_ROWS : [] };
   if (typeof DATES !== 'undefined') { initMsFilter('date-equip', DATES, []); }
+  // 骑手装备标准化率 / 线上线下考培：数据更新时间（来自 data.js 的 DATA_GEN_TIME）
+  var genTime = (typeof DATA_GEN_TIME !== 'undefined' && DATA_GEN_TIME) ? DATA_GEN_TIME : '--';
+  var updEquip = document.getElementById('data-updated-equip');
+  var updTrain = document.getElementById('data-updated-training');
+  if (updEquip) updEquip.innerHTML = '数据更新于 <b>' + genTime + '</b>';
+  if (updTrain) updTrain.innerHTML = '数据更新于 <b>' + genTime + '</b>';
   // Render default tab (morning)
   switchTab('morning');
 };

@@ -203,6 +203,34 @@ def step6_weekly():
     cp(os.path.join(D, "交通安全行为看板", "monthly_summary.js"), os.path.join(PUB, "monthly_summary.js"))
 
 
+CLEANUP_FILES = ["server.py", "start_server.bat", "start_silent.vbs", "sync.bat",
+                 "update_data.bat", "update_insurance.bat", "gen_dashboard_data.py",
+                 "使用说明.txt", "日常操作速查.txt", "开机自启.bat", "注册开机自启.bat"]
+
+
+def step7_cleanup():
+    """清理 _public 内中文名文件与本地运维遗留文件（静态沙箱不支持中文文件名，
+    解压会整目录失败）。这些文件是 09-04 初建副本遗留，看板从不引用。"""
+    log("[7] 清理 _public 内中文名/本地运维遗留文件")
+    removed = 0
+    for root, dirs, files in os.walk(PUB):
+        for f in files:
+            if not all(ord(c) < 128 for c in f):
+                p = os.path.join(root, f)
+                try:
+                    os.remove(p); removed += 1
+                except Exception as e:
+                    log("  [清理失败] %s: %s" % (p, e))
+    for f in CLEANUP_FILES:
+        p = os.path.join(PUB, f)
+        if os.path.isfile(p):
+            try:
+                os.remove(p); removed += 1
+            except Exception:
+                pass
+    log("  共清理 %d 个文件" % removed)
+
+
 def main():
     t0 = time.time()
     log("=== _refresh_public 开始 ===")
@@ -212,6 +240,7 @@ def main():
     step4_penalty()
     step5_libs()
     step6_weekly()
+    step7_cleanup()
     log("=== 完成，耗时 %.1fs。下一步：workbuddy_sites_deploy(directory=_public) ===" % (time.time() - t0))
 
 
