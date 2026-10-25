@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>安全权益履约周报看板</title>
+    <title>履约安全周报看板</title>
     <!-- 本地库优先（8421 /_libs/ 直供，毫秒级）；公网静态托管无此路径时自动回退 CDN -->
     <script src="/_libs/xlsx-0.18.5.full.min.js" onerror="var s=document.createElement('script');s.src='https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js';document.head.appendChild(s)"></script>
     <script src="/_libs/html2canvas-1.4.1.min.js" onerror="var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';document.head.appendChild(s)"></script>
@@ -61,6 +61,8 @@
         .tab-btn { padding: 10px 20px; background: transparent; color: var(--text-light); border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem; white-space: nowrap; transition: all 0.25s; }
         .tab-btn:hover { background: #f1f5f9; color: var(--text); }
         .tab-btn.active { background: var(--primary); color: #fff; box-shadow: 0 2px 8px rgba(37,99,235,0.3); }
+        /* 2026-10-24：安全权益 / 站长评级 两个模块整体隐藏（代码保留，随时去掉该 class 即可恢复） */
+        .mod-hidden { display: none !important; }
 
         /* Tab Panel */
         .tab-panel { display: none; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: clip; }
@@ -110,6 +112,10 @@
         .attention-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 12px; }
         .attention-stat-card { background: #fff; border-radius: 8px; padding: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; text-align: center; transition: transform 0.2s; }
         .attention-stat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        /* 大区汇总卡点击联动筛选（2026-10-19） */
+        .attention-stat-card.region-clickable { cursor: pointer; }
+        .attention-stat-card.region-clickable:hover { border-color: #3b82f6; box-shadow: 0 4px 10px rgba(59,130,246,0.28); }
+        .attention-stat-card.region-active { background: #eff6ff; border-color: #3b82f6; box-shadow: inset 0 0 0 1px #3b82f6, 0 2px 6px rgba(59,130,246,0.18); }
         .attention-stat-value { font-size: 1.5rem; font-weight: 800; line-height: 1.2; }
         .attention-stat-value.red { color: var(--danger); }
         .attention-stat-value.orange { color: var(--warning); }
@@ -422,8 +428,8 @@
 <div class="header">
     <div class="header-inner">
         <div>
-            <h1>安全权益履约周报看板 <span style="color:#facc15;font-size:inherit;margin-left:12px;">提数据=降处罚</span></h1>
-            <div class="meta">安全权益 | 站长评级 | 履约数据 | 安全事故 | 保险赔付补贴监控 | 保险赔付率解读</div>
+            <h1>履约安全周报看板 <span style="color:#facc15;font-size:inherit;margin-left:12px;">提数据=降处罚</span></h1>
+            <div class="meta"><span class="mod-hidden">安全权益 | 站长评级 | </span>履约数据 | 安全事故 | 保险赔付补贴监控 | 保险赔付率解读</div>
         </div>
         <div class="header-right">
             <div class="zoom-controls">
@@ -433,14 +439,12 @@
                 <button class="zoom-btn" onclick="zoomReset()" title="重置" style="font-size:0.7rem;">1:1</button>
             </div>
             <button class="screenshot-btn" id="screenshotBtn" onclick="takeScreenshot()">截图</button>
-            <label class="upload-btn" for="excelFile">上传Excel数据</label>
             <input type="file" id="excelFile" accept=".xlsx,.xls">
             <div class="upload-progress" id="uploadProgress" style="display:none;">
                 <div class="bar"><div class="bar-fill" id="uploadProgressBar"></div></div>
                 <span class="text" id="uploadProgressText">0%</span>
             </div>
-            <button class="upload-btn" style="background:#059669;margin-left:4px;" onclick="downloadAllData()">下载所有数据</button>
-            <button class="upload-btn" style="background:#6b7280;margin-left:4px;" onclick="clearSavedData()">恢复默认数据</button>
+            <button class="upload-btn" style="background:#059669;margin-left:4px;" onclick="downloadAllData()">导出完整周报PDF</button>
             <div class="header-badge" id="headerDataDate">数据加载中</div>
         </div>
     </div>
@@ -452,16 +456,16 @@
     <div class="stats-grid" id="statsGrid"></div>
     <div class="stats-grid" id="statsGridInsurance" style="display:none"></div>
     <div class="tabs">
-        <button class="tab-btn active" data-tab="safety">安全权益</button>
-        <button class="tab-btn" data-tab="rating">站长评级</button>
-        <button class="tab-btn" data-tab="compliance">履约数据</button>
+        <button class="tab-btn mod-hidden" data-tab="safety">安全权益</button>
+        <button class="tab-btn mod-hidden" data-tab="rating">站长评级</button>
+        <button class="tab-btn active" data-tab="compliance">履约数据</button>
         <button class="tab-btn" data-tab="accident">安全事故</button>
         <button class="tab-btn" data-tab="insurance-monitor">保险赔付补贴监控</button>
         <button class="tab-btn" data-tab="insurance-rate">保险赔付率解读</button>
     </div>
 
     <!-- Safety -->
-    <div id="panel-safety" class="tab-panel active">
+    <div id="panel-safety" class="tab-panel mod-hidden">
         <div class="panel-header">
             <div class="panel-title">安全权益数据看板</div>
             <div class="controls">
@@ -491,7 +495,7 @@
     </div>
 
     <!-- Rating -->
-    <div id="panel-rating" class="tab-panel">
+    <div id="panel-rating" class="tab-panel mod-hidden">
         <div class="panel-header">
             <div class="panel-title">站长安全评级看板</div>
             <div class="controls">
@@ -520,7 +524,7 @@
     </div>
 
     <!-- Compliance -->
-    <div id="panel-compliance" class="tab-panel">
+    <div id="panel-compliance" class="tab-panel active">
         <div class="panel-header">
             <div class="panel-title">履约类数据看板</div>
             <div class="controls">
@@ -1318,14 +1322,11 @@ function renderSafetyScoreAttention(data) {
     // Tab 0: 戴盔系带率扣分站
     html += '<div id="attentionCategory_0_safetyAttention" class="attention-category-content active">';
     if (helmetWarnings.length > 0) {
-        // 5大区统计卡
+        // 5大区统计卡（数字=全量口径；点击卡片联动大区筛选）
         html += '<div class="attention-stats" style="grid-template-columns:repeat(5,1fr);">';
         areaOrder.forEach(area => {
             const s = regionStats.helmet[area] || { sum: 0, cnt: 0, deduct: 0 };
-            html += '<div class="attention-stat-card" style="display:flex;align-items:center;justify-content:space-between;text-align:left;padding:10px 12px;">';
-            html += '<span style="font-weight:700;color:#1e3a5f;font-size:0.88rem;">' + area + '</span>';
-            html += '<span style="font-size:0.78rem;color:#64748b;">权益扣分站 <b style="color:#ef4444;font-size:0.95rem;">' + s.deduct + '</b> 个</span>';
-            html += '</div>';
+            html += renderRegionStatCard(area, s.deduct, '权益扣分站', attentionCurRegion('safety'), 'safety');
         });
         html += '</div>';
 
@@ -1345,10 +1346,7 @@ function renderSafetyScoreAttention(data) {
         html += '<div class="attention-stats" style="grid-template-columns:repeat(5,1fr);">';
         areaOrder.forEach(area => {
             const s = regionStats.speed[area] || { sum: 0, cnt: 0, deduct: 0 };
-            html += '<div class="attention-stat-card" style="display:flex;align-items:center;justify-content:space-between;text-align:left;padding:10px 12px;">';
-            html += '<span style="font-weight:700;color:#1e3a5f;font-size:0.88rem;">' + area + '</span>';
-            html += '<span style="font-size:0.78rem;color:#64748b;">超速扣分站 <b style="color:#ef4444;font-size:0.95rem;">' + s.deduct + '</b> 个</span>';
-            html += '</div>';
+            html += renderRegionStatCard(area, s.deduct, '超速扣分站', attentionCurRegion('safety'), 'safety');
         });
         html += '</div>';
 
@@ -1460,6 +1458,34 @@ function refreshSafetyAttention() {
     return loadEquityDataScript()
         .then(function () { applySafetyTabFilter(); })
         .catch(function () { applySafetyTabFilter(); });
+}
+
+// ===== 重点关注「大区汇总卡」点击联动筛选栏（2026-10-19）=====
+// 点击大区卡 = 把该大区写进对应 tab 的「大区」下拉并触发筛选
+// （模块内问题站点列表 + iframe 明细表一起联动）；再点同一个卡取消筛选。
+// 统计口径不变：卡片数字始终基于全量数据（不受筛选影响），只联动不高亮数据源。
+function attentionRegionCardClick(tabPrefix, region) {
+    const sel = document.getElementById(tabPrefix + 'Region');
+    if (!sel) return;
+    sel.value = (sel.value === region) ? '' : region;  // 再点同一个 = 取消
+    if (tabPrefix === 'rating') { if (typeof applyRatingTabFilter === 'function') applyRatingTabFilter(); }
+    else { if (typeof applySafetyTabFilter === 'function') applySafetyTabFilter(); }
+}
+function renderRegionStatCard(area, cnt, cntLabel, curRegion, tabPrefix) {
+    const active = curRegion === area;
+    const cls = 'attention-stat-card region-clickable' + (active ? ' region-active' : '');
+    return '<div class="' + cls + '" title="点击按' + area + '筛选问题数据与明细表（再点一次取消）"' +
+        ' onclick="attentionRegionCardClick(\'' + tabPrefix + '\', \'' + area + '\')"' +
+        ' style="display:flex;align-items:center;justify-content:space-between;text-align:left;padding:10px 12px;' +
+        (active ? 'background:#eff6ff;border-color:#3b82f6;' : '') + '">' +
+        '<span style="font-weight:700;color:#1e3a5f;font-size:0.88rem;">' + area + (active ? ' <span style="color:#3b82f6;" title="点击取消筛选">✕</span>' : '') + '</span>' +
+        '<span style="font-size:0.78rem;color:#64748b;">' + cntLabel + ' <b style="color:#ef4444;font-size:0.95rem;">' + cnt + '</b> 个</span>' +
+        '</div>';
+}
+// 当前大区筛选值（tabPrefix = safety | rating）
+function attentionCurRegion(tabPrefix) {
+    const el = document.getElementById(tabPrefix + 'Region');
+    return el ? (el.value || '').trim() : '';
 }
 
 // ===== 安全权益tab筛选栏（2026-09-26）：联动「重点关注」模块 + iframe明细表 =====
@@ -1601,7 +1627,7 @@ function renderRatingAttention(rows) {
         { key: '闯红灯率', target: 0.23, direction: 'lower', label: '闯红灯率', color: 'red' },
         { key: '里程逆行率', target: 0.03, direction: 'lower', label: '里程逆行率', color: 'yellow' },
         { key: '美团工服率', target: 0.92, direction: 'higher', label: '美团工服率', color: 'blue' }
-    ], '重点关注（闯红灯率尾部站 | 里程逆行率尾部站 | 美团工服率扣分站）', all);
+    ], '重点关注（闯红灯率尾部站 | 里程逆行率尾部站 | 美团工服率扣分站）', all, 'rating');
 }
 // 把筛选条件写进同源 iframe（站长安全评级看板）的 sfState.rating 并触发它的筛选
 // 关键：源看板 onload 末尾有 renderStation('equity')（无 equity-tbody，是失效调用），
@@ -1783,7 +1809,9 @@ function getDetailWeeklyReverse(siteName) {
     return { labels: labels, values: values };
 }
 
-function renderAttention(containerId, data, metrics, customTitle, allData) {
+function renderAttention(containerId, data, metrics, customTitle, allData, regionTabPrefix) {
+    // regionTabPrefix（'rating' 等）：传入则大区汇总卡可点击联动对应 tab 的大区筛选下拉
+    const curRegion = regionTabPrefix ? attentionCurRegion(regionTabPrefix) : '';
     const el = document.getElementById(containerId);
     if (!data.length) { el.innerHTML = ''; return; }
 
@@ -1901,10 +1929,7 @@ function renderAttention(containerId, data, metrics, customTitle, allData) {
         html += '<div class="attention-stats" style="grid-template-columns:repeat(5,1fr);">';
         ['华北一区', '华北二区', '华北三区', '华东大区', '中南大区'].forEach(region => {
             const cnt = rlRegionCnt[region] || 0;
-            html += '<div class="attention-stat-card" style="display:flex;align-items:center;justify-content:space-between;text-align:left;padding:10px 12px;">';
-            html += '<span style="font-weight:700;color:#1e3a5f;font-size:0.88rem;">' + region + '</span>';
-            html += '<span style="font-size:0.78rem;color:#64748b;">尾部站 <b style="color:#ef4444;font-size:0.95rem;">' + cnt + '</b> 个</span>';
-            html += '</div>';
+            html += renderRegionStatCard(region, cnt, '尾部站', curRegion, regionTabPrefix);
         });
         html += '</div>';
         // 按大区、城市分组排序站点
@@ -1935,10 +1960,7 @@ function renderAttention(containerId, data, metrics, customTitle, allData) {
         html += '<div class="attention-stats" style="grid-template-columns:repeat(5,1fr);">';
         ['华北一区', '华北二区', '华北三区', '华东大区', '中南大区'].forEach(region => {
             const cnt = rvRegionCnt[region] || 0;
-            html += '<div class="attention-stat-card" style="display:flex;align-items:center;justify-content:space-between;text-align:left;padding:10px 12px;">';
-            html += '<span style="font-weight:700;color:#1e3a5f;font-size:0.88rem;">' + region + '</span>';
-            html += '<span style="font-size:0.78rem;color:#64748b;">尾部站 <b style="color:#ef4444;font-size:0.95rem;">' + cnt + '</b> 个</span>';
-            html += '</div>';
+            html += renderRegionStatCard(region, cnt, '尾部站', curRegion, regionTabPrefix);
         });
         html += '</div>';
         // 按大区、城市分组排序站点
@@ -1969,10 +1991,7 @@ function renderAttention(containerId, data, metrics, customTitle, allData) {
         html += '<div class="attention-stats" style="grid-template-columns:repeat(5,1fr);">';
         ['华北一区', '华北二区', '华北三区', '华东大区', '中南大区'].forEach(region => {
             const cnt = clRegionCnt[region] || 0;
-            html += '<div class="attention-stat-card" style="display:flex;align-items:center;justify-content:space-between;text-align:left;padding:10px 12px;">';
-            html += '<span style="font-weight:700;color:#1e3a5f;font-size:0.88rem;">' + region + '</span>';
-            html += '<span style="font-size:0.78rem;color:#64748b;">扣分站点 <b style="color:#ef4444;font-size:0.95rem;">' + cnt + '</b> 个</span>';
-            html += '</div>';
+            html += renderRegionStatCard(region, cnt, '扣分站点', curRegion, regionTabPrefix);
         });
         html += '</div>';
         // 按大区、城市分组排序站点
@@ -3541,8 +3560,8 @@ document.getElementById('modalOverlay').addEventListener('click', function(e) { 
 function renderStats() {
     const grid = document.getElementById('statsGrid');
     grid.innerHTML = `
-        <div class="stat-card"><div class="head"><div class="icon" style="background:#dbeafe">🛡️</div><div class="label">安全权益</div></div><div class="sub">戴盔系带目标值≥97%</div><div class="sub">路口超速率目标值≤4%</div></div>
-        <div class="stat-card"><div class="head"><div class="icon" style="background:#fef3c7">⭐</div><div class="label">站长评级</div></div><div class="sub">闯红灯率目标值≤23%</div><div class="sub">里程逆行率目标值≤3%</div></div>
+        <div class="stat-card mod-hidden"><div class="head"><div class="icon" style="background:#dbeafe">🛡️</div><div class="label">安全权益</div></div><div class="sub">戴盔系带目标值≥97%</div><div class="sub">路口超速率目标值≤4%</div></div>
+        <div class="stat-card mod-hidden"><div class="head"><div class="icon" style="background:#fef3c7">⭐</div><div class="label">站长评级</div></div><div class="sub">闯红灯率目标值≤23%</div><div class="sub">里程逆行率目标值≤3%</div></div>
         <div class="stat-card"><div class="head"><div class="icon" style="background:#cffafe">📋</div><div class="label">履约数据</div></div><div class="sub">餐箱标准化率目标值≥95%</div><div class="sub">各项健康证处罚金额点击可查明细</div></div>
         <div class="stat-card"><div class="head"><div class="icon" style="background:#fee2e2">🚨</div><div class="label">安全事故</div></div><div class="sub">百万单事故数目标值≤5</div><div class="sub">保险/赔付/迟报数据</div></div>
     `;
@@ -3992,7 +4011,7 @@ function processWorkbook(wb) {
         const monthStr = (date.getMonth() + 1) + '月';
         const headerBadge = document.getElementById('headerDataDate');
         if (headerBadge) headerBadge.textContent = formatted + '数据';
-        document.title = '安全权益履约周报看板 - ' + monthStr;
+        document.title = '履约安全周报看板 - ' + monthStr;
     }
     updateDataDateDisplay(new Date().toISOString());
 
@@ -4035,7 +4054,53 @@ function clearSavedData() {
     location.reload();
 }
 
-function downloadAllData() {
+// 「导出完整周报PDF」：交给本地 8421 服务用 Playwright 把看板按原样式打印成矢量 PDF
+// （文字可搜索、配色/卡片/徽标全保留）。失败时降级成 Excel 纯数据导出。
+async function downloadAllData() {
+    const btn = document.querySelector('[onclick="downloadAllData()"]');
+    const oldText = btn ? btn.textContent : '';
+    const setBtn = (t, dis) => { if (btn) { btn.textContent = t; btn.disabled = !!dis; } };
+    setBtn('正在准备…', true);
+    // 1) 本机服务在跑时走服务端实时导出（内容最新）
+    try {
+        const res = await fetch('/export-pdf', { method: 'POST' });
+        const ct = res.headers.get('content-type') || '';
+        if (res.ok && ct.indexOf('json') >= 0) {
+            const data = await res.json();
+            if (data && data.ok && data.url) {
+                const a = document.createElement('a');
+                a.href = data.url + '?t=' + Date.now();
+                a.download = data.name || '履约安全周报.pdf';
+                document.body.appendChild(a); a.click(); a.remove();
+                setBtn('已生成（' + (data.pages || '') + '页），下载中…', true);
+                setTimeout(() => setBtn(oldText, false), 3000);
+                return;
+            }
+        }
+    } catch (e) { /* 静态托管无此接口，走下面的静态 PDF */ }
+    // 2) 静态托管：下载随包发布的整册 PDF
+    const url = '/weekly-report.pdf?t=' + Date.now();
+    try {
+        const head = await fetch(url, { method: 'HEAD' });
+        if (!head.ok) throw new Error('尚未生成（HTTP ' + head.status + '）');
+    } catch (e) {
+        setBtn(oldText, false);
+        if (confirm('整册 PDF 暂不可用：' + e.message +
+            '\n\n是否改为导出 Excel（只有数据表，不含看板样式）？')) {
+            downloadAllDataExcel();
+        }
+        return;
+    }
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = '履约安全周报.pdf';
+    document.body.appendChild(a); a.click(); a.remove();
+    setBtn('下载中…', true);
+    setTimeout(() => setBtn(oldText, false), 3000);
+}
+
+// 原「下载所有数据」逻辑：XLSX 多 sheet 纯数据导出，PDF 不可用时的降级方案
+function downloadAllDataExcel() {
     try {
         // 检查XLSX库是否加载
         if (typeof XLSX === 'undefined') {
@@ -4272,7 +4337,7 @@ async function loadData() {
             const loginDate = document.getElementById('loginDataDate');
             if (headerBadge) headerBadge.textContent = formatted + '数据';
             if (loginDate) loginDate.textContent = formatted + '数据 · 请登录查看';
-            document.title = '安全权益履约周报看板 - ' + monthStr;
+            document.title = '履约安全周报看板 - ' + monthStr;
         }
         updateDataDateDisplay(savedTime);
 

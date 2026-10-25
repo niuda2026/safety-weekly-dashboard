@@ -53,6 +53,11 @@ body{background:#F0F6FC;color:#1a2e45;font-family:'Segoe UI','Microsoft YaHei','
 #summary-cards-penalty-week .card,#summary-cards-penalty-month .card{min-width:0;max-width:none;flex:1 1 0;padding:8px 6px;text-align:center}
 #summary-cards-penalty-week .card .c-label,#summary-cards-penalty-month .card .c-label{white-space:normal;font-size:10px;line-height:1.25;min-height:26px;display:flex;align-items:center;justify-content:center;margin-bottom:2px}
 #summary-cards-penalty-week .card .c-value,#summary-cards-penalty-month .card .c-value{font-size:16px}
+#summary-cards-safety{flex-wrap:nowrap;overflow-x:auto;padding:8px 10px;gap:6px}
+#summary-cards-safety .card{min-width:0;max-width:none;flex:1 1 0;padding:8px 6px;text-align:center;white-space:nowrap}
+#summary-cards-safety .card .c-label{white-space:normal;font-size:11px;line-height:1.25;margin-bottom:2px}
+#summary-cards-safety .card .c-value{font-size:16px}
+#summary-cards-safety .card .c-sub{white-space:normal;font-size:10px;line-height:1.3}
 .grp-date{cursor:pointer;font-weight:400;text-decoration:underline dotted rgba(51,51,51,.55);text-underline-offset:3px;margin-left:2px}
 .grp-date:hover{color:#0B4F8A;background:rgba(255,255,255,.45);border-radius:3px}
 .penalty-date-input{border:1px solid #4F6E87;border-radius:3px;padding:1px 4px;font-size:12px;width:110px;outline:none;font-family:inherit}
@@ -222,6 +227,10 @@ table.dt thead{background:transparent}
 #checkFailTable th{background:#f57c00;color:#fff;padding:6px 8px;text-align:center;border:1px solid #e65100;white-space:nowrap;position:sticky;top:var(--hdfix,0px);z-index:4}
 #checkFailTable td{padding:5px 8px;border:1px solid #ffe0b2;text-align:center;white-space:nowrap;background:#fff}
 #checkFailTable tbody tr:hover td{background:#fff3e0}
+#checkAllTable{width:100%;border-collapse:collapse;font-size:12px}
+#checkAllTable th{background:#0288d1;color:#fff;padding:6px 8px;text-align:center;border:1px solid #01579b;white-space:nowrap;position:sticky;top:var(--hdfix,0px);z-index:4}
+#checkAllTable td{padding:5px 8px;border:1px solid #b3e5fc;text-align:center;white-space:nowrap;background:#fff}
+#checkAllTable tbody tr:hover td{background:#e1f5fe}
 #clothing-table-wrap .lv-total td{font-weight:700;color:#0A3D6B;font-size:13px}
 #clothing-table-wrap .lv-subregion td{font-weight:700;color:#0B4F8A;font-size:12px}
 #clothing-table-wrap .lv-merchant td{font-weight:500;color:#1E88E5;font-style:italic;font-size:12px}
@@ -319,7 +328,7 @@ tr.cb-row-noup:hover td{background:#ffefef}
   <div style="display:flex;align-items:center;gap:10px;">
     <div>
       <div class="header-title">兴达丨履约项目看板</div>
-      <div class="header-sub">站点早会 · 履约安全检查 · 骑手装备标准化率 · 餐箱消毒看板 · 带刀巡检看板 · 充换电血压看板 · 线上线下考培 · 骑手维度执行</div>
+      <div class="header-sub">站点早会 · 履约安全检查 · 骑手装备标准化率 · 餐箱消毒看板 · 带刀巡检看板 · 充换电血压看板 · 骑手APP考试和周度培训 · 骑手维度执行</div>
     </div>
   </div>
   <div class="header-right">
@@ -335,13 +344,19 @@ tr.cb-row-noup:hover td{background:#ffefef}
   <div class="tab-item" data-tab="box" onclick="switchTab('box')">餐箱消毒看板</div>
   <div class="tab-item" data-tab="knife" onclick="switchTab('knife')">带刀巡检看板</div>
   <div class="tab-item" data-tab="chargebp" onclick="switchTab('chargebp')">充换电血压看板</div>
-  <div class="tab-item" data-tab="training" onclick="switchTab('training')">线上线下考培</div>
+  <div class="tab-item" data-tab="training" onclick="switchTab('training')">骑手APP考试和周度培训</div>
   <div class="tab-item" data-tab="rider" onclick="switchTab('rider')">骑手维度执行</div>
 </div>
 
 
 <!-- Tab: morning -->
 <div class="panel active" id="panel-morning">
+  <!-- 数据视图切换按钮（2026-10-15 移到 KPI 卡上方，与履约安全检查布局一致） -->
+  <div class="clothing-view-bar">
+    <span class="view-label">数据视图：</span>
+    <button class="lv-btn active" data-subtab="penalty" onclick="switchSubTab(&#39;penalty&#39;)">早会处罚统计</button>
+    <button class="lv-btn" data-subtab="audit" onclick="switchSubTab(&#39;audit&#39;)">早会审核管理（日更新）</button>
+  </div>
   <div class="summary-row" id="summary-cards-morning"></div>
     <div class="sub-tab-bar">
     <span class="sub-tab-label">显示层级：</span>
@@ -363,28 +378,45 @@ tr.cb-row-noup:hover td{background:#ffefef}
     <button class="btn btn-screenshot" onclick="screenshotPanel('morning')" title="截取当前看板">&#128247; 截图</button>
     <span class="filter-count" id="filter-count-morning"></span>
   </div>
-  <!-- 数据视图切换按钮 -->
-  <div class="clothing-view-bar">
-    <span class="view-label">数据视图：</span>
-    <button class="lv-btn active" data-subtab="penalty" onclick="switchSubTab(&#39;penalty&#39;)">早会处罚统计</button>
-    <button class="lv-btn" data-subtab="audit" onclick="switchSubTab(&#39;audit&#39;)">早会审核管理（日更新）</button>
+
+  <!-- 早会驳回 · 日期窗口 + 明细（2026-10-15 移至筛选条与明细统计表之间；仅「早会审核管理（日更新）」视图显示；数据源=BI 抓取 ∪ M盘驳回清单，合并去重，范围见副标题） -->
+  <div id="mr-rej-block" style="display:none;margin:10px 0 12px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+      <span style="font-size:14px;font-weight:700;color:#1f3a5f;">早会驳回明细</span>
+      <span id="mr-rej-sub" style="font-size:12px;color:#7d90a5;">（驳回记录 · 数据范围加载中…）</span>
+      <span style="margin-left:12px;font-size:12px;color:#475569;">日期窗口：</span>
+      <button class="lv-btn active" id="mr-rej-w3" onclick="mrRejSetWin(3)">近3日</button>
+      <button class="lv-btn" id="mr-rej-w7" onclick="mrRejSetWin(7)">近7日</button>
+      <button class="lv-btn" id="mr-rej-w14" onclick="mrRejSetWin(14)">近14日</button>
+      <button class="lv-btn" id="mr-rej-w0" onclick="mrRejSetWin(0)">本月全部</button>
+      <span id="mr-rej-tag" style="display:inline-block;margin-left:6px;padding:1px 8px;border-radius:9px;background:#eaf4ff;color:#1d6ec4;font-size:12px;">-</span>
+    </div>
+    <div class="table-wrap" style="max-height:380px;border:1px solid #e3eaf3;border-radius:6px;">
+      <table class="dt" id="tbl-mr-rej">
+        <thead id="thead-mr-rej"></thead>
+        <tbody id="tbody-mr-rej"></tbody>
+      </table>
+    </div>
   </div>
-  <div class="table-wrap table-wrap-station">
+
+  <div class="table-wrap table-wrap-station" id="table-wrap-morning">
     <table class="dt" id="tbl-morning">
       <thead id="thead-morning"></thead>
       <tbody id="tbody-morning"></tbody>
     </table>
   </div>
-  
+
 </div>
 <!-- Tab: safety（履约安全检查） → 3 个子标签：巡检平台 / 履约达成处罚-周度 / 履约达成处罚-月度 -->
 <div class="panel" id="panel-safety">
   <!-- 内容子标签 -->
-  <div class="sub-tab-bar" style="margin-bottom:10px;border-bottom:2px solid #cfe;padding-bottom:6px;">
+  <div class="sub-tab-bar" style="margin-bottom:10px;border-bottom:2px solid #cfe;padding-bottom:6px;display:flex;align-items:center;flex-wrap:wrap;gap:6px;">
     <span class="sub-tab-label">履约安全检查：</span>
     <button class="lv-btn active" data-csub="insp" onclick="switchSafetySub('insp')">巡检平台</button>
     <button class="lv-btn" data-csub="penalty-week" onclick="switchSafetySub('penalty-week')">履约达成处罚-周度</button>
     <button class="lv-btn" data-csub="penalty-month" onclick="switchSafetySub('penalty-month')">履约达成处罚-月度</button>
+    <!-- 数据源横幅（并入 tab 行尾，仅巡检平台子页显示；登录态失效/抓取过期时变色提醒） -->
+    <div id="insp-banner" style="display:none;margin-left:auto;padding:3px 10px;border-radius:6px;font-size:12px;"></div>
   </div>
 
   <!-- 子面板：巡检平台（2026-10-07 重做：接入烽火巡检平台日维度实时数据） -->
@@ -402,26 +434,38 @@ tr.cb-row-noup:hover td{background:#ffefef}
     #sub-insp details.insp-fold>summary:before{content:'▸';color:#7d90a5;font-size:12px;}
     #sub-insp details.insp-fold[open]>summary:before{content:'▾';}
     #sub-insp details.insp-fold .insp-fold-body{padding:0 12px 12px;}
-    #sub-insp .insp-deduct-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-    @media (max-width:1100px){#sub-insp .insp-deduct-grid{grid-template-columns:1fr;}}
     #sub-insp .insp-deduct-hint{font-size:12px;color:#8a5a13;padding:10px 12px;background:#fdf8ee;border:1px dashed #e8d5a8;border-radius:6px;line-height:1.7;}
-    #sub-insp .insp-drank-row{cursor:pointer;}
-    #sub-insp .insp-drank-row:hover td{background:#eef6ff;}
-    #sub-insp .insp-drank-sel td{background:#e3effc !important;}
   </style>
 
-  <!-- 数据源横幅（登录态失效/抓取过期时显示） -->
-  <div id="insp-banner" style="display:none;margin-bottom:8px;padding:6px 10px;border-radius:6px;font-size:12px;"></div>
+  <!-- 层级筛选 + 地理筛选（2026-10-15 上移：筛选在最上，联动下方所有模块与明细统计表） -->
+  <div class="sub-tab-bar" style="margin-bottom:8px;">
+    <span class="sub-tab-label">显示层级：</span>
+    <button class="lv-btn active" id="lv-btn-subregion" onclick="toggleViewBtn('subregion')">区域行</button>
+    <button class="lv-btn active" id="lv-btn-merchant" onclick="toggleViewBtn('merchant')">城市行</button>
+    <button class="lv-btn active" id="lv-btn-site" onclick="toggleViewBtn('site')">站点行</button>
+    <span class="sub-tab-sep"></span>
+    <button class="lv-btn-reset" id="lv-btn-reset" onclick="resetViewBtns()">全部显示</button>
+  </div>
+  <div class="filter-bar" id="filter-bar-safety" style="margin-bottom:8px;">
+    <label>大区</label><div class="ms-wrap" id="ms-region-safety"><div class="ms-btn" onclick="toggleMs('region-safety')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
+    <label>区域</label><div class="ms-wrap" id="ms-subregion-safety"><div class="ms-btn" onclick="toggleMs('subregion-safety')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
+    <label>城市</label><div class="ms-wrap" id="ms-city-safety"><div class="ms-btn" onclick="toggleMs('city-safety')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
+    <label>站点</label><div class="ms-wrap" id="ms-site-safety"><div class="ms-btn" onclick="toggleMs('site-safety')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
+    <button class="btn btn-secondary" onclick="clearFilter('safety')">清除筛选</button>
+    <button class="btn btn-export" onclick="exportTable('safety')" title="导出当前表格为Excel">&#128229; 导出Excel</button>
+    <button class="btn btn-screenshot" onclick="screenshotPanel('safety')" title="截取当前看板">&#128247; 截图</button>
+    <span class="filter-count" id="filter-count-safety"></span>
+  </div>
 
   <!-- 控制条：日期窗口 + 只看有扣分 -->
   <div class="sub-tab-bar" style="margin-bottom:8px;">
     <span class="sub-tab-label">日期窗口：</span>
     <button class="lv-btn" id="insp-win-today" onclick="inspSetWindow('today')">今日</button>
     <button class="lv-btn" id="insp-win-yest" onclick="inspSetWindow('yest')">昨日</button>
+    <button class="lv-btn" id="insp-win-3" onclick="inspSetWindow('3')">近3日</button>
+    <button class="lv-btn" id="insp-win-7" onclick="inspSetWindow('7')">近7日</button>
     <button class="lv-btn" id="insp-win-month" onclick="inspSetWindow('month')">本月</button>
     <button class="lv-btn" id="insp-win-lastmonth" onclick="inspSetWindow('lastmonth')">上月整月</button>
-    <button class="lv-btn" id="insp-win-7" onclick="inspSetWindow('7')">近7日</button>
-    <button class="lv-btn" id="insp-win-30" onclick="inspSetWindow('30')">近30日</button>
     <span class="sub-tab-sep"></span>
     <input type="date" class="insp-date" id="insp-from" onchange="inspSetWindow('custom')">
     <span style="margin:0 4px;color:#8aa2b8;">~</span>
@@ -433,29 +477,20 @@ tr.cb-row-noup:hover td{background:#ffefef}
 
   <div class="summary-row" id="summary-cards-safety"></div>
 
-  <!-- ① 扣分透视区（v2 新增：扣分原因来自工单详情，不含照片/视频） -->
+  <!-- ① 巡检单据明细（当日提交检查：全量单据，含合规单，不再只有扣分） -->
+  <div id="insp-tickets-block" style="margin-top:16px;">
+    <div class="insp-h">巡检单据明细（当日提交检查）<span class="insp-h-sub" id="insp-tickets-sub"></span></div>
+    <div class="table-wrap" style="max-height:360px;border:1px solid #e3eaf3;border-radius:6px;">
+      <table class="dt" id="tbl-insp-tickets">
+        <thead id="thead-insp-tickets"></thead>
+        <tbody id="tbody-insp-tickets"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ② 扣分透视区（v2 新增：扣分原因来自工单详情，不含照片/视频；2026-10-15 移除 TOP榜/站点排行两模块） -->
   <div id="insp-deduct-block" style="margin-top:16px;">
     <div class="insp-h">扣分透视区<span class="insp-h-sub" id="insp-deduct-sub"></span></div>
-    <div class="insp-deduct-grid">
-      <div>
-        <div class="insp-h" style="font-size:13px;">扣分项 TOP 榜（按检查标准）</div>
-        <div class="table-wrap" style="max-height:240px;border:1px solid #e3eaf3;border-radius:6px;">
-          <table class="dt" id="tbl-insp-dtop">
-            <thead id="thead-insp-dtop"></thead>
-            <tbody id="tbody-insp-dtop"></tbody>
-          </table>
-        </div>
-      </div>
-      <div>
-        <div class="insp-h" style="font-size:13px;">扣分站点排行<span class="insp-h-sub">点击行可筛选下方明细</span></div>
-        <div class="table-wrap" style="max-height:240px;border:1px solid #e3eaf3;border-radius:6px;">
-          <table class="dt" id="tbl-insp-drank">
-            <thead id="thead-insp-drank"></thead>
-            <tbody id="tbody-insp-drank"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
     <div class="insp-h" style="margin-top:12px;">扣分明细<span class="insp-h-sub" id="insp-ddetail-sub"></span></div>
     <div id="insp-ddetail-hint" class="insp-deduct-hint" style="display:none;"></div>
     <div class="table-wrap" style="max-height:340px;border:1px solid #e3eaf3;border-radius:6px;">
@@ -466,7 +501,30 @@ tr.cb-row-noup:hover td{background:#ffefef}
     </div>
   </div>
 
-  <!-- ② 岗位巡检情况（默认折叠） -->
+  <!-- ④ 异常跟进清单 -->
+  <div id="insp-alert-block" style="margin-top:16px;">
+    <div class="insp-h">待整改 / 超时未整改 / 整改驳回 清单<span class="insp-h-sub" id="insp-alert-sub"></span></div>
+    <div class="table-wrap" style="max-height:340px;border:1px solid #e3eaf3;border-radius:6px;">
+      <table class="dt" id="tbl-insp-alerts">
+        <thead id="thead-insp-alerts"></thead>
+        <tbody id="tbody-insp-alerts"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ⑤ 组织层级表（层级筛选已上移至日期窗口上方，2026-10-15） -->
+  <div class="table-wrap table-wrap-station">
+    <table class="dt" id="tbl-safety">
+      <thead id="thead-safety"></thead>
+      <tbody id="tbody-safety"></tbody>
+    </table>
+  </div>
+
+
+
+
+
+  <!-- ④ 岗位巡检情况（默认折叠，2026-10-15 移至未巡检站点上方） -->
   <details class="insp-fold" id="insp-roles-fold" ontoggle="inspFoldToggle('roles')">
     <summary>岗位巡检情况（按提交人岗位）<span class="insp-h-sub" id="insp-roles-sub" style="font-weight:400;"></span></summary>
     <div class="insp-fold-body">
@@ -480,7 +538,7 @@ tr.cb-row-noup:hover td{background:#ffefef}
     </div>
   </details>
 
-  <!-- ③ 检查方式维度（默认折叠） -->
+  <!-- ⑤ 检查方式维度（默认折叠） -->
   <details class="insp-fold" id="insp-types-fold" ontoggle="inspFoldToggle('types')">
     <summary>检查方式维度<span class="insp-h-sub" id="insp-types-sub" style="font-weight:400;"></span></summary>
     <div class="insp-fold-body">
@@ -492,47 +550,6 @@ tr.cb-row-noup:hover td{background:#ffefef}
       </div>
     </div>
   </details>
-
-  <!-- ④ 异常跟进清单 -->
-  <div id="insp-alert-block" style="margin-top:16px;">
-    <div class="insp-h">待整改 / 超时未整改 / 整改驳回 清单<span class="insp-h-sub" id="insp-alert-sub"></span></div>
-    <div class="table-wrap" style="max-height:340px;border:1px solid #e3eaf3;border-radius:6px;">
-      <table class="dt" id="tbl-insp-alerts">
-        <thead id="thead-insp-alerts"></thead>
-        <tbody id="tbody-insp-alerts"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- ⑤ 组织层级表 -->
-  <div class="sub-tab-bar" style="margin-top:16px;">
-    <span class="sub-tab-label">显示层级：</span>
-    <button class="lv-btn active" id="lv-btn-subregion" onclick="toggleViewBtn('subregion')">区域行</button>
-    <button class="lv-btn active" id="lv-btn-merchant" onclick="toggleViewBtn('merchant')">城市行</button>
-    <button class="lv-btn active" id="lv-btn-site" onclick="toggleViewBtn('site')">站点行</button>
-    <span class="sub-tab-sep"></span>
-    <button class="lv-btn-reset" id="lv-btn-reset" onclick="resetViewBtns()">全部显示</button>
-  </div>
-  <div class="filter-bar" id="filter-bar-safety">
-    <label>大区</label><div class="ms-wrap" id="ms-region-safety"><div class="ms-btn" onclick="toggleMs('region-safety')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
-    <label>区域</label><div class="ms-wrap" id="ms-subregion-safety"><div class="ms-btn" onclick="toggleMs('subregion-safety')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
-    <label>城市</label><div class="ms-wrap" id="ms-city-safety"><div class="ms-btn" onclick="toggleMs('city-safety')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
-    <label>站点</label><div class="ms-wrap" id="ms-site-safety"><div class="ms-btn" onclick="toggleMs('site-safety')"><span class="ms-label">全部</span><span class="ms-arrow">▼</span></div><div class="ms-drop"></div></div>
-    <button class="btn btn-secondary" onclick="clearFilter('safety')">清除筛选</button>
-    <button class="btn btn-export" onclick="exportTable('safety')" title="导出当前表格为Excel">&#128229; 导出Excel</button>
-    <button class="btn btn-screenshot" onclick="screenshotPanel('safety')" title="截取当前看板">&#128247; 截图</button>
-    <span class="filter-count" id="filter-count-safety"></span>
-  </div>
-  <div class="table-wrap table-wrap-station">
-    <table class="dt" id="tbl-safety">
-      <thead id="thead-safety"></thead>
-      <tbody id="tbody-safety"></tbody>
-    </table>
-  </div>
-
-
-
-
 
   <!-- ⑥ 本期未巡检站点 -->
   <div id="insp-miss-block" style="margin-top:16px;">
@@ -634,7 +651,6 @@ tr.cb-row-noup:hover td{background:#ffefef}
     <span class="view-label">数据视图：</span>
     <button class="lv-btn active" id="view-btn-equip-main" onclick="switchEquipView('main')">装备标准不合规处罚</button>
     <button class="lv-btn" id="view-btn-equip-clothing" onclick="switchEquipView('clothing')">骑手服装标准化率</button>
-    <button class="lv-btn" id="view-btn-equip-checkfail" onclick="switchEquipView('checkfail')">抽检不合格骑手明细</button>
   </div>
   <!-- 服装汇总卡片 -->
   <div class="clothing-summary-card card green" id="clothing-summary-card" style="display:none"></div>
@@ -645,26 +661,44 @@ tr.cb-row-noup:hover td{background:#ffefef}
       <tbody id="tbody-equip"></tbody>
     </table>
   </div>
+  <!-- 抽检不合格骑手明细（2026-10-15 合并到服装标准化率视图，置于明细表上方，与筛选联动） -->
+  <div id="checkfail-section" style="display:none">
+    <div class="cf-section-title" style="margin:2px 2px 6px;font-weight:700;color:#0B4F8A;font-size:14px;">抽检不合格骑手明细<span style="font-weight:400;color:#4F6E87;font-size:12px;margin-left:10px;">与上方筛选条件联动</span></div>
+    <div class="table-wrap table-wrap-station" id="checkfail-table-wrap">
+      <table id="checkFailTable">
+        <thead>
+          <tr>
+            <th>大区</th><th>区域</th><th>城市</th><th>站点名称</th>
+            <th>抽检日期</th><th>骑手ID</th><th>骑手名称</th>
+            <th>安全服装标签名称</th><th>安全头盔标签名称</th><th>安全餐箱标签名称</th>
+            <th>安全骑手服装是否合格名称</th><th>安全骑手头盔是否合格名称</th><th>安全骑手餐箱是否合格名称</th>
+            <th>被检查照片</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+  <!-- 抽检骑手明细（2026-10-15 新增：M盘抽检骑手照片表全量记录，置于不合格明细与标准化率表之间，与筛选联动） -->
+  <div id="checkall-section" style="display:none">
+    <div class="cf-section-title" style="margin:0 2px 6px;font-weight:700;color:#0B4F8A;font-size:14px;">抽检骑手明细<span style="font-weight:400;color:#4F6E87;font-size:12px;margin-left:10px;">全部抽检记录 · 与上方筛选条件联动</span></div>
+    <div class="table-wrap table-wrap-station" id="checkall-table-wrap">
+      <table id="checkAllTable">
+        <thead>
+          <tr>
+            <th>大区</th><th>区域</th><th>城市</th><th>站点名称</th>
+            <th>抽检日期</th><th>骑手ID</th><th>骑手姓名</th><th>被检查照片</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
   <!-- 服装标准化率视图 -->
-  <div class="table-wrap table-wrap-station" id="clothing-table-wrap" style="display:none">
+  <div class="table-wrap table-wrap-station" id="clothing-table-wrap" style="display:none;margin-top:0;">
     <table class="dt" id="clothing-table">
       <thead id="clothing-thead"></thead>
       <tbody id="clothing-tbody"></tbody>
-    </table>
-  </div>
-  <!-- 抽检不合格骑手明细视图 -->
-  <div class="table-wrap table-wrap-station" id="checkfail-table-wrap" style="display:none">
-    <table id="checkFailTable">
-      <thead>
-        <tr>
-          <th>大区</th><th>区域</th><th>城市</th><th>站点名称</th>
-          <th>抽检日期</th><th>骑手ID</th><th>骑手名称</th>
-          <th>安全服装标签名称</th><th>安全头盔标签名称</th><th>安全餐箱标签名称</th>
-          <th>安全骑手服装是否合格名称</th><th>安全骑手头盔是否合格名称</th><th>安全骑手餐箱是否合格名称</th>
-          <th>被检查照片</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
     </table>
   </div>
   
@@ -996,8 +1030,9 @@ tr.cb-row-noup:hover td{background:#ffefef}
   <div class="pagination" id="pagination-rider"></div>
 </div>
 
-<script src="/equity-board/data.js?t=1791772650733"></script>
+<script src="/equity-board/data.js?t=1792808762071"></script>
 <script src="/penalty-board/data.js"></script>
+<script src="training_projects_config.js"></script>
 <script src="/penalty-board/chargebp_data.js"></script>
 <script src="/penalty-board/knife_rider_data.js"></script>
 <script src="/penalty-board/box_rider_data.js"></script>
@@ -1007,6 +1042,8 @@ tr.cb-row-noup:hover td{background:#ffefef}
 <script src="/penalty-board/penalty_weekly.js"></script>
 <script src="/penalty-board/penalty_monthly.js"></script>
 <script src="/penalty-board/morning_review_data.js"></script>
+<script src="/penalty-board/morning_rej_m.js"></script>
+<script src="/penalty-board/morning_penalty_m.js"></script>
 <!-- 截图库 -->
 <script src="/_libs/echarts-5.5.0.min.js"></script>
 <script src="/_libs/html2canvas-1.4.1.min.js"></script>
@@ -1032,6 +1069,7 @@ var METRIC_CFG = { clothing: { rows: [], target: 95 } };
 
 var currentEquipView = 'main';
 var checkFailPage = 1;
+var checkAllPage = 1, checkAllPageSize = 20;
 var checkFailPageSize = 20;
 
 // ─── 工具函数 ──────────────────────────────────────────────
@@ -1084,6 +1122,11 @@ function fbad(nv, dv) {
 // ─── 维度信息 ──────────────────────────────────────────────
 function getSiteInfo(siteName) {
   if (typeof SITE_INFO !== 'undefined' && SITE_INFO[siteName]) return SITE_INFO[siteName];
+  // SITE_INFO 未收录的新组织（如新开的集约配送站）：回退用 MR_DATA 里 BI 行自带的大区/区域/城市
+  if (typeof MR_DATA !== 'undefined' && MR_DATA && MR_DATA[siteName]) {
+    var m = MR_DATA[siteName];
+    if (m && (m.region || m.city)) return {大区: m.region || '', 区域: m.subr || '', 城市: m.city || ''};
+  }
   return {大区:'',区域:'',城市:''};
 }
 function siteInfoCols(siteName) {
@@ -1137,11 +1180,13 @@ function onMsCheck(id, val, label) {
   if (state.length === 0) lbl.textContent = '全部';
   else if (state.length <= 2) lbl.textContent = state.join(',');
   else lbl.textContent = state.length+'项';
-  // Update checkboxes
+  // Update checkboxes（同步 class 与 input.checked，大区下拉不会级联重建，必须在此处回勾）
   var items = wrap.querySelectorAll('.ms-item');
   for (var i=0;i<items.length;i++) {
     var cb = items[i].querySelector('input');
-    items[i].classList.toggle('checked', state.indexOf(cb.value)>=0);
+    var on = state.indexOf(cb.value)>=0;
+    items[i].classList.toggle('checked', on);
+    if (cb.checked !== on) cb.checked = on;
   }
   // Cascade: region → subregion → city → site
   var cTab = null;
@@ -1211,7 +1256,6 @@ function applyFilter() {
     METRIC_CFG.clothing.rows = (typeof CLOTHING_ROWS !== 'undefined') ? CLOTHING_ROWS : [];
     METRIC_CFG.clothing.target = 95;
     if (currentEquipView === 'clothing') { renderClothingTable(); updateClothingSummaryCard(); updateClothingRegionCards(); }
-    else if (currentEquipView === 'checkfail') { renderCheckFailTable(); updateClothingRegionCards(); }
     else { renderEquipTab(); }
   } else {
     // Rerender the current tab
@@ -1627,7 +1671,7 @@ function renderStandardTab(tabId, dataVar, columns, extra, headerGroups) {
 
   // Update filter count
   updateViewFilterCount(tabId);
-  if (tabId === 'equip' && (currentEquipView === 'clothing' || currentEquipView === 'checkfail')) {
+  if (tabId === 'equip' && currentEquipView === 'clothing') {
     updateClothingRegionCards();
   } else {
     document.getElementById('summary-cards-'+tabId).innerHTML = cardHtml;
@@ -1693,6 +1737,8 @@ function renderMorningTab() {
     document.getElementById('summary-cards-morning').innerHTML = '';
     var lg = document.getElementById('mr-legend');
     if (lg) lg.remove();
+    var rejBlk = document.getElementById('mr-rej-block');
+    if (rejBlk) rejBlk.style.display = 'none';
     var stWrap = document.getElementById('ms-status-morning');
     if (stWrap) stWrap.style.display = 'none';
     var stLabel = document.getElementById('sf-label-status-morning');
@@ -1735,9 +1781,11 @@ function mrChip(cell) {
     if (cell.times > 1) tip += ' · 当日' + cell.times + '场';
   }
   if (cell.content) tip += (tip ? ' · ' : '') + '内容: ' + cell.content;
+  if (cell.viol) tip += (tip ? ' · ' : '') + '⚠ 违反时限规则: ' + cell.viol;
   var style = m[1] ? ('background:' + m[1] + ';color:' + m[2] + ';') : '';
   return '<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:12px;font-weight:600;white-space:nowrap;' + style + '"'
-    + (tip ? ' title="' + escHtml(tip) + '"' : '') + '>' + m[0] + '</span>';
+    + (tip ? ' title="' + escHtml(tip) + '"' : '') + '>' + m[0] + '</span>'
+    + (cell.viol ? ' <span style="color:#b91c1c;font-weight:700;font-size:11px;cursor:help" title="' + escHtml('违反提交时限: ' + cell.viol + '（不早于7:00 / 首次≤12:00 / 第二次≤20:00）') + '">⚠时限</span>' : '');
 }
 
 function mrAggCell(exp, sub) {
@@ -1770,6 +1818,7 @@ function renderAuditView() {
     '<div class="card"><div class="c-label">今日未提交</div><div class="c-value" style="color:' + (todayMiss > 0 ? '#e64545' : '#2e9e5b') + '">' + todayMiss + ' 站</div></div>' +
     '<div class="card"><div class="c-label">近3天 待审核</div><div class="c-value" style="color:' + ((tot.pending || 0) > 0 ? '#b45309' : '#2e9e5b') + '">' + fr(tot.pending || 0) + '</div></div>' +
     '<div class="card"><div class="c-label">近3天 待申诉(驳回)</div><div class="c-value" style="color:' + ((tot.rejected || 0) > 0 ? '#e64545' : '#2e9e5b') + '">' + fr(tot.rejected || 0) + '</div></div>' +
+    '<div class="card"><div class="c-label">近3天 时限违规</div><div class="c-value" style="color:' + ((tot.viol || 0) > 0 ? '#b91c1c' : '#2e9e5b') + '">' + ((tot.viol || 0) > 0 ? '⚠ ' : '') + fr(tot.viol || 0) + '</div><div style="font-size:11px;color:#64748b">首次≤12:00·二次≤20:00·≥7:00</div></div>' +
     '<div class="card"><div class="c-label">近3天 已通过</div><div class="c-value" style="color:#15803d">' + fr(tot.pass || 0) + '</div></div>' +
     '<div class="card"><div class="c-label">近3天 按时提交率</div><div class="c-value">' + subRate.toFixed(1) + '%</div></div>';
 
@@ -1807,18 +1856,18 @@ function renderAuditView() {
   for (var d = 0; d < days.length; d++) {
     thead += '<th style="text-align:center;background:#0B4F8A;color:#fff">' + escHtml(days[d].date + ' 周' + days[d].weekday + (days[d].is_today ? ' ·今天' : '')) + '</th>';
   }
-  thead += '<th>应提交</th><th>已提交</th><th>未提交</th><th>已通过</th><th>待审核</th><th>待申诉</th><th>最近提交</th>';
+  thead += '<th>应提交</th><th>已提交</th><th>未提交</th><th>已通过</th><th>待审核</th><th>待申诉</th><th>时限违规</th><th>最近提交</th>';
   thead += '</tr>';
   document.getElementById('thead-morning').innerHTML = thead;
 
   // ── 聚合 ──
   function newAgg() {
-    var a = { expected:0, submitted:0, missing:0, due:0, pass:0, pending:0, rejected:0, last:'' };
+    var a = { expected:0, submitted:0, missing:0, due:0, pass:0, pending:0, rejected:0, viol:0, last:'' };
     for (var d = 0; d < days.length; d++) { a['exp_' + d] = 0; a['sub_' + d] = 0; }
     return a;
   }
   function acc(a, v) {
-    ['expected','submitted','missing','due','pass','pending','rejected'].forEach(function(k){ a[k] += rc(v[k]); });
+    ['expected','submitted','missing','due','pass','pending','rejected','viol'].forEach(function(k){ a[k] += rc(v[k]); });
     for (var d = 0; d < days.length; d++) {
       var cell = v.days[days[d].full] || {};
       a['exp_' + d] += cell.expected ? 1 : 0;
@@ -1853,6 +1902,7 @@ function renderAuditView() {
     html += '<td style="color:#15803d">' + fr(a.pass) + '</td>';
     html += '<td style="color:' + (a.pending > 0 ? '#b45309' : '#334155') + '">' + fr(a.pending) + '</td>';
     html += '<td style="color:' + (a.rejected > 0 ? '#e64545;font-weight:700' : '#334155') + '">' + fr(a.rejected) + '</td>';
+    html += '<td style="color:' + (a.viol > 0 ? '#b91c1c;font-weight:700' : '#334155') + '">' + (a.viol > 0 ? '⚠ ' : '') + fr(a.viol) + '</td>';
     html += '<td style="font-size:12px;color:#64748b">' + escHtml(a.last || '-') + '</td>';
     return html;
   }
@@ -1901,6 +1951,7 @@ function renderAuditView() {
       '<td style="color:#15803d">' + fr(v.pass) + '</td>' +
       '<td style="color:' + (v.pending > 0 ? '#b45309' : '#334155') + '">' + fr(v.pending) + '</td>' +
       '<td style="color:' + (v.rejected > 0 ? '#e64545;font-weight:700' : '#334155') + '">' + fr(v.rejected) + '</td>' +
+      '<td style="color:' + ((v.viol || 0) > 0 ? '#b91c1c;font-weight:700' : '#334155') + '">' + ((v.viol || 0) > 0 ? '⚠ ' : '') + fr(v.viol || 0) + '</td>' +
       '<td style="font-size:12px;color:#64748b">' + escHtml(v.last_submit || '-') + '</td>' +
       '</tr>';
   }
@@ -1917,13 +1968,157 @@ function renderAuditView() {
     '<span style="background:#dbeafe;color:#1d4ed8;padding:1px 8px;border-radius:8px;margin:0 3px">今日待提交(未到20:00)</span>' +
     '<span style="color:#94a3b8;margin:0 3px">— = 非任务日</span>' +
     '<span style="background:#f0fdf4;color:#16a34a;padding:1px 8px;border-radius:8px;margin:0 3px">加场 = 非任务日提交</span>' +
+    '<span style="color:#b91c1c;font-weight:700;margin:0 3px">⚠时限 = 违反提交时限（不早于7:00 / 首次提交≤12:00 / 第二次早会≤20:00）</span>' +
     '</div>';
-  var wrap = document.querySelector('#panel-morning .table-wrap');
+  var wrap = document.getElementById('table-wrap-morning');
   if (wrap && !document.getElementById('mr-legend')) {
     wrap.insertAdjacentHTML('beforebegin', '<div id="mr-legend">' + legend + '</div>');
   } else if (document.getElementById('mr-legend')) {
     document.getElementById('mr-legend').innerHTML = legend;
   }
+
+  // ── 早会驳回 · 日期窗口 + 明细（数据源=M盘驳回清单，范围随 MR_META.rej_from/rej_to）──
+  var blk = document.getElementById('mr-rej-block');
+  if (blk) { blk.style.display = ''; renderMrRejBlock(); }
+}
+
+// ─── 早会驳回窗口 + 明细 ───
+// MR_REJ 数据源（2026-10-20 改）：BI 实时抓取(morning_review_data.js) 与
+// M盘 Excel 驳回清单(morning_rej_m.js → MR_REJ_M) **合并**，见 mrRejMerge()。
+// 2026-10-15 版是 M盘直接覆盖 MR_REJ，M盘一滞后明细整批消失（统计有、明细无），已废弃。
+var MR_REJ_WIN = 3;   // 0=本月全部；3/7/14=近N日(含今日，与下方早会提交明细近3天列对齐)；默认近3日
+function mrRejSetWin(n) {
+  MR_REJ_WIN = n;
+  renderMrRejBlock();
+}
+function mrRejIsoShift(n) {
+  var d = new Date(Date.now() - n * 86400000);
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+// 合并两个驳回数据源，键 = (站点, 日期)：
+//   MR_REJ_M（morning_rej_m.js · M盘Excel驳回清单）→ 带「审核不通过项目/标签明细」，优先
+//   MR_REJ  （morning_review_data.js · BI 实时抓取）→ 补 M盘滞后漏掉的记录（只补出勤字段）
+// 2026-10-20 改：此前是 M盘文件直接覆盖 MR_REJ，M盘一滞后明细就整批消失（统计有、明细无）。
+function mrRejMerge() {
+  var mList = (typeof MR_REJ_M !== 'undefined' && MR_REJ_M) ? MR_REJ_M : [];
+  var biList = (typeof MR_REJ !== 'undefined' && MR_REJ) ? MR_REJ : [];
+  var byKey = {}, out = [];
+  function keyOf(r) { return (r.site || '') + '|' + (r.full || r.date || ''); }
+  var i, r, k;
+  for (i = 0; i < mList.length; i++) {
+    r = mList[i]; k = keyOf(r);
+    if (byKey[k]) continue;
+    r.src = 'M';
+    byKey[k] = r; out.push(r);
+  }
+  for (i = 0; i < biList.length; i++) {
+    r = biList[i]; k = keyOf(r);
+    if (byKey[k]) {
+      var m = byKey[k];
+      if (!m.should && r.should) { m.should = r.should; m.actual = r.actual; m.rate = r.rate; }
+      continue;
+    }
+    var nb = {};
+    for (var f in r) nb[f] = r[f];
+    nb.src = 'BI';
+    byKey[k] = nb; out.push(nb);
+  }
+  out.sort(function (x, y) { return (y.submit_ts || 0) - (x.submit_ts || 0); });
+  return out;
+}
+
+function renderMrRejBlock() {
+  var theadEl = document.getElementById('thead-mr-rej');
+  var tbodyEl = document.getElementById('tbody-mr-rej');
+  var tagEl = document.getElementById('mr-rej-tag');
+  if (!theadEl || !tbodyEl) return;
+  var meta = (typeof MR_META !== 'undefined') ? MR_META : null;
+  var list = mrRejMerge();
+  var fromFull = meta && meta.rej_from ? meta.rej_from : null;
+  // 窗口下限：0=本月全部(数据起点起)；N=近N日(含今日，前天~今天)
+  var winFrom = null, winTo = null;
+  if (MR_REJ_WIN > 0) { winFrom = mrRejIsoShift(MR_REJ_WIN - 1); }
+  if (winFrom && fromFull && winFrom < fromFull) winFrom = fromFull;
+
+  // 窗口按钮高亮
+  [3, 7, 14, 0].forEach(function (n) {
+    var b = document.getElementById('mr-rej-w' + (n || '0'));
+    if (b) b.classList[n === MR_REJ_WIN ? 'add' : 'remove']('active');
+  });
+
+  // 副标题：数据来源构成（M盘 + BI 合并去重，任一源滞后都不会丢记录）
+  var subEl = document.getElementById('mr-rej-sub');
+  var mCnt = (typeof MR_REJ_M !== 'undefined' && MR_REJ_M) ? MR_REJ_M.length : 0;
+  var biCnt = (typeof MR_REJ !== 'undefined' && MR_REJ) ? MR_REJ.length : 0;
+  var mMeta = (typeof MR_REJ_M_META !== 'undefined') ? MR_REJ_M_META : null;
+  if (subEl) {
+    var subFrom = fromFull || '-', subTo = meta && meta.rej_to ? meta.rej_to : (list.length ? list[0].full : '-');
+    var srcTxt = 'M盘 ' + mCnt + ' 条 + BI ' + biCnt + ' 条 → 合并去重 ' + list.length + ' 条';
+    subEl.textContent = '（驳回记录 · 数据 ' + subFrom + ' ~ ' + subTo + ' · ' + srcTxt
+      + (mMeta && mMeta.generated_at ? ' · M盘清单 ' + mMeta.generated_at : '')
+      + ' · 跟随上方筛选联动）';
+  }
+
+  var inWin = [], shown = [];
+  // 联动「审核状态」筛选：选了状态但不含「待申诉」时，驳回明细同步置空（2026-10-15）
+  var stF = (typeof sfState !== 'undefined') ? (sfState['status-morning'] || []) : [];
+  var statusOk = (stF.length === 0 || stF.indexOf('待申诉') >= 0);
+  for (var i = 0; i < list.length; i++) {
+    var r = list[i];
+    if (winFrom && r.full && r.full < winFrom) continue;
+    if (winTo && r.full && r.full > winTo) continue;
+    inWin.push(r);
+    if (isFiltered(r.site, 'morning')) continue;
+    shown.push(r);
+  }
+  if (!statusOk) shown = [];
+
+  if (tagEl) {
+    var rangeTxt = (winFrom || (fromFull || '-')) + ' ~ ' + (meta && meta.rej_to ? meta.rej_to : mrRejIsoShift(0));
+    tagEl.textContent = '共 ' + shown.length + ' 条 · ' + rangeTxt + (fromFull ? ' · 数据自 ' + fromFull : '');
+    // 近3日窗口与统计卡「近3天 待申诉(驳回)」对账：不一致才提示，不静默修正
+    var totRej = (meta && meta.totals) ? (meta.totals.rejected || 0) : null;
+    if (MR_REJ_WIN === 3 && totRej !== null && inWin.length !== totRej) {
+      tagEl.textContent += ' · ⚠ 统计卡记 ' + totRej + ' 条';
+      tagEl.style.background = '#fff3e0'; tagEl.style.color = '#b45309';
+    } else {
+      tagEl.style.background = '#eaf4ff'; tagEl.style.color = '#1d6ec4';
+    }
+  }
+
+  var thead = '<tr>';
+  thead += '<th class="sticky-col" style="left:0;min-width:80px">大区</th>';
+  thead += '<th class="sticky-col" style="left:80px;min-width:80px">区域</th>';
+  thead += '<th class="sticky-col" style="left:160px;min-width:70px">城市</th>';
+  thead += '<th class="sticky-col sticky-last" style="left:230px;min-width:150px">站点名称</th>';
+  thead += '<th style="text-align:center">日期</th><th style="text-align:center">提交时间</th><th>早会驳回内容</th><th style="text-align:center">出勤</th><th style="text-align:center">状态</th>';
+  thead += '</tr>';
+  theadEl.innerHTML = thead;
+
+  var rows = '';
+  for (var j = 0; j < shown.length; j++) {
+    var t = shown[j];
+    var att = t.should ? (t.actual + '/' + t.should + (t.rate !== '-' && t.rate != null ? ' (' + t.rate + '%)' : ''))
+                       : (t.rate !== '-' && t.rate != null && t.rate !== '' ? t.rate + '%' : '-');
+    rows += '<tr>'
+      + '<td class="sticky-col" style="left:0;min-width:80px">' + escHtml(t.region || '-') + '</td>'
+      + '<td class="sticky-col" style="left:80px;min-width:80px">' + escHtml(t.subr || '-') + '</td>'
+      + '<td class="sticky-col" style="left:160px;min-width:70px">' + escHtml(t.city || '-') + '</td>'
+      + '<td class="sticky-col name-cell" style="left:230px;min-width:150px">' + escHtml(t.site) + '</td>'
+      + '<td style="text-align:center">' + escHtml(t.date + ' 周' + (t.weekday || '')) + '</td>'
+      + '<td style="text-align:center;font-size:12px">' + escHtml(t.submit || '-') + '</td>'
+      + '<td style="font-size:12px;color:#475569">' + escHtml(t.content || '-') + (t.src === 'BI' ? '<span style="color:#94a3b8;font-size:11px">（早会内容）</span>' : '') + '</td>'
+      + '<td style="text-align:center;font-size:12px">' + escHtml(att) + '</td>'
+      + '<td style="text-align:center"><span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:12px;font-weight:600;background:#fee2e2;color:#b91c1c;white-space:nowrap;">待申诉(驳回)</span>'
+      + (t.src === 'BI' ? '<span title="M盘驳回清单尚未包含此条，来源=BI实时抓取（暂无驳回标签明细）" style="display:inline-block;margin-left:4px;padding:1px 5px;border-radius:6px;font-size:10px;background:#eef2f7;color:#64748b;cursor:help;">BI</span>' : '')
+      + '</td>'
+      + '</tr>';
+  }
+  if (!shown.length) {
+    var emptyMsg = statusOk ? '✓ 窗口内无驳回记录' : '当前「审核状态」筛选不含 待申诉(驳回)，无匹配记录';
+    rows = '<tr><td colspan="9" style="text-align:center;color:' + (statusOk ? '#2e9e5b' : '#94a3b8') + ';padding:18px 0;font-size:13px;">' + emptyMsg + '</td></tr>';
+  }
+  tbodyEl.innerHTML = rows;
 }
 
 // ─── Tab 2: 履约安全检查 ────────────────────────────────────────────────
@@ -1933,7 +2128,7 @@ function renderAuditView() {
 //      组织层级 = 沿用 data.js 的 SITE_INFO（大区/区域/城市），与其它看板完全同源
 var curSafetySub = 'insp';
 var INSP_OBJ = 3;                                    // 巡检对象：仅加盟商站点（平台无骑手巡检维度）
-var INSP_WIN = { mode: 'month', from: null, to: null };  // 日期窗口（默认本月）
+var INSP_WIN = { mode: 'today', from: null, to: null };  // 日期窗口（默认今日）
 var INSP_ONLY_DEDUCT = false;                        // 只看有扣分的站点
 var _inspDeductSite = null;                          // 扣分明细当前筛选站点
 var INSP_ROSTER_TOTAL = 160;                         // 名册需巡检站点分母（运行时按 SITE_INFO 重算）
@@ -1999,8 +2194,8 @@ function inspWindowDays() {
     if (!INSP_WIN.refMonth) INSP_WIN.refMonth = inspLastMonth(all[ti].slice(0, 7));
     return all.filter(function (d) { return d.slice(0, 7) === INSP_WIN.refMonth; });
   }
+  if (INSP_WIN.mode === '3') return all.slice(Math.max(0, ti - 2), ti + 1);
   if (INSP_WIN.mode === '7') return all.slice(Math.max(0, ti - 6), ti + 1);
-  if (INSP_WIN.mode === '30') return all.slice(Math.max(0, ti - 29), ti + 1);
   return all.slice();
 }
 function inspDayMask(days) {
@@ -2152,7 +2347,7 @@ function inspFoldToggle(kind) {
 
 function inspSyncControls(days) {
   var M = inspMeta();
-  ['today', 'yest', 'month', 'lastmonth', '7', '30'].forEach(function (k) {
+  ['today', 'yest', '3', '7', 'month', 'lastmonth'].forEach(function (k) {
     var b = document.getElementById('insp-win-' + k);
     if (b) b.classList.toggle('active', INSP_WIN.mode === k);
   });
@@ -2200,6 +2395,7 @@ function renderInspectionSub() {
   if (document.getElementById('insp-types-fold') && document.getElementById('insp-types-fold').open) inspRenderCheckTypes(days);
   inspRenderMiss(days);
   inspRenderAlerts(days);
+  inspRenderTickets(days);
   inspFixZeroRate(days);
 }
 // 兜底：INSP2 数据文件缺失时，退回旧的 BI 归档表
@@ -2472,6 +2668,44 @@ function inspRenderAlerts(days) {
   var sub = document.getElementById('insp-alert-sub');
   if (sub) sub.textContent = '共 ' + rows.length + ' 单未闭环（待整改 / 超时未整改 / 整改驳回）';
 }
+function inspRenderTickets(days) {
+  var M = inspMeta(), tb = document.getElementById('tbody-insp-tickets');
+  if (!tb) return;
+  var mask = inspDayMask(days);
+  var rows = (window.INSP2_TICKETS || []).filter(function (x) {
+    return mask[x[0]] && !isFiltered(x[1], 'safety');
+  });
+  rows.sort(function (a, b) { return b[11] - a[11]; });
+  var fmtD = function (ts) {
+    var d = new Date(ts * 1000);
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0') + ' '
+      + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+  };
+  var body = '', nAll = rows.length, nDeduct = 0, nOpen = 0, nCompliant = 0;
+  rows.forEach(function (x) {
+    var deduct = x[6] < x[7];
+    if (deduct) nDeduct++; else nCompliant++;
+    if (x[4] === 70 || x[4] === 90 || x[4] === 110) nOpen++;
+    body += '<tr>'
+      + '<td>' + escHtml(M.days[x[0]] || '-') + '</td>'
+      + '<td>' + escHtml(x[1]) + '</td>'
+      + '<td>' + escHtml((M.roles || [])[x[3]] || '-') + '</td>'
+      + '<td>' + escHtml(x[9]) + '</td>'
+      + '<td class="' + inspDeductCls(x[4]) + '" style="font-weight:600;">' + inspDeductStatus(x[4]) + '</td>'
+      + '<td' + (deduct ? ' class="rr"' : ' class="rg"') + '>' + fr(x[6]) + ' / ' + fr(x[7]) + (deduct ? ' ⚠' : ' ✓') + '</td>'
+      + '<td>' + escHtml(String(x[2])) + '</td>'
+      + '<td>' + fmtD(x[11]) + '</td>'
+      + '</tr>';
+  });
+  if (!body) body = '<tr><td colspan="8" class="empty">本窗口无巡检单据</td></tr>';
+  document.getElementById('thead-insp-tickets').innerHTML = '<tr><th>日期</th><th style="min-width:160px;">站点</th>'
+    + '<th style="min-width:130px;">提交人岗位</th><th style="min-width:110px;">检查方式</th>'
+    + '<th>状态</th><th>合规项 / 检查项</th><th>单据号</th><th style="min-width:120px;">提交时间</th></tr>';
+  tb.innerHTML = body;
+  var sub = document.getElementById('insp-tickets-sub');
+  if (sub) sub.textContent = '本窗口提交 ' + nAll + ' 单 · 扣分 ' + nDeduct + ' 单 · 合规 ' + nCompliant
+    + ' 单 · 未闭环 ' + nOpen + ' 单（点「今日」按钮可只看当日提交）';
+}
 function inspCheckName(code) {
   var M = inspMeta(), dict = (M.checkTypes && M.checkTypes[String(INSP_OBJ)]) || [];
   for (var i = 0; i < dict.length; i++) if (dict[i][0] === code) return dict[i][1];
@@ -2482,10 +2716,16 @@ function inspCheckName(code) {
 //    数据 = INSP2_DEDUCT：[dayIdx, 站点, 表单ID, 状态, 扣分项数, 检查方式code, 提交ts]
 //    扣分原因原文 = INSP2_REASON（P2 工单详情抓取接入后由构建器注入），照片/视频不落
 function inspDeductStatus(st) {
-  return ({ 70: '待整改', 90: '超时未整改', 110: '整改驳回', 100: '整改通过', 80: '无需整改' })[st] || String(st);
+  // 优先用平台状态字典（INSP2_META.statuses，fetch 时抓取），兜底本地全量映射
+  var M = inspMeta();
+  if (M && M.statuses && M.statuses.length) {
+    for (var i = 0; i < M.statuses.length; i++) if (M.statuses[i][0] === st) return M.statuses[i][1];
+  }
+  return ({ 10:'已提交', 20:'待复核', 30:'待质检', 40:'待申诉', 50:'申诉待审核', 60:'整改待审核',
+    70:'待整改', 80:'无需整改', 90:'超时未整改', 100:'整改通过', 110:'整改驳回' })[st] || String(st);
 }
 function inspDeductCls(st) {
-  return ({ 70: 'ry', 90: 'rr', 110: 'rr', 100: 'rg' })[st] || '';
+  return ({ 40:'ry', 50:'ry', 60:'ry', 70:'ry', 90:'rr', 110:'rr', 100:'rg' })[st] || '';
 }
 function inspDeductReason(formId) {
   var R = window.INSP2_REASON;
@@ -2511,10 +2751,8 @@ function inspSelectDeductSite(name) {
 }
 function inspRenderDeduct(days) {
   var M = inspMeta();
-  var topTb = document.getElementById('tbody-insp-dtop');
-  var rankTb = document.getElementById('tbody-insp-drank');
   var detTb = document.getElementById('tbody-insp-ddetail');
-  if (!topTb || !rankTb || !detTb) return;
+  if (!detTb) return;
   var ready = !!(M.deduct && M.deduct.detailReady);
 
   var agg = inspAggDeduct(days);
@@ -2525,43 +2763,7 @@ function inspRenderDeduct(days) {
   var sub = document.getElementById('insp-deduct-sub');
   if (sub) sub.textContent = '窗口内扣分单 ' + tOrders + ' 张 · 扣分项 ' + tItems + ' 个 · 涉及站点 ' + list.length + ' 个（原因原文来自工单详情，不含照片/视频）';
 
-  // 左：扣分项 TOP 榜（按检查标准聚合，需详情数据；未接入前给空态说明）
-  var topHead = '<tr><th style="min-width:150px;">一级 / 二级分类 · 检查标准</th><th>扣分次数</th><th>涉及站点</th></tr>';
-  var topBody = '';
-  if (ready && window.INSP2_DEDUCT_STDS && window.INSP2_DEDUCT_STDS.length) {
-    var stds = window.INSP2_DEDUCT_STDS.filter(function (s) {
-      return !(INSP_ONLY_DEDUCT && !agg[s[0]]);   // 占位：聚合表按站点名首列过滤由 P2 完整实现
-    });
-    stds.sort(function (a, b) { return b[3] - a[3]; });
-    stds.slice(0, 15).forEach(function (s) {
-      topBody += '<tr><td>' + escHtml(s[0]) + ' / ' + escHtml(s[1]) + ' · ' + escHtml(s[2]) + '</td>'
-        + '<td class="rr">' + fr(s[3]) + '</td><td>' + fr(s[4]) + '</td></tr>';
-    });
-  } else if (!tItems) {
-    topBody = '<tr><td colspan="3" class="empty">本窗口无扣分记录 ✓</td></tr>';
-  } else {
-    topBody = '<tr><td colspan="3" style="padding:12px;color:#8a5a13;font-size:12px;line-height:1.8;">'
-      + '扣分项按「一级分类 / 二级分类 / 检查标准」聚合，需要工单详情数据（含每项扣分原因）。<br>'
-      + '详情抓取（fetch_insp_detail.js）尚未接入，本表暂为空态——层级与单据级扣分在右侧排行和下方明细中已可用。</td></tr>';
-  }
-  document.getElementById('thead-insp-dtop').innerHTML = topHead;
-  topTb.innerHTML = topBody;
-
-  // 右：扣分站点排行
-  var rankBody = '';
-  list.slice(0, 15).forEach(function (x) {
-    var sel = (_inspDeductSite === x.n) ? ' insp-drank-sel' : '';
-    rankBody += '<tr class="insp-drank-row' + sel + '" onclick="inspSelectDeductSite(' + JSON.stringify(x.n).replace(/"/g, '&quot;') + ')">'
-      + '<td>' + escHtml(x.n) + '</td>'
-      + '<td class="rr">' + fr(x.a.orders) + '</td>'
-      + '<td class="rr">' + fr(x.a.items) + '</td>'
-      + '<td' + (x.a.open > 0 ? ' class="safety-hl"' : '') + '>' + fr(x.a.open) + '</td></tr>';
-  });
-  if (!rankBody) rankBody = '<tr><td colspan="4" class="empty">本窗口无扣分站点 ✓</td></tr>';
-  document.getElementById('thead-insp-drank').innerHTML = '<tr><th style="min-width:150px;">站点</th><th>扣分单数</th><th>扣分项数</th><th>未闭环</th></tr>';
-  rankTb.innerHTML = rankBody;
-
-  // 下：扣分明细（单据级；扣分原因 P2 前显示 —）
+  // 扣分明细（单据级；扣分原因 P2 前显示 —）
   var mask = inspDayMask(days);
   var rows = (window.INSP2_DEDUCT || []).filter(function (x) {
     return mask[x[0]] && !isFiltered(x[1], 'safety') && (!_inspDeductSite || x[1] === _inspDeductSite);
@@ -3192,6 +3394,9 @@ function switchSafetySub(sub) {
   if (sub === 'insp') renderInspectionSub();
   else if (sub === 'penalty-week') renderPenaltyTab('week');
   else if (sub === 'penalty-month') renderPenaltyTab('month');
+  // 数据源横幅在 tab 行尾（2026-10-15 移入），内容为巡检专属：非巡检子页隐藏
+  var ib = document.getElementById('insp-banner');
+  if (ib && sub !== 'insp') ib.style.display = 'none';
 }
 
 // ─── Tab 3: 骑手装备标准化率 ─────────────────────────────────
@@ -3445,16 +3650,17 @@ function switchEquipView(view) {
   currentEquipView = view;
   document.getElementById('view-btn-equip-main').classList.toggle('active', view === 'main');
   document.getElementById('view-btn-equip-clothing').classList.toggle('active', view === 'clothing');
-  document.getElementById('view-btn-equip-checkfail').classList.toggle('active', view === 'checkfail');
   document.getElementById('equip-table-wrap').style.display = (view === 'main') ? '' : 'none';
   document.getElementById('clothing-table-wrap').style.display = (view === 'clothing') ? '' : 'none';
-  document.getElementById('checkfail-table-wrap').style.display = (view === 'checkfail') ? '' : 'none';
+  // 抽检不合格骑手明细 + 抽检骑手明细已合并到服装标准化率视图，随其显隐并联动筛选
+  var cfSec = document.getElementById('checkfail-section');
+  if (cfSec) cfSec.style.display = (view === 'clothing') ? '' : 'none';
+  var caSec = document.getElementById('checkall-section');
+  if (caSec) caSec.style.display = (view === 'clothing') ? '' : 'none';
   if (view === 'main') {
     renderEquipTab();
-  } else if (view === 'checkfail') {
-    renderCheckFailTable();
   } else {
-    renderClothingTable();
+    renderClothingTable(); // 内部末尾会联动 renderCheckFailTable() + renderCheckAllTable()
   }
   updateClothingSummaryCard();
   if (view !== 'main') { updateClothingRegionCards(); }
@@ -3631,6 +3837,7 @@ function renderClothingTable() {
 
   document.getElementById('clothing-tbody').innerHTML = html || '<tr><td colspan="99" style="text-align:center;color:#4F6E87;padding:20px;">暂无数据</td></tr>';
   renderCheckFailTable();
+  renderCheckAllTable();
 }
 
 // ══════════════════════════════════════════════════════════
@@ -3736,6 +3943,97 @@ function renderCheckFailPagination(totalPages, totalRows) {
   }
   h += '<button onclick="checkFailPage++;renderCheckFailTable();" ' + (checkFailPage === totalPages ? 'disabled' : '') + '>下一页</button>';
   h += '<button onclick="checkFailPage=' + totalPages + ';renderCheckFailTable();" ' + (checkFailPage === totalPages ? 'disabled' : '') + '>末页</button>';
+  pg.innerHTML = h;
+}
+
+// ══════════════════════════════════════════════════════════
+// ★ 抽检骑手明细（M盘抽检骑手照片表全量记录，与同一套筛选联动）
+// ══════════════════════════════════════════════════════════
+function renderCheckAllTable() {
+  var tbody = document.querySelector('#checkAllTable tbody');
+  if (!tbody) return;
+  var regionF = sfState['region-equip'] || [];
+  var subregionF = sfState['subregion-equip'] || [];
+  var cityF = sfState['city-equip'] || [];
+  var siteF = sfState['site-equip'] || [];
+  var dateF = sfState['date-equip'] || [];
+
+  var rows = (typeof CHECK_ALL_ROWS !== 'undefined' ? CHECK_ALL_ROWS : []).filter(function(r) {
+    if (regionF.length && regionF.indexOf(r.region) < 0) return false;
+    if (subregionF.length && subregionF.indexOf(r.subregion) < 0) return false;
+    if (cityF.length && cityF.indexOf(r.city) < 0) return false;
+    if (siteF.length && siteF.indexOf(r.name) < 0) return false;
+    if (dateF.length) {
+      var dayVal = (r.day && r.day.length === 8) ? (r.day.slice(4, 6) + '-' + r.day.slice(6, 8)) : r.day;
+      if (dateF.indexOf(dayVal) < 0) return false;
+    }
+    return true;
+  });
+  if (!rows || rows.length === 0) { tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:#999;">暂无抽检记录</td></tr>'; renderCheckAllPagination(0, 0); return; }
+  var totalPages = Math.ceil(rows.length / checkAllPageSize);
+  if (checkAllPage < 1) checkAllPage = 1;
+  if (checkAllPage > totalPages) checkAllPage = totalPages;
+  var start = (checkAllPage - 1) * checkAllPageSize;
+  var end = Math.min(start + checkAllPageSize, rows.length);
+  var html = '';
+  for (var i = start; i < end; i++) {
+    var r = rows[i];
+    var rid = String(r.rid || '').trim();
+    if (rid.indexOf('.') >= 0) { rid = rid.split('.')[0]; }
+    var photos = CHECK_PHOTO_MAP[rid] || [];
+    var photoLinks = '';
+    if (photos.length > 0) {
+      for (var p = 0; p < photos.length; p++) {
+        photoLinks += '<a href="javascript:void(0)" class="photo-link-ca" data-idx="' + p + '" data-photos="' + encodeURIComponent(JSON.stringify(photos)) + '" style="margin-right:6px;color:#1E88E5;text-decoration:underline;">照片' + (p + 1) + '</a>';
+      }
+    } else {
+      photoLinks = '<span style="color:#ccc;">无</span>';
+    }
+    html += '<tr>' +
+      '<td>' + (r.region || '') + '</td>' +
+      '<td>' + (r.subregion || '') + '</td>' +
+      '<td>' + (r.city || '') + '</td>' +
+      '<td>' + (r.name || '') + '</td>' +
+      '<td>' + ((r.day && r.day.length === 8) ? (r.day.slice(4, 6) + '-' + r.day.slice(6, 8)) : (r.day || '')) + '</td>' +
+      '<td>' + rid + '</td>' +
+      '<td>' + (r.rider_name || '-') + '</td>' +
+      '<td>' + photoLinks + '</td>' +
+      '</tr>';
+  }
+  tbody.innerHTML = html;
+  var links = tbody.querySelectorAll('.photo-link-ca');
+  for (var k = 0; k < links.length; k++) {
+    links[k].addEventListener('click', function(e) {
+      e.preventDefault();
+      var idx = parseInt(this.getAttribute('data-idx'));
+      var photos = JSON.parse(decodeURIComponent(this.getAttribute('data-photos')));
+      document.getElementById('photoModalImg').src = photos[idx];
+      document.getElementById('photoModal').style.display = 'block';
+    });
+  }
+  renderCheckAllPagination(totalPages, rows.length);
+}
+
+function renderCheckAllPagination(totalPages, totalRows) {
+  var wrap = document.getElementById('checkall-table-wrap');
+  if (!wrap) return;
+  var pg = document.getElementById('checkAllPagination');
+  if (!pg) {
+    pg = document.createElement('div');
+    pg.id = 'checkAllPagination';
+    pg.className = 'pagination';
+    wrap.appendChild(pg);
+  }
+  if (totalPages <= 1) { pg.innerHTML = ''; return; }
+  var h = '<span class="pg-info">第 ' + checkAllPage + ' / ' + totalPages + ' 页，共 ' + totalRows + ' 条</span>&nbsp;';
+  h += '<button onclick="checkAllPage=1;renderCheckAllTable();" ' + (checkAllPage === 1 ? 'disabled' : '') + '>首页</button>';
+  h += '<button onclick="checkAllPage--;renderCheckAllTable();" ' + (checkAllPage === 1 ? 'disabled' : '') + '>上一页</button>';
+  var s = Math.max(1, checkAllPage - 2), e = Math.min(totalPages, checkAllPage + 2);
+  for (var i = s; i <= e; i++) {
+    h += '<button class="' + (i === checkAllPage ? 'cur' : '') + '" onclick="checkAllPage=' + i + ';renderCheckAllTable();">' + i + '</button>';
+  }
+  h += '<button onclick="checkAllPage++;renderCheckAllTable();" ' + (checkAllPage === totalPages ? 'disabled' : '') + '>下一页</button>';
+  h += '<button onclick="checkAllPage=' + totalPages + ';renderCheckAllTable();" ' + (checkAllPage === totalPages ? 'disabled' : '') + '>末页</button>';
   pg.innerHTML = h;
 }
 
@@ -4951,7 +5249,7 @@ function cbInitOnce(){
   cbRebuildIndex(); cbApplyBoard(); cbRenderRider(1);
 }
 
-// ─── Tab 7: 线上线下考培 ─────────────────────────────────────
+// ─── Tab 7: 骑手APP考试和周度培训 ─────────────────────────────────────
 // 默认考试项目（用户可在此修改，或通过页面"配置考试项目"按钮维护）
 var DEFAULT_TRAINING_PROJECTS = [
   {id:'4284', name:'华北新骑手安全专项培训'},
@@ -4967,10 +5265,34 @@ function getTrainingProjects() {
     var s = localStorage.getItem('trainingProjects');
     if (s) return JSON.parse(s);
   } catch(e){}
+  // 无浏览器配置时（如群推送 headless 截图）：优先用导出的配置文件
+  // （配置考试项目弹窗 → 导出配置文件，与本页 localStorage 完全一致），
+  // 其次用数据文件输出的项目清单（随每月数据自动更新），
+  // 最后才用 HTML 内写死的 DEFAULT（会随月份过期，仅最终兜底）。
+  if (window.TRAINING_PROJECTS_CONFIG && window.TRAINING_PROJECTS_CONFIG.length) {
+    return window.TRAINING_PROJECTS_CONFIG.map(function(p){ return {id:String(p.id), name:p.name}; });
+  }
+  if (window.TRAINING_PROJECTS && window.TRAINING_PROJECTS.length) {
+    return window.TRAINING_PROJECTS.map(function(p){ return {id:String(p.id), name:p.name}; });
+  }
   return DEFAULT_TRAINING_PROJECTS.slice();
 }
 function saveTrainingProjects(cfg) {
   localStorage.setItem('trainingProjects', JSON.stringify(cfg));
+}
+// 导出当前项目配置为 training_projects_config.js（供群推送 headless 环境加载，
+// 使推送截图的项目列与本页 localStorage 配置一致）。下载后放到履约项目目录即可。
+function exportTrainingConfig() {
+  var cfg = getTrainingProjects();
+  var js = '// 考培项目配置（由看板「配置考试项目 → 导出配置文件」生成，改配置后请重新导出替换）\n'
+    + 'window.TRAINING_PROJECTS_CONFIG = ' + JSON.stringify(cfg, null, 1) + ';\n';
+  var blob = new Blob([js], {type: 'text/javascript'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'training_projects_config.js';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 800);
 }
 function flattenTrainingData(cfg) {
   var raw = window.TRAINING_DATA || {};
@@ -5810,8 +6132,6 @@ function exportTable(tabId) {
   var tableId = 'tbl-' + tabId;
   if (tabId === 'equip' && currentEquipView === 'clothing') {
     tableId = 'clothing-table';
-  } else if (tabId === 'equip' && currentEquipView === 'checkfail') {
-    tableId = 'checkFailTable';
   }
   var table = document.getElementById(tableId);
   if (!table) { alert('未找到表格'); return; }
@@ -5819,12 +6139,11 @@ function exportTable(tabId) {
   var tabNames = {
     'morning': '站点早会', 'safety': '履约安全检查', 'equip': '骑手装备标准化率',
     'box': '餐箱消毒看板', 'knife': '带刀巡检看板', 'chargebp': '充换电血压看板',
-    'training': '线上线下考培', 'rider': '骑手维度执行',
+    'training': '骑手APP考试和周度培训', 'rider': '骑手维度执行',
     'penalty-week': '履约达成处罚-周度', 'penalty-month': '履约达成处罚-月度'
   };
   var expName = (tabNames[tabId] || tabId);
   if (tabId === 'equip' && currentEquipView === 'clothing') expName = '骑手服装标准化率';
-  if (tabId === 'equip' && currentEquipView === 'checkfail') expName = '抽检不合格骑手明细';
   var now = new Date();
   var ts = now.getFullYear() + ('0' + (now.getMonth() + 1)).slice(-2) + ('0' + now.getDate()).slice(-2);
   exportTableWYSIWYG(table, expName, '履约项目看板_' + expName + '_' + ts + '.xls');
@@ -5863,7 +6182,7 @@ function screenshotPanel(tabId) {
     var tabNames = {
       'morning':'站点早会','safety':'履约安全检查','equip':'骑手装备标准化率',
       'box':'餐箱消毒看板','knife':'带刀巡检看板','chargebp':'充换电血压看板',
-      'training':'线上线下考培','rider':'骑手维度执行'
+      'training':'骑手APP考试和周度培训','rider':'骑手维度执行'
     };
     var name = (tabNames[tabId]||tabId)+'_'+ts+'.png';
     var a = document.createElement('a');
@@ -5907,7 +6226,7 @@ window.onload = function() {
   METRIC_CFG.clothing.target = 95;
   METRIC_CFG.rating = { rows: (typeof TAB2_ROWS !== 'undefined') ? TAB2_ROWS : [] };
   if (typeof DATES !== 'undefined') { initMsFilter('date-equip', DATES, []); }
-  // 骑手装备标准化率 / 线上线下考培：数据更新时间（来自 data.js 的 DATA_GEN_TIME）
+  // 骑手装备标准化率 / 骑手APP考试和周度培训：数据更新时间（来自 data.js 的 DATA_GEN_TIME）
   var genTime = (typeof DATA_GEN_TIME !== 'undefined' && DATA_GEN_TIME) ? DATA_GEN_TIME : '--';
   var updEquip = document.getElementById('data-updated-equip');
   var updTrain = document.getElementById('data-updated-training');
@@ -5981,7 +6300,7 @@ function closeCheckRulesModal() {
 </li>
 <li>
 <b>早会提交以系统签到时间为准：</b><br>
-不早于当日 <span class="highlight">7:00</span>，最晚不晚于 <span class="highlight">20:00</span>。<br>
+不早于当日 <span class="highlight">7:00</span>；<span class="highlight">首次提交（当日第一次早会）需在中午 12:00 前</span>；<span class="highlight">第二次早会最晚不晚于 20:00</span>。<br>
 未在规定时间内提交早会，视为<span class="highlight">"未召开早会"</span>，按 <span class="highlight">1000元/站/天</span>承担违约责任。
 </li>
 <li>
@@ -6497,8 +6816,9 @@ function closeCheckRulesModal() {
       <div class="tc-add-wrap">
         <button class="btn btn-secondary" onclick="addTrainingConfigRow()">+ 添加项目</button>
         <button class="btn btn-secondary" onclick="resetTrainingConfig()">恢复默认</button>
+        <button class="btn btn-secondary" onclick="exportTrainingConfig()" title="把当前项目配置导出为 training_projects_config.js，放到履约项目目录后，群推送截图即与此处配置一致">⬇ 导出配置文件</button>
       </div>
-      <div class="tc-note">提示：左侧填项目ID，右侧填显示名称。保存后立即生效；如需恢复本月默认项目，点击"恢复默认"。</div>
+      <div class="tc-note">提示：左侧填项目ID，右侧填显示名称。保存后立即生效；如需恢复本月默认项目，点击"恢复默认"。改完配置后请点「导出配置文件」，把下载的 training_projects_config.js 放到履约项目目录（D:\兴达数据库\履约项目\），群推送截图的项目列才会与本页一致。</div>
       <div class="tc-actions">
         <button class="btn-cancel" onclick="closeTrainingConfigModal()">取消</button>
         <button class="btn-save" onclick="saveTrainingConfigFromModal()">保存并刷新</button>

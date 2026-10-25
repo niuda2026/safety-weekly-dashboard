@@ -21,8 +21,13 @@ _refresh_public.py —— 公网 _public 静态快照一键刷新（2026-09-28 �
   履约数据 js   履约项目\{penalty_weekly,penalty_monthly,data,knife_rider_data,box_rider_data,
                 inspection_data,morning_review_data}.js → _public/penalty-board/
                 ⚠ 充换电血压_data.js 中文名静态沙箱不支持 → 改名 chargebp_data.js 并同步改写 src
-  共享库        _libs\html2canvas-1.4.1.min.js → _public/_libs/（履约看板 ../_libs/ 改写为 /_libs/）
+  共享库        _libs\{html2canvas,chart,xlsx} → _public/_libs/（履约看板 ../_libs/ 改写为 /_libs/）
+                ⚠ 三个库缺一不可，靠 onerror 回退 CDN 是异步的，赶不上主脚本执行
   周报本体      项目 data/*.json + index.html → _public/（不拷中文名 安全数据周报看板.html）
+                ⚠ index.html 必须经 publicize_index() 改写：公网是静态托管，没有 /export-pdf，
+                  导出按钮改为下载随包发布的 weekly-report.pdf
+  整册 PDF      node _export_pdf.js → _exports/*.pdf 最新一份 → _public/weekly-report.pdf
+                （加 --with-pdf 才生成；依赖本机 8421 服务在跑）
 """
 import glob
 import os
@@ -54,6 +59,32 @@ PEN_JS = ["penalty_weekly.js", "penalty_monthly.js", "data.js", "knife_rider_dat
           "box_rider_data.js", "inspection_data.js", "inspection_daily_data.js",
           "morning_review_data.js"]
 
+# 内嵌「交通安全四项」看板（与 server.py /four-board/ 注入完全一致：postMessage 联动 + 隐藏 KPI/大区卡）
+# 2026-10-19：同步隐藏「骑手明细」tab —— 公网只保留站维度，骑手个人级明细不外露
+FOUR_BOARD_HTML = os.path.join(D, "交通安全行为看板", "骑手交通行为明细看板.html")
+FOUR_XLSX = os.path.join(D, "交通安全行为看板", "xlsx.full.min.js")
+FOUR_FILTER_INJECT = (
+    '<style>#panel-four .summary-row,#panel-four .region-cards-row{display:none!important}'
+    '.tab-item[data-tab="rider"]{display:none!important}</style>'
+    '<script>(function(){'
+    'function dist(key,level){var rows=(typeof METRIC_CFG!=="undefined"&&METRIC_CFG.four)?METRIC_CFG.four.rows:[];'
+    'var s={};rows.forEach(function(r){if(level&&r.level!==level)return;var v=r[key];if(v)s[v]=1;});'
+    'return Object.keys(s);}'
+    'function apply(f){try{'
+    'if(typeof sfState==="undefined"||!sfState.four||typeof initStationFilters!=="function"||typeof applyFilter!=="function")return false;'
+    '["region","subregion","city"].forEach(function(k){'
+    'var opts=dist(k,k==="city"?"merchant":"subregion");'
+    'sfState.four[k]=(f[k]||[]).filter(function(v){return opts.indexOf(v)>=0;});});'
+    'initStationFilters("four");applyFilter("four");return true;}catch(e){return false;}}'
+    'window.addEventListener("message",function(ev){var d=ev.data||{};'
+    'if(d.type!=="xd-four-filter")return;'
+    'var n=0;(function go(){if(apply(d)||n++>50)return;setTimeout(go,300);})();});'
+    'try{var q=new URLSearchParams(location.search),f={};'
+    '["region","subregion","city"].forEach(function(k){var v=q.get(k);if(v)f[k]=v.split(",").filter(Boolean);});'
+    'if(Object.keys(f).length){var m=0;(function go(){if(apply(f)||m++>50)return;setTimeout(go,300);})();}}catch(e){}'
+    '})();</script>'
+)
+
 
 def log(msg):
     print(msg, flush=True)
@@ -71,14 +102,13 @@ def cp(src, dst):
 
 def find_node():
     import shutil as sh
-    p = sh.which("node")
-    if p:
-        return p
-    for c in (r"C:\nodejs\node-v20.19.2-win-x64\node.exe",
+    # 优先用装了 Playwright 的那套（导 PDF 必须）
+    for c in (r"C:\Users\牛艳朝\.workbuddy\binaries\node\versions\22.22.2-6\node.exe",
+              r"C:\nodejs\node-v20.19.2-win-x64\node.exe",
               os.path.expanduser(r"~\.workbuddy\binaries\node\versions\22.22.2-3\node.exe")):
         if os.path.isfile(c):
             return c
-    return None
+    return sh.which("node")
 
 
 def step1_equity_slim():
@@ -179,6 +209,51 @@ def build_penalty_index():
     log("  生成 %s (%d B)" % (os.path.relpath(out, PROJECT), os.path.getsize(out)))
 
 
+def step3b_four_board():
+    """内嵌「交通安全四项」看板静态副本（公网版，与本地 /four-board/ 路由同源同源）。
+    数据用 slim（TAB1_ROWS 已在其中；四项表/筛选下拉均读 METRIC_CFG.four.rows=TAB1_ROWS 派生，
+    不依赖被置空的 RIDERS），无需 18MB 全量 data.js。"""
+    log("[3b] 交通安全四项看板静态副本（slim 数据）")
+    PUB_FOUR = os.path.join(PUB, "four-board")
+    os.makedirs(PUB_FOUR, exist_ok=True)
+    if not os.path.isfile(FOUR_BOARD_HTML):
+        log("  [缺失!] %s" % FOUR_BOARD_HTML)
+        return
+    with open(FOUR_BOARD_HTML, encoding="utf-8") as fh:
+        html = fh.read()
+    t = str(int(time.time() * 1000))
+    # ../_libs → /_libs（公网根 _libs 已存在）
+    html = re.sub(r'src="\.\./_libs/([^"]+)"', r'src="/_libs/\1"', html)
+    # data.js?版本串 → data.js?t= 防 CDN 缓存
+    html = re.sub(r'data\.js\?[^"\'\)\s>]+', 'data.js?t=' + t, html)
+    # 注入 postMessage 联动 + 隐藏 KPI/大区卡（与 server.py 一致）
+    if "<head>" in html:
+        html = html.replace("<head>", "<head>" + FOUR_FILTER_INJECT, 1)
+    else:
+        html = FOUR_FILTER_INJECT + html
+    # 公网静态沙箱不支持中文文件名 → 改用 ASCII 名 ride_four.html，并同步改写公网 V3 的 fourFrameSrc
+    out_html = os.path.join(PUB_FOUR, "ride_four.html")
+    with open(out_html, "w", encoding="utf-8", newline="") as fh:
+        fh.write(html)
+    log("  生成 %s (%d B)" % (os.path.relpath(out_html, PROJECT), os.path.getsize(out_html)))
+    # 同步改写公网 V3 副本的 fourFrameSrc：中文名 → ride_four.html
+    pub_v3 = os.path.join(PUB, "insurance_subsidy_v3.html")
+    if os.path.isfile(pub_v3):
+        with open(pub_v3, encoding="utf-8") as fh:
+            v3 = fh.read()
+        v3b = v3.replace('"/four-board/" + encodeURIComponent("骑手交通行为明细看板.html")',
+                         '"/four-board/ride_four.html"')
+        if v3b != v3:
+            with open(pub_v3, "w", encoding="utf-8", newline="") as fh:
+                fh.write(v3b)
+            log("  公网 V3 fourFrameSrc 已改写为 ride_four.html")
+    # ⚠ 必须用全量 data.js（18MB）：四项表 getFourRows 依赖全量骑手明细，slim 的 TAB1_ROWS 映射后得 0 行
+    #   （2026-10-19 Playwright 实测：slim 副本 table-four 0 行，全量副本 221 行）
+    cp(TRAFFIC_DATA_JS, os.path.join(PUB_FOUR, "data.js"))
+    # 导出 Excel 用的 xlsx
+    cp(FOUR_XLSX, os.path.join(PUB_FOUR, "xlsx.full.min.js"))
+
+
 def step4_penalty():
     log("[4] 履约看板静态化")
     for f in PEN_JS:
@@ -188,19 +263,140 @@ def step4_penalty():
 
 
 def step5_libs():
+    """公网必须自带全部依赖库。
+    ⚠ 不能只靠 index.html 里的 onerror 回退 CDN：onerror 里 appendChild 是异步的，
+      主脚本早已执行完 → `Chart is not defined`，公网整页图表全废（2026-10-24 实测）。"""
     log("[5] 共享库 _libs")
-    cp(os.path.join(LIBS, "html2canvas-1.4.1.min.js"), os.path.join(PUB, "_libs", "html2canvas-1.4.1.min.js"))
+    for name in ("html2canvas-1.4.1.min.js", "chart.umd-4.4.7.min.js", "xlsx-0.18.5.full.min.js"):
+        cp(os.path.join(LIBS, name), os.path.join(PUB, "_libs", name))
 
 
-def step6_weekly():
+# 公网版 downloadAllData：静态托管没有 /export-pdf 服务，改为下载
+# 同步时预先生成并随包发布的整册 PDF（ASCII 名 weekly-report.pdf）。
+# 本机通过 8421 打开时仍优先走服务端实时导出。
+PUBLIC_DOWNLOAD_FN = '''async function downloadAllData() {
+    const btn = document.querySelector('[onclick="downloadAllData()"]');
+    const oldText = btn ? btn.textContent : '';
+    const setBtn = (t, dis) => { if (btn) { btn.textContent = t; btn.disabled = !!dis; } };
+    setBtn('正在准备…', true);
+    // 1) 本机服务在跑时走服务端实时导出（内容最新）
+    try {
+        const res = await fetch('/export-pdf', { method: 'POST' });
+        const ct = res.headers.get('content-type') || '';
+        if (res.ok && ct.indexOf('json') >= 0) {
+            const data = await res.json();
+            if (data && data.ok && data.url) {
+                const a = document.createElement('a');
+                a.href = data.url + '?t=' + Date.now();
+                a.download = data.name || '履约安全周报.pdf';
+                document.body.appendChild(a); a.click(); a.remove();
+                setBtn('已生成（' + (data.pages || '') + '页），下载中…', true);
+                setTimeout(() => setBtn(oldText, false), 3000);
+                return;
+            }
+        }
+    } catch (e) { /* 静态托管无此接口，走下面的静态 PDF */ }
+    // 2) 静态托管：下载随包发布的整册 PDF
+    const url = '/weekly-report.pdf?t=' + Date.now();
+    try {
+        const head = await fetch(url, { method: 'HEAD' });
+        if (!head.ok) throw new Error('尚未生成（HTTP ' + head.status + '）');
+    } catch (e) {
+        setBtn(oldText, false);
+        if (confirm('整册 PDF 暂不可用：' + e.message +
+            '\\n\\n是否改为导出 Excel（只有数据表，不含看板样式）？')) {
+            downloadAllDataExcel();
+        }
+        return;
+    }
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = '履约安全周报.pdf';
+    document.body.appendChild(a); a.click(); a.remove();
+    setBtn('下载中…', true);
+    setTimeout(() => setBtn(oldText, false), 3000);
+}
+
+'''
+
+
+def publicize_index(src_html):
+    """把本地 index.html 改写成公网静态版。
+
+    - downloadAllData 换成公网版（静态 PDF 兜底）
+    - 去掉仅本地服务才有的实时入口
+    """
+    start = src_html.find('async function downloadAllData() {')
+    if start < 0:
+        raise RuntimeError("index.html 里找不到 downloadAllData()，公网适配失败")
+    end_mark = '// 原「下载所有数据」逻辑'
+    end = src_html.find(end_mark, start)
+    if end < 0:
+        raise RuntimeError("index.html 里找不到 downloadAllData 结束标记，公网适配失败")
+    return src_html[:start] + PUBLIC_DOWNLOAD_FN + src_html[end:]
+
+
+def step6_weekly(with_pdf=False):
     log("[6] 周报本体 data/*.json + index.html + monthly_summary")
     n = 0
     for f in glob.glob(os.path.join(PROJECT, "data", "*.json")):
         if cp(f, os.path.join(PUB, "data", os.path.basename(f))):
             n += 1
     log("  data/*.json 共 %d 个" % n)
-    cp(os.path.join(PROJECT, "index.html"), os.path.join(PUB, "index.html"))
+    with open(os.path.join(PROJECT, "index.html"), encoding="utf-8") as fh:
+        html = fh.read()
+    out = os.path.join(PUB, "index.html")
+    with open(out, "w", encoding="utf-8", newline="") as fh:
+        fh.write(publicize_index(html))
+    log("  生成 %s (%d B，已做公网适配)" % (os.path.relpath(out, PROJECT), os.path.getsize(out)))
     cp(os.path.join(D, "交通安全行为看板", "monthly_summary.js"), os.path.join(PUB, "monthly_summary.js"))
+    if with_pdf:
+        step6b_weekly_pdf()
+
+
+def _service_up(port=8421):
+    import socket
+    s = socket.socket()
+    s.settimeout(1.2)
+    try:
+        s.connect(("127.0.0.1", port))
+        return True
+    except OSError:
+        return False
+    finally:
+        s.close()
+
+
+def step6b_weekly_pdf():
+    """随包发布一份整册 PDF（公网无动态导出能力，封面按钮直接下载它）。"""
+    log("[6b] 生成整册 PDF 供公网下载")
+    node = find_node()
+    script = os.path.join(PROJECT, "_export_pdf.js")
+    if not node or not os.path.isfile(script):
+        log("  [跳过] node 或 _export_pdf.js 缺失")
+        return
+    if not _service_up(8421):
+        log("  [跳过] 8421 未启动，PDF 导出依赖本地页面渲染")
+        return
+    out_dir = os.path.join(PROJECT, "_exports")
+    t0 = time.time()
+    env = dict(os.environ)
+    env["NODE_PATH"] = r"C:\Users\牛艳朝\.workbuddy\binaries\node\workspace\node_modules"
+    r = subprocess.run([node, script, out_dir], capture_output=True, timeout=900, env=env)
+    out = (r.stdout or b"").decode("utf-8", "ignore")
+    err = (r.stderr or b"").decode("utf-8", "ignore")
+    if r.returncode != 0:
+        log("  [失败] rc=%s %s" % (r.returncode, (err or out)[-400:]))
+        return
+    pdfs = sorted(glob.glob(os.path.join(out_dir, "*.pdf")), key=os.path.getmtime)
+    if not pdfs:
+        log("  [失败] 未产出 PDF")
+        return
+    newest = pdfs[-1]
+    dst = os.path.join(PUB, "weekly-report.pdf")
+    shutil.copyfile(newest, dst)
+    log("  发布 weekly-report.pdf (%d B, 耗时 %.0fs，源 %s)"
+        % (os.path.getsize(dst), time.time() - t0, os.path.basename(newest)))
 
 
 CLEANUP_FILES = ["server.py", "start_server.bat", "start_silent.vbs", "sync.bat",
@@ -233,13 +429,15 @@ def step7_cleanup():
 
 def main():
     t0 = time.time()
-    log("=== _refresh_public 开始 ===")
+    with_pdf = "--with-pdf" in sys.argv
+    log("=== _refresh_public 开始%s ===" % ("（含整册 PDF）" if with_pdf else ""))
     step1_equity_slim()
     step2_equity_html_patch()
     step3_insurance()
+    step3b_four_board()
     step4_penalty()
     step5_libs()
-    step6_weekly()
+    step6_weekly(with_pdf=with_pdf)
     step7_cleanup()
     log("=== 完成，耗时 %.1fs。下一步：workbuddy_sites_deploy(directory=_public) ===" % (time.time() - t0))
 

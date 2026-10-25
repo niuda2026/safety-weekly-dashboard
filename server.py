@@ -11,6 +11,7 @@ import socket
 import time
 import posixpath
 import re as _re
+import threading
 from urllib.parse import urlparse, unquote
 
 # 默认端口（冷门 8421，避开 8080/8899 被 WorkBuddy/Edge/企业微信等进程抢占或阻塞）
@@ -46,6 +47,10 @@ INSURANCE_V3 = "专送合作商骑手保障补贴考核看板_2026_V3.html"
 # 并套到四项看板的 sfState.four 上；值先与看板数据求交集，防口径不一致把表筛空。
 # 同时支持 URL 参数初始过滤（?city=合肥,xx）。
 _FOUR_FILTER_INJECT = (
+    # 2026-10-19：保险页内嵌模式下隐藏顶部 KPI 卡片行和大区卡片行（用户要求去掉，只留表格）
+    # 2026-10-19：同时隐藏「骑手明细」tab —— 内嵌/公网只保留站维度，骑手个人级明细不外露
+    '<style>#panel-four .summary-row,#panel-four .region-cards-row{display:none!important}'
+    '.tab-item[data-tab="rider"]{display:none!important}</style>'
     '<script>(function(){'
     'function dist(key,level){var rows=(typeof METRIC_CFG!=="undefined"&&METRIC_CFG.four)?METRIC_CFG.four.rows:[];'
     'var s={};rows.forEach(function(r){if(level&&r.level!==level)return;var v=r[key];if(v)s[v]=1;});'
@@ -194,6 +199,95 @@ def sync_to_github():
         return False, "未找到 Git，请确认 Git 已安装"
 
 
+# ===== 完整周报 PDF 导出（2026-10-24 新增）=====
+# 前端「导出完整周报PDF」按钮 → POST /export-pdf → 跑 _export_pdf.js（Playwright 打印）
+# → 前端拿回文件名，再 GET /_exports/<文件名> 下载。
+# 只读：脚本只读取各看板页面渲染结果，不写入任何业务数据。
+EXPORT_SCRIPT = os.path.join(PROJECT_DIR, "_export_pdf.js")
+EXPORT_DIR = os.path.join(PROJECT_DIR, "_exports")
+EXPORT_KEEP = 5          # 只保留最近 5 份，避免 _exports 无限增长
+EXPORT_TIMEOUT = 420     # 秒；实测一次约 60-120 秒
+_EXPORT_LOCK = threading.Lock()
+
+# node 与 playwright 依赖（Playwright 装在 WorkBuddy 的 node workspace 里）
+# 注意：本文件后面另有一个 _find_node()（数据大屏用），这里必须换个名字，
+# 否则同名函数后定义会覆盖前者（2026-10-24 踩过）。
+_EXPORT_NODE_CANDIDATES = [
+    r"C:\Users\牛艳朝\.workbuddy\binaries\node\versions\22.22.2-6\node.exe",
+    r"C:\nodejs\node-v20.19.2-win-x64\node.exe",
+]
+_NODE_MODULES = r"C:\Users\牛艳朝\.workbuddy\binaries\node\workspace\node_modules"
+
+
+def _find_export_node():
+    for p in _EXPORT_NODE_CANDIDATES:
+        if os.path.isfile(p):
+            return p
+    import shutil
+    return shutil.which("node") or shutil.which("node.exe")
+
+
+def _cleanup_exports():
+    """只保留最近 EXPORT_KEEP 份 PDF"""
+    try:
+        files = [os.path.join(EXPORT_DIR, f) for f in os.listdir(EXPORT_DIR) if f.lower().endswith(".pdf")]
+        files.sort(key=lambda p: os.path.getmtime(p), reverse=True)
+        for p in files[EXPORT_KEEP:]:
+            try:
+                os.remove(p)
+            except Exception:
+                pass
+    except Exception:
+        pass
+
+
+def run_pdf_export():
+    """执行导出，返回 (ok, payload_dict)"""
+    node = _find_export_node()
+    if not node:
+        return False, {"message": "未找到 node 可执行文件，无法导出 PDF"}
+    if not os.path.isfile(EXPORT_SCRIPT):
+        return False, {"message": "缺少导出脚本 _export_pdf.js"}
+
+    env = os.environ.copy()
+    env["NODE_PATH"] = _NODE_MODULES
+    env.setdefault("EXPORT_BASE", f"http://127.0.0.1:{PORT}/")
+    # 脚本里默认用 UTF-8 输出，防止中文文件名在管道里乱码
+    env["PYTHONIOENCODING"] = "utf-8"
+
+    NO_WINDOW = 0x08000000
+    try:
+        proc = subprocess.run(
+            [node, EXPORT_SCRIPT, EXPORT_DIR],
+            cwd=PROJECT_DIR, capture_output=True, timeout=EXPORT_TIMEOUT,
+            env=env, creationflags=NO_WINDOW,
+        )
+    except subprocess.TimeoutExpired:
+        return False, {"message": f"导出超时（>{EXPORT_TIMEOUT}s），请稍后重试"}
+    except Exception as e:
+        return False, {"message": f"启动导出进程失败：{e}"}
+
+    out = (proc.stdout or b"").decode("utf-8", "replace")
+    err = (proc.stderr or b"").decode("utf-8", "replace")
+    payload = None
+    for line in out.splitlines():
+        if line.startswith("__RESULT__"):
+            try:
+                payload = json.loads(line[len("__RESULT__"):])
+            except Exception:
+                payload = None
+    if not payload:
+        tail = (err or out).strip().splitlines()[-6:]
+        return False, {"message": "导出失败：" + (" / ".join(tail) or "未知错误")}
+    if not payload.get("ok"):
+        return False, {"message": payload.get("message") or "导出失败"}
+
+    _cleanup_exports()
+    name = payload.get("name") or os.path.basename(payload.get("file", ""))
+    payload["url"] = "/_exports/" + name
+    return True, payload
+
+
 class SyncHandler(http.server.SimpleHTTPRequestHandler):
     """自定义 HTTP 请求处理器"""
 
@@ -257,6 +351,39 @@ class SyncHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_header("Access-Control-Allow-Origin", "*")
                 self.end_headers()
                 self.wfile.write(json.dumps({"status": "error", "message": str(e)}, ensure_ascii=False).encode("utf-8"))
+
+        elif parsed.path == "/export-pdf":
+            # 同一时刻只允许一个导出任务（Playwright 起了浏览器，并发会互相拖慢/抢端口）
+            if not _EXPORT_LOCK.acquire(blocking=False):
+                self.send_response(429)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.end_headers()
+                self.wfile.write(json.dumps(
+                    {"ok": False, "message": "已有一个导出任务在生成中，请稍等"},
+                    ensure_ascii=False).encode("utf-8"))
+                return
+            try:
+                ok, payload = run_pdf_export()
+                self.send_response(200 if ok else 500)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.end_headers()
+                body = {"ok": ok}
+                body.update(payload or {})
+                self.wfile.write(json.dumps(body, ensure_ascii=False).encode("utf-8"))
+            except Exception as e:
+                try:
+                    self.send_response(500)
+                    self.send_header("Content-Type", "application/json; charset=utf-8")
+                    self.send_header("Access-Control-Allow-Origin", "*")
+                    self.end_headers()
+                    self.wfile.write(json.dumps(
+                        {"ok": False, "message": str(e)}, ensure_ascii=False).encode("utf-8"))
+                except Exception:
+                    pass
+            finally:
+                _EXPORT_LOCK.release()
         else:
             self.send_response(404)
             self.end_headers()
@@ -521,7 +648,12 @@ class SyncHandler(http.server.SimpleHTTPRequestHandler):
                                      extra_inject=_FOUR_FILTER_INJECT)
             return
         if path.startswith("/four-board/"):
-            self._serve_traffic_file(TRAFFIC_BOARD_DIR, path[len("/four-board/"):])
+            rel = unquote(path[len("/four-board/"):])
+            if rel.replace("\\", "/") in ("骑手交通行为明细看板.html", "index.html"):
+                self._serve_traffic_file(TRAFFIC_BOARD_DIR, rel,
+                                         extra_inject=_FOUR_FILTER_INJECT)
+            else:
+                self._serve_traffic_file(TRAFFIC_BOARD_DIR, rel)
             return
         # 履约达成处罚周度（履约项目看板）只读透出：绝不改写原工作台任何文件
         if path in ("/penalty-board", "/penalty-board/"):

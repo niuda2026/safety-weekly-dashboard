@@ -12,7 +12,7 @@ const { chromium } = require('playwright');
   const check = (name, ok) => out.push((ok ? 'PASS' : 'FAIL') + ' | ' + name);
 
   // 直接打开 v3（模拟 monitor 壳 iframe 的 live 地址）
-  await page.goto('http://127.0.0.1:8421/insurance_subsidy_v3.html?t=' + Date.now(), { waitUntil: 'domcontentloaded', timeout: 60000 });
+  await page.goto('http://127.0.0.1:8421/insurance-live/%E4%B8%93%E9%80%81%E5%90%88%E4%BD%9C%E5%95%86%E9%AA%91%E6%89%8B%E4%BF%9D%E9%9A%9C%E8%A1%A5%E8%B4%B4%E8%80%83%E6%A0%B8%E7%9C%8B%E6%9D%BF_2026_V3.html?t=' + Date.now(), { waitUntil: 'domcontentloaded', timeout: 60000 });
   await page.waitForTimeout(2500);
 
   const btn = await page.locator('#dimSeg button[data-lvl="traffic4"]').count();
