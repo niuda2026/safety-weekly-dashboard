@@ -21,6 +21,17 @@ from datetime import datetime
 
 import openpyxl
 
+
+# ── watcher 管道编码加固（2026-10-25 统一加）──
+# watcher 用管道拉起本脚本时 stdout 是 cp936，日志里出现 ▶ ⚠ 等符号会抛
+# UnicodeEncodeError 把脚本打成 rc=1（表现：只写一行日志就静默退出 / 文件已写完却记 FAIL）。
+import sys as _xd_sys
+for _xd_s in ("stdout", "stderr"):
+    try:
+        getattr(_xd_sys, _xd_s).reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 PROJ = os.path.dirname(os.path.abspath(__file__))
 M_DIR = r"M:\下载"
 OUT = os.path.join(PROJ, "data", "orders_site.json")

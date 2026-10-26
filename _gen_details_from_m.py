@@ -121,19 +121,25 @@ def backup(path):
 
 
 def meeting_window():
-    """「上周」固定口径 = 上周一 ~ 上周日（2026-10-15 定稿）。
+    """周度明细窗口 = 本周一 ~ 昨天（2026-10-25 改，与 _build_penalty_m.py 同步）。
 
-    旧逻辑从早会文件名解析区间，当时导出恰为一周；2026-10-15 起 M盘早会文件
-    改为「整月至今」导出（文件名区间=整月），文件名区间不再等于周窗口——
-    早会/检核明细、装备过滤一律改用上周一~上周日，与 _build_penalty_m.py 一致。
-    返回 (src, 上周一, 上周日)。
+    旧口径「上周一~上周日」的致命问题：用户每天往 M 盘下载「最近 6 天」，
+    周日下载的是本周一~周六（如 10-19~10-24），而「上周」算出来是 10-12~10-18，
+    两边零重叠 → 明细全部按「窗口外」剔除，弹窗和汇总都停在旧值上。
+    2026-10-25 实测：[meeting_reject] 0 行 / 剔除 4；[inspection_detail] 保留 0 / 剔除 23。
+
+    新口径：周二~周日 = 本周一~昨天；周一 = 上一个完整周（避免「今天~昨天」空区间）。
+    返回 (src, 起, 止)。
     """
     f = find_newest("_报备和日常早会驳回清单_")
     d = datetime.date.today()
     mon = d - datetime.timedelta(days=d.weekday())          # 本周一
-    a = mon - datetime.timedelta(days=7)                    # 上周一
-    b = a + datetime.timedelta(days=6)                      # 上周日
-    return f, a, b
+    if d.weekday() == 0:                                    # 周一 → 上一个完整周
+        mon -= datetime.timedelta(days=7)
+        b = mon + datetime.timedelta(days=6)
+    else:
+        b = d - datetime.timedelta(days=1)                  # 昨天
+    return f, mon, b
 
 
 # ── 1. 早会驳回 ────────────────────────────────────────────────
@@ -216,7 +222,7 @@ def gen_inspection(dry, w0=None, w1=None):
                 if (lambda d: d is not None and w0 <= d <= w1)(ymd(r.get("日期")))]
         print("[inspection_detail] 按上周窗口 %s~%s 保留 %d / 剔除 %d"
               % (w0, w1, len(rows), before - len(rows)))
-    # 健康证过期/证件不符 → 按站人次分档
+    # 健康证过期/证件不符 → 按站人次分档（**仅非站长**；站长走 100 元/项，见下）
     def is_health_tier(r):
         item = str(r.get("检核子项") or "")
         reason = str(r.get("质检原因") or "")
@@ -224,21 +230,25 @@ def gen_inspection(dry, w0=None, w1=None):
             any(k in reason for k in HEALTH_EXPIRED_KEYS)
     cnt = {}
     for r in rows:
-        if is_health_tier(r):
+        # ⚠️ 2026-10-25：站长的健康证不再参与「站人次」统计（他按 100 元/项），
+        #    否则站长行会把非站长的分档人数抬高一级。
+        if is_health_tier(r) and str(r.get("提交人岗位") or "") != "站长":
             s = str(r.get("站点名称") or "").strip()
             cnt[s] = cnt.get(s, 0) + 1
 
     def fine_of(r):
         rect = str(r.get("整改审核结果") or "")
         dbl = 2 if ("不通过" in rect or "驳回" in rect) else 1
+        pos = str(r.get("提交人岗位") or "")
+        # ⚠️ 2026-10-25 用户纠正：岗位=站长的健康证驳回 = 100 元/项（双倍 200），
+        #    不再按站人次 300/400/500 分档；其他岗位维持原规则。
+        if pos == "站长":
+            return 100 * dbl
         if is_health_tier(r):
             s = str(r.get("站点名称") or "").strip()
             n = cnt[s]
             base = 300 if n <= 4 else (400 if n <= 9 else 500)
             return base * dbl
-        pos = str(r.get("提交人岗位") or "")
-        if pos == "站长":
-            return 100 * dbl
         item, f = check_item_fine(r.get("检核子项"))
         if "健康证" in item:
             return 0   # 督导健康证（非过期类）金额待 T-1 源文件，与看板口径一致计 0

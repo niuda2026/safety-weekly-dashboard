@@ -276,6 +276,13 @@ table.dt th.cb-grp-b{background:#6a4bab}
 table.dt th.cb-grp-c{background:#0d6bb5}
 table.dt th.cb-grp-w{background:#0a8f6a}
 table.dt th.cb-grp-v{background:#5f6b7a}
+/* 2026-10-25 骑手维度新增：测压视频审核 / 血压异常跟进 */
+table.dt th.cb-grp-bpa{background:#b45309}
+table.dt th.cb-grp-bpb{background:#9d174d}
+/* 骑手表 29 列：表头不断行 + 这 6 列给足宽度，否则每字一行竖排 */
+#cbTblRider thead th{white-space:nowrap}
+#cbTblRider th.cb-grp-bpa,#cbTblRider th.cb-grp-bpb{min-width:94px;font-size:11.5px;letter-spacing:0;padding:7px 5px}
+#cbTblRider td.cb-audit-col{min-width:94px}
 tr.cb-row-noup td{background:#fff7f7}
 tr.cb-row-noup:hover td{background:#ffefef}
 .cb-tag-up{display:inline-block;padding:1px 8px;border-radius:9px;font-size:11px;font-weight:600}
@@ -287,6 +294,16 @@ tr.cb-row-noup:hover td{background:#ffefef}
 .cb-legend .cb-lg.rg{background:#e8f5e9;color:#2e7d32}
 .cb-legend .cb-lg.ry{background:#fff3e0;color:#e65100}
 .cb-legend .cb-lg.rr{background:#ffebee;color:#c62828}
+/* 测压视频审核 / 血压异常跟进 6 列：整列隐藏开关（群推送截图在暂无数据时隐藏，避免整列 '-' 挤占版面） */
+#tbl-chargebp.cb-hide-audit .cb-audit-col{display:none !important}
+/* 这 6 列文字较长：给足最小列宽，否则 auto 布局会把每个字挤成一行（表头竖排、整行变很高） */
+/* 本表表头一律不断行（避免「未上/传」这种撕裂），宽度不够时由 .table-wrap 横向滚动；
+   实测 1280 视口下表宽 1327px（隐藏 6 列时），群推送截图只多裁 9px，可接受 */
+#tbl-chargebp thead th{white-space:nowrap}
+table.dt th.cb-audit-col{min-width:96px;padding:6px 5px;font-size:11.5px;letter-spacing:0;white-space:normal}
+table.dt td.cb-audit-col{min-width:96px}
+/* 本表列数多（22 数据列），左右内边距收一点，减少横向滚动 */
+#tbl-chargebp th,#tbl-chargebp td{padding-left:7px;padding-right:7px}
 
 /* ─── 考试项目配置弹窗 ─── */
 #trainingConfigModal .modal-content{max-width:520px}
@@ -886,6 +903,7 @@ tr.cb-row-noup:hover td{background:#ffefef}
     <span class="cb-lg ry">占比 &lt; 5%</span>
     <span class="cb-lg rr">占比 ≥ 5%</span>
     <span style="color:#90a4ae">（占比 = 未上传/未通过 ÷ 该组分母，如 在职骑手、已出结果）</span>
+    <span style="color:#90a4ae" id="cbAuditNote">｜「测压视频审核 / 血压异常跟进」6 列为平台审核口径，不随上方「上传日期」筛选变化；暂无数据的站点显示 '-'</span>
   </div>
   <div class="table-wrap table-wrap-station">
     <table class="dt" id="tbl-chargebp">
@@ -918,11 +936,15 @@ tr.cb-row-noup:hover td{background:#ffefef}
           <th rowspan="2">大区</th><th rowspan="2">区域</th><th rowspan="2">城市</th><th rowspan="2">站点名称</th>
           <th rowspan="2">骑手ID</th><th rowspan="2">骑手姓名</th><th rowspan="2">排班状态</th>
           <th colspan="3" class="cb-grp-b">血压上传</th>
+          <th colspan="3" class="cb-grp-bpa">测压视频审核</th>
+          <th colspan="3" class="cb-grp-bpb">血压异常跟进</th>
           <th colspan="4" class="cb-grp-v">载具审核（骑手）</th>
           <th colspan="5" class="cb-grp-c">充电信息上传</th>
           <th colspan="4" class="cb-grp-w">换电信息上传</th>
         </tr><tr>
           <th class="cb-grp-b">上传</th><th class="cb-grp-b">状态</th><th class="cb-grp-b">提交时间</th>
+          <th class="cb-grp-bpa">审核通过数量</th><th class="cb-grp-bpa">审核总数量</th><th class="cb-grp-bpa">骑手测压合规率</th>
+          <th class="cb-grp-bpb">虚假测压骑手</th><th class="cb-grp-bpb">重度高血压</th><th class="cb-grp-bpb">提交就诊</th>
           <th class="cb-grp-v">载具类型</th><th class="cb-grp-v">审核状态</th><th class="cb-grp-v">变更日期</th><th class="cb-grp-v">驳回原因</th>
           <th class="cb-grp-c">上报</th><th class="cb-grp-c">审核状态</th><th class="cb-grp-c">提交时间</th><th class="cb-grp-c">电池电压</th><th class="cb-grp-c">电池品牌</th>
           <th class="cb-grp-w">上报</th><th class="cb-grp-w">审核状态</th><th class="cb-grp-w">提交时间</th><th class="cb-grp-w">换电品牌</th>
@@ -1030,10 +1052,12 @@ tr.cb-row-noup:hover td{background:#ffefef}
   <div class="pagination" id="pagination-rider"></div>
 </div>
 
-<script src="/equity-board/data.js?t=1792808762071"></script>
+<script src="/equity-board/data.js?t=1792982265374"></script>
 <script src="/penalty-board/data.js"></script>
 <script src="training_projects_config.js"></script>
 <script src="/penalty-board/chargebp_data.js"></script>
+<!-- 血压审核/异常跟进 6 列（2026-10-25）：独立数据文件，重建 充换电血压_data.js 不会覆盖 -->
+<script src="/penalty-board/血压审核_extra.js"></script>
 <script src="/penalty-board/knife_rider_data.js"></script>
 <script src="/penalty-board/box_rider_data.js"></script>
 <script src="/penalty-board/inspection_data.js"></script>
@@ -1418,9 +1442,9 @@ function renderStandardTab(tabId, dataVar, columns, extra, headerGroups) {
       if (hg.textColor) { styleParts.push('color:'+hg.textColor); }
       var hgStyle = styleParts.length > 0 ? ' style="'+styleParts.join(';')+'"' : '';
       if (hg.colspan === 1) {
-        thead += '<th rowspan="2"'+hgStyle+'>'+hg.label+'</th>';
+        thead += '<th rowspan="2"'+(hg.colClass?' class="'+hg.colClass+'"':'')+hgStyle+'>'+hg.label+'</th>';
       } else {
-        thead += '<th colspan="'+hg.colspan+'"'+hgStyle+'>'+hg.label+'</th>';
+        thead += '<th colspan="'+hg.colspan+'"'+(hg.colClass?' class="'+hg.colClass+'"':'')+hgStyle+'>'+hg.label+'</th>';
       }
     }
     thead += '</tr><tr>';
@@ -1433,8 +1457,9 @@ function renderStandardTab(tabId, dataVar, columns, extra, headerGroups) {
         if (hg.textColor) { subStyleParts.push('color:'+hg.textColor); }
         if (hg.bgColor) { subStyleParts.push('box-shadow:0 -2px 0 0 '+hg.bgColor); }
         var subStyle = subStyleParts.length > 0 ? ' style="'+subStyleParts.join(';')+'"' : '';
+        var subCls = hg.colClass ? ' class="'+hg.colClass+'"' : '';
         for (var c=colBase;c<colBase+hg.colspan;c++) {
-          thead += '<th'+subStyle+'>'+columns[c].label+'</th>';
+          thead += '<th'+subCls+subStyle+'>'+columns[c].label+'</th>';
         }
       }
       colBase += hg.colspan;
@@ -1460,6 +1485,8 @@ function renderStandardTab(tabId, dataVar, columns, extra, headerGroups) {
 
   // --- Totals ---
   var totals = {};
+  // nullable 列（尚无数据源的列）：记录本级是否有真实值，全无则渲染 '-' 而不是 0
+  var present = {};
   for (var k=0;k<columns.length;k++) {
     var key = columns[k].key;
     if (columns[k].isSumRatio) {
@@ -1504,6 +1531,11 @@ function renderStandardTab(tabId, dataVar, columns, extra, headerGroups) {
     for (var k=0;k<columns.length;k++) {
       var key = columns[k].key;
       var v = rc(d[key]);
+      if (columns[k].nullable && d[key] != null && d[key] !== '' && isFinite(Number(d[key]))) {
+        present[key] = (present[key] || 0) + 1;
+        regionAgg[rk][key + '__p'] = (regionAgg[rk][key + '__p'] || 0) + 1;
+        merchantAgg[mk][key + '__p'] = (merchantAgg[mk][key + '__p'] || 0) + 1;
+      }
       if (columns[k].isSumRatio) {
         regionAgg[rk][key+'_num'] += rc(d[key+'_num'] || d.num);
         regionAgg[rk][key+'_den'] += rc(d[key+'_den'] || d.den);
@@ -1526,6 +1558,7 @@ function renderStandardTab(tabId, dataVar, columns, extra, headerGroups) {
     '<td class="sticky-col name-cell" style="left:230px;min-width:150px">总商汇总</td>';
   for (var k=0;k<columns.length;k++) {
     var key = columns[k].key;
+    if (columns[k].nullable && !present[key]) { rows += '<td class="rn">-</td>'; continue; }
     if (columns[k].passThreshold != null) {
       var ptn = totals[key+'_num'], ptd = totals[key+'_den'];
       var pr = ptd > 0 ? (ptn/ptd*100) : null;
@@ -1569,6 +1602,7 @@ function renderStandardTab(tabId, dataVar, columns, extra, headerGroups) {
       var ra = regionAgg[rk];
       for (var k=0;k<columns.length;k++) {
         var key = columns[k].key;
+        if (columns[k].nullable && !ra[key + '__p']) { rows += '<td class="rn">-</td>'; continue; }
         if (columns[k].passThreshold != null) {
         var prn = ra[key+'_num']||0, prd = ra[key+'_den']||0;
         var prr = prd > 0 ? (prn/prd*100) : null;
@@ -1607,6 +1641,7 @@ function renderStandardTab(tabId, dataVar, columns, extra, headerGroups) {
       var ma = merchantAgg[mk];
       for (var k=0;k<columns.length;k++) {
         var key = columns[k].key;
+        if (columns[k].nullable && !ma[key + '__p']) { rows += '<td class="rn">-</td>'; continue; }
         if (columns[k].passThreshold != null) {
         var pcn = ma[key+'_num']||0, pcd = ma[key+'_den']||0;
         var pcr = pcd > 0 ? (pcn/pcd*100) : null;
@@ -1640,6 +1675,8 @@ function renderStandardTab(tabId, dataVar, columns, extra, headerGroups) {
     for (var k=0;k<columns.length;k++) {
       var key = columns[k].key;
       var v = d[key];
+      var vnull = (v == null || v === '' || isNaN(Number(v)));
+      if (columns[k].nullable && vnull) { rows += '<td class="rn">-</td>'; continue; }
       if (columns[k].passThreshold != null) {
         var rpp = fpass(d[key], columns[k].passThreshold);
         rows += '<td class="'+rpp.cls+'">'+rpp.text+'</td>';
@@ -1662,6 +1699,29 @@ function renderStandardTab(tabId, dataVar, columns, extra, headerGroups) {
   }
 
   document.getElementById('tbody-'+tabId).innerHTML = rows;
+
+  /* 整列附加 class（由 headerGroups 的 colClass 决定）：
+     如「测压视频审核 / 血压异常跟进」6 列，推送截图可用 #tbl-chargebp.cb-hide-audit 整列隐藏 */
+  if (headerGroups) {
+    var clsByCol = [], _base = 0;
+    for (var _g=0;_g<headerGroups.length;_g++) {
+      for (var _c=_base;_c<_base+headerGroups[_g].colspan;_c++) clsByCol[_c] = headerGroups[_g].colClass || '';
+      _base += headerGroups[_g].colspan;
+    }
+    var hasCls = false;
+    for (var _k=0;_k<clsByCol.length;_k++) { if (clsByCol[_k]) { hasCls = true; break; } }
+    var _tb = document.getElementById('tbody-'+tabId);
+    if (hasCls && _tb) {
+      for (var _r=0;_r<_tb.rows.length;_r++) {
+        var _tds = _tb.rows[_r].children;
+        for (var _k2=0;_k2<clsByCol.length;_k2++) {
+          if (!clsByCol[_k2]) continue;
+          var _td = _tds[numSticky + _k2];
+          if (_td && _td.classList) _td.classList.add(clsByCol[_k2]);
+        }
+      }
+    }
+  }
 
   // Apply view mode filtering
   applyViewModeToTable(tabId);
@@ -4610,6 +4670,16 @@ function renderChargeBPTab() {
     {key:'bp_num',           label:'已上传',   isPct:false, isSumRatio:false},
     {key:'bp_den',           label:'在职骑手', isPct:false, isSumRatio:false},
     {key:'bp_not',           label:'未上传',   isPct:false, isSumRatio:false, isBad:true},
+    /* ── 2026-10-25 新增 6 列（紧随「未上传」之后）────────────────────
+       数据源：血压审核_extra.js（window.CB_BP_AUDIT），与烽火台自动抓取链路解耦，
+       重建 充换电血压_data.js 不会覆盖。未提供数据的站点保持 null → 显示 '-'。
+       列宽由 CSS 控制（见 .cb-audit-col），不要在这里塞 <br>，让文字自然折成 2 行。 */
+    {key:'bp_video_pass_num', label:'审核通过数量', isPct:false, isSumRatio:false, nullable:true},
+    {key:'bp_video_all_num',  label:'审核总数量',   isPct:false, isSumRatio:false, nullable:true},
+    {key:'bp_video_rate',     label:'骑手测压合规率', isPct:true, isSumRatio:true, nullable:true},
+    {key:'bp_fake_num',       label:'虚假测压骑手<br>数量', isPct:false, isSumRatio:false, isSafetyHl:true, nullable:true},
+    {key:'bp_severe_num',     label:'重度高血压骑手<br>总数', isPct:false, isSumRatio:false, isSafetyHl:true, nullable:true},
+    {key:'bp_visit_num',      label:'提交就诊骑手数', isPct:false, isSumRatio:false, nullable:true},
     {key:'vehicle_rate',     label:'通过率',   isPct:true, isSumRatio:true},
     {key:'vehicle_num',      label:'通过',     isPct:false, isSumRatio:false},
     {key:'vehicle_den',      label:'已出结果', isPct:false, isSumRatio:false},
@@ -4626,12 +4696,27 @@ function renderChargeBPTab() {
   // 两级中文表头：每组=率+分子+分母+未上传，与「早会审核」等看板风格一致
   var headerGroups = [
     {label:'血压检测率',            colspan:4, bgColor:'#c4b5fd', textColor:'#4c1d95'},
+    {label:'测压视频审核',          colspan:3, bgColor:'#fdba74', textColor:'#7c2d12', colClass:'cb-audit-col'},
+    {label:'血压异常跟进',          colspan:3, bgColor:'#fecaca', textColor:'#991b1b', colClass:'cb-audit-col'},
     {label:'载具审核通过率', colspan:4, bgColor:'#e5e7eb', textColor:'#374151'},
     {label:'充换电上传提交率',      colspan:4, bgColor:'#93c5fd', textColor:'#10324F'},
     {label:'充换电审核通过率',      colspan:4, bgColor:'#6ee7b7', textColor:'#064e3b'}
   ];
   renderStandardTab('chargebp', 'CHARGEBP_DATA', columns, null, headerGroups);
   cbSiteCards();
+  cbAuditNote();
+}
+
+/* 图例里带上测压/就诊数据的口径月份与更新时间（来自 血压审核_extra.js 的 CB_BP_META） */
+function cbAuditNote(){
+  var el = document.getElementById('cbAuditNote');
+  if (!el) return;
+  var m = window.CB_BP_META;
+  if (!m || !m.month) return;
+  var upd = String(m.updated || '');
+  el.textContent = '｜「测压视频审核 / 血压异常跟进」6 列为平台审核口径（' + m.month + ' 累计'
+    + (upd ? '，更新 ' + upd.slice(5, 16) : '')
+    + '，匹配 ' + (m.sites || 0) + ' 个站点），不随上方「上传日期」筛选变化；无数据显示 "-"';
 }
 
 /* 站点维度：追加充换电/血压专属 KPI 卡（renderStandardTab 只出「站点数」一张） */
@@ -4682,13 +4767,16 @@ function cbSiteCards(){
 var cbMeta = window.CB_META || {}, cbRoster = window.CB_ROSTER || [], cbRec = window.CB_REC || [];
 var cbRosterSet = {}, cbRidx = {}, cbInited = false;
 var cbSf = {cbregion:[],cbsubr:[],cbcity:[],cbsite:[],cbbpt:[],cbcst:[],cbwst:[],
-  cbfsched:[],cbfbps:[],cbfbptm:[],cbfvt:[],cbfvs:[],cbfvd:[],cbfvr:[],
+  cbfsched:[],cbfbps:[],cbfbptm:[],cbpva:[],cbpvt:[],cbpvr:[],cbpvf:[],cbpvs:[],cbpvv:[],
+  cbfvt:[],cbfvs:[],cbfvd:[],cbfvr:[],
   cbfcs:[],cbfctm:[],cbfcv:[],cbfcb:[],cbfws:[],cbfwtm:[],cbfwb:[]};
 var cbTxtF = {rid:'', nm:''};   // 表头筛选：骑手ID / 姓名 文本包含
 var cbSiteVehicle = {}; // 站点(归一化) -> {num,den,rate}，站点维度用
 // 骑手级载具审核明细（readata BI 211337「审核明细」卡片，骑手维度，昨日单日时点）
 // CB_RIDER_VEHICLE: {rider_id: [type, status, date, reason]}
 var cbRiderVehicle = {};
+/* 骑手级测压/就诊（2026-10-25）：window.CB_BP_RIDER = {骑手ID: [通过,总数,合规率,虚假,重度,就诊]} */
+var cbBPRider = window.CB_BP_RIDER || {};
 (function(){
   var m = window.CB_RIDER_VEHICLE || {};
   for (var k in m){
@@ -4782,6 +4870,13 @@ var cbColMap = [
   {key:'cbbpt',    label:'血压·上传'},
   {key:'cbfbps',   label:'血压·状态'},
   {key:'cbfbptm',  label:'血压·提交时间', datePrefix:true},
+  /* 2026-10-25 新增 6 列：数据源 血压审核_extra.js → window.CB_BP_RIDER（骑手ID -> [通过,总数,合规率,虚假,重度,就诊]） */
+  {key:'cbpva',    label:'测压·通过数量'},
+  {key:'cbpvt',    label:'测压·总数量'},
+  {key:'cbpvr',    label:'测压·合规率'},
+  {key:'cbpvf',    label:'虚假测压'},
+  {key:'cbpvs',    label:'重度高血压'},
+  {key:'cbpvv',    label:'提交就诊'},
   {key:'cbfvt',    label:'载具类型'},
   {key:'cbfvs',    label:'载具·审核状态'},
   {key:'cbfvd',    label:'载具·变更日期', datePrefix:true},
@@ -5082,6 +5177,53 @@ function cbApplyBoard(){
     var d = CHARGEBP_DATA[firstKey[n]] || {};
     cbSiteVehicle[n] = {num: Number(d.vehicle_num)||0, den: Number(d.vehicle_den)||0, rate: Number(d.vehicle_rate)||0};
   });
+  cbApplyBPAudit();
+}
+
+/* ── 血压「测压视频审核」3 列 +「血压异常跟进」3 列（2026-10-25 接入）─────
+   数据源：履约项目\血压审核_extra.js → window.CB_BP_AUDIT
+   与烽火台自动抓取链路完全解耦（不改 build_proposal_data.py），
+   重建 充换电血压_data.js 不会冲掉这 6 个值；没有数据的站点保持 null，
+   表格渲染为 '-'（而不是 0），避免把「没数据」误读成「0 人」。
+   字段：站点名 -> {pass_num, all_num, rate, fake_num, severe_num, visit_num}
+   合规率缺省由 pass_num / all_num 自动算（保留 2 位小数）。
+   ───────────────────────────────────────────────────────────────── */
+function cbNumOrNull(v){
+  if (v == null || v === '') return null;
+  var n = Number(v);
+  return isFinite(n) ? n : null;
+}
+function cbApplyBPAudit(){
+  if (typeof CHARGEBP_DATA !== 'object') return;
+  var src = window.CB_BP_AUDIT || {};
+  var map = {};
+  Object.keys(src).forEach(function(k){
+    map[cbNormSite(k)] = src[k] || {};
+  });
+  // 与 cbApplyBoard 一致的 firstKey 防御：归一化后同名站点只取第一个，避免重复计
+  var firstKey = {};
+  Object.keys(CHARGEBP_DATA).forEach(function(k){
+    var n = cbNormSite(k);
+    if(!(n in firstKey)) firstKey[n] = k;
+  });
+  Object.keys(CHARGEBP_DATA).forEach(function(k){
+    var row = CHARGEBP_DATA[k];
+    var a = (firstKey[cbNormSite(k)] === k) ? map[cbNormSite(k)] : null;
+    var pass = a ? cbNumOrNull(a.pass_num) : null;
+    var all  = a ? cbNumOrNull(a.all_num)  : null;
+    var rate = a ? cbNumOrNull(a.rate)     : null;
+    if (rate == null && pass != null && all != null && all > 0) rate = Math.round(pass / all * 10000) / 100;
+    var canAgg = (pass != null && all != null && rate != null);
+    row.bp_video_pass_num = pass;
+    row.bp_video_all_num  = all;
+    row.bp_video_rate     = rate;
+    // isSumRatio 逐级汇总取 key+'_num' / key+'_den'，有分子分母才能正确加权
+    row.bp_video_rate_num = canAgg ? pass : null;
+    row.bp_video_rate_den = canAgg ? all  : null;
+    row.bp_fake_num   = a ? cbNumOrNull(a.fake_num)   : null;
+    row.bp_severe_num = a ? cbNumOrNull(a.severe_num) : null;
+    row.bp_visit_num  = a ? cbNumOrNull(a.visit_num)  : null;
+  });
 }
 function cbOnRange(){ cbRebuildIndex(); cbApplyBoard(); cbRenderRider(1);
   if(typeof renderChargeBPTab === 'function') renderChargeBPTab(); }
@@ -5120,9 +5262,11 @@ function cbRiderRows(){
     var siteNorm = cbNormSite(r[3]);
     var v = cbSiteVehicle[siteNorm] || {num:0, den:0, rate:0};
     var rv = cbRiderVehicle[r[4]] || null;   // 骑手级载具审核明细（BI 211337 骑手维度）
-    // 先拼出 23 列明细行（列号 = cbColMap 序号），再按表头筛选逐列过滤
+    var ba = cbBPRider[r[4]] || null;        // 骑手级测压/就诊（血压审核_extra.js）
+    // 先拼出 29 列明细行（列号 = cbColMap 序号），再按表头筛选逐列过滤
     var row = [r[0],r[1],r[2],r[3],r[4],r[5],r[6],
       bs, bp?bp[3]:'', bp?bp[4]:'',
+      ba?ba[0]:null, ba?ba[1]:null, ba?ba[2]:null, ba?ba[3]:null, ba?ba[4]:null, ba?ba[5]:null,
       rv?rv.type:'-', rv?rv.status:'-', rv?rv.date:'-', rv?(rv.reason||'-'):'-',
       cs, c?c[3]:'', c?c[4]:'', c?c[5]:'', c?c[6]:'',
       ws, w?w[3]:'', w?w[4]:'', w?w[5]:''];
@@ -5130,17 +5274,23 @@ function cbRiderRows(){
     if(!cbInF(row[6],'cbfsched')) continue;   // 排班状态
     if(!cbInF(row[8],'cbfbps')) continue;     // 血压·审核状态
     if(!cbInF(row[9],'cbfbptm')) continue;    // 血压·提交时间(按日)
-    if(!cbInF(row[10],'cbfvt')) continue;     // 载具类型
-    if(!cbInF(row[11],'cbfvs')) continue;     // 载具·审核状态
-    if(!cbInF(row[12],'cbfvd')) continue;     // 载具·变更日期(按日)
-    if(!cbInF(row[13],'cbfvr')) continue;     // 载具·驳回原因
-    if(!cbInF(row[15],'cbfcs')) continue;     // 充电·审核状态
-    if(!cbInF(row[16],'cbfctm')) continue;    // 充电·提交时间(按日)
-    if(!cbInF(row[17],'cbfcv')) continue;     // 电池电压
-    if(!cbInF(row[18],'cbfcb')) continue;     // 电池品牌
-    if(!cbInF(row[20],'cbfws')) continue;     // 换电·审核状态
-    if(!cbInF(row[21],'cbfwtm')) continue;    // 换电·提交时间(按日)
-    if(!cbInF(row[22],'cbfwb')) continue;     // 换电品牌
+    if(!cbInF(row[10],'cbpva')) continue;     // 测压·通过数量
+    if(!cbInF(row[11],'cbpvt')) continue;     // 测压·总数量
+    if(!cbInF(row[12],'cbpvr')) continue;     // 测压·合规率
+    if(!cbInF(row[13],'cbpvf')) continue;     // 虚假测压
+    if(!cbInF(row[14],'cbpvs')) continue;     // 重度高血压
+    if(!cbInF(row[15],'cbpvv')) continue;     // 提交就诊
+    if(!cbInF(row[16],'cbfvt')) continue;     // 载具类型
+    if(!cbInF(row[17],'cbfvs')) continue;     // 载具·审核状态
+    if(!cbInF(row[18],'cbfvd')) continue;     // 载具·变更日期(按日)
+    if(!cbInF(row[19],'cbfvr')) continue;     // 载具·驳回原因
+    if(!cbInF(row[21],'cbfcs')) continue;     // 充电·审核状态
+    if(!cbInF(row[22],'cbfctm')) continue;    // 充电·提交时间(按日)
+    if(!cbInF(row[23],'cbfcv')) continue;     // 电池电压
+    if(!cbInF(row[24],'cbfcb')) continue;     // 电池品牌
+    if(!cbInF(row[26],'cbfws')) continue;     // 换电·审核状态
+    if(!cbInF(row[27],'cbfwtm')) continue;    // 换电·提交时间(按日)
+    if(!cbInF(row[28],'cbfwb')) continue;     // 换电品牌
     if(cbTxtF.rid && String(row[4]).toLowerCase().indexOf(cbTxtF.rid) < 0) continue;
     if(cbTxtF.nm && String(row[5]).toLowerCase().indexOf(cbTxtF.nm) < 0) continue;
     if(q && (row[4]+' '+row[5]).toLowerCase().indexOf(q) < 0) continue;
@@ -5150,13 +5300,27 @@ function cbRiderRows(){
 }
 function cbStCls(s){ if(s==='审核通过'||s==='已通过') return 'st-ok'; if(s==='审核不通过'||s==='系统审核不通过') return 'st-no'; if(s==='已提交') return 'st-wait'; return 'st-none'; }
 function cbTagUp(v){ return '<span class="cb-tag-up '+(v==='已上传'?'yes':'no')+'">'+v+'</span>'; }
+/* 骑手行「测压视频审核 / 血压异常跟进」6 列（列号 10~15），无数据显示 '-' */
+function cbAuditCells(r){
+  var v = [r[10], r[11], r[12], r[13], r[14], r[15]];
+  if (v[0]==null && v[1]==null && v[2]==null && v[3]==null && v[4]==null && v[5]==null)
+    return '<td class="cb-audit-col rn">-</td><td class="cb-audit-col rn">-</td><td class="cb-audit-col rn">-</td><td class="cb-audit-col rn">-</td><td class="cb-audit-col rn">-</td><td class="cb-audit-col rn">-</td>';
+  var n = function(x){ return x == null ? '<span style="color:#90a4ae">-</span>' : x; };
+  var h = '<td class="cb-audit-col">'+n(v[0])+'</td><td class="cb-audit-col">'+n(v[1])+'</td>';
+  if (v[2] == null) h += '<td class="cb-audit-col rn">-</td>';
+  else { var p = frate(v[2]); h += '<td class="cb-audit-col '+p.cls+'">'+p.text+'</td>'; }
+  h += v[3] == null ? '<td class="cb-audit-col rn">-</td>' : '<td class="cb-audit-col '+(v[3]>0?'rr':'rg')+'">'+v[3]+'</td>';
+  h += v[4] == null ? '<td class="cb-audit-col rn">-</td>' : '<td class="cb-audit-col '+(v[4]>0?'rr':'rg')+'">'+v[4]+'</td>';
+  h += v[5] == null ? '<td class="cb-audit-col rn">-</td>' : '<td class="cb-audit-col">'+(v[5]>0?v[5]:0)+'</td>';
+  return h;
+}
 function cbCard(l,v,s,cls){ return '<div class="card '+(cls||'')+'"><div class="c-label">'+l+'</div><div class="c-value">'+v+'</div><div class="c-sub">'+s+'</div></div>'; }
 
 function cbRenderRider(p){
   var all = cbRiderRows(); cbFiltered = all;
   if(!cbRoster.length){                       // 数据文件缺失时给明确提示，而不是空白表格
     var tb0 = document.getElementById('cbTbodyRider');
-    if(tb0) tb0.innerHTML = '<tr><td colspan="23" class="empty">'
+    if(tb0) tb0.innerHTML = '<tr><td colspan="29" class="empty">'
       + '充换电血压数据未加载（缺少 充换电血压_data.js）<br>请运行「履约项目\\_方案预览\\一键刷新_充换电血压.bat」生成</td></tr>';
     var pg0 = document.getElementById('cbPager'); if(pg0) pg0.innerHTML = '';
     var c0 = document.getElementById('cbCardsRider'); if(c0) c0.innerHTML = '';
@@ -5166,9 +5330,9 @@ function cbRenderRider(p){
   var upN=0,chgN=0,swpN=0,bpN=0;
   all.forEach(function(r){
     if(r[7]==='已上传') bpN++;
-    if(r[14]==='已上传') chgN++;
-    if(r[19]==='已上传') swpN++;
-    if(r[7]==='已上传'||r[14]==='已上传'||r[19]==='已上传') upN++;
+    if(r[20]==='已上传') chgN++;
+    if(r[25]==='已上传') swpN++;
+    if(r[7]==='已上传'||r[20]==='已上传'||r[25]==='已上传') upN++;
   });
   // 筛选项必须从全量名册按上游级联生成，不能从已过滤的 all 取，
   // 否则选了一个城市后下拉只剩该城市，导致无法多选。
@@ -5189,15 +5353,16 @@ function cbRenderRider(p){
   if(cbPage > tot) cbPage = tot;
   var seg = all.slice((cbPage-1)*cbPer, cbPage*cbPer);
   var h = '';
-  if(!seg.length) h = '<tr><td colspan="23" class="empty">无符合条件的数据</td></tr>';
+  if(!seg.length) h = '<tr><td colspan="29" class="empty">无符合条件的数据</td></tr>';
   seg.forEach(function(r){
-    var noUp = (r[7]!=='已上传' && r[14]!=='已上传' && r[19]!=='已上传');
+    var noUp = (r[7]!=='已上传' && r[20]!=='已上传' && r[25]!=='已上传');
     h += '<tr class="lv-site'+(noUp?' cb-row-noup':'')+'"><td class="l">'+r[0]+'</td><td class="l">'+r[1]+'</td><td>'+r[2]+'</td><td class="l">'+r[3]+'</td>'
       + '<td>'+r[4]+'</td><td class="l">'+r[5]+'</td><td>'+r[6]+'</td>'
       + '<td>'+cbTagUp(r[7])+'</td><td class="'+cbStCls(r[8])+'">'+(r[8]||'-')+'</td><td>'+(r[9]||'-')+'</td>'
-      + '<td>'+(r[10]||'-')+'</td><td class="'+cbStCls(r[11])+'">'+(r[11]||'-')+'</td><td>'+(r[12]||'-')+'</td><td>'+(r[13]||'-')+'</td>'
-      + '<td>'+cbTagUp(r[14])+'</td><td class="'+cbStCls(r[15])+'">'+(r[15]||'-')+'</td><td>'+(r[16]||'-')+'</td><td>'+(r[17]||'-')+'</td><td class="l">'+(r[18]||'-')+'</td>'
-      + '<td>'+cbTagUp(r[19])+'</td><td class="'+cbStCls(r[20])+'">'+(r[20]||'-')+'</td><td>'+(r[21]||'-')+'</td><td class="l">'+(r[22]||'-')+'</td></tr>';
+      + cbAuditCells(r)
+      + '<td>'+(r[16]||'-')+'</td><td class="'+cbStCls(r[17])+'">'+(r[17]||'-')+'</td><td>'+(r[18]||'-')+'</td><td>'+(r[19]||'-')+'</td>'
+      + '<td>'+cbTagUp(r[20])+'</td><td class="'+cbStCls(r[21])+'">'+(r[21]||'-')+'</td><td>'+(r[22]||'-')+'</td><td>'+(r[23]||'-')+'</td><td class="l">'+(r[24]||'-')+'</td>'
+      + '<td>'+cbTagUp(r[25])+'</td><td class="'+cbStCls(r[26])+'">'+(r[26]||'-')+'</td><td>'+(r[27]||'-')+'</td><td class="l">'+(r[28]||'-')+'</td></tr>';
   });
   var tb = document.getElementById('cbTbodyRider'); if(tb) tb.innerHTML = h;
 
@@ -5215,8 +5380,8 @@ function cbRenderRider(p){
   }
 
   var pc = function(n){ return all.length ? (n/all.length*100).toFixed(2)+'%' : '0%'; };
-  var bothN = all.filter(function(r){ return r[7]==='已上传' && r[19]==='已上传'; }).length;
-  var noneN = all.length - all.filter(function(r){ return r[7]==='已上传'||r[14]==='已上传'||r[19]==='已上传'; }).length;
+  var bothN = all.filter(function(r){ return r[7]==='已上传' && r[25]==='已上传'; }).length;
+  var noneN = all.length - all.filter(function(r){ return r[7]==='已上传'||r[20]==='已上传'||r[25]==='已上传'; }).length;
   var cards = document.getElementById('cbCardsRider');
   if(cards) cards.innerHTML =
      cbCard('在职骑手', all.length.toLocaleString(), '当天排班在册', '')
