@@ -4,7 +4,7 @@ window.MONTHLY_SUMMARY = {
   "2026-09",
   "2026-10"
  ],
- "updated": "2026-10-26 07:15:17",
+ "updated": "2026-11-01 07:24:58",
  "sites": [
   {
    "level": "total",
@@ -90,40 +90,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 232669,
-     "den": 235197,
+     "num": 300733,
+     "den": 303979,
      "rate": 98.93
     },
     "speed": {
-     "num": 1210340,
-     "den": 40071804,
-     "rate": 3.02
+     "num": 1546242,
+     "den": 51578018,
+     "rate": 3.0
     },
     "redlight": {
-     "num": 1299336,
-     "den": 7492020,
-     "rate": 17.34
+     "num": 1659116,
+     "den": 9624572,
+     "rate": 17.24
     },
     "reverse": {
-     "num": 292939143,
-     "den": 10878313078,
-     "rate": 2.69
+     "num": 375224732,
+     "den": 14009039544,
+     "rate": 2.68
     },
     "clothing": {
      "cloth": {
-      "num": 185077,
-      "den": 190156,
-      "rate": 97.33
+      "num": 237378,
+      "den": 243943,
+      "rate": 97.31
      },
      "vis": {
-      "num": 6457625.40603615,
-      "den": 7018333,
-      "rate": 92.01
+      "num": 8205684.7827034835,
+      "den": 8908543,
+      "rate": 92.11
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 2.88
+     "days": 31,
+     "pct": 2.9
     }
    }
   },
@@ -211,40 +211,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 19774,
-     "den": 19898,
+     "num": 25633,
+     "den": 25794,
      "rate": 99.38
     },
     "speed": {
-     "num": 183803,
-     "den": 5392735,
-     "rate": 3.41
+     "num": 235494,
+     "den": 6955502,
+     "rate": 3.39
     },
     "redlight": {
-     "num": 101294,
-     "den": 633896,
-     "rate": 15.98
+     "num": 128055,
+     "den": 814118,
+     "rate": 15.73
     },
     "reverse": {
-     "num": 23872866,
-     "den": 848088784,
-     "rate": 2.81
+     "num": 30636530,
+     "den": 1095405994,
+     "rate": 2.8
     },
     "clothing": {
      "cloth": {
-      "num": 12520,
-      "den": 12797,
-      "rate": 97.84
+      "num": 17615,
+      "den": 18010,
+      "rate": 97.81
      },
      "vis": {
-      "num": 412224.3471467311,
-      "den": 449641,
-      "rate": 91.68
+      "num": 576901.0449934816,
+      "den": 623846,
+      "rate": 92.47
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 4.28
+     "days": 31,
+     "pct": 4.23
     }
    }
   },
@@ -332,40 +332,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 19774,
-     "den": 19898,
+     "num": 25633,
+     "den": 25794,
      "rate": 99.38
     },
     "speed": {
-     "num": 183803,
-     "den": 5392735,
-     "rate": 3.41
+     "num": 235494,
+     "den": 6955502,
+     "rate": 3.39
     },
     "redlight": {
-     "num": 101294,
-     "den": 633896,
-     "rate": 15.98
+     "num": 128055,
+     "den": 814118,
+     "rate": 15.73
     },
     "reverse": {
-     "num": 23872866,
-     "den": 848088784,
-     "rate": 2.81
+     "num": 30636530,
+     "den": 1095405994,
+     "rate": 2.8
     },
     "clothing": {
      "cloth": {
-      "num": 12520,
-      "den": 12797,
-      "rate": 97.84
+      "num": 17615,
+      "den": 18010,
+      "rate": 97.81
      },
      "vis": {
-      "num": 412224.3471467311,
-      "den": 449641,
-      "rate": 91.68
+      "num": 576901.0449934816,
+      "den": 623846,
+      "rate": 92.47
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 4.28
+     "days": 31,
+     "pct": 4.23
     }
    }
   },
@@ -453,40 +453,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1327,
-     "den": 1336,
-     "rate": 99.33
+     "num": 1717,
+     "den": 1726,
+     "rate": 99.48
     },
     "speed": {
-     "num": 10368,
-     "den": 312391,
-     "rate": 3.32
+     "num": 12821,
+     "den": 397613,
+     "rate": 3.22
     },
     "redlight": {
-     "num": 9426,
-     "den": 69696,
-     "rate": 13.52
+     "num": 11640,
+     "den": 89013,
+     "rate": 13.08
     },
     "reverse": {
-     "num": 1549768,
-     "den": 65726190,
-     "rate": 2.36
+     "num": 1928652,
+     "den": 83400736,
+     "rate": 2.31
     },
     "clothing": {
      "cloth": {
-      "num": 837,
-      "den": 863,
-      "rate": 96.99
+      "num": 1171,
+      "den": 1206,
+      "rate": 97.1
      },
      "vis": {
-      "num": 30950.675386027186,
-      "den": 31664,
-      "rate": 97.75
+      "num": 42161.105129201096,
+      "den": 43049,
+      "rate": 97.94
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 3.24
+     "days": 31,
+     "pct": 3.01
     }
    }
   },
@@ -574,40 +574,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 236,
-     "den": 237,
-     "rate": 99.58
+     "num": 304,
+     "den": 307,
+     "rate": 99.02
     },
     "speed": {
-     "num": 1679,
-     "den": 42745,
-     "rate": 3.93
+     "num": 2031,
+     "den": 54586,
+     "rate": 3.72
     },
     "redlight": {
-     "num": 563,
-     "den": 7258,
-     "rate": 7.76
+     "num": 712,
+     "den": 9352,
+     "rate": 7.61
     },
     "reverse": {
-     "num": 306595,
-     "den": 7803105,
-     "rate": 3.93
+     "num": 388115,
+     "den": 10076693,
+     "rate": 3.85
     },
     "clothing": {
      "cloth": {
-      "num": 150,
-      "den": 150,
+      "num": 214,
+      "den": 214,
       "rate": 100.0
      },
      "vis": {
-      "num": 5227.909328865579,
-      "den": 5273,
-      "rate": 99.14
+      "num": 7304.236929242879,
+      "den": 7463,
+      "rate": 97.87
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 3.33
+     "days": 31,
+     "pct": 2.58
     }
    }
   },
@@ -695,39 +695,39 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 2960,
-     "den": 2972,
-     "rate": 99.6
+     "num": 3830,
+     "den": 3844,
+     "rate": 99.64
     },
     "speed": {
-     "num": 26346,
-     "den": 833448,
-     "rate": 3.16
+     "num": 33718,
+     "den": 1070381,
+     "rate": 3.15
     },
     "redlight": {
-     "num": 1182,
-     "den": 5255,
-     "rate": 22.49
+     "num": 1517,
+     "den": 6911,
+     "rate": 21.95
     },
     "reverse": {
-     "num": 4101718,
-     "den": 85105517,
+     "num": 5270492,
+     "den": 109242056,
      "rate": 4.82
     },
     "clothing": {
      "cloth": {
-      "num": 1871,
-      "den": 1926,
-      "rate": 97.14
+      "num": 2630,
+      "den": 2697,
+      "rate": 97.52
      },
      "vis": {
-      "num": 63913.20270934389,
-      "den": 69042,
-      "rate": 92.57
+      "num": 90293.59692022068,
+      "den": 96929,
+      "rate": 93.15
      }
     },
     "high_speed": {
-     "days": 24,
+     "days": 31,
      "pct": 0.1
     }
    }
@@ -816,40 +816,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1266,
-     "den": 1278,
-     "rate": 99.06
+     "num": 1635,
+     "den": 1655,
+     "rate": 98.79
     },
     "speed": {
-     "num": 13301,
-     "den": 318857,
-     "rate": 4.17
+     "num": 17001,
+     "den": 409754,
+     "rate": 4.15
     },
     "redlight": {
-     "num": 1772,
-     "den": 10251,
-     "rate": 17.29
+     "num": 2247,
+     "den": 13281,
+     "rate": 16.92
     },
     "reverse": {
-     "num": 1569360,
-     "den": 42494249,
-     "rate": 3.69
+     "num": 2042125,
+     "den": 54383020,
+     "rate": 3.76
     },
     "clothing": {
      "cloth": {
-      "num": 798,
-      "den": 801,
-      "rate": 99.63
+      "num": 1120,
+      "den": 1123,
+      "rate": 99.73
      },
      "vis": {
-      "num": 25707.205895797113,
-      "den": 28096,
-      "rate": 91.5
+      "num": 36068.167640843625,
+      "den": 39081,
+      "rate": 92.29
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.91
+     "days": 31,
+     "pct": 0.7
     }
    }
   },
@@ -937,40 +937,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1941,
-     "den": 1959,
-     "rate": 99.08
+     "num": 2528,
+     "den": 2549,
+     "rate": 99.18
     },
     "speed": {
-     "num": 13326,
-     "den": 588912,
-     "rate": 2.26
+     "num": 16725,
+     "den": 758955,
+     "rate": 2.2
     },
     "redlight": {
-     "num": 8549,
-     "den": 56428,
-     "rate": 15.15
+     "num": 10751,
+     "den": 72462,
+     "rate": 14.84
     },
     "reverse": {
-     "num": 1971637,
-     "den": 81302001,
-     "rate": 2.43
+     "num": 2497852,
+     "den": 104699287,
+     "rate": 2.39
     },
     "clothing": {
      "cloth": {
-      "num": 1253,
-      "den": 1282,
-      "rate": 97.74
+      "num": 1768,
+      "den": 1807,
+      "rate": 97.84
      },
      "vis": {
-      "num": 38705.956342717545,
-      "den": 43244,
-      "rate": 89.51
+      "num": 53867.21369933695,
+      "den": 59817,
+      "rate": 90.05
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.26
+     "days": 31,
+     "pct": 0.23
     }
    }
   },
@@ -1058,39 +1058,39 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1367,
-     "den": 1372,
-     "rate": 99.64
+     "num": 1783,
+     "den": 1788,
+     "rate": 99.72
     },
     "speed": {
-     "num": 21648,
-     "den": 562881,
-     "rate": 3.85
+     "num": 27273,
+     "den": 726747,
+     "rate": 3.75
     },
     "redlight": {
-     "num": 15877,
-     "den": 98080,
-     "rate": 16.19
+     "num": 20011,
+     "den": 125687,
+     "rate": 15.92
     },
     "reverse": {
-     "num": 1205517,
-     "den": 35538833,
-     "rate": 3.39
+     "num": 1558826,
+     "den": 45648881,
+     "rate": 3.41
     },
     "clothing": {
      "cloth": {
-      "num": 876,
-      "den": 892,
-      "rate": 98.21
+      "num": 1241,
+      "den": 1264,
+      "rate": 98.18
      },
      "vis": {
-      "num": 28623.117505790135,
-      "den": 33133,
-      "rate": 86.39
+      "num": 39981.951405509426,
+      "den": 45517,
+      "rate": 87.84
      }
     },
     "high_speed": {
-     "days": 24,
+     "days": 31,
      "pct": 0.0
     }
    }
@@ -1179,40 +1179,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 570,
-     "den": 572,
-     "rate": 99.65
+     "num": 745,
+     "den": 747,
+     "rate": 99.73
     },
     "speed": {
-     "num": 7667,
-     "den": 124846,
-     "rate": 6.14
+     "num": 9914,
+     "den": 159476,
+     "rate": 6.22
     },
     "redlight": {
-     "num": 6677,
-     "den": 26161,
-     "rate": 25.52
+     "num": 8364,
+     "den": 33421,
+     "rate": 25.03
     },
     "reverse": {
-     "num": 537747,
-     "den": 21732699,
-     "rate": 2.47
+     "num": 676421,
+     "den": 27746872,
+     "rate": 2.44
     },
     "clothing": {
      "cloth": {
-      "num": 360,
-      "den": 362,
-      "rate": 99.45
+      "num": 509,
+      "den": 511,
+      "rate": 99.61
      },
      "vis": {
-      "num": 11648.89461354584,
-      "den": 13120,
-      "rate": 88.79
+      "num": 16316.717067363592,
+      "den": 18157,
+      "rate": 89.86
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 11.55
+     "days": 31,
+     "pct": 11.92
     }
    }
   },
@@ -1300,40 +1300,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1666,
-     "den": 1679,
-     "rate": 99.23
+     "num": 2148,
+     "den": 2164,
+     "rate": 99.26
     },
     "speed": {
-     "num": 9339,
-     "den": 425556,
-     "rate": 2.19
+     "num": 11585,
+     "den": 542727,
+     "rate": 2.13
     },
     "redlight": {
-     "num": 18875,
-     "den": 77071,
-     "rate": 24.49
+     "num": 23680,
+     "den": 98024,
+     "rate": 24.16
     },
     "reverse": {
-     "num": 2222748,
-     "den": 67183893,
-     "rate": 3.31
+     "num": 2816560,
+     "den": 86028819,
+     "rate": 3.27
     },
     "clothing": {
      "cloth": {
-      "num": 1056,
-      "den": 1058,
-      "rate": 99.81
+      "num": 1473,
+      "den": 1482,
+      "rate": 99.39
      },
      "vis": {
-      "num": 36002.36316113637,
-      "den": 39424,
-      "rate": 91.32
+      "num": 49661.70632050515,
+      "den": 54099,
+      "rate": 91.8
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.29
+     "days": 31,
+     "pct": 0.59
     }
    }
   },
@@ -1421,39 +1421,39 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 671,
-     "den": 675,
-     "rate": 99.41
+     "num": 860,
+     "den": 867,
+     "rate": 99.19
     },
     "speed": {
-     "num": 2444,
-     "den": 161539,
-     "rate": 1.51
+     "num": 3201,
+     "den": 209496,
+     "rate": 1.53
     },
     "redlight": {
-     "num": 3656,
-     "den": 21645,
-     "rate": 16.89
+     "num": 4783,
+     "den": 28075,
+     "rate": 17.04
     },
     "reverse": {
-     "num": 1091672,
-     "den": 23460590,
-     "rate": 4.65
+     "num": 1386689,
+     "den": 30449989,
+     "rate": 4.55
     },
     "clothing": {
      "cloth": {
-      "num": 427,
-      "den": 426,
-      "rate": 100.23
+      "num": 593,
+      "den": 598,
+      "rate": 99.16
      },
      "vis": {
-      "num": 13831.70640283266,
-      "den": 14332,
-      "rate": 96.51
+      "num": 19019.041005017265,
+      "den": 19762,
+      "rate": 96.24
      }
     },
     "high_speed": {
-     "days": 24,
+     "days": 31,
      "pct": 0.0
     }
    }
@@ -1542,40 +1542,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 2156,
-     "den": 2172,
-     "rate": 99.26
+     "num": 2788,
+     "den": 2810,
+     "rate": 99.22
     },
     "speed": {
-     "num": 21127,
-     "den": 649875,
-     "rate": 3.25
+     "num": 27482,
+     "den": 841050,
+     "rate": 3.27
     },
     "redlight": {
-     "num": 15157,
-     "den": 43532,
-     "rate": 34.82
+     "num": 19488,
+     "den": 56340,
+     "rate": 34.59
     },
     "reverse": {
-     "num": 2162185,
-     "den": 106362275,
-     "rate": 2.03
+     "num": 2812412,
+     "den": 138083766,
+     "rate": 2.04
     },
     "clothing": {
      "cloth": {
-      "num": 1361,
-      "den": 1392,
-      "rate": 97.77
+      "num": 1911,
+      "den": 1959,
+      "rate": 97.55
      },
      "vis": {
-      "num": 43644.82181557477,
-      "den": 47721,
-      "rate": 91.46
+      "num": 61567.69273379234,
+      "den": 66663,
+      "rate": 92.36
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.27
+     "days": 31,
+     "pct": 0.24
     }
    }
   },
@@ -1663,40 +1663,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1331,
-     "den": 1345,
-     "rate": 98.96
+     "num": 1731,
+     "den": 1748,
+     "rate": 99.03
     },
     "speed": {
-     "num": 16062,
-     "den": 355063,
-     "rate": 4.52
+     "num": 20794,
+     "den": 462744,
+     "rate": 4.49
     },
     "redlight": {
-     "num": 9301,
-     "den": 40726,
-     "rate": 22.84
+     "num": 11790,
+     "den": 52698,
+     "rate": 22.37
     },
     "reverse": {
-     "num": 2312686,
-     "den": 75601573,
-     "rate": 3.06
+     "num": 3000359,
+     "den": 98789264,
+     "rate": 3.04
     },
     "clothing": {
      "cloth": {
-      "num": 838,
-      "den": 907,
-      "rate": 92.39
+      "num": 1184,
+      "den": 1281,
+      "rate": 92.43
      },
      "vis": {
-      "num": 28136.945751158626,
-      "den": 30243,
-      "rate": 93.04
+      "num": 39942.84608981684,
+      "den": 42455,
+      "rate": 94.08
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.96
+     "days": 31,
+     "pct": 1.15
     }
    }
   },
@@ -1784,40 +1784,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 2097,
-     "den": 2103,
+     "num": 2723,
+     "den": 2731,
      "rate": 99.71
     },
     "speed": {
-     "num": 26530,
-     "den": 493431,
-     "rate": 5.38
+     "num": 34796,
+     "den": 640429,
+     "rate": 5.43
     },
     "redlight": {
-     "num": 3594,
-     "den": 146042,
-     "rate": 2.46
+     "num": 4531,
+     "den": 187360,
+     "rate": 2.42
     },
     "reverse": {
-     "num": 1829564,
-     "den": 144397666,
-     "rate": 1.27
+     "num": 2348801,
+     "den": 187803965,
+     "rate": 1.25
     },
     "clothing": {
      "cloth": {
-      "num": 1328,
-      "den": 1342,
-      "rate": 98.96
+      "num": 1872,
+      "den": 1892,
+      "rate": 98.94
      },
      "vis": {
-      "num": 43830.32116077967,
-      "den": 47967,
-      "rate": 91.38
+      "num": 60886.34453568132,
+      "den": 65980,
+      "rate": 92.28
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.7
+     "days": 31,
+     "pct": 1.85
     }
    }
   },
@@ -1905,40 +1905,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1131,
-     "den": 1132,
-     "rate": 99.91
+     "num": 1472,
+     "den": 1476,
+     "rate": 99.73
     },
     "speed": {
-     "num": 6702,
-     "den": 270150,
-     "rate": 2.48
+     "num": 8847,
+     "den": 350766,
+     "rate": 2.52
     },
     "redlight": {
-     "num": 437,
-     "den": 3194,
-     "rate": 13.68
+     "num": 547,
+     "den": 4153,
+     "rate": 13.17
     },
     "reverse": {
-     "num": 1728554,
-     "den": 49750267,
-     "rate": 3.47
+     "num": 2237949,
+     "den": 64712314,
+     "rate": 3.46
     },
     "clothing": {
      "cloth": {
-      "num": 694,
-      "den": 715,
-      "rate": 97.06
+      "num": 987,
+      "den": 1013,
+      "rate": 97.43
      },
      "vis": {
-      "num": 21868.352631545888,
-      "den": 23714,
-      "rate": 92.22
+      "num": 30961.4017006871,
+      "den": 33180,
+      "rate": 93.31
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.17
+     "days": 31,
+     "pct": 0.13
     }
    }
   },
@@ -2026,40 +2026,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 784,
-     "den": 795,
-     "rate": 98.62
+     "num": 1010,
+     "den": 1023,
+     "rate": 98.73
     },
     "speed": {
-     "num": 5182,
-     "den": 191404,
-     "rate": 2.71
+     "num": 6511,
+     "den": 246370,
+     "rate": 2.64
     },
     "redlight": {
-     "num": 4939,
-     "den": 21129,
-     "rate": 23.38
+     "num": 6295,
+     "den": 27007,
+     "rate": 23.31
     },
     "reverse": {
-     "num": 1018448,
-     "den": 30908777,
-     "rate": 3.3
+     "num": 1320781,
+     "den": 39656100,
+     "rate": 3.33
     },
     "clothing": {
      "cloth": {
-      "num": 506,
-      "den": 510,
-      "rate": 99.22
+      "num": 702,
+      "den": 708,
+      "rate": 99.15
      },
      "vis": {
-      "num": 14601.243860015416,
-      "den": 16973,
-      "rate": 86.03
+      "num": 20860.32682775287,
+      "den": 23423,
+      "rate": 89.06
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.0
+     "days": 31,
+     "pct": 0.2
     }
    }
   },
@@ -2147,39 +2147,39 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 23,
-     "den": 23,
+     "num": 29,
+     "den": 29,
      "rate": 100.0
     },
     "speed": {
-     "num": 16,
-     "den": 3955,
-     "rate": 0.4
+     "num": 88,
+     "den": 6757,
+     "rate": 1.3
     },
     "redlight": {
-     "num": 117,
-     "den": 920,
-     "rate": 12.72
+     "num": 175,
+     "den": 1613,
+     "rate": 10.85
     },
     "reverse": {
-     "num": 26592,
-     "den": 900438,
-     "rate": 2.95
+     "num": 35979,
+     "den": 1498182,
+     "rate": 2.4
     },
     "clothing": {
      "cloth": {
-      "num": 14,
-      "den": 14,
-      "rate": 100.0
+      "num": 19,
+      "den": 25,
+      "rate": 76.0
      },
      "vis": {
-      "num": 372.81428571428575,
-      "den": 387,
-      "rate": 96.33
+      "num": 490.16722689075635,
+      "den": 527,
+      "rate": 93.01
      }
     },
     "high_speed": {
-     "days": 23,
+     "days": 30,
      "pct": 0.0
     }
    }
@@ -2268,39 +2268,39 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 23,
-     "den": 23,
+     "num": 30,
+     "den": 30,
      "rate": 100.0
     },
     "speed": {
-     "num": 28,
-     "den": 4473,
-     "rate": 0.63
+     "num": 36,
+     "den": 6117,
+     "rate": 0.59
     },
     "redlight": {
-     "num": 8,
-     "den": 40,
-     "rate": 20.0
+     "num": 11,
+     "den": 52,
+     "rate": 21.15
     },
     "reverse": {
-     "num": 24584,
-     "den": 501579,
-     "rate": 4.9
+     "num": 32013,
+     "den": 668290,
+     "rate": 4.79
     },
     "clothing": {
      "cloth": {
-      "num": 14,
-      "den": 14,
+      "num": 21,
+      "den": 21,
       "rate": 100.0
      },
      "vis": {
-      "num": 350.1111111111111,
-      "den": 354,
-      "rate": 98.9
+      "num": 531.1111111111111,
+      "den": 535,
+      "rate": 99.27
      }
     },
     "high_speed": {
-     "days": 23,
+     "days": 30,
      "pct": 0.0
     }
    }
@@ -2389,39 +2389,39 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 35,
-     "den": 35,
+     "num": 42,
+     "den": 42,
      "rate": 100.0
     },
     "speed": {
      "num": 29,
-     "den": 7442,
-     "rate": 0.39
+     "den": 9111,
+     "rate": 0.32
     },
     "redlight": {
-     "num": 110,
-     "den": 550,
-     "rate": 20.0
+     "num": 137,
+     "den": 671,
+     "rate": 20.42
     },
     "reverse": {
-     "num": 34285,
-     "den": 781898,
-     "rate": 4.38
+     "num": 45544,
+     "den": 984002,
+     "rate": 4.63
     },
     "clothing": {
      "cloth": {
-      "num": 22,
-      "den": 22,
+      "num": 28,
+      "den": 28,
       "rate": 100.0
      },
      "vis": {
-      "num": 729.0784313725491,
-      "den": 750,
-      "rate": 97.21
+      "num": 957.4229691876752,
+      "den": 1015,
+      "rate": 94.33
      }
     },
     "high_speed": {
-     "days": 24,
+     "days": 31,
      "pct": 0.0
     }
    }
@@ -2510,39 +2510,39 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 46,
-     "den": 46,
+     "num": 60,
+     "den": 60,
      "rate": 100.0
     },
     "speed": {
-     "num": 0,
-     "den": 6178,
-     "rate": 0.0
+     "num": 1,
+     "den": 8104,
+     "rate": 0.01
     },
     "redlight": {
-     "num": 66,
-     "den": 559,
-     "rate": 11.81
+     "num": 84,
+     "den": 713,
+     "rate": 11.78
     },
     "reverse": {
-     "num": 29858,
-     "den": 886466,
-     "rate": 3.37
+     "num": 37649,
+     "den": 1171052,
+     "rate": 3.21
     },
     "clothing": {
      "cloth": {
-      "num": 28,
-      "den": 28,
+      "num": 40,
+      "den": 40,
       "rate": 100.0
      },
      "vis": {
-      "num": 684.193210955711,
-      "den": 729,
-      "rate": 93.85
+      "num": 976.7622376892115,
+      "den": 1037,
+      "rate": 94.19
      }
     },
     "high_speed": {
-     "days": 24,
+     "days": 31,
      "pct": 0.0
     }
    }
@@ -2631,39 +2631,39 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 23,
-     "den": 23,
+     "num": 30,
+     "den": 30,
      "rate": 100.0
     },
     "speed": {
-     "num": 16,
-     "den": 5547,
-     "rate": 0.29
+     "num": 21,
+     "den": 7088,
+     "rate": 0.3
     },
     "redlight": {
-     "num": 193,
-     "den": 1062,
-     "rate": 18.17
+     "num": 232,
+     "den": 1358,
+     "rate": 17.08
     },
     "reverse": {
-     "num": 23369,
-     "den": 952728,
-     "rate": 2.45
+     "num": 30503,
+     "den": 1198217,
+     "rate": 2.55
     },
     "clothing": {
      "cloth": {
-      "num": 14,
-      "den": 14,
+      "num": 20,
+      "den": 20,
       "rate": 100.0
      },
      "vis": {
-      "num": 527.2716376854307,
-      "den": 533,
-      "rate": 98.93
+      "num": 721.9238115984742,
+      "den": 729,
+      "rate": 99.03
      }
     },
     "high_speed": {
-     "days": 23,
+     "days": 30,
      "pct": 0.0
     }
    }
@@ -2873,40 +2873,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 23,
-     "den": 23,
+     "num": 30,
+     "den": 30,
      "rate": 100.0
     },
     "speed": {
-     "num": 1210,
-     "den": 7434,
-     "rate": 16.28
+     "num": 1518,
+     "den": 9699,
+     "rate": 15.65
     },
     "redlight": {
-     "num": 238,
-     "den": 506,
-     "rate": 47.04
+     "num": 309,
+     "den": 673,
+     "rate": 45.91
     },
     "reverse": {
-     "num": 20867,
-     "den": 1256104,
-     "rate": 1.66
+     "num": 25149,
+     "den": 1645806,
+     "rate": 1.53
     },
     "clothing": {
      "cloth": {
-      "num": 14,
-      "den": 14,
+      "num": 20,
+      "den": 20,
       "rate": 100.0
      },
      "vis": {
-      "num": 596.8333333333333,
-      "den": 605,
-      "rate": 98.65
+      "num": 827.3333333333333,
+      "den": 843,
+      "rate": 98.14
      }
     },
     "high_speed": {
-     "days": 23,
-     "pct": 78.26
+     "days": 30,
+     "pct": 76.67
     }
    }
   },
@@ -2994,39 +2994,39 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 23,
-     "den": 23,
+     "num": 30,
+     "den": 30,
      "rate": 100.0
     },
     "speed": {
-     "num": 7,
-     "den": 4766,
-     "rate": 0.15
+     "num": 14,
+     "den": 6219,
+     "rate": 0.23
     },
     "redlight": {
      "num": 3,
-     "den": 1420,
-     "rate": 0.21
+     "den": 1837,
+     "rate": 0.16
     },
     "reverse": {
-     "num": 15442,
-     "den": 1375108,
-     "rate": 1.12
+     "num": 20590,
+     "den": 1785206,
+     "rate": 1.15
     },
     "clothing": {
      "cloth": {
-      "num": 14,
-      "den": 14,
+      "num": 20,
+      "den": 20,
       "rate": 100.0
      },
      "vis": {
-      "num": 505.0952380952381,
-      "den": 515,
-      "rate": 98.08
+      "num": 705.0952380952381,
+      "den": 715,
+      "rate": 98.61
      }
     },
     "high_speed": {
-     "days": 23,
+     "days": 30,
      "pct": 0.0
     }
    }
@@ -3115,39 +3115,39 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 50,
-     "den": 50,
+     "num": 75,
+     "den": 75,
      "rate": 100.0
     },
     "speed": {
-     "num": 762,
-     "den": 16704,
-     "rate": 4.56
+     "num": 1063,
+     "den": 24304,
+     "rate": 4.37
     },
     "redlight": {
-     "num": 499,
-     "den": 1745,
-     "rate": 28.6
+     "num": 679,
+     "den": 2539,
+     "rate": 26.74
     },
     "reverse": {
-     "num": 81836,
-     "den": 3032791,
-     "rate": 2.7
+     "num": 112960,
+     "den": 4312733,
+     "rate": 2.62
     },
     "clothing": {
      "cloth": {
-      "num": 30,
-      "den": 36,
-      "rate": 83.33
+      "num": 50,
+      "den": 59,
+      "rate": 84.75
      },
      "vis": {
-      "num": 1332.2333333333333,
-      "den": 1388,
-      "rate": 95.98
+      "num": 2139.2560606060606,
+      "den": 2209,
+      "rate": 96.84
      }
     },
     "high_speed": {
-     "days": 24,
+     "days": 31,
      "pct": 0.0
     }
    }
@@ -3236,40 +3236,1620 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 22,
-     "den": 22,
+     "num": 30,
+     "den": 30,
      "rate": 100.0
     },
     "speed": {
-     "num": 3,
-     "den": 4733,
-     "rate": 0.06
+     "num": 14,
+     "den": 6604,
+     "rate": 0.21
     },
     "redlight": {
-     "num": 44,
-     "den": 561,
-     "rate": 7.84
+     "num": 58,
+     "den": 813,
+     "rate": 7.13
     },
     "reverse": {
-     "num": 3345,
-     "den": 959795,
-     "rate": 0.35
+     "num": 5620,
+     "den": 1346502,
+     "rate": 0.42
     },
     "clothing": {
      "cloth": {
-      "num": 14,
-      "den": 14,
+      "num": 21,
+      "den": 21,
       "rate": 100.0
      },
      "vis": {
-      "num": 407,
-      "den": 407,
-      "rate": 100.0
+      "num": 632.625,
+      "den": 634,
+      "rate": 99.78
      }
     },
     "high_speed": {
-     "days": 22,
+     "days": 29,
      "pct": 0.0
+    }
+   }
+  },
+  {
+   "level": "subregion",
+   "region": "华东大区",
+   "subregion": "北京区域",
+   "city": "",
+   "name": "北京区域",
+   "2026-08": {
+    "helmet": {
+     "num": 3448,
+     "den": 3466,
+     "rate": 99.48
+    },
+    "speed": {
+     "num": 18780,
+     "den": 754390,
+     "rate": 2.49
+    },
+    "redlight": {
+     "num": 9940,
+     "den": 64695,
+     "rate": 15.36
+    },
+    "reverse": {
+     "num": 4960325,
+     "den": 173393904,
+     "rate": 2.86
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2121,
+      "den": 2235,
+      "rate": 94.9
+     },
+     "vis": {
+      "num": 80176.24457301054,
+      "den": 82032,
+      "rate": 97.74
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.04
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 9161,
+     "den": 9196,
+     "rate": 99.62
+    },
+    "speed": {
+     "num": 61830,
+     "den": 2013536,
+     "rate": 3.07
+    },
+    "redlight": {
+     "num": 20111,
+     "den": 112069,
+     "rate": 17.95
+    },
+    "reverse": {
+     "num": 11696199,
+     "den": 499890038,
+     "rate": 2.34
+    },
+    "clothing": {
+     "cloth": {
+      "num": 8360,
+      "den": 8583,
+      "rate": 97.4
+     },
+     "vis": {
+      "num": 294250.5833639182,
+      "den": 307389,
+      "rate": 95.73
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.13
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 9703,
+     "den": 9761,
+     "rate": 99.41
+    },
+    "speed": {
+     "num": 55519,
+     "den": 2148423,
+     "rate": 2.58
+    },
+    "redlight": {
+     "num": 22341,
+     "den": 123409,
+     "rate": 18.1
+    },
+    "reverse": {
+     "num": 13458666,
+     "den": 551155913,
+     "rate": 2.44
+    },
+    "clothing": {
+     "cloth": {
+      "num": 9373,
+      "den": 9498,
+      "rate": 98.68
+     },
+     "vis": {
+      "num": 333519.4154230727,
+      "den": 355082,
+      "rate": 93.93
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.71
+    }
+   }
+  },
+  {
+   "level": "merchant",
+   "region": "华东大区",
+   "subregion": "北京区域",
+   "city": "北京",
+   "name": "北京",
+   "2026-08": {
+    "helmet": {
+     "num": 3448,
+     "den": 3466,
+     "rate": 99.48
+    },
+    "speed": {
+     "num": 18780,
+     "den": 754390,
+     "rate": 2.49
+    },
+    "redlight": {
+     "num": 9940,
+     "den": 64695,
+     "rate": 15.36
+    },
+    "reverse": {
+     "num": 4960325,
+     "den": 173393904,
+     "rate": 2.86
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2121,
+      "den": 2235,
+      "rate": 94.9
+     },
+     "vis": {
+      "num": 80176.24457301054,
+      "den": 82032,
+      "rate": 97.74
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.04
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 9161,
+     "den": 9196,
+     "rate": 99.62
+    },
+    "speed": {
+     "num": 61830,
+     "den": 2013536,
+     "rate": 3.07
+    },
+    "redlight": {
+     "num": 20111,
+     "den": 112069,
+     "rate": 17.95
+    },
+    "reverse": {
+     "num": 11696199,
+     "den": 499890038,
+     "rate": 2.34
+    },
+    "clothing": {
+     "cloth": {
+      "num": 8360,
+      "den": 8583,
+      "rate": 97.4
+     },
+     "vis": {
+      "num": 294250.5833639182,
+      "den": 307389,
+      "rate": 95.73
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.13
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 9703,
+     "den": 9761,
+     "rate": 99.41
+    },
+    "speed": {
+     "num": 55519,
+     "den": 2148423,
+     "rate": 2.58
+    },
+    "redlight": {
+     "num": 22341,
+     "den": 123409,
+     "rate": 18.1
+    },
+    "reverse": {
+     "num": 13458666,
+     "den": 551155913,
+     "rate": 2.44
+    },
+    "clothing": {
+     "cloth": {
+      "num": 9373,
+      "den": 9498,
+      "rate": 98.68
+     },
+     "vis": {
+      "num": 333519.4154230727,
+      "den": 355082,
+      "rate": 93.93
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.71
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华东大区",
+   "subregion": "北京区域",
+   "city": "北京",
+   "name": "兴必达【北京】云岗站",
+   "2026-08": {
+    "helmet": {
+     "num": 1180,
+     "den": 1184,
+     "rate": 99.66
+    },
+    "speed": {
+     "num": 2123,
+     "den": 184865,
+     "rate": 1.15
+    },
+    "redlight": {
+     "num": 4036,
+     "den": 36946,
+     "rate": 10.92
+    },
+    "reverse": {
+     "num": 286677,
+     "den": 23253851,
+     "rate": 1.23
+    },
+    "clothing": {
+     "cloth": {
+      "num": 729,
+      "den": 746,
+      "rate": 97.72
+     },
+     "vis": {
+      "num": 26466.18396874008,
+      "den": 27052,
+      "rate": 97.83
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.08
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1028,
+     "den": 1029,
+     "rate": 99.9
+    },
+    "speed": {
+     "num": 1653,
+     "den": 152436,
+     "rate": 1.08
+    },
+    "redlight": {
+     "num": 2450,
+     "den": 25845,
+     "rate": 9.48
+    },
+    "reverse": {
+     "num": 223141,
+     "den": 18579062,
+     "rate": 1.2
+    },
+    "clothing": {
+     "cloth": {
+      "num": 929,
+      "den": 929,
+      "rate": 100.0
+     },
+     "vis": {
+      "num": 30366.791753575024,
+      "den": 31820,
+      "rate": 95.43
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.29
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1046,
+     "den": 1048,
+     "rate": 99.81
+    },
+    "speed": {
+     "num": 1816,
+     "den": 159920,
+     "rate": 1.14
+    },
+    "redlight": {
+     "num": 3102,
+     "den": 28374,
+     "rate": 10.93
+    },
+    "reverse": {
+     "num": 234521,
+     "den": 18840881,
+     "rate": 1.24
+    },
+    "clothing": {
+     "cloth": {
+      "num": 991,
+      "den": 991,
+      "rate": 100.0
+     },
+     "vis": {
+      "num": 32632.38342026484,
+      "den": 34403,
+      "rate": 94.85
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.18
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华东大区",
+   "subregion": "北京区域",
+   "city": "北京",
+   "name": "兴必达【北京】果园站",
+   "2026-08": {
+    "helmet": {
+     "num": 1985,
+     "den": 1999,
+     "rate": 99.3
+    },
+    "speed": {
+     "num": 16244,
+     "den": 535030,
+     "rate": 3.04
+    },
+    "redlight": {
+     "num": 5180,
+     "den": 25022,
+     "rate": 20.7
+    },
+    "reverse": {
+     "num": 4377063,
+     "den": 139086549,
+     "rate": 3.15
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1219,
+      "den": 1296,
+      "rate": 94.06
+     },
+     "vis": {
+      "num": 47744.13794482212,
+      "den": 48643,
+      "rate": 98.15
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.05
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1847,
+     "den": 1854,
+     "rate": 99.62
+    },
+    "speed": {
+     "num": 14787,
+     "den": 488216,
+     "rate": 3.03
+    },
+    "redlight": {
+     "num": 3667,
+     "den": 21344,
+     "rate": 17.18
+    },
+    "reverse": {
+     "num": 3789343,
+     "den": 128987394,
+     "rate": 2.94
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1660,
+      "den": 1749,
+      "rate": 94.91
+     },
+     "vis": {
+      "num": 59261.369396889415,
+      "den": 61132,
+      "rate": 96.94
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.0
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2020,
+     "den": 2032,
+     "rate": 99.41
+    },
+    "speed": {
+     "num": 13417,
+     "den": 529837,
+     "rate": 2.53
+    },
+    "redlight": {
+     "num": 4172,
+     "den": 23727,
+     "rate": 17.58
+    },
+    "reverse": {
+     "num": 4326947,
+     "den": 143629950,
+     "rate": 3.01
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1922,
+      "den": 1981,
+      "rate": 97.02
+     },
+     "vis": {
+      "num": 70450.44691971166,
+      "den": 73963,
+      "rate": 95.25
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.0
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华东大区",
+   "subregion": "北京区域",
+   "city": "北京",
+   "name": "兴必达【北京】梨园站",
+   "2026-09": {
+    "helmet": {
+     "num": 2070,
+     "den": 2079,
+     "rate": 99.57
+    },
+    "speed": {
+     "num": 14901,
+     "den": 467630,
+     "rate": 3.19
+    },
+    "redlight": {
+     "num": 2823,
+     "den": 18433,
+     "rate": 15.31
+    },
+    "reverse": {
+     "num": 4068847,
+     "den": 134850426,
+     "rate": 3.02
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1939,
+      "den": 1986,
+      "rate": 97.63
+     },
+     "vis": {
+      "num": 61392.58663315668,
+      "den": 63993,
+      "rate": 95.94
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.04
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2194,
+     "den": 2210,
+     "rate": 99.28
+    },
+    "speed": {
+     "num": 14087,
+     "den": 512185,
+     "rate": 2.75
+    },
+    "redlight": {
+     "num": 3814,
+     "den": 22013,
+     "rate": 17.33
+    },
+    "reverse": {
+     "num": 4943849,
+     "den": 153843195,
+     "rate": 3.21
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2186,
+      "den": 2216,
+      "rate": 98.65
+     },
+     "vis": {
+      "num": 72218.71348721633,
+      "den": 76359,
+      "rate": 94.58
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.0
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华东大区",
+   "subregion": "北京区域",
+   "city": "北京",
+   "name": "兴必达【北京】狼垡站",
+   "2026-08": {
+    "helmet": {
+     "num": 283,
+     "den": 283,
+     "rate": 100.0
+    },
+    "speed": {
+     "num": 413,
+     "den": 34495,
+     "rate": 1.2
+    },
+    "redlight": {
+     "num": 724,
+     "den": 2727,
+     "rate": 26.55
+    },
+    "reverse": {
+     "num": 296585,
+     "den": 11053504,
+     "rate": 2.68
+    },
+    "clothing": {
+     "cloth": {
+      "num": 173,
+      "den": 193,
+      "rate": 89.64
+     },
+     "vis": {
+      "num": 5965.922659448358,
+      "den": 6337,
+      "rate": 94.14
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.0
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 273,
+     "den": 273,
+     "rate": 100.0
+    },
+    "speed": {
+     "num": 449,
+     "den": 31812,
+     "rate": 1.41
+    },
+    "redlight": {
+     "num": 509,
+     "den": 2172,
+     "rate": 23.43
+    },
+    "reverse": {
+     "num": 251023,
+     "den": 10228161,
+     "rate": 2.45
+    },
+    "clothing": {
+     "cloth": {
+      "num": 253,
+      "den": 260,
+      "rate": 97.31
+     },
+     "vis": {
+      "num": 8094.14458338057,
+      "den": 8377,
+      "rate": 96.62
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.0
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 293,
+     "den": 296,
+     "rate": 98.99
+    },
+    "speed": {
+     "num": 712,
+     "den": 36392,
+     "rate": 1.96
+    },
+    "redlight": {
+     "num": 488,
+     "den": 2337,
+     "rate": 20.88
+    },
+    "reverse": {
+     "num": 261017,
+     "den": 10760947,
+     "rate": 2.43
+    },
+    "clothing": {
+     "cloth": {
+      "num": 287,
+      "den": 287,
+      "rate": 100.0
+     },
+     "vis": {
+      "num": 8669.616188022363,
+      "den": 9427,
+      "rate": 91.97
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.04
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华东大区",
+   "subregion": "北京区域",
+   "city": "北京",
+   "name": "兴必达【北京】苹果园站",
+   "2026-09": {
+    "helmet": {
+     "num": 3875,
+     "den": 3893,
+     "rate": 99.54
+    },
+    "speed": {
+     "num": 29735,
+     "den": 855087,
+     "rate": 3.48
+    },
+    "redlight": {
+     "num": 10312,
+     "den": 43105,
+     "rate": 23.92
+    },
+    "reverse": {
+     "num": 3245670,
+     "den": 203295458,
+     "rate": 1.6
+    },
+    "clothing": {
+     "cloth": {
+      "num": 3517,
+      "den": 3591,
+      "rate": 97.94
+     },
+     "vis": {
+      "num": 132801.20085498967,
+      "den": 139207,
+      "rate": 95.4
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.43
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 4120,
+     "den": 4145,
+     "rate": 99.4
+    },
+    "speed": {
+     "num": 25425,
+     "den": 896699,
+     "rate": 2.84
+    },
+    "redlight": {
+     "num": 10554,
+     "den": 46068,
+     "rate": 22.91
+    },
+    "reverse": {
+     "num": 3583267,
+     "den": 220853960,
+     "rate": 1.62
+    },
+    "clothing": {
+     "cloth": {
+      "num": 3938,
+      "den": 3969,
+      "rate": 99.22
+     },
+     "vis": {
+      "num": 147994.74826499962,
+      "den": 158649,
+      "rate": 93.28
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.45
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华东大区",
+   "subregion": "北京区域",
+   "city": "北京",
+   "name": "集约配送-兴必达【北京】苹果园站",
+   "2026-09": {
+    "helmet": {
+     "num": 68,
+     "den": 68,
+     "rate": 100.0
+    },
+    "speed": {
+     "num": 305,
+     "den": 18355,
+     "rate": 1.66
+    },
+    "redlight": {
+     "num": 350,
+     "den": 1170,
+     "rate": 29.91
+    },
+    "reverse": {
+     "num": 118175,
+     "den": 3949537,
+     "rate": 2.99
+    },
+    "clothing": {
+     "cloth": {
+      "num": 62,
+      "den": 68,
+      "rate": 91.18
+     },
+     "vis": {
+      "num": 2334.490141927216,
+      "den": 2860,
+      "rate": 81.63
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.0
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 30,
+     "den": 30,
+     "rate": 100.0
+    },
+    "speed": {
+     "num": 62,
+     "den": 13390,
+     "rate": 0.46
+    },
+    "redlight": {
+     "num": 211,
+     "den": 890,
+     "rate": 23.71
+    },
+    "reverse": {
+     "num": 109065,
+     "den": 3226980,
+     "rate": 3.38
+    },
+    "clothing": {
+     "cloth": {
+      "num": 49,
+      "den": 54,
+      "rate": 90.74
+     },
+     "vis": {
+      "num": 1553.5071428571428,
+      "den": 2281,
+      "rate": 68.11
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.61
+    }
+   }
+  },
+  {
+   "level": "subregion",
+   "region": "华东大区",
+   "subregion": "苏北区域",
+   "city": "",
+   "name": "苏北区域",
+   "2026-08": {
+    "helmet": {
+     "num": 7738,
+     "den": 7879,
+     "rate": 98.21
+    },
+    "speed": {
+     "num": 67270,
+     "den": 1884429,
+     "rate": 3.57
+    },
+    "redlight": {
+     "num": 65615,
+     "den": 286479,
+     "rate": 22.9
+    },
+    "reverse": {
+     "num": 9762973,
+     "den": 340596478,
+     "rate": 2.87
+    },
+    "clothing": {
+     "cloth": {
+      "num": 4104,
+      "den": 4217,
+      "rate": 97.32
+     },
+     "vis": {
+      "num": 162566.68104221643,
+      "den": 168222,
+      "rate": 96.64
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.09
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 5934,
+     "den": 6011,
+     "rate": 98.72
+    },
+    "speed": {
+     "num": 35943,
+     "den": 1172648,
+     "rate": 3.07
+    },
+    "redlight": {
+     "num": 36091,
+     "den": 172533,
+     "rate": 20.92
+    },
+    "reverse": {
+     "num": 5756030,
+     "den": 260948058,
+     "rate": 2.21
+    },
+    "clothing": {
+     "cloth": {
+      "num": 3349,
+      "den": 3455,
+      "rate": 96.93
+     },
+     "vis": {
+      "num": 112948.54922877386,
+      "den": 117949,
+      "rate": 95.76
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 1.83
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 5997,
+     "den": 6091,
+     "rate": 98.46
+    },
+    "speed": {
+     "num": 26099,
+     "den": 915079,
+     "rate": 2.85
+    },
+    "redlight": {
+     "num": 36516,
+     "den": 172433,
+     "rate": 21.18
+    },
+    "reverse": {
+     "num": 5870599,
+     "den": 269817842,
+     "rate": 2.18
+    },
+    "clothing": {
+     "cloth": {
+      "num": 4159,
+      "den": 4269,
+      "rate": 97.42
+     },
+     "vis": {
+      "num": 139660.7011865065,
+      "den": 150910,
+      "rate": 92.55
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.2
+    }
+   }
+  },
+  {
+   "level": "merchant",
+   "region": "华东大区",
+   "subregion": "苏北区域",
+   "city": "南京",
+   "name": "南京",
+   "2026-08": {
+    "helmet": {
+     "num": 7738,
+     "den": 7879,
+     "rate": 98.21
+    },
+    "speed": {
+     "num": 67270,
+     "den": 1884429,
+     "rate": 3.57
+    },
+    "redlight": {
+     "num": 65615,
+     "den": 286479,
+     "rate": 22.9
+    },
+    "reverse": {
+     "num": 9762973,
+     "den": 340596478,
+     "rate": 2.87
+    },
+    "clothing": {
+     "cloth": {
+      "num": 4104,
+      "den": 4217,
+      "rate": 97.32
+     },
+     "vis": {
+      "num": 162566.68104221643,
+      "den": 168222,
+      "rate": 96.64
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.09
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 5934,
+     "den": 6011,
+     "rate": 98.72
+    },
+    "speed": {
+     "num": 35943,
+     "den": 1172648,
+     "rate": 3.07
+    },
+    "redlight": {
+     "num": 36091,
+     "den": 172533,
+     "rate": 20.92
+    },
+    "reverse": {
+     "num": 5756030,
+     "den": 260948058,
+     "rate": 2.21
+    },
+    "clothing": {
+     "cloth": {
+      "num": 3349,
+      "den": 3455,
+      "rate": 96.93
+     },
+     "vis": {
+      "num": 112948.54922877386,
+      "den": 117949,
+      "rate": 95.76
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 1.83
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 5997,
+     "den": 6091,
+     "rate": 98.46
+    },
+    "speed": {
+     "num": 26099,
+     "den": 915079,
+     "rate": 2.85
+    },
+    "redlight": {
+     "num": 36516,
+     "den": 172433,
+     "rate": 21.18
+    },
+    "reverse": {
+     "num": 5870599,
+     "den": 269817842,
+     "rate": 2.18
+    },
+    "clothing": {
+     "cloth": {
+      "num": 4159,
+      "den": 4269,
+      "rate": 97.42
+     },
+     "vis": {
+      "num": 139660.7011865065,
+      "den": 150910,
+      "rate": 92.55
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.2
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华东大区",
+   "subregion": "苏北区域",
+   "city": "南京",
+   "name": "兴必达【南京】上元大街站",
+   "2026-08": {
+    "helmet": {
+     "num": 1979,
+     "den": 2039,
+     "rate": 97.06
+    },
+    "speed": {
+     "num": 11969,
+     "den": 377891,
+     "rate": 3.17
+    },
+    "redlight": {
+     "num": 15882,
+     "den": 67114,
+     "rate": 23.66
+    },
+    "reverse": {
+     "num": 2227063,
+     "den": 87423810,
+     "rate": 2.55
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1062,
+      "den": 1072,
+      "rate": 99.07
+     },
+     "vis": {
+      "num": 41633.311096170815,
+      "den": 43813,
+      "rate": 95.03
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.2
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1573,
+     "den": 1615,
+     "rate": 97.4
+    },
+    "speed": {
+     "num": 9189,
+     "den": 279846,
+     "rate": 3.28
+    },
+    "redlight": {
+     "num": 10345,
+     "den": 43352,
+     "rate": 23.86
+    },
+    "reverse": {
+     "num": 1373338,
+     "den": 73826883,
+     "rate": 1.86
+    },
+    "clothing": {
+     "cloth": {
+      "num": 896,
+      "den": 901,
+      "rate": 99.45
+     },
+     "vis": {
+      "num": 31730.697685211795,
+      "den": 33376,
+      "rate": 95.07
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 1.57
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1557,
+     "den": 1601,
+     "rate": 97.25
+    },
+    "speed": {
+     "num": 5305,
+     "den": 180708,
+     "rate": 2.94
+    },
+    "redlight": {
+     "num": 10169,
+     "den": 39677,
+     "rate": 25.63
+    },
+    "reverse": {
+     "num": 1432507,
+     "den": 72292903,
+     "rate": 1.98
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1093,
+      "den": 1106,
+      "rate": 98.82
+     },
+     "vis": {
+      "num": 36564.46260897372,
+      "den": 41240,
+      "rate": 88.66
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.06
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华东大区",
+   "subregion": "苏北区域",
+   "city": "南京",
+   "name": "兴必达【南京】南京南站",
+   "2026-08": {
+    "helmet": {
+     "num": 2414,
+     "den": 2432,
+     "rate": 99.26
+    },
+    "speed": {
+     "num": 27756,
+     "den": 883644,
+     "rate": 3.14
+    },
+    "redlight": {
+     "num": 22628,
+     "den": 100948,
+     "rate": 22.42
+    },
+    "reverse": {
+     "num": 4440146,
+     "den": 120412063,
+     "rate": 3.69
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1264,
+      "den": 1318,
+      "rate": 95.9
+     },
+     "vis": {
+      "num": 54188.137022697425,
+      "den": 55096,
+      "rate": 98.35
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.35
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1657,
+     "den": 1665,
+     "rate": 99.52
+    },
+    "speed": {
+     "num": 11954,
+     "den": 510297,
+     "rate": 2.34
+    },
+    "redlight": {
+     "num": 11646,
+     "den": 58169,
+     "rate": 20.02
+    },
+    "reverse": {
+     "num": 2044355,
+     "den": 79440592,
+     "rate": 2.57
+    },
+    "clothing": {
+     "cloth": {
+      "num": 931,
+      "den": 977,
+      "rate": 95.29
+     },
+     "vis": {
+      "num": 31505.157810487097,
+      "den": 32765,
+      "rate": 96.15
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.39
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1616,
+     "den": 1643,
+     "rate": 98.36
+    },
+    "speed": {
+     "num": 7617,
+     "den": 411455,
+     "rate": 1.85
+    },
+    "redlight": {
+     "num": 11172,
+     "den": 59791,
+     "rate": 18.69
+    },
+    "reverse": {
+     "num": 1955713,
+     "den": 82497505,
+     "rate": 2.37
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1114,
+      "den": 1182,
+      "rate": 94.25
+     },
+     "vis": {
+      "num": 38575.856039014594,
+      "den": 41027,
+      "rate": 94.03
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.3
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华东大区",
+   "subregion": "苏北区域",
+   "city": "南京",
+   "name": "兴必达【南京】江宁万达站",
+   "2026-08": {
+    "helmet": {
+     "num": 1921,
+     "den": 1963,
+     "rate": 97.86
+    },
+    "speed": {
+     "num": 12867,
+     "den": 352352,
+     "rate": 3.65
+    },
+    "redlight": {
+     "num": 13448,
+     "den": 71537,
+     "rate": 18.8
+    },
+    "reverse": {
+     "num": 1434706,
+     "den": 80420358,
+     "rate": 1.78
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1020,
+      "den": 1055,
+      "rate": 96.68
+     },
+     "vis": {
+      "num": 38499.577855378935,
+      "den": 40462,
+      "rate": 95.15
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.73
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1587,
+     "den": 1602,
+     "rate": 99.06
+    },
+    "speed": {
+     "num": 7346,
+     "den": 203921,
+     "rate": 3.6
+    },
+    "redlight": {
+     "num": 8603,
+     "den": 48492,
+     "rate": 17.74
+    },
+    "reverse": {
+     "num": 1121995,
+     "den": 66896143,
+     "rate": 1.68
+    },
+    "clothing": {
+     "cloth": {
+      "num": 899,
+      "den": 938,
+      "rate": 95.84
+     },
+     "vis": {
+      "num": 30091.07310008212,
+      "den": 31485,
+      "rate": 95.57
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 5.09
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1655,
+     "den": 1674,
+     "rate": 98.86
+    },
+    "speed": {
+     "num": 6448,
+     "den": 153477,
+     "rate": 4.2
+    },
+    "redlight": {
+     "num": 9290,
+     "den": 48871,
+     "rate": 19.01
+    },
+    "reverse": {
+     "num": 1123768,
+     "den": 69575080,
+     "rate": 1.62
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1158,
+      "den": 1184,
+      "rate": 97.8
+     },
+     "vis": {
+      "num": 38994.613351698026,
+      "den": 42187,
+      "rate": 92.43
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 4.27
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华东大区",
+   "subregion": "苏北区域",
+   "city": "南京",
+   "name": "兴必达【南京】金盛站",
+   "2026-08": {
+    "helmet": {
+     "num": 1424,
+     "den": 1445,
+     "rate": 98.55
+    },
+    "speed": {
+     "num": 14678,
+     "den": 270542,
+     "rate": 5.43
+    },
+    "redlight": {
+     "num": 13657,
+     "den": 46880,
+     "rate": 29.13
+    },
+    "reverse": {
+     "num": 1661058,
+     "den": 52340247,
+     "rate": 3.17
+    },
+    "clothing": {
+     "cloth": {
+      "num": 758,
+      "den": 772,
+      "rate": 98.19
+     },
+     "vis": {
+      "num": 28245.655067969143,
+      "den": 28851,
+      "rate": 97.9
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.07
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1117,
+     "den": 1129,
+     "rate": 98.94
+    },
+    "speed": {
+     "num": 7454,
+     "den": 178584,
+     "rate": 4.17
+    },
+    "redlight": {
+     "num": 5497,
+     "den": 22520,
+     "rate": 24.41
+    },
+    "reverse": {
+     "num": 1216342,
+     "den": 40784440,
+     "rate": 2.98
+    },
+    "clothing": {
+     "cloth": {
+      "num": 623,
+      "den": 639,
+      "rate": 97.5
+     },
+     "vis": {
+      "num": 19621.620632992774,
+      "den": 20323,
+      "rate": 96.55
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.27
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1169,
+     "den": 1173,
+     "rate": 99.66
+    },
+    "speed": {
+     "num": 6729,
+     "den": 169439,
+     "rate": 3.97
+    },
+    "redlight": {
+     "num": 5885,
+     "den": 24094,
+     "rate": 24.43
+    },
+    "reverse": {
+     "num": 1358611,
+     "den": 45452354,
+     "rate": 2.99
+    },
+    "clothing": {
+     "cloth": {
+      "num": 794,
+      "den": 797,
+      "rate": 99.62
+     },
+     "vis": {
+      "num": 25525.769186820096,
+      "den": 26456,
+      "rate": 96.48
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.16
     }
    }
   },
@@ -3357,40 +4937,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 35495,
-     "den": 35804,
+     "num": 45923,
+     "den": 46323,
      "rate": 99.14
     },
     "speed": {
-     "num": 164249,
-     "den": 5724453,
-     "rate": 2.87
+     "num": 205213,
+     "den": 7382166,
+     "rate": 2.78
     },
     "redlight": {
-     "num": 172689,
-     "den": 1321136,
-     "rate": 13.07
+     "num": 222214,
+     "den": 1692096,
+     "rate": 13.13
     },
     "reverse": {
-     "num": 43785959,
-     "den": 1593999705,
+     "num": 56307918,
+     "den": 2046478112,
      "rate": 2.75
     },
     "clothing": {
      "cloth": {
-      "num": 26095,
-      "den": 26780,
+      "num": 29339,
+      "den": 30111,
       "rate": 97.44
      },
      "vis": {
-      "num": 809307.6686643128,
-      "den": 865385,
-      "rate": 93.52
+      "num": 904288.5039030472,
+      "den": 965284,
+      "rate": 93.68
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.75
+     "days": 31,
+     "pct": 1.66
     }
    }
   },
@@ -3478,40 +5058,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1935,
-     "den": 1939,
-     "rate": 99.79
+     "num": 2488,
+     "den": 2498,
+     "rate": 99.6
     },
     "speed": {
-     "num": 3626,
-     "den": 250593,
-     "rate": 1.45
+     "num": 4494,
+     "den": 320058,
+     "rate": 1.4
     },
     "redlight": {
-     "num": 8692,
-     "den": 62877,
-     "rate": 13.82
+     "num": 11366,
+     "den": 80887,
+     "rate": 14.05
     },
     "reverse": {
-     "num": 2294716,
-     "den": 100255242,
-     "rate": 2.29
+     "num": 2963376,
+     "den": 128426818,
+     "rate": 2.31
     },
     "clothing": {
      "cloth": {
-      "num": 1793,
-      "den": 1801,
-      "rate": 99.56
+      "num": 2193,
+      "den": 2208,
+      "rate": 99.32
      },
      "vis": {
-      "num": 63547.67955483076,
-      "den": 65667,
-      "rate": 96.77
+      "num": 76594.13660744006,
+      "den": 79188,
+      "rate": 96.72
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.32
+     "days": 31,
+     "pct": 1.24
     }
    }
   },
@@ -3599,40 +5179,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1935,
-     "den": 1939,
-     "rate": 99.79
+     "num": 2488,
+     "den": 2498,
+     "rate": 99.6
     },
     "speed": {
-     "num": 3626,
-     "den": 250593,
-     "rate": 1.45
+     "num": 4494,
+     "den": 320058,
+     "rate": 1.4
     },
     "redlight": {
-     "num": 8692,
-     "den": 62877,
-     "rate": 13.82
+     "num": 11366,
+     "den": 80887,
+     "rate": 14.05
     },
     "reverse": {
-     "num": 2294716,
-     "den": 100255242,
-     "rate": 2.29
+     "num": 2963376,
+     "den": 128426818,
+     "rate": 2.31
     },
     "clothing": {
      "cloth": {
-      "num": 1793,
-      "den": 1801,
-      "rate": 99.56
+      "num": 2193,
+      "den": 2208,
+      "rate": 99.32
      },
      "vis": {
-      "num": 63547.67955483076,
-      "den": 65667,
-      "rate": 96.77
+      "num": 76594.13660744006,
+      "den": 79188,
+      "rate": 96.72
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.32
+     "days": 31,
+     "pct": 1.24
     }
    }
   },
@@ -3720,40 +5300,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 32833,
-     "den": 33134,
-     "rate": 99.09
+     "num": 42489,
+     "den": 42874,
+     "rate": 99.1
     },
     "speed": {
-     "num": 159399,
-     "den": 5413960,
-     "rate": 2.94
+     "num": 199213,
+     "den": 6984140,
+     "rate": 2.85
     },
     "redlight": {
-     "num": 163071,
-     "den": 1250312,
-     "rate": 13.04
+     "num": 209651,
+     "den": 1600810,
+     "rate": 13.1
     },
     "reverse": {
-     "num": 40585173,
-     "den": 1456872931,
+     "num": 52200446,
+     "den": 1870380595,
      "rate": 2.79
     },
     "clothing": {
      "cloth": {
-      "num": 23618,
-      "den": 24275,
+      "num": 26371,
+      "den": 27105,
       "rate": 97.29
      },
      "vis": {
-      "num": 724047.5273931918,
-      "den": 777238,
-      "rate": 93.16
+      "num": 803281.3886914995,
+      "den": 860869,
+      "rate": 93.31
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.76
+     "days": 31,
+     "pct": 1.67
     }
    }
   },
@@ -3841,40 +5421,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 3299,
-     "den": 3321,
-     "rate": 99.34
+     "num": 4319,
+     "den": 4350,
+     "rate": 99.29
     },
     "speed": {
-     "num": 20878,
-     "den": 596707,
-     "rate": 3.5
+     "num": 26271,
+     "den": 781222,
+     "rate": 3.36
     },
     "redlight": {
-     "num": 20029,
-     "den": 133260,
-     "rate": 15.03
+     "num": 26511,
+     "den": 175250,
+     "rate": 15.13
     },
     "reverse": {
-     "num": 3937128,
-     "den": 160698343,
-     "rate": 2.45
+     "num": 5226662,
+     "den": 209498430,
+     "rate": 2.49
     },
     "clothing": {
      "cloth": {
-      "num": 2347,
-      "den": 2434,
-      "rate": 96.43
+      "num": 2634,
+      "den": 2731,
+      "rate": 96.45
      },
      "vis": {
-      "num": 78615.37099850335,
-      "den": 83908,
-      "rate": 93.69
+      "num": 88537.0196466579,
+      "den": 94361,
+      "rate": 93.83
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.86
+     "days": 31,
+     "pct": 0.69
     }
    }
   },
@@ -3962,40 +5542,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 3075,
-     "den": 3108,
-     "rate": 98.94
+     "num": 3940,
+     "den": 3982,
+     "rate": 98.95
     },
     "speed": {
-     "num": 10886,
-     "den": 443160,
-     "rate": 2.46
+     "num": 13337,
+     "den": 564359,
+     "rate": 2.36
     },
     "redlight": {
-     "num": 14534,
-     "den": 84685,
-     "rate": 17.16
+     "num": 18359,
+     "den": 106846,
+     "rate": 17.18
     },
     "reverse": {
-     "num": 3670035,
-     "den": 146232472,
-     "rate": 2.51
+     "num": 4709969,
+     "den": 185062458,
+     "rate": 2.55
     },
     "clothing": {
      "cloth": {
-      "num": 2227,
-      "den": 2315,
-      "rate": 96.2
+      "num": 2473,
+      "den": 2572,
+      "rate": 96.15
      },
      "vis": {
-      "num": 65349.11055843084,
-      "den": 69204,
-      "rate": 94.43
+      "num": 71896.4052409244,
+      "den": 75972,
+      "rate": 94.64
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.67
+     "days": 31,
+     "pct": 1.51
     }
    }
   },
@@ -4083,40 +5663,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1861,
-     "den": 1870,
-     "rate": 99.52
+     "num": 2409,
+     "den": 2423,
+     "rate": 99.42
     },
     "speed": {
-     "num": 7063,
-     "den": 254542,
-     "rate": 2.77
+     "num": 8945,
+     "den": 329745,
+     "rate": 2.71
     },
     "redlight": {
-     "num": 5675,
-     "den": 50444,
-     "rate": 11.25
+     "num": 7337,
+     "den": 64735,
+     "rate": 11.33
     },
     "reverse": {
-     "num": 1724367,
-     "den": 78780819,
-     "rate": 2.19
+     "num": 2238574,
+     "den": 101247328,
+     "rate": 2.21
     },
     "clothing": {
      "cloth": {
-      "num": 1337,
-      "den": 1359,
-      "rate": 98.38
+      "num": 1488,
+      "den": 1513,
+      "rate": 98.35
      },
      "vis": {
-      "num": 42675.2223288158,
-      "den": 45519,
-      "rate": 93.75
+      "num": 47137.92251461576,
+      "den": 50172,
+      "rate": 93.95
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.48
+     "days": 31,
+     "pct": 0.45
     }
    }
   },
@@ -4204,40 +5784,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1617,
-     "den": 1623,
-     "rate": 99.63
+     "num": 2117,
+     "den": 2124,
+     "rate": 99.67
     },
     "speed": {
-     "num": 5658,
-     "den": 260635,
-     "rate": 2.17
+     "num": 7406,
+     "den": 342323,
+     "rate": 2.16
     },
     "redlight": {
-     "num": 6582,
-     "den": 50716,
-     "rate": 12.98
+     "num": 8630,
+     "den": 65843,
+     "rate": 13.11
     },
     "reverse": {
-     "num": 1750285,
-     "den": 65421059,
-     "rate": 2.68
+     "num": 2304600,
+     "den": 85627792,
+     "rate": 2.69
     },
     "clothing": {
      "cloth": {
-      "num": 1158,
-      "den": 1197,
-      "rate": 96.74
+      "num": 1298,
+      "den": 1343,
+      "rate": 96.65
      },
      "vis": {
-      "num": 38131.230026643374,
-      "den": 39249,
-      "rate": 97.15
+      "num": 42297.618109536445,
+      "den": 43547,
+      "rate": 97.13
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.12
+     "days": 31,
+     "pct": 0.09
     }
    }
   },
@@ -4325,40 +5905,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 4047,
-     "den": 4068,
-     "rate": 99.48
+     "num": 5188,
+     "den": 5220,
+     "rate": 99.39
     },
     "speed": {
-     "num": 11092,
-     "den": 578639,
-     "rate": 1.92
+     "num": 13481,
+     "den": 738971,
+     "rate": 1.82
     },
     "redlight": {
-     "num": 16965,
-     "den": 122446,
-     "rate": 13.86
+     "num": 21679,
+     "den": 154525,
+     "rate": 14.03
     },
     "reverse": {
-     "num": 4902947,
-     "den": 150739365,
-     "rate": 3.25
+     "num": 6180285,
+     "den": 191225412,
+     "rate": 3.23
     },
     "clothing": {
      "cloth": {
-      "num": 2856,
-      "den": 2928,
-      "rate": 97.54
+      "num": 3186,
+      "den": 3267,
+      "rate": 97.52
      },
      "vis": {
-      "num": 91101.06961354522,
-      "den": 96046,
-      "rate": 94.85
+      "num": 100557.83403035838,
+      "den": 106067,
+      "rate": 94.81
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.79
+     "days": 31,
+     "pct": 0.65
     }
    }
   },
@@ -4446,40 +6026,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 3004,
-     "den": 3053,
-     "rate": 98.4
+     "num": 3838,
+     "den": 3896,
+     "rate": 98.51
     },
     "speed": {
-     "num": 13515,
-     "den": 431052,
-     "rate": 3.14
+     "num": 16968,
+     "den": 554610,
+     "rate": 3.06
     },
     "redlight": {
-     "num": 17894,
-     "den": 97672,
-     "rate": 18.32
+     "num": 22938,
+     "den": 125614,
+     "rate": 18.26
     },
     "reverse": {
-     "num": 3495543,
-     "den": 108739662,
-     "rate": 3.21
+     "num": 4425690,
+     "den": 139371692,
+     "rate": 3.18
     },
     "clothing": {
      "cloth": {
-      "num": 2181,
-      "den": 2256,
+      "num": 2419,
+      "den": 2502,
       "rate": 96.68
      },
      "vis": {
-      "num": 61198.44313202845,
-      "den": 68133,
-      "rate": 89.82
+      "num": 67940.21393465911,
+      "den": 75323,
+      "rate": 90.2
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 2.21
+     "days": 31,
+     "pct": 2.07
     }
    }
   },
@@ -4567,40 +6147,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1761,
-     "den": 1774,
-     "rate": 99.27
+     "num": 2288,
+     "den": 2305,
+     "rate": 99.26
     },
     "speed": {
-     "num": 10969,
-     "den": 340854,
-     "rate": 3.22
+     "num": 13818,
+     "den": 438550,
+     "rate": 3.15
     },
     "redlight": {
-     "num": 9054,
-     "den": 81805,
-     "rate": 11.07
+     "num": 11508,
+     "den": 104528,
+     "rate": 11.01
     },
     "reverse": {
-     "num": 2559928,
-     "den": 88421148,
-     "rate": 2.9
+     "num": 3286153,
+     "den": 113762188,
+     "rate": 2.89
     },
     "clothing": {
      "cloth": {
-      "num": 1285,
-      "den": 1295,
-      "rate": 99.23
+      "num": 1437,
+      "den": 1452,
+      "rate": 98.97
      },
      "vis": {
-      "num": 38326.1217452944,
-      "den": 41430,
-      "rate": 92.51
+      "num": 42129.722770716624,
+      "den": 45632,
+      "rate": 92.32
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 4.68
+     "days": 31,
+     "pct": 4.27
     }
    }
   },
@@ -4688,40 +6268,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 2598,
-     "den": 2623,
-     "rate": 99.05
+     "num": 3406,
+     "den": 3441,
+     "rate": 98.98
     },
     "speed": {
-     "num": 13150,
-     "den": 465730,
-     "rate": 2.82
+     "num": 16924,
+     "den": 606985,
+     "rate": 2.79
     },
     "redlight": {
-     "num": 16184,
-     "den": 112538,
-     "rate": 14.38
+     "num": 21497,
+     "den": 145859,
+     "rate": 14.74
     },
     "reverse": {
-     "num": 3045196,
-     "den": 112350362,
-     "rate": 2.71
+     "num": 4000110,
+     "den": 146260411,
+     "rate": 2.73
     },
     "clothing": {
      "cloth": {
-      "num": 1852,
-      "den": 1926,
-      "rate": 96.16
+      "num": 2078,
+      "den": 2162,
+      "rate": 96.11
      },
      "vis": {
-      "num": 56057.73545599757,
-      "den": 61513,
-      "rate": 91.13
+      "num": 62765.63588916605,
+      "den": 68648,
+      "rate": 91.43
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.55
+     "days": 31,
+     "pct": 0.51
     }
    }
   },
@@ -4809,40 +6389,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 3832,
-     "den": 3874,
-     "rate": 98.92
+     "num": 4963,
+     "den": 5009,
+     "rate": 99.08
     },
     "speed": {
-     "num": 17535,
-     "den": 597656,
-     "rate": 2.93
+     "num": 21690,
+     "den": 762977,
+     "rate": 2.84
     },
     "redlight": {
-     "num": 17065,
-     "den": 148334,
-     "rate": 11.5
+     "num": 21336,
+     "den": 186983,
+     "rate": 11.41
     },
     "reverse": {
-     "num": 4970665,
-     "den": 173465527,
-     "rate": 2.87
+     "num": 6340178,
+     "den": 221373339,
+     "rate": 2.86
     },
     "clothing": {
      "cloth": {
-      "num": 2756,
-      "den": 2858,
-      "rate": 96.43
+      "num": 3085,
+      "den": 3195,
+      "rate": 96.56
      },
      "vis": {
-      "num": 82608.229881214,
-      "den": 90039,
-      "rate": 91.75
+      "num": 91776.70973892142,
+      "den": 99674,
+      "rate": 92.08
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.22
+     "days": 31,
+     "pct": 1.23
     }
    }
   },
@@ -4930,40 +6510,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 2303,
-     "den": 2314,
-     "rate": 99.52
+     "num": 3006,
+     "den": 3022,
+     "rate": 99.47
     },
     "speed": {
-     "num": 15492,
-     "den": 467491,
-     "rate": 3.31
+     "num": 19585,
+     "den": 606911,
+     "rate": 3.23
     },
     "redlight": {
-     "num": 14466,
-     "den": 139922,
-     "rate": 10.34
+     "num": 18858,
+     "den": 179663,
+     "rate": 10.5
     },
     "reverse": {
-     "num": 2609504,
-     "den": 106025989,
-     "rate": 2.46
+     "num": 3391829,
+     "den": 136873805,
+     "rate": 2.48
     },
     "clothing": {
      "cloth": {
-      "num": 1684,
-      "den": 1719,
-      "rate": 97.96
+      "num": 1886,
+      "den": 1923,
+      "rate": 98.08
      },
      "vis": {
-      "num": 55009.64169741955,
-      "den": 56863,
-      "rate": 96.74
+      "num": 60824.6286779396,
+      "den": 63002,
+      "rate": 96.54
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.82
+     "days": 31,
+     "pct": 0.7
     }
    }
   },
@@ -5051,40 +6631,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1587,
-     "den": 1598,
-     "rate": 99.31
+     "num": 2062,
+     "den": 2075,
+     "rate": 99.37
     },
     "speed": {
-     "num": 9006,
-     "den": 277875,
-     "rate": 3.24
+     "num": 10853,
+     "den": 357180,
+     "rate": 3.04
     },
     "redlight": {
-     "num": 4943,
-     "den": 69392,
-     "rate": 7.12
+     "num": 6160,
+     "den": 88869,
+     "rate": 6.93
     },
     "reverse": {
-     "num": 2818017,
-     "den": 91815356,
-     "rate": 3.07
+     "num": 3577053,
+     "den": 117780327,
+     "rate": 3.04
     },
     "clothing": {
      "cloth": {
-      "num": 1141,
-      "den": 1150,
-      "rate": 99.22
+      "num": 1272,
+      "den": 1281,
+      "rate": 99.3
      },
      "vis": {
-      "num": 33083.420804535715,
-      "den": 35740,
-      "rate": 92.57
+      "num": 36554.374280725,
+      "den": 39455,
+      "rate": 92.65
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 4.86
+     "days": 31,
+     "pct": 4.1
     }
    }
   },
@@ -5172,40 +6752,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1203,
-     "den": 1210,
-     "rate": 99.42
+     "num": 1534,
+     "den": 1547,
+     "rate": 99.16
     },
     "speed": {
-     "num": 6934,
-     "den": 221138,
-     "rate": 3.14
+     "num": 8724,
+     "den": 284334,
+     "rate": 3.07
     },
     "redlight": {
-     "num": 4441,
-     "den": 46664,
-     "rate": 9.52
+     "num": 5673,
+     "den": 59386,
+     "rate": 9.55
     },
     "reverse": {
-     "num": 1458427,
-     "den": 54965838,
+     "num": 1853726,
+     "den": 70066361,
      "rate": 2.65
     },
     "clothing": {
      "cloth": {
-      "num": 876,
-      "den": 893,
-      "rate": 98.1
+      "num": 973,
+      "den": 993,
+      "rate": 97.99
      },
      "vis": {
-      "num": 27830.805320387757,
-      "den": 29301,
-      "rate": 94.98
+      "num": 30744.425782540835,
+      "den": 32395,
+      "rate": 94.9
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.68
+     "days": 31,
+     "pct": 1.43
     }
    }
   },
@@ -5293,40 +6873,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 2157,
-     "den": 2197,
-     "rate": 98.18
+     "num": 2791,
+     "den": 2839,
+     "rate": 98.31
     },
     "speed": {
-     "num": 15013,
-     "den": 393613,
-     "rate": 3.81
+     "num": 18403,
+     "den": 507249,
+     "rate": 3.63
     },
     "redlight": {
-     "num": 12582,
-     "den": 96723,
-     "rate": 13.01
+     "num": 15789,
+     "den": 122650,
+     "rate": 12.87
     },
     "reverse": {
-     "num": 2940032,
-     "den": 98302567,
+     "num": 3761918,
+     "den": 125646614,
      "rate": 2.99
     },
     "clothing": {
      "cloth": {
-      "num": 1564,
-      "den": 1577,
-      "rate": 99.18
+      "num": 1749,
+      "den": 1763,
+      "rate": 99.21
      },
      "vis": {
-      "num": 43091.084283785094,
-      "den": 48077,
-      "rate": 89.63
+      "num": 47857.11877862954,
+      "den": 53013,
+      "rate": 90.27
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 3.45
+     "days": 31,
+     "pct": 3.22
     }
    }
   },
@@ -5419,25 +6999,25 @@ window.MONTHLY_SUMMARY = {
      "rate": null
     },
     "speed": {
-     "num": 59,
-     "den": 2562,
-     "rate": 2.3
+     "num": 71,
+     "den": 3343,
+     "rate": 2.12
     },
     "redlight": {
-     "num": 10,
-     "den": 370,
-     "rate": 2.7
+     "num": 12,
+     "den": 503,
+     "rate": 2.39
     },
     "reverse": {
-     "num": 11296,
-     "den": 849225,
+     "num": 14546,
+     "den": 1089801,
      "rate": 1.33
     },
     "clothing": {
      "cloth": {
       "num": 2,
-      "den": 16,
-      "rate": 12.5
+      "den": 17,
+      "rate": 11.76
      },
      "vis": {
       "num": 51,
@@ -5446,7 +7026,7 @@ window.MONTHLY_SUMMARY = {
      }
     },
     "high_speed": {
-     "days": 22,
+     "days": 28,
      "pct": 0.0
     }
    }
@@ -5535,39 +7115,39 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 245,
-     "den": 245,
+     "num": 315,
+     "den": 315,
      "rate": 100.0
     },
     "speed": {
-     "num": 842,
-     "den": 43046,
-     "rate": 1.96
+     "num": 1075,
+     "den": 54500,
+     "rate": 1.97
     },
     "redlight": {
-     "num": 1125,
-     "den": 6744,
+     "num": 1420,
+     "den": 8514,
      "rate": 16.68
     },
     "reverse": {
-     "num": 351936,
-     "den": 9495646,
-     "rate": 3.71
+     "num": 453626,
+     "den": 11970153,
+     "rate": 3.79
     },
     "clothing": {
      "cloth": {
-      "num": 172,
-      "den": 172,
+      "num": 190,
+      "den": 190,
       "rate": 100.0
      },
      "vis": {
-      "num": 6256.2908206471175,
-      "den": 6600,
-      "rate": 94.79
+      "num": 6955.805976090585,
+      "den": 7330,
+      "rate": 94.9
      }
     },
     "high_speed": {
-     "days": 24,
+     "days": 31,
      "pct": 0.0
     }
    }
@@ -5656,40 +7236,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 244,
-     "den": 256,
-     "rate": 95.31
+     "num": 313,
+     "den": 326,
+     "rate": 96.01
     },
     "speed": {
-     "num": 1307,
-     "den": 39260,
-     "rate": 3.33
+     "num": 1662,
+     "den": 50881,
+     "rate": 3.27
     },
     "redlight": {
-     "num": 1522,
-     "den": 8597,
-     "rate": 17.7
+     "num": 1944,
+     "den": 11042,
+     "rate": 17.61
     },
     "reverse": {
-     "num": 339867,
-     "den": 10569553,
+     "num": 435527,
+     "den": 13524484,
      "rate": 3.22
     },
     "clothing": {
      "cloth": {
-      "num": 180,
-      "den": 180,
+      "num": 201,
+      "den": 201,
       "rate": 100.0
      },
      "vis": {
-      "num": 4662.750725944074,
-      "den": 5565,
-      "rate": 83.79
+      "num": 5254.953320016667,
+      "den": 6227,
+      "rate": 84.39
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 4.59
+     "days": 31,
+     "pct": 5.56
     }
    }
   },
@@ -5777,40 +7357,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 727,
-     "den": 731,
-     "rate": 99.45
+     "num": 946,
+     "den": 951,
+     "rate": 99.47
     },
     "speed": {
-     "num": 1224,
-     "den": 59900,
-     "rate": 2.04
+     "num": 1506,
+     "den": 77968,
+     "rate": 1.93
     },
     "redlight": {
-     "num": 926,
-     "den": 7947,
-     "rate": 11.65
+     "num": 1197,
+     "den": 10399,
+     "rate": 11.51
     },
     "reverse": {
-     "num": 906070,
-     "den": 36871532,
-     "rate": 2.46
+     "num": 1144096,
+     "den": 47670699,
+     "rate": 2.4
     },
     "clothing": {
      "cloth": {
-      "num": 684,
-      "den": 704,
-      "rate": 97.16
+      "num": 775,
+      "den": 798,
+      "rate": 97.12
      },
      "vis": {
-      "num": 21712.461716290076,
-      "den": 22480,
-      "rate": 96.59
+      "num": 24412.978604107546,
+      "den": 25227,
+      "rate": 96.77
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 2.07
+     "days": 31,
+     "pct": 1.99
     }
    }
   },
@@ -5898,894 +7478,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 727,
-     "den": 731,
-     "rate": 99.45
-    },
-    "speed": {
-     "num": 1224,
-     "den": 59900,
-     "rate": 2.04
-    },
-    "redlight": {
-     "num": 926,
-     "den": 7947,
-     "rate": 11.65
-    },
-    "reverse": {
-     "num": 906070,
-     "den": 36871532,
-     "rate": 2.46
-    },
-    "clothing": {
-     "cloth": {
-      "num": 684,
-      "den": 704,
-      "rate": 97.16
-     },
-     "vis": {
-      "num": 21712.461716290076,
-      "den": 22480,
-      "rate": 96.59
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 2.07
-    }
-   }
-  },
-  {
-   "level": "subregion",
-   "region": "华东大区",
-   "subregion": "北京区域",
-   "city": "",
-   "name": "北京区域",
-   "2026-08": {
-    "helmet": {
-     "num": 3448,
-     "den": 3466,
-     "rate": 99.48
-    },
-    "speed": {
-     "num": 18780,
-     "den": 754390,
-     "rate": 2.49
-    },
-    "redlight": {
-     "num": 9940,
-     "den": 64695,
-     "rate": 15.36
-    },
-    "reverse": {
-     "num": 4960325,
-     "den": 173393904,
-     "rate": 2.86
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2121,
-      "den": 2235,
-      "rate": 94.9
-     },
-     "vis": {
-      "num": 80176.24457301054,
-      "den": 82032,
-      "rate": 97.74
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.04
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 9161,
-     "den": 9196,
-     "rate": 99.62
-    },
-    "speed": {
-     "num": 61830,
-     "den": 2013536,
-     "rate": 3.07
-    },
-    "redlight": {
-     "num": 20111,
-     "den": 112069,
-     "rate": 17.95
-    },
-    "reverse": {
-     "num": 11696199,
-     "den": 499890038,
-     "rate": 2.34
-    },
-    "clothing": {
-     "cloth": {
-      "num": 8360,
-      "den": 8583,
-      "rate": 97.4
-     },
-     "vis": {
-      "num": 294250.5833639182,
-      "den": 307389,
-      "rate": 95.73
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.13
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 7516,
-     "den": 7554,
-     "rate": 99.5
-    },
-    "speed": {
-     "num": 43178,
-     "den": 1683434,
-     "rate": 2.56
-    },
-    "redlight": {
-     "num": 17508,
-     "den": 96061,
-     "rate": 18.23
-    },
-    "reverse": {
-     "num": 10459218,
-     "den": 432421302,
-     "rate": 2.42
-    },
-    "clothing": {
-     "cloth": {
-      "num": 7111,
-      "den": 7212,
-      "rate": 98.6
-     },
-     "vis": {
-      "num": 253362.62763838583,
-      "den": 268253,
-      "rate": 94.45
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.39
-    }
-   }
-  },
-  {
-   "level": "merchant",
-   "region": "华东大区",
-   "subregion": "北京区域",
-   "city": "北京",
-   "name": "北京",
-   "2026-08": {
-    "helmet": {
-     "num": 3448,
-     "den": 3466,
-     "rate": 99.48
-    },
-    "speed": {
-     "num": 18780,
-     "den": 754390,
-     "rate": 2.49
-    },
-    "redlight": {
-     "num": 9940,
-     "den": 64695,
-     "rate": 15.36
-    },
-    "reverse": {
-     "num": 4960325,
-     "den": 173393904,
-     "rate": 2.86
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2121,
-      "den": 2235,
-      "rate": 94.9
-     },
-     "vis": {
-      "num": 80176.24457301054,
-      "den": 82032,
-      "rate": 97.74
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.04
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 9161,
-     "den": 9196,
-     "rate": 99.62
-    },
-    "speed": {
-     "num": 61830,
-     "den": 2013536,
-     "rate": 3.07
-    },
-    "redlight": {
-     "num": 20111,
-     "den": 112069,
-     "rate": 17.95
-    },
-    "reverse": {
-     "num": 11696199,
-     "den": 499890038,
-     "rate": 2.34
-    },
-    "clothing": {
-     "cloth": {
-      "num": 8360,
-      "den": 8583,
-      "rate": 97.4
-     },
-     "vis": {
-      "num": 294250.5833639182,
-      "den": 307389,
-      "rate": 95.73
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.13
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 7516,
-     "den": 7554,
-     "rate": 99.5
-    },
-    "speed": {
-     "num": 43178,
-     "den": 1683434,
-     "rate": 2.56
-    },
-    "redlight": {
-     "num": 17508,
-     "den": 96061,
-     "rate": 18.23
-    },
-    "reverse": {
-     "num": 10459218,
-     "den": 432421302,
-     "rate": 2.42
-    },
-    "clothing": {
-     "cloth": {
-      "num": 7111,
-      "den": 7212,
-      "rate": 98.6
-     },
-     "vis": {
-      "num": 253362.62763838583,
-      "den": 268253,
-      "rate": 94.45
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.39
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华东大区",
-   "subregion": "北京区域",
-   "city": "北京",
-   "name": "兴必达【北京】云岗站",
-   "2026-08": {
-    "helmet": {
-     "num": 1180,
-     "den": 1184,
-     "rate": 99.66
-    },
-    "speed": {
-     "num": 2123,
-     "den": 184865,
-     "rate": 1.15
-    },
-    "redlight": {
-     "num": 4036,
-     "den": 36946,
-     "rate": 10.92
-    },
-    "reverse": {
-     "num": 286677,
-     "den": 23253851,
-     "rate": 1.23
-    },
-    "clothing": {
-     "cloth": {
-      "num": 729,
-      "den": 746,
-      "rate": 97.72
-     },
-     "vis": {
-      "num": 26466.18396874008,
-      "den": 27052,
-      "rate": 97.83
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.08
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1028,
-     "den": 1029,
-     "rate": 99.9
-    },
-    "speed": {
-     "num": 1653,
-     "den": 152436,
-     "rate": 1.08
-    },
-    "redlight": {
-     "num": 2450,
-     "den": 25845,
-     "rate": 9.48
-    },
-    "reverse": {
-     "num": 223141,
-     "den": 18579062,
-     "rate": 1.2
-    },
-    "clothing": {
-     "cloth": {
-      "num": 929,
-      "den": 929,
-      "rate": 100.0
-     },
-     "vis": {
-      "num": 30366.791753575024,
-      "den": 31820,
-      "rate": 95.43
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.29
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 813,
-     "den": 814,
-     "rate": 99.88
-    },
-    "speed": {
-     "num": 1396,
-     "den": 126559,
-     "rate": 1.1
-    },
-    "redlight": {
-     "num": 2521,
-     "den": 22435,
-     "rate": 11.24
-    },
-    "reverse": {
-     "num": 182785,
-     "den": 14792063,
-     "rate": 1.24
-    },
-    "clothing": {
-     "cloth": {
-      "num": 756,
-      "den": 756,
-      "rate": 100.0
-     },
-     "vis": {
-      "num": 25074.742014100324,
-      "den": 26451,
-      "rate": 94.8
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.12
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华东大区",
-   "subregion": "北京区域",
-   "city": "北京",
-   "name": "兴必达【北京】果园站",
-   "2026-08": {
-    "helmet": {
-     "num": 1985,
-     "den": 1999,
-     "rate": 99.3
-    },
-    "speed": {
-     "num": 16244,
-     "den": 535030,
-     "rate": 3.04
-    },
-    "redlight": {
-     "num": 5180,
-     "den": 25022,
-     "rate": 20.7
-    },
-    "reverse": {
-     "num": 4377063,
-     "den": 139086549,
-     "rate": 3.15
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1219,
-      "den": 1296,
-      "rate": 94.06
-     },
-     "vis": {
-      "num": 47744.13794482212,
-      "den": 48643,
-      "rate": 98.15
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.05
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1847,
-     "den": 1854,
-     "rate": 99.62
-    },
-    "speed": {
-     "num": 14787,
-     "den": 488216,
-     "rate": 3.03
-    },
-    "redlight": {
-     "num": 3667,
-     "den": 21344,
-     "rate": 17.18
-    },
-    "reverse": {
-     "num": 3789343,
-     "den": 128987394,
-     "rate": 2.94
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1660,
-      "den": 1749,
-      "rate": 94.91
-     },
-     "vis": {
-      "num": 59261.369396889415,
-      "den": 61132,
-      "rate": 96.94
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.0
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1562,
-     "den": 1569,
-     "rate": 99.55
-    },
-    "speed": {
-     "num": 10358,
-     "den": 413261,
-     "rate": 2.51
-    },
-    "redlight": {
-     "num": 3369,
-     "den": 18475,
-     "rate": 18.24
-    },
-    "reverse": {
-     "num": 3340172,
-     "den": 111816174,
-     "rate": 2.99
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1452,
-      "den": 1496,
-      "rate": 97.06
-     },
-     "vis": {
-      "num": 53303.00017762763,
-      "den": 55613,
-      "rate": 95.85
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.0
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华东大区",
-   "subregion": "北京区域",
-   "city": "北京",
-   "name": "兴必达【北京】梨园站",
-   "2026-09": {
-    "helmet": {
-     "num": 2070,
-     "den": 2079,
-     "rate": 99.57
-    },
-    "speed": {
-     "num": 14901,
-     "den": 467630,
-     "rate": 3.19
-    },
-    "redlight": {
-     "num": 2823,
-     "den": 18433,
-     "rate": 15.31
-    },
-    "reverse": {
-     "num": 4068847,
-     "den": 134850426,
-     "rate": 3.02
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1939,
-      "den": 1986,
-      "rate": 97.63
-     },
-     "vis": {
-      "num": 61392.58663315668,
-      "den": 63993,
-      "rate": 95.94
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.04
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1700,
-     "den": 1709,
+     "num": 946,
+     "den": 951,
      "rate": 99.47
     },
     "speed": {
-     "num": 10917,
-     "den": 398621,
-     "rate": 2.74
+     "num": 1506,
+     "den": 77968,
+     "rate": 1.93
     },
     "redlight": {
-     "num": 2978,
-     "den": 17115,
-     "rate": 17.4
+     "num": 1197,
+     "den": 10399,
+     "rate": 11.51
     },
     "reverse": {
-     "num": 3835146,
-     "den": 120326748,
-     "rate": 3.19
+     "num": 1144096,
+     "den": 47670699,
+     "rate": 2.4
     },
     "clothing": {
      "cloth": {
-      "num": 1660,
-      "den": 1683,
-      "rate": 98.63
+      "num": 775,
+      "den": 798,
+      "rate": 97.12
      },
      "vis": {
-      "num": 54824.90739461105,
-      "den": 57566,
-      "rate": 95.24
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.0
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华东大区",
-   "subregion": "北京区域",
-   "city": "北京",
-   "name": "兴必达【北京】狼垡站",
-   "2026-08": {
-    "helmet": {
-     "num": 283,
-     "den": 283,
-     "rate": 100.0
-    },
-    "speed": {
-     "num": 413,
-     "den": 34495,
-     "rate": 1.2
-    },
-    "redlight": {
-     "num": 724,
-     "den": 2727,
-     "rate": 26.55
-    },
-    "reverse": {
-     "num": 296585,
-     "den": 11053504,
-     "rate": 2.68
-    },
-    "clothing": {
-     "cloth": {
-      "num": 173,
-      "den": 193,
-      "rate": 89.64
-     },
-     "vis": {
-      "num": 5965.922659448358,
-      "den": 6337,
-      "rate": 94.14
+      "num": 24412.978604107546,
+      "den": 25227,
+      "rate": 96.77
      }
     },
     "high_speed": {
      "days": 31,
-     "pct": 0.0
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 273,
-     "den": 273,
-     "rate": 100.0
-    },
-    "speed": {
-     "num": 449,
-     "den": 31812,
-     "rate": 1.41
-    },
-    "redlight": {
-     "num": 509,
-     "den": 2172,
-     "rate": 23.43
-    },
-    "reverse": {
-     "num": 251023,
-     "den": 10228161,
-     "rate": 2.45
-    },
-    "clothing": {
-     "cloth": {
-      "num": 253,
-      "den": 260,
-      "rate": 97.31
-     },
-     "vis": {
-      "num": 8094.14458338057,
-      "den": 8377,
-      "rate": 96.62
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.0
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 233,
-     "den": 235,
-     "rate": 99.15
-    },
-    "speed": {
-     "num": 587,
-     "den": 29149,
-     "rate": 2.01
-    },
-    "redlight": {
-     "num": 402,
-     "den": 1884,
-     "rate": 21.34
-    },
-    "reverse": {
-     "num": 209634,
-     "den": 8615698,
-     "rate": 2.43
-    },
-    "clothing": {
-     "cloth": {
-      "num": 220,
-      "den": 220,
-      "rate": 100.0
-     },
-     "vis": {
-      "num": 6981.664618165379,
-      "den": 7466,
-      "rate": 93.51
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 1.76
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华东大区",
-   "subregion": "北京区域",
-   "city": "北京",
-   "name": "兴必达【北京】苹果园站",
-   "2026-09": {
-    "helmet": {
-     "num": 3875,
-     "den": 3893,
-     "rate": 99.54
-    },
-    "speed": {
-     "num": 29735,
-     "den": 855087,
-     "rate": 3.48
-    },
-    "redlight": {
-     "num": 10312,
-     "den": 43105,
-     "rate": 23.92
-    },
-    "reverse": {
-     "num": 3245670,
-     "den": 203295458,
-     "rate": 1.6
-    },
-    "clothing": {
-     "cloth": {
-      "num": 3517,
-      "den": 3591,
-      "rate": 97.94
-     },
-     "vis": {
-      "num": 132801.20085498967,
-      "den": 139207,
-      "rate": 95.4
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.43
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 3186,
-     "den": 3205,
-     "rate": 99.41
-    },
-    "speed": {
-     "num": 19866,
-     "den": 704892,
-     "rate": 2.82
-    },
-    "redlight": {
-     "num": 8065,
-     "den": 35390,
-     "rate": 22.79
-    },
-    "reverse": {
-     "num": 2801537,
-     "den": 174170823,
-     "rate": 1.61
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2985,
-      "den": 3014,
-      "rate": 99.04
-     },
-     "vis": {
-      "num": 111912.13486245245,
-      "den": 119303,
-      "rate": 93.8
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.46
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华东大区",
-   "subregion": "北京区域",
-   "city": "北京",
-   "name": "集约配送-兴必达【北京】苹果园站",
-   "2026-09": {
-    "helmet": {
-     "num": 68,
-     "den": 68,
-     "rate": 100.0
-    },
-    "speed": {
-     "num": 305,
-     "den": 18355,
-     "rate": 1.66
-    },
-    "redlight": {
-     "num": 350,
-     "den": 1170,
-     "rate": 29.91
-    },
-    "reverse": {
-     "num": 118175,
-     "den": 3949537,
-     "rate": 2.99
-    },
-    "clothing": {
-     "cloth": {
-      "num": 62,
-      "den": 68,
-      "rate": 91.18
-     },
-     "vis": {
-      "num": 2334.490141927216,
-      "den": 2860,
-      "rate": 81.63
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.0
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 22,
-     "den": 22,
-     "rate": 100.0
-    },
-    "speed": {
-     "num": 54,
-     "den": 10952,
-     "rate": 0.49
-    },
-    "redlight": {
-     "num": 173,
-     "den": 762,
-     "rate": 22.7
-    },
-    "reverse": {
-     "num": 89944,
-     "den": 2699796,
-     "rate": 3.33
-    },
-    "clothing": {
-     "cloth": {
-      "num": 38,
-      "den": 43,
-      "rate": 88.37
-     },
-     "vis": {
-      "num": 1266.178571428571,
-      "den": 1854,
-      "rate": 68.29
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.0
+     "pct": 1.99
     }
    }
   },
@@ -6873,40 +7599,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 33162,
-     "den": 33545,
-     "rate": 98.86
+     "num": 42841,
+     "den": 43299,
+     "rate": 98.94
     },
     "speed": {
-     "num": 154458,
-     "den": 5459581,
-     "rate": 2.83
+     "num": 202172,
+     "den": 7049717,
+     "rate": 2.87
     },
     "redlight": {
-     "num": 148941,
-     "den": 818684,
-     "rate": 18.19
+     "num": 190916,
+     "den": 1055473,
+     "rate": 18.09
     },
     "reverse": {
-     "num": 45346509,
-     "den": 1463552531,
-     "rate": 3.1
+     "num": 57945094,
+     "den": 1890258479,
+     "rate": 3.07
     },
     "clothing": {
      "cloth": {
-      "num": 23902,
-      "den": 24302,
-      "rate": 98.35
+      "num": 31591,
+      "den": 32117,
+      "rate": 98.36
      },
      "vis": {
-      "num": 884636.3367405824,
-      "den": 929339,
+      "num": 1154679.0784724536,
+      "den": 1213070,
       "rate": 95.19
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.15
+     "days": 31,
+     "pct": 1.25
     }
    }
   },
@@ -6994,40 +7720,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 10596,
-     "den": 10712,
-     "rate": 98.92
+     "num": 13693,
+     "den": 13829,
+     "rate": 99.02
     },
     "speed": {
-     "num": 55812,
-     "den": 1964544,
-     "rate": 2.84
+     "num": 73473,
+     "den": 2533043,
+     "rate": 2.9
     },
     "redlight": {
-     "num": 38851,
-     "den": 196297,
-     "rate": 19.79
+     "num": 49437,
+     "den": 252701,
+     "rate": 19.56
     },
     "reverse": {
-     "num": 18486913,
-     "den": 505325590,
-     "rate": 3.66
+     "num": 23551749,
+     "den": 652024217,
+     "rate": 3.61
     },
     "clothing": {
      "cloth": {
-      "num": 8118,
-      "den": 8252,
-      "rate": 98.38
+      "num": 10364,
+      "den": 10538,
+      "rate": 98.35
      },
      "vis": {
-      "num": 282679.14526384696,
-      "den": 295532,
-      "rate": 95.65
+      "num": 356464.4684672908,
+      "den": 372276,
+      "rate": 95.75
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.85
+     "days": 31,
+     "pct": 1.07
     }
    }
   },
@@ -7115,40 +7841,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1947,
-     "den": 1965,
-     "rate": 99.08
+     "num": 2505,
+     "den": 2528,
+     "rate": 99.09
     },
     "speed": {
-     "num": 8783,
-     "den": 371611,
-     "rate": 2.36
+     "num": 11646,
+     "den": 476683,
+     "rate": 2.44
     },
     "redlight": {
-     "num": 9099,
-     "den": 45519,
-     "rate": 19.99
+     "num": 11456,
+     "den": 58245,
+     "rate": 19.67
     },
     "reverse": {
-     "num": 2693644,
-     "den": 83531984,
-     "rate": 3.22
+     "num": 3416398,
+     "den": 107471783,
+     "rate": 3.18
     },
     "clothing": {
      "cloth": {
-      "num": 1502,
-      "den": 1509,
-      "rate": 99.54
+      "num": 1908,
+      "den": 1916,
+      "rate": 99.58
      },
      "vis": {
-      "num": 47321.33984368921,
-      "den": 49893,
+      "num": 59161.56550696165,
+      "den": 62371,
       "rate": 94.85
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.6
+     "days": 31,
+     "pct": 0.89
     }
    }
   },
@@ -7236,40 +7962,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 826,
-     "den": 833,
-     "rate": 99.16
+     "num": 1069,
+     "den": 1076,
+     "rate": 99.35
     },
     "speed": {
-     "num": 6340,
-     "den": 180039,
-     "rate": 3.52
+     "num": 8256,
+     "den": 231590,
+     "rate": 3.56
     },
     "redlight": {
-     "num": 3383,
-     "den": 14879,
-     "rate": 22.74
+     "num": 4254,
+     "den": 19163,
+     "rate": 22.2
     },
     "reverse": {
-     "num": 1307661,
-     "den": 39020407,
-     "rate": 3.35
+     "num": 1676215,
+     "den": 50439596,
+     "rate": 3.32
     },
     "clothing": {
      "cloth": {
-      "num": 629,
-      "den": 630,
-      "rate": 99.84
+      "num": 805,
+      "den": 806,
+      "rate": 99.88
      },
      "vis": {
-      "num": 20880.40959907208,
-      "den": 21894,
-      "rate": 95.37
+      "num": 26294.673167469766,
+      "den": 27523,
+      "rate": 95.54
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.7
+     "days": 31,
+     "pct": 0.91
     }
    }
   },
@@ -7357,40 +8083,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 740,
-     "den": 753,
-     "rate": 98.27
+     "num": 942,
+     "den": 958,
+     "rate": 98.33
     },
     "speed": {
-     "num": 2292,
-     "den": 112949,
-     "rate": 2.03
+     "num": 3193,
+     "den": 144633,
+     "rate": 2.21
     },
     "redlight": {
-     "num": 1698,
-     "den": 10549,
-     "rate": 16.1
+     "num": 2147,
+     "den": 13412,
+     "rate": 16.01
     },
     "reverse": {
-     "num": 1259214,
-     "den": 29362848,
-     "rate": 4.29
+     "num": 1539262,
+     "den": 37542785,
+     "rate": 4.1
     },
     "clothing": {
      "cloth": {
-      "num": 585,
-      "den": 600,
-      "rate": 97.5
+      "num": 734,
+      "den": 753,
+      "rate": 97.48
      },
      "vis": {
-      "num": 17931.646370228907,
-      "den": 18885,
-      "rate": 94.95
+      "num": 22505.05787061648,
+      "den": 23662,
+      "rate": 95.11
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.47
+     "days": 31,
+     "pct": 2.08
     }
    }
   },
@@ -7478,40 +8204,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1025,
-     "den": 1025,
-     "rate": 100.0
+     "num": 1317,
+     "den": 1318,
+     "rate": 99.92
     },
     "speed": {
-     "num": 8014,
-     "den": 231530,
-     "rate": 3.46
+     "num": 10894,
+     "den": 298997,
+     "rate": 3.64
     },
     "redlight": {
-     "num": 2924,
-     "den": 17096,
-     "rate": 17.1
+     "num": 3833,
+     "den": 22195,
+     "rate": 17.27
     },
     "reverse": {
-     "num": 1806681,
-     "den": 50897452,
-     "rate": 3.55
+     "num": 2310132,
+     "den": 65743983,
+     "rate": 3.51
     },
     "clothing": {
      "cloth": {
-      "num": 759,
-      "den": 776,
-      "rate": 97.81
+      "num": 962,
+      "den": 985,
+      "rate": 97.66
      },
      "vis": {
-      "num": 25845.217255456937,
-      "den": 26691,
-      "rate": 96.83
+      "num": 32596.226414554516,
+      "den": 33661,
+      "rate": 96.84
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.2
+     "days": 31,
+     "pct": 0.31
     }
    }
   },
@@ -7599,40 +8325,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1225,
-     "den": 1242,
-     "rate": 98.63
+     "num": 1584,
+     "den": 1605,
+     "rate": 98.69
     },
     "speed": {
-     "num": 4804,
-     "den": 188294,
-     "rate": 2.55
+     "num": 6129,
+     "den": 241898,
+     "rate": 2.53
     },
     "redlight": {
-     "num": 2653,
-     "den": 14086,
-     "rate": 18.83
+     "num": 3316,
+     "den": 18061,
+     "rate": 18.36
     },
     "reverse": {
-     "num": 2833249,
-     "den": 61844689,
-     "rate": 4.58
+     "num": 3615610,
+     "den": 79610284,
+     "rate": 4.54
     },
     "clothing": {
      "cloth": {
-      "num": 952,
-      "den": 982,
-      "rate": 96.95
+      "num": 1219,
+      "den": 1256,
+      "rate": 97.05
      },
      "vis": {
-      "num": 34399.841098731595,
-      "den": 36128,
-      "rate": 95.22
+      "num": 43224.85774771918,
+      "den": 45386,
+      "rate": 95.24
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.0
+     "days": 31,
+     "pct": 1.01
     }
    }
   },
@@ -7720,40 +8446,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 985,
-     "den": 1000,
-     "rate": 98.5
+     "num": 1262,
+     "den": 1278,
+     "rate": 98.75
     },
     "speed": {
-     "num": 4868,
-     "den": 137660,
-     "rate": 3.54
+     "num": 6479,
+     "den": 176529,
+     "rate": 3.67
     },
     "redlight": {
-     "num": 2056,
-     "den": 10165,
-     "rate": 20.23
+     "num": 2656,
+     "den": 13058,
+     "rate": 20.34
     },
     "reverse": {
-     "num": 1804000,
-     "den": 51692945,
-     "rate": 3.49
+     "num": 2265021,
+     "den": 65945611,
+     "rate": 3.43
     },
     "clothing": {
      "cloth": {
-      "num": 739,
-      "den": 752,
-      "rate": 98.27
+      "num": 937,
+      "den": 951,
+      "rate": 98.53
      },
      "vis": {
-      "num": 24529.892675337203,
-      "den": 25391,
-      "rate": 96.61
+      "num": 30885.769489359882,
+      "den": 32108,
+      "rate": 96.19
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 2.68
+     "days": 31,
+     "pct": 3.37
     }
    }
   },
@@ -7841,40 +8567,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1625,
-     "den": 1630,
-     "rate": 99.69
+     "num": 2110,
+     "den": 2115,
+     "rate": 99.76
     },
     "speed": {
-     "num": 8431,
-     "den": 317487,
-     "rate": 2.66
+     "num": 11159,
+     "den": 412356,
+     "rate": 2.71
     },
     "redlight": {
-     "num": 8808,
-     "den": 44013,
-     "rate": 20.01
+     "num": 11250,
+     "den": 56917,
+     "rate": 19.77
     },
     "reverse": {
-     "num": 2131100,
-     "den": 72061588,
-     "rate": 2.96
+     "num": 2743176,
+     "den": 93715665,
+     "rate": 2.93
     },
     "clothing": {
      "cloth": {
-      "num": 1226,
-      "den": 1235,
-      "rate": 99.27
+      "num": 1573,
+      "den": 1587,
+      "rate": 99.12
      },
      "vis": {
-      "num": 50053.285520906466,
-      "den": 51683,
-      "rate": 96.85
+      "num": 63600.73459746809,
+      "den": 65530,
+      "rate": 97.06
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.26
+     "days": 31,
+     "pct": 1.3
     }
    }
   },
@@ -7962,40 +8688,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 832,
-     "den": 852,
-     "rate": 97.65
+     "num": 1083,
+     "den": 1104,
+     "rate": 98.1
     },
     "speed": {
-     "num": 3138,
-     "den": 140041,
-     "rate": 2.24
+     "num": 3919,
+     "den": 179233,
+     "rate": 2.19
     },
     "redlight": {
-     "num": 2987,
-     "den": 13805,
-     "rate": 21.64
+     "num": 3740,
+     "den": 17519,
+     "rate": 21.35
     },
     "reverse": {
-     "num": 1709210,
-     "den": 42829366,
-     "rate": 3.99
+     "num": 2165112,
+     "den": 54992086,
+     "rate": 3.94
     },
     "clothing": {
      "cloth": {
-      "num": 636,
-      "den": 674,
-      "rate": 94.36
+      "num": 816,
+      "den": 865,
+      "rate": 94.34
      },
      "vis": {
-      "num": 22196.137426975944,
-      "den": 23189,
-      "rate": 95.72
+      "num": 27716.3095233661,
+      "den": 28831,
+      "rate": 96.13
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.0
+     "days": 31,
+     "pct": 0.09
     }
    }
   },
@@ -8083,40 +8809,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 502,
-     "den": 510,
-     "rate": 98.43
+     "num": 657,
+     "den": 669,
+     "rate": 98.21
     },
     "speed": {
-     "num": 4031,
-     "den": 108446,
-     "rate": 3.72
+     "num": 5186,
+     "den": 142668,
+     "rate": 3.64
     },
     "redlight": {
-     "num": 3107,
-     "den": 13984,
-     "rate": 22.22
+     "num": 4015,
+     "den": 18261,
+     "rate": 21.99
     },
     "reverse": {
-     "num": 877864,
-     "den": 25930856,
+     "num": 1156726,
+     "den": 34139794,
      "rate": 3.39
     },
     "clothing": {
      "cloth": {
-      "num": 380,
-      "den": 383,
-      "rate": 99.22
+      "num": 494,
+      "den": 500,
+      "rate": 98.8
      },
      "vis": {
-      "num": 14428.840443746576,
-      "den": 15007,
-      "rate": 96.15
+      "num": 18676.135969193896,
+      "den": 19370,
+      "rate": 96.42
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.18
+     "days": 31,
+     "pct": 0.55
     }
    }
   },
@@ -8204,40 +8930,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 852,
-     "den": 865,
-     "rate": 98.5
+     "num": 1113,
+     "den": 1127,
+     "rate": 98.76
     },
     "speed": {
-     "num": 5006,
-     "den": 173000,
+     "num": 6472,
+     "den": 223610,
      "rate": 2.89
     },
     "redlight": {
-     "num": 2105,
-     "den": 12009,
-     "rate": 17.53
+     "num": 2729,
+     "den": 15619,
+     "rate": 17.47
     },
     "reverse": {
-     "num": 2011929,
-     "den": 46609643,
-     "rate": 4.32
+     "num": 2594646,
+     "den": 60330551,
+     "rate": 4.3
     },
     "clothing": {
      "cloth": {
-      "num": 683,
-      "den": 684,
-      "rate": 99.85
+      "num": 879,
+      "den": 882,
+      "rate": 99.66
      },
      "vis": {
-      "num": 24205.955520322495,
-      "den": 25786,
-      "rate": 93.87
+      "num": 30648.986701505324,
+      "den": 32520,
+      "rate": 94.25
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.22
+     "days": 31,
+     "pct": 0.42
     }
    }
   },
@@ -8325,40 +9051,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 37,
-     "den": 37,
+     "num": 51,
+     "den": 51,
      "rate": 100.0
     },
     "speed": {
-     "num": 105,
-     "den": 3487,
-     "rate": 3.01
+     "num": 140,
+     "den": 4846,
+     "rate": 2.89
     },
     "redlight": {
-     "num": 31,
-     "den": 192,
-     "rate": 16.15
+     "num": 41,
+     "den": 251,
+     "rate": 16.33
     },
     "reverse": {
-     "num": 52361,
-     "den": 1543812,
-     "rate": 3.39
+     "num": 69451,
+     "den": 2092079,
+     "rate": 3.32
     },
     "clothing": {
      "cloth": {
-      "num": 27,
-      "den": 27,
+      "num": 37,
+      "den": 37,
       "rate": 100.0
      },
      "vis": {
-      "num": 886.5795093795094,
-      "den": 985,
-      "rate": 90.01
+      "num": 1154.151479076479,
+      "den": 1314,
+      "rate": 87.83
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.04
+     "days": 31,
+     "pct": 0.81
     }
    }
   },
@@ -8446,40 +9172,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 2576,
-     "den": 2602,
-     "rate": 99.0
+     "num": 3358,
+     "den": 3389,
+     "rate": 99.09
     },
     "speed": {
-     "num": 15440,
-     "den": 419760,
-     "rate": 3.68
+     "num": 20413,
+     "den": 549217,
+     "rate": 3.72
     },
     "redlight": {
-     "num": 16042,
-     "den": 101947,
-     "rate": 15.74
+     "num": 20728,
+     "den": 133017,
+     "rate": 15.58
     },
     "reverse": {
-     "num": 2766270,
-     "den": 122158795,
-     "rate": 2.26
+     "num": 3626785,
+     "den": 160040852,
+     "rate": 2.27
     },
     "clothing": {
      "cloth": {
-      "num": 1739,
-      "den": 1762,
-      "rate": 98.69
+      "num": 2310,
+      "den": 2341,
+      "rate": 98.68
      },
      "vis": {
-      "num": 71854.48733793528,
-      "den": 75179,
-      "rate": 95.58
+      "num": 94323.6957448595,
+      "den": 98697,
+      "rate": 95.57
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.55
+     "days": 31,
+     "pct": 1.56
     }
    }
   },
@@ -8567,40 +9293,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 2576,
-     "den": 2602,
-     "rate": 99.0
+     "num": 3358,
+     "den": 3389,
+     "rate": 99.09
     },
     "speed": {
-     "num": 15440,
-     "den": 419760,
-     "rate": 3.68
+     "num": 20413,
+     "den": 549217,
+     "rate": 3.72
     },
     "redlight": {
-     "num": 16042,
-     "den": 101947,
-     "rate": 15.74
+     "num": 20728,
+     "den": 133017,
+     "rate": 15.58
     },
     "reverse": {
-     "num": 2766270,
-     "den": 122158795,
-     "rate": 2.26
+     "num": 3626785,
+     "den": 160040852,
+     "rate": 2.27
     },
     "clothing": {
      "cloth": {
-      "num": 1739,
-      "den": 1762,
-      "rate": 98.69
+      "num": 2310,
+      "den": 2341,
+      "rate": 98.68
      },
      "vis": {
-      "num": 71854.48733793528,
-      "den": 75179,
-      "rate": 95.58
+      "num": 94323.6957448595,
+      "den": 98697,
+      "rate": 95.57
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.55
+     "days": 31,
+     "pct": 1.56
     }
    }
   },
@@ -8688,40 +9414,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 3815,
-     "den": 3864,
-     "rate": 98.73
+     "num": 4913,
+     "den": 4979,
+     "rate": 98.67
     },
     "speed": {
-     "num": 22109,
-     "den": 695195,
-     "rate": 3.18
+     "num": 29147,
+     "den": 901270,
+     "rate": 3.23
     },
     "redlight": {
-     "num": 18446,
-     "den": 133601,
-     "rate": 13.81
+     "num": 23801,
+     "den": 172680,
+     "rate": 13.78
     },
     "reverse": {
-     "num": 3934563,
-     "den": 133699914,
-     "rate": 2.94
+     "num": 5124983,
+     "den": 173712428,
+     "rate": 2.95
     },
     "clothing": {
      "cloth": {
-      "num": 2481,
-      "den": 2531,
-      "rate": 98.02
+      "num": 3313,
+      "den": 3381,
+      "rate": 97.99
      },
      "vis": {
-      "num": 88167.55828495337,
-      "den": 91880,
-      "rate": 95.96
+      "num": 116169.46253489004,
+      "den": 121589,
+      "rate": 95.54
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.44
+     "days": 31,
+     "pct": 1.5
     }
    }
   },
@@ -8809,40 +9535,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 2240,
-     "den": 2269,
-     "rate": 98.72
+     "num": 2914,
+     "den": 2951,
+     "rate": 98.75
     },
     "speed": {
-     "num": 13303,
-     "den": 399342,
-     "rate": 3.33
+     "num": 17951,
+     "den": 524724,
+     "rate": 3.42
     },
     "redlight": {
-     "num": 11481,
-     "den": 85479,
-     "rate": 13.43
+     "num": 14822,
+     "den": 111748,
+     "rate": 13.26
     },
     "reverse": {
-     "num": 2488396,
-     "den": 85682709,
-     "rate": 2.9
+     "num": 3275990,
+     "den": 112673872,
+     "rate": 2.91
     },
     "clothing": {
      "cloth": {
-      "num": 1443,
-      "den": 1480,
-      "rate": 97.5
+      "num": 1946,
+      "den": 1996,
+      "rate": 97.49
      },
      "vis": {
-      "num": 52041.09231860352,
-      "den": 53921,
-      "rate": 96.51
+      "num": 69870.66313161467,
+      "den": 72605,
+      "rate": 96.23
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.51
+     "days": 31,
+     "pct": 0.65
     }
    }
   },
@@ -8930,40 +9656,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 535,
-     "den": 540,
-     "rate": 99.07
+     "num": 673,
+     "den": 681,
+     "rate": 98.83
     },
     "speed": {
-     "num": 2709,
-     "den": 83534,
-     "rate": 3.24
+     "num": 3327,
+     "den": 104938,
+     "rate": 3.17
     },
     "redlight": {
-     "num": 1333,
-     "den": 12304,
-     "rate": 10.83
+     "num": 1644,
+     "den": 15296,
+     "rate": 10.75
     },
     "reverse": {
-     "num": 527987,
-     "den": 19280871,
-     "rate": 2.74
+     "num": 667434,
+     "den": 24216399,
+     "rate": 2.76
     },
     "clothing": {
      "cloth": {
-      "num": 364,
-      "den": 367,
-      "rate": 99.18
+      "num": 475,
+      "den": 478,
+      "rate": 99.37
      },
      "vis": {
-      "num": 12349.887110088392,
-      "den": 12834,
-      "rate": 96.23
+      "num": 15722.074539074581,
+      "den": 16372,
+      "rate": 96.03
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.45
+     "days": 31,
+     "pct": 1.27
     }
    }
   },
@@ -9051,40 +9777,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1040,
-     "den": 1055,
-     "rate": 98.58
+     "num": 1326,
+     "den": 1347,
+     "rate": 98.44
     },
     "speed": {
-     "num": 6097,
-     "den": 212319,
-     "rate": 2.87
+     "num": 7869,
+     "den": 271608,
+     "rate": 2.9
     },
     "redlight": {
-     "num": 5632,
-     "den": 35818,
-     "rate": 15.72
+     "num": 7335,
+     "den": 45636,
+     "rate": 16.07
     },
     "reverse": {
-     "num": 918180,
-     "den": 28736334,
-     "rate": 3.2
+     "num": 1181559,
+     "den": 36822157,
+     "rate": 3.21
     },
     "clothing": {
      "cloth": {
-      "num": 674,
-      "den": 684,
-      "rate": 98.54
+      "num": 892,
+      "den": 907,
+      "rate": 98.35
      },
      "vis": {
-      "num": 23776.57885626141,
-      "den": 25125,
-      "rate": 94.63
+      "num": 30576.724864200816,
+      "den": 32612,
+      "rate": 93.76
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 2.36
+     "days": 31,
+     "pct": 2.58
     }
    }
   },
@@ -9172,40 +9898,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 3173,
-     "den": 3212,
-     "rate": 98.79
+     "num": 4117,
+     "den": 4160,
+     "rate": 98.97
     },
     "speed": {
-     "num": 12759,
-     "den": 460519,
-     "rate": 2.77
+     "num": 16655,
+     "den": 593509,
+     "rate": 2.81
     },
     "redlight": {
-     "num": 17827,
-     "den": 81961,
-     "rate": 21.75
+     "num": 23246,
+     "den": 106159,
+     "rate": 21.9
     },
     "reverse": {
-     "num": 4385497,
-     "den": 160488173,
-     "rate": 2.73
+     "num": 5586128,
+     "den": 207627972,
+     "rate": 2.69
     },
     "clothing": {
      "cloth": {
-      "num": 1894,
-      "den": 1961,
-      "rate": 96.58
+      "num": 2722,
+      "den": 2809,
+      "rate": 96.9
      },
      "vis": {
-      "num": 76197.52789784153,
-      "den": 79779,
-      "rate": 95.51
+      "num": 107896.47100689456,
+      "den": 112954,
+      "rate": 95.52
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.29
+     "days": 31,
+     "pct": 1.35
     }
    }
   },
@@ -9293,40 +10019,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1830,
-     "den": 1849,
-     "rate": 98.97
+     "num": 2357,
+     "den": 2376,
+     "rate": 99.2
     },
     "speed": {
-     "num": 6388,
-     "den": 259404,
-     "rate": 2.46
+     "num": 8606,
+     "den": 332253,
+     "rate": 2.59
     },
     "redlight": {
-     "num": 9901,
-     "den": 45596,
-     "rate": 21.71
+     "num": 12908,
+     "den": 58765,
+     "rate": 21.97
     },
     "reverse": {
-     "num": 2200701,
-     "den": 88170388,
-     "rate": 2.5
+     "num": 2777178,
+     "den": 113333849,
+     "rate": 2.45
     },
     "clothing": {
      "cloth": {
-      "num": 1106,
-      "den": 1148,
-      "rate": 96.34
+      "num": 1571,
+      "den": 1626,
+      "rate": 96.62
      },
      "vis": {
-      "num": 43137.01703117189,
-      "den": 45187,
-      "rate": 95.46
+      "num": 60786.07454544453,
+      "den": 63762,
+      "rate": 95.33
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.31
+     "days": 31,
+     "pct": 1.67
     }
    }
   },
@@ -9414,40 +10140,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1343,
-     "den": 1363,
-     "rate": 98.53
+     "num": 1760,
+     "den": 1784,
+     "rate": 98.65
     },
     "speed": {
-     "num": 6371,
-     "den": 201115,
-     "rate": 3.17
+     "num": 8049,
+     "den": 261256,
+     "rate": 3.08
     },
     "redlight": {
-     "num": 7926,
-     "den": 36365,
-     "rate": 21.8
+     "num": 10338,
+     "den": 47394,
+     "rate": 21.81
     },
     "reverse": {
-     "num": 2184796,
-     "den": 72317785,
-     "rate": 3.02
+     "num": 2808950,
+     "den": 94294123,
+     "rate": 2.98
     },
     "clothing": {
      "cloth": {
-      "num": 788,
-      "den": 813,
-      "rate": 96.92
+      "num": 1151,
+      "den": 1183,
+      "rate": 97.3
      },
      "vis": {
-      "num": 33060.51086666969,
-      "den": 34592,
-      "rate": 95.57
+      "num": 47110.39646145,
+      "den": 49192,
+      "rate": 95.77
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.27
+     "days": 31,
+     "pct": 1.04
     }
    }
   },
@@ -9535,40 +10261,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 7407,
-     "den": 7479,
-     "rate": 99.04
+     "num": 9557,
+     "den": 9639,
+     "rate": 99.15
     },
     "speed": {
-     "num": 31525,
-     "den": 1124637,
-     "rate": 2.8
+     "num": 40350,
+     "den": 1447078,
+     "rate": 2.79
     },
     "redlight": {
-     "num": 32153,
-     "den": 148623,
-     "rate": 21.63
+     "num": 40529,
+     "den": 189065,
+     "rate": 21.44
     },
     "reverse": {
-     "num": 10213118,
-     "den": 355986281,
-     "rate": 2.87
+     "num": 12961565,
+     "den": 456605776,
+     "rate": 2.84
     },
     "clothing": {
      "cloth": {
-      "num": 5975,
-      "den": 6088,
+      "num": 7533,
+      "den": 7676,
       "rate": 98.14
      },
      "vis": {
-      "num": 221650.0851994297,
-      "den": 234440,
-      "rate": 94.54
+      "num": 274409.771703078,
+      "den": 290213,
+      "rate": 94.55
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.95
+     "days": 31,
+     "pct": 2.03
     }
    }
   },
@@ -9656,40 +10382,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1725,
-     "den": 1742,
-     "rate": 99.02
+     "num": 2234,
+     "den": 2254,
+     "rate": 99.11
     },
     "speed": {
-     "num": 6472,
-     "den": 266167,
-     "rate": 2.43
+     "num": 8171,
+     "den": 341584,
+     "rate": 2.39
     },
     "redlight": {
-     "num": 6093,
-     "den": 28556,
-     "rate": 21.34
+     "num": 7708,
+     "den": 36420,
+     "rate": 21.16
     },
     "reverse": {
-     "num": 2153316,
-     "den": 86861146,
-     "rate": 2.48
+     "num": 2719146,
+     "den": 111274100,
+     "rate": 2.44
     },
     "clothing": {
      "cloth": {
-      "num": 1388,
-      "den": 1417,
-      "rate": 97.95
+      "num": 1760,
+      "den": 1794,
+      "rate": 98.1
      },
      "vis": {
-      "num": 50620.484430950775,
-      "den": 53528,
-      "rate": 94.57
+      "num": 62029.1575369486,
+      "den": 65821,
+      "rate": 94.24
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.55
+     "days": 31,
+     "pct": 0.56
     }
    }
   },
@@ -9777,39 +10503,39 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 459,
-     "den": 462,
-     "rate": 99.35
+     "num": 592,
+     "den": 595,
+     "rate": 99.5
     },
     "speed": {
-     "num": 764,
-     "den": 73659,
-     "rate": 1.04
+     "num": 944,
+     "den": 93887,
+     "rate": 1.01
     },
     "redlight": {
-     "num": 2268,
-     "den": 11844,
-     "rate": 19.15
+     "num": 2893,
+     "den": 15186,
+     "rate": 19.05
     },
     "reverse": {
-     "num": 760124,
-     "den": 25330876,
-     "rate": 3.0
+     "num": 962939,
+     "den": 32232923,
+     "rate": 2.99
     },
     "clothing": {
      "cloth": {
-      "num": 365,
-      "den": 364,
-      "rate": 100.27
+      "num": 460,
+      "den": 459,
+      "rate": 100.22
      },
      "vis": {
-      "num": 14055.207415347746,
-      "den": 14485,
-      "rate": 97.03
+      "num": 17327.10616852747,
+      "den": 17912,
+      "rate": 96.73
      }
     },
     "high_speed": {
-     "days": 24,
+     "days": 31,
      "pct": 0.0
     }
    }
@@ -9898,40 +10624,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 2258,
-     "den": 2290,
-     "rate": 98.6
+     "num": 2914,
+     "den": 2950,
+     "rate": 98.78
     },
     "speed": {
-     "num": 10761,
-     "den": 343228,
-     "rate": 3.14
+     "num": 13802,
+     "den": 442734,
+     "rate": 3.12
     },
     "redlight": {
-     "num": 10722,
-     "den": 51122,
-     "rate": 20.97
+     "num": 13634,
+     "den": 64913,
+     "rate": 21.0
     },
     "reverse": {
-     "num": 2743044,
-     "den": 94813128,
-     "rate": 2.89
+     "num": 3463855,
+     "den": 121824357,
+     "rate": 2.84
     },
     "clothing": {
      "cloth": {
-      "num": 1840,
-      "den": 1886,
-      "rate": 97.56
+      "num": 2316,
+      "den": 2377,
+      "rate": 97.43
      },
      "vis": {
-      "num": 72546.2955617669,
-      "den": 77192,
-      "rate": 93.98
+      "num": 90391.86163475501,
+      "den": 95843,
+      "rate": 94.31
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.63
+     "days": 31,
+     "pct": 0.61
     }
    }
   },
@@ -10019,40 +10745,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 644,
-     "den": 645,
-     "rate": 99.84
+     "num": 830,
+     "den": 832,
+     "rate": 99.76
     },
     "speed": {
-     "num": 3613,
-     "den": 124471,
-     "rate": 2.9
+     "num": 4815,
+     "den": 162032,
+     "rate": 2.97
     },
     "redlight": {
-     "num": 3070,
-     "den": 15177,
-     "rate": 20.23
+     "num": 3895,
+     "den": 19680,
+     "rate": 19.79
     },
     "reverse": {
-     "num": 676804,
-     "den": 32236846,
-     "rate": 2.1
+     "num": 880732,
+     "den": 41803475,
+     "rate": 2.11
     },
     "clothing": {
      "cloth": {
-      "num": 511,
-      "den": 513,
-      "rate": 99.61
+      "num": 644,
+      "den": 646,
+      "rate": 99.69
      },
      "vis": {
-      "num": 16936.76964426513,
-      "den": 17917,
-      "rate": 94.53
+      "num": 21218.221089616334,
+      "den": 22514,
+      "rate": 94.24
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 5.55
+     "days": 31,
+     "pct": 5.73
     }
    }
   },
@@ -10140,40 +10866,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1352,
-     "den": 1362,
-     "rate": 99.27
+     "num": 1746,
+     "den": 1757,
+     "rate": 99.37
     },
     "speed": {
-     "num": 4815,
-     "den": 168248,
-     "rate": 2.86
+     "num": 6153,
+     "den": 215996,
+     "rate": 2.85
     },
     "redlight": {
-     "num": 4409,
-     "den": 19830,
-     "rate": 22.23
+     "num": 5553,
+     "den": 24854,
+     "rate": 22.34
     },
     "reverse": {
-     "num": 2130658,
-     "den": 66891591,
-     "rate": 3.19
+     "num": 2728955,
+     "den": 85354234,
+     "rate": 3.2
     },
     "clothing": {
      "cloth": {
-      "num": 1092,
-      "den": 1106,
-      "rate": 98.73
+      "num": 1379,
+      "den": 1393,
+      "rate": 98.99
      },
      "vis": {
-      "num": 37922.53173103328,
-      "den": 40571,
-      "rate": 93.47
+      "num": 46947.37636678788,
+      "den": 50194,
+      "rate": 93.53
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 3.5
+     "days": 31,
+     "pct": 3.8
     }
    }
   },
@@ -10261,40 +10987,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 969,
-     "den": 978,
-     "rate": 99.08
+     "num": 1241,
+     "den": 1251,
+     "rate": 99.2
     },
     "speed": {
-     "num": 5100,
-     "den": 148864,
-     "rate": 3.43
+     "num": 6465,
+     "den": 190845,
+     "rate": 3.39
     },
     "redlight": {
-     "num": 5591,
-     "den": 22094,
-     "rate": 25.31
+     "num": 6846,
+     "den": 28012,
+     "rate": 24.44
     },
     "reverse": {
-     "num": 1749172,
-     "den": 49852694,
-     "rate": 3.51
+     "num": 2205938,
+     "den": 64116687,
+     "rate": 3.44
     },
     "clothing": {
      "cloth": {
-      "num": 779,
-      "den": 802,
-      "rate": 97.13
+      "num": 974,
+      "den": 1007,
+      "rate": 96.72
      },
      "vis": {
-      "num": 29568.79641606634,
-      "den": 30747,
-      "rate": 96.17
+      "num": 36496.04890644341,
+      "den": 37929,
+      "rate": 96.22
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.49
+     "days": 31,
+     "pct": 1.46
     }
    }
   },
@@ -10382,40 +11108,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 3403,
-     "den": 3467,
-     "rate": 98.15
+     "num": 4383,
+     "den": 4462,
+     "rate": 98.23
     },
     "speed": {
-     "num": 11121,
-     "den": 514935,
-     "rate": 2.16
+     "num": 14731,
+     "den": 668531,
+     "rate": 2.2
     },
     "redlight": {
-     "num": 16672,
-     "den": 92003,
-     "rate": 18.12
+     "num": 21850,
+     "den": 120153,
+     "rate": 18.19
     },
     "reverse": {
-     "num": 4477870,
-     "den": 123564805,
-     "rate": 3.62
+     "num": 5719016,
+     "den": 160487373,
+     "rate": 3.56
     },
     "clothing": {
      "cloth": {
-      "num": 2495,
-      "den": 2504,
-      "rate": 99.64
+      "num": 3517,
+      "den": 3531,
+      "rate": 99.6
      },
      "vis": {
-      "num": 99837.7075849561,
-      "den": 105204,
-      "rate": 94.9
+      "num": 138862.3462078513,
+      "den": 146287,
+      "rate": 94.92
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.56
+     "days": 31,
+     "pct": 0.47
     }
    }
   },
@@ -10503,40 +11229,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 728,
-     "den": 742,
-     "rate": 98.11
+     "num": 944,
+     "den": 960,
+     "rate": 98.33
     },
     "speed": {
-     "num": 2310,
-     "den": 118945,
-     "rate": 1.94
+     "num": 3109,
+     "den": 154030,
+     "rate": 2.02
     },
     "redlight": {
-     "num": 3882,
-     "den": 22192,
-     "rate": 17.49
+     "num": 5052,
+     "den": 28791,
+     "rate": 17.55
     },
     "reverse": {
-     "num": 1029728,
-     "den": 26608885,
-     "rate": 3.87
+     "num": 1313530,
+     "den": 34420555,
+     "rate": 3.82
     },
     "clothing": {
      "cloth": {
-      "num": 546,
-      "den": 546,
+      "num": 774,
+      "den": 774,
       "rate": 100.0
      },
      "vis": {
-      "num": 21391.259026483272,
-      "den": 22495,
-      "rate": 95.09
+      "num": 29839.934419928108,
+      "den": 31222,
+      "rate": 95.57
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.27
+     "days": 31,
+     "pct": 0.98
     }
    }
   },
@@ -10624,40 +11350,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 980,
-     "den": 1001,
-     "rate": 97.9
+     "num": 1262,
+     "den": 1288,
+     "rate": 97.98
     },
     "speed": {
-     "num": 3158,
-     "den": 156709,
-     "rate": 2.02
+     "num": 4286,
+     "den": 204475,
+     "rate": 2.1
     },
     "redlight": {
-     "num": 5861,
-     "den": 27610,
-     "rate": 21.23
+     "num": 7916,
+     "den": 36666,
+     "rate": 21.59
     },
     "reverse": {
-     "num": 1182409,
-     "den": 38191854,
-     "rate": 3.1
+     "num": 1504384,
+     "den": 50070525,
+     "rate": 3.0
     },
     "clothing": {
      "cloth": {
-      "num": 723,
-      "den": 725,
-      "rate": 99.72
+      "num": 1023,
+      "den": 1025,
+      "rate": 99.8
      },
      "vis": {
-      "num": 27855.114421890077,
-      "den": 29794,
-      "rate": 93.49
+      "num": 38829.571979478365,
+      "den": 41630,
+      "rate": 93.27
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.58
+     "days": 31,
+     "pct": 0.53
     }
    }
   },
@@ -10745,39 +11471,39 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 350,
-     "den": 351,
-     "rate": 99.72
+     "num": 454,
+     "den": 455,
+     "rate": 99.78
     },
     "speed": {
-     "num": 894,
-     "den": 49103,
-     "rate": 1.82
+     "num": 1155,
+     "den": 63769,
+     "rate": 1.81
     },
     "redlight": {
-     "num": 874,
-     "den": 6462,
-     "rate": 13.53
+     "num": 1164,
+     "den": 8479,
+     "rate": 13.73
     },
     "reverse": {
-     "num": 432498,
-     "den": 13890453,
-     "rate": 3.11
+     "num": 548508,
+     "den": 18084214,
+     "rate": 3.03
     },
     "clothing": {
      "cloth": {
-      "num": 249,
-      "den": 249,
-      "rate": 100.0
+      "num": 352,
+      "den": 355,
+      "rate": 99.15
      },
      "vis": {
-      "num": 8347.346429780717,
-      "den": 8620,
-      "rate": 96.84
+      "num": 11567.605362896627,
+      "den": 11931,
+      "rate": 96.95
      }
     },
     "high_speed": {
-     "days": 24,
+     "days": 31,
      "pct": 0.0
     }
    }
@@ -10866,40 +11592,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1345,
-     "den": 1373,
-     "rate": 97.96
+     "num": 1723,
+     "den": 1759,
+     "rate": 97.95
     },
     "speed": {
-     "num": 4759,
-     "den": 190178,
-     "rate": 2.5
+     "num": 6181,
+     "den": 246257,
+     "rate": 2.51
     },
     "redlight": {
-     "num": 6055,
-     "den": 35739,
-     "rate": 16.94
+     "num": 7718,
+     "den": 46217,
+     "rate": 16.7
     },
     "reverse": {
-     "num": 1833235,
-     "den": 44873613,
-     "rate": 4.09
+     "num": 2352594,
+     "den": 57912079,
+     "rate": 4.06
     },
     "clothing": {
      "cloth": {
-      "num": 977,
-      "den": 984,
-      "rate": 99.29
+      "num": 1368,
+      "den": 1377,
+      "rate": 99.35
      },
      "vis": {
-      "num": 42243.987706802145,
-      "den": 44295,
-      "rate": 95.37
+      "num": 58625.23444554825,
+      "den": 61504,
+      "rate": 95.32
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.37
+     "days": 31,
+     "pct": 0.35
     }
    }
   },
@@ -10987,40 +11713,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 2192,
-     "den": 2209,
-     "rate": 99.23
+     "num": 2820,
+     "den": 2841,
+     "rate": 99.26
     },
     "speed": {
-     "num": 5692,
-     "den": 279991,
-     "rate": 2.03
+     "num": 7403,
+     "den": 357069,
+     "rate": 2.07
     },
     "redlight": {
-     "num": 8950,
-     "den": 64252,
-     "rate": 13.93
+     "num": 11325,
+     "den": 81698,
+     "rate": 13.86
     },
     "reverse": {
-     "num": 1082278,
-     "den": 62328973,
-     "rate": 1.74
+     "num": 1374868,
+     "den": 79759861,
+     "rate": 1.72
     },
     "clothing": {
      "cloth": {
-      "num": 1200,
-      "den": 1204,
-      "rate": 99.67
+      "num": 1832,
+      "den": 1841,
+      "rate": 99.51
      },
      "vis": {
-      "num": 44249.82517161748,
-      "den": 47325,
-      "rate": 93.5
+      "num": 66552.8628075875,
+      "den": 71054,
+      "rate": 93.67
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.49
+     "days": 31,
+     "pct": 0.47
     }
    }
   },
@@ -11108,40 +11834,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 2192,
-     "den": 2209,
-     "rate": 99.23
+     "num": 2820,
+     "den": 2841,
+     "rate": 99.26
     },
     "speed": {
-     "num": 5692,
-     "den": 279991,
-     "rate": 2.03
+     "num": 7403,
+     "den": 357069,
+     "rate": 2.07
     },
     "redlight": {
-     "num": 8950,
-     "den": 64252,
-     "rate": 13.93
+     "num": 11325,
+     "den": 81698,
+     "rate": 13.86
     },
     "reverse": {
-     "num": 1082278,
-     "den": 62328973,
-     "rate": 1.74
+     "num": 1374868,
+     "den": 79759861,
+     "rate": 1.72
     },
     "clothing": {
      "cloth": {
-      "num": 1200,
-      "den": 1204,
-      "rate": 99.67
+      "num": 1832,
+      "den": 1841,
+      "rate": 99.51
      },
      "vis": {
-      "num": 44249.82517161748,
-      "den": 47325,
-      "rate": 93.5
+      "num": 66552.8628075875,
+      "den": 71054,
+      "rate": 93.67
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.49
+     "days": 31,
+     "pct": 0.47
     }
    }
   },
@@ -11229,40 +11955,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 26601,
-     "den": 26870,
-     "rate": 99.0
+     "num": 34233,
+     "den": 34596,
+     "rate": 98.95
     },
     "speed": {
-     "num": 181572,
-     "den": 5094211,
-     "rate": 3.56
+     "num": 230766,
+     "den": 6522274,
+     "rate": 3.54
     },
     "redlight": {
-     "num": 240784,
-     "den": 1300915,
-     "rate": 18.51
+     "num": 303427,
+     "den": 1667964,
+     "rate": 18.19
     },
     "reverse": {
-     "num": 27153886,
-     "den": 1222011185,
-     "rate": 2.22
+     "num": 34600207,
+     "den": 1569411309,
+     "rate": 2.2
     },
     "clothing": {
      "cloth": {
-      "num": 23559,
-      "den": 24119,
-      "rate": 97.68
+      "num": 30517,
+      "den": 31248,
+      "rate": 97.66
      },
      "vis": {
-      "num": 752795.9794862156,
-      "den": 894278,
-      "rate": 84.18
+      "num": 960378.7640006542,
+      "den": 1140782,
+      "rate": 84.19
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 3.08
+     "days": 31,
+     "pct": 3.16
     }
    }
   },
@@ -11350,40 +12076,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 5970,
-     "den": 6031,
-     "rate": 98.99
+     "num": 7712,
+     "den": 7793,
+     "rate": 98.96
     },
     "speed": {
-     "num": 44420,
-     "den": 1301564,
-     "rate": 3.41
+     "num": 56395,
+     "den": 1673122,
+     "rate": 3.37
     },
     "redlight": {
-     "num": 59663,
-     "den": 334746,
-     "rate": 17.82
+     "num": 74806,
+     "den": 429713,
+     "rate": 17.41
     },
     "reverse": {
-     "num": 5021234,
-     "den": 233442820,
-     "rate": 2.15
+     "num": 6395618,
+     "den": 302502796,
+     "rate": 2.11
     },
     "clothing": {
      "cloth": {
-      "num": 5168,
-      "den": 5287,
-      "rate": 97.75
+      "num": 6962,
+      "den": 7123,
+      "rate": 97.74
      },
      "vis": {
-      "num": 192084.82308513674,
-      "den": 205306,
-      "rate": 93.56
+      "num": 254395.99146741047,
+      "den": 271189,
+      "rate": 93.81
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 4.75
+     "days": 31,
+     "pct": 4.84
     }
    }
   },
@@ -11471,40 +12197,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 2433,
-     "den": 2476,
-     "rate": 98.26
+     "num": 3140,
+     "den": 3195,
+     "rate": 98.28
     },
     "speed": {
-     "num": 17285,
-     "den": 587317,
-     "rate": 2.94
+     "num": 22364,
+     "den": 757392,
+     "rate": 2.95
     },
     "redlight": {
-     "num": 26247,
-     "den": 144836,
-     "rate": 18.12
+     "num": 33287,
+     "den": 187382,
+     "rate": 17.76
     },
     "reverse": {
-     "num": 1897623,
-     "den": 88267083,
-     "rate": 2.15
+     "num": 2420542,
+     "den": 115004030,
+     "rate": 2.1
     },
     "clothing": {
      "cloth": {
-      "num": 2107,
-      "den": 2176,
-      "rate": 96.83
+      "num": 2835,
+      "den": 2930,
+      "rate": 96.76
      },
      "vis": {
-      "num": 81682.51612486519,
-      "den": 87145,
-      "rate": 93.73
+      "num": 108153.90926084768,
+      "den": 115097,
+      "rate": 93.97
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.14
+     "days": 31,
+     "pct": 1.2
     }
    }
   },
@@ -11592,40 +12318,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 2614,
-     "den": 2628,
-     "rate": 99.47
+     "num": 3384,
+     "den": 3405,
+     "rate": 99.38
     },
     "speed": {
-     "num": 19777,
-     "den": 488889,
-     "rate": 4.05
+     "num": 24718,
+     "den": 626260,
+     "rate": 3.95
     },
     "redlight": {
-     "num": 22340,
-     "den": 131733,
-     "rate": 16.96
+     "num": 27739,
+     "den": 167730,
+     "rate": 16.54
     },
     "reverse": {
-     "num": 2039272,
-     "den": 104426473,
-     "rate": 1.95
+     "num": 2613445,
+     "den": 134756531,
+     "rate": 1.94
     },
     "clothing": {
      "cloth": {
-      "num": 2262,
-      "den": 2299,
-      "rate": 98.39
+      "num": 3055,
+      "den": 3104,
+      "rate": 98.42
      },
      "vis": {
-      "num": 82704.07333581595,
-      "den": 88858,
-      "rate": 93.07
+      "num": 109970.29297221638,
+      "den": 117647,
+      "rate": 93.47
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 10.15
+     "days": 31,
+     "pct": 10.73
     }
    }
   },
@@ -11713,40 +12439,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 923,
-     "den": 927,
-     "rate": 99.57
+     "num": 1188,
+     "den": 1193,
+     "rate": 99.58
     },
     "speed": {
-     "num": 7358,
-     "den": 225358,
-     "rate": 3.27
+     "num": 9313,
+     "den": 289470,
+     "rate": 3.22
     },
     "redlight": {
-     "num": 11076,
-     "den": 58177,
-     "rate": 19.04
+     "num": 13780,
+     "den": 74601,
+     "rate": 18.47
     },
     "reverse": {
-     "num": 1084339,
-     "den": 40749264,
-     "rate": 2.66
+     "num": 1361631,
+     "den": 52742235,
+     "rate": 2.58
     },
     "clothing": {
      "cloth": {
-      "num": 799,
-      "den": 812,
-      "rate": 98.4
+      "num": 1072,
+      "den": 1089,
+      "rate": 98.44
      },
      "vis": {
-      "num": 27698.233624455734,
-      "den": 29303,
-      "rate": 94.52
+      "num": 36271.789234346565,
+      "den": 38445,
+      "rate": 94.35
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 2.95
+     "days": 31,
+     "pct": 2.58
     }
    }
   },
@@ -11834,40 +12560,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 6044,
-     "den": 6083,
-     "rate": 99.36
+     "num": 7786,
+     "den": 7846,
+     "rate": 99.24
     },
     "speed": {
-     "num": 25740,
-     "den": 851230,
-     "rate": 3.02
+     "num": 32689,
+     "den": 1095445,
+     "rate": 2.98
     },
     "redlight": {
-     "num": 39425,
-     "den": 211373,
-     "rate": 18.65
+     "num": 49815,
+     "den": 271269,
+     "rate": 18.36
     },
     "reverse": {
-     "num": 6500108,
-     "den": 325643368,
-     "rate": 2.0
+     "num": 8270763,
+     "den": 418767409,
+     "rate": 1.98
     },
     "clothing": {
      "cloth": {
-      "num": 5917,
-      "den": 6025,
-      "rate": 98.21
+      "num": 7430,
+      "den": 7580,
+      "rate": 98.02
      },
      "vis": {
-      "num": 215094.6499633103,
-      "den": 228636,
+      "num": 265413.07303743175,
+      "den": 282100,
       "rate": 94.08
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 3.4
+     "days": 31,
+     "pct": 3.15
     }
    }
   },
@@ -11955,40 +12681,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1040,
-     "den": 1042,
-     "rate": 99.81
+     "num": 1349,
+     "den": 1353,
+     "rate": 99.7
     },
     "speed": {
-     "num": 4580,
-     "den": 166975,
-     "rate": 2.74
+     "num": 5903,
+     "den": 216152,
+     "rate": 2.73
     },
     "redlight": {
-     "num": 5318,
-     "den": 39077,
-     "rate": 13.61
+     "num": 6797,
+     "den": 50339,
+     "rate": 13.5
     },
     "reverse": {
-     "num": 1000204,
-     "den": 53208408,
-     "rate": 1.88
+     "num": 1292959,
+     "den": 68218481,
+     "rate": 1.9
     },
     "clothing": {
      "cloth": {
-      "num": 1036,
-      "den": 1077,
+      "num": 1312,
+      "den": 1364,
       "rate": 96.19
      },
      "vis": {
-      "num": 37039.95017006057,
-      "den": 37951,
-      "rate": 97.6
+      "num": 45904.65414500605,
+      "den": 47042,
+      "rate": 97.58
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 4.63
+     "days": 31,
+     "pct": 4.16
     }
    }
   },
@@ -12076,40 +12802,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 366,
-     "den": 368,
-     "rate": 99.46
+     "num": 468,
+     "den": 472,
+     "rate": 99.15
     },
     "speed": {
-     "num": 599,
-     "den": 38290,
-     "rate": 1.56
+     "num": 748,
+     "den": 48764,
+     "rate": 1.53
     },
     "redlight": {
-     "num": 1271,
-     "den": 11294,
-     "rate": 11.25
+     "num": 1565,
+     "den": 14315,
+     "rate": 10.93
     },
     "reverse": {
-     "num": 56993,
-     "den": 14831562,
-     "rate": 0.38
+     "num": 69313,
+     "den": 18902373,
+     "rate": 0.37
     },
     "clothing": {
      "cloth": {
-      "num": 352,
-      "den": 352,
+      "num": 439,
+      "den": 439,
       "rate": 100.0
      },
      "vis": {
-      "num": 11736.288793560772,
-      "den": 11927,
-      "rate": 98.4
+      "num": 14351.59271587722,
+      "den": 14665,
+      "rate": 97.86
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 2.6
+     "days": 31,
+     "pct": 2.24
     }
    }
   },
@@ -12197,40 +12923,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 2089,
-     "den": 2105,
-     "rate": 99.24
+     "num": 2686,
+     "den": 2703,
+     "rate": 99.37
     },
     "speed": {
-     "num": 7833,
-     "den": 303141,
-     "rate": 2.58
+     "num": 9932,
+     "den": 386955,
+     "rate": 2.57
     },
     "redlight": {
-     "num": 14835,
-     "den": 77315,
-     "rate": 19.19
+     "num": 18650,
+     "den": 98555,
+     "rate": 18.92
     },
     "reverse": {
-     "num": 2346675,
-     "den": 123102591,
-     "rate": 1.91
+     "num": 2974770,
+     "den": 157196873,
+     "rate": 1.89
     },
     "clothing": {
      "cloth": {
-      "num": 2043,
-      "den": 2090,
-      "rate": 97.75
+      "num": 2553,
+      "den": 2618,
+      "rate": 97.52
      },
      "vis": {
-      "num": 79693.50065826777,
-      "den": 86231,
-      "rate": 92.42
+      "num": 98110.61518272085,
+      "den": 105840,
+      "rate": 92.7
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.64
+     "days": 31,
+     "pct": 1.53
     }
    }
   },
@@ -12318,40 +13044,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 2549,
-     "den": 2568,
-     "rate": 99.26
+     "num": 3283,
+     "den": 3318,
+     "rate": 98.95
     },
     "speed": {
-     "num": 12728,
-     "den": 342824,
-     "rate": 3.71
+     "num": 16106,
+     "den": 443574,
+     "rate": 3.63
     },
     "redlight": {
-     "num": 18001,
-     "den": 83687,
-     "rate": 21.51
+     "num": 22803,
+     "den": 108060,
+     "rate": 21.1
     },
     "reverse": {
-     "num": 3096236,
-     "den": 134500807,
-     "rate": 2.3
+     "num": 3933721,
+     "den": 174449682,
+     "rate": 2.25
     },
     "clothing": {
      "cloth": {
-      "num": 2486,
-      "den": 2506,
-      "rate": 99.2
+      "num": 3126,
+      "den": 3159,
+      "rate": 98.96
      },
      "vis": {
-      "num": 86624.91034142123,
-      "den": 92527,
-      "rate": 93.62
+      "num": 107046.21099382771,
+      "den": 114553,
+      "rate": 93.45
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 4.75
+     "days": 31,
+     "pct": 4.68
     }
    }
   },
@@ -12439,40 +13165,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 14587,
-     "den": 14756,
-     "rate": 98.85
+     "num": 18735,
+     "den": 18957,
+     "rate": 98.83
     },
     "speed": {
-     "num": 111412,
-     "den": 2941417,
-     "rate": 3.79
+     "num": 141682,
+     "den": 3753707,
+     "rate": 3.77
     },
     "redlight": {
-     "num": 141696,
-     "den": 754796,
-     "rate": 18.77
+     "num": 178806,
+     "den": 966982,
+     "rate": 18.49
     },
     "reverse": {
-     "num": 15632544,
-     "den": 662924997,
-     "rate": 2.36
+     "num": 19933826,
+     "den": 848141104,
+     "rate": 2.35
     },
     "clothing": {
      "cloth": {
-      "num": 12474,
-      "den": 12807,
-      "rate": 97.4
+      "num": 16125,
+      "den": 16545,
+      "rate": 97.46
      },
      "vis": {
-      "num": 345616.5064377664,
-      "den": 460336,
-      "rate": 75.08
+      "num": 440569.6994958114,
+      "den": 587493,
+      "rate": 74.99
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 2.54
+     "days": 31,
+     "pct": 2.73
     }
    }
   },
@@ -12560,40 +13286,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 2822,
-     "den": 2859,
-     "rate": 98.71
+     "num": 3610,
+     "den": 3654,
+     "rate": 98.8
     },
     "speed": {
-     "num": 22007,
-     "den": 570098,
-     "rate": 3.86
+     "num": 27534,
+     "den": 726777,
+     "rate": 3.79
     },
     "redlight": {
-     "num": 25984,
-     "den": 133558,
-     "rate": 19.46
+     "num": 33303,
+     "den": 170676,
+     "rate": 19.51
     },
     "reverse": {
-     "num": 4420169,
-     "den": 138382321,
+     "num": 5613310,
+     "den": 175932136,
      "rate": 3.19
     },
     "clothing": {
      "cloth": {
-      "num": 2391,
-      "den": 2407,
-      "rate": 99.34
+      "num": 3081,
+      "den": 3106,
+      "rate": 99.2
      },
      "vis": {
-      "num": 83343.81268180693,
-      "den": 90472,
-      "rate": 92.12
+      "num": 106721.3946934462,
+      "den": 115333,
+      "rate": 92.53
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.0
+     "days": 31,
+     "pct": 1.24
     }
    }
   },
@@ -12681,40 +13407,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1010,
-     "den": 1012,
-     "rate": 99.8
+     "num": 1304,
+     "den": 1310,
+     "rate": 99.54
     },
     "speed": {
-     "num": 6105,
-     "den": 206323,
-     "rate": 2.96
+     "num": 8254,
+     "den": 264244,
+     "rate": 3.12
     },
     "redlight": {
-     "num": 9183,
-     "den": 68911,
-     "rate": 13.33
+     "num": 11898,
+     "den": 88147,
+     "rate": 13.5
     },
     "reverse": {
-     "num": 809931,
-     "den": 64161331,
-     "rate": 1.26
+     "num": 1042975,
+     "den": 82127395,
+     "rate": 1.27
     },
     "clothing": {
      "cloth": {
-      "num": 849,
-      "den": 869,
-      "rate": 97.7
+      "num": 1102,
+      "den": 1131,
+      "rate": 97.44
      },
      "vis": {
-      "num": 29436.077783605633,
-      "den": 30542,
-      "rate": 96.38
+      "num": 37740.414092850166,
+      "den": 39359,
+      "rate": 95.89
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 1.1
+     "days": 31,
+     "pct": 1.61
     }
    }
   },
@@ -12802,40 +13528,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1285,
-     "den": 1297,
-     "rate": 99.07
+     "num": 1636,
+     "den": 1655,
+     "rate": 98.85
     },
     "speed": {
-     "num": 9254,
-     "den": 264468,
-     "rate": 3.5
+     "num": 11482,
+     "den": 332966,
+     "rate": 3.45
     },
     "redlight": {
-     "num": 15194,
-     "den": 71997,
-     "rate": 21.1
+     "num": 19130,
+     "den": 92106,
+     "rate": 20.77
     },
     "reverse": {
-     "num": 854301,
-     "den": 45227796,
-     "rate": 1.89
+     "num": 1073353,
+     "den": 57549352,
+     "rate": 1.87
     },
     "clothing": {
      "cloth": {
-      "num": 1101,
-      "den": 1123,
-      "rate": 98.04
+      "num": 1412,
+      "den": 1432,
+      "rate": 98.6
      },
      "vis": {
-      "num": 42161.728084536095,
-      "den": 43866,
-      "rate": 96.11
+      "num": 54073.22373659033,
+      "den": 56102,
+      "rate": 96.38
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.07
+     "days": 31,
+     "pct": 0.19
     }
    }
   },
@@ -12923,40 +13649,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1400,
-     "den": 1407,
-     "rate": 99.5
+     "num": 1804,
+     "den": 1811,
+     "rate": 99.61
     },
     "speed": {
-     "num": 8578,
-     "den": 285946,
+     "num": 10994,
+     "den": 366502,
      "rate": 3.0
     },
     "redlight": {
-     "num": 9240,
-     "den": 77618,
-     "rate": 11.9
+     "num": 11732,
+     "den": 99883,
+     "rate": 11.75
     },
     "reverse": {
-     "num": 911529,
-     "den": 49832486,
-     "rate": 1.83
+     "num": 1161526,
+     "den": 64192673,
+     "rate": 1.81
     },
     "clothing": {
      "cloth": {
-      "num": 1176,
-      "den": 1189,
-      "rate": 98.91
+      "num": 1528,
+      "den": 1545,
+      "rate": 98.9
      },
      "vis": {
-      "num": 41991.77426993739,
-      "den": 43380,
-      "rate": 96.8
+      "num": 53843.591861543115,
+      "den": 55563,
+      "rate": 96.91
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.14
+     "days": 31,
+     "pct": 0.22
     }
    }
   },
@@ -13044,40 +13770,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1272,
-     "den": 1297,
-     "rate": 98.07
+     "num": 1640,
+     "den": 1673,
+     "rate": 98.03
     },
     "speed": {
-     "num": 7904,
-     "den": 211047,
-     "rate": 3.75
+     "num": 10117,
+     "den": 270976,
+     "rate": 3.73
     },
     "redlight": {
-     "num": 13948,
-     "den": 67746,
-     "rate": 20.59
+     "num": 17572,
+     "den": 87180,
+     "rate": 20.16
     },
     "reverse": {
-     "num": 1459294,
-     "den": 76168287,
-     "rate": 1.92
+     "num": 1847952,
+     "den": 97620624,
+     "rate": 1.89
     },
     "clothing": {
      "cloth": {
-      "num": 1121,
-      "den": 1282,
-      "rate": 87.44
+      "num": 1451,
+      "den": 1654,
+      "rate": 87.73
      },
      "vis": {
-      "num": 3803.312482576706,
-      "den": 43256,
-      "rate": 8.79
+      "num": 5115.8641694124235,
+      "den": 55953,
+      "rate": 9.14
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 3.06
+     "days": 31,
+     "pct": 2.73
     }
    }
   },
@@ -13165,40 +13891,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 486,
-     "den": 492,
-     "rate": 98.78
+     "num": 631,
+     "den": 640,
+     "rate": 98.59
     },
     "speed": {
-     "num": 2307,
-     "den": 57671,
-     "rate": 4.0
+     "num": 2920,
+     "den": 73731,
+     "rate": 3.96
     },
     "redlight": {
-     "num": 7593,
-     "den": 34600,
-     "rate": 21.95
+     "num": 9451,
+     "den": 44593,
+     "rate": 21.19
     },
     "reverse": {
-     "num": 444411,
-     "den": 29398218,
-     "rate": 1.51
+     "num": 598746,
+     "den": 38339353,
+     "rate": 1.56
     },
     "clothing": {
      "cloth": {
-      "num": 423,
-      "den": 421,
-      "rate": 100.48
+      "num": 559,
+      "den": 556,
+      "rate": 100.54
      },
      "vis": {
-      "num": 6481.398670716101,
-      "den": 14766,
-      "rate": 43.89
+      "num": 8128.018586878131,
+      "den": 18992,
+      "rate": 42.8
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 4.21
+     "days": 31,
+     "pct": 3.83
     }
    }
   },
@@ -13286,40 +14012,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 702,
-     "den": 705,
-     "rate": 99.57
+     "num": 902,
+     "den": 908,
+     "rate": 99.34
     },
     "speed": {
-     "num": 4197,
-     "den": 134494,
-     "rate": 3.12
+     "num": 5400,
+     "den": 171032,
+     "rate": 3.16
     },
     "redlight": {
-     "num": 6406,
-     "den": 37181,
-     "rate": 17.23
+     "num": 8098,
+     "den": 47441,
+     "rate": 17.07
     },
     "reverse": {
-     "num": 922159,
-     "den": 33532002,
+     "num": 1173450,
+     "den": 42732540,
      "rate": 2.75
     },
     "clothing": {
      "cloth": {
-      "num": 591,
-      "den": 587,
-      "rate": 100.68
+      "num": 766,
+      "den": 762,
+      "rate": 100.52
      },
      "vis": {
-      "num": 21355.576181985696,
-      "den": 22155,
-      "rate": 96.39
+      "num": 27060.61321650237,
+      "den": 28093,
+      "rate": 96.33
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 7.19
+     "days": 31,
+     "pct": 8.02
     }
    }
   },
@@ -13407,40 +14133,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1760,
-     "den": 1771,
-     "rate": 99.38
+     "num": 2256,
+     "den": 2273,
+     "rate": 99.25
     },
     "speed": {
-     "num": 13924,
-     "den": 292331,
-     "rate": 4.76
+     "num": 17117,
+     "den": 373002,
+     "rate": 4.59
     },
     "redlight": {
-     "num": 10479,
-     "den": 51455,
-     "rate": 20.37
+     "num": 13057,
+     "den": 65559,
+     "rate": 19.92
     },
     "reverse": {
-     "num": 2293265,
-     "den": 66295004,
-     "rate": 3.46
+     "num": 2920719,
+     "den": 84606109,
+     "rate": 3.45
     },
     "clothing": {
      "cloth": {
-      "num": 1512,
-      "den": 1533,
-      "rate": 98.63
+      "num": 1945,
+      "den": 1969,
+      "rate": 98.78
      },
      "vis": {
-      "num": 48793.420069117084,
-      "den": 52598,
-      "rate": 92.77
+      "num": 62085.52798940408,
+      "den": 66392,
+      "rate": 93.51
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.74
+     "days": 31,
+     "pct": 0.62
     }
    }
   },
@@ -13528,40 +14254,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1225,
-     "den": 1262,
-     "rate": 97.07
+     "num": 1585,
+     "den": 1625,
+     "rate": 97.54
     },
     "speed": {
-     "num": 11695,
-     "den": 241047,
-     "rate": 4.85
+     "num": 14842,
+     "den": 308836,
+     "rate": 4.81
     },
     "redlight": {
-     "num": 13932,
-     "den": 70620,
-     "rate": 19.73
+     "num": 17608,
+     "den": 90968,
+     "rate": 19.36
     },
     "reverse": {
-     "num": 1151461,
-     "den": 66705561,
-     "rate": 1.73
+     "num": 1492721,
+     "den": 85662673,
+     "rate": 1.74
     },
     "clothing": {
      "cloth": {
-      "num": 1052,
-      "den": 1086,
-      "rate": 96.87
+      "num": 1367,
+      "den": 1408,
+      "rate": 97.09
      },
      "vis": {
-      "num": 5058.064660779435,
-      "den": 35513,
-      "rate": 14.24
+      "num": 6039.722865526781,
+      "den": 46339,
+      "rate": 13.03
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 4.95
+     "days": 31,
+     "pct": 5.56
     }
    }
   },
@@ -13649,40 +14375,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 733,
-     "den": 743,
-     "rate": 98.65
+     "num": 947,
+     "den": 962,
+     "rate": 98.44
     },
     "speed": {
-     "num": 5564,
-     "den": 129158,
-     "rate": 4.31
+     "num": 7199,
+     "den": 164643,
+     "rate": 4.37
     },
     "redlight": {
-     "num": 11077,
-     "den": 41353,
-     "rate": 26.79
+     "num": 13565,
+     "den": 53007,
+     "rate": 25.59
     },
     "reverse": {
-     "num": 683369,
-     "den": 39590660,
-     "rate": 1.73
+     "num": 870741,
+     "den": 50748448,
+     "rate": 1.72
     },
     "clothing": {
      "cloth": {
-      "num": 636,
-      "den": 637,
-      "rate": 99.84
+      "num": 826,
+      "den": 827,
+      "rate": 99.88
      },
      "vis": {
-      "num": 5978.796524401379,
-      "den": 22591,
-      "rate": 26.47
+      "num": 7961.18798247614,
+      "den": 28844,
+      "rate": 27.6
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 6.61
+     "days": 31,
+     "pct": 6.84
     }
    }
   },
@@ -13770,40 +14496,40 @@ window.MONTHLY_SUMMARY = {
    },
    "2026-10": {
     "helmet": {
-     "num": 1890,
-     "den": 1908,
-     "rate": 99.06
+     "num": 2418,
+     "den": 2443,
+     "rate": 98.98
     },
     "speed": {
-     "num": 19852,
-     "den": 547766,
-     "rate": 3.62
+     "num": 25798,
+     "den": 699930,
+     "rate": 3.69
     },
     "redlight": {
-     "num": 18635,
-     "den": 99665,
-     "rate": 18.7
+     "num": 23367,
+     "den": 127330,
+     "rate": 18.35
     },
     "reverse": {
-     "num": 1659151,
-     "den": 53402199,
-     "rate": 3.11
+     "num": 2114829,
+     "den": 68400669,
+     "rate": 3.09
     },
     "clothing": {
      "cloth": {
-      "num": 1610,
-      "den": 1660,
-      "rate": 96.99
+      "num": 2076,
+      "den": 2142,
+      "rate": 96.92
      },
      "vis": {
-      "num": 57046.10752830384,
-      "den": 60983,
-      "rate": 93.54
+      "num": 71633.70280118073,
+      "den": 76309,
+      "rate": 93.87
      }
     },
     "high_speed": {
-     "days": 24,
-     "pct": 0.11
+     "days": 31,
+     "pct": 0.09
     }
    }
   },
@@ -13929,12552 +14655,6 @@ window.MONTHLY_SUMMARY = {
    }
   },
   {
-   "level": "subregion",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "",
-   "name": "河南区域",
-   "2026-08": {
-    "helmet": {
-     "num": 34542,
-     "den": 35045,
-     "rate": 98.56
-    },
-    "speed": {
-     "num": 155715,
-     "den": 6256512,
-     "rate": 2.49
-    },
-    "redlight": {
-     "num": 254029,
-     "den": 1142494,
-     "rate": 22.23
-    },
-    "reverse": {
-     "num": 43958967,
-     "den": 1512032176,
-     "rate": 2.91
-    },
-    "clothing": {
-     "cloth": {
-      "num": 24783,
-      "den": 25761,
-      "rate": 96.2
-     },
-     "vis": {
-      "num": 851195.8892909458,
-      "den": 878102,
-      "rate": 96.94
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.41
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 26563,
-     "den": 26890,
-     "rate": 98.78
-    },
-    "speed": {
-     "num": 109136,
-     "den": 4869655,
-     "rate": 2.24
-    },
-    "redlight": {
-     "num": 176538,
-     "den": 861931,
-     "rate": 20.48
-    },
-    "reverse": {
-     "num": 31554421,
-     "den": 1171546643,
-     "rate": 2.69
-    },
-    "clothing": {
-     "cloth": {
-      "num": 19616,
-      "den": 20330,
-      "rate": 96.49
-     },
-     "vis": {
-      "num": 614952.2354602686,
-      "den": 655700,
-      "rate": 93.79
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 1.57
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 21956,
-     "den": 22148,
-     "rate": 99.13
-    },
-    "speed": {
-     "num": 90982,
-     "den": 4068023,
-     "rate": 2.24
-    },
-    "redlight": {
-     "num": 140987,
-     "den": 743989,
-     "rate": 18.95
-    },
-    "reverse": {
-     "num": 25315975,
-     "den": 967412430,
-     "rate": 2.62
-    },
-    "clothing": {
-     "cloth": {
-      "num": 15823,
-      "den": 16203,
-      "rate": 97.65
-     },
-     "vis": {
-      "num": 533009.8756573659,
-      "den": 563898,
-      "rate": 94.52
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 2.08
-    }
-   }
-  },
-  {
-   "level": "merchant",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "信阳",
-   "name": "信阳",
-   "2026-08": {
-    "helmet": {
-     "num": 4453,
-     "den": 4487,
-     "rate": 99.24
-    },
-    "speed": {
-     "num": 19605,
-     "den": 649209,
-     "rate": 3.02
-    },
-    "redlight": {
-     "num": 9051,
-     "den": 90383,
-     "rate": 10.01
-    },
-    "reverse": {
-     "num": 4634007,
-     "den": 234786617,
-     "rate": 1.97
-    },
-    "clothing": {
-     "cloth": {
-      "num": 3637,
-      "den": 3725,
-      "rate": 97.64
-     },
-     "vis": {
-      "num": 127629.99061342698,
-      "den": 129757,
-      "rate": 98.36
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.51
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 3471,
-     "den": 3484,
-     "rate": 99.63
-    },
-    "speed": {
-     "num": 12517,
-     "den": 515042,
-     "rate": 2.43
-    },
-    "redlight": {
-     "num": 6527,
-     "den": 73044,
-     "rate": 8.94
-    },
-    "reverse": {
-     "num": 3647199,
-     "den": 185651016,
-     "rate": 1.96
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2396,
-      "den": 2482,
-      "rate": 96.54
-     },
-     "vis": {
-      "num": 78432.70290169305,
-      "den": 82377,
-      "rate": 95.21
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 1.58
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 2786,
-     "den": 2796,
-     "rate": 99.64
-    },
-    "speed": {
-     "num": 10956,
-     "den": 430877,
-     "rate": 2.54
-    },
-    "redlight": {
-     "num": 5799,
-     "den": 63113,
-     "rate": 9.19
-    },
-    "reverse": {
-     "num": 3223011,
-     "den": 154015191,
-     "rate": 2.09
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1891,
-      "den": 1932,
-      "rate": 97.88
-     },
-     "vis": {
-      "num": 68494.6560033409,
-      "den": 71570,
-      "rate": 95.7
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 1.39
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "信阳",
-   "name": "兴必达【信阳】和美站",
-   "2026-08": {
-    "helmet": {
-     "num": 2034,
-     "den": 2052,
-     "rate": 99.12
-    },
-    "speed": {
-     "num": 8607,
-     "den": 301595,
-     "rate": 2.85
-    },
-    "redlight": {
-     "num": 5071,
-     "den": 54751,
-     "rate": 9.26
-    },
-    "reverse": {
-     "num": 2098484,
-     "den": 114863746,
-     "rate": 1.83
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1662,
-      "den": 1720,
-      "rate": 96.63
-     },
-     "vis": {
-      "num": 56884.90849083406,
-      "den": 57762,
-      "rate": 98.48
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.82
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1572,
-     "den": 1578,
-     "rate": 99.62
-    },
-    "speed": {
-     "num": 5429,
-     "den": 233435,
-     "rate": 2.33
-    },
-    "redlight": {
-     "num": 3507,
-     "den": 43735,
-     "rate": 8.02
-    },
-    "reverse": {
-     "num": 1494006,
-     "den": 88139233,
-     "rate": 1.7
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1094,
-      "den": 1152,
-      "rate": 94.97
-     },
-     "vis": {
-      "num": 32913.33241697799,
-      "den": 34477,
-      "rate": 95.46
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 1.53
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1278,
-     "den": 1285,
-     "rate": 99.46
-    },
-    "speed": {
-     "num": 4696,
-     "den": 194370,
-     "rate": 2.42
-    },
-    "redlight": {
-     "num": 3248,
-     "den": 37664,
-     "rate": 8.62
-    },
-    "reverse": {
-     "num": 1257090,
-     "den": 73944933,
-     "rate": 1.7
-    },
-    "clothing": {
-     "cloth": {
-      "num": 865,
-      "den": 882,
-      "rate": 98.07
-     },
-     "vis": {
-      "num": 29330.984708746342,
-      "den": 30633,
-      "rate": 95.75
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 1.71
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "信阳",
-   "name": "兴必达【信阳】大信站",
-   "2026-08": {
-    "helmet": {
-     "num": 2419,
-     "den": 2435,
-     "rate": 99.34
-    },
-    "speed": {
-     "num": 10998,
-     "den": 347614,
-     "rate": 3.16
-    },
-    "redlight": {
-     "num": 3980,
-     "den": 35632,
-     "rate": 11.17
-    },
-    "reverse": {
-     "num": 2535523,
-     "den": 119922871,
-     "rate": 2.11
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1975,
-      "den": 2005,
-      "rate": 98.5
-     },
-     "vis": {
-      "num": 70745.08212259291,
-      "den": 71995,
-      "rate": 98.26
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 2.2
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1899,
-     "den": 1906,
-     "rate": 99.63
-    },
-    "speed": {
-     "num": 7088,
-     "den": 281607,
-     "rate": 2.52
-    },
-    "redlight": {
-     "num": 3020,
-     "den": 29309,
-     "rate": 10.3
-    },
-    "reverse": {
-     "num": 2153193,
-     "den": 97511783,
-     "rate": 2.21
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1302,
-      "den": 1330,
-      "rate": 97.89
-     },
-     "vis": {
-      "num": 45519.37048471502,
-      "den": 47900,
-      "rate": 95.03
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 1.64
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1508,
-     "den": 1511,
-     "rate": 99.8
-    },
-    "speed": {
-     "num": 6260,
-     "den": 236507,
-     "rate": 2.65
-    },
-    "redlight": {
-     "num": 2551,
-     "den": 25449,
-     "rate": 10.02
-    },
-    "reverse": {
-     "num": 1965921,
-     "den": 80070258,
-     "rate": 2.46
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1026,
-      "den": 1050,
-      "rate": 97.71
-     },
-     "vis": {
-      "num": 39163.67129459451,
-      "den": 40937,
-      "rate": 95.67
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 1.07
-    }
-   }
-  },
-  {
-   "level": "merchant",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "商丘",
-   "name": "商丘",
-   "2026-08": {
-    "helmet": {
-     "num": 2569,
-     "den": 2603,
-     "rate": 98.69
-    },
-    "speed": {
-     "num": 12449,
-     "den": 367907,
-     "rate": 3.38
-    },
-    "redlight": {
-     "num": 9649,
-     "den": 68644,
-     "rate": 14.06
-    },
-    "reverse": {
-     "num": 3607634,
-     "den": 118437432,
-     "rate": 3.05
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1842,
-      "den": 1890,
-      "rate": 97.46
-     },
-     "vis": {
-      "num": 69039.23815944197,
-      "den": 71030,
-      "rate": 97.2
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 3.31
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1970,
-     "den": 1984,
-     "rate": 99.29
-    },
-    "speed": {
-     "num": 7899,
-     "den": 282023,
-     "rate": 2.8
-    },
-    "redlight": {
-     "num": 6208,
-     "den": 50787,
-     "rate": 12.22
-    },
-    "reverse": {
-     "num": 2439190,
-     "den": 91293281,
-     "rate": 2.67
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1601,
-      "den": 1632,
-      "rate": 98.1
-     },
-     "vis": {
-      "num": 51747.670055888426,
-      "den": 55159,
-      "rate": 93.82
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 3.5
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1633,
-     "den": 1648,
-     "rate": 99.09
-    },
-    "speed": {
-     "num": 6380,
-     "den": 234799,
-     "rate": 2.72
-    },
-    "redlight": {
-     "num": 5837,
-     "den": 42927,
-     "rate": 13.6
-    },
-    "reverse": {
-     "num": 2075728,
-     "den": 73937255,
-     "rate": 2.81
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1446,
-      "den": 1486,
-      "rate": 97.31
-     },
-     "vis": {
-      "num": 48018.18004777872,
-      "den": 51135,
-      "rate": 93.9
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 4.38
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "商丘",
-   "name": "兴必达【商丘】中原车城站",
-   "2026-08": {
-    "helmet": {
-     "num": 491,
-     "den": 503,
-     "rate": 97.61
-    },
-    "speed": {
-     "num": 2558,
-     "den": 81152,
-     "rate": 3.15
-    },
-    "redlight": {
-     "num": 1222,
-     "den": 8792,
-     "rate": 13.9
-    },
-    "reverse": {
-     "num": 521454,
-     "den": 23829305,
-     "rate": 2.19
-    },
-    "clothing": {
-     "cloth": {
-      "num": 351,
-      "den": 375,
-      "rate": 93.6
-     },
-     "vis": {
-      "num": 13040.056049294395,
-      "den": 13570,
-      "rate": 96.09
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.34
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 419,
-     "den": 423,
-     "rate": 99.05
-    },
-    "speed": {
-     "num": 1852,
-     "den": 63146,
-     "rate": 2.93
-    },
-    "redlight": {
-     "num": 869,
-     "den": 5892,
-     "rate": 14.75
-    },
-    "reverse": {
-     "num": 349180,
-     "den": 17739376,
-     "rate": 1.97
-    },
-    "clothing": {
-     "cloth": {
-      "num": 332,
-      "den": 344,
-      "rate": 96.51
-     },
-     "vis": {
-      "num": 10186.87662963373,
-      "den": 10940,
-      "rate": 93.12
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 3.87
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 321,
-     "den": 327,
-     "rate": 98.17
-    },
-    "speed": {
-     "num": 1631,
-     "den": 51486,
-     "rate": 3.17
-    },
-    "redlight": {
-     "num": 707,
-     "den": 4896,
-     "rate": 14.44
-    },
-    "reverse": {
-     "num": 292473,
-     "den": 14370611,
-     "rate": 2.04
-    },
-    "clothing": {
-     "cloth": {
-      "num": 284,
-      "den": 299,
-      "rate": 94.98
-     },
-     "vis": {
-      "num": 8448.803195328963,
-      "den": 9948,
-      "rate": 84.93
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 2.53
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "商丘",
-   "name": "兴必达【商丘】平台站",
-   "2026-08": {
-    "helmet": {
-     "num": 1428,
-     "den": 1445,
-     "rate": 98.82
-    },
-    "speed": {
-     "num": 8490,
-     "den": 221485,
-     "rate": 3.83
-    },
-    "redlight": {
-     "num": 6407,
-     "den": 47277,
-     "rate": 13.55
-    },
-    "reverse": {
-     "num": 2113308,
-     "den": 68654850,
-     "rate": 3.08
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1023,
-      "den": 1047,
-      "rate": 97.71
-     },
-     "vis": {
-      "num": 39643.34978371031,
-      "den": 40679,
-      "rate": 97.45
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 4.24
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1116,
-     "den": 1122,
-     "rate": 99.47
-    },
-    "speed": {
-     "num": 4874,
-     "den": 168545,
-     "rate": 2.89
-    },
-    "redlight": {
-     "num": 3807,
-     "den": 35227,
-     "rate": 10.81
-    },
-    "reverse": {
-     "num": 1507597,
-     "den": 53521273,
-     "rate": 2.82
-    },
-    "clothing": {
-     "cloth": {
-      "num": 885,
-      "den": 904,
-      "rate": 97.9
-     },
-     "vis": {
-      "num": 29251.743837013855,
-      "den": 31543,
-      "rate": 92.74
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 4.6
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 901,
-     "den": 908,
-     "rate": 99.23
-    },
-    "speed": {
-     "num": 3354,
-     "den": 138455,
-     "rate": 2.42
-    },
-    "redlight": {
-     "num": 3863,
-     "den": 29232,
-     "rate": 13.21
-    },
-    "reverse": {
-     "num": 1326689,
-     "den": 42535803,
-     "rate": 3.12
-    },
-    "clothing": {
-     "cloth": {
-      "num": 797,
-      "den": 822,
-      "rate": 96.96
-     },
-     "vis": {
-      "num": 27342.674062229336,
-      "den": 28658,
-      "rate": 95.41
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 4.56
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "商丘",
-   "name": "兴必达【商丘】文化路站",
-   "2026-08": {
-    "helmet": {
-     "num": 650,
-     "den": 655,
-     "rate": 99.24
-    },
-    "speed": {
-     "num": 1401,
-     "den": 65270,
-     "rate": 2.15
-    },
-    "redlight": {
-     "num": 2020,
-     "den": 12575,
-     "rate": 16.06
-    },
-    "reverse": {
-     "num": 972872,
-     "den": 25953277,
-     "rate": 3.75
-    },
-    "clothing": {
-     "cloth": {
-      "num": 468,
-      "den": 468,
-      "rate": 100.0
-     },
-     "vis": {
-      "num": 16355.832326437283,
-      "den": 16781,
-      "rate": 97.47
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 4.35
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 435,
-     "den": 439,
-     "rate": 99.09
-    },
-    "speed": {
-     "num": 1173,
-     "den": 50332,
-     "rate": 2.33
-    },
-    "redlight": {
-     "num": 1532,
-     "den": 9668,
-     "rate": 15.85
-    },
-    "reverse": {
-     "num": 582413,
-     "den": 20032632,
-     "rate": 2.91
-    },
-    "clothing": {
-     "cloth": {
-      "num": 384,
-      "den": 384,
-      "rate": 100.0
-     },
-     "vis": {
-      "num": 12309.049589240833,
-      "den": 12676,
-      "rate": 97.11
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.02
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 411,
-     "den": 413,
-     "rate": 99.52
-    },
-    "speed": {
-     "num": 1395,
-     "den": 44858,
-     "rate": 3.11
-    },
-    "redlight": {
-     "num": 1267,
-     "den": 8799,
-     "rate": 14.4
-    },
-    "reverse": {
-     "num": 456566,
-     "den": 17030841,
-     "rate": 2.68
-    },
-    "clothing": {
-     "cloth": {
-      "num": 365,
-      "den": 365,
-      "rate": 100.0
-     },
-     "vis": {
-      "num": 12226.702790220426,
-      "den": 12529,
-      "rate": 97.59
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 6.07
-    }
-   }
-  },
-  {
-   "level": "merchant",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "洛阳",
-   "name": "洛阳",
-   "2026-08": {
-    "helmet": {
-     "num": 20155,
-     "den": 20534,
-     "rate": 98.15
-    },
-    "speed": {
-     "num": 93655,
-     "den": 3865438,
-     "rate": 2.42
-    },
-    "redlight": {
-     "num": 202206,
-     "den": 852460,
-     "rate": 23.72
-    },
-    "reverse": {
-     "num": 27574793,
-     "den": 899920778,
-     "rate": 3.06
-    },
-    "clothing": {
-     "cloth": {
-      "num": 14045,
-      "den": 14692,
-      "rate": 95.6
-     },
-     "vis": {
-      "num": 482730.97315605293,
-      "den": 500213,
-      "rate": 96.51
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.27
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 15449,
-     "den": 15692,
-     "rate": 98.45
-    },
-    "speed": {
-     "num": 64175,
-     "den": 2950306,
-     "rate": 2.18
-    },
-    "redlight": {
-     "num": 138649,
-     "den": 633201,
-     "rate": 21.9
-    },
-    "reverse": {
-     "num": 19044320,
-     "den": 681314748,
-     "rate": 2.8
-    },
-    "clothing": {
-     "cloth": {
-      "num": 11473,
-      "den": 11927,
-      "rate": 96.19
-     },
-     "vis": {
-      "num": 351441.10831634304,
-      "den": 379773,
-      "rate": 92.54
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 1.07
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 12972,
-     "den": 13110,
-     "rate": 98.95
-    },
-    "speed": {
-     "num": 54953,
-     "den": 2517162,
-     "rate": 2.18
-    },
-    "redlight": {
-     "num": 109974,
-     "den": 552894,
-     "rate": 19.89
-    },
-    "reverse": {
-     "num": 14985096,
-     "den": 572892106,
-     "rate": 2.62
-    },
-    "clothing": {
-     "cloth": {
-      "num": 8845,
-      "den": 9095,
-      "rate": 97.25
-     },
-     "vis": {
-      "num": 296771.1282280525,
-      "den": 314916,
-      "rate": 94.24
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 1.27
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "洛阳",
-   "name": "V兴必达【洛阳】洛拖站",
-   "2026-08": {
-    "helmet": {
-     "num": 1603,
-     "den": 1652,
-     "rate": 97.03
-    },
-    "speed": {
-     "num": 6174,
-     "den": 274775,
-     "rate": 2.25
-    },
-    "redlight": {
-     "num": 12573,
-     "den": 60937,
-     "rate": 20.63
-    },
-    "reverse": {
-     "num": 1791397,
-     "den": 82558859,
-     "rate": 2.17
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1109,
-      "den": 1147,
-      "rate": 96.69
-     },
-     "vis": {
-      "num": 34312.13902106103,
-      "den": 35422,
-      "rate": 96.87
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.62
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1033,
-     "den": 1065,
-     "rate": 97.0
-    },
-    "speed": {
-     "num": 3335,
-     "den": 185364,
-     "rate": 1.8
-    },
-    "redlight": {
-     "num": 9667,
-     "den": 41440,
-     "rate": 23.33
-    },
-    "reverse": {
-     "num": 1192409,
-     "den": 54925144,
-     "rate": 2.17
-    },
-    "clothing": {
-     "cloth": {
-      "num": 788,
-      "den": 843,
-      "rate": 93.48
-     },
-     "vis": {
-      "num": 22782.47762740461,
-      "den": 24592,
-      "rate": 92.64
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.67
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 888,
-     "den": 901,
-     "rate": 98.56
-    },
-    "speed": {
-     "num": 4164,
-     "den": 167707,
-     "rate": 2.48
-    },
-    "redlight": {
-     "num": 7480,
-     "den": 38185,
-     "rate": 19.59
-    },
-    "reverse": {
-     "num": 1019880,
-     "den": 49618069,
-     "rate": 2.06
-    },
-    "clothing": {
-     "cloth": {
-      "num": 606,
-      "den": 657,
-      "rate": 92.24
-     },
-     "vis": {
-      "num": 19368.1776247832,
-      "den": 20427,
-      "rate": 94.82
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 2.3
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "洛阳",
-   "name": "兴必达【洛阳】关林站",
-   "2026-08": {
-    "helmet": {
-     "num": 2246,
-     "den": 2317,
-     "rate": 96.94
-    },
-    "speed": {
-     "num": 16620,
-     "den": 465800,
-     "rate": 3.57
-    },
-    "redlight": {
-     "num": 23428,
-     "den": 95161,
-     "rate": 24.62
-    },
-    "reverse": {
-     "num": 3538817,
-     "den": 82159581,
-     "rate": 4.31
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1595,
-      "den": 1735,
-      "rate": 91.93
-     },
-     "vis": {
-      "num": 48994.42396982827,
-      "den": 51066,
-      "rate": 95.94
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.92
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1744,
-     "den": 1802,
-     "rate": 96.78
-    },
-    "speed": {
-     "num": 9907,
-     "den": 339949,
-     "rate": 2.91
-    },
-    "redlight": {
-     "num": 15233,
-     "den": 68880,
-     "rate": 22.12
-    },
-    "reverse": {
-     "num": 2345281,
-     "den": 59789971,
-     "rate": 3.92
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1342,
-      "den": 1411,
-      "rate": 95.11
-     },
-     "vis": {
-      "num": 32001.34839175673,
-      "den": 39680,
-      "rate": 80.65
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.46
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1507,
-     "den": 1524,
-     "rate": 98.88
-    },
-    "speed": {
-     "num": 8345,
-     "den": 286245,
-     "rate": 2.92
-    },
-    "redlight": {
-     "num": 11233,
-     "den": 62100,
-     "rate": 18.09
-    },
-    "reverse": {
-     "num": 1580328,
-     "den": 50363016,
-     "rate": 3.14
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1052,
-      "den": 1054,
-      "rate": 99.81
-     },
-     "vis": {
-      "num": 31836.01244312277,
-      "den": 34147,
-      "rate": 93.23
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.93
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "洛阳",
-   "name": "兴必达【洛阳】太康路站",
-   "2026-08": {
-    "helmet": {
-     "num": 1287,
-     "den": 1303,
-     "rate": 98.77
-    },
-    "speed": {
-     "num": 10308,
-     "den": 332333,
-     "rate": 3.1
-    },
-    "redlight": {
-     "num": 15910,
-     "den": 83091,
-     "rate": 19.15
-    },
-    "reverse": {
-     "num": 1663387,
-     "den": 53609920,
-     "rate": 3.1
-    },
-    "clothing": {
-     "cloth": {
-      "num": 893,
-      "den": 901,
-      "rate": 99.11
-     },
-     "vis": {
-      "num": 29221.96574530079,
-      "den": 30052,
-      "rate": 97.24
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 2.57
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 946,
-     "den": 960,
-     "rate": 98.54
-    },
-    "speed": {
-     "num": 6880,
-     "den": 247651,
-     "rate": 2.78
-    },
-    "redlight": {
-     "num": 10232,
-     "den": 57122,
-     "rate": 17.91
-    },
-    "reverse": {
-     "num": 1072579,
-     "den": 40405376,
-     "rate": 2.65
-    },
-    "clothing": {
-     "cloth": {
-      "num": 698,
-      "den": 701,
-      "rate": 99.57
-     },
-     "vis": {
-      "num": 19758.98007289321,
-      "den": 22477,
-      "rate": 87.91
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.75
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 774,
-     "den": 780,
-     "rate": 99.23
-    },
-    "speed": {
-     "num": 4393,
-     "den": 208760,
-     "rate": 2.1
-    },
-    "redlight": {
-     "num": 7935,
-     "den": 51184,
-     "rate": 15.5
-    },
-    "reverse": {
-     "num": 831045,
-     "den": 33740898,
-     "rate": 2.46
-    },
-    "clothing": {
-     "cloth": {
-      "num": 534,
-      "den": 536,
-      "rate": 99.63
-     },
-     "vis": {
-      "num": 17798.50686390666,
-      "den": 18477,
-      "rate": 96.33
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.5
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "洛阳",
-   "name": "兴必达【洛阳】新都汇站",
-   "2026-08": {
-    "helmet": {
-     "num": 2297,
-     "den": 2317,
-     "rate": 99.14
-    },
-    "speed": {
-     "num": 8890,
-     "den": 505798,
-     "rate": 1.76
-    },
-    "redlight": {
-     "num": 26229,
-     "den": 105791,
-     "rate": 24.79
-    },
-    "reverse": {
-     "num": 3022069,
-     "den": 123520039,
-     "rate": 2.45
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1576,
-      "den": 1645,
-      "rate": 95.81
-     },
-     "vis": {
-      "num": 57491.868450643844,
-      "den": 59678,
-      "rate": 96.34
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.45
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1732,
-     "den": 1742,
-     "rate": 99.43
-    },
-    "speed": {
-     "num": 7128,
-     "den": 388941,
-     "rate": 1.83
-    },
-    "redlight": {
-     "num": 17289,
-     "den": 77473,
-     "rate": 22.32
-    },
-    "reverse": {
-     "num": 2233408,
-     "den": 93718777,
-     "rate": 2.38
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1252,
-      "den": 1294,
-      "rate": 96.75
-     },
-     "vis": {
-      "num": 42812.61581809162,
-      "den": 44648,
-      "rate": 95.89
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.66
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1520,
-     "den": 1527,
-     "rate": 99.54
-    },
-    "speed": {
-     "num": 6261,
-     "den": 343986,
-     "rate": 1.82
-    },
-    "redlight": {
-     "num": 14224,
-     "den": 71549,
-     "rate": 19.88
-    },
-    "reverse": {
-     "num": 1965710,
-     "den": 81528062,
-     "rate": 2.41
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1016,
-      "den": 1032,
-      "rate": 98.45
-     },
-     "vis": {
-      "num": 38437.323987726224,
-      "den": 39898,
-      "rate": 96.34
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.97
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "洛阳",
-   "name": "兴必达【洛阳】洛拖站",
-   "2026-08": {
-    "helmet": {
-     "num": 517,
-     "den": 520,
-     "rate": 99.42
-    },
-    "speed": {
-     "num": 1799,
-     "den": 100502,
-     "rate": 1.79
-    },
-    "redlight": {
-     "num": 4885,
-     "den": 20027,
-     "rate": 24.39
-    },
-    "reverse": {
-     "num": 835636,
-     "den": 29249138,
-     "rate": 2.86
-    },
-    "clothing": {
-     "cloth": {
-      "num": 360,
-      "den": 369,
-      "rate": 97.56
-     },
-     "vis": {
-      "num": 13860.607132230329,
-      "den": 14208,
-      "rate": 97.55
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.47
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 454,
-     "den": 457,
-     "rate": 99.34
-    },
-    "speed": {
-     "num": 1231,
-     "den": 89042,
-     "rate": 1.38
-    },
-    "redlight": {
-     "num": 4080,
-     "den": 17442,
-     "rate": 23.39
-    },
-    "reverse": {
-     "num": 721290,
-     "den": 25645556,
-     "rate": 2.81
-    },
-    "clothing": {
-     "cloth": {
-      "num": 339,
-      "den": 340,
-      "rate": 99.71
-     },
-     "vis": {
-      "num": 12570.939919168599,
-      "den": 13262,
-      "rate": 94.79
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 1.26
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 359,
-     "den": 360,
-     "rate": 99.72
-    },
-    "speed": {
-     "num": 1030,
-     "den": 73420,
-     "rate": 1.4
-    },
-    "redlight": {
-     "num": 3107,
-     "den": 14373,
-     "rate": 21.62
-    },
-    "reverse": {
-     "num": 602217,
-     "den": 21151689,
-     "rate": 2.85
-    },
-    "clothing": {
-     "cloth": {
-      "num": 246,
-      "den": 247,
-      "rate": 99.6
-     },
-     "vis": {
-      "num": 9632.041618579444,
-      "den": 10383,
-      "rate": 92.77
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.78
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "洛阳",
-   "name": "兴必达【洛阳】洛浦站",
-   "2026-08": {
-    "helmet": {
-     "num": 2603,
-     "den": 2670,
-     "rate": 97.49
-    },
-    "speed": {
-     "num": 15532,
-     "den": 505774,
-     "rate": 3.07
-    },
-    "redlight": {
-     "num": 35093,
-     "den": 127562,
-     "rate": 27.51
-    },
-    "reverse": {
-     "num": 3225851,
-     "den": 121154261,
-     "rate": 2.66
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1857,
-      "den": 1958,
-      "rate": 94.84
-     },
-     "vis": {
-      "num": 66498.81319755114,
-      "den": 69147,
-      "rate": 96.17
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 3.21
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2122,
-     "den": 2161,
-     "rate": 98.2
-    },
-    "speed": {
-     "num": 10426,
-     "den": 400001,
-     "rate": 2.61
-    },
-    "redlight": {
-     "num": 25187,
-     "den": 101451,
-     "rate": 24.83
-    },
-    "reverse": {
-     "num": 2385783,
-     "den": 95207086,
-     "rate": 2.51
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1576,
-      "den": 1636,
-      "rate": 96.33
-     },
-     "vis": {
-      "num": 50128.97594280339,
-      "den": 53004,
-      "rate": 94.58
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 4.11
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1844,
-     "den": 1881,
-     "rate": 98.03
-    },
-    "speed": {
-     "num": 8502,
-     "den": 346495,
-     "rate": 2.45
-    },
-    "redlight": {
-     "num": 20327,
-     "den": 87885,
-     "rate": 23.13
-    },
-    "reverse": {
-     "num": 1985662,
-     "den": 80617559,
-     "rate": 2.46
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1264,
-      "den": 1295,
-      "rate": 97.61
-     },
-     "vis": {
-      "num": 41471.39997990503,
-      "den": 44302,
-      "rate": 93.61
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 3.26
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "洛阳",
-   "name": "兴必达【洛阳】滨河站",
-   "2026-08": {
-    "helmet": {
-     "num": 2822,
-     "den": 2858,
-     "rate": 98.74
-    },
-    "speed": {
-     "num": 11228,
-     "den": 454425,
-     "rate": 2.47
-    },
-    "redlight": {
-     "num": 25749,
-     "den": 111661,
-     "rate": 23.06
-    },
-    "reverse": {
-     "num": 3894682,
-     "den": 108447362,
-     "rate": 3.59
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1949,
-      "den": 2019,
-      "rate": 96.53
-     },
-     "vis": {
-      "num": 66870.95111915715,
-      "den": 69390,
-      "rate": 96.37
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.97
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2149,
-     "den": 2172,
-     "rate": 98.94
-    },
-    "speed": {
-     "num": 6863,
-     "den": 351705,
-     "rate": 1.95
-    },
-    "redlight": {
-     "num": 18079,
-     "den": 82752,
-     "rate": 21.85
-    },
-    "reverse": {
-     "num": 2820722,
-     "den": 81810892,
-     "rate": 3.45
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1574,
-      "den": 1652,
-      "rate": 95.28
-     },
-     "vis": {
-      "num": 49154.111775529724,
-      "den": 52008,
-      "rate": 94.51
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.74
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1726,
-     "den": 1735,
-     "rate": 99.48
-    },
-    "speed": {
-     "num": 6518,
-     "den": 294405,
-     "rate": 2.21
-    },
-    "redlight": {
-     "num": 13735,
-     "den": 70521,
-     "rate": 19.48
-    },
-    "reverse": {
-     "num": 2077980,
-     "den": 66648865,
-     "rate": 3.12
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1157,
-      "den": 1195,
-      "rate": 96.82
-     },
-     "vis": {
-      "num": 39363.40094833809,
-      "den": 42338,
-      "rate": 92.97
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.67
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "洛阳",
-   "name": "兴必达【洛阳】火车南站",
-   "2026-08": {
-    "helmet": {
-     "num": 2334,
-     "den": 2379,
-     "rate": 98.11
-    },
-    "speed": {
-     "num": 7988,
-     "den": 451225,
-     "rate": 1.77
-    },
-    "redlight": {
-     "num": 22295,
-     "den": 93827,
-     "rate": 23.76
-    },
-    "reverse": {
-     "num": 3036500,
-     "den": 112730855,
-     "rate": 2.69
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1619,
-      "den": 1693,
-      "rate": 95.63
-     },
-     "vis": {
-      "num": 55849.85782961717,
-      "den": 57263,
-      "rate": 97.53
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.8
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1707,
-     "den": 1737,
-     "rate": 98.27
-    },
-    "speed": {
-     "num": 6327,
-     "den": 331369,
-     "rate": 1.91
-    },
-    "redlight": {
-     "num": 15476,
-     "den": 68901,
-     "rate": 22.46
-    },
-    "reverse": {
-     "num": 2116911,
-     "den": 82901674,
-     "rate": 2.55
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1278,
-      "den": 1343,
-      "rate": 95.16
-     },
-     "vis": {
-      "num": 39796.19621160304,
-      "den": 41824,
-      "rate": 95.15
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.1
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1422,
-     "den": 1441,
-     "rate": 98.68
-    },
-    "speed": {
-     "num": 5810,
-     "den": 280992,
-     "rate": 2.07
-    },
-    "redlight": {
-     "num": 12414,
-     "den": 59898,
-     "rate": 20.73
-    },
-    "reverse": {
-     "num": 1724433,
-     "den": 69092405,
-     "rate": 2.5
-    },
-    "clothing": {
-     "cloth": {
-      "num": 969,
-      "den": 1011,
-      "rate": 95.85
-     },
-     "vis": {
-      "num": 32315.863003591025,
-      "den": 34127,
-      "rate": 94.69
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 2.22
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "洛阳",
-   "name": "兴必达【洛阳】百货楼站",
-   "2026-08": {
-    "helmet": {
-     "num": 2336,
-     "den": 2362,
-     "rate": 98.9
-    },
-    "speed": {
-     "num": 6326,
-     "den": 412909,
-     "rate": 1.53
-    },
-    "redlight": {
-     "num": 18775,
-     "den": 81769,
-     "rate": 22.96
-    },
-    "reverse": {
-     "num": 4113538,
-     "den": 97302292,
-     "rate": 4.23
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1605,
-      "den": 1627,
-      "rate": 98.65
-     },
-     "vis": {
-      "num": 57856.80538018297,
-      "den": 59961,
-      "rate": 96.49
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.17
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1856,
-     "den": 1869,
-     "rate": 99.3
-    },
-    "speed": {
-     "num": 5693,
-     "den": 340525,
-     "rate": 1.67
-    },
-    "redlight": {
-     "num": 11774,
-     "den": 64094,
-     "rate": 18.37
-    },
-    "reverse": {
-     "num": 2484239,
-     "den": 81295192,
-     "rate": 3.06
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1365,
-      "den": 1376,
-      "rate": 99.2
-     },
-     "vis": {
-      "num": 44517.4757899986,
-      "den": 46787,
-      "rate": 95.15
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.05
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1549,
-     "den": 1564,
-     "rate": 99.04
-    },
-    "speed": {
-     "num": 4757,
-     "den": 276225,
-     "rate": 1.72
-    },
-    "redlight": {
-     "num": 9630,
-     "den": 50218,
-     "rate": 19.18
-    },
-    "reverse": {
-     "num": 1767228,
-     "den": 63827286,
-     "rate": 2.77
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1053,
-      "den": 1054,
-      "rate": 99.91
-     },
-     "vis": {
-      "num": 35296.36895558744,
-      "den": 36575,
-      "rate": 96.5
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.8
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "洛阳",
-   "name": "兴必达【洛阳】盛唐站",
-   "2026-08": {
-    "helmet": {
-     "num": 597,
-     "den": 617,
-     "rate": 96.76
-    },
-    "speed": {
-     "num": 1693,
-     "den": 117311,
-     "rate": 1.44
-    },
-    "redlight": {
-     "num": 4599,
-     "den": 16228,
-     "rate": 28.34
-    },
-    "reverse": {
-     "num": 663523,
-     "den": 19638884,
-     "rate": 3.38
-    },
-    "clothing": {
-     "cloth": {
-      "num": 419,
-      "den": 472,
-      "rate": 88.77
-     },
-     "vis": {
-      "num": 12895.92013963486,
-      "den": 14092,
-      "rate": 91.51
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.41
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 484,
-     "den": 492,
-     "rate": 98.37
-    },
-    "speed": {
-     "num": 1645,
-     "den": 92944,
-     "rate": 1.77
-    },
-    "redlight": {
-     "num": 3099,
-     "den": 12901,
-     "rate": 24.02
-    },
-    "reverse": {
-     "num": 480618,
-     "den": 14888694,
-     "rate": 3.23
-    },
-    "clothing": {
-     "cloth": {
-      "num": 355,
-      "den": 389,
-      "rate": 91.26
-     },
-     "vis": {
-      "num": 10224.939203902315,
-      "den": 11848,
-      "rate": 86.3
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.0
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 375,
-     "den": 385,
-     "rate": 97.4
-    },
-    "speed": {
-     "num": 1516,
-     "den": 83673,
-     "rate": 1.81
-    },
-    "redlight": {
-     "num": 2828,
-     "den": 12037,
-     "rate": 23.49
-    },
-    "reverse": {
-     "num": 441224,
-     "den": 13758433,
-     "rate": 3.21
-    },
-    "clothing": {
-     "cloth": {
-      "num": 257,
-      "den": 300,
-      "rate": 85.67
-     },
-     "vis": {
-      "num": 8115.529401212239,
-      "den": 9234,
-      "rate": 87.89
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 1.11
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "洛阳",
-   "name": "兴必达【洛阳】道北站",
-   "2026-08": {
-    "helmet": {
-     "num": 1513,
-     "den": 1539,
-     "rate": 98.31
-    },
-    "speed": {
-     "num": 7097,
-     "den": 244586,
-     "rate": 2.9
-    },
-    "redlight": {
-     "num": 12670,
-     "den": 56406,
-     "rate": 22.46
-    },
-    "reverse": {
-     "num": 1789393,
-     "den": 69549587,
-     "rate": 2.57
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1063,
-      "den": 1126,
-      "rate": 94.4
-     },
-     "vis": {
-      "num": 38877.62117084605,
-      "den": 39934,
-      "rate": 97.35
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.42
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1222,
-     "den": 1235,
-     "rate": 98.95
-    },
-    "speed": {
-     "num": 4740,
-     "den": 182815,
-     "rate": 2.59
-    },
-    "redlight": {
-     "num": 8533,
-     "den": 40745,
-     "rate": 20.94
-    },
-    "reverse": {
-     "num": 1191080,
-     "den": 50726386,
-     "rate": 2.35
-    },
-    "clothing": {
-     "cloth": {
-      "num": 906,
-      "den": 942,
-      "rate": 96.18
-     },
-     "vis": {
-      "num": 27693.047563190597,
-      "den": 29643,
-      "rate": 93.42
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.98
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1008,
-     "den": 1012,
-     "rate": 99.6
-    },
-    "speed": {
-     "num": 3657,
-     "den": 155254,
-     "rate": 2.36
-    },
-    "redlight": {
-     "num": 7061,
-     "den": 34944,
-     "rate": 20.21
-    },
-    "reverse": {
-     "num": 989389,
-     "den": 42545824,
-     "rate": 2.33
-    },
-    "clothing": {
-     "cloth": {
-      "num": 691,
-      "den": 714,
-      "rate": 96.78
-     },
-     "vis": {
-      "num": 23136.50340130087,
-      "den": 25008,
-      "rate": 92.52
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.4
-    }
-   }
-  },
-  {
-   "level": "merchant",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "郑州",
-   "name": "郑州",
-   "2026-08": {
-    "helmet": {
-     "num": 7365,
-     "den": 7421,
-     "rate": 99.25
-    },
-    "speed": {
-     "num": 30006,
-     "den": 1373958,
-     "rate": 2.18
-    },
-    "redlight": {
-     "num": 33123,
-     "den": 131007,
-     "rate": 25.28
-    },
-    "reverse": {
-     "num": 8142533,
-     "den": 258887349,
-     "rate": 3.15
-    },
-    "clothing": {
-     "cloth": {
-      "num": 5259,
-      "den": 5454,
-      "rate": 96.42
-     },
-     "vis": {
-      "num": 171795.68736202546,
-      "den": 177102,
-      "rate": 97.0
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.8
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 5673,
-     "den": 5730,
-     "rate": 99.01
-    },
-    "speed": {
-     "num": 24545,
-     "den": 1122284,
-     "rate": 2.19
-    },
-    "redlight": {
-     "num": 25154,
-     "den": 104899,
-     "rate": 23.98
-    },
-    "reverse": {
-     "num": 6423712,
-     "den": 213287598,
-     "rate": 3.01
-    },
-    "clothing": {
-     "cloth": {
-      "num": 4146,
-      "den": 4289,
-      "rate": 96.67
-     },
-     "vis": {
-      "num": 133330.7541863451,
-      "den": 138391,
-      "rate": 96.34
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 1.52
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 4565,
-     "den": 4594,
-     "rate": 99.37
-    },
-    "speed": {
-     "num": 18693,
-     "den": 885185,
-     "rate": 2.11
-    },
-    "redlight": {
-     "num": 19377,
-     "den": 85055,
-     "rate": 22.78
-    },
-    "reverse": {
-     "num": 5032140,
-     "den": 166567878,
-     "rate": 3.02
-    },
-    "clothing": {
-     "cloth": {
-      "num": 3641,
-      "den": 3690,
-      "rate": 98.67
-     },
-     "vis": {
-      "num": 119725.91137819416,
-      "den": 126277,
-      "rate": 94.81
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 2.58
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "郑州",
-   "name": "【联盟签约】兴必达【郑州】大卫城站",
-   "2026-08": {
-    "helmet": {
-     "num": 225,
-     "den": 225,
-     "rate": 100.0
-    },
-    "speed": {
-     "num": 310,
-     "den": 48010,
-     "rate": 0.65
-    },
-    "redlight": {
-     "num": 1226,
-     "den": 3604,
-     "rate": 34.02
-    },
-    "reverse": {
-     "num": 427287,
-     "den": 7999300,
-     "rate": 5.34
-    },
-    "clothing": {
-     "cloth": {
-      "num": 160,
-      "den": 182,
-      "rate": 87.91
-     },
-     "vis": {
-      "num": 7744.008054548585,
-      "den": 7958,
-      "rate": 97.31
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.0
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 218,
-     "den": 219,
-     "rate": 99.54
-    },
-    "speed": {
-     "num": 1652,
-     "den": 50542,
-     "rate": 3.27
-    },
-    "redlight": {
-     "num": 1128,
-     "den": 3519,
-     "rate": 32.05
-    },
-    "reverse": {
-     "num": 393860,
-     "den": 8513615,
-     "rate": 4.63
-    },
-    "clothing": {
-     "cloth": {
-      "num": 162,
-      "den": 167,
-      "rate": 97.01
-     },
-     "vis": {
-      "num": 7889.305067626207,
-      "den": 8095,
-      "rate": 97.46
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 3.92
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 177,
-     "den": 177,
-     "rate": 100.0
-    },
-    "speed": {
-     "num": 1073,
-     "den": 37320,
-     "rate": 2.88
-    },
-    "redlight": {
-     "num": 826,
-     "den": 2799,
-     "rate": 29.51
-    },
-    "reverse": {
-     "num": 298038,
-     "den": 6422355,
-     "rate": 4.64
-    },
-    "clothing": {
-     "cloth": {
-      "num": 143,
-      "den": 142,
-      "rate": 100.7
-     },
-     "vis": {
-      "num": 6242.54038474555,
-      "den": 6633,
-      "rate": 94.11
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 7.94
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "郑州",
-   "name": "【联盟签约】兴必达【郑州】德化站",
-   "2026-08": {
-    "helmet": {
-     "num": 195,
-     "den": 195,
-     "rate": 100.0
-    },
-    "speed": {
-     "num": 315,
-     "den": 32216,
-     "rate": 0.98
-    },
-    "redlight": {
-     "num": 758,
-     "den": 2236,
-     "rate": 33.9
-    },
-    "reverse": {
-     "num": 251791,
-     "den": 5226441,
-     "rate": 4.82
-    },
-    "clothing": {
-     "cloth": {
-      "num": 136,
-      "den": 136,
-      "rate": 100.0
-     },
-     "vis": {
-      "num": 6302.630289726611,
-      "den": 6721,
-      "rate": 93.78
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.0
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 168,
-     "den": 168,
-     "rate": 100.0
-    },
-    "speed": {
-     "num": 281,
-     "den": 29640,
-     "rate": 0.95
-    },
-    "redlight": {
-     "num": 628,
-     "den": 1944,
-     "rate": 32.3
-    },
-    "reverse": {
-     "num": 217797,
-     "den": 4839766,
-     "rate": 4.5
-    },
-    "clothing": {
-     "cloth": {
-      "num": 121,
-      "den": 121,
-      "rate": 100.0
-     },
-     "vis": {
-      "num": 5573.1267782789655,
-      "den": 5945,
-      "rate": 93.74
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.0
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 126,
-     "den": 126,
-     "rate": 100.0
-    },
-    "speed": {
-     "num": 299,
-     "den": 22204,
-     "rate": 1.35
-    },
-    "redlight": {
-     "num": 361,
-     "den": 1384,
-     "rate": 26.08
-    },
-    "reverse": {
-     "num": 144162,
-     "den": 3561293,
-     "rate": 4.05
-    },
-    "clothing": {
-     "cloth": {
-      "num": 101,
-      "den": 103,
-      "rate": 98.06
-     },
-     "vis": {
-      "num": 4452.643000156094,
-      "den": 4954,
-      "rate": 89.88
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.0
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "郑州",
-   "name": "【联盟签约】兴必达【郑州】龙子湖站",
-   "2026-08": {
-    "helmet": {
-     "num": 245,
-     "den": 246,
-     "rate": 99.59
-    },
-    "speed": {
-     "num": 1932,
-     "den": 73267,
-     "rate": 2.64
-    },
-    "redlight": {
-     "num": 5139,
-     "den": 13166,
-     "rate": 39.03
-    },
-    "reverse": {
-     "num": 640465,
-     "den": 14840826,
-     "rate": 4.32
-    },
-    "clothing": {
-     "cloth": {
-      "num": 174,
-      "den": 175,
-      "rate": 99.43
-     },
-     "vis": {
-      "num": 8963.406510797286,
-      "den": 9305,
-      "rate": 96.33
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.0
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 216,
-     "den": 216,
-     "rate": 100.0
-    },
-    "speed": {
-     "num": 1929,
-     "den": 65928,
-     "rate": 2.93
-    },
-    "redlight": {
-     "num": 3828,
-     "den": 11527,
-     "rate": 33.21
-    },
-    "reverse": {
-     "num": 649997,
-     "den": 13710988,
-     "rate": 4.74
-    },
-    "clothing": {
-     "cloth": {
-      "num": 156,
-      "den": 157,
-      "rate": 99.36
-     },
-     "vis": {
-      "num": 9105.68688030608,
-      "den": 9440,
-      "rate": 96.46
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.86
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 207,
-     "den": 207,
-     "rate": 100.0
-    },
-    "speed": {
-     "num": 1880,
-     "den": 62687,
-     "rate": 3.0
-    },
-    "redlight": {
-     "num": 3640,
-     "den": 10829,
-     "rate": 33.61
-    },
-    "reverse": {
-     "num": 593398,
-     "den": 12947672,
-     "rate": 4.58
-    },
-    "clothing": {
-     "cloth": {
-      "num": 163,
-      "den": 163,
-      "rate": 100.0
-     },
-     "vis": {
-      "num": 8649.80960117596,
-      "den": 9247,
-      "rate": 93.54
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 2.84
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "郑州",
-   "name": "兴必达【郑州】大卫城站",
-   "2026-08": {
-    "helmet": {
-     "num": 2657,
-     "den": 2689,
-     "rate": 98.81
-    },
-    "speed": {
-     "num": 8411,
-     "den": 421919,
-     "rate": 1.99
-    },
-    "redlight": {
-     "num": 7641,
-     "den": 31120,
-     "rate": 24.55
-    },
-    "reverse": {
-     "num": 2123814,
-     "den": 76964011,
-     "rate": 2.76
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1915,
-      "den": 1976,
-      "rate": 96.91
-     },
-     "vis": {
-      "num": 56364.689783282796,
-      "den": 58347,
-      "rate": 96.6
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.52
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1947,
-     "den": 1975,
-     "rate": 98.58
-    },
-    "speed": {
-     "num": 6889,
-     "den": 334073,
-     "rate": 2.06
-    },
-    "redlight": {
-     "num": 4458,
-     "den": 21167,
-     "rate": 21.06
-    },
-    "reverse": {
-     "num": 1613242,
-     "den": 61331917,
-     "rate": 2.63
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1424,
-      "den": 1460,
-      "rate": 97.53
-     },
-     "vis": {
-      "num": 39408.4789642018,
-      "den": 41138,
-      "rate": 95.8
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.43
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1520,
-     "den": 1531,
-     "rate": 99.28
-    },
-    "speed": {
-     "num": 5114,
-     "den": 248607,
-     "rate": 2.06
-    },
-    "redlight": {
-     "num": 3513,
-     "den": 16224,
-     "rate": 21.65
-    },
-    "reverse": {
-     "num": 1272796,
-     "den": 44561827,
-     "rate": 2.86
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1206,
-      "den": 1228,
-      "rate": 98.21
-     },
-     "vis": {
-      "num": 35555.86867685961,
-      "den": 37019,
-      "rate": 96.05
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 1.71
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "郑州",
-   "name": "兴必达【郑州】德化站",
-   "2026-08": {
-    "helmet": {
-     "num": 2565,
-     "den": 2581,
-     "rate": 99.38
-    },
-    "speed": {
-     "num": 6705,
-     "den": 408978,
-     "rate": 1.64
-    },
-    "redlight": {
-     "num": 5857,
-     "den": 25689,
-     "rate": 22.8
-    },
-    "reverse": {
-     "num": 2331911,
-     "den": 70360922,
-     "rate": 3.31
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1826,
-      "den": 1906,
-      "rate": 95.8
-     },
-     "vis": {
-      "num": 61346.97098848216,
-      "den": 63130,
-      "rate": 97.18
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.18
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2003,
-     "den": 2021,
-     "rate": 99.11
-    },
-    "speed": {
-     "num": 5035,
-     "den": 334326,
-     "rate": 1.51
-    },
-    "redlight": {
-     "num": 4718,
-     "den": 21189,
-     "rate": 22.27
-    },
-    "reverse": {
-     "num": 1777264,
-     "den": 58039835,
-     "rate": 3.06
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1468,
-      "den": 1529,
-      "rate": 96.01
-     },
-     "vis": {
-      "num": 44395.14703732886,
-      "den": 46171,
-      "rate": 96.15
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.05
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1550,
-     "den": 1563,
-     "rate": 99.17
-    },
-    "speed": {
-     "num": 4081,
-     "den": 264771,
-     "rate": 1.54
-    },
-    "redlight": {
-     "num": 3238,
-     "den": 15443,
-     "rate": 20.97
-    },
-    "reverse": {
-     "num": 1366333,
-     "den": 44545932,
-     "rate": 3.07
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1243,
-      "den": 1270,
-      "rate": 97.87
-     },
-     "vis": {
-      "num": 39914.74216058833,
-      "den": 42169,
-      "rate": 94.65
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.25
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "郑州",
-   "name": "兴必达【郑州】龙子湖站",
-   "2026-08": {
-    "helmet": {
-     "num": 1401,
-     "den": 1407,
-     "rate": 99.57
-    },
-    "speed": {
-     "num": 12310,
-     "den": 379705,
-     "rate": 3.24
-    },
-    "redlight": {
-     "num": 12376,
-     "den": 54515,
-     "rate": 22.7
-    },
-    "reverse": {
-     "num": 2320579,
-     "den": 81853321,
-     "rate": 2.84
-    },
-    "clothing": {
-     "cloth": {
-      "num": 992,
-      "den": 1023,
-      "rate": 96.97
-     },
-     "vis": {
-      "num": 29350.343273649552,
-      "den": 29905,
-      "rate": 98.15
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 3.88
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1056,
-     "den": 1066,
-     "rate": 99.06
-    },
-    "speed": {
-     "num": 8718,
-     "den": 297771,
-     "rate": 2.93
-    },
-    "redlight": {
-     "num": 10258,
-     "den": 44885,
-     "rate": 22.85
-    },
-    "reverse": {
-     "num": 1724474,
-     "den": 65022787,
-     "rate": 2.65
-    },
-    "clothing": {
-     "cloth": {
-      "num": 768,
-      "den": 808,
-      "rate": 95.05
-     },
-     "vis": {
-      "num": 25496.34279193656,
-      "den": 26132,
-      "rate": 97.57
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 3.39
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 939,
-     "den": 944,
-     "rate": 99.47
-    },
-    "speed": {
-     "num": 6230,
-     "den": 243514,
-     "rate": 2.56
-    },
-    "redlight": {
-     "num": 7718,
-     "den": 38028,
-     "rate": 20.3
-    },
-    "reverse": {
-     "num": 1331123,
-     "den": 53414507,
-     "rate": 2.49
-    },
-    "clothing": {
-     "cloth": {
-      "num": 749,
-      "den": 748,
-      "rate": 100.13
-     },
-     "vis": {
-      "num": 23765.972411380346,
-      "den": 24993,
-      "rate": 95.09
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 5.34
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北二区",
-   "subregion": "河南区域",
-   "city": "郑州",
-   "name": "集约配送-兴必达【郑州】大卫城站",
-   "2026-08": {
-    "helmet": {
-     "num": 77,
-     "den": 78,
-     "rate": 98.72
-    },
-    "speed": {
-     "num": 23,
-     "den": 9863,
-     "rate": 0.23
-    },
-    "redlight": {
-     "num": 126,
-     "den": 677,
-     "rate": 18.61
-    },
-    "reverse": {
-     "num": 46686,
-     "den": 1642528,
-     "rate": 2.84
-    },
-    "clothing": {
-     "cloth": {
-      "num": 56,
-      "den": 56,
-      "rate": 100.0
-     },
-     "vis": {
-      "num": 1723.6384615384618,
-      "den": 1736,
-      "rate": 99.29
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.0
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 65,
-     "den": 65,
-     "rate": 100.0
-    },
-    "speed": {
-     "num": 41,
-     "den": 10004,
-     "rate": 0.41
-    },
-    "redlight": {
-     "num": 136,
-     "den": 668,
-     "rate": 20.36
-    },
-    "reverse": {
-     "num": 47078,
-     "den": 1828690,
-     "rate": 2.57
-    },
-    "clothing": {
-     "cloth": {
-      "num": 47,
-      "den": 47,
-      "rate": 100.0
-     },
-     "vis": {
-      "num": 1462.6666666666665,
-      "den": 1470,
-      "rate": 99.5
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.0
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 46,
-     "den": 46,
-     "rate": 100.0
-    },
-    "speed": {
-     "num": 16,
-     "den": 6082,
-     "rate": 0.26
-    },
-    "redlight": {
-     "num": 81,
-     "den": 348,
-     "rate": 23.28
-    },
-    "reverse": {
-     "num": 26290,
-     "den": 1114292,
-     "rate": 2.36
-    },
-    "clothing": {
-     "cloth": {
-      "num": 36,
-      "den": 36,
-      "rate": 100.0
-     },
-     "vis": {
-      "num": 1144.3351432880843,
-      "den": 1262,
-      "rate": 90.68
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.0
-    }
-   }
-  },
-  {
-   "level": "subregion",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "",
-   "name": "津冀区域",
-   "2026-08": {
-    "helmet": {
-     "num": 88370,
-     "den": 90481,
-     "rate": 97.67
-    },
-    "speed": {
-     "num": 419860,
-     "den": 12122576,
-     "rate": 3.46
-    },
-    "redlight": {
-     "num": 417861,
-     "den": 2025499,
-     "rate": 20.63
-    },
-    "reverse": {
-     "num": 147056042,
-     "den": 4203694533,
-     "rate": 3.5
-    },
-    "clothing": {
-     "cloth": {
-      "num": 56121,
-      "den": 59335,
-      "rate": 94.58
-     },
-     "vis": {
-      "num": 2228199.792052514,
-      "den": 2374224,
-      "rate": 93.85
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 3.04
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 73651,
-     "den": 74578,
-     "rate": 98.76
-    },
-    "speed": {
-     "num": 325887,
-     "den": 10065911,
-     "rate": 3.24
-    },
-    "redlight": {
-     "num": 317249,
-     "den": 1645550,
-     "rate": 19.28
-    },
-    "reverse": {
-     "num": 110379273,
-     "den": 3480622474,
-     "rate": 3.17
-    },
-    "clothing": {
-     "cloth": {
-      "num": 61925,
-      "den": 64664,
-      "rate": 95.76
-     },
-     "vis": {
-      "num": 2227018.999098748,
-      "den": 2354286,
-      "rate": 94.59
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 3.35
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 59678,
-     "den": 60464,
-     "rate": 98.7
-    },
-    "speed": {
-     "num": 270275,
-     "den": 8254571,
-     "rate": 3.27
-    },
-    "redlight": {
-     "num": 262927,
-     "den": 1354613,
-     "rate": 19.41
-    },
-    "reverse": {
-     "num": 90062964,
-     "den": 2802687447,
-     "rate": 3.21
-    },
-    "clothing": {
-     "cloth": {
-      "num": 51174,
-      "den": 53059,
-      "rate": 96.45
-     },
-     "vis": {
-      "num": 1898981.4041465265,
-      "den": 2032078,
-      "rate": 93.45
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 3.34
-    }
-   }
-  },
-  {
-   "level": "merchant",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "唐山",
-   "name": "唐山",
-   "2026-08": {
-    "helmet": {
-     "num": 13629,
-     "den": 13900,
-     "rate": 98.05
-    },
-    "speed": {
-     "num": 72343,
-     "den": 2020612,
-     "rate": 3.58
-    },
-    "redlight": {
-     "num": 71275,
-     "den": 376682,
-     "rate": 18.92
-    },
-    "reverse": {
-     "num": 34588644,
-     "den": 668314930,
-     "rate": 5.18
-    },
-    "clothing": {
-     "cloth": {
-      "num": 9147,
-      "den": 9584,
-      "rate": 95.44
-     },
-     "vis": {
-      "num": 338678.9359791922,
-      "den": 361072,
-      "rate": 93.8
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 2.39
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 11030,
-     "den": 11155,
-     "rate": 98.88
-    },
-    "speed": {
-     "num": 53258,
-     "den": 1646827,
-     "rate": 3.23
-    },
-    "redlight": {
-     "num": 48197,
-     "den": 300336,
-     "rate": 16.05
-    },
-    "reverse": {
-     "num": 24191320,
-     "den": 558398324,
-     "rate": 4.33
-    },
-    "clothing": {
-     "cloth": {
-      "num": 9736,
-      "den": 10158,
-      "rate": 95.85
-     },
-     "vis": {
-      "num": 347686.9603512863,
-      "den": 363689,
-      "rate": 95.6
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.56
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 9101,
-     "den": 9183,
-     "rate": 99.11
-    },
-    "speed": {
-     "num": 40287,
-     "den": 1374163,
-     "rate": 2.93
-    },
-    "redlight": {
-     "num": 37986,
-     "den": 245484,
-     "rate": 15.47
-    },
-    "reverse": {
-     "num": 18577137,
-     "den": 452804877,
-     "rate": 4.1
-    },
-    "clothing": {
-     "cloth": {
-      "num": 8204,
-      "den": 8541,
-      "rate": 96.05
-     },
-     "vis": {
-      "num": 292141.0109375684,
-      "den": 308790,
-      "rate": 94.61
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 1.61
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "唐山",
-   "name": "兴必达【唐山】万达站点",
-   "2026-08": {
-    "helmet": {
-     "num": 1936,
-     "den": 2020,
-     "rate": 95.84
-    },
-    "speed": {
-     "num": 9319,
-     "den": 246498,
-     "rate": 3.78
-    },
-    "redlight": {
-     "num": 8193,
-     "den": 35170,
-     "rate": 23.3
-    },
-    "reverse": {
-     "num": 4166621,
-     "den": 79592365,
-     "rate": 5.23
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1320,
-      "den": 1413,
-      "rate": 93.42
-     },
-     "vis": {
-      "num": 44807.52247257835,
-      "den": 49183,
-      "rate": 91.1
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.97
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1535,
-     "den": 1573,
-     "rate": 97.58
-    },
-    "speed": {
-     "num": 7707,
-     "den": 216904,
-     "rate": 3.55
-    },
-    "redlight": {
-     "num": 6166,
-     "den": 29855,
-     "rate": 20.65
-    },
-    "reverse": {
-     "num": 2894018,
-     "den": 69249353,
-     "rate": 4.18
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1350,
-      "den": 1440,
-      "rate": 93.75
-     },
-     "vis": {
-      "num": 46362.018752811055,
-      "den": 49649,
-      "rate": 93.38
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.1
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1249,
-     "den": 1277,
-     "rate": 97.81
-    },
-    "speed": {
-     "num": 6205,
-     "den": 176269,
-     "rate": 3.52
-    },
-    "redlight": {
-     "num": 4729,
-     "den": 25083,
-     "rate": 18.85
-    },
-    "reverse": {
-     "num": 2204038,
-     "den": 57178636,
-     "rate": 3.85
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1109,
-      "den": 1176,
-      "rate": 94.3
-     },
-     "vis": {
-      "num": 38478.773634291116,
-      "den": 42504,
-      "rate": 90.53
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 1.15
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "唐山",
-   "name": "兴必达【唐山】信息大厦站",
-   "2026-08": {
-    "helmet": {
-     "num": 3108,
-     "den": 3200,
-     "rate": 97.12
-    },
-    "speed": {
-     "num": 15041,
-     "den": 376816,
-     "rate": 3.99
-    },
-    "redlight": {
-     "num": 15325,
-     "den": 58877,
-     "rate": 26.03
-    },
-    "reverse": {
-     "num": 10027981,
-     "den": 164703542,
-     "rate": 6.09
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2104,
-      "den": 2162,
-      "rate": 97.32
-     },
-     "vis": {
-      "num": 76025.44676517065,
-      "den": 83930,
-      "rate": 90.58
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 4.43
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2476,
-     "den": 2498,
-     "rate": 99.12
-    },
-    "speed": {
-     "num": 11293,
-     "den": 292851,
-     "rate": 3.86
-    },
-    "redlight": {
-     "num": 10978,
-     "den": 44767,
-     "rate": 24.52
-    },
-    "reverse": {
-     "num": 7490009,
-     "den": 134062232,
-     "rate": 5.59
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2182,
-      "den": 2253,
-      "rate": 96.85
-     },
-     "vis": {
-      "num": 79831.86611952368,
-      "den": 84526,
-      "rate": 94.45
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 7.3
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1978,
-     "den": 1997,
-     "rate": 99.05
-    },
-    "speed": {
-     "num": 8117,
-     "den": 232383,
-     "rate": 3.49
-    },
-    "redlight": {
-     "num": 9188,
-     "den": 35229,
-     "rate": 26.08
-    },
-    "reverse": {
-     "num": 6027621,
-     "den": 104126438,
-     "rate": 5.79
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1785,
-      "den": 1825,
-      "rate": 97.81
-     },
-     "vis": {
-      "num": 67179.58719619311,
-      "den": 70753,
-      "rate": 94.95
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 4.48
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "唐山",
-   "name": "兴必达【唐山】八方站",
-   "2026-08": {
-    "helmet": {
-     "num": 3383,
-     "den": 3409,
-     "rate": 99.24
-    },
-    "speed": {
-     "num": 15501,
-     "den": 524158,
-     "rate": 2.96
-    },
-    "redlight": {
-     "num": 10052,
-     "den": 60667,
-     "rate": 16.57
-    },
-    "reverse": {
-     "num": 8854893,
-     "den": 169304182,
-     "rate": 5.23
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2221,
-      "den": 2327,
-      "rate": 95.44
-     },
-     "vis": {
-      "num": 91710.58787543101,
-      "den": 92528,
-      "rate": 99.12
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.95
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2919,
-     "den": 2932,
-     "rate": 99.56
-    },
-    "speed": {
-     "num": 14548,
-     "den": 495876,
-     "rate": 2.93
-    },
-    "redlight": {
-     "num": 9129,
-     "den": 58504,
-     "rate": 15.6
-    },
-    "reverse": {
-     "num": 6247136,
-     "den": 162841567,
-     "rate": 3.84
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2539,
-      "den": 2649,
-      "rate": 95.85
-     },
-     "vis": {
-      "num": 98232.59630318279,
-      "den": 99468,
-      "rate": 98.76
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 1.43
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 2538,
-     "den": 2548,
-     "rate": 99.61
-    },
-    "speed": {
-     "num": 11671,
-     "den": 424972,
-     "rate": 2.75
-    },
-    "redlight": {
-     "num": 7314,
-     "den": 48504,
-     "rate": 15.08
-    },
-    "reverse": {
-     "num": 4600225,
-     "den": 136826573,
-     "rate": 3.36
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2276,
-      "den": 2382,
-      "rate": 95.55
-     },
-     "vis": {
-      "num": 86897.84893680896,
-      "den": 88115,
-      "rate": 98.62
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.93
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "唐山",
-   "name": "兴必达【唐山】十九各庄站",
-   "2026-08": {
-    "helmet": {
-     "num": 3067,
-     "den": 3103,
-     "rate": 98.84
-    },
-    "speed": {
-     "num": 21949,
-     "den": 617354,
-     "rate": 3.56
-    },
-    "redlight": {
-     "num": 27359,
-     "den": 171055,
-     "rate": 15.99
-    },
-    "reverse": {
-     "num": 6738395,
-     "den": 154906673,
-     "rate": 4.35
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2084,
-      "den": 2184,
-      "rate": 95.42
-     },
-     "vis": {
-      "num": 72566.75482037135,
-      "den": 78989,
-      "rate": 91.87
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.55
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2266,
-     "den": 2294,
-     "rate": 98.78
-    },
-    "speed": {
-     "num": 13315,
-     "den": 446457,
-     "rate": 2.98
-    },
-    "redlight": {
-     "num": 14992,
-     "den": 127277,
-     "rate": 11.78
-    },
-    "reverse": {
-     "num": 4277332,
-     "den": 113004338,
-     "rate": 3.79
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2036,
-      "den": 2122,
-      "rate": 95.95
-     },
-     "vis": {
-      "num": 70299.688572085,
-      "den": 74274,
-      "rate": 94.65
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.81
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1918,
-     "den": 1940,
-     "rate": 98.87
-    },
-    "speed": {
-     "num": 9401,
-     "den": 378553,
-     "rate": 2.48
-    },
-    "redlight": {
-     "num": 11685,
-     "den": 105584,
-     "rate": 11.07
-    },
-    "reverse": {
-     "num": 3437279,
-     "den": 94257034,
-     "rate": 3.65
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1764,
-      "den": 1829,
-      "rate": 96.45
-     },
-     "vis": {
-      "num": 58992.89282375827,
-      "den": 63506,
-      "rate": 92.89
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.63
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "唐山",
-   "name": "兴必达【唐山】银丰站",
-   "2026-08": {
-    "helmet": {
-     "num": 563,
-     "den": 569,
-     "rate": 98.95
-    },
-    "speed": {
-     "num": 1537,
-     "den": 49996,
-     "rate": 3.07
-    },
-    "redlight": {
-     "num": 2485,
-     "den": 14028,
-     "rate": 17.71
-    },
-    "reverse": {
-     "num": 682351,
-     "den": 20796863,
-     "rate": 3.28
-    },
-    "clothing": {
-     "cloth": {
-      "num": 358,
-      "den": 368,
-      "rate": 97.28
-     },
-     "vis": {
-      "num": 12961.272566712352,
-      "den": 13417,
-      "rate": 96.6
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 5.72
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 588,
-     "den": 590,
-     "rate": 99.66
-    },
-    "speed": {
-     "num": 1491,
-     "den": 55890,
-     "rate": 2.67
-    },
-    "redlight": {
-     "num": 1546,
-     "den": 12125,
-     "rate": 12.75
-    },
-    "reverse": {
-     "num": 608199,
-     "den": 21204228,
-     "rate": 2.87
-    },
-    "clothing": {
-     "cloth": {
-      "num": 522,
-      "den": 541,
-      "rate": 96.49
-     },
-     "vis": {
-      "num": 15491.799204151079,
-      "den": 16370,
-      "rate": 94.64
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 3.49
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 416,
-     "den": 417,
-     "rate": 99.76
-    },
-    "speed": {
-     "num": 875,
-     "den": 40020,
-     "rate": 2.19
-    },
-    "redlight": {
-     "num": 1077,
-     "den": 8617,
-     "rate": 12.5
-    },
-    "reverse": {
-     "num": 394950,
-     "den": 14914762,
-     "rate": 2.65
-    },
-    "clothing": {
-     "cloth": {
-      "num": 379,
-      "den": 396,
-      "rate": 95.71
-     },
-     "vis": {
-      "num": 10707.35978283058,
-      "den": 12167,
-      "rate": 88.0
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 1.7
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "唐山",
-   "name": "兴必达【唐山】银泰城站",
-   "2026-08": {
-    "helmet": {
-     "num": 1572,
-     "den": 1599,
-     "rate": 98.31
-    },
-    "speed": {
-     "num": 8996,
-     "den": 205790,
-     "rate": 4.37
-    },
-    "redlight": {
-     "num": 7861,
-     "den": 36885,
-     "rate": 21.31
-    },
-    "reverse": {
-     "num": 4118403,
-     "den": 79011305,
-     "rate": 5.21
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1060,
-      "den": 1130,
-      "rate": 93.81
-     },
-     "vis": {
-      "num": 40607.35147892891,
-      "den": 43025,
-      "rate": 94.38
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.71
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1246,
-     "den": 1268,
-     "rate": 98.26
-    },
-    "speed": {
-     "num": 4904,
-     "den": 138849,
-     "rate": 3.53
-    },
-    "redlight": {
-     "num": 5386,
-     "den": 27808,
-     "rate": 19.37
-    },
-    "reverse": {
-     "num": 2674626,
-     "den": 58036606,
-     "rate": 4.61
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1107,
-      "den": 1153,
-      "rate": 96.01
-     },
-     "vis": {
-      "num": 37468.99139953227,
-      "den": 39402,
-      "rate": 95.09
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.22
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1002,
-     "den": 1004,
-     "rate": 99.8
-    },
-    "speed": {
-     "num": 4018,
-     "den": 121966,
-     "rate": 3.29
-    },
-    "redlight": {
-     "num": 3993,
-     "den": 22467,
-     "rate": 17.77
-    },
-    "reverse": {
-     "num": 1913024,
-     "den": 45501434,
-     "rate": 4.2
-    },
-    "clothing": {
-     "cloth": {
-      "num": 891,
-      "den": 933,
-      "rate": 95.5
-     },
-     "vis": {
-      "num": 29884.548563686243,
-      "den": 31745,
-      "rate": 94.14
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.76
-    }
-   }
-  },
-  {
-   "level": "merchant",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "天津",
-   "name": "天津",
-   "2026-08": {
-    "helmet": {
-     "num": 19709,
-     "den": 20006,
-     "rate": 98.52
-    },
-    "speed": {
-     "num": 116539,
-     "den": 3205380,
-     "rate": 3.64
-    },
-    "redlight": {
-     "num": 92713,
-     "den": 500888,
-     "rate": 18.51
-    },
-    "reverse": {
-     "num": 26394939,
-     "den": 922376047,
-     "rate": 2.86
-    },
-    "clothing": {
-     "cloth": {
-      "num": 7188,
-      "den": 7421,
-      "rate": 96.86
-     },
-     "vis": {
-      "num": 274912.675964762,
-      "den": 291273,
-      "rate": 94.38
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 6.11
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 16561,
-     "den": 16716,
-     "rate": 99.07
-    },
-    "speed": {
-     "num": 92643,
-     "den": 2621823,
-     "rate": 3.53
-    },
-    "redlight": {
-     "num": 71204,
-     "den": 404264,
-     "rate": 17.61
-    },
-    "reverse": {
-     "num": 20323733,
-     "den": 763966470,
-     "rate": 2.66
-    },
-    "clothing": {
-     "cloth": {
-      "num": 12805,
-      "den": 13064,
-      "rate": 98.02
-     },
-     "vis": {
-      "num": 476002.43010357436,
-      "den": 500903,
-      "rate": 95.03
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 6.42
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 13450,
-     "den": 13608,
-     "rate": 98.84
-    },
-    "speed": {
-     "num": 79461,
-     "den": 2170201,
-     "rate": 3.66
-    },
-    "redlight": {
-     "num": 62545,
-     "den": 331436,
-     "rate": 18.87
-    },
-    "reverse": {
-     "num": 16983559,
-     "den": 621939299,
-     "rate": 2.73
-    },
-    "clothing": {
-     "cloth": {
-      "num": 12104,
-      "den": 12221,
-      "rate": 99.04
-     },
-     "vis": {
-      "num": 464948.3495602359,
-      "den": 494562,
-      "rate": 94.01
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 5.82
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "天津",
-   "name": "兴必达【天津】东丽湖站",
-   "2026-08": {
-    "helmet": {
-     "num": 2647,
-     "den": 2661,
-     "rate": 99.47
-    },
-    "speed": {
-     "num": 3069,
-     "den": 80232,
-     "rate": 3.83
-    },
-    "redlight": {
-     "num": 2589,
-     "den": 16189,
-     "rate": 15.99
-    },
-    "reverse": {
-     "num": 3722609,
-     "den": 123023082,
-     "rate": 3.03
-    },
-    "clothing": {
-     "cloth": {
-      "num": 957,
-      "den": 1000,
-      "rate": 95.7
-     },
-     "vis": {
-      "num": 46617.084706134585,
-      "den": 48039,
-      "rate": 97.04
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 8.24
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2294,
-     "den": 2306,
-     "rate": 99.48
-    },
-    "speed": {
-     "num": 2392,
-     "den": 64135,
-     "rate": 3.73
-    },
-    "redlight": {
-     "num": 1641,
-     "den": 11105,
-     "rate": 14.78
-    },
-    "reverse": {
-     "num": 2684852,
-     "den": 99016580,
-     "rate": 2.71
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1756,
-      "den": 1836,
-      "rate": 95.64
-     },
-     "vis": {
-      "num": 68702.45517671244,
-      "den": 70914,
-      "rate": 96.88
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 10.66
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1893,
-     "den": 1909,
-     "rate": 99.16
-    },
-    "speed": {
-     "num": 1905,
-     "den": 49354,
-     "rate": 3.86
-    },
-    "redlight": {
-     "num": 1267,
-     "den": 9261,
-     "rate": 13.68
-    },
-    "reverse": {
-     "num": 1882371,
-     "den": 78737518,
-     "rate": 2.39
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1688,
-      "den": 1746,
-      "rate": 96.68
-     },
-     "vis": {
-      "num": 69462.38633968585,
-      "den": 72988,
-      "rate": 95.17
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 14.31
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "天津",
-   "name": "兴必达【天津】圣光站",
-   "2026-08": {
-    "helmet": {
-     "num": 2517,
-     "den": 2552,
-     "rate": 98.63
-    },
-    "speed": {
-     "num": 10014,
-     "den": 265267,
-     "rate": 3.78
-    },
-    "redlight": {
-     "num": 20808,
-     "den": 130148,
-     "rate": 15.99
-    },
-    "reverse": {
-     "num": 2407495,
-     "den": 164056705,
-     "rate": 1.47
-    },
-    "clothing": {
-     "cloth": {
-      "num": 911,
-      "den": 932,
-      "rate": 97.75
-     },
-     "vis": {
-      "num": 31957.55224617812,
-      "den": 34304,
-      "rate": 93.16
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 4.85
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2114,
-     "den": 2134,
-     "rate": 99.06
-    },
-    "speed": {
-     "num": 8155,
-     "den": 213156,
-     "rate": 3.83
-    },
-    "redlight": {
-     "num": 16439,
-     "den": 104667,
-     "rate": 15.71
-    },
-    "reverse": {
-     "num": 1912604,
-     "den": 134914907,
-     "rate": 1.42
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1639,
-      "den": 1664,
-      "rate": 98.5
-     },
-     "vis": {
-      "num": 57262.13963813559,
-      "den": 59441,
-      "rate": 96.33
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.79
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1553,
-     "den": 1578,
-     "rate": 98.42
-    },
-    "speed": {
-     "num": 5043,
-     "den": 156195,
-     "rate": 3.23
-    },
-    "redlight": {
-     "num": 13304,
-     "den": 82566,
-     "rate": 16.11
-    },
-    "reverse": {
-     "num": 1584044,
-     "den": 102166366,
-     "rate": 1.55
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1412,
-      "den": 1415,
-      "rate": 99.79
-     },
-     "vis": {
-      "num": 51728.98739578209,
-      "den": 53963,
-      "rate": 95.86
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 3.47
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "天津",
-   "name": "兴必达【天津】张家窝站",
-   "2026-08": {
-    "helmet": {
-     "num": 3256,
-     "den": 3302,
-     "rate": 98.61
-    },
-    "speed": {
-     "num": 21723,
-     "den": 665224,
-     "rate": 3.27
-    },
-    "redlight": {
-     "num": 22232,
-     "den": 175518,
-     "rate": 12.67
-    },
-    "reverse": {
-     "num": 3138310,
-     "den": 139437567,
-     "rate": 2.25
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1210,
-      "den": 1263,
-      "rate": 95.8
-     },
-     "vis": {
-      "num": 45269.82055548324,
-      "den": 46792,
-      "rate": 96.75
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.67
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2732,
-     "den": 2754,
-     "rate": 99.2
-    },
-    "speed": {
-     "num": 17800,
-     "den": 552058,
-     "rate": 3.22
-    },
-    "redlight": {
-     "num": 15373,
-     "den": 135539,
-     "rate": 11.34
-    },
-    "reverse": {
-     "num": 2673051,
-     "den": 118112176,
-     "rate": 2.26
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2146,
-      "den": 2194,
-      "rate": 97.81
-     },
-     "vis": {
-      "num": 77910.23567895271,
-      "den": 80088,
-      "rate": 97.28
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.79
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 2299,
-     "den": 2321,
-     "rate": 99.05
-    },
-    "speed": {
-     "num": 14797,
-     "den": 455988,
-     "rate": 3.25
-    },
-    "redlight": {
-     "num": 14599,
-     "den": 109395,
-     "rate": 13.35
-    },
-    "reverse": {
-     "num": 2175130,
-     "den": 97752609,
-     "rate": 2.23
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2098,
-      "den": 2113,
-      "rate": 99.29
-     },
-     "vis": {
-      "num": 72323.02553985725,
-      "den": 76042,
-      "rate": 95.11
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 2.87
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "天津",
-   "name": "兴必达【天津】昆仑站",
-   "2026-08": {
-    "helmet": {
-     "num": 2028,
-     "den": 2065,
-     "rate": 98.21
-    },
-    "speed": {
-     "num": 14909,
-     "den": 280057,
-     "rate": 5.32
-    },
-    "redlight": {
-     "num": 7625,
-     "den": 32479,
-     "rate": 23.48
-    },
-    "reverse": {
-     "num": 4349914,
-     "den": 102166313,
-     "rate": 4.26
-    },
-    "clothing": {
-     "cloth": {
-      "num": 732,
-      "den": 749,
-      "rate": 97.73
-     },
-     "vis": {
-      "num": 26464.20334978036,
-      "den": 28273,
-      "rate": 93.6
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 2.56
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1560,
-     "den": 1579,
-     "rate": 98.8
-    },
-    "speed": {
-     "num": 10417,
-     "den": 206366,
-     "rate": 5.05
-    },
-    "redlight": {
-     "num": 5937,
-     "den": 24497,
-     "rate": 24.24
-    },
-    "reverse": {
-     "num": 3539700,
-     "den": 76070127,
-     "rate": 4.65
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1208,
-      "den": 1236,
-      "rate": 97.73
-     },
-     "vis": {
-      "num": 43046.62526543157,
-      "den": 46627,
-      "rate": 92.32
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.35
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1252,
-     "den": 1272,
-     "rate": 98.43
-    },
-    "speed": {
-     "num": 9111,
-     "den": 176384,
-     "rate": 5.17
-    },
-    "redlight": {
-     "num": 5595,
-     "den": 21352,
-     "rate": 26.2
-    },
-    "reverse": {
-     "num": 3298860,
-     "den": 63589232,
-     "rate": 5.19
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1119,
-      "den": 1139,
-      "rate": 98.24
-     },
-     "vis": {
-      "num": 44690.99408044056,
-      "den": 47682,
-      "rate": 93.73
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 3.0
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "天津",
-   "name": "兴必达【天津】汊沽港站",
-   "2026-08": {
-    "helmet": {
-     "num": 1479,
-     "den": 1520,
-     "rate": 97.3
-    },
-    "speed": {
-     "num": 2932,
-     "den": 83655,
-     "rate": 3.5
-    },
-    "redlight": {
-     "num": 2720,
-     "den": 15802,
-     "rate": 17.21
-    },
-    "reverse": {
-     "num": 988457,
-     "den": 31488866,
-     "rate": 3.14
-    },
-    "clothing": {
-     "cloth": {
-      "num": 525,
-      "den": 528,
-      "rate": 99.43
-     },
-     "vis": {
-      "num": 16325.757086476004,
-      "den": 17647,
-      "rate": 92.51
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 7.6
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1158,
-     "den": 1179,
-     "rate": 98.22
-    },
-    "speed": {
-     "num": 2325,
-     "den": 65890,
-     "rate": 3.53
-    },
-    "redlight": {
-     "num": 1834,
-     "den": 12039,
-     "rate": 15.23
-    },
-    "reverse": {
-     "num": 648528,
-     "den": 25247574,
-     "rate": 2.57
-    },
-    "clothing": {
-     "cloth": {
-      "num": 893,
-      "den": 891,
-      "rate": 100.22
-     },
-     "vis": {
-      "num": 27284.221119860555,
-      "den": 29018,
-      "rate": 94.03
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 13.86
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 891,
-     "den": 907,
-     "rate": 98.24
-    },
-    "speed": {
-     "num": 1910,
-     "den": 49131,
-     "rate": 3.89
-    },
-    "redlight": {
-     "num": 1423,
-     "den": 9249,
-     "rate": 15.39
-    },
-    "reverse": {
-     "num": 469468,
-     "den": 17140266,
-     "rate": 2.74
-    },
-    "clothing": {
-     "cloth": {
-      "num": 804,
-      "den": 806,
-      "rate": 99.75
-     },
-     "vis": {
-      "num": 26170.638243663197,
-      "den": 28108,
-      "rate": 93.11
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 11.12
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "天津",
-   "name": "兴必达【天津】洪湖里站",
-   "2026-08": {
-    "helmet": {
-     "num": 2793,
-     "den": 2837,
-     "rate": 98.45
-    },
-    "speed": {
-     "num": 20772,
-     "den": 594038,
-     "rate": 3.5
-    },
-    "redlight": {
-     "num": 7110,
-     "den": 25380,
-     "rate": 28.01
-    },
-    "reverse": {
-     "num": 5098940,
-     "den": 137211497,
-     "rate": 3.72
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1012,
-      "den": 1066,
-      "rate": 94.93
-     },
-     "vis": {
-      "num": 40079.925664510934,
-      "den": 42046,
-      "rate": 95.32
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.88
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2277,
-     "den": 2313,
-     "rate": 98.44
-    },
-    "speed": {
-     "num": 15886,
-     "den": 499683,
-     "rate": 3.18
-    },
-    "redlight": {
-     "num": 5726,
-     "den": 21512,
-     "rate": 26.62
-    },
-    "reverse": {
-     "num": 3832905,
-     "den": 111987247,
-     "rate": 3.42
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1741,
-      "den": 1779,
-      "rate": 97.86
-     },
-     "vis": {
-      "num": 65631.24082705047,
-      "den": 70568,
-      "rate": 93.0
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.79
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1920,
-     "den": 1952,
-     "rate": 98.36
-    },
-    "speed": {
-     "num": 16481,
-     "den": 429583,
-     "rate": 3.84
-    },
-    "redlight": {
-     "num": 5340,
-     "den": 18993,
-     "rate": 28.12
-    },
-    "reverse": {
-     "num": 3277689,
-     "den": 96640895,
-     "rate": 3.39
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1722,
-      "den": 1739,
-      "rate": 99.02
-     },
-     "vis": {
-      "num": 69495.94783883344,
-      "den": 75189,
-      "rate": 92.43
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 1.46
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "天津",
-   "name": "兴必达【天津】海光寺站",
-   "2026-08": {
-    "helmet": {
-     "num": 3954,
-     "den": 4016,
-     "rate": 98.46
-    },
-    "speed": {
-     "num": 40277,
-     "den": 1164136,
-     "rate": 3.46
-    },
-    "redlight": {
-     "num": 26708,
-     "den": 92442,
-     "rate": 28.89
-    },
-    "reverse": {
-     "num": 6231040,
-     "den": 205002096,
-     "rate": 3.04
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1459,
-      "den": 1496,
-      "rate": 97.53
-     },
-     "vis": {
-      "num": 54243.233665596104,
-      "den": 58346,
-      "rate": 92.97
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.05
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 3169,
-     "den": 3182,
-     "rate": 99.59
-    },
-    "speed": {
-     "num": 30301,
-     "den": 911163,
-     "rate": 3.33
-    },
-    "redlight": {
-     "num": 19374,
-     "den": 72381,
-     "rate": 26.77
-    },
-    "reverse": {
-     "num": 4366649,
-     "den": 161522604,
-     "rate": 2.7
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2464,
-      "den": 2489,
-      "rate": 99.0
-     },
-     "vis": {
-      "num": 95822.98589142693,
-      "den": 101224,
-      "rate": 94.66
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.06
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 2554,
-     "den": 2568,
-     "rate": 99.45
-    },
-    "speed": {
-     "num": 26840,
-     "den": 762168,
-     "rate": 3.52
-    },
-    "redlight": {
-     "num": 17359,
-     "den": 61247,
-     "rate": 28.34
-    },
-    "reverse": {
-     "num": 3759038,
-     "den": 133356746,
-     "rate": 2.82
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2291,
-      "den": 2295,
-      "rate": 99.83
-     },
-     "vis": {
-      "num": 92469.017329202,
-      "den": 100158,
-      "rate": 92.32
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.28
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "天津",
-   "name": "兴必达【天津】金光站",
-   "2026-09": {
-    "helmet": {
-     "num": 348,
-     "den": 353,
-     "rate": 98.58
-    },
-    "speed": {
-     "num": 2661,
-     "den": 46749,
-     "rate": 5.69
-    },
-    "redlight": {
-     "num": 2444,
-     "den": 11234,
-     "rate": 21.76
-    },
-    "reverse": {
-     "num": 260564,
-     "den": 19382658,
-     "rate": 1.34
-    },
-    "clothing": {
-     "cloth": {
-      "num": 262,
-      "den": 274,
-      "rate": 95.62
-     },
-     "vis": {
-      "num": 9370.880453860114,
-      "den": 9785,
-      "rate": 95.77
-     }
-    },
-    "high_speed": {
-     "days": 28,
-     "pct": 2.56
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 317,
-     "den": 319,
-     "rate": 99.37
-    },
-    "speed": {
-     "num": 1573,
-     "den": 41583,
-     "rate": 3.78
-    },
-    "redlight": {
-     "num": 1594,
-     "den": 10118,
-     "rate": 15.75
-    },
-    "reverse": {
-     "num": 165591,
-     "den": 17334695,
-     "rate": 0.96
-    },
-    "clothing": {
-     "cloth": {
-      "num": 279,
-      "den": 279,
-      "rate": 100.0
-     },
-     "vis": {
-      "num": 10119.087979638409,
-      "den": 10406,
-      "rate": 97.24
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 1.94
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "天津",
-   "name": "兴必达【天津】青光站",
-   "2026-08": {
-    "helmet": {
-     "num": 1035,
-     "den": 1053,
-     "rate": 98.29
-    },
-    "speed": {
-     "num": 2843,
-     "den": 72771,
-     "rate": 3.91
-    },
-    "redlight": {
-     "num": 2921,
-     "den": 12930,
-     "rate": 22.59
-    },
-    "reverse": {
-     "num": 458174,
-     "den": 19989921,
-     "rate": 2.29
-    },
-    "clothing": {
-     "cloth": {
-      "num": 382,
-      "den": 387,
-      "rate": 98.71
-     },
-     "vis": {
-      "num": 13955.098690602554,
-      "den": 15826,
-      "rate": 88.18
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 23.04
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 909,
-     "den": 916,
-     "rate": 99.24
-    },
-    "speed": {
-     "num": 2706,
-     "den": 62623,
-     "rate": 4.32
-    },
-    "redlight": {
-     "num": 2436,
-     "den": 11290,
-     "rate": 21.58
-    },
-    "reverse": {
-     "num": 404880,
-     "den": 17712597,
-     "rate": 2.29
-    },
-    "clothing": {
-     "cloth": {
-      "num": 696,
-      "den": 701,
-      "rate": 99.29
-     },
-     "vis": {
-      "num": 30971.646052143227,
-      "den": 33238,
-      "rate": 93.18
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 21.75
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 771,
-     "den": 782,
-     "rate": 98.59
-    },
-    "speed": {
-     "num": 1801,
-     "den": 49815,
-     "rate": 3.62
-    },
-    "redlight": {
-     "num": 2064,
-     "den": 9255,
-     "rate": 22.3
-    },
-    "reverse": {
-     "num": 371368,
-     "den": 15220972,
-     "rate": 2.44
-    },
-    "clothing": {
-     "cloth": {
-      "num": 691,
-      "den": 689,
-      "rate": 100.29
-     },
-     "vis": {
-      "num": 28488.264813133483,
-      "den": 30026,
-      "rate": 94.88
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 13.93
-    }
-   }
-  },
-  {
-   "level": "merchant",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "张家口",
-   "name": "张家口",
-   "2026-08": {
-    "helmet": {
-     "num": 13923,
-     "den": 14120,
-     "rate": 98.6
-    },
-    "speed": {
-     "num": 56795,
-     "den": 1842298,
-     "rate": 3.08
-    },
-    "redlight": {
-     "num": 38237,
-     "den": 193967,
-     "rate": 19.71
-    },
-    "reverse": {
-     "num": 12348674,
-     "den": 637717799,
-     "rate": 1.94
-    },
-    "clothing": {
-     "cloth": {
-      "num": 9324,
-      "den": 9859,
-      "rate": 94.57
-     },
-     "vis": {
-      "num": 333879.71785495227,
-      "den": 347885,
-      "rate": 95.97
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.77
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 13688,
-     "den": 13835,
-     "rate": 98.94
-    },
-    "speed": {
-     "num": 54508,
-     "den": 1820753,
-     "rate": 2.99
-    },
-    "redlight": {
-     "num": 37918,
-     "den": 187440,
-     "rate": 20.23
-    },
-    "reverse": {
-     "num": 14575622,
-     "den": 647698462,
-     "rate": 2.25
-    },
-    "clothing": {
-     "cloth": {
-      "num": 12087,
-      "den": 12646,
-      "rate": 95.58
-     },
-     "vis": {
-      "num": 412684.6852984216,
-      "den": 435971,
-      "rate": 94.66
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.32
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 11360,
-     "den": 11520,
-     "rate": 98.61
-    },
-    "speed": {
-     "num": 50823,
-     "den": 1524258,
-     "rate": 3.33
-    },
-    "redlight": {
-     "num": 36288,
-     "den": 167445,
-     "rate": 21.67
-    },
-    "reverse": {
-     "num": 12724113,
-     "den": 536271668,
-     "rate": 2.37
-    },
-    "clothing": {
-     "cloth": {
-      "num": 9770,
-      "den": 10108,
-      "rate": 96.66
-     },
-     "vis": {
-      "num": 355783.4155636049,
-      "den": 384051,
-      "rate": 92.64
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 3.19
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "张家口",
-   "name": "兴必达【张家口】宣化东站",
-   "2026-08": {
-    "helmet": {
-     "num": 2066,
-     "den": 2117,
-     "rate": 97.59
-    },
-    "speed": {
-     "num": 4061,
-     "den": 197992,
-     "rate": 2.05
-    },
-    "redlight": {
-     "num": 2455,
-     "den": 11585,
-     "rate": 21.19
-    },
-    "reverse": {
-     "num": 2359094,
-     "den": 94711747,
-     "rate": 2.49
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1390,
-      "den": 1578,
-      "rate": 88.09
-     },
-     "vis": {
-      "num": 48572.63532007149,
-      "den": 49949,
-      "rate": 97.24
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 2.19
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1813,
-     "den": 1836,
-     "rate": 98.75
-    },
-    "speed": {
-     "num": 3301,
-     "den": 167125,
-     "rate": 1.98
-    },
-    "redlight": {
-     "num": 1788,
-     "den": 9113,
-     "rate": 19.62
-    },
-    "reverse": {
-     "num": 1881027,
-     "den": 79394491,
-     "rate": 2.37
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1577,
-      "den": 1724,
-      "rate": 91.47
-     },
-     "vis": {
-      "num": 48355.819242206955,
-      "den": 51905,
-      "rate": 93.16
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 1.94
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1475,
-     "den": 1486,
-     "rate": 99.26
-    },
-    "speed": {
-     "num": 2645,
-     "den": 140965,
-     "rate": 1.88
-    },
-    "redlight": {
-     "num": 1813,
-     "den": 8250,
-     "rate": 21.98
-    },
-    "reverse": {
-     "num": 1710009,
-     "den": 64284425,
-     "rate": 2.66
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1221,
-      "den": 1329,
-      "rate": 91.87
-     },
-     "vis": {
-      "num": 42792.62077572483,
-      "den": 46110,
-      "rate": 92.81
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.43
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "张家口",
-   "name": "兴必达【张家口】宣化站",
-   "2026-08": {
-    "helmet": {
-     "num": 3148,
-     "den": 3192,
-     "rate": 98.62
-    },
-    "speed": {
-     "num": 7887,
-     "den": 381297,
-     "rate": 2.07
-    },
-    "redlight": {
-     "num": 8255,
-     "den": 51145,
-     "rate": 16.14
-    },
-    "reverse": {
-     "num": 2193349,
-     "den": 129064056,
-     "rate": 1.7
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2142,
-      "den": 2196,
-      "rate": 97.54
-     },
-     "vis": {
-      "num": 76284.9701628208,
-      "den": 80399,
-      "rate": 94.88
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.64
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2632,
-     "den": 2651,
-     "rate": 99.28
-    },
-    "speed": {
-     "num": 5462,
-     "den": 311128,
-     "rate": 1.76
-    },
-    "redlight": {
-     "num": 6351,
-     "den": 37840,
-     "rate": 16.78
-    },
-    "reverse": {
-     "num": 1818935,
-     "den": 103118798,
-     "rate": 1.76
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2386,
-      "den": 2447,
-      "rate": 97.51
-     },
-     "vis": {
-      "num": 73635.14335457918,
-      "den": 77156,
-      "rate": 95.44
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 1.54
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 2096,
-     "den": 2116,
-     "rate": 99.05
-    },
-    "speed": {
-     "num": 4581,
-     "den": 256472,
-     "rate": 1.79
-    },
-    "redlight": {
-     "num": 5891,
-     "den": 31796,
-     "rate": 18.53
-    },
-    "reverse": {
-     "num": 1590017,
-     "den": 84531992,
-     "rate": 1.88
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1837,
-      "den": 1877,
-      "rate": 97.87
-     },
-     "vis": {
-      "num": 63828.48503021958,
-      "den": 68651,
-      "rate": 92.98
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 1.71
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "张家口",
-   "name": "兴必达【张家口】武城站",
-   "2026-08": {
-    "helmet": {
-     "num": 800,
-     "den": 818,
-     "rate": 97.8
-    },
-    "speed": {
-     "num": 3820,
-     "den": 120522,
-     "rate": 3.17
-    },
-    "redlight": {
-     "num": 2507,
-     "den": 12780,
-     "rate": 19.62
-    },
-    "reverse": {
-     "num": 578612,
-     "den": 37017326,
-     "rate": 1.56
-    },
-    "clothing": {
-     "cloth": {
-      "num": 551,
-      "den": 577,
-      "rate": 95.49
-     },
-     "vis": {
-      "num": 18744.612673517764,
-      "den": 19219,
-      "rate": 97.53
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.0
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 630,
-     "den": 638,
-     "rate": 98.75
-    },
-    "speed": {
-     "num": 3425,
-     "den": 92548,
-     "rate": 3.7
-    },
-    "redlight": {
-     "num": 1874,
-     "den": 9669,
-     "rate": 19.38
-    },
-    "reverse": {
-     "num": 452197,
-     "den": 28746748,
-     "rate": 1.57
-    },
-    "clothing": {
-     "cloth": {
-      "num": 560,
-      "den": 584,
-      "rate": 95.89
-     },
-     "vis": {
-      "num": 19707.546435656754,
-      "den": 20478,
-      "rate": 96.24
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.44
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 595,
-     "den": 608,
-     "rate": 97.86
-    },
-    "speed": {
-     "num": 3321,
-     "den": 84052,
-     "rate": 3.95
-    },
-    "redlight": {
-     "num": 1900,
-     "den": 10385,
-     "rate": 18.3
-    },
-    "reverse": {
-     "num": 417127,
-     "den": 26465942,
-     "rate": 1.58
-    },
-    "clothing": {
-     "cloth": {
-      "num": 507,
-      "den": 531,
-      "rate": 95.48
-     },
-     "vis": {
-      "num": 19146.525085294146,
-      "den": 20100,
-      "rate": 95.26
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.78
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "张家口",
-   "name": "兴必达【张家口】百盛站",
-   "2026-08": {
-    "helmet": {
-     "num": 2273,
-     "den": 2287,
-     "rate": 99.39
-    },
-    "speed": {
-     "num": 13533,
-     "den": 361207,
-     "rate": 3.75
-    },
-    "redlight": {
-     "num": 5350,
-     "den": 25727,
-     "rate": 20.8
-    },
-    "reverse": {
-     "num": 1499319,
-     "den": 99248934,
-     "rate": 1.51
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1481,
-      "den": 1542,
-      "rate": 96.04
-     },
-     "vis": {
-      "num": 51454.59350861665,
-      "den": 53605,
-      "rate": 95.99
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.98
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1678,
-     "den": 1698,
-     "rate": 98.82
-    },
-    "speed": {
-     "num": 9862,
-     "den": 267471,
-     "rate": 3.69
-    },
-    "redlight": {
-     "num": 3786,
-     "den": 18221,
-     "rate": 20.78
-    },
-    "reverse": {
-     "num": 1061122,
-     "den": 73102763,
-     "rate": 1.45
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1488,
-      "den": 1567,
-      "rate": 94.96
-     },
-     "vis": {
-      "num": 48399.466328103816,
-      "den": 51242,
-      "rate": 94.45
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 1.09
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1388,
-     "den": 1408,
-     "rate": 98.58
-    },
-    "speed": {
-     "num": 8643,
-     "den": 215208,
-     "rate": 4.02
-    },
-    "redlight": {
-     "num": 3781,
-     "den": 17245,
-     "rate": 21.93
-    },
-    "reverse": {
-     "num": 910527,
-     "den": 58341215,
-     "rate": 1.56
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1202,
-      "den": 1225,
-      "rate": 98.12
-     },
-     "vis": {
-      "num": 40463.11025250512,
-      "den": 45161,
-      "rate": 89.6
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 2.73
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "张家口",
-   "name": "兴必达【张家口】金悦站",
-   "2026-08": {
-    "helmet": {
-     "num": 450,
-     "den": 483,
-     "rate": 93.17
-    },
-    "speed": {
-     "num": 2950,
-     "den": 71406,
-     "rate": 4.13
-    },
-    "redlight": {
-     "num": 1885,
-     "den": 8418,
-     "rate": 22.39
-    },
-    "reverse": {
-     "num": 955341,
-     "den": 28130070,
-     "rate": 3.4
-    },
-    "clothing": {
-     "cloth": {
-      "num": 369,
-      "den": 411,
-      "rate": 89.78
-     },
-     "vis": {
-      "num": 12052.66530684248,
-      "den": 14650,
-      "rate": 82.27
-     }
-    },
-    "high_speed": {
-     "days": 4,
-     "pct": 4.29
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2933,
-     "den": 2984,
-     "rate": 98.29
-    },
-    "speed": {
-     "num": 17006,
-     "den": 463173,
-     "rate": 3.67
-    },
-    "redlight": {
-     "num": 11218,
-     "den": 53843,
-     "rate": 20.83
-    },
-    "reverse": {
-     "num": 5752500,
-     "den": 182412353,
-     "rate": 3.15
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2598,
-      "den": 2783,
-      "rate": 93.35
-     },
-     "vis": {
-      "num": 95620.70772651584,
-      "den": 103777,
-      "rate": 92.14
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 3.69
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 2620,
-     "den": 2678,
-     "rate": 97.83
-    },
-    "speed": {
-     "num": 15887,
-     "den": 398170,
-     "rate": 3.99
-    },
-    "redlight": {
-     "num": 10400,
-     "den": 46625,
-     "rate": 22.31
-    },
-    "reverse": {
-     "num": 5086329,
-     "den": 156239605,
-     "rate": 3.26
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2278,
-      "den": 2376,
-      "rate": 95.88
-     },
-     "vis": {
-      "num": 82847.09308603834,
-      "den": 91362,
-      "rate": 90.68
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 7.67
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "张家口",
-   "name": "兴必达【张家口】金鼎站",
-   "2026-08": {
-    "helmet": {
-     "num": 3341,
-     "den": 3370,
-     "rate": 99.14
-    },
-    "speed": {
-     "num": 16379,
-     "den": 481207,
-     "rate": 3.4
-    },
-    "redlight": {
-     "num": 11426,
-     "den": 52923,
-     "rate": 21.59
-    },
-    "reverse": {
-     "num": 2684371,
-     "den": 154068938,
-     "rate": 1.74
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2184,
-      "den": 2297,
-      "rate": 95.08
-     },
-     "vis": {
-      "num": 82749.42116666121,
-      "den": 84740,
-      "rate": 97.65
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.09
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2486,
-     "den": 2503,
-     "rate": 99.32
-    },
-    "speed": {
-     "num": 9722,
-     "den": 335245,
-     "rate": 2.9
-    },
-    "redlight": {
-     "num": 7630,
-     "den": 34813,
-     "rate": 21.92
-    },
-    "reverse": {
-     "num": 2015458,
-     "den": 106030379,
-     "rate": 1.9
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2154,
-      "den": 2199,
-      "rate": 97.95
-     },
-     "vis": {
-      "num": 80405.06216521132,
-      "den": 82952,
-      "rate": 96.93
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 1.11
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 2063,
-     "den": 2080,
-     "rate": 99.18
-    },
-    "speed": {
-     "num": 10205,
-     "den": 289256,
-     "rate": 3.53
-    },
-    "redlight": {
-     "num": 7801,
-     "den": 34026,
-     "rate": 22.93
-    },
-    "reverse": {
-     "num": 1704295,
-     "den": 89846263,
-     "rate": 1.9
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1741,
-      "den": 1777,
-      "rate": 97.97
-     },
-     "vis": {
-      "num": 69029.89882102318,
-      "den": 73013,
-      "rate": 94.54
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 2.5
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "张家口",
-   "name": "兴必达【张家口】银座站",
-   "2026-08": {
-    "helmet": {
-     "num": 1845,
-     "den": 1853,
-     "rate": 99.57
-    },
-    "speed": {
-     "num": 8165,
-     "den": 228667,
-     "rate": 3.57
-    },
-    "redlight": {
-     "num": 6359,
-     "den": 31389,
-     "rate": 20.26
-    },
-    "reverse": {
-     "num": 2078588,
-     "den": 95476728,
-     "rate": 2.18
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1207,
-      "den": 1258,
-      "rate": 95.95
-     },
-     "vis": {
-      "num": 44020.81971642177,
-      "den": 45323,
-      "rate": 97.13
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 4.46
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1516,
-     "den": 1525,
-     "rate": 99.41
-    },
-    "speed": {
-     "num": 5730,
-     "den": 184063,
-     "rate": 3.11
-    },
-    "redlight": {
-     "num": 5271,
-     "den": 23941,
-     "rate": 22.02
-    },
-    "reverse": {
-     "num": 1594383,
-     "den": 74892930,
-     "rate": 2.13
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1324,
-      "den": 1342,
-      "rate": 98.66
-     },
-     "vis": {
-      "num": 46560.94004614754,
-      "den": 48461,
-      "rate": 96.08
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 6.43
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1123,
-     "den": 1144,
-     "rate": 98.16
-    },
-    "speed": {
-     "num": 5541,
-     "den": 140135,
-     "rate": 3.95
-    },
-    "redlight": {
-     "num": 4702,
-     "den": 19118,
-     "rate": 24.59
-    },
-    "reverse": {
-     "num": 1305809,
-     "den": 56562226,
-     "rate": 2.31
-    },
-    "clothing": {
-     "cloth": {
-      "num": 984,
-      "den": 993,
-      "rate": 99.09
-     },
-     "vis": {
-      "num": 37675.68251279949,
-      "den": 39654,
-      "rate": 95.01
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 6.51
-    }
-   }
-  },
-  {
-   "level": "merchant",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "秦皇岛",
-   "name": "秦皇岛",
-   "2026-08": {
-    "helmet": {
-     "num": 41109,
-     "den": 42455,
-     "rate": 96.83
-    },
-    "speed": {
-     "num": 174183,
-     "den": 5054286,
-     "rate": 3.45
-    },
-    "redlight": {
-     "num": 215636,
-     "den": 953962,
-     "rate": 22.6
-    },
-    "reverse": {
-     "num": 73723785,
-     "den": 1975285757,
-     "rate": 3.73
-    },
-    "clothing": {
-     "cloth": {
-      "num": 30462,
-      "den": 32471,
-      "rate": 93.81
-     },
-     "vis": {
-      "num": 1280728.462253603,
-      "den": 1373994,
-      "rate": 93.21
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 2.23
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 32372,
-     "den": 32872,
-     "rate": 98.48
-    },
-    "speed": {
-     "num": 125478,
-     "den": 3976508,
-     "rate": 3.16
-    },
-    "redlight": {
-     "num": 159930,
-     "den": 753510,
-     "rate": 21.22
-    },
-    "reverse": {
-     "num": 51288598,
-     "den": 1510559218,
-     "rate": 3.4
-    },
-    "clothing": {
-     "cloth": {
-      "num": 27297,
-      "den": 28796,
-      "rate": 94.79
-     },
-     "vis": {
-      "num": 990644.9233454615,
-      "den": 1053723,
-      "rate": 94.01
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.43
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 25767,
-     "den": 26153,
-     "rate": 98.52
-    },
-    "speed": {
-     "num": 99704,
-     "den": 3185949,
-     "rate": 3.13
-    },
-    "redlight": {
-     "num": 126108,
-     "den": 610248,
-     "rate": 20.67
-    },
-    "reverse": {
-     "num": 41778155,
-     "den": 1191671603,
-     "rate": 3.51
-    },
-    "clothing": {
-     "cloth": {
-      "num": 21096,
-      "den": 22189,
-      "rate": 95.07
-     },
-     "vis": {
-      "num": 786108.6280851247,
-      "den": 844675,
-      "rate": 93.07
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 2.7
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "秦皇岛",
-   "name": "兴必达【秦皇岛】东方明珠城二站",
-   "2026-08": {
-    "helmet": {
-     "num": 1970,
-     "den": 2017,
-     "rate": 97.67
-    },
-    "speed": {
-     "num": 7553,
-     "den": 251517,
-     "rate": 3.0
-    },
-    "redlight": {
-     "num": 8791,
-     "den": 41066,
-     "rate": 21.41
-    },
-    "reverse": {
-     "num": 4515145,
-     "den": 111428745,
-     "rate": 4.05
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1452,
-      "den": 1552,
-      "rate": 93.56
-     },
-     "vis": {
-      "num": 57396.54973851472,
-      "den": 59358,
-      "rate": 96.7
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.72
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1709,
-     "den": 1725,
-     "rate": 99.07
-    },
-    "speed": {
-     "num": 5227,
-     "den": 208941,
-     "rate": 2.5
-    },
-    "redlight": {
-     "num": 7264,
-     "den": 35576,
-     "rate": 20.42
-    },
-    "reverse": {
-     "num": 3421758,
-     "den": 91971207,
-     "rate": 3.72
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1442,
-      "den": 1542,
-      "rate": 93.51
-     },
-     "vis": {
-      "num": 48909.486722532114,
-      "den": 50997,
-      "rate": 95.91
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.36
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1320,
-     "den": 1327,
-     "rate": 99.47
-    },
-    "speed": {
-     "num": 3647,
-     "den": 157465,
-     "rate": 2.32
-    },
-    "redlight": {
-     "num": 5817,
-     "den": 27398,
-     "rate": 21.23
-    },
-    "reverse": {
-     "num": 2884496,
-     "den": 71124890,
-     "rate": 4.06
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1064,
-      "den": 1144,
-      "rate": 93.01
-     },
-     "vis": {
-      "num": 37710.79410665535,
-      "den": 40503,
-      "rate": 93.11
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 2.15
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "秦皇岛",
-   "name": "兴必达【秦皇岛】东方明珠城站",
-   "2026-08": {
-    "helmet": {
-     "num": 1754,
-     "den": 1810,
-     "rate": 96.91
-    },
-    "speed": {
-     "num": 5676,
-     "den": 239995,
-     "rate": 2.37
-    },
-    "redlight": {
-     "num": 7736,
-     "den": 36497,
-     "rate": 21.2
-    },
-    "reverse": {
-     "num": 5312027,
-     "den": 110041724,
-     "rate": 4.83
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1289,
-      "den": 1524,
-      "rate": 84.58
-     },
-     "vis": {
-      "num": 49914.24608896101,
-      "den": 53916,
-      "rate": 92.58
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.69
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1359,
-     "den": 1391,
-     "rate": 97.7
-    },
-    "speed": {
-     "num": 3707,
-     "den": 181897,
-     "rate": 2.04
-    },
-    "redlight": {
-     "num": 5841,
-     "den": 28452,
-     "rate": 20.53
-    },
-    "reverse": {
-     "num": 3515377,
-     "den": 83477620,
-     "rate": 4.21
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1171,
-      "den": 1430,
-      "rate": 81.89
-     },
-     "vis": {
-      "num": 38451.04089518464,
-      "den": 41582,
-      "rate": 92.47
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.47
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 893,
-     "den": 914,
-     "rate": 97.7
-    },
-    "speed": {
-     "num": 2570,
-     "den": 133054,
-     "rate": 1.93
-    },
-    "redlight": {
-     "num": 4670,
-     "den": 21228,
-     "rate": 22.0
-    },
-    "reverse": {
-     "num": 2854690,
-     "den": 60110393,
-     "rate": 4.75
-    },
-    "clothing": {
-     "cloth": {
-      "num": 738,
-      "den": 992,
-      "rate": 74.4
-     },
-     "vis": {
-      "num": 25798.815601683156,
-      "den": 28085,
-      "rate": 91.86
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.9
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "秦皇岛",
-   "name": "兴必达【秦皇岛】乐购二站",
-   "2026-08": {
-    "helmet": {
-     "num": 2139,
-     "den": 2225,
-     "rate": 96.13
-    },
-    "speed": {
-     "num": 6844,
-     "den": 293100,
-     "rate": 2.34
-    },
-    "redlight": {
-     "num": 14342,
-     "den": 54616,
-     "rate": 26.26
-    },
-    "reverse": {
-     "num": 4403706,
-     "den": 93190021,
-     "rate": 4.73
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1600,
-      "den": 1714,
-      "rate": 93.35
-     },
-     "vis": {
-      "num": 62602.88986847951,
-      "den": 65732,
-      "rate": 95.24
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.43
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1603,
-     "den": 1621,
-     "rate": 98.89
-    },
-    "speed": {
-     "num": 4439,
-     "den": 216381,
-     "rate": 2.05
-    },
-    "redlight": {
-     "num": 9445,
-     "den": 38525,
-     "rate": 24.52
-    },
-    "reverse": {
-     "num": 3021610,
-     "den": 66782768,
-     "rate": 4.52
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1340,
-      "den": 1400,
-      "rate": 95.71
-     },
-     "vis": {
-      "num": 49087.533405329865,
-      "den": 51287,
-      "rate": 95.71
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.58
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1268,
-     "den": 1281,
-     "rate": 98.99
-    },
-    "speed": {
-     "num": 3556,
-     "den": 172369,
-     "rate": 2.06
-    },
-    "redlight": {
-     "num": 6698,
-     "den": 30533,
-     "rate": 21.94
-    },
-    "reverse": {
-     "num": 2296445,
-     "den": 52111733,
-     "rate": 4.41
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1023,
-      "den": 1045,
-      "rate": 97.89
-     },
-     "vis": {
-      "num": 40060.88545339307,
-      "den": 41430,
-      "rate": 96.7
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.62
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "秦皇岛",
-   "name": "兴必达【秦皇岛】乐购站",
-   "2026-08": {
-    "helmet": {
-     "num": 2414,
-     "den": 2579,
-     "rate": 93.6
-    },
-    "speed": {
-     "num": 10335,
-     "den": 337439,
-     "rate": 3.06
-    },
-    "redlight": {
-     "num": 15455,
-     "den": 68271,
-     "rate": 22.64
-    },
-    "reverse": {
-     "num": 4269012,
-     "den": 111029480,
-     "rate": 3.84
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1882,
-      "den": 2073,
-      "rate": 90.79
-     },
-     "vis": {
-      "num": 69684.18058399383,
-      "den": 74762,
-      "rate": 93.21
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 5.97
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1917,
-     "den": 1958,
-     "rate": 97.91
-    },
-    "speed": {
-     "num": 7184,
-     "den": 246820,
-     "rate": 2.91
-    },
-    "redlight": {
-     "num": 11414,
-     "den": 49234,
-     "rate": 23.18
-    },
-    "reverse": {
-     "num": 2910781,
-     "den": 80208002,
-     "rate": 3.63
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1639,
-      "den": 1724,
-      "rate": 95.07
-     },
-     "vis": {
-      "num": 57310.16146541976,
-      "den": 59421,
-      "rate": 96.45
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 6.11
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1441,
-     "den": 1451,
-     "rate": 99.31
-    },
-    "speed": {
-     "num": 4387,
-     "den": 185830,
-     "rate": 2.36
-    },
-    "redlight": {
-     "num": 8097,
-     "den": 37526,
-     "rate": 21.58
-    },
-    "reverse": {
-     "num": 2248890,
-     "den": 59394344,
-     "rate": 3.79
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1179,
-      "den": 1277,
-      "rate": 92.33
-     },
-     "vis": {
-      "num": 41696.30295094006,
-      "den": 43599,
-      "rate": 95.64
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 3.56
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "秦皇岛",
-   "name": "兴必达【秦皇岛】北戴河站",
-   "2026-08": {
-    "helmet": {
-     "num": 6241,
-     "den": 6486,
-     "rate": 96.22
-    },
-    "speed": {
-     "num": 30010,
-     "den": 580809,
-     "rate": 5.17
-    },
-    "redlight": {
-     "num": 12741,
-     "den": 68656,
-     "rate": 18.56
-    },
-    "reverse": {
-     "num": 9136735,
-     "den": 315757221,
-     "rate": 2.89
-    },
-    "clothing": {
-     "cloth": {
-      "num": 4639,
-      "den": 4760,
-      "rate": 97.46
-     },
-     "vis": {
-      "num": 237834.62557080723,
-      "den": 260732,
-      "rate": 91.22
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 2.92
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 3672,
-     "den": 3748,
-     "rate": 97.97
-    },
-    "speed": {
-     "num": 18092,
-     "den": 327031,
-     "rate": 5.53
-    },
-    "redlight": {
-     "num": 7842,
-     "den": 36962,
-     "rate": 21.22
-    },
-    "reverse": {
-     "num": 4761216,
-     "den": 191245879,
-     "rate": 2.49
-    },
-    "clothing": {
-     "cloth": {
-      "num": 3156,
-      "den": 3244,
-      "rate": 97.29
-     },
-     "vis": {
-      "num": 111555.814957461,
-      "den": 118915,
-      "rate": 93.81
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 5.07
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 2685,
-     "den": 2769,
-     "rate": 96.97
-    },
-    "speed": {
-     "num": 14132,
-     "den": 249229,
-     "rate": 5.67
-    },
-    "redlight": {
-     "num": 5931,
-     "den": 29009,
-     "rate": 20.45
-    },
-    "reverse": {
-     "num": 3649955,
-     "den": 140805159,
-     "rate": 2.59
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2380,
-      "den": 2443,
-      "rate": 97.42
-     },
-     "vis": {
-      "num": 92001.78225808524,
-      "den": 100356,
-      "rate": 91.68
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 7.1
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "秦皇岛",
-   "name": "兴必达【秦皇岛】北部站",
-   "2026-08": {
-    "helmet": {
-     "num": 1224,
-     "den": 1263,
-     "rate": 96.91
-    },
-    "speed": {
-     "num": 6209,
-     "den": 104180,
-     "rate": 5.96
-    },
-    "redlight": {
-     "num": 3078,
-     "den": 12543,
-     "rate": 24.54
-    },
-    "reverse": {
-     "num": 1954299,
-     "den": 44971075,
-     "rate": 4.35
-    },
-    "clothing": {
-     "cloth": {
-      "num": 909,
-      "den": 963,
-      "rate": 94.39
-     },
-     "vis": {
-      "num": 35856.97507114015,
-      "den": 38852,
-      "rate": 92.29
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 3.45
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1034,
-     "den": 1055,
-     "rate": 98.01
-    },
-    "speed": {
-     "num": 3934,
-     "den": 81837,
-     "rate": 4.81
-    },
-    "redlight": {
-     "num": 1902,
-     "den": 8481,
-     "rate": 22.43
-    },
-    "reverse": {
-     "num": 1439754,
-     "den": 34964887,
-     "rate": 4.12
-    },
-    "clothing": {
-     "cloth": {
-      "num": 864,
-      "den": 880,
-      "rate": 98.18
-     },
-     "vis": {
-      "num": 30433.166406461092,
-      "den": 33277,
-      "rate": 91.45
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 1.93
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 839,
-     "den": 847,
-     "rate": 99.06
-    },
-    "speed": {
-     "num": 2725,
-     "den": 68709,
-     "rate": 3.97
-    },
-    "redlight": {
-     "num": 1757,
-     "den": 8219,
-     "rate": 21.38
-    },
-    "reverse": {
-     "num": 1103510,
-     "den": 28548321,
-     "rate": 3.87
-    },
-    "clothing": {
-     "cloth": {
-      "num": 661,
-      "den": 697,
-      "rate": 94.84
-     },
-     "vis": {
-      "num": 25514.44870872909,
-      "den": 27266,
-      "rate": 93.58
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 4.66
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "秦皇岛",
-   "name": "兴必达【秦皇岛】在水一方东站",
-   "2026-08": {
-    "helmet": {
-     "num": 1874,
-     "den": 1922,
-     "rate": 97.5
-    },
-    "speed": {
-     "num": 6078,
-     "den": 324834,
-     "rate": 1.87
-    },
-    "redlight": {
-     "num": 13598,
-     "den": 57323,
-     "rate": 23.72
-    },
-    "reverse": {
-     "num": 4529510,
-     "den": 93643440,
-     "rate": 4.84
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1377,
-      "den": 1456,
-      "rate": 94.57
-     },
-     "vis": {
-      "num": 54484.56207091403,
-      "den": 58846,
-      "rate": 92.59
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.24
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1439,
-     "den": 1460,
-     "rate": 98.56
-    },
-    "speed": {
-     "num": 4353,
-     "den": 247461,
-     "rate": 1.76
-    },
-    "redlight": {
-     "num": 9963,
-     "den": 43855,
-     "rate": 22.72
-    },
-    "reverse": {
-     "num": 3026897,
-     "den": 68725485,
-     "rate": 4.4
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1198,
-      "den": 1282,
-      "rate": 93.45
-     },
-     "vis": {
-      "num": 42124.60054706625,
-      "den": 45092,
-      "rate": 93.42
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.25
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1203,
-     "den": 1209,
-     "rate": 99.5
-    },
-    "speed": {
-     "num": 3544,
-     "den": 201721,
-     "rate": 1.76
-    },
-    "redlight": {
-     "num": 7684,
-     "den": 33898,
-     "rate": 22.67
-    },
-    "reverse": {
-     "num": 2577612,
-     "den": 54867442,
-     "rate": 4.7
-    },
-    "clothing": {
-     "cloth": {
-      "num": 963,
-      "den": 1006,
-      "rate": 95.73
-     },
-     "vis": {
-      "num": 34489.42712082908,
-      "den": 37319,
-      "rate": 92.42
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.7
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "秦皇岛",
-   "name": "兴必达【秦皇岛】在水一方站",
-   "2026-08": {
-    "helmet": {
-     "num": 2887,
-     "den": 2980,
-     "rate": 96.88
-    },
-    "speed": {
-     "num": 10554,
-     "den": 369993,
-     "rate": 2.85
-    },
-    "redlight": {
-     "num": 20327,
-     "den": 79615,
-     "rate": 25.53
-    },
-    "reverse": {
-     "num": 4990638,
-     "den": 122720414,
-     "rate": 4.07
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2135,
-      "den": 2242,
-      "rate": 95.23
-     },
-     "vis": {
-      "num": 88873.65903642372,
-      "den": 93927,
-      "rate": 94.62
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 3.04
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2350,
-     "den": 2381,
-     "rate": 98.7
-    },
-    "speed": {
-     "num": 6661,
-     "den": 273254,
-     "rate": 2.44
-    },
-    "redlight": {
-     "num": 13374,
-     "den": 55309,
-     "rate": 24.18
-    },
-    "reverse": {
-     "num": 3378232,
-     "den": 87451697,
-     "rate": 3.86
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1966,
-      "den": 1989,
-      "rate": 98.84
-     },
-     "vis": {
-      "num": 71193.3953918814,
-      "den": 75184,
-      "rate": 94.69
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.14
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1903,
-     "den": 1933,
-     "rate": 98.45
-    },
-    "speed": {
-     "num": 5567,
-     "den": 216854,
-     "rate": 2.57
-    },
-    "redlight": {
-     "num": 9735,
-     "den": 42802,
-     "rate": 22.74
-    },
-    "reverse": {
-     "num": 2737953,
-     "den": 68547792,
-     "rate": 3.99
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1527,
-      "den": 1541,
-      "rate": 99.09
-     },
-     "vis": {
-      "num": 55498.597805234494,
-      "den": 59284,
-      "rate": 93.61
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 3.2
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "秦皇岛",
-   "name": "兴必达【秦皇岛】大学二站",
-   "2026-08": {
-    "helmet": {
-     "num": 3025,
-     "den": 3142,
-     "rate": 96.28
-    },
-    "speed": {
-     "num": 15927,
-     "den": 407150,
-     "rate": 3.91
-    },
-    "redlight": {
-     "num": 16079,
-     "den": 57309,
-     "rate": 28.06
-    },
-    "reverse": {
-     "num": 6114516,
-     "den": 126636669,
-     "rate": 4.83
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2241,
-      "den": 2283,
-      "rate": 98.16
-     },
-     "vis": {
-      "num": 89283.3254643091,
-      "den": 97585,
-      "rate": 91.49
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 3.64
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2150,
-     "den": 2177,
-     "rate": 98.76
-    },
-    "speed": {
-     "num": 10476,
-     "den": 290025,
-     "rate": 3.61
-    },
-    "redlight": {
-     "num": 9721,
-     "den": 36342,
-     "rate": 26.75
-    },
-    "reverse": {
-     "num": 4339349,
-     "den": 89303757,
-     "rate": 4.86
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1838,
-      "den": 1847,
-      "rate": 99.51
-     },
-     "vis": {
-      "num": 69932.51746869723,
-      "den": 75411,
-      "rate": 92.74
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 4.3
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1749,
-     "den": 1776,
-     "rate": 98.48
-    },
-    "speed": {
-     "num": 8712,
-     "den": 238418,
-     "rate": 3.65
-    },
-    "redlight": {
-     "num": 7730,
-     "den": 29991,
-     "rate": 25.77
-    },
-    "reverse": {
-     "num": 3532547,
-     "den": 73054128,
-     "rate": 4.84
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1439,
-      "den": 1465,
-      "rate": 98.23
-     },
-     "vis": {
-      "num": 52015.37296595773,
-      "den": 55785,
-      "rate": 93.24
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 5.34
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "秦皇岛",
-   "name": "兴必达【秦皇岛】大学站",
-   "2026-08": {
-    "helmet": {
-     "num": 2734,
-     "den": 2809,
-     "rate": 97.33
-    },
-    "speed": {
-     "num": 12858,
-     "den": 376055,
-     "rate": 3.42
-    },
-    "redlight": {
-     "num": 14037,
-     "den": 51328,
-     "rate": 27.35
-    },
-    "reverse": {
-     "num": 5565609,
-     "den": 113797646,
-     "rate": 4.89
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2014,
-      "den": 2131,
-      "rate": 94.51
-     },
-     "vis": {
-      "num": 79499.12101225209,
-      "den": 84538,
-      "rate": 94.04
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 3.17
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2070,
-     "den": 2096,
-     "rate": 98.76
-    },
-    "speed": {
-     "num": 10574,
-     "den": 278220,
-     "rate": 3.8
-    },
-    "redlight": {
-     "num": 9663,
-     "den": 35805,
-     "rate": 26.99
-    },
-    "reverse": {
-     "num": 4170835,
-     "den": 87168187,
-     "rate": 4.78
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1737,
-      "den": 1807,
-      "rate": 96.13
-     },
-     "vis": {
-      "num": 66239.77243747275,
-      "den": 70358,
-      "rate": 94.15
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 5.53
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1785,
-     "den": 1803,
-     "rate": 99.0
-    },
-    "speed": {
-     "num": 8672,
-     "den": 233694,
-     "rate": 3.71
-    },
-    "redlight": {
-     "num": 8314,
-     "den": 31210,
-     "rate": 26.64
-    },
-    "reverse": {
-     "num": 3640187,
-     "den": 73987243,
-     "rate": 4.92
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1456,
-      "den": 1484,
-      "rate": 98.11
-     },
-     "vis": {
-      "num": 54769.586532416775,
-      "den": 58752,
-      "rate": 93.22
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 4.46
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "秦皇岛",
-   "name": "兴必达【秦皇岛】孟营二站",
-   "2026-08": {
-    "helmet": {
-     "num": 197,
-     "den": 222,
-     "rate": 88.74
-    },
-    "speed": {
-     "num": 885,
-     "den": 32572,
-     "rate": 2.72
-    },
-    "redlight": {
-     "num": 1529,
-     "den": 7693,
-     "rate": 19.88
-    },
-    "reverse": {
-     "num": 190873,
-     "den": 9248499,
-     "rate": 2.06
-    },
-    "clothing": {
-     "cloth": {
-      "num": 221,
-      "den": 231,
-      "rate": 95.67
-     },
-     "vis": {
-      "num": 7341.246943909821,
-      "den": 8952,
-      "rate": 82.01
-     }
-    },
-    "high_speed": {
-     "days": 3,
-     "pct": 3.89
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1986,
-     "den": 2003,
-     "rate": 99.15
-    },
-    "speed": {
-     "num": 11230,
-     "den": 354431,
-     "rate": 3.17
-    },
-    "redlight": {
-     "num": 12844,
-     "den": 79690,
-     "rate": 16.12
-    },
-    "reverse": {
-     "num": 1623945,
-     "den": 98519418,
-     "rate": 1.65
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1624,
-      "den": 1737,
-      "rate": 93.49
-     },
-     "vis": {
-      "num": 62229.37770794295,
-      "den": 64475,
-      "rate": 96.52
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 3.19
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1900,
-     "den": 1925,
-     "rate": 98.7
-    },
-    "speed": {
-     "num": 10595,
-     "den": 328583,
-     "rate": 3.22
-    },
-    "redlight": {
-     "num": 11777,
-     "den": 74869,
-     "rate": 15.73
-    },
-    "reverse": {
-     "num": 1566340,
-     "den": 90549362,
-     "rate": 1.73
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1531,
-      "den": 1602,
-      "rate": 95.57
-     },
-     "vis": {
-      "num": 57425.98235774011,
-      "den": 59316,
-      "rate": 96.81
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 5.15
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "秦皇岛",
-   "name": "兴必达【秦皇岛】孟营站",
-   "2026-08": {
-    "helmet": {
-     "num": 3658,
-     "den": 3743,
-     "rate": 97.73
-    },
-    "speed": {
-     "num": 23222,
-     "den": 654265,
-     "rate": 3.55
-    },
-    "redlight": {
-     "num": 28114,
-     "den": 154807,
-     "rate": 18.16
-    },
-    "reverse": {
-     "num": 3319762,
-     "den": 184092577,
-     "rate": 1.8
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2682,
-      "den": 3033,
-      "rate": 88.43
-     },
-     "vis": {
-      "num": 104786.71418138326,
-      "den": 109623,
-      "rate": 95.59
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 2.52
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 3127,
-     "den": 3171,
-     "rate": 98.61
-    },
-    "speed": {
-     "num": 17720,
-     "den": 526885,
-     "rate": 3.36
-    },
-    "redlight": {
-     "num": 20192,
-     "den": 122423,
-     "rate": 16.49
-    },
-    "reverse": {
-     "num": 2657771,
-     "den": 144885342,
-     "rate": 1.83
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2659,
-      "den": 2847,
-      "rate": 93.4
-     },
-     "vis": {
-      "num": 98416.86900231116,
-      "den": 103860,
-      "rate": 94.76
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 3.58
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 2482,
-     "den": 2510,
-     "rate": 98.88
-    },
-    "speed": {
-     "num": 12950,
-     "den": 417722,
-     "rate": 3.1
-    },
-    "redlight": {
-     "num": 15354,
-     "den": 97499,
-     "rate": 15.75
-    },
-    "reverse": {
-     "num": 2052380,
-     "den": 113193216,
-     "rate": 1.81
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2012,
-      "den": 2111,
-      "rate": 95.31
-     },
-     "vis": {
-      "num": 73349.63249688195,
-      "den": 78203,
-      "rate": 93.79
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 2.53
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "秦皇岛",
-   "name": "兴必达【秦皇岛】山海关站",
-   "2026-08": {
-    "helmet": {
-     "num": 3797,
-     "den": 3833,
-     "rate": 99.06
-    },
-    "speed": {
-     "num": 10804,
-     "den": 294479,
-     "rate": 3.67
-    },
-    "redlight": {
-     "num": 17628,
-     "den": 99943,
-     "rate": 17.64
-    },
-    "reverse": {
-     "num": 4398062,
-     "den": 184061412,
-     "rate": 2.39
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2745,
-      "den": 2916,
-      "rate": 94.14
-     },
-     "vis": {
-      "num": 129272.53848305618,
-      "den": 135512,
-      "rate": 95.4
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.49
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2581,
-     "den": 2601,
-     "rate": 99.23
-    },
-    "speed": {
-     "num": 5602,
-     "den": 188204,
-     "rate": 2.98
-    },
-    "redlight": {
-     "num": 12199,
-     "den": 66474,
-     "rate": 18.35
-    },
-    "reverse": {
-     "num": 2772182,
-     "den": 125286099,
-     "rate": 2.21
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2137,
-      "den": 2323,
-      "rate": 91.99
-     },
-     "vis": {
-      "num": 82143.55185735473,
-      "den": 87663,
-      "rate": 93.7
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.46
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 2037,
-     "den": 2051,
-     "rate": 99.32
-    },
-    "speed": {
-     "num": 5216,
-     "den": 145928,
-     "rate": 3.57
-    },
-    "redlight": {
-     "num": 10449,
-     "den": 54927,
-     "rate": 19.02
-    },
-    "reverse": {
-     "num": 2289442,
-     "den": 100308140,
-     "rate": 2.28
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1653,
-      "den": 1768,
-      "rate": 93.5
-     },
-     "vis": {
-      "num": 70112.76354291182,
-      "den": 75289,
-      "rate": 93.12
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.61
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "秦皇岛",
-   "name": "兴必达【秦皇岛】杜庄站",
-   "2026-08": {
-    "helmet": {
-     "num": 694,
-     "den": 724,
-     "rate": 95.86
-    },
-    "speed": {
-     "num": 5842,
-     "den": 57092,
-     "rate": 10.23
-    },
-    "redlight": {
-     "num": 2880,
-     "den": 11819,
-     "rate": 24.37
-    },
-    "reverse": {
-     "num": 525854,
-     "den": 39185139,
-     "rate": 1.34
-    },
-    "clothing": {
-     "cloth": {
-      "num": 513,
-      "den": 560,
-      "rate": 91.61
-     },
-     "vis": {
-      "num": 24524.37498280948,
-      "den": 25673,
-      "rate": 95.53
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 4.4
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 646,
-     "den": 654,
-     "rate": 98.78
-    },
-    "speed": {
-     "num": 1808,
-     "den": 40392,
-     "rate": 4.48
-    },
-    "redlight": {
-     "num": 1649,
-     "den": 8005,
-     "rate": 20.6
-    },
-    "reverse": {
-     "num": 350167,
-     "den": 31436683,
-     "rate": 1.11
-    },
-    "clothing": {
-     "cloth": {
-      "num": 539,
-      "den": 567,
-      "rate": 95.06
-     },
-     "vis": {
-      "num": 17628.719612131546,
-      "den": 19518,
-      "rate": 90.32
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.0
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 513,
-     "den": 519,
-     "rate": 98.84
-    },
-    "speed": {
-     "num": 1243,
-     "den": 32160,
-     "rate": 3.87
-    },
-    "redlight": {
-     "num": 990,
-     "den": 6605,
-     "rate": 14.99
-    },
-    "reverse": {
-     "num": 269005,
-     "den": 26021857,
-     "rate": 1.03
-    },
-    "clothing": {
-     "cloth": {
-      "num": 426,
-      "den": 447,
-      "rate": 95.3
-     },
-     "vis": {
-      "num": 14380.50867125804,
-      "den": 16130,
-      "rate": 89.15
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.32
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "秦皇岛",
-   "name": "兴必达【秦皇岛】环岛二站",
-   "2026-08": {
-    "helmet": {
-     "num": 2693,
-     "den": 2760,
-     "rate": 97.57
-    },
-    "speed": {
-     "num": 8520,
-     "den": 305158,
-     "rate": 2.79
-    },
-    "redlight": {
-     "num": 17185,
-     "den": 60141,
-     "rate": 28.57
-    },
-    "reverse": {
-     "num": 6526579,
-     "den": 127574277,
-     "rate": 5.12
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1974,
-      "den": 2039,
-      "rate": 96.81
-     },
-     "vis": {
-      "num": 75400.40572440784,
-      "den": 82982,
-      "rate": 90.86
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.29
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1882,
-     "den": 1916,
-     "rate": 98.23
-    },
-    "speed": {
-     "num": 5605,
-     "den": 210390,
-     "rate": 2.66
-    },
-    "redlight": {
-     "num": 10871,
-     "den": 39579,
-     "rate": 27.47
-    },
-    "reverse": {
-     "num": 4472018,
-     "den": 87365920,
-     "rate": 5.12
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1590,
-      "den": 1631,
-      "rate": 97.49
-     },
-     "vis": {
-      "num": 55518.885748471876,
-      "den": 60546,
-      "rate": 91.7
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.43
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1385,
-     "den": 1410,
-     "rate": 98.23
-    },
-    "speed": {
-     "num": 4667,
-     "den": 155305,
-     "rate": 3.01
-    },
-    "redlight": {
-     "num": 8115,
-     "den": 29269,
-     "rate": 27.73
-    },
-    "reverse": {
-     "num": 3466878,
-     "den": 65842654,
-     "rate": 5.27
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1119,
-      "den": 1153,
-      "rate": 97.05
-     },
-     "vis": {
-      "num": 39558.09397398704,
-      "den": 44621,
-      "rate": 88.65
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.48
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "秦皇岛",
-   "name": "兴必达【秦皇岛】环岛站",
-   "2026-08": {
-    "helmet": {
-     "num": 2395,
-     "den": 2507,
-     "rate": 95.53
-    },
-    "speed": {
-     "num": 7054,
-     "den": 286822,
-     "rate": 2.46
-    },
-    "redlight": {
-     "num": 15098,
-     "den": 55813,
-     "rate": 27.05
-    },
-    "reverse": {
-     "num": 6485463,
-     "den": 122218574,
-     "rate": 5.31
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1762,
-      "den": 1918,
-      "rate": 91.87
-     },
-     "vis": {
-      "num": 70091.68345290089,
-      "den": 77510,
-      "rate": 90.43
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.22
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1703,
-     "den": 1756,
-     "rate": 96.98
-    },
-    "speed": {
-     "num": 5057,
-     "den": 197163,
-     "rate": 2.56
-    },
-    "redlight": {
-     "num": 9952,
-     "den": 38245,
-     "rate": 26.02
-    },
-    "reverse": {
-     "num": 4306899,
-     "den": 83826842,
-     "rate": 5.14
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1416,
-      "den": 1507,
-      "rate": 93.96
-     },
-     "vis": {
-      "num": 52539.47401953828,
-      "den": 57732,
-      "rate": 91.01
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.5
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1380,
-     "den": 1417,
-     "rate": 97.39
-    },
-    "speed": {
-     "num": 4504,
-     "den": 161817,
-     "rate": 2.78
-    },
-    "redlight": {
-     "num": 8487,
-     "den": 30854,
-     "rate": 27.51
-    },
-    "reverse": {
-     "num": 3631685,
-     "den": 68824859,
-     "rate": 5.28
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1119,
-      "den": 1169,
-      "rate": 95.72
-     },
-     "vis": {
-      "num": 42277.65144206729,
-      "den": 47456,
-      "rate": 89.09
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.48
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "津冀区域",
-   "city": "秦皇岛",
-   "name": "兴必达【秦皇岛】老龙头站",
-   "2026-08": {
-    "helmet": {
-     "num": 1413,
-     "den": 1433,
-     "rate": 98.6
-    },
-    "speed": {
-     "num": 5812,
-     "den": 138826,
-     "rate": 4.19
-    },
-    "redlight": {
-     "num": 7018,
-     "den": 36522,
-     "rate": 19.22
-    },
-    "reverse": {
-     "num": 1485995,
-     "den": 65688844,
-     "rate": 2.26
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1027,
-      "den": 1076,
-      "rate": 95.45
-     },
-     "vis": {
-      "num": 43881.36397934034,
-      "den": 45494,
-      "rate": 96.46
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.34
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1144,
-     "den": 1159,
-     "rate": 98.71
-    },
-    "speed": {
-     "num": 3809,
-     "den": 107176,
-     "rate": 3.55
-    },
-    "redlight": {
-     "num": 5794,
-     "den": 30553,
-     "rate": 18.96
-    },
-    "reverse": {
-     "num": 1119807,
-     "den": 57939425,
-     "rate": 1.93
-    },
-    "clothing": {
-     "cloth": {
-      "num": 981,
-      "den": 1039,
-      "rate": 94.42
-     },
-     "vis": {
-      "num": 36930.55570020792,
-      "den": 38405,
-      "rate": 96.16
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.38
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 984,
-     "den": 1011,
-     "rate": 97.33
-    },
-    "speed": {
-     "num": 3017,
-     "den": 87091,
-     "rate": 3.46
-    },
-    "redlight": {
-     "num": 4503,
-     "den": 24411,
-     "rate": 18.45
-    },
-    "reverse": {
-     "num": 976140,
-     "den": 44380070,
-     "rate": 2.2
-    },
-    "clothing": {
-     "cloth": {
-      "num": 806,
-      "den": 845,
-      "rate": 95.38
-     },
-     "vis": {
-      "num": 29447.982096357428,
-      "den": 31281,
-      "rate": 94.14
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 3.54
-    }
-   }
-  },
-  {
-   "level": "subregion",
-   "region": "华东大区",
-   "subregion": "苏北区域",
-   "city": "",
-   "name": "苏北区域",
-   "2026-08": {
-    "helmet": {
-     "num": 7738,
-     "den": 7879,
-     "rate": 98.21
-    },
-    "speed": {
-     "num": 67270,
-     "den": 1884429,
-     "rate": 3.57
-    },
-    "redlight": {
-     "num": 65615,
-     "den": 286479,
-     "rate": 22.9
-    },
-    "reverse": {
-     "num": 9762973,
-     "den": 340596478,
-     "rate": 2.87
-    },
-    "clothing": {
-     "cloth": {
-      "num": 4104,
-      "den": 4217,
-      "rate": 97.32
-     },
-     "vis": {
-      "num": 162566.68104221643,
-      "den": 168222,
-      "rate": 96.64
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.09
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 5934,
-     "den": 6011,
-     "rate": 98.72
-    },
-    "speed": {
-     "num": 35943,
-     "den": 1172648,
-     "rate": 3.07
-    },
-    "redlight": {
-     "num": 36091,
-     "den": 172533,
-     "rate": 20.92
-    },
-    "reverse": {
-     "num": 5756030,
-     "den": 260948058,
-     "rate": 2.21
-    },
-    "clothing": {
-     "cloth": {
-      "num": 3349,
-      "den": 3455,
-      "rate": 96.93
-     },
-     "vis": {
-      "num": 112948.54922877386,
-      "den": 117949,
-      "rate": 95.76
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 1.83
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 4588,
-     "den": 4659,
-     "rate": 98.48
-    },
-    "speed": {
-     "num": 19691,
-     "den": 701954,
-     "rate": 2.81
-    },
-    "redlight": {
-     "num": 28975,
-     "den": 134661,
-     "rate": 21.52
-    },
-    "reverse": {
-     "num": 4467175,
-     "den": 205224821,
-     "rate": 2.18
-    },
-    "clothing": {
-     "cloth": {
-      "num": 3133,
-      "den": 3207,
-      "rate": 97.69
-     },
-     "vis": {
-      "num": 105120.85364846917,
-      "den": 114393,
-      "rate": 91.89
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 2.03
-    }
-   }
-  },
-  {
-   "level": "merchant",
-   "region": "华东大区",
-   "subregion": "苏北区域",
-   "city": "南京",
-   "name": "南京",
-   "2026-08": {
-    "helmet": {
-     "num": 7738,
-     "den": 7879,
-     "rate": 98.21
-    },
-    "speed": {
-     "num": 67270,
-     "den": 1884429,
-     "rate": 3.57
-    },
-    "redlight": {
-     "num": 65615,
-     "den": 286479,
-     "rate": 22.9
-    },
-    "reverse": {
-     "num": 9762973,
-     "den": 340596478,
-     "rate": 2.87
-    },
-    "clothing": {
-     "cloth": {
-      "num": 4104,
-      "den": 4217,
-      "rate": 97.32
-     },
-     "vis": {
-      "num": 162566.68104221643,
-      "den": 168222,
-      "rate": 96.64
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.09
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 5934,
-     "den": 6011,
-     "rate": 98.72
-    },
-    "speed": {
-     "num": 35943,
-     "den": 1172648,
-     "rate": 3.07
-    },
-    "redlight": {
-     "num": 36091,
-     "den": 172533,
-     "rate": 20.92
-    },
-    "reverse": {
-     "num": 5756030,
-     "den": 260948058,
-     "rate": 2.21
-    },
-    "clothing": {
-     "cloth": {
-      "num": 3349,
-      "den": 3455,
-      "rate": 96.93
-     },
-     "vis": {
-      "num": 112948.54922877386,
-      "den": 117949,
-      "rate": 95.76
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 1.83
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 4588,
-     "den": 4659,
-     "rate": 98.48
-    },
-    "speed": {
-     "num": 19691,
-     "den": 701954,
-     "rate": 2.81
-    },
-    "redlight": {
-     "num": 28975,
-     "den": 134661,
-     "rate": 21.52
-    },
-    "reverse": {
-     "num": 4467175,
-     "den": 205224821,
-     "rate": 2.18
-    },
-    "clothing": {
-     "cloth": {
-      "num": 3133,
-      "den": 3207,
-      "rate": 97.69
-     },
-     "vis": {
-      "num": 105120.85364846917,
-      "den": 114393,
-      "rate": 91.89
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 2.03
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华东大区",
-   "subregion": "苏北区域",
-   "city": "南京",
-   "name": "兴必达【南京】上元大街站",
-   "2026-08": {
-    "helmet": {
-     "num": 1979,
-     "den": 2039,
-     "rate": 97.06
-    },
-    "speed": {
-     "num": 11969,
-     "den": 377891,
-     "rate": 3.17
-    },
-    "redlight": {
-     "num": 15882,
-     "den": 67114,
-     "rate": 23.66
-    },
-    "reverse": {
-     "num": 2227063,
-     "den": 87423810,
-     "rate": 2.55
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1062,
-      "den": 1072,
-      "rate": 99.07
-     },
-     "vis": {
-      "num": 41633.311096170815,
-      "den": 43813,
-      "rate": 95.03
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.2
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1573,
-     "den": 1615,
-     "rate": 97.4
-    },
-    "speed": {
-     "num": 9189,
-     "den": 279846,
-     "rate": 3.28
-    },
-    "redlight": {
-     "num": 10345,
-     "den": 43352,
-     "rate": 23.86
-    },
-    "reverse": {
-     "num": 1373338,
-     "den": 73826883,
-     "rate": 1.86
-    },
-    "clothing": {
-     "cloth": {
-      "num": 896,
-      "den": 901,
-      "rate": 99.45
-     },
-     "vis": {
-      "num": 31730.697685211795,
-      "den": 33376,
-      "rate": 95.07
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 1.57
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1182,
-     "den": 1220,
-     "rate": 96.89
-    },
-    "speed": {
-     "num": 4002,
-     "den": 137992,
-     "rate": 2.9
-    },
-    "redlight": {
-     "num": 8082,
-     "den": 30544,
-     "rate": 26.46
-    },
-    "reverse": {
-     "num": 1088945,
-     "den": 54306640,
-     "rate": 2.01
-    },
-    "clothing": {
-     "cloth": {
-      "num": 824,
-      "den": 831,
-      "rate": 99.16
-     },
-     "vis": {
-      "num": 27273.605775897686,
-      "den": 31331,
-      "rate": 87.05
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 2.34
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华东大区",
-   "subregion": "苏北区域",
-   "city": "南京",
-   "name": "兴必达【南京】南京南站",
-   "2026-08": {
-    "helmet": {
-     "num": 2414,
-     "den": 2432,
-     "rate": 99.26
-    },
-    "speed": {
-     "num": 27756,
-     "den": 883644,
-     "rate": 3.14
-    },
-    "redlight": {
-     "num": 22628,
-     "den": 100948,
-     "rate": 22.42
-    },
-    "reverse": {
-     "num": 4440146,
-     "den": 120412063,
-     "rate": 3.69
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1264,
-      "den": 1318,
-      "rate": 95.9
-     },
-     "vis": {
-      "num": 54188.137022697425,
-      "den": 55096,
-      "rate": 98.35
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.35
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1657,
-     "den": 1665,
-     "rate": 99.52
-    },
-    "speed": {
-     "num": 11954,
-     "den": 510297,
-     "rate": 2.34
-    },
-    "redlight": {
-     "num": 11646,
-     "den": 58169,
-     "rate": 20.02
-    },
-    "reverse": {
-     "num": 2044355,
-     "den": 79440592,
-     "rate": 2.57
-    },
-    "clothing": {
-     "cloth": {
-      "num": 931,
-      "den": 977,
-      "rate": 95.29
-     },
-     "vis": {
-      "num": 31505.157810487097,
-      "den": 32765,
-      "rate": 96.15
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.39
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1228,
-     "den": 1248,
-     "rate": 98.4
-    },
-    "speed": {
-     "num": 5297,
-     "den": 313327,
-     "rate": 1.69
-    },
-    "redlight": {
-     "num": 8744,
-     "den": 46203,
-     "rate": 18.93
-    },
-    "reverse": {
-     "num": 1466006,
-     "den": 62520142,
-     "rate": 2.34
-    },
-    "clothing": {
-     "cloth": {
-      "num": 832,
-      "den": 882,
-      "rate": 94.33
-     },
-     "vis": {
-      "num": 28955.56002958481,
-      "den": 30789,
-      "rate": 94.05
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 1.19
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华东大区",
-   "subregion": "苏北区域",
-   "city": "南京",
-   "name": "兴必达【南京】江宁万达站",
-   "2026-08": {
-    "helmet": {
-     "num": 1921,
-     "den": 1963,
-     "rate": 97.86
-    },
-    "speed": {
-     "num": 12867,
-     "den": 352352,
-     "rate": 3.65
-    },
-    "redlight": {
-     "num": 13448,
-     "den": 71537,
-     "rate": 18.8
-    },
-    "reverse": {
-     "num": 1434706,
-     "den": 80420358,
-     "rate": 1.78
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1020,
-      "den": 1055,
-      "rate": 96.68
-     },
-     "vis": {
-      "num": 38499.577855378935,
-      "den": 40462,
-      "rate": 95.15
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 3.73
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1587,
-     "den": 1602,
-     "rate": 99.06
-    },
-    "speed": {
-     "num": 7346,
-     "den": 203921,
-     "rate": 3.6
-    },
-    "redlight": {
-     "num": 8603,
-     "den": 48492,
-     "rate": 17.74
-    },
-    "reverse": {
-     "num": 1121995,
-     "den": 66896143,
-     "rate": 1.68
-    },
-    "clothing": {
-     "cloth": {
-      "num": 899,
-      "den": 938,
-      "rate": 95.84
-     },
-     "vis": {
-      "num": 30091.07310008212,
-      "den": 31485,
-      "rate": 95.57
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 5.09
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1270,
-     "den": 1279,
-     "rate": 99.3
-    },
-    "speed": {
-     "num": 4943,
-     "den": 119136,
-     "rate": 4.15
-    },
-    "redlight": {
-     "num": 7391,
-     "den": 39044,
-     "rate": 18.93
-    },
-    "reverse": {
-     "num": 865747,
-     "den": 53426773,
-     "rate": 1.62
-    },
-    "clothing": {
-     "cloth": {
-      "num": 870,
-      "den": 886,
-      "rate": 98.19
-     },
-     "vis": {
-      "num": 29423.045618612614,
-      "den": 32047,
-      "rate": 91.81
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 4.39
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华东大区",
-   "subregion": "苏北区域",
-   "city": "南京",
-   "name": "兴必达【南京】金盛站",
-   "2026-08": {
-    "helmet": {
-     "num": 1424,
-     "den": 1445,
-     "rate": 98.55
-    },
-    "speed": {
-     "num": 14678,
-     "den": 270542,
-     "rate": 5.43
-    },
-    "redlight": {
-     "num": 13657,
-     "den": 46880,
-     "rate": 29.13
-    },
-    "reverse": {
-     "num": 1661058,
-     "den": 52340247,
-     "rate": 3.17
-    },
-    "clothing": {
-     "cloth": {
-      "num": 758,
-      "den": 772,
-      "rate": 98.19
-     },
-     "vis": {
-      "num": 28245.655067969143,
-      "den": 28851,
-      "rate": 97.9
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.07
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1117,
-     "den": 1129,
-     "rate": 98.94
-    },
-    "speed": {
-     "num": 7454,
-     "den": 178584,
-     "rate": 4.17
-    },
-    "redlight": {
-     "num": 5497,
-     "den": 22520,
-     "rate": 24.41
-    },
-    "reverse": {
-     "num": 1216342,
-     "den": 40784440,
-     "rate": 2.98
-    },
-    "clothing": {
-     "cloth": {
-      "num": 623,
-      "den": 639,
-      "rate": 97.5
-     },
-     "vis": {
-      "num": 19621.620632992774,
-      "den": 20323,
-      "rate": 96.55
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.27
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 908,
-     "den": 912,
-     "rate": 99.56
-    },
-    "speed": {
-     "num": 5449,
-     "den": 131499,
-     "rate": 4.14
-    },
-    "redlight": {
-     "num": 4758,
-     "den": 18870,
-     "rate": 25.21
-    },
-    "reverse": {
-     "num": 1046477,
-     "den": 34971266,
-     "rate": 2.99
-    },
-    "clothing": {
-     "cloth": {
-      "num": 607,
-      "den": 608,
-      "rate": 99.84
-     },
-     "vis": {
-      "num": 19468.642224374013,
-      "den": 20226,
-      "rate": 96.26
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.21
-    }
-   }
-  },
-  {
-   "level": "subregion",
-   "region": "华北一区",
-   "subregion": "辽宁区域",
-   "city": "",
-   "name": "辽宁区域",
-   "2026-08": {
-    "helmet": {
-     "num": 24932,
-     "den": 25511,
-     "rate": 97.73
-    },
-    "speed": {
-     "num": 107018,
-     "den": 4219445,
-     "rate": 2.54
-    },
-    "redlight": {
-     "num": 203390,
-     "den": 1185113,
-     "rate": 17.16
-    },
-    "reverse": {
-     "num": 24244461,
-     "den": 1393132671,
-     "rate": 1.74
-    },
-    "clothing": {
-     "cloth": {
-      "num": 21142,
-      "den": 22514,
-      "rate": 93.91
-     },
-     "vis": {
-      "num": 843554.7156666946,
-      "den": 898455,
-      "rate": 93.89
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 2.02
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 20530,
-     "den": 20814,
-     "rate": 98.64
-    },
-    "speed": {
-     "num": 80741,
-     "den": 3468038,
-     "rate": 2.33
-    },
-    "redlight": {
-     "num": 151564,
-     "den": 954569,
-     "rate": 15.88
-    },
-    "reverse": {
-     "num": 17812349,
-     "den": 1124607913,
-     "rate": 1.58
-    },
-    "clothing": {
-     "cloth": {
-      "num": 18711,
-      "den": 19403,
-      "rate": 96.43
-     },
-     "vis": {
-      "num": 678530.5900637943,
-      "den": 727870,
-      "rate": 93.22
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.15
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 16779,
-     "den": 17042,
-     "rate": 98.46
-    },
-    "speed": {
-     "num": 74763,
-     "den": 2892056,
-     "rate": 2.59
-    },
-    "redlight": {
-     "num": 126727,
-     "den": 794711,
-     "rate": 15.95
-    },
-    "reverse": {
-     "num": 14975554,
-     "den": 930492098,
-     "rate": 1.61
-    },
-    "clothing": {
-     "cloth": {
-      "num": 14921,
-      "den": 15482,
-      "rate": 96.38
-     },
-     "vis": {
-      "num": 555406.0999424723,
-      "den": 620693,
-      "rate": 89.48
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 2.46
-    }
-   }
-  },
-  {
-   "level": "merchant",
-   "region": "华北一区",
-   "subregion": "辽宁区域",
-   "city": "锦州",
-   "name": "锦州",
-   "2026-08": {
-    "helmet": {
-     "num": 18237,
-     "den": 18731,
-     "rate": 97.36
-    },
-    "speed": {
-     "num": 70587,
-     "den": 3152157,
-     "rate": 2.24
-    },
-    "redlight": {
-     "num": 161106,
-     "den": 907294,
-     "rate": 17.76
-    },
-    "reverse": {
-     "num": 18161838,
-     "den": 990419010,
-     "rate": 1.83
-    },
-    "clothing": {
-     "cloth": {
-      "num": 16010,
-      "den": 17066,
-      "rate": 93.81
-     },
-     "vis": {
-      "num": 655226.4715699026,
-      "den": 694376,
-      "rate": 94.36
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.91
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 14908,
-     "den": 15134,
-     "rate": 98.51
-    },
-    "speed": {
-     "num": 53929,
-     "den": 2595079,
-     "rate": 2.08
-    },
-    "redlight": {
-     "num": 118723,
-     "den": 736669,
-     "rate": 16.12
-    },
-    "reverse": {
-     "num": 13314710,
-     "den": 801463932,
-     "rate": 1.66
-    },
-    "clothing": {
-     "cloth": {
-      "num": 13766,
-      "den": 14353,
-      "rate": 95.91
-     },
-     "vis": {
-      "num": 507236.75093366613,
-      "den": 547195,
-      "rate": 92.7
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.28
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 12367,
-     "den": 12565,
-     "rate": 98.42
-    },
-    "speed": {
-     "num": 49065,
-     "den": 2165053,
-     "rate": 2.27
-    },
-    "redlight": {
-     "num": 97913,
-     "den": 608749,
-     "rate": 16.08
-    },
-    "reverse": {
-     "num": 11192946,
-     "den": 664703460,
-     "rate": 1.68
-    },
-    "clothing": {
-     "cloth": {
-      "num": 11140,
-      "den": 11522,
-      "rate": 96.68
-     },
-     "vis": {
-      "num": 421925.38765786577,
-      "den": 474018,
-      "rate": 89.01
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 2.01
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "辽宁区域",
-   "city": "锦州",
-   "name": "兴必达【锦州】兴隆和太和站",
-   "2026-08": {
-    "helmet": {
-     "num": 1949,
-     "den": 2009,
-     "rate": 97.01
-    },
-    "speed": {
-     "num": 9272,
-     "den": 295254,
-     "rate": 3.14
-    },
-    "redlight": {
-     "num": 12365,
-     "den": 75647,
-     "rate": 16.35
-    },
-    "reverse": {
-     "num": 2342134,
-     "den": 102955782,
-     "rate": 2.27
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1706,
-      "den": 1806,
-      "rate": 94.46
-     },
-     "vis": {
-      "num": 70417.2966753432,
-      "den": 73979,
-      "rate": 95.19
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.74
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1642,
-     "den": 1669,
-     "rate": 98.38
-    },
-    "speed": {
-     "num": 7855,
-     "den": 251404,
-     "rate": 3.12
-    },
-    "redlight": {
-     "num": 9256,
-     "den": 65357,
-     "rate": 14.16
-    },
-    "reverse": {
-     "num": 1527789,
-     "den": 86145479,
-     "rate": 1.77
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1532,
-      "den": 1575,
-      "rate": 97.27
-     },
-     "vis": {
-      "num": 55264.27467289508,
-      "den": 60431,
-      "rate": 91.45
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.24
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1287,
-     "den": 1326,
-     "rate": 97.06
-    },
-    "speed": {
-     "num": 6212,
-     "den": 209275,
-     "rate": 2.97
-    },
-    "redlight": {
-     "num": 6592,
-     "den": 49705,
-     "rate": 13.26
-    },
-    "reverse": {
-     "num": 1359782,
-     "den": 71293578,
-     "rate": 1.91
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1178,
-      "den": 1212,
-      "rate": 97.19
-     },
-     "vis": {
-      "num": 45342.8728194645,
-      "den": 52113,
-      "rate": 87.01
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 1.25
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "辽宁区域",
-   "city": "锦州",
-   "name": "兴必达【锦州】凌河站",
-   "2026-08": {
-    "helmet": {
-     "num": 1287,
-     "den": 1337,
-     "rate": 96.26
-    },
-    "speed": {
-     "num": 3046,
-     "den": 236909,
-     "rate": 1.29
-    },
-    "redlight": {
-     "num": 12659,
-     "den": 61225,
-     "rate": 20.68
-    },
-    "reverse": {
-     "num": 1841494,
-     "den": 62366813,
-     "rate": 2.95
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1161,
-      "den": 1226,
-      "rate": 94.7
-     },
-     "vis": {
-      "num": 48557.39237721267,
-      "den": 49199,
-      "rate": 98.7
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.15
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1068,
-     "den": 1084,
-     "rate": 98.52
-    },
-    "speed": {
-     "num": 2264,
-     "den": 206188,
-     "rate": 1.1
-    },
-    "redlight": {
-     "num": 10332,
-     "den": 54422,
-     "rate": 18.98
-    },
-    "reverse": {
-     "num": 1212708,
-     "den": 52373756,
-     "rate": 2.32
-    },
-    "clothing": {
-     "cloth": {
-      "num": 986,
-      "den": 1019,
-      "rate": 96.76
-     },
-     "vis": {
-      "num": 36990.58416407412,
-      "den": 39438,
-      "rate": 93.79
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.0
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 915,
-     "den": 923,
-     "rate": 99.13
-    },
-    "speed": {
-     "num": 2365,
-     "den": 186143,
-     "rate": 1.27
-    },
-    "redlight": {
-     "num": 10234,
-     "den": 50089,
-     "rate": 20.43
-    },
-    "reverse": {
-     "num": 1100053,
-     "den": 46523501,
-     "rate": 2.36
-    },
-    "clothing": {
-     "cloth": {
-      "num": 828,
-      "den": 872,
-      "rate": 94.95
-     },
-     "vis": {
-      "num": 29129.642854754613,
-      "den": 34140,
-      "rate": 85.32
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.0
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "辽宁区域",
-   "city": "锦州",
-   "name": "兴必达【锦州】凌西站",
-   "2026-08": {
-    "helmet": {
-     "num": 2240,
-     "den": 2259,
-     "rate": 99.16
-    },
-    "speed": {
-     "num": 7610,
-     "den": 313535,
-     "rate": 2.43
-    },
-    "redlight": {
-     "num": 14732,
-     "den": 93697,
-     "rate": 15.72
-    },
-    "reverse": {
-     "num": 2110393,
-     "den": 118648695,
-     "rate": 1.78
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1931,
-      "den": 1975,
-      "rate": 97.77
-     },
-     "vis": {
-      "num": 88052.65769200886,
-      "den": 90578,
-      "rate": 97.21
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.62
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1887,
-     "den": 1900,
-     "rate": 99.32
-    },
-    "speed": {
-     "num": 5785,
-     "den": 268395,
-     "rate": 2.16
-    },
-    "redlight": {
-     "num": 9685,
-     "den": 76017,
-     "rate": 12.74
-    },
-    "reverse": {
-     "num": 1603594,
-     "den": 98218285,
-     "rate": 1.63
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1729,
-      "den": 1743,
-      "rate": 99.2
-     },
-     "vis": {
-      "num": 70383.27949582782,
-      "den": 74049,
-      "rate": 95.05
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.16
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1581,
-     "den": 1603,
-     "rate": 98.63
-    },
-    "speed": {
-     "num": 5317,
-     "den": 224222,
-     "rate": 2.37
-    },
-    "redlight": {
-     "num": 8399,
-     "den": 63087,
-     "rate": 13.31
-    },
-    "reverse": {
-     "num": 1604049,
-     "den": 81150129,
-     "rate": 1.98
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1437,
-      "den": 1439,
-      "rate": 99.86
-     },
-     "vis": {
-      "num": 58553.90101572381,
-      "den": 64772,
-      "rate": 90.4
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.06
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "辽宁区域",
-   "city": "锦州",
-   "name": "兴必达【锦州】千盛站",
-   "2026-08": {
-    "helmet": {
-     "num": 1146,
-     "den": 1162,
-     "rate": 98.62
-    },
-    "speed": {
-     "num": 3060,
-     "den": 242306,
-     "rate": 1.26
-    },
-    "redlight": {
-     "num": 11786,
-     "den": 65864,
-     "rate": 17.89
-    },
-    "reverse": {
-     "num": 1309426,
-     "den": 60340707,
-     "rate": 2.17
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1006,
-      "den": 1121,
-      "rate": 89.74
-     },
-     "vis": {
-      "num": 41628.4589251164,
-      "den": 42744,
-      "rate": 97.39
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.0
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1919,
-     "den": 1963,
-     "rate": 97.76
-    },
-    "speed": {
-     "num": 5707,
-     "den": 428683,
-     "rate": 1.33
-    },
-    "redlight": {
-     "num": 22046,
-     "den": 118929,
-     "rate": 18.54
-    },
-    "reverse": {
-     "num": 2027080,
-     "den": 105334281,
-     "rate": 1.92
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1767,
-      "den": 1907,
-      "rate": 92.66
-     },
-     "vis": {
-      "num": 65665.3801373282,
-      "den": 70026,
-      "rate": 93.77
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.08
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1934,
-     "den": 1977,
-     "rate": 97.82
-    },
-    "speed": {
-     "num": 7409,
-     "den": 428559,
-     "rate": 1.73
-    },
-    "redlight": {
-     "num": 24204,
-     "den": 119615,
-     "rate": 20.23
-    },
-    "reverse": {
-     "num": 1952728,
-     "den": 104286558,
-     "rate": 1.87
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1775,
-      "den": 1900,
-      "rate": 93.42
-     },
-     "vis": {
-      "num": 69436.31362925174,
-      "den": 77810,
-      "rate": 89.24
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.28
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "辽宁区域",
-   "city": "锦州",
-   "name": "兴必达【锦州】曼哈顿站",
-   "2026-08": {
-    "helmet": {
-     "num": 1866,
-     "den": 1909,
-     "rate": 97.75
-    },
-    "speed": {
-     "num": 8769,
-     "den": 259913,
-     "rate": 3.37
-    },
-    "redlight": {
-     "num": 13260,
-     "den": 71652,
-     "rate": 18.51
-    },
-    "reverse": {
-     "num": 2019339,
-     "den": 97015253,
-     "rate": 2.08
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1618,
-      "den": 1666,
-      "rate": 97.12
-     },
-     "vis": {
-      "num": 67792.4982388554,
-      "den": 71220,
-      "rate": 95.19
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 4.64
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1529,
-     "den": 1576,
-     "rate": 97.02
-    },
-    "speed": {
-     "num": 6986,
-     "den": 226596,
-     "rate": 3.08
-    },
-    "redlight": {
-     "num": 10242,
-     "den": 62826,
-     "rate": 16.3
-    },
-    "reverse": {
-     "num": 1320000,
-     "den": 82308770,
-     "rate": 1.6
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1395,
-      "den": 1434,
-      "rate": 97.28
-     },
-     "vis": {
-      "num": 51834.90669909585,
-      "den": 57437,
-      "rate": 90.25
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 3.93
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1211,
-     "den": 1223,
-     "rate": 99.02
-    },
-    "speed": {
-     "num": 6106,
-     "den": 180806,
-     "rate": 3.38
-    },
-    "redlight": {
-     "num": 6979,
-     "den": 46161,
-     "rate": 15.12
-    },
-    "reverse": {
-     "num": 1123785,
-     "den": 64467286,
-     "rate": 1.74
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1052,
-      "den": 1112,
-      "rate": 94.6
-     },
-     "vis": {
-      "num": 38461.080462910526,
-      "den": 45777,
-      "rate": 84.02
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 3.59
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "辽宁区域",
-   "city": "锦州",
-   "name": "兴必达【锦州】玲珑站",
-   "2026-08": {
-    "helmet": {
-     "num": 3233,
-     "den": 3354,
-     "rate": 96.39
-    },
-    "speed": {
-     "num": 13514,
-     "den": 626288,
-     "rate": 2.16
-    },
-    "redlight": {
-     "num": 35810,
-     "den": 192866,
-     "rate": 18.57
-    },
-    "reverse": {
-     "num": 2419611,
-     "den": 183504435,
-     "rate": 1.32
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2825,
-      "den": 3064,
-      "rate": 92.2
-     },
-     "vis": {
-      "num": 111971.48452316294,
-      "den": 126337,
-      "rate": 88.63
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.33
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2539,
-     "den": 2571,
-     "rate": 98.76
-    },
-    "speed": {
-     "num": 10578,
-     "den": 498721,
-     "rate": 2.12
-    },
-    "redlight": {
-     "num": 27815,
-     "den": 151988,
-     "rate": 18.3
-    },
-    "reverse": {
-     "num": 1762453,
-     "den": 146760068,
-     "rate": 1.2
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2315,
-      "den": 2447,
-      "rate": 94.61
-     },
-     "vis": {
-      "num": 88007.17734214678,
-      "den": 96732,
-      "rate": 90.98
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.35
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 2157,
-     "den": 2182,
-     "rate": 98.85
-    },
-    "speed": {
-     "num": 9196,
-     "den": 420200,
-     "rate": 2.19
-    },
-    "redlight": {
-     "num": 21039,
-     "den": 125040,
-     "rate": 16.83
-    },
-    "reverse": {
-     "num": 1458310,
-     "den": 125788018,
-     "rate": 1.16
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1913,
-      "den": 1956,
-      "rate": 97.8
-     },
-     "vis": {
-      "num": 79927.13910328437,
-      "den": 86313,
-      "rate": 92.6
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.73
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "辽宁区域",
-   "city": "锦州",
-   "name": "兴必达【锦州】笔架山站",
-   "2026-08": {
-    "helmet": {
-     "num": 1834,
-     "den": 1842,
-     "rate": 99.57
-    },
-    "speed": {
-     "num": 7766,
-     "den": 226474,
-     "rate": 3.43
-    },
-    "redlight": {
-     "num": 4557,
-     "den": 58480,
-     "rate": 7.79
-    },
-    "reverse": {
-     "num": 1995323,
-     "den": 119299246,
-     "rate": 1.67
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1559,
-      "den": 1627,
-      "rate": 95.82
-     },
-     "vis": {
-      "num": 63572.41916396187,
-      "den": 66027,
-      "rate": 96.28
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 9.35
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1694,
-     "den": 1697,
-     "rate": 99.82
-    },
-    "speed": {
-     "num": 6017,
-     "den": 195765,
-     "rate": 3.07
-    },
-    "redlight": {
-     "num": 3151,
-     "den": 49053,
-     "rate": 6.42
-    },
-    "reverse": {
-     "num": 1868222,
-     "den": 97420628,
-     "rate": 1.92
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1523,
-      "den": 1563,
-      "rate": 97.44
-     },
-     "vis": {
-      "num": 51283.087833635494,
-      "den": 54706,
-      "rate": 93.74
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 11.89
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1374,
-     "den": 1389,
-     "rate": 98.92
-    },
-    "speed": {
-     "num": 4915,
-     "den": 161321,
-     "rate": 3.05
-    },
-    "redlight": {
-     "num": 3261,
-     "den": 42273,
-     "rate": 7.71
-    },
-    "reverse": {
-     "num": 1423380,
-     "den": 79452779,
-     "rate": 1.79
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1223,
-      "den": 1258,
-      "rate": 97.22
-     },
-     "vis": {
-      "num": 40783.66391671589,
-      "den": 44092,
-      "rate": 92.5
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 9.99
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "辽宁区域",
-   "city": "锦州",
-   "name": "兴必达【锦州】锦绣前程站",
-   "2026-08": {
-    "helmet": {
-     "num": 2788,
-     "den": 2846,
-     "rate": 97.96
-    },
-    "speed": {
-     "num": 10691,
-     "den": 520703,
-     "rate": 2.05
-    },
-    "redlight": {
-     "num": 28548,
-     "den": 165157,
-     "rate": 17.29
-    },
-    "reverse": {
-     "num": 1758070,
-     "den": 134459363,
-     "rate": 1.31
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2454,
-      "den": 2587,
-      "rate": 94.86
-     },
-     "vis": {
-      "num": 96938.76427436239,
-      "den": 100663,
-      "rate": 96.3
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.35
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2250,
-     "den": 2284,
-     "rate": 98.51
-    },
-    "speed": {
-     "num": 7372,
-     "den": 424057,
-     "rate": 1.74
-    },
-    "redlight": {
-     "num": 20398,
-     "den": 131498,
-     "rate": 15.51
-    },
-    "reverse": {
-     "num": 1531842,
-     "den": 108746105,
-     "rate": 1.41
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2102,
-      "den": 2186,
-      "rate": 96.16
-     },
-     "vis": {
-      "num": 73187.81728980088,
-      "den": 78227,
-      "rate": 93.56
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.34
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1908,
-     "den": 1942,
-     "rate": 98.25
-    },
-    "speed": {
-     "num": 7545,
-     "den": 354527,
-     "rate": 2.13
-    },
-    "redlight": {
-     "num": 17205,
-     "den": 112779,
-     "rate": 15.26
-    },
-    "reverse": {
-     "num": 1170859,
-     "den": 91741611,
-     "rate": 1.28
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1734,
-      "den": 1773,
-      "rate": 97.8
-     },
-     "vis": {
-      "num": 60290.77385575955,
-      "den": 69001,
-      "rate": 87.38
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.2
-    }
-   }
-  },
-  {
-   "level": "merchant",
-   "region": "华北一区",
-   "subregion": "辽宁区域",
-   "city": "阜新",
-   "name": "阜新",
-   "2026-08": {
-    "helmet": {
-     "num": 6695,
-     "den": 6780,
-     "rate": 98.75
-    },
-    "speed": {
-     "num": 36431,
-     "den": 1067288,
-     "rate": 3.41
-    },
-    "redlight": {
-     "num": 42284,
-     "den": 277819,
-     "rate": 15.22
-    },
-    "reverse": {
-     "num": 6082623,
-     "den": 402713661,
-     "rate": 1.51
-    },
-    "clothing": {
-     "cloth": {
-      "num": 5132,
-      "den": 5448,
-      "rate": 94.2
-     },
-     "vis": {
-      "num": 188328.24409679166,
-      "den": 204079,
-      "rate": 92.28
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 2.27
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 5622,
-     "den": 5680,
-     "rate": 98.98
-    },
-    "speed": {
-     "num": 26812,
-     "den": 872959,
-     "rate": 3.07
-    },
-    "redlight": {
-     "num": 32841,
-     "den": 217900,
-     "rate": 15.07
-    },
-    "reverse": {
-     "num": 4497639,
-     "den": 323143981,
-     "rate": 1.39
-    },
-    "clothing": {
-     "cloth": {
-      "num": 4945,
-      "den": 5050,
-      "rate": 97.92
-     },
-     "vis": {
-      "num": 171293.83913012934,
-      "den": 180675,
-      "rate": 94.81
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 1.89
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 4412,
-     "den": 4477,
-     "rate": 98.55
-    },
-    "speed": {
-     "num": 25698,
-     "den": 727003,
-     "rate": 3.53
-    },
-    "redlight": {
-     "num": 28814,
-     "den": 185962,
-     "rate": 15.49
-    },
-    "reverse": {
-     "num": 3782608,
-     "den": 265788638,
-     "rate": 1.42
-    },
-    "clothing": {
-     "cloth": {
-      "num": 3781,
-      "den": 3960,
-      "rate": 95.48
-     },
-     "vis": {
-      "num": 133480.71228460807,
-      "den": 146675,
-      "rate": 91.0
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 3.36
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "辽宁区域",
-   "city": "阜新",
-   "name": "兴必达【阜新】开发区站",
-   "2026-08": {
-    "helmet": {
-     "num": 2481,
-     "den": 2494,
-     "rate": 99.48
-    },
-    "speed": {
-     "num": 7824,
-     "den": 332927,
-     "rate": 2.35
-    },
-    "redlight": {
-     "num": 11172,
-     "den": 83766,
-     "rate": 13.34
-    },
-    "reverse": {
-     "num": 1935269,
-     "den": 134442042,
-     "rate": 1.44
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1872,
-      "den": 1917,
-      "rate": 97.65
-     },
-     "vis": {
-      "num": 67995.63517173825,
-      "den": 69420,
-      "rate": 97.95
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 2.73
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2043,
-     "den": 2061,
-     "rate": 99.13
-    },
-    "speed": {
-     "num": 5730,
-     "den": 273253,
-     "rate": 2.1
-    },
-    "redlight": {
-     "num": 8598,
-     "den": 66405,
-     "rate": 12.95
-    },
-    "reverse": {
-     "num": 1116780,
-     "den": 107351081,
-     "rate": 1.04
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1787,
-      "den": 1821,
-      "rate": 98.13
-     },
-     "vis": {
-      "num": 59198.022548518726,
-      "den": 61352,
-      "rate": 96.49
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 1.82
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1539,
-     "den": 1555,
-     "rate": 98.97
-    },
-    "speed": {
-     "num": 4056,
-     "den": 213380,
-     "rate": 1.9
-    },
-    "redlight": {
-     "num": 6797,
-     "den": 52580,
-     "rate": 12.93
-    },
-    "reverse": {
-     "num": 1014200,
-     "den": 84003623,
-     "rate": 1.21
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1314,
-      "den": 1344,
-      "rate": 97.77
-     },
-     "vis": {
-      "num": 45349.179561908546,
-      "den": 49095,
-      "rate": 92.37
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.55
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "辽宁区域",
-   "city": "阜新",
-   "name": "兴必达【阜新】细河站",
-   "2026-08": {
-    "helmet": {
-     "num": 3079,
-     "den": 3150,
-     "rate": 97.75
-    },
-    "speed": {
-     "num": 23867,
-     "den": 590374,
-     "rate": 4.04
-    },
-    "redlight": {
-     "num": 25891,
-     "den": 162071,
-     "rate": 15.98
-    },
-    "reverse": {
-     "num": 3164497,
-     "den": 200509638,
-     "rate": 1.58
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2416,
-      "den": 2685,
-      "rate": 89.98
-     },
-     "vis": {
-      "num": 87003.90495976676,
-      "den": 100311,
-      "rate": 86.73
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 3.34
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 2619,
-     "den": 2659,
-     "rate": 98.5
-    },
-    "speed": {
-     "num": 17925,
-     "den": 481485,
-     "rate": 3.72
-    },
-    "redlight": {
-     "num": 21520,
-     "den": 127074,
-     "rate": 16.94
-    },
-    "reverse": {
-     "num": 2636199,
-     "den": 160134853,
-     "rate": 1.65
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2323,
-      "den": 2383,
-      "rate": 97.48
-     },
-     "vis": {
-      "num": 84427.00820417216,
-      "den": 91176,
-      "rate": 92.6
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.98
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 2074,
-     "den": 2120,
-     "rate": 97.83
-    },
-    "speed": {
-     "num": 18310,
-     "den": 409318,
-     "rate": 4.47
-    },
-    "redlight": {
-     "num": 19272,
-     "den": 110905,
-     "rate": 17.38
-    },
-    "reverse": {
-     "num": 2102308,
-     "den": 133248399,
-     "rate": 1.58
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1799,
-      "den": 1931,
-      "rate": 93.16
-     },
-     "vis": {
-      "num": 65597.09538301332,
-      "den": 73943,
-      "rate": 88.71
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 4.11
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "辽宁区域",
-   "city": "阜新",
-   "name": "兴必达【阜新】长虹站",
-   "2026-08": {
-    "helmet": {
-     "num": 1026,
-     "den": 1026,
-     "rate": 100.0
-    },
-    "speed": {
-     "num": 4484,
-     "den": 129628,
-     "rate": 3.46
-    },
-    "redlight": {
-     "num": 4935,
-     "den": 29612,
-     "rate": 16.67
-    },
-    "reverse": {
-     "num": 879205,
-     "den": 61313776,
-     "rate": 1.43
-    },
-    "clothing": {
-     "cloth": {
-      "num": 763,
-      "den": 765,
-      "rate": 99.74
-     },
-     "vis": {
-      "num": 30280.968671168815,
-      "den": 31295,
-      "rate": 96.76
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 3.02
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 858,
-     "den": 858,
-     "rate": 100.0
-    },
-    "speed": {
-     "num": 2941,
-     "den": 104912,
-     "rate": 2.8
-    },
-    "redlight": {
-     "num": 2475,
-     "den": 22467,
-     "rate": 11.02
-    },
-    "reverse": {
-     "num": 676394,
-     "den": 49785500,
-     "rate": 1.36
-    },
-    "clothing": {
-     "cloth": {
-      "num": 747,
-      "den": 758,
-      "rate": 98.55
-     },
-     "vis": {
-      "num": 24379.301409768505,
-      "den": 24840,
-      "rate": 98.15
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 2.75
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 708,
-     "den": 711,
-     "rate": 99.58
-    },
-    "speed": {
-     "num": 3160,
-     "den": 91838,
-     "rate": 3.44
-    },
-    "redlight": {
-     "num": 2485,
-     "den": 20483,
-     "rate": 12.13
-    },
-    "reverse": {
-     "num": 589844,
-     "den": 42842208,
-     "rate": 1.38
-    },
-    "clothing": {
-     "cloth": {
-      "num": 593,
-      "den": 610,
-      "rate": 97.21
-     },
-     "vis": {
-      "num": 19476.570329723985,
-      "den": 20465,
-      "rate": 95.17
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 8.78
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "辽宁区域",
-   "city": "阜新",
-   "name": "集约配送-兴必达【阜新】开发区站",
-   "2026-08": {
-    "helmet": {
-     "num": 109,
-     "den": 110,
-     "rate": 99.09
-    },
-    "speed": {
-     "num": 256,
-     "den": 14359,
-     "rate": 1.78
-    },
-    "redlight": {
-     "num": 286,
-     "den": 2370,
-     "rate": 12.07
-    },
-    "reverse": {
-     "num": 103652,
-     "den": 6448205,
-     "rate": 1.61
-    },
-    "clothing": {
-     "cloth": {
-      "num": 81,
-      "den": 81,
-      "rate": 100.0
-     },
-     "vis": {
-      "num": 3047.735294117647,
-      "den": 3053,
-      "rate": 99.83
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 0.0
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 102,
-     "den": 102,
-     "rate": 100.0
-    },
-    "speed": {
-     "num": 216,
-     "den": 13309,
-     "rate": 1.62
-    },
-    "redlight": {
-     "num": 248,
-     "den": 1954,
-     "rate": 12.69
-    },
-    "reverse": {
-     "num": 68266,
-     "den": 5872547,
-     "rate": 1.16
-    },
-    "clothing": {
-     "cloth": {
-      "num": 88,
-      "den": 88,
-      "rate": 100.0
-     },
-     "vis": {
-      "num": 3289.506967670011,
-      "den": 3307,
-      "rate": 99.47
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.0
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 91,
-     "den": 91,
-     "rate": 100.0
-    },
-    "speed": {
-     "num": 172,
-     "den": 12467,
-     "rate": 1.38
-    },
-    "redlight": {
-     "num": 260,
-     "den": 1994,
-     "rate": 13.04
-    },
-    "reverse": {
-     "num": 76256,
-     "den": 5694408,
-     "rate": 1.34
-    },
-    "clothing": {
-     "cloth": {
-      "num": 75,
-      "den": 75,
-      "rate": 100.0
-     },
-     "vis": {
-      "num": 3057.867009962227,
-      "den": 3172,
-      "rate": 96.4
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 0.0
-    }
-   }
-  },
-  {
-   "level": "subregion",
-   "region": "华北一区",
-   "subregion": "黑吉区域",
-   "city": "",
-   "name": "黑吉区域",
-   "2026-08": {
-    "helmet": {
-     "num": 11352,
-     "den": 11535,
-     "rate": 98.41
-    },
-    "speed": {
-     "num": 45784,
-     "den": 1313164,
-     "rate": 3.49
-    },
-    "redlight": {
-     "num": 84676,
-     "den": 449915,
-     "rate": 18.82
-    },
-    "reverse": {
-     "num": 10141910,
-     "den": 635789285,
-     "rate": 1.6
-    },
-    "clothing": {
-     "cloth": {
-      "num": 9459,
-      "den": 9708,
-      "rate": 97.44
-     },
-     "vis": {
-      "num": 341130.4268019865,
-      "den": 365710,
-      "rate": 93.28
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 7.65
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 9134,
-     "den": 9248,
-     "rate": 98.77
-    },
-    "speed": {
-     "num": 34085,
-     "den": 1052231,
-     "rate": 3.24
-    },
-    "redlight": {
-     "num": 66755,
-     "den": 365845,
-     "rate": 18.25
-    },
-    "reverse": {
-     "num": 8808853,
-     "den": 533599534,
-     "rate": 1.65
-    },
-    "clothing": {
-     "cloth": {
-      "num": 8218,
-      "den": 8445,
-      "rate": 97.31
-     },
-     "vis": {
-      "num": 292907.71428581333,
-      "den": 321007,
-      "rate": 91.25
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 7.95
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 7120,
-     "den": 7213,
-     "rate": 98.71
-    },
-    "speed": {
-     "num": 27369,
-     "den": 800786,
-     "rate": 3.42
-    },
-    "redlight": {
-     "num": 58504,
-     "den": 293354,
-     "rate": 19.94
-    },
-    "reverse": {
-     "num": 7499037,
-     "den": 412422775,
-     "rate": 1.82
-    },
-    "clothing": {
-     "cloth": {
-      "num": 6839,
-      "den": 6995,
-      "rate": 97.77
-     },
-     "vis": {
-      "num": 252780.21296514195,
-      "den": 280375,
-      "rate": 90.16
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 10.05
-    }
-   }
-  },
-  {
-   "level": "merchant",
-   "region": "华北一区",
-   "subregion": "黑吉区域",
-   "city": "通辽",
-   "name": "通辽",
-   "2026-08": {
-    "helmet": {
-     "num": 3734,
-     "den": 3809,
-     "rate": 98.03
-    },
-    "speed": {
-     "num": 24459,
-     "den": 770692,
-     "rate": 3.17
-    },
-    "redlight": {
-     "num": 40134,
-     "den": 212882,
-     "rate": 18.85
-    },
-    "reverse": {
-     "num": 3051380,
-     "den": 194689071,
-     "rate": 1.57
-    },
-    "clothing": {
-     "cloth": {
-      "num": 3549,
-      "den": 3641,
-      "rate": 97.47
-     },
-     "vis": {
-      "num": 122941.39341438346,
-      "den": 134963,
-      "rate": 91.09
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 5.88
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 3063,
-     "den": 3135,
-     "rate": 97.7
-    },
-    "speed": {
-     "num": 18454,
-     "den": 618681,
-     "rate": 2.98
-    },
-    "redlight": {
-     "num": 30664,
-     "den": 166932,
-     "rate": 18.37
-    },
-    "reverse": {
-     "num": 2338185,
-     "den": 156528979,
-     "rate": 1.49
-    },
-    "clothing": {
-     "cloth": {
-      "num": 3213,
-      "den": 3306,
-      "rate": 97.19
-     },
-     "vis": {
-      "num": 104174.6921917573,
-      "den": 115047,
-      "rate": 90.55
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 5.09
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 2397,
-     "den": 2451,
-     "rate": 97.8
-    },
-    "speed": {
-     "num": 15903,
-     "den": 490762,
-     "rate": 3.24
-    },
-    "redlight": {
-     "num": 26471,
-     "den": 135761,
-     "rate": 19.5
-    },
-    "reverse": {
-     "num": 1999561,
-     "den": 125733604,
-     "rate": 1.59
-    },
-    "clothing": {
-     "cloth": {
-      "num": 2519,
-      "den": 2606,
-      "rate": 96.66
-     },
-     "vis": {
-      "num": 87420.80370045746,
-      "den": 96476,
-      "rate": 90.61
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 5.59
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "黑吉区域",
-   "city": "通辽",
-   "name": "兴必达【通辽】东城站",
-   "2026-08": {
-    "helmet": {
-     "num": 1545,
-     "den": 1584,
-     "rate": 97.54
-    },
-    "speed": {
-     "num": 8717,
-     "den": 324501,
-     "rate": 2.69
-    },
-    "redlight": {
-     "num": 20193,
-     "den": 100490,
-     "rate": 20.09
-    },
-    "reverse": {
-     "num": 1183917,
-     "den": 77745617,
-     "rate": 1.52
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1501,
-      "den": 1537,
-      "rate": 97.66
-     },
-     "vis": {
-      "num": 53718.208584953885,
-      "den": 59596,
-      "rate": 90.14
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.06
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1252,
-     "den": 1284,
-     "rate": 97.51
-    },
-    "speed": {
-     "num": 6196,
-     "den": 259447,
-     "rate": 2.39
-    },
-    "redlight": {
-     "num": 15236,
-     "den": 79220,
-     "rate": 19.23
-    },
-    "reverse": {
-     "num": 918684,
-     "den": 62908079,
-     "rate": 1.46
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1348,
-      "den": 1387,
-      "rate": 97.19
-     },
-     "vis": {
-      "num": 47376.72364327731,
-      "den": 50796,
-      "rate": 93.27
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.23
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 963,
-     "den": 991,
-     "rate": 97.17
-    },
-    "speed": {
-     "num": 5534,
-     "den": 201587,
-     "rate": 2.75
-    },
-    "redlight": {
-     "num": 12004,
-     "den": 62886,
-     "rate": 19.09
-    },
-    "reverse": {
-     "num": 743824,
-     "den": 50313579,
-     "rate": 1.48
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1044,
-      "den": 1076,
-      "rate": 97.03
-     },
-     "vis": {
-      "num": 39212.74094955921,
-      "den": 42231,
-      "rate": 92.85
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 1.4
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "黑吉区域",
-   "city": "通辽",
-   "name": "兴必达【通辽】西城站",
-   "2026-08": {
-    "helmet": {
-     "num": 932,
-     "den": 944,
-     "rate": 98.73
-    },
-    "speed": {
-     "num": 5590,
-     "den": 130678,
-     "rate": 4.28
-    },
-    "redlight": {
-     "num": 5283,
-     "den": 34678,
-     "rate": 15.23
-    },
-    "reverse": {
-     "num": 516984,
-     "den": 45102753,
-     "rate": 1.15
-    },
-    "clothing": {
-     "cloth": {
-      "num": 890,
-      "den": 910,
-      "rate": 97.8
-     },
-     "vis": {
-      "num": 29059.95571388419,
-      "den": 30940,
-      "rate": 93.92
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 10.04
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 750,
-     "den": 772,
-     "rate": 97.15
-    },
-    "speed": {
-     "num": 5243,
-     "den": 107192,
-     "rate": 4.89
-    },
-    "redlight": {
-     "num": 5073,
-     "den": 28510,
-     "rate": 17.79
-    },
-    "reverse": {
-     "num": 423972,
-     "den": 36958047,
-     "rate": 1.15
-    },
-    "clothing": {
-     "cloth": {
-      "num": 789,
-      "den": 812,
-      "rate": 97.17
-     },
-     "vis": {
-      "num": 25511.814070593697,
-      "den": 27322,
-      "rate": 93.37
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 8.87
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 613,
-     "den": 623,
-     "rate": 98.39
-    },
-    "speed": {
-     "num": 4664,
-     "den": 92013,
-     "rate": 5.07
-    },
-    "redlight": {
-     "num": 5212,
-     "den": 25793,
-     "rate": 20.21
-    },
-    "reverse": {
-     "num": 409402,
-     "den": 30289098,
-     "rate": 1.35
-    },
-    "clothing": {
-     "cloth": {
-      "num": 635,
-      "den": 666,
-      "rate": 95.35
-     },
-     "vis": {
-      "num": 22626.601097227194,
-      "den": 24501,
-      "rate": 92.35
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 10.43
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "黑吉区域",
-   "city": "通辽",
-   "name": "兴必达【通辽】通达一站",
-   "2026-08": {
-    "helmet": {
-     "num": 1257,
-     "den": 1281,
-     "rate": 98.13
-    },
-    "speed": {
-     "num": 10152,
-     "den": 315513,
-     "rate": 3.22
-    },
-    "redlight": {
-     "num": 14658,
-     "den": 77714,
-     "rate": 18.86
-    },
-    "reverse": {
-     "num": 1350479,
-     "den": 71840701,
-     "rate": 1.88
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1158,
-      "den": 1194,
-      "rate": 96.98
-     },
-     "vis": {
-      "num": 40163.22911554554,
-      "den": 44427,
-      "rate": 90.4
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 6.53
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1061,
-     "den": 1079,
-     "rate": 98.33
-    },
-    "speed": {
-     "num": 7015,
-     "den": 252042,
-     "rate": 2.78
-    },
-    "redlight": {
-     "num": 10355,
-     "den": 59202,
-     "rate": 17.49
-    },
-    "reverse": {
-     "num": 995529,
-     "den": 56662853,
-     "rate": 1.76
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1076,
-      "den": 1107,
-      "rate": 97.2
-     },
-     "vis": {
-      "num": 31286.154477886386,
-      "den": 36929,
-      "rate": 84.72
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 6.17
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 821,
-     "den": 837,
-     "rate": 98.09
-    },
-    "speed": {
-     "num": 5705,
-     "den": 197162,
-     "rate": 2.89
-    },
-    "redlight": {
-     "num": 9255,
-     "den": 47082,
-     "rate": 19.66
-    },
-    "reverse": {
-     "num": 846335,
-     "den": 45130927,
-     "rate": 1.88
-    },
-    "clothing": {
-     "cloth": {
-      "num": 840,
-      "den": 864,
-      "rate": 97.22
-     },
-     "vis": {
-      "num": 25581.46165367095,
-      "den": 29744,
-      "rate": 86.01
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 4.95
-    }
-   }
-  },
-  {
-   "level": "merchant",
-   "region": "华北一区",
-   "subregion": "黑吉区域",
-   "city": "长春",
-   "name": "长春",
-   "2026-08": {
-    "helmet": {
-     "num": 7618,
-     "den": 7726,
-     "rate": 98.6
-    },
-    "speed": {
-     "num": 21325,
-     "den": 542472,
-     "rate": 3.93
-    },
-    "redlight": {
-     "num": 44542,
-     "den": 237033,
-     "rate": 18.79
-    },
-    "reverse": {
-     "num": 7090530,
-     "den": 441100214,
-     "rate": 1.61
-    },
-    "clothing": {
-     "cloth": {
-      "num": 5910,
-      "den": 6067,
-      "rate": 97.41
-     },
-     "vis": {
-      "num": 218189.03338760373,
-      "den": 230747,
-      "rate": 94.56
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 8.71
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 6071,
-     "den": 6113,
-     "rate": 99.31
-    },
-    "speed": {
-     "num": 15631,
-     "den": 433550,
-     "rate": 3.61
-    },
-    "redlight": {
-     "num": 36091,
-     "den": 198913,
-     "rate": 18.14
-    },
-    "reverse": {
-     "num": 6470668,
-     "den": 377070555,
-     "rate": 1.72
-    },
-    "clothing": {
-     "cloth": {
-      "num": 5005,
-      "den": 5139,
-      "rate": 97.39
-     },
-     "vis": {
-      "num": 188733.0220940563,
-      "den": 205960,
-      "rate": 91.64
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 9.66
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 4723,
-     "den": 4762,
-     "rate": 99.18
-    },
-    "speed": {
-     "num": 11466,
-     "den": 310024,
-     "rate": 3.7
-    },
-    "redlight": {
-     "num": 32033,
-     "den": 157593,
-     "rate": 20.33
-    },
-    "reverse": {
-     "num": 5499476,
-     "den": 286689171,
-     "rate": 1.92
-    },
-    "clothing": {
-     "cloth": {
-      "num": 4320,
-      "den": 4389,
-      "rate": 98.43
-     },
-     "vis": {
-      "num": 165359.40926468436,
-      "den": 183899,
-      "rate": 89.92
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 12.73
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "黑吉区域",
-   "city": "长春",
-   "name": "兴必达【长春】安庆路站",
-   "2026-08": {
-    "helmet": {
-     "num": 1574,
-     "den": 1606,
-     "rate": 98.01
-    },
-    "speed": {
-     "num": 7015,
-     "den": 207824,
-     "rate": 3.38
-    },
-    "redlight": {
-     "num": 14346,
-     "den": 84607,
-     "rate": 16.96
-    },
-    "reverse": {
-     "num": 905429,
-     "den": 84155574,
-     "rate": 1.08
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1246,
-      "den": 1308,
-      "rate": 95.26
-     },
-     "vis": {
-      "num": 43264.61862118865,
-      "den": 46065,
-      "rate": 93.92
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 3.85
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1238,
-     "den": 1244,
-     "rate": 99.52
-    },
-    "speed": {
-     "num": 5329,
-     "den": 167270,
-     "rate": 3.19
-    },
-    "redlight": {
-     "num": 9246,
-     "den": 66513,
-     "rate": 13.9
-    },
-    "reverse": {
-     "num": 997219,
-     "den": 67965451,
-     "rate": 1.47
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1019,
-      "den": 1078,
-      "rate": 94.53
-     },
-     "vis": {
-      "num": 34499.618979688625,
-      "den": 39725,
-      "rate": 86.85
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 3.08
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 963,
-     "den": 971,
-     "rate": 99.18
-    },
-    "speed": {
-     "num": 3927,
-     "den": 117938,
-     "rate": 3.33
-    },
-    "redlight": {
-     "num": 9773,
-     "den": 52804,
-     "rate": 18.51
-    },
-    "reverse": {
-     "num": 1044547,
-     "den": 51382328,
-     "rate": 2.03
-    },
-    "clothing": {
-     "cloth": {
-      "num": 879,
-      "den": 925,
-      "rate": 95.03
-     },
-     "vis": {
-      "num": 29885.12440091973,
-      "den": 35573,
-      "rate": 84.01
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 6.69
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "黑吉区域",
-   "city": "长春",
-   "name": "兴必达【长春】巴黎春天站",
-   "2026-08": {
-    "helmet": {
-     "num": 1531,
-     "den": 1568,
-     "rate": 97.64
-    },
-    "speed": {
-     "num": 5647,
-     "den": 148337,
-     "rate": 3.81
-    },
-    "redlight": {
-     "num": 5600,
-     "den": 22134,
-     "rate": 25.3
-    },
-    "reverse": {
-     "num": 2390484,
-     "den": 72029499,
-     "rate": 3.32
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1189,
-      "den": 1230,
-      "rate": 96.67
-     },
-     "vis": {
-      "num": 42760.18879388112,
-      "den": 45074,
-      "rate": 94.87
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 1.25
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1044,
-     "den": 1062,
-     "rate": 98.31
-    },
-    "speed": {
-     "num": 4134,
-     "den": 116629,
-     "rate": 3.54
-    },
-    "redlight": {
-     "num": 4545,
-     "den": 16671,
-     "rate": 27.26
-    },
-    "reverse": {
-     "num": 1960418,
-     "den": 55012829,
-     "rate": 3.56
-    },
-    "clothing": {
-     "cloth": {
-      "num": 886,
-      "den": 914,
-      "rate": 96.94
-     },
-     "vis": {
-      "num": 33863.76154667835,
-      "den": 35881,
-      "rate": 94.38
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 0.64
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 811,
-     "den": 821,
-     "rate": 98.78
-    },
-    "speed": {
-     "num": 3019,
-     "den": 83088,
-     "rate": 3.63
-    },
-    "redlight": {
-     "num": 4198,
-     "den": 14214,
-     "rate": 29.53
-    },
-    "reverse": {
-     "num": 1545274,
-     "den": 42899529,
-     "rate": 3.6
-    },
-    "clothing": {
-     "cloth": {
-      "num": 749,
-      "den": 756,
-      "rate": 99.07
-     },
-     "vis": {
-      "num": 30272.42898165244,
-      "den": 33176,
-      "rate": 91.25
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 1.62
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "黑吉区域",
-   "city": "长春",
-   "name": "兴必达【长春】开运站",
-   "2026-08": {
-    "helmet": {
-     "num": 1317,
-     "den": 1330,
-     "rate": 99.02
-    },
-    "speed": {
-     "num": 2469,
-     "den": 51921,
-     "rate": 4.76
-    },
-    "redlight": {
-     "num": 7937,
-     "den": 33882,
-     "rate": 23.43
-    },
-    "reverse": {
-     "num": 1824739,
-     "den": 95939006,
-     "rate": 1.9
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1009,
-      "den": 1019,
-      "rate": 99.02
-     },
-     "vis": {
-      "num": 38335.700537767625,
-      "den": 41206,
-      "rate": 93.03
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 19.37
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1081,
-     "den": 1088,
-     "rate": 99.36
-    },
-    "speed": {
-     "num": 2063,
-     "den": 41037,
-     "rate": 5.03
-    },
-    "redlight": {
-     "num": 7761,
-     "den": 30887,
-     "rate": 25.13
-    },
-    "reverse": {
-     "num": 1622205,
-     "den": 86456828,
-     "rate": 1.88
-    },
-    "clothing": {
-     "cloth": {
-      "num": 882,
-      "den": 883,
-      "rate": 99.89
-     },
-     "vis": {
-      "num": 37829.15487884447,
-      "den": 41081,
-      "rate": 92.08
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 27.17
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 861,
-     "den": 865,
-     "rate": 99.54
-    },
-    "speed": {
-     "num": 1551,
-     "den": 30036,
-     "rate": 5.16
-    },
-    "redlight": {
-     "num": 6003,
-     "den": 22627,
-     "rate": 26.53
-    },
-    "reverse": {
-     "num": 1338337,
-     "den": 64885870,
-     "rate": 2.06
-    },
-    "clothing": {
-     "cloth": {
-      "num": 778,
-      "den": 784,
-      "rate": 99.23
-     },
-     "vis": {
-      "num": 31103.024287361397,
-      "den": 35091,
-      "rate": 88.64
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 31.47
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "黑吉区域",
-   "city": "长春",
-   "name": "兴必达【长春】欧亚卖场站",
-   "2026-08": {
-    "helmet": {
-     "num": 1090,
-     "den": 1101,
-     "rate": 99.0
-    },
-    "speed": {
-     "num": 3190,
-     "den": 56086,
-     "rate": 5.69
-    },
-    "redlight": {
-     "num": 4096,
-     "den": 18739,
-     "rate": 21.86
-    },
-    "reverse": {
-     "num": 567217,
-     "den": 61633628,
-     "rate": 0.92
-    },
-    "clothing": {
-     "cloth": {
-      "num": 851,
-      "den": 874,
-      "rate": 97.37
-     },
-     "vis": {
-      "num": 30348.194934319086,
-      "den": 32831,
-      "rate": 92.44
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 10.19
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 905,
-     "den": 912,
-     "rate": 99.23
-    },
-    "speed": {
-     "num": 2422,
-     "den": 49786,
-     "rate": 4.86
-    },
-    "redlight": {
-     "num": 3733,
-     "den": 16717,
-     "rate": 22.33
-    },
-    "reverse": {
-     "num": 604868,
-     "den": 56474754,
-     "rate": 1.07
-    },
-    "clothing": {
-     "cloth": {
-      "num": 753,
-      "den": 792,
-      "rate": 95.08
-     },
-     "vis": {
-      "num": 23954.485667577614,
-      "den": 27457,
-      "rate": 87.24
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 8.73
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 730,
-     "den": 743,
-     "rate": 98.25
-    },
-    "speed": {
-     "num": 1472,
-     "den": 34785,
-     "rate": 4.23
-    },
-    "redlight": {
-     "num": 3308,
-     "den": 13251,
-     "rate": 24.96
-    },
-    "reverse": {
-     "num": 535423,
-     "den": 43348497,
-     "rate": 1.24
-    },
-    "clothing": {
-     "cloth": {
-      "num": 691,
-      "den": 693,
-      "rate": 99.71
-     },
-     "vis": {
-      "num": 23543.79809465331,
-      "den": 26282,
-      "rate": 89.58
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 8.71
-    }
-   }
-  },
-  {
-   "level": "site",
-   "region": "华北一区",
-   "subregion": "黑吉区域",
-   "city": "长春",
-   "name": "兴必达【长春】活力汇站",
-   "2026-08": {
-    "helmet": {
-     "num": 2106,
-     "den": 2121,
-     "rate": 99.29
-    },
-    "speed": {
-     "num": 3004,
-     "den": 78304,
-     "rate": 3.84
-    },
-    "redlight": {
-     "num": 12563,
-     "den": 77671,
-     "rate": 16.17
-    },
-    "reverse": {
-     "num": 1402661,
-     "den": 127342507,
-     "rate": 1.1
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1615,
-      "den": 1636,
-      "rate": 98.72
-     },
-     "vis": {
-      "num": 63480.33050044698,
-      "den": 65571,
-      "rate": 96.81
-     }
-    },
-    "high_speed": {
-     "days": 31,
-     "pct": 8.9
-    }
-   },
-   "2026-09": {
-    "helmet": {
-     "num": 1803,
-     "den": 1807,
-     "rate": 99.78
-    },
-    "speed": {
-     "num": 1683,
-     "den": 58828,
-     "rate": 2.86
-    },
-    "redlight": {
-     "num": 10806,
-     "den": 68125,
-     "rate": 15.86
-    },
-    "reverse": {
-     "num": 1285958,
-     "den": 111160693,
-     "rate": 1.16
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1465,
-      "den": 1472,
-      "rate": 99.52
-     },
-     "vis": {
-      "num": 58586.00102126697,
-      "den": 61816,
-      "rate": 94.77
-     }
-    },
-    "high_speed": {
-     "days": 29,
-     "pct": 8.7
-    }
-   },
-   "2026-10": {
-    "helmet": {
-     "num": 1358,
-     "den": 1362,
-     "rate": 99.71
-    },
-    "speed": {
-     "num": 1497,
-     "den": 44177,
-     "rate": 3.39
-    },
-    "redlight": {
-     "num": 8751,
-     "den": 54697,
-     "rate": 16.0
-    },
-    "reverse": {
-     "num": 1035895,
-     "den": 84172947,
-     "rate": 1.23
-    },
-    "clothing": {
-     "cloth": {
-      "num": 1223,
-      "den": 1231,
-      "rate": 99.35
-     },
-     "vis": {
-      "num": 50555.03350009757,
-      "den": 53777,
-      "rate": 94.01
-     }
-    },
-    "high_speed": {
-     "days": 24,
-     "pct": 15.16
-    }
-   }
-  },
-  {
    "level": "site",
    "region": "中南大区",
    "subregion": "山东区域",
@@ -26592,6 +14772,11871 @@ window.MONTHLY_SUMMARY = {
     "high_speed": {
      "days": 1,
      "pct": 0.0
+    }
+   }
+  },
+  {
+   "level": "subregion",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "",
+   "name": "河南区域",
+   "2026-08": {
+    "helmet": {
+     "num": 34542,
+     "den": 35045,
+     "rate": 98.56
+    },
+    "speed": {
+     "num": 155715,
+     "den": 6256512,
+     "rate": 2.49
+    },
+    "redlight": {
+     "num": 254029,
+     "den": 1142494,
+     "rate": 22.23
+    },
+    "reverse": {
+     "num": 43958967,
+     "den": 1512032176,
+     "rate": 2.91
+    },
+    "clothing": {
+     "cloth": {
+      "num": 24783,
+      "den": 25761,
+      "rate": 96.2
+     },
+     "vis": {
+      "num": 851195.8892909458,
+      "den": 878102,
+      "rate": 96.94
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.41
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 26563,
+     "den": 26890,
+     "rate": 98.78
+    },
+    "speed": {
+     "num": 109136,
+     "den": 4869655,
+     "rate": 2.24
+    },
+    "redlight": {
+     "num": 176538,
+     "den": 861931,
+     "rate": 20.48
+    },
+    "reverse": {
+     "num": 31554421,
+     "den": 1171546643,
+     "rate": 2.69
+    },
+    "clothing": {
+     "cloth": {
+      "num": 19616,
+      "den": 20330,
+      "rate": 96.49
+     },
+     "vis": {
+      "num": 614952.2354602686,
+      "den": 655700,
+      "rate": 93.79
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 1.57
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 28623,
+     "den": 28894,
+     "rate": 99.06
+    },
+    "speed": {
+     "num": 116379,
+     "den": 5239312,
+     "rate": 2.22
+    },
+    "redlight": {
+     "num": 179791,
+     "den": 949324,
+     "rate": 18.94
+    },
+    "reverse": {
+     "num": 32257413,
+     "den": 1255757585,
+     "rate": 2.57
+    },
+    "clothing": {
+     "cloth": {
+      "num": 20002,
+      "den": 20487,
+      "rate": 97.63
+     },
+     "vis": {
+      "num": 662197.3860074581,
+      "den": 700864,
+      "rate": 94.48
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.0
+    }
+   }
+  },
+  {
+   "level": "merchant",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "信阳",
+   "name": "信阳",
+   "2026-08": {
+    "helmet": {
+     "num": 4453,
+     "den": 4487,
+     "rate": 99.24
+    },
+    "speed": {
+     "num": 19605,
+     "den": 649209,
+     "rate": 3.02
+    },
+    "redlight": {
+     "num": 9051,
+     "den": 90383,
+     "rate": 10.01
+    },
+    "reverse": {
+     "num": 4634007,
+     "den": 234786617,
+     "rate": 1.97
+    },
+    "clothing": {
+     "cloth": {
+      "num": 3637,
+      "den": 3725,
+      "rate": 97.64
+     },
+     "vis": {
+      "num": 127629.99061342698,
+      "den": 129757,
+      "rate": 98.36
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.51
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 3471,
+     "den": 3484,
+     "rate": 99.63
+    },
+    "speed": {
+     "num": 12517,
+     "den": 515042,
+     "rate": 2.43
+    },
+    "redlight": {
+     "num": 6527,
+     "den": 73044,
+     "rate": 8.94
+    },
+    "reverse": {
+     "num": 3647199,
+     "den": 185651016,
+     "rate": 1.96
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2396,
+      "den": 2482,
+      "rate": 96.54
+     },
+     "vis": {
+      "num": 78432.70290169305,
+      "den": 82377,
+      "rate": 95.21
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 1.58
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 3950,
+     "den": 3967,
+     "rate": 99.57
+    },
+    "speed": {
+     "num": 14837,
+     "den": 580446,
+     "rate": 2.56
+    },
+    "redlight": {
+     "num": 7535,
+     "den": 83379,
+     "rate": 9.04
+    },
+    "reverse": {
+     "num": 4308648,
+     "den": 214584717,
+     "rate": 2.01
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2880,
+      "den": 2949,
+      "rate": 97.66
+     },
+     "vis": {
+      "num": 98680.96616892095,
+      "den": 103552,
+      "rate": 95.3
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.62
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "信阳",
+   "name": "兴必达【信阳】和美站",
+   "2026-08": {
+    "helmet": {
+     "num": 2034,
+     "den": 2052,
+     "rate": 99.12
+    },
+    "speed": {
+     "num": 8607,
+     "den": 301595,
+     "rate": 2.85
+    },
+    "redlight": {
+     "num": 5071,
+     "den": 54751,
+     "rate": 9.26
+    },
+    "reverse": {
+     "num": 2098484,
+     "den": 114863746,
+     "rate": 1.83
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1662,
+      "den": 1720,
+      "rate": 96.63
+     },
+     "vis": {
+      "num": 56884.90849083406,
+      "den": 57762,
+      "rate": 98.48
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.82
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1572,
+     "den": 1578,
+     "rate": 99.62
+    },
+    "speed": {
+     "num": 5429,
+     "den": 233435,
+     "rate": 2.33
+    },
+    "redlight": {
+     "num": 3507,
+     "den": 43735,
+     "rate": 8.02
+    },
+    "reverse": {
+     "num": 1494006,
+     "den": 88139233,
+     "rate": 1.7
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1094,
+      "den": 1152,
+      "rate": 94.97
+     },
+     "vis": {
+      "num": 32913.33241697799,
+      "den": 34477,
+      "rate": 95.46
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 1.53
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1651,
+     "den": 1660,
+     "rate": 99.46
+    },
+    "speed": {
+     "num": 6003,
+     "den": 247687,
+     "rate": 2.42
+    },
+    "redlight": {
+     "num": 4005,
+     "den": 46918,
+     "rate": 8.54
+    },
+    "reverse": {
+     "num": 1546034,
+     "den": 94145187,
+     "rate": 1.64
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1184,
+      "den": 1206,
+      "rate": 98.18
+     },
+     "vis": {
+      "num": 38196.00334451055,
+      "den": 40003,
+      "rate": 95.48
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.81
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "信阳",
+   "name": "兴必达【信阳】大信站",
+   "2026-08": {
+    "helmet": {
+     "num": 2419,
+     "den": 2435,
+     "rate": 99.34
+    },
+    "speed": {
+     "num": 10998,
+     "den": 347614,
+     "rate": 3.16
+    },
+    "redlight": {
+     "num": 3980,
+     "den": 35632,
+     "rate": 11.17
+    },
+    "reverse": {
+     "num": 2535523,
+     "den": 119922871,
+     "rate": 2.11
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1975,
+      "den": 2005,
+      "rate": 98.5
+     },
+     "vis": {
+      "num": 70745.08212259291,
+      "den": 71995,
+      "rate": 98.26
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.2
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1899,
+     "den": 1906,
+     "rate": 99.63
+    },
+    "speed": {
+     "num": 7088,
+     "den": 281607,
+     "rate": 2.52
+    },
+    "redlight": {
+     "num": 3020,
+     "den": 29309,
+     "rate": 10.3
+    },
+    "reverse": {
+     "num": 2153193,
+     "den": 97511783,
+     "rate": 2.21
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1302,
+      "den": 1330,
+      "rate": 97.89
+     },
+     "vis": {
+      "num": 45519.37048471502,
+      "den": 47900,
+      "rate": 95.03
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 1.64
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1955,
+     "den": 1959,
+     "rate": 99.8
+    },
+    "speed": {
+     "num": 8191,
+     "den": 302569,
+     "rate": 2.71
+    },
+    "redlight": {
+     "num": 3155,
+     "den": 31888,
+     "rate": 9.89
+    },
+    "reverse": {
+     "num": 2479379,
+     "den": 102487863,
+     "rate": 2.42
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1412,
+      "den": 1440,
+      "rate": 98.06
+     },
+     "vis": {
+      "num": 52456.77851564522,
+      "den": 54935,
+      "rate": 95.49
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.03
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "信阳",
+   "name": "兴必达【信阳】平桥站",
+   "2026-10": {
+    "helmet": {
+     "num": 344,
+     "den": 348,
+     "rate": 98.85
+    },
+    "speed": {
+     "num": 643,
+     "den": 30190,
+     "rate": 2.13
+    },
+    "redlight": {
+     "num": 375,
+     "den": 4573,
+     "rate": 8.2
+    },
+    "reverse": {
+     "num": 283235,
+     "den": 17951667,
+     "rate": 1.58
+    },
+    "clothing": {
+     "cloth": {
+      "num": 284,
+      "den": 303,
+      "rate": 93.73
+     },
+     "vis": {
+      "num": 8028.184308765187,
+      "den": 8614,
+      "rate": 93.2
+     }
+    },
+    "high_speed": {
+     "days": 5,
+     "pct": 5.14
+    }
+   }
+  },
+  {
+   "level": "merchant",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "商丘",
+   "name": "商丘",
+   "2026-08": {
+    "helmet": {
+     "num": 2569,
+     "den": 2603,
+     "rate": 98.69
+    },
+    "speed": {
+     "num": 12449,
+     "den": 367907,
+     "rate": 3.38
+    },
+    "redlight": {
+     "num": 9649,
+     "den": 68644,
+     "rate": 14.06
+    },
+    "reverse": {
+     "num": 3607634,
+     "den": 118437432,
+     "rate": 3.05
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1842,
+      "den": 1890,
+      "rate": 97.46
+     },
+     "vis": {
+      "num": 69039.23815944197,
+      "den": 71030,
+      "rate": 97.2
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.31
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1970,
+     "den": 1984,
+     "rate": 99.29
+    },
+    "speed": {
+     "num": 7899,
+     "den": 282023,
+     "rate": 2.8
+    },
+    "redlight": {
+     "num": 6208,
+     "den": 50787,
+     "rate": 12.22
+    },
+    "reverse": {
+     "num": 2439190,
+     "den": 91293281,
+     "rate": 2.67
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1601,
+      "den": 1632,
+      "rate": 98.1
+     },
+     "vis": {
+      "num": 51747.670055888426,
+      "den": 55159,
+      "rate": 93.82
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 3.5
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2099,
+     "den": 2118,
+     "rate": 99.1
+    },
+    "speed": {
+     "num": 7819,
+     "den": 300358,
+     "rate": 2.6
+    },
+    "redlight": {
+     "num": 7325,
+     "den": 54524,
+     "rate": 13.43
+    },
+    "reverse": {
+     "num": 2647508,
+     "den": 94571177,
+     "rate": 2.8
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1717,
+      "den": 1763,
+      "rate": 97.39
+     },
+     "vis": {
+      "num": 56510.79336062697,
+      "den": 60123,
+      "rate": 93.99
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.93
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "商丘",
+   "name": "兴必达【商丘】中原车城站",
+   "2026-08": {
+    "helmet": {
+     "num": 491,
+     "den": 503,
+     "rate": 97.61
+    },
+    "speed": {
+     "num": 2558,
+     "den": 81152,
+     "rate": 3.15
+    },
+    "redlight": {
+     "num": 1222,
+     "den": 8792,
+     "rate": 13.9
+    },
+    "reverse": {
+     "num": 521454,
+     "den": 23829305,
+     "rate": 2.19
+    },
+    "clothing": {
+     "cloth": {
+      "num": 351,
+      "den": 375,
+      "rate": 93.6
+     },
+     "vis": {
+      "num": 13040.056049294395,
+      "den": 13570,
+      "rate": 96.09
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.34
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 419,
+     "den": 423,
+     "rate": 99.05
+    },
+    "speed": {
+     "num": 1852,
+     "den": 63146,
+     "rate": 2.93
+    },
+    "redlight": {
+     "num": 869,
+     "den": 5892,
+     "rate": 14.75
+    },
+    "reverse": {
+     "num": 349180,
+     "den": 17739376,
+     "rate": 1.97
+    },
+    "clothing": {
+     "cloth": {
+      "num": 332,
+      "den": 344,
+      "rate": 96.51
+     },
+     "vis": {
+      "num": 10186.87662963373,
+      "den": 10940,
+      "rate": 93.12
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 3.87
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 415,
+     "den": 421,
+     "rate": 98.57
+    },
+    "speed": {
+     "num": 1971,
+     "den": 65805,
+     "rate": 3.0
+    },
+    "redlight": {
+     "num": 906,
+     "den": 6258,
+     "rate": 14.48
+    },
+    "reverse": {
+     "num": 374042,
+     "den": 18291488,
+     "rate": 2.04
+    },
+    "clothing": {
+     "cloth": {
+      "num": 338,
+      "den": 353,
+      "rate": 95.75
+     },
+     "vis": {
+      "num": 10102.12756989231,
+      "den": 11827,
+      "rate": 85.42
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.96
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "商丘",
+   "name": "兴必达【商丘】平台站",
+   "2026-08": {
+    "helmet": {
+     "num": 1428,
+     "den": 1445,
+     "rate": 98.82
+    },
+    "speed": {
+     "num": 8490,
+     "den": 221485,
+     "rate": 3.83
+    },
+    "redlight": {
+     "num": 6407,
+     "den": 47277,
+     "rate": 13.55
+    },
+    "reverse": {
+     "num": 2113308,
+     "den": 68654850,
+     "rate": 3.08
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1023,
+      "den": 1047,
+      "rate": 97.71
+     },
+     "vis": {
+      "num": 39643.34978371031,
+      "den": 40679,
+      "rate": 97.45
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 4.24
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1116,
+     "den": 1122,
+     "rate": 99.47
+    },
+    "speed": {
+     "num": 4874,
+     "den": 168545,
+     "rate": 2.89
+    },
+    "redlight": {
+     "num": 3807,
+     "den": 35227,
+     "rate": 10.81
+    },
+    "reverse": {
+     "num": 1507597,
+     "den": 53521273,
+     "rate": 2.82
+    },
+    "clothing": {
+     "cloth": {
+      "num": 885,
+      "den": 904,
+      "rate": 97.9
+     },
+     "vis": {
+      "num": 29251.743837013855,
+      "den": 31543,
+      "rate": 92.74
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 4.6
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1168,
+     "den": 1179,
+     "rate": 99.07
+    },
+    "speed": {
+     "num": 4181,
+     "den": 178381,
+     "rate": 2.34
+    },
+    "redlight": {
+     "num": 4842,
+     "den": 37308,
+     "rate": 12.98
+    },
+    "reverse": {
+     "num": 1711689,
+     "den": 54914541,
+     "rate": 3.12
+    },
+    "clothing": {
+     "cloth": {
+      "num": 952,
+      "den": 983,
+      "rate": 96.85
+     },
+     "vis": {
+      "num": 32205.492437209403,
+      "den": 33721,
+      "rate": 95.51
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 4.33
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "商丘",
+   "name": "兴必达【商丘】文化路站",
+   "2026-08": {
+    "helmet": {
+     "num": 650,
+     "den": 655,
+     "rate": 99.24
+    },
+    "speed": {
+     "num": 1401,
+     "den": 65270,
+     "rate": 2.15
+    },
+    "redlight": {
+     "num": 2020,
+     "den": 12575,
+     "rate": 16.06
+    },
+    "reverse": {
+     "num": 972872,
+     "den": 25953277,
+     "rate": 3.75
+    },
+    "clothing": {
+     "cloth": {
+      "num": 468,
+      "den": 468,
+      "rate": 100.0
+     },
+     "vis": {
+      "num": 16355.832326437283,
+      "den": 16781,
+      "rate": 97.47
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 4.35
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 435,
+     "den": 439,
+     "rate": 99.09
+    },
+    "speed": {
+     "num": 1173,
+     "den": 50332,
+     "rate": 2.33
+    },
+    "redlight": {
+     "num": 1532,
+     "den": 9668,
+     "rate": 15.85
+    },
+    "reverse": {
+     "num": 582413,
+     "den": 20032632,
+     "rate": 2.91
+    },
+    "clothing": {
+     "cloth": {
+      "num": 384,
+      "den": 384,
+      "rate": 100.0
+     },
+     "vis": {
+      "num": 12309.049589240833,
+      "den": 12676,
+      "rate": 97.11
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.02
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 516,
+     "den": 518,
+     "rate": 99.61
+    },
+    "speed": {
+     "num": 1667,
+     "den": 56172,
+     "rate": 2.97
+    },
+    "redlight": {
+     "num": 1577,
+     "den": 10958,
+     "rate": 14.39
+    },
+    "reverse": {
+     "num": 561777,
+     "den": 21365148,
+     "rate": 2.63
+    },
+    "clothing": {
+     "cloth": {
+      "num": 427,
+      "den": 427,
+      "rate": 100.0
+     },
+     "vis": {
+      "num": 14203.173353525255,
+      "den": 14575,
+      "rate": 97.45
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 5.52
+    }
+   }
+  },
+  {
+   "level": "merchant",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "洛阳",
+   "name": "洛阳",
+   "2026-08": {
+    "helmet": {
+     "num": 20155,
+     "den": 20534,
+     "rate": 98.15
+    },
+    "speed": {
+     "num": 93655,
+     "den": 3865438,
+     "rate": 2.42
+    },
+    "redlight": {
+     "num": 202206,
+     "den": 852460,
+     "rate": 23.72
+    },
+    "reverse": {
+     "num": 27574793,
+     "den": 899920778,
+     "rate": 3.06
+    },
+    "clothing": {
+     "cloth": {
+      "num": 14045,
+      "den": 14692,
+      "rate": 95.6
+     },
+     "vis": {
+      "num": 482730.97315605293,
+      "den": 500213,
+      "rate": 96.51
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.27
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 15449,
+     "den": 15692,
+     "rate": 98.45
+    },
+    "speed": {
+     "num": 64175,
+     "den": 2950306,
+     "rate": 2.18
+    },
+    "redlight": {
+     "num": 138649,
+     "den": 633201,
+     "rate": 21.9
+    },
+    "reverse": {
+     "num": 19044320,
+     "den": 681314748,
+     "rate": 2.8
+    },
+    "clothing": {
+     "cloth": {
+      "num": 11473,
+      "den": 11927,
+      "rate": 96.19
+     },
+     "vis": {
+      "num": 351441.10831634304,
+      "den": 379773,
+      "rate": 92.54
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 1.07
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 16713,
+     "den": 16912,
+     "rate": 98.82
+    },
+    "speed": {
+     "num": 69549,
+     "den": 3221290,
+     "rate": 2.16
+    },
+    "redlight": {
+     "num": 140428,
+     "den": 703967,
+     "rate": 19.95
+    },
+    "reverse": {
+     "num": 18854555,
+     "den": 732459089,
+     "rate": 2.57
+    },
+    "clothing": {
+     "cloth": {
+      "num": 11023,
+      "den": 11333,
+      "rate": 97.26
+     },
+     "vis": {
+      "num": 362265.2280283999,
+      "den": 384563,
+      "rate": 94.2
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.21
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "洛阳",
+   "name": "V兴必达【洛阳】洛拖站",
+   "2026-08": {
+    "helmet": {
+     "num": 1603,
+     "den": 1652,
+     "rate": 97.03
+    },
+    "speed": {
+     "num": 6174,
+     "den": 274775,
+     "rate": 2.25
+    },
+    "redlight": {
+     "num": 12573,
+     "den": 60937,
+     "rate": 20.63
+    },
+    "reverse": {
+     "num": 1791397,
+     "den": 82558859,
+     "rate": 2.17
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1109,
+      "den": 1147,
+      "rate": 96.69
+     },
+     "vis": {
+      "num": 34312.13902106103,
+      "den": 35422,
+      "rate": 96.87
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.62
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1033,
+     "den": 1065,
+     "rate": 97.0
+    },
+    "speed": {
+     "num": 3335,
+     "den": 185364,
+     "rate": 1.8
+    },
+    "redlight": {
+     "num": 9667,
+     "den": 41440,
+     "rate": 23.33
+    },
+    "reverse": {
+     "num": 1192409,
+     "den": 54925144,
+     "rate": 2.17
+    },
+    "clothing": {
+     "cloth": {
+      "num": 788,
+      "den": 843,
+      "rate": 93.48
+     },
+     "vis": {
+      "num": 22782.47762740461,
+      "den": 24592,
+      "rate": 92.64
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.67
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1159,
+     "den": 1178,
+     "rate": 98.39
+    },
+    "speed": {
+     "num": 5382,
+     "den": 218153,
+     "rate": 2.47
+    },
+    "redlight": {
+     "num": 9567,
+     "den": 49868,
+     "rate": 19.18
+    },
+    "reverse": {
+     "num": 1266081,
+     "den": 64568798,
+     "rate": 1.96
+    },
+    "clothing": {
+     "cloth": {
+      "num": 760,
+      "den": 822,
+      "rate": 92.46
+     },
+     "vis": {
+      "num": 24031.72662519149,
+      "den": 25328,
+      "rate": 94.88
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.86
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "洛阳",
+   "name": "兴必达【洛阳】关林站",
+   "2026-08": {
+    "helmet": {
+     "num": 2246,
+     "den": 2317,
+     "rate": 96.94
+    },
+    "speed": {
+     "num": 16620,
+     "den": 465800,
+     "rate": 3.57
+    },
+    "redlight": {
+     "num": 23428,
+     "den": 95161,
+     "rate": 24.62
+    },
+    "reverse": {
+     "num": 3538817,
+     "den": 82159581,
+     "rate": 4.31
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1595,
+      "den": 1735,
+      "rate": 91.93
+     },
+     "vis": {
+      "num": 48994.42396982827,
+      "den": 51066,
+      "rate": 95.94
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.92
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1744,
+     "den": 1802,
+     "rate": 96.78
+    },
+    "speed": {
+     "num": 9907,
+     "den": 339949,
+     "rate": 2.91
+    },
+    "redlight": {
+     "num": 15233,
+     "den": 68880,
+     "rate": 22.12
+    },
+    "reverse": {
+     "num": 2345281,
+     "den": 59789971,
+     "rate": 3.92
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1342,
+      "den": 1411,
+      "rate": 95.11
+     },
+     "vis": {
+      "num": 32001.34839175673,
+      "den": 39680,
+      "rate": 80.65
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.46
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1936,
+     "den": 1959,
+     "rate": 98.83
+    },
+    "speed": {
+     "num": 10535,
+     "den": 367037,
+     "rate": 2.87
+    },
+    "redlight": {
+     "num": 14165,
+     "den": 78288,
+     "rate": 18.09
+    },
+    "reverse": {
+     "num": 1945164,
+     "den": 64250675,
+     "rate": 3.03
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1308,
+      "den": 1309,
+      "rate": 99.92
+     },
+     "vis": {
+      "num": 38870.334060144196,
+      "den": 41780,
+      "rate": 93.04
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.03
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "洛阳",
+   "name": "兴必达【洛阳】太康路站",
+   "2026-08": {
+    "helmet": {
+     "num": 1287,
+     "den": 1303,
+     "rate": 98.77
+    },
+    "speed": {
+     "num": 10308,
+     "den": 332333,
+     "rate": 3.1
+    },
+    "redlight": {
+     "num": 15910,
+     "den": 83091,
+     "rate": 19.15
+    },
+    "reverse": {
+     "num": 1663387,
+     "den": 53609920,
+     "rate": 3.1
+    },
+    "clothing": {
+     "cloth": {
+      "num": 893,
+      "den": 901,
+      "rate": 99.11
+     },
+     "vis": {
+      "num": 29221.96574530079,
+      "den": 30052,
+      "rate": 97.24
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.57
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 946,
+     "den": 960,
+     "rate": 98.54
+    },
+    "speed": {
+     "num": 6880,
+     "den": 247651,
+     "rate": 2.78
+    },
+    "redlight": {
+     "num": 10232,
+     "den": 57122,
+     "rate": 17.91
+    },
+    "reverse": {
+     "num": 1072579,
+     "den": 40405376,
+     "rate": 2.65
+    },
+    "clothing": {
+     "cloth": {
+      "num": 698,
+      "den": 701,
+      "rate": 99.57
+     },
+     "vis": {
+      "num": 19758.98007289321,
+      "den": 22477,
+      "rate": 87.91
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.75
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1002,
+     "den": 1016,
+     "rate": 98.62
+    },
+    "speed": {
+     "num": 5456,
+     "den": 266079,
+     "rate": 2.05
+    },
+    "redlight": {
+     "num": 10258,
+     "den": 64611,
+     "rate": 15.88
+    },
+    "reverse": {
+     "num": 1041518,
+     "den": 42907621,
+     "rate": 2.43
+    },
+    "clothing": {
+     "cloth": {
+      "num": 669,
+      "den": 671,
+      "rate": 99.7
+     },
+     "vis": {
+      "num": 21669.2135775691,
+      "den": 22505,
+      "rate": 96.29
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.39
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "洛阳",
+   "name": "兴必达【洛阳】新都汇站",
+   "2026-08": {
+    "helmet": {
+     "num": 2297,
+     "den": 2317,
+     "rate": 99.14
+    },
+    "speed": {
+     "num": 8890,
+     "den": 505798,
+     "rate": 1.76
+    },
+    "redlight": {
+     "num": 26229,
+     "den": 105791,
+     "rate": 24.79
+    },
+    "reverse": {
+     "num": 3022069,
+     "den": 123520039,
+     "rate": 2.45
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1576,
+      "den": 1645,
+      "rate": 95.81
+     },
+     "vis": {
+      "num": 57491.868450643844,
+      "den": 59678,
+      "rate": 96.34
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.45
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1732,
+     "den": 1742,
+     "rate": 99.43
+    },
+    "speed": {
+     "num": 7128,
+     "den": 388941,
+     "rate": 1.83
+    },
+    "redlight": {
+     "num": 17289,
+     "den": 77473,
+     "rate": 22.32
+    },
+    "reverse": {
+     "num": 2233408,
+     "den": 93718777,
+     "rate": 2.38
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1252,
+      "den": 1294,
+      "rate": 96.75
+     },
+     "vis": {
+      "num": 42812.61581809162,
+      "den": 44648,
+      "rate": 95.89
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.66
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1956,
+     "den": 1965,
+     "rate": 99.54
+    },
+    "speed": {
+     "num": 7930,
+     "den": 438746,
+     "rate": 1.81
+    },
+    "redlight": {
+     "num": 17851,
+     "den": 90809,
+     "rate": 19.66
+    },
+    "reverse": {
+     "num": 2492095,
+     "den": 103838610,
+     "rate": 2.4
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1265,
+      "den": 1285,
+      "rate": 98.44
+     },
+     "vis": {
+      "num": 47055.43840274538,
+      "den": 48821,
+      "rate": 96.38
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.9
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "洛阳",
+   "name": "兴必达【洛阳】洛拖站",
+   "2026-08": {
+    "helmet": {
+     "num": 517,
+     "den": 520,
+     "rate": 99.42
+    },
+    "speed": {
+     "num": 1799,
+     "den": 100502,
+     "rate": 1.79
+    },
+    "redlight": {
+     "num": 4885,
+     "den": 20027,
+     "rate": 24.39
+    },
+    "reverse": {
+     "num": 835636,
+     "den": 29249138,
+     "rate": 2.86
+    },
+    "clothing": {
+     "cloth": {
+      "num": 360,
+      "den": 369,
+      "rate": 97.56
+     },
+     "vis": {
+      "num": 13860.607132230329,
+      "den": 14208,
+      "rate": 97.55
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.47
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 454,
+     "den": 457,
+     "rate": 99.34
+    },
+    "speed": {
+     "num": 1231,
+     "den": 89042,
+     "rate": 1.38
+    },
+    "redlight": {
+     "num": 4080,
+     "den": 17442,
+     "rate": 23.39
+    },
+    "reverse": {
+     "num": 721290,
+     "den": 25645556,
+     "rate": 2.81
+    },
+    "clothing": {
+     "cloth": {
+      "num": 339,
+      "den": 340,
+      "rate": 99.71
+     },
+     "vis": {
+      "num": 12570.939919168599,
+      "den": 13262,
+      "rate": 94.79
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 1.26
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 461,
+     "den": 462,
+     "rate": 99.78
+    },
+    "speed": {
+     "num": 1189,
+     "den": 91453,
+     "rate": 1.3
+    },
+    "redlight": {
+     "num": 3838,
+     "den": 18128,
+     "rate": 21.17
+    },
+    "reverse": {
+     "num": 738506,
+     "den": 26710593,
+     "rate": 2.76
+    },
+    "clothing": {
+     "cloth": {
+      "num": 304,
+      "den": 305,
+      "rate": 99.67
+     },
+     "vis": {
+      "num": 11582.709855818353,
+      "den": 12563,
+      "rate": 92.2
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.6
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "洛阳",
+   "name": "兴必达【洛阳】洛浦站",
+   "2026-08": {
+    "helmet": {
+     "num": 2603,
+     "den": 2670,
+     "rate": 97.49
+    },
+    "speed": {
+     "num": 15532,
+     "den": 505774,
+     "rate": 3.07
+    },
+    "redlight": {
+     "num": 35093,
+     "den": 127562,
+     "rate": 27.51
+    },
+    "reverse": {
+     "num": 3225851,
+     "den": 121154261,
+     "rate": 2.66
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1857,
+      "den": 1958,
+      "rate": 94.84
+     },
+     "vis": {
+      "num": 66498.81319755114,
+      "den": 69147,
+      "rate": 96.17
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.21
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2122,
+     "den": 2161,
+     "rate": 98.2
+    },
+    "speed": {
+     "num": 10426,
+     "den": 400001,
+     "rate": 2.61
+    },
+    "redlight": {
+     "num": 25187,
+     "den": 101451,
+     "rate": 24.83
+    },
+    "reverse": {
+     "num": 2385783,
+     "den": 95207086,
+     "rate": 2.51
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1576,
+      "den": 1636,
+      "rate": 96.33
+     },
+     "vis": {
+      "num": 50128.97594280339,
+      "den": 53004,
+      "rate": 94.58
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 4.11
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2385,
+     "den": 2434,
+     "rate": 97.99
+    },
+    "speed": {
+     "num": 10877,
+     "den": 446932,
+     "rate": 2.43
+    },
+    "redlight": {
+     "num": 26111,
+     "den": 112630,
+     "rate": 23.18
+    },
+    "reverse": {
+     "num": 2537000,
+     "den": 103875168,
+     "rate": 2.44
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1579,
+      "den": 1616,
+      "rate": 97.71
+     },
+     "vis": {
+      "num": 50961.02330102376,
+      "den": 54276,
+      "rate": 93.89
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.01
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "洛阳",
+   "name": "兴必达【洛阳】滨河站",
+   "2026-08": {
+    "helmet": {
+     "num": 2822,
+     "den": 2858,
+     "rate": 98.74
+    },
+    "speed": {
+     "num": 11228,
+     "den": 454425,
+     "rate": 2.47
+    },
+    "redlight": {
+     "num": 25749,
+     "den": 111661,
+     "rate": 23.06
+    },
+    "reverse": {
+     "num": 3894682,
+     "den": 108447362,
+     "rate": 3.59
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1949,
+      "den": 2019,
+      "rate": 96.53
+     },
+     "vis": {
+      "num": 66870.95111915715,
+      "den": 69390,
+      "rate": 96.37
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.97
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2149,
+     "den": 2172,
+     "rate": 98.94
+    },
+    "speed": {
+     "num": 6863,
+     "den": 351705,
+     "rate": 1.95
+    },
+    "redlight": {
+     "num": 18079,
+     "den": 82752,
+     "rate": 21.85
+    },
+    "reverse": {
+     "num": 2820722,
+     "den": 81810892,
+     "rate": 3.45
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1574,
+      "den": 1652,
+      "rate": 95.28
+     },
+     "vis": {
+      "num": 49154.111775529724,
+      "den": 52008,
+      "rate": 94.51
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.74
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2241,
+     "den": 2255,
+     "rate": 99.38
+    },
+    "speed": {
+     "num": 8244,
+     "den": 376596,
+     "rate": 2.19
+    },
+    "redlight": {
+     "num": 17612,
+     "den": 89918,
+     "rate": 19.59
+    },
+    "reverse": {
+     "num": 2611956,
+     "den": 85218699,
+     "rate": 3.07
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1449,
+      "den": 1494,
+      "rate": 96.99
+     },
+     "vis": {
+      "num": 47879.441952588335,
+      "den": 51628,
+      "rate": 92.74
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.65
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "洛阳",
+   "name": "兴必达【洛阳】火车南站",
+   "2026-08": {
+    "helmet": {
+     "num": 2334,
+     "den": 2379,
+     "rate": 98.11
+    },
+    "speed": {
+     "num": 7988,
+     "den": 451225,
+     "rate": 1.77
+    },
+    "redlight": {
+     "num": 22295,
+     "den": 93827,
+     "rate": 23.76
+    },
+    "reverse": {
+     "num": 3036500,
+     "den": 112730855,
+     "rate": 2.69
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1619,
+      "den": 1693,
+      "rate": 95.63
+     },
+     "vis": {
+      "num": 55849.85782961717,
+      "den": 57263,
+      "rate": 97.53
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.8
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1707,
+     "den": 1737,
+     "rate": 98.27
+    },
+    "speed": {
+     "num": 6327,
+     "den": 331369,
+     "rate": 1.91
+    },
+    "redlight": {
+     "num": 15476,
+     "den": 68901,
+     "rate": 22.46
+    },
+    "reverse": {
+     "num": 2116911,
+     "den": 82901674,
+     "rate": 2.55
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1278,
+      "den": 1343,
+      "rate": 95.16
+     },
+     "vis": {
+      "num": 39796.19621160304,
+      "den": 41824,
+      "rate": 95.15
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.1
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1798,
+     "den": 1824,
+     "rate": 98.57
+    },
+    "speed": {
+     "num": 7132,
+     "den": 354752,
+     "rate": 2.01
+    },
+    "redlight": {
+     "num": 15737,
+     "den": 75115,
+     "rate": 20.95
+    },
+    "reverse": {
+     "num": 2166362,
+     "den": 87346099,
+     "rate": 2.48
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1193,
+      "den": 1248,
+      "rate": 95.59
+     },
+     "vis": {
+      "num": 39367.15373483978,
+      "den": 41439,
+      "rate": 95.0
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.1
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "洛阳",
+   "name": "兴必达【洛阳】百货楼站",
+   "2026-08": {
+    "helmet": {
+     "num": 2336,
+     "den": 2362,
+     "rate": 98.9
+    },
+    "speed": {
+     "num": 6326,
+     "den": 412909,
+     "rate": 1.53
+    },
+    "redlight": {
+     "num": 18775,
+     "den": 81769,
+     "rate": 22.96
+    },
+    "reverse": {
+     "num": 4113538,
+     "den": 97302292,
+     "rate": 4.23
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1605,
+      "den": 1627,
+      "rate": 98.65
+     },
+     "vis": {
+      "num": 57856.80538018297,
+      "den": 59961,
+      "rate": 96.49
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.17
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1856,
+     "den": 1869,
+     "rate": 99.3
+    },
+    "speed": {
+     "num": 5693,
+     "den": 340525,
+     "rate": 1.67
+    },
+    "redlight": {
+     "num": 11774,
+     "den": 64094,
+     "rate": 18.37
+    },
+    "reverse": {
+     "num": 2484239,
+     "den": 81295192,
+     "rate": 3.06
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1365,
+      "den": 1376,
+      "rate": 99.2
+     },
+     "vis": {
+      "num": 44517.4757899986,
+      "den": 46787,
+      "rate": 95.15
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.05
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1984,
+     "den": 2008,
+     "rate": 98.8
+    },
+    "speed": {
+     "num": 6088,
+     "den": 353032,
+     "rate": 1.72
+    },
+    "redlight": {
+     "num": 12661,
+     "den": 64801,
+     "rate": 19.54
+    },
+    "reverse": {
+     "num": 2256090,
+     "den": 81694870,
+     "rate": 2.76
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1305,
+      "den": 1308,
+      "rate": 99.77
+     },
+     "vis": {
+      "num": 42287.16331060968,
+      "den": 44136,
+      "rate": 95.81
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.72
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "洛阳",
+   "name": "兴必达【洛阳】盛唐站",
+   "2026-08": {
+    "helmet": {
+     "num": 597,
+     "den": 617,
+     "rate": 96.76
+    },
+    "speed": {
+     "num": 1693,
+     "den": 117311,
+     "rate": 1.44
+    },
+    "redlight": {
+     "num": 4599,
+     "den": 16228,
+     "rate": 28.34
+    },
+    "reverse": {
+     "num": 663523,
+     "den": 19638884,
+     "rate": 3.38
+    },
+    "clothing": {
+     "cloth": {
+      "num": 419,
+      "den": 472,
+      "rate": 88.77
+     },
+     "vis": {
+      "num": 12895.92013963486,
+      "den": 14092,
+      "rate": 91.51
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.41
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 484,
+     "den": 492,
+     "rate": 98.37
+    },
+    "speed": {
+     "num": 1645,
+     "den": 92944,
+     "rate": 1.77
+    },
+    "redlight": {
+     "num": 3099,
+     "den": 12901,
+     "rate": 24.02
+    },
+    "reverse": {
+     "num": 480618,
+     "den": 14888694,
+     "rate": 3.23
+    },
+    "clothing": {
+     "cloth": {
+      "num": 355,
+      "den": 389,
+      "rate": 91.26
+     },
+     "vis": {
+      "num": 10224.939203902315,
+      "den": 11848,
+      "rate": 86.3
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.0
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 501,
+     "den": 513,
+     "rate": 97.66
+    },
+    "speed": {
+     "num": 1934,
+     "den": 110195,
+     "rate": 1.76
+    },
+    "redlight": {
+     "num": 3709,
+     "den": 15846,
+     "rate": 23.41
+    },
+    "reverse": {
+     "num": 564504,
+     "den": 17959538,
+     "rate": 3.14
+    },
+    "clothing": {
+     "cloth": {
+      "num": 333,
+      "den": 385,
+      "rate": 86.49
+     },
+     "vis": {
+      "num": 10346.464853499068,
+      "den": 11713,
+      "rate": 88.33
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.17
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "洛阳",
+   "name": "兴必达【洛阳】道北站",
+   "2026-08": {
+    "helmet": {
+     "num": 1513,
+     "den": 1539,
+     "rate": 98.31
+    },
+    "speed": {
+     "num": 7097,
+     "den": 244586,
+     "rate": 2.9
+    },
+    "redlight": {
+     "num": 12670,
+     "den": 56406,
+     "rate": 22.46
+    },
+    "reverse": {
+     "num": 1789393,
+     "den": 69549587,
+     "rate": 2.57
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1063,
+      "den": 1126,
+      "rate": 94.4
+     },
+     "vis": {
+      "num": 38877.62117084605,
+      "den": 39934,
+      "rate": 97.35
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.42
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1222,
+     "den": 1235,
+     "rate": 98.95
+    },
+    "speed": {
+     "num": 4740,
+     "den": 182815,
+     "rate": 2.59
+    },
+    "redlight": {
+     "num": 8533,
+     "den": 40745,
+     "rate": 20.94
+    },
+    "reverse": {
+     "num": 1191080,
+     "den": 50726386,
+     "rate": 2.35
+    },
+    "clothing": {
+     "cloth": {
+      "num": 906,
+      "den": 942,
+      "rate": 96.18
+     },
+     "vis": {
+      "num": 27693.047563190597,
+      "den": 29643,
+      "rate": 93.42
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.98
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1290,
+     "den": 1298,
+     "rate": 99.38
+    },
+    "speed": {
+     "num": 4782,
+     "den": 198315,
+     "rate": 2.41
+    },
+    "redlight": {
+     "num": 8919,
+     "den": 43953,
+     "rate": 20.29
+    },
+    "reverse": {
+     "num": 1235279,
+     "den": 54088418,
+     "rate": 2.28
+    },
+    "clothing": {
+     "cloth": {
+      "num": 858,
+      "den": 890,
+      "rate": 96.4
+     },
+     "vis": {
+      "num": 28214.558354371264,
+      "den": 30374,
+      "rate": 92.89
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.94
+    }
+   }
+  },
+  {
+   "level": "merchant",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "郑州",
+   "name": "郑州",
+   "2026-08": {
+    "helmet": {
+     "num": 7365,
+     "den": 7421,
+     "rate": 99.25
+    },
+    "speed": {
+     "num": 30006,
+     "den": 1373958,
+     "rate": 2.18
+    },
+    "redlight": {
+     "num": 33123,
+     "den": 131007,
+     "rate": 25.28
+    },
+    "reverse": {
+     "num": 8142533,
+     "den": 258887349,
+     "rate": 3.15
+    },
+    "clothing": {
+     "cloth": {
+      "num": 5259,
+      "den": 5454,
+      "rate": 96.42
+     },
+     "vis": {
+      "num": 171795.68736202546,
+      "den": 177102,
+      "rate": 97.0
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.8
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 5673,
+     "den": 5730,
+     "rate": 99.01
+    },
+    "speed": {
+     "num": 24545,
+     "den": 1122284,
+     "rate": 2.19
+    },
+    "redlight": {
+     "num": 25154,
+     "den": 104899,
+     "rate": 23.98
+    },
+    "reverse": {
+     "num": 6423712,
+     "den": 213287598,
+     "rate": 3.01
+    },
+    "clothing": {
+     "cloth": {
+      "num": 4146,
+      "den": 4289,
+      "rate": 96.67
+     },
+     "vis": {
+      "num": 133330.7541863451,
+      "den": 138391,
+      "rate": 96.34
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 1.52
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 5861,
+     "den": 5897,
+     "rate": 99.39
+    },
+    "speed": {
+     "num": 24174,
+     "den": 1137218,
+     "rate": 2.13
+    },
+    "redlight": {
+     "num": 24503,
+     "den": 107454,
+     "rate": 22.8
+    },
+    "reverse": {
+     "num": 6446702,
+     "den": 214142602,
+     "rate": 3.01
+    },
+    "clothing": {
+     "cloth": {
+      "num": 4382,
+      "den": 4442,
+      "rate": 98.65
+     },
+     "vis": {
+      "num": 144740.39844951112,
+      "den": 152626,
+      "rate": 94.83
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.49
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "郑州",
+   "name": "【联盟签约】兴必达【郑州】大卫城站",
+   "2026-08": {
+    "helmet": {
+     "num": 225,
+     "den": 225,
+     "rate": 100.0
+    },
+    "speed": {
+     "num": 310,
+     "den": 48010,
+     "rate": 0.65
+    },
+    "redlight": {
+     "num": 1226,
+     "den": 3604,
+     "rate": 34.02
+    },
+    "reverse": {
+     "num": 427287,
+     "den": 7999300,
+     "rate": 5.34
+    },
+    "clothing": {
+     "cloth": {
+      "num": 160,
+      "den": 182,
+      "rate": 87.91
+     },
+     "vis": {
+      "num": 7744.008054548585,
+      "den": 7958,
+      "rate": 97.31
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.0
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 218,
+     "den": 219,
+     "rate": 99.54
+    },
+    "speed": {
+     "num": 1652,
+     "den": 50542,
+     "rate": 3.27
+    },
+    "redlight": {
+     "num": 1128,
+     "den": 3519,
+     "rate": 32.05
+    },
+    "reverse": {
+     "num": 393860,
+     "den": 8513615,
+     "rate": 4.63
+    },
+    "clothing": {
+     "cloth": {
+      "num": 162,
+      "den": 167,
+      "rate": 97.01
+     },
+     "vis": {
+      "num": 7889.305067626207,
+      "den": 8095,
+      "rate": 97.46
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 3.92
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 224,
+     "den": 224,
+     "rate": 100.0
+    },
+    "speed": {
+     "num": 1386,
+     "den": 47413,
+     "rate": 2.92
+    },
+    "redlight": {
+     "num": 1058,
+     "den": 3468,
+     "rate": 30.51
+    },
+    "reverse": {
+     "num": 383002,
+     "den": 8102986,
+     "rate": 4.73
+    },
+    "clothing": {
+     "cloth": {
+      "num": 171,
+      "den": 170,
+      "rate": 100.59
+     },
+     "vis": {
+      "num": 7579.74038474555,
+      "den": 7987,
+      "rate": 94.9
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 7.53
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "郑州",
+   "name": "【联盟签约】兴必达【郑州】德化站",
+   "2026-08": {
+    "helmet": {
+     "num": 195,
+     "den": 195,
+     "rate": 100.0
+    },
+    "speed": {
+     "num": 315,
+     "den": 32216,
+     "rate": 0.98
+    },
+    "redlight": {
+     "num": 758,
+     "den": 2236,
+     "rate": 33.9
+    },
+    "reverse": {
+     "num": 251791,
+     "den": 5226441,
+     "rate": 4.82
+    },
+    "clothing": {
+     "cloth": {
+      "num": 136,
+      "den": 136,
+      "rate": 100.0
+     },
+     "vis": {
+      "num": 6302.630289726611,
+      "den": 6721,
+      "rate": 93.78
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.0
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 168,
+     "den": 168,
+     "rate": 100.0
+    },
+    "speed": {
+     "num": 281,
+     "den": 29640,
+     "rate": 0.95
+    },
+    "redlight": {
+     "num": 628,
+     "den": 1944,
+     "rate": 32.3
+    },
+    "reverse": {
+     "num": 217797,
+     "den": 4839766,
+     "rate": 4.5
+    },
+    "clothing": {
+     "cloth": {
+      "num": 121,
+      "den": 121,
+      "rate": 100.0
+     },
+     "vis": {
+      "num": 5573.1267782789655,
+      "den": 5945,
+      "rate": 93.74
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.0
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 166,
+     "den": 166,
+     "rate": 100.0
+    },
+    "speed": {
+     "num": 390,
+     "den": 29065,
+     "rate": 1.34
+    },
+    "redlight": {
+     "num": 455,
+     "den": 1762,
+     "rate": 25.82
+    },
+    "reverse": {
+     "num": 189405,
+     "den": 4672393,
+     "rate": 4.05
+    },
+    "clothing": {
+     "cloth": {
+      "num": 125,
+      "den": 127,
+      "rate": 98.43
+     },
+     "vis": {
+      "num": 5452.587345986212,
+      "den": 6111,
+      "rate": 89.23
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.0
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "郑州",
+   "name": "【联盟签约】兴必达【郑州】龙子湖站",
+   "2026-08": {
+    "helmet": {
+     "num": 245,
+     "den": 246,
+     "rate": 99.59
+    },
+    "speed": {
+     "num": 1932,
+     "den": 73267,
+     "rate": 2.64
+    },
+    "redlight": {
+     "num": 5139,
+     "den": 13166,
+     "rate": 39.03
+    },
+    "reverse": {
+     "num": 640465,
+     "den": 14840826,
+     "rate": 4.32
+    },
+    "clothing": {
+     "cloth": {
+      "num": 174,
+      "den": 175,
+      "rate": 99.43
+     },
+     "vis": {
+      "num": 8963.406510797286,
+      "den": 9305,
+      "rate": 96.33
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.0
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 216,
+     "den": 216,
+     "rate": 100.0
+    },
+    "speed": {
+     "num": 1929,
+     "den": 65928,
+     "rate": 2.93
+    },
+    "redlight": {
+     "num": 3828,
+     "den": 11527,
+     "rate": 33.21
+    },
+    "reverse": {
+     "num": 649997,
+     "den": 13710988,
+     "rate": 4.74
+    },
+    "clothing": {
+     "cloth": {
+      "num": 156,
+      "den": 157,
+      "rate": 99.36
+     },
+     "vis": {
+      "num": 9105.68688030608,
+      "den": 9440,
+      "rate": 96.46
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.86
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 264,
+     "den": 264,
+     "rate": 100.0
+    },
+    "speed": {
+     "num": 2281,
+     "den": 79708,
+     "rate": 2.86
+    },
+    "redlight": {
+     "num": 4550,
+     "den": 13551,
+     "rate": 33.58
+    },
+    "reverse": {
+     "num": 747778,
+     "den": 16446552,
+     "rate": 4.55
+    },
+    "clothing": {
+     "cloth": {
+      "num": 196,
+      "den": 196,
+      "rate": 100.0
+     },
+     "vis": {
+      "num": 10404.114220430112,
+      "den": 11132,
+      "rate": 93.46
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.55
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "郑州",
+   "name": "兴必达【郑州】大卫城站",
+   "2026-08": {
+    "helmet": {
+     "num": 2657,
+     "den": 2689,
+     "rate": 98.81
+    },
+    "speed": {
+     "num": 8411,
+     "den": 421919,
+     "rate": 1.99
+    },
+    "redlight": {
+     "num": 7641,
+     "den": 31120,
+     "rate": 24.55
+    },
+    "reverse": {
+     "num": 2123814,
+     "den": 76964011,
+     "rate": 2.76
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1915,
+      "den": 1976,
+      "rate": 96.91
+     },
+     "vis": {
+      "num": 56364.689783282796,
+      "den": 58347,
+      "rate": 96.6
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.52
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1947,
+     "den": 1975,
+     "rate": 98.58
+    },
+    "speed": {
+     "num": 6889,
+     "den": 334073,
+     "rate": 2.06
+    },
+    "redlight": {
+     "num": 4458,
+     "den": 21167,
+     "rate": 21.06
+    },
+    "reverse": {
+     "num": 1613242,
+     "den": 61331917,
+     "rate": 2.63
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1424,
+      "den": 1460,
+      "rate": 97.53
+     },
+     "vis": {
+      "num": 39408.4789642018,
+      "den": 41138,
+      "rate": 95.8
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.43
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1943,
+     "den": 1957,
+     "rate": 99.28
+    },
+    "speed": {
+     "num": 6660,
+     "den": 319979,
+     "rate": 2.08
+    },
+    "redlight": {
+     "num": 4494,
+     "den": 20682,
+     "rate": 21.73
+    },
+    "reverse": {
+     "num": 1630538,
+     "den": 57532202,
+     "rate": 2.83
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1443,
+      "den": 1470,
+      "rate": 98.16
+     },
+     "vis": {
+      "num": 42946.07976283037,
+      "den": 44768,
+      "rate": 95.93
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.74
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "郑州",
+   "name": "兴必达【郑州】德化站",
+   "2026-08": {
+    "helmet": {
+     "num": 2565,
+     "den": 2581,
+     "rate": 99.38
+    },
+    "speed": {
+     "num": 6705,
+     "den": 408978,
+     "rate": 1.64
+    },
+    "redlight": {
+     "num": 5857,
+     "den": 25689,
+     "rate": 22.8
+    },
+    "reverse": {
+     "num": 2331911,
+     "den": 70360922,
+     "rate": 3.31
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1826,
+      "den": 1906,
+      "rate": 95.8
+     },
+     "vis": {
+      "num": 61346.97098848216,
+      "den": 63130,
+      "rate": 97.18
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.18
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2003,
+     "den": 2021,
+     "rate": 99.11
+    },
+    "speed": {
+     "num": 5035,
+     "den": 334326,
+     "rate": 1.51
+    },
+    "redlight": {
+     "num": 4718,
+     "den": 21189,
+     "rate": 22.27
+    },
+    "reverse": {
+     "num": 1777264,
+     "den": 58039835,
+     "rate": 3.06
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1468,
+      "den": 1529,
+      "rate": 96.01
+     },
+     "vis": {
+      "num": 44395.14703732886,
+      "den": 46171,
+      "rate": 96.15
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.05
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2000,
+     "den": 2016,
+     "rate": 99.21
+    },
+    "speed": {
+     "num": 5514,
+     "den": 343329,
+     "rate": 1.61
+    },
+    "redlight": {
+     "num": 4115,
+     "den": 19707,
+     "rate": 20.88
+    },
+    "reverse": {
+     "num": 1765921,
+     "den": 57998277,
+     "rate": 3.04
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1503,
+      "den": 1535,
+      "rate": 97.92
+     },
+     "vis": {
+      "num": 48362.239696978206,
+      "den": 50949,
+      "rate": 94.92
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.19
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "郑州",
+   "name": "兴必达【郑州】龙子湖站",
+   "2026-08": {
+    "helmet": {
+     "num": 1401,
+     "den": 1407,
+     "rate": 99.57
+    },
+    "speed": {
+     "num": 12310,
+     "den": 379705,
+     "rate": 3.24
+    },
+    "redlight": {
+     "num": 12376,
+     "den": 54515,
+     "rate": 22.7
+    },
+    "reverse": {
+     "num": 2320579,
+     "den": 81853321,
+     "rate": 2.84
+    },
+    "clothing": {
+     "cloth": {
+      "num": 992,
+      "den": 1023,
+      "rate": 96.97
+     },
+     "vis": {
+      "num": 29350.343273649552,
+      "den": 29905,
+      "rate": 98.15
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.88
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1056,
+     "den": 1066,
+     "rate": 99.06
+    },
+    "speed": {
+     "num": 8718,
+     "den": 297771,
+     "rate": 2.93
+    },
+    "redlight": {
+     "num": 10258,
+     "den": 44885,
+     "rate": 22.85
+    },
+    "reverse": {
+     "num": 1724474,
+     "den": 65022787,
+     "rate": 2.65
+    },
+    "clothing": {
+     "cloth": {
+      "num": 768,
+      "den": 808,
+      "rate": 95.05
+     },
+     "vis": {
+      "num": 25496.34279193656,
+      "den": 26132,
+      "rate": 97.57
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 3.39
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1207,
+     "den": 1213,
+     "rate": 99.51
+    },
+    "speed": {
+     "num": 7917,
+     "den": 309991,
+     "rate": 2.55
+    },
+    "redlight": {
+     "num": 9737,
+     "den": 47853,
+     "rate": 20.35
+    },
+    "reverse": {
+     "num": 1695416,
+     "den": 67976001,
+     "rate": 2.49
+    },
+    "clothing": {
+     "cloth": {
+      "num": 902,
+      "den": 902,
+      "rate": 100.0
+     },
+     "vis": {
+      "num": 28654.08836141785,
+      "den": 30190,
+      "rate": 94.91
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 5.39
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北二区",
+   "subregion": "河南区域",
+   "city": "郑州",
+   "name": "集约配送-兴必达【郑州】大卫城站",
+   "2026-08": {
+    "helmet": {
+     "num": 77,
+     "den": 78,
+     "rate": 98.72
+    },
+    "speed": {
+     "num": 23,
+     "den": 9863,
+     "rate": 0.23
+    },
+    "redlight": {
+     "num": 126,
+     "den": 677,
+     "rate": 18.61
+    },
+    "reverse": {
+     "num": 46686,
+     "den": 1642528,
+     "rate": 2.84
+    },
+    "clothing": {
+     "cloth": {
+      "num": 56,
+      "den": 56,
+      "rate": 100.0
+     },
+     "vis": {
+      "num": 1723.6384615384618,
+      "den": 1736,
+      "rate": 99.29
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.0
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 65,
+     "den": 65,
+     "rate": 100.0
+    },
+    "speed": {
+     "num": 41,
+     "den": 10004,
+     "rate": 0.41
+    },
+    "redlight": {
+     "num": 136,
+     "den": 668,
+     "rate": 20.36
+    },
+    "reverse": {
+     "num": 47078,
+     "den": 1828690,
+     "rate": 2.57
+    },
+    "clothing": {
+     "cloth": {
+      "num": 47,
+      "den": 47,
+      "rate": 100.0
+     },
+     "vis": {
+      "num": 1462.6666666666665,
+      "den": 1470,
+      "rate": 99.5
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.0
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 57,
+     "den": 57,
+     "rate": 100.0
+    },
+    "speed": {
+     "num": 26,
+     "den": 7733,
+     "rate": 0.34
+    },
+    "redlight": {
+     "num": 94,
+     "den": 431,
+     "rate": 21.81
+    },
+    "reverse": {
+     "num": 34642,
+     "den": 1414191,
+     "rate": 2.45
+    },
+    "clothing": {
+     "cloth": {
+      "num": 42,
+      "den": 42,
+      "rate": 100.0
+     },
+     "vis": {
+      "num": 1341.5486771226708,
+      "den": 1489,
+      "rate": 90.1
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.0
+    }
+   }
+  },
+  {
+   "level": "subregion",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "",
+   "name": "津冀区域",
+   "2026-08": {
+    "helmet": {
+     "num": 88370,
+     "den": 90481,
+     "rate": 97.67
+    },
+    "speed": {
+     "num": 419860,
+     "den": 12122576,
+     "rate": 3.46
+    },
+    "redlight": {
+     "num": 417861,
+     "den": 2025499,
+     "rate": 20.63
+    },
+    "reverse": {
+     "num": 147056042,
+     "den": 4203694533,
+     "rate": 3.5
+    },
+    "clothing": {
+     "cloth": {
+      "num": 56121,
+      "den": 59335,
+      "rate": 94.58
+     },
+     "vis": {
+      "num": 2228199.792052514,
+      "den": 2374224,
+      "rate": 93.85
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.04
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 73651,
+     "den": 74578,
+     "rate": 98.76
+    },
+    "speed": {
+     "num": 325887,
+     "den": 10065911,
+     "rate": 3.24
+    },
+    "redlight": {
+     "num": 317249,
+     "den": 1645550,
+     "rate": 19.28
+    },
+    "reverse": {
+     "num": 110379273,
+     "den": 3480622474,
+     "rate": 3.17
+    },
+    "clothing": {
+     "cloth": {
+      "num": 61925,
+      "den": 64664,
+      "rate": 95.76
+     },
+     "vis": {
+      "num": 2227018.999098748,
+      "den": 2354286,
+      "rate": 94.59
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 3.35
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 76710,
+     "den": 77703,
+     "rate": 98.72
+    },
+    "speed": {
+     "num": 342168,
+     "den": 10578362,
+     "rate": 3.23
+    },
+    "redlight": {
+     "num": 334966,
+     "den": 1738211,
+     "rate": 19.27
+    },
+    "reverse": {
+     "num": 114999844,
+     "den": 3591717953,
+     "rate": 3.2
+    },
+    "clothing": {
+     "cloth": {
+      "num": 65571,
+      "den": 68017,
+      "rate": 96.4
+     },
+     "vis": {
+      "num": 2396168.0360378064,
+      "den": 2560209,
+      "rate": 93.59
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.33
+    }
+   }
+  },
+  {
+   "level": "merchant",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "唐山",
+   "name": "唐山",
+   "2026-08": {
+    "helmet": {
+     "num": 13629,
+     "den": 13900,
+     "rate": 98.05
+    },
+    "speed": {
+     "num": 72343,
+     "den": 2020612,
+     "rate": 3.58
+    },
+    "redlight": {
+     "num": 71275,
+     "den": 376682,
+     "rate": 18.92
+    },
+    "reverse": {
+     "num": 34588644,
+     "den": 668314930,
+     "rate": 5.18
+    },
+    "clothing": {
+     "cloth": {
+      "num": 9147,
+      "den": 9584,
+      "rate": 95.44
+     },
+     "vis": {
+      "num": 338678.9359791922,
+      "den": 361072,
+      "rate": 93.8
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.39
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 11030,
+     "den": 11155,
+     "rate": 98.88
+    },
+    "speed": {
+     "num": 53258,
+     "den": 1646827,
+     "rate": 3.23
+    },
+    "redlight": {
+     "num": 48197,
+     "den": 300336,
+     "rate": 16.05
+    },
+    "reverse": {
+     "num": 24191320,
+     "den": 558398324,
+     "rate": 4.33
+    },
+    "clothing": {
+     "cloth": {
+      "num": 9736,
+      "den": 10158,
+      "rate": 95.85
+     },
+     "vis": {
+      "num": 347686.9603512863,
+      "den": 363689,
+      "rate": 95.6
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.56
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 11783,
+     "den": 11892,
+     "rate": 99.08
+    },
+    "speed": {
+     "num": 53131,
+     "den": 1778193,
+     "rate": 2.99
+    },
+    "redlight": {
+     "num": 49865,
+     "den": 318238,
+     "rate": 15.67
+    },
+    "reverse": {
+     "num": 24025554,
+     "den": 586927632,
+     "rate": 4.09
+    },
+    "clothing": {
+     "cloth": {
+      "num": 10569,
+      "den": 11006,
+      "rate": 96.03
+     },
+     "vis": {
+      "num": 372964.6538831702,
+      "den": 394424,
+      "rate": 94.56
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.59
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "唐山",
+   "name": "兴必达【唐山】万达站点",
+   "2026-08": {
+    "helmet": {
+     "num": 1936,
+     "den": 2020,
+     "rate": 95.84
+    },
+    "speed": {
+     "num": 9319,
+     "den": 246498,
+     "rate": 3.78
+    },
+    "redlight": {
+     "num": 8193,
+     "den": 35170,
+     "rate": 23.3
+    },
+    "reverse": {
+     "num": 4166621,
+     "den": 79592365,
+     "rate": 5.23
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1320,
+      "den": 1413,
+      "rate": 93.42
+     },
+     "vis": {
+      "num": 44807.52247257835,
+      "den": 49183,
+      "rate": 91.1
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.97
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1535,
+     "den": 1573,
+     "rate": 97.58
+    },
+    "speed": {
+     "num": 7707,
+     "den": 216904,
+     "rate": 3.55
+    },
+    "redlight": {
+     "num": 6166,
+     "den": 29855,
+     "rate": 20.65
+    },
+    "reverse": {
+     "num": 2894018,
+     "den": 69249353,
+     "rate": 4.18
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1350,
+      "den": 1440,
+      "rate": 93.75
+     },
+     "vis": {
+      "num": 46362.018752811055,
+      "den": 49649,
+      "rate": 93.38
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.1
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1632,
+     "den": 1666,
+     "rate": 97.96
+    },
+    "speed": {
+     "num": 7980,
+     "den": 226600,
+     "rate": 3.52
+    },
+    "redlight": {
+     "num": 6049,
+     "den": 32772,
+     "rate": 18.46
+    },
+    "reverse": {
+     "num": 2819312,
+     "den": 74879487,
+     "rate": 3.77
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1441,
+      "den": 1526,
+      "rate": 94.43
+     },
+     "vis": {
+      "num": 49275.593945766246,
+      "den": 54302,
+      "rate": 90.74
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.54
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "唐山",
+   "name": "兴必达【唐山】信息大厦站",
+   "2026-08": {
+    "helmet": {
+     "num": 3108,
+     "den": 3200,
+     "rate": 97.12
+    },
+    "speed": {
+     "num": 15041,
+     "den": 376816,
+     "rate": 3.99
+    },
+    "redlight": {
+     "num": 15325,
+     "den": 58877,
+     "rate": 26.03
+    },
+    "reverse": {
+     "num": 10027981,
+     "den": 164703542,
+     "rate": 6.09
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2104,
+      "den": 2162,
+      "rate": 97.32
+     },
+     "vis": {
+      "num": 76025.44676517065,
+      "den": 83930,
+      "rate": 90.58
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 4.43
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2476,
+     "den": 2498,
+     "rate": 99.12
+    },
+    "speed": {
+     "num": 11293,
+     "den": 292851,
+     "rate": 3.86
+    },
+    "redlight": {
+     "num": 10978,
+     "den": 44767,
+     "rate": 24.52
+    },
+    "reverse": {
+     "num": 7490009,
+     "den": 134062232,
+     "rate": 5.59
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2182,
+      "den": 2253,
+      "rate": 96.85
+     },
+     "vis": {
+      "num": 79831.86611952368,
+      "den": 84526,
+      "rate": 94.45
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 7.3
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2570,
+     "den": 2594,
+     "rate": 99.07
+    },
+    "speed": {
+     "num": 10969,
+     "den": 305602,
+     "rate": 3.59
+    },
+    "redlight": {
+     "num": 12164,
+     "den": 46404,
+     "rate": 26.21
+    },
+    "reverse": {
+     "num": 7812277,
+     "den": 135665289,
+     "rate": 5.76
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2315,
+      "den": 2364,
+      "rate": 97.93
+     },
+     "vis": {
+      "num": 86202.7074267623,
+      "den": 90974,
+      "rate": 94.76
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 4.46
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "唐山",
+   "name": "兴必达【唐山】八方站",
+   "2026-08": {
+    "helmet": {
+     "num": 3383,
+     "den": 3409,
+     "rate": 99.24
+    },
+    "speed": {
+     "num": 15501,
+     "den": 524158,
+     "rate": 2.96
+    },
+    "redlight": {
+     "num": 10052,
+     "den": 60667,
+     "rate": 16.57
+    },
+    "reverse": {
+     "num": 8854893,
+     "den": 169304182,
+     "rate": 5.23
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2221,
+      "den": 2327,
+      "rate": 95.44
+     },
+     "vis": {
+      "num": 91710.58787543101,
+      "den": 92528,
+      "rate": 99.12
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.95
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2919,
+     "den": 2932,
+     "rate": 99.56
+    },
+    "speed": {
+     "num": 14548,
+     "den": 495876,
+     "rate": 2.93
+    },
+    "redlight": {
+     "num": 9129,
+     "den": 58504,
+     "rate": 15.6
+    },
+    "reverse": {
+     "num": 6247136,
+     "den": 162841567,
+     "rate": 3.84
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2539,
+      "den": 2649,
+      "rate": 95.85
+     },
+     "vis": {
+      "num": 98232.59630318279,
+      "den": 99468,
+      "rate": 98.76
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 1.43
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 3232,
+     "den": 3245,
+     "rate": 99.6
+    },
+    "speed": {
+     "num": 15238,
+     "den": 545475,
+     "rate": 2.79
+    },
+    "redlight": {
+     "num": 9701,
+     "den": 63028,
+     "rate": 15.39
+    },
+    "reverse": {
+     "num": 5878303,
+     "den": 175450715,
+     "rate": 3.35
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2891,
+      "den": 3025,
+      "rate": 95.57
+     },
+     "vis": {
+      "num": 110178.62133525524,
+      "den": 111785,
+      "rate": 98.56
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.91
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "唐山",
+   "name": "兴必达【唐山】十九各庄站",
+   "2026-08": {
+    "helmet": {
+     "num": 3067,
+     "den": 3103,
+     "rate": 98.84
+    },
+    "speed": {
+     "num": 21949,
+     "den": 617354,
+     "rate": 3.56
+    },
+    "redlight": {
+     "num": 27359,
+     "den": 171055,
+     "rate": 15.99
+    },
+    "reverse": {
+     "num": 6738395,
+     "den": 154906673,
+     "rate": 4.35
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2084,
+      "den": 2184,
+      "rate": 95.42
+     },
+     "vis": {
+      "num": 72566.75482037135,
+      "den": 78989,
+      "rate": 91.87
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.55
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2266,
+     "den": 2294,
+     "rate": 98.78
+    },
+    "speed": {
+     "num": 13315,
+     "den": 446457,
+     "rate": 2.98
+    },
+    "redlight": {
+     "num": 14992,
+     "den": 127277,
+     "rate": 11.78
+    },
+    "reverse": {
+     "num": 4277332,
+     "den": 113004338,
+     "rate": 3.79
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2036,
+      "den": 2122,
+      "rate": 95.95
+     },
+     "vis": {
+      "num": 70299.688572085,
+      "den": 74274,
+      "rate": 94.65
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.81
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2475,
+     "den": 2504,
+     "rate": 98.84
+    },
+    "speed": {
+     "num": 12322,
+     "den": 483018,
+     "rate": 2.55
+    },
+    "redlight": {
+     "num": 15186,
+     "den": 134734,
+     "rate": 11.27
+    },
+    "reverse": {
+     "num": 4459474,
+     "den": 120477802,
+     "rate": 3.7
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2255,
+      "den": 2341,
+      "rate": 96.33
+     },
+     "vis": {
+      "num": 74355.01962036324,
+      "den": 80047,
+      "rate": 92.89
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.72
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "唐山",
+   "name": "兴必达【唐山】银丰站",
+   "2026-08": {
+    "helmet": {
+     "num": 563,
+     "den": 569,
+     "rate": 98.95
+    },
+    "speed": {
+     "num": 1537,
+     "den": 49996,
+     "rate": 3.07
+    },
+    "redlight": {
+     "num": 2485,
+     "den": 14028,
+     "rate": 17.71
+    },
+    "reverse": {
+     "num": 682351,
+     "den": 20796863,
+     "rate": 3.28
+    },
+    "clothing": {
+     "cloth": {
+      "num": 358,
+      "den": 368,
+      "rate": 97.28
+     },
+     "vis": {
+      "num": 12961.272566712352,
+      "den": 13417,
+      "rate": 96.6
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 5.72
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 588,
+     "den": 590,
+     "rate": 99.66
+    },
+    "speed": {
+     "num": 1491,
+     "den": 55890,
+     "rate": 2.67
+    },
+    "redlight": {
+     "num": 1546,
+     "den": 12125,
+     "rate": 12.75
+    },
+    "reverse": {
+     "num": 608199,
+     "den": 21204228,
+     "rate": 2.87
+    },
+    "clothing": {
+     "cloth": {
+      "num": 522,
+      "den": 541,
+      "rate": 96.49
+     },
+     "vis": {
+      "num": 15491.799204151079,
+      "den": 16370,
+      "rate": 94.64
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 3.49
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 558,
+     "den": 559,
+     "rate": 99.82
+    },
+    "speed": {
+     "num": 1372,
+     "den": 56192,
+     "rate": 2.44
+    },
+    "redlight": {
+     "num": 1514,
+     "den": 11748,
+     "rate": 12.89
+    },
+    "reverse": {
+     "num": 547472,
+     "den": 20578264,
+     "rate": 2.66
+    },
+    "clothing": {
+     "cloth": {
+      "num": 500,
+      "den": 530,
+      "rate": 94.34
+     },
+     "vis": {
+      "num": 14204.524385760295,
+      "den": 16172,
+      "rate": 87.83
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.32
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "唐山",
+   "name": "兴必达【唐山】银泰城站",
+   "2026-08": {
+    "helmet": {
+     "num": 1572,
+     "den": 1599,
+     "rate": 98.31
+    },
+    "speed": {
+     "num": 8996,
+     "den": 205790,
+     "rate": 4.37
+    },
+    "redlight": {
+     "num": 7861,
+     "den": 36885,
+     "rate": 21.31
+    },
+    "reverse": {
+     "num": 4118403,
+     "den": 79011305,
+     "rate": 5.21
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1060,
+      "den": 1130,
+      "rate": 93.81
+     },
+     "vis": {
+      "num": 40607.35147892891,
+      "den": 43025,
+      "rate": 94.38
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.71
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1246,
+     "den": 1268,
+     "rate": 98.26
+    },
+    "speed": {
+     "num": 4904,
+     "den": 138849,
+     "rate": 3.53
+    },
+    "redlight": {
+     "num": 5386,
+     "den": 27808,
+     "rate": 19.37
+    },
+    "reverse": {
+     "num": 2674626,
+     "den": 58036606,
+     "rate": 4.61
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1107,
+      "den": 1153,
+      "rate": 96.01
+     },
+     "vis": {
+      "num": 37468.99139953227,
+      "den": 39402,
+      "rate": 95.09
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.22
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1316,
+     "den": 1324,
+     "rate": 99.4
+    },
+    "speed": {
+     "num": 5250,
+     "den": 161306,
+     "rate": 3.25
+    },
+    "redlight": {
+     "num": 5251,
+     "den": 29552,
+     "rate": 17.77
+    },
+    "reverse": {
+     "num": 2508716,
+     "den": 59876075,
+     "rate": 4.19
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1167,
+      "den": 1220,
+      "rate": 95.66
+     },
+     "vis": {
+      "num": 38748.1871692628,
+      "den": 41144,
+      "rate": 94.18
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.59
+    }
+   }
+  },
+  {
+   "level": "merchant",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "天津",
+   "name": "天津",
+   "2026-08": {
+    "helmet": {
+     "num": 19709,
+     "den": 20006,
+     "rate": 98.52
+    },
+    "speed": {
+     "num": 116539,
+     "den": 3205380,
+     "rate": 3.64
+    },
+    "redlight": {
+     "num": 92713,
+     "den": 500888,
+     "rate": 18.51
+    },
+    "reverse": {
+     "num": 26394939,
+     "den": 922376047,
+     "rate": 2.86
+    },
+    "clothing": {
+     "cloth": {
+      "num": 7188,
+      "den": 7421,
+      "rate": 96.86
+     },
+     "vis": {
+      "num": 274912.675964762,
+      "den": 291273,
+      "rate": 94.38
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 6.11
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 16561,
+     "den": 16716,
+     "rate": 99.07
+    },
+    "speed": {
+     "num": 92643,
+     "den": 2621823,
+     "rate": 3.53
+    },
+    "redlight": {
+     "num": 71204,
+     "den": 404264,
+     "rate": 17.61
+    },
+    "reverse": {
+     "num": 20323733,
+     "den": 763966470,
+     "rate": 2.66
+    },
+    "clothing": {
+     "cloth": {
+      "num": 12805,
+      "den": 13064,
+      "rate": 98.02
+     },
+     "vis": {
+      "num": 476002.43010357436,
+      "den": 500903,
+      "rate": 95.03
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 6.42
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 17408,
+     "den": 17606,
+     "rate": 98.88
+    },
+    "speed": {
+     "num": 102107,
+     "den": 2797302,
+     "rate": 3.65
+    },
+    "redlight": {
+     "num": 79545,
+     "den": 425985,
+     "rate": 18.67
+    },
+    "reverse": {
+     "num": 21918356,
+     "den": 801912865,
+     "rate": 2.73
+    },
+    "clothing": {
+     "cloth": {
+      "num": 14984,
+      "den": 15132,
+      "rate": 99.02
+     },
+     "vis": {
+      "num": 564079.1034151084,
+      "den": 598703,
+      "rate": 94.22
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 5.9
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "天津",
+   "name": "兴必达【天津】东丽湖站",
+   "2026-08": {
+    "helmet": {
+     "num": 2647,
+     "den": 2661,
+     "rate": 99.47
+    },
+    "speed": {
+     "num": 3069,
+     "den": 80232,
+     "rate": 3.83
+    },
+    "redlight": {
+     "num": 2589,
+     "den": 16189,
+     "rate": 15.99
+    },
+    "reverse": {
+     "num": 3722609,
+     "den": 123023082,
+     "rate": 3.03
+    },
+    "clothing": {
+     "cloth": {
+      "num": 957,
+      "den": 1000,
+      "rate": 95.7
+     },
+     "vis": {
+      "num": 46617.084706134585,
+      "den": 48039,
+      "rate": 97.04
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 8.24
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2294,
+     "den": 2306,
+     "rate": 99.48
+    },
+    "speed": {
+     "num": 2392,
+     "den": 64135,
+     "rate": 3.73
+    },
+    "redlight": {
+     "num": 1641,
+     "den": 11105,
+     "rate": 14.78
+    },
+    "reverse": {
+     "num": 2684852,
+     "den": 99016580,
+     "rate": 2.71
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1756,
+      "den": 1836,
+      "rate": 95.64
+     },
+     "vis": {
+      "num": 68702.45517671244,
+      "den": 70914,
+      "rate": 96.88
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 10.66
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2444,
+     "den": 2464,
+     "rate": 99.19
+    },
+    "speed": {
+     "num": 2408,
+     "den": 63044,
+     "rate": 3.82
+    },
+    "redlight": {
+     "num": 1653,
+     "den": 12016,
+     "rate": 13.76
+    },
+    "reverse": {
+     "num": 2461058,
+     "den": 101133885,
+     "rate": 2.43
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2089,
+      "den": 2156,
+      "rate": 96.89
+     },
+     "vis": {
+      "num": 84245.57006112908,
+      "den": 88171,
+      "rate": 95.55
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 14.23
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "天津",
+   "name": "兴必达【天津】圣光站",
+   "2026-08": {
+    "helmet": {
+     "num": 2517,
+     "den": 2552,
+     "rate": 98.63
+    },
+    "speed": {
+     "num": 10014,
+     "den": 265267,
+     "rate": 3.78
+    },
+    "redlight": {
+     "num": 20808,
+     "den": 130148,
+     "rate": 15.99
+    },
+    "reverse": {
+     "num": 2407495,
+     "den": 164056705,
+     "rate": 1.47
+    },
+    "clothing": {
+     "cloth": {
+      "num": 911,
+      "den": 932,
+      "rate": 97.75
+     },
+     "vis": {
+      "num": 31957.55224617812,
+      "den": 34304,
+      "rate": 93.16
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 4.85
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2114,
+     "den": 2134,
+     "rate": 99.06
+    },
+    "speed": {
+     "num": 8155,
+     "den": 213156,
+     "rate": 3.83
+    },
+    "redlight": {
+     "num": 16439,
+     "den": 104667,
+     "rate": 15.71
+    },
+    "reverse": {
+     "num": 1912604,
+     "den": 134914907,
+     "rate": 1.42
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1639,
+      "den": 1664,
+      "rate": 98.5
+     },
+     "vis": {
+      "num": 57262.13963813559,
+      "den": 59441,
+      "rate": 96.33
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.79
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2013,
+     "den": 2041,
+     "rate": 98.63
+    },
+    "speed": {
+     "num": 6844,
+     "den": 204657,
+     "rate": 3.34
+    },
+    "redlight": {
+     "num": 16652,
+     "den": 105560,
+     "rate": 15.77
+    },
+    "reverse": {
+     "num": 2095305,
+     "den": 131035107,
+     "rate": 1.6
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1749,
+      "den": 1751,
+      "rate": 99.89
+     },
+     "vis": {
+      "num": 62650.17521630563,
+      "den": 65297,
+      "rate": 95.95
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.84
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "天津",
+   "name": "兴必达【天津】张家窝站",
+   "2026-08": {
+    "helmet": {
+     "num": 3256,
+     "den": 3302,
+     "rate": 98.61
+    },
+    "speed": {
+     "num": 21723,
+     "den": 665224,
+     "rate": 3.27
+    },
+    "redlight": {
+     "num": 22232,
+     "den": 175518,
+     "rate": 12.67
+    },
+    "reverse": {
+     "num": 3138310,
+     "den": 139437567,
+     "rate": 2.25
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1210,
+      "den": 1263,
+      "rate": 95.8
+     },
+     "vis": {
+      "num": 45269.82055548324,
+      "den": 46792,
+      "rate": 96.75
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.67
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2732,
+     "den": 2754,
+     "rate": 99.2
+    },
+    "speed": {
+     "num": 17800,
+     "den": 552058,
+     "rate": 3.22
+    },
+    "redlight": {
+     "num": 15373,
+     "den": 135539,
+     "rate": 11.34
+    },
+    "reverse": {
+     "num": 2673051,
+     "den": 118112176,
+     "rate": 2.26
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2146,
+      "den": 2194,
+      "rate": 97.81
+     },
+     "vis": {
+      "num": 77910.23567895271,
+      "den": 80088,
+      "rate": 97.28
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.79
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2956,
+     "den": 2984,
+     "rate": 99.06
+    },
+    "speed": {
+     "num": 18679,
+     "den": 584333,
+     "rate": 3.2
+    },
+    "redlight": {
+     "num": 18810,
+     "den": 141702,
+     "rate": 13.27
+    },
+    "reverse": {
+     "num": 2803171,
+     "den": 125538110,
+     "rate": 2.23
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2579,
+      "den": 2594,
+      "rate": 99.42
+     },
+     "vis": {
+      "num": 88163.03684887665,
+      "den": 92405,
+      "rate": 95.41
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.55
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "天津",
+   "name": "兴必达【天津】昆仑站",
+   "2026-08": {
+    "helmet": {
+     "num": 2028,
+     "den": 2065,
+     "rate": 98.21
+    },
+    "speed": {
+     "num": 14909,
+     "den": 280057,
+     "rate": 5.32
+    },
+    "redlight": {
+     "num": 7625,
+     "den": 32479,
+     "rate": 23.48
+    },
+    "reverse": {
+     "num": 4349914,
+     "den": 102166313,
+     "rate": 4.26
+    },
+    "clothing": {
+     "cloth": {
+      "num": 732,
+      "den": 749,
+      "rate": 97.73
+     },
+     "vis": {
+      "num": 26464.20334978036,
+      "den": 28273,
+      "rate": 93.6
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.56
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1560,
+     "den": 1579,
+     "rate": 98.8
+    },
+    "speed": {
+     "num": 10417,
+     "den": 206366,
+     "rate": 5.05
+    },
+    "redlight": {
+     "num": 5937,
+     "den": 24497,
+     "rate": 24.24
+    },
+    "reverse": {
+     "num": 3539700,
+     "den": 76070127,
+     "rate": 4.65
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1208,
+      "den": 1236,
+      "rate": 97.73
+     },
+     "vis": {
+      "num": 43046.62526543157,
+      "den": 46627,
+      "rate": 92.32
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.35
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1626,
+     "den": 1654,
+     "rate": 98.31
+    },
+    "speed": {
+     "num": 11597,
+     "den": 230559,
+     "rate": 5.03
+    },
+    "redlight": {
+     "num": 7023,
+     "den": 27700,
+     "rate": 25.35
+    },
+    "reverse": {
+     "num": 4148640,
+     "den": 83108383,
+     "rate": 4.99
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1399,
+      "den": 1431,
+      "rate": 97.76
+     },
+     "vis": {
+      "num": 53729.17161748449,
+      "den": 57354,
+      "rate": 93.68
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.95
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "天津",
+   "name": "兴必达【天津】汊沽港站",
+   "2026-08": {
+    "helmet": {
+     "num": 1479,
+     "den": 1520,
+     "rate": 97.3
+    },
+    "speed": {
+     "num": 2932,
+     "den": 83655,
+     "rate": 3.5
+    },
+    "redlight": {
+     "num": 2720,
+     "den": 15802,
+     "rate": 17.21
+    },
+    "reverse": {
+     "num": 988457,
+     "den": 31488866,
+     "rate": 3.14
+    },
+    "clothing": {
+     "cloth": {
+      "num": 525,
+      "den": 528,
+      "rate": 99.43
+     },
+     "vis": {
+      "num": 16325.757086476004,
+      "den": 17647,
+      "rate": 92.51
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 7.6
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1158,
+     "den": 1179,
+     "rate": 98.22
+    },
+    "speed": {
+     "num": 2325,
+     "den": 65890,
+     "rate": 3.53
+    },
+    "redlight": {
+     "num": 1834,
+     "den": 12039,
+     "rate": 15.23
+    },
+    "reverse": {
+     "num": 648528,
+     "den": 25247574,
+     "rate": 2.57
+    },
+    "clothing": {
+     "cloth": {
+      "num": 893,
+      "den": 891,
+      "rate": 100.22
+     },
+     "vis": {
+      "num": 27284.221119860555,
+      "den": 29018,
+      "rate": 94.03
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 13.86
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1151,
+     "den": 1169,
+     "rate": 98.46
+    },
+    "speed": {
+     "num": 2517,
+     "den": 63510,
+     "rate": 3.96
+    },
+    "redlight": {
+     "num": 1830,
+     "den": 11837,
+     "rate": 15.46
+    },
+    "reverse": {
+     "num": 620157,
+     "den": 22274245,
+     "rate": 2.78
+    },
+    "clothing": {
+     "cloth": {
+      "num": 992,
+      "den": 994,
+      "rate": 99.8
+     },
+     "vis": {
+      "num": 32108.368075711063,
+      "den": 34375,
+      "rate": 93.41
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 12.18
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "天津",
+   "name": "兴必达【天津】洪湖里站",
+   "2026-08": {
+    "helmet": {
+     "num": 2793,
+     "den": 2837,
+     "rate": 98.45
+    },
+    "speed": {
+     "num": 20772,
+     "den": 594038,
+     "rate": 3.5
+    },
+    "redlight": {
+     "num": 7110,
+     "den": 25380,
+     "rate": 28.01
+    },
+    "reverse": {
+     "num": 5098940,
+     "den": 137211497,
+     "rate": 3.72
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1012,
+      "den": 1066,
+      "rate": 94.93
+     },
+     "vis": {
+      "num": 40079.925664510934,
+      "den": 42046,
+      "rate": 95.32
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.88
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2277,
+     "den": 2313,
+     "rate": 98.44
+    },
+    "speed": {
+     "num": 15886,
+     "den": 499683,
+     "rate": 3.18
+    },
+    "redlight": {
+     "num": 5726,
+     "den": 21512,
+     "rate": 26.62
+    },
+    "reverse": {
+     "num": 3832905,
+     "den": 111987247,
+     "rate": 3.42
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1741,
+      "den": 1779,
+      "rate": 97.86
+     },
+     "vis": {
+      "num": 65631.24082705047,
+      "den": 70568,
+      "rate": 93.0
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.79
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2497,
+     "den": 2538,
+     "rate": 98.38
+    },
+    "speed": {
+     "num": 21763,
+     "den": 559635,
+     "rate": 3.89
+    },
+    "redlight": {
+     "num": 6795,
+     "den": 24369,
+     "rate": 27.88
+    },
+    "reverse": {
+     "num": 4232020,
+     "den": 125927670,
+     "rate": 3.36
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2145,
+      "den": 2171,
+      "rate": 98.8
+     },
+     "vis": {
+      "num": 84125.33001918584,
+      "den": 90702,
+      "rate": 92.75
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.57
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "天津",
+   "name": "兴必达【天津】海光寺站",
+   "2026-08": {
+    "helmet": {
+     "num": 3954,
+     "den": 4016,
+     "rate": 98.46
+    },
+    "speed": {
+     "num": 40277,
+     "den": 1164136,
+     "rate": 3.46
+    },
+    "redlight": {
+     "num": 26708,
+     "den": 92442,
+     "rate": 28.89
+    },
+    "reverse": {
+     "num": 6231040,
+     "den": 205002096,
+     "rate": 3.04
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1459,
+      "den": 1496,
+      "rate": 97.53
+     },
+     "vis": {
+      "num": 54243.233665596104,
+      "den": 58346,
+      "rate": 92.97
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.05
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 3169,
+     "den": 3182,
+     "rate": 99.59
+    },
+    "speed": {
+     "num": 30301,
+     "den": 911163,
+     "rate": 3.33
+    },
+    "redlight": {
+     "num": 19374,
+     "den": 72381,
+     "rate": 26.77
+    },
+    "reverse": {
+     "num": 4366649,
+     "den": 161522604,
+     "rate": 2.7
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2464,
+      "den": 2489,
+      "rate": 99.0
+     },
+     "vis": {
+      "num": 95822.98589142693,
+      "den": 101224,
+      "rate": 94.66
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.06
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 3313,
+     "den": 3331,
+     "rate": 99.46
+    },
+    "speed": {
+     "num": 34187,
+     "den": 977317,
+     "rate": 3.5
+    },
+    "redlight": {
+     "num": 22133,
+     "den": 78318,
+     "rate": 28.26
+    },
+    "reverse": {
+     "num": 4859463,
+     "den": 171324413,
+     "rate": 2.84
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2835,
+      "den": 2841,
+      "rate": 99.79
+     },
+     "vis": {
+      "num": 111876.59454067513,
+      "den": 120996,
+      "rate": 92.46
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.24
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "天津",
+   "name": "兴必达【天津】金光站",
+   "2026-09": {
+    "helmet": {
+     "num": 348,
+     "den": 353,
+     "rate": 98.58
+    },
+    "speed": {
+     "num": 2661,
+     "den": 46749,
+     "rate": 5.69
+    },
+    "redlight": {
+     "num": 2444,
+     "den": 11234,
+     "rate": 21.76
+    },
+    "reverse": {
+     "num": 260564,
+     "den": 19382658,
+     "rate": 1.34
+    },
+    "clothing": {
+     "cloth": {
+      "num": 262,
+      "den": 274,
+      "rate": 95.62
+     },
+     "vis": {
+      "num": 9370.880453860114,
+      "den": 9785,
+      "rate": 95.77
+     }
+    },
+    "high_speed": {
+     "days": 28,
+     "pct": 2.56
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 404,
+     "den": 407,
+     "rate": 99.26
+    },
+    "speed": {
+     "num": 1944,
+     "den": 52431,
+     "rate": 3.71
+    },
+    "redlight": {
+     "num": 2004,
+     "den": 12562,
+     "rate": 15.95
+    },
+    "reverse": {
+     "num": 219158,
+     "den": 21888953,
+     "rate": 1.0
+    },
+    "clothing": {
+     "cloth": {
+      "num": 340,
+      "den": 340,
+      "rate": 100.0
+     },
+     "vis": {
+      "num": 12171.778068516966,
+      "den": 12567,
+      "rate": 96.86
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.5
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "天津",
+   "name": "兴必达【天津】青光站",
+   "2026-08": {
+    "helmet": {
+     "num": 1035,
+     "den": 1053,
+     "rate": 98.29
+    },
+    "speed": {
+     "num": 2843,
+     "den": 72771,
+     "rate": 3.91
+    },
+    "redlight": {
+     "num": 2921,
+     "den": 12930,
+     "rate": 22.59
+    },
+    "reverse": {
+     "num": 458174,
+     "den": 19989921,
+     "rate": 2.29
+    },
+    "clothing": {
+     "cloth": {
+      "num": 382,
+      "den": 387,
+      "rate": 98.71
+     },
+     "vis": {
+      "num": 13955.098690602554,
+      "den": 15826,
+      "rate": 88.18
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 23.04
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 909,
+     "den": 916,
+     "rate": 99.24
+    },
+    "speed": {
+     "num": 2706,
+     "den": 62623,
+     "rate": 4.32
+    },
+    "redlight": {
+     "num": 2436,
+     "den": 11290,
+     "rate": 21.58
+    },
+    "reverse": {
+     "num": 404880,
+     "den": 17712597,
+     "rate": 2.29
+    },
+    "clothing": {
+     "cloth": {
+      "num": 696,
+      "den": 701,
+      "rate": 99.29
+     },
+     "vis": {
+      "num": 30971.646052143227,
+      "den": 33238,
+      "rate": 93.18
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 21.75
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1004,
+     "den": 1018,
+     "rate": 98.62
+    },
+    "speed": {
+     "num": 2168,
+     "den": 61816,
+     "rate": 3.51
+    },
+    "redlight": {
+     "num": 2645,
+     "den": 11921,
+     "rate": 22.19
+    },
+    "reverse": {
+     "num": 479384,
+     "den": 19682099,
+     "rate": 2.44
+    },
+    "clothing": {
+     "cloth": {
+      "num": 856,
+      "den": 854,
+      "rate": 100.23
+     },
+     "vis": {
+      "num": 35009.07896722537,
+      "den": 36836,
+      "rate": 95.04
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 14.0
+    }
+   }
+  },
+  {
+   "level": "merchant",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "张家口",
+   "name": "张家口",
+   "2026-08": {
+    "helmet": {
+     "num": 13923,
+     "den": 14120,
+     "rate": 98.6
+    },
+    "speed": {
+     "num": 56795,
+     "den": 1842298,
+     "rate": 3.08
+    },
+    "redlight": {
+     "num": 38237,
+     "den": 193967,
+     "rate": 19.71
+    },
+    "reverse": {
+     "num": 12348674,
+     "den": 637717799,
+     "rate": 1.94
+    },
+    "clothing": {
+     "cloth": {
+      "num": 9324,
+      "den": 9859,
+      "rate": 94.57
+     },
+     "vis": {
+      "num": 333879.71785495227,
+      "den": 347885,
+      "rate": 95.97
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.77
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 13688,
+     "den": 13835,
+     "rate": 98.94
+    },
+    "speed": {
+     "num": 54508,
+     "den": 1820753,
+     "rate": 2.99
+    },
+    "redlight": {
+     "num": 37918,
+     "den": 187440,
+     "rate": 20.23
+    },
+    "reverse": {
+     "num": 14575622,
+     "den": 647698462,
+     "rate": 2.25
+    },
+    "clothing": {
+     "cloth": {
+      "num": 12087,
+      "den": 12646,
+      "rate": 95.58
+     },
+     "vis": {
+      "num": 412684.6852984216,
+      "den": 435971,
+      "rate": 94.66
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.32
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 14635,
+     "den": 14848,
+     "rate": 98.57
+    },
+    "speed": {
+     "num": 62565,
+     "den": 1935263,
+     "rate": 3.23
+    },
+    "redlight": {
+     "num": 46008,
+     "den": 211431,
+     "rate": 21.76
+    },
+    "reverse": {
+     "num": 16178461,
+     "den": 679171872,
+     "rate": 2.38
+    },
+    "clothing": {
+     "cloth": {
+      "num": 12682,
+      "den": 13108,
+      "rate": 96.75
+     },
+     "vis": {
+      "num": 453479.4811561683,
+      "den": 488786,
+      "rate": 92.78
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.09
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "张家口",
+   "name": "兴必达【张家口】宣化东站",
+   "2026-08": {
+    "helmet": {
+     "num": 2066,
+     "den": 2117,
+     "rate": 97.59
+    },
+    "speed": {
+     "num": 4061,
+     "den": 197992,
+     "rate": 2.05
+    },
+    "redlight": {
+     "num": 2455,
+     "den": 11585,
+     "rate": 21.19
+    },
+    "reverse": {
+     "num": 2359094,
+     "den": 94711747,
+     "rate": 2.49
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1390,
+      "den": 1578,
+      "rate": 88.09
+     },
+     "vis": {
+      "num": 48572.63532007149,
+      "den": 49949,
+      "rate": 97.24
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.19
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1813,
+     "den": 1836,
+     "rate": 98.75
+    },
+    "speed": {
+     "num": 3301,
+     "den": 167125,
+     "rate": 1.98
+    },
+    "redlight": {
+     "num": 1788,
+     "den": 9113,
+     "rate": 19.62
+    },
+    "reverse": {
+     "num": 1881027,
+     "den": 79394491,
+     "rate": 2.37
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1577,
+      "den": 1724,
+      "rate": 91.47
+     },
+     "vis": {
+      "num": 48355.819242206955,
+      "den": 51905,
+      "rate": 93.16
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 1.94
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1905,
+     "den": 1919,
+     "rate": 99.27
+    },
+    "speed": {
+     "num": 3323,
+     "den": 178856,
+     "rate": 1.86
+    },
+    "redlight": {
+     "num": 2231,
+     "den": 10120,
+     "rate": 22.05
+    },
+    "reverse": {
+     "num": 2137721,
+     "den": 81714295,
+     "rate": 2.62
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1591,
+      "den": 1721,
+      "rate": 92.45
+     },
+     "vis": {
+      "num": 54342.569210523776,
+      "den": 58595,
+      "rate": 92.74
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.44
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "张家口",
+   "name": "兴必达【张家口】宣化站",
+   "2026-08": {
+    "helmet": {
+     "num": 3148,
+     "den": 3192,
+     "rate": 98.62
+    },
+    "speed": {
+     "num": 7887,
+     "den": 381297,
+     "rate": 2.07
+    },
+    "redlight": {
+     "num": 8255,
+     "den": 51145,
+     "rate": 16.14
+    },
+    "reverse": {
+     "num": 2193349,
+     "den": 129064056,
+     "rate": 1.7
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2142,
+      "den": 2196,
+      "rate": 97.54
+     },
+     "vis": {
+      "num": 76284.9701628208,
+      "den": 80399,
+      "rate": 94.88
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.64
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2632,
+     "den": 2651,
+     "rate": 99.28
+    },
+    "speed": {
+     "num": 5462,
+     "den": 311128,
+     "rate": 1.76
+    },
+    "redlight": {
+     "num": 6351,
+     "den": 37840,
+     "rate": 16.78
+    },
+    "reverse": {
+     "num": 1818935,
+     "den": 103118798,
+     "rate": 1.76
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2386,
+      "den": 2447,
+      "rate": 97.51
+     },
+     "vis": {
+      "num": 73635.14335457918,
+      "den": 77156,
+      "rate": 95.44
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 1.54
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2682,
+     "den": 2718,
+     "rate": 98.68
+    },
+    "speed": {
+     "num": 5783,
+     "den": 328068,
+     "rate": 1.76
+    },
+    "redlight": {
+     "num": 7455,
+     "den": 40138,
+     "rate": 18.57
+    },
+    "reverse": {
+     "num": 2028627,
+     "den": 107492240,
+     "rate": 1.89
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2377,
+      "den": 2433,
+      "rate": 97.7
+     },
+     "vis": {
+      "num": 80692.46809739916,
+      "den": 86413,
+      "rate": 93.38
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.67
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "张家口",
+   "name": "兴必达【张家口】武城站",
+   "2026-08": {
+    "helmet": {
+     "num": 800,
+     "den": 818,
+     "rate": 97.8
+    },
+    "speed": {
+     "num": 3820,
+     "den": 120522,
+     "rate": 3.17
+    },
+    "redlight": {
+     "num": 2507,
+     "den": 12780,
+     "rate": 19.62
+    },
+    "reverse": {
+     "num": 578612,
+     "den": 37017326,
+     "rate": 1.56
+    },
+    "clothing": {
+     "cloth": {
+      "num": 551,
+      "den": 577,
+      "rate": 95.49
+     },
+     "vis": {
+      "num": 18744.612673517764,
+      "den": 19219,
+      "rate": 97.53
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.0
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 630,
+     "den": 638,
+     "rate": 98.75
+    },
+    "speed": {
+     "num": 3425,
+     "den": 92548,
+     "rate": 3.7
+    },
+    "redlight": {
+     "num": 1874,
+     "den": 9669,
+     "rate": 19.38
+    },
+    "reverse": {
+     "num": 452197,
+     "den": 28746748,
+     "rate": 1.57
+    },
+    "clothing": {
+     "cloth": {
+      "num": 560,
+      "den": 584,
+      "rate": 95.89
+     },
+     "vis": {
+      "num": 19707.546435656754,
+      "den": 20478,
+      "rate": 96.24
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.44
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 790,
+     "den": 809,
+     "rate": 97.65
+    },
+    "speed": {
+     "num": 4004,
+     "den": 107772,
+     "rate": 3.72
+    },
+    "redlight": {
+     "num": 2474,
+     "den": 13283,
+     "rate": 18.63
+    },
+    "reverse": {
+     "num": 550420,
+     "den": 34272725,
+     "rate": 1.61
+    },
+    "clothing": {
+     "cloth": {
+      "num": 679,
+      "den": 709,
+      "rate": 95.77
+     },
+     "vis": {
+      "num": 25169.32331157513,
+      "den": 26259,
+      "rate": 95.85
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.6
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "张家口",
+   "name": "兴必达【张家口】百盛站",
+   "2026-08": {
+    "helmet": {
+     "num": 2273,
+     "den": 2287,
+     "rate": 99.39
+    },
+    "speed": {
+     "num": 13533,
+     "den": 361207,
+     "rate": 3.75
+    },
+    "redlight": {
+     "num": 5350,
+     "den": 25727,
+     "rate": 20.8
+    },
+    "reverse": {
+     "num": 1499319,
+     "den": 99248934,
+     "rate": 1.51
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1481,
+      "den": 1542,
+      "rate": 96.04
+     },
+     "vis": {
+      "num": 51454.59350861665,
+      "den": 53605,
+      "rate": 95.99
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.98
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1678,
+     "den": 1698,
+     "rate": 98.82
+    },
+    "speed": {
+     "num": 9862,
+     "den": 267471,
+     "rate": 3.69
+    },
+    "redlight": {
+     "num": 3786,
+     "den": 18221,
+     "rate": 20.78
+    },
+    "reverse": {
+     "num": 1061122,
+     "den": 73102763,
+     "rate": 1.45
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1488,
+      "den": 1567,
+      "rate": 94.96
+     },
+     "vis": {
+      "num": 48399.466328103816,
+      "den": 51242,
+      "rate": 94.45
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 1.09
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1801,
+     "den": 1826,
+     "rate": 98.63
+    },
+    "speed": {
+     "num": 10642,
+     "den": 274657,
+     "rate": 3.87
+    },
+    "redlight": {
+     "num": 4664,
+     "den": 21473,
+     "rate": 21.72
+    },
+    "reverse": {
+     "num": 1177477,
+     "den": 73768142,
+     "rate": 1.6
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1566,
+      "den": 1592,
+      "rate": 98.37
+     },
+     "vis": {
+      "num": 51972.67915157792,
+      "den": 57746,
+      "rate": 90.0
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.66
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "张家口",
+   "name": "兴必达【张家口】金悦站",
+   "2026-08": {
+    "helmet": {
+     "num": 450,
+     "den": 483,
+     "rate": 93.17
+    },
+    "speed": {
+     "num": 2950,
+     "den": 71406,
+     "rate": 4.13
+    },
+    "redlight": {
+     "num": 1885,
+     "den": 8418,
+     "rate": 22.39
+    },
+    "reverse": {
+     "num": 955341,
+     "den": 28130070,
+     "rate": 3.4
+    },
+    "clothing": {
+     "cloth": {
+      "num": 369,
+      "den": 411,
+      "rate": 89.78
+     },
+     "vis": {
+      "num": 12052.66530684248,
+      "den": 14650,
+      "rate": 82.27
+     }
+    },
+    "high_speed": {
+     "days": 4,
+     "pct": 4.29
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2933,
+     "den": 2984,
+     "rate": 98.29
+    },
+    "speed": {
+     "num": 17006,
+     "den": 463173,
+     "rate": 3.67
+    },
+    "redlight": {
+     "num": 11218,
+     "den": 53843,
+     "rate": 20.83
+    },
+    "reverse": {
+     "num": 5752500,
+     "den": 182412353,
+     "rate": 3.15
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2598,
+      "den": 2783,
+      "rate": 93.35
+     },
+     "vis": {
+      "num": 95620.70772651584,
+      "den": 103777,
+      "rate": 92.14
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 3.69
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 3369,
+     "den": 3439,
+     "rate": 97.96
+    },
+    "speed": {
+     "num": 19187,
+     "den": 501829,
+     "rate": 3.82
+    },
+    "redlight": {
+     "num": 13136,
+     "den": 59278,
+     "rate": 22.16
+    },
+    "reverse": {
+     "num": 6442822,
+     "den": 196582944,
+     "rate": 3.28
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2941,
+      "den": 3063,
+      "rate": 96.02
+     },
+     "vis": {
+      "num": 105381.4992899742,
+      "den": 115980,
+      "rate": 90.86
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 7.35
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "张家口",
+   "name": "兴必达【张家口】金鼎站",
+   "2026-08": {
+    "helmet": {
+     "num": 3341,
+     "den": 3370,
+     "rate": 99.14
+    },
+    "speed": {
+     "num": 16379,
+     "den": 481207,
+     "rate": 3.4
+    },
+    "redlight": {
+     "num": 11426,
+     "den": 52923,
+     "rate": 21.59
+    },
+    "reverse": {
+     "num": 2684371,
+     "den": 154068938,
+     "rate": 1.74
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2184,
+      "den": 2297,
+      "rate": 95.08
+     },
+     "vis": {
+      "num": 82749.42116666121,
+      "den": 84740,
+      "rate": 97.65
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.09
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2486,
+     "den": 2503,
+     "rate": 99.32
+    },
+    "speed": {
+     "num": 9722,
+     "den": 335245,
+     "rate": 2.9
+    },
+    "redlight": {
+     "num": 7630,
+     "den": 34813,
+     "rate": 21.92
+    },
+    "reverse": {
+     "num": 2015458,
+     "den": 106030379,
+     "rate": 1.9
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2154,
+      "den": 2199,
+      "rate": 97.95
+     },
+     "vis": {
+      "num": 80405.06216521132,
+      "den": 82952,
+      "rate": 96.93
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 1.11
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2665,
+     "den": 2688,
+     "rate": 99.14
+    },
+    "speed": {
+     "num": 12564,
+     "den": 367723,
+     "rate": 3.42
+    },
+    "redlight": {
+     "num": 9977,
+     "den": 42970,
+     "rate": 23.22
+    },
+    "reverse": {
+     "num": 2175997,
+     "den": 114265316,
+     "rate": 1.9
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2275,
+      "den": 2312,
+      "rate": 98.4
+     },
+     "vis": {
+      "num": 88816.48637533674,
+      "den": 93962,
+      "rate": 94.52
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.28
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "张家口",
+   "name": "兴必达【张家口】银座站",
+   "2026-08": {
+    "helmet": {
+     "num": 1845,
+     "den": 1853,
+     "rate": 99.57
+    },
+    "speed": {
+     "num": 8165,
+     "den": 228667,
+     "rate": 3.57
+    },
+    "redlight": {
+     "num": 6359,
+     "den": 31389,
+     "rate": 20.26
+    },
+    "reverse": {
+     "num": 2078588,
+     "den": 95476728,
+     "rate": 2.18
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1207,
+      "den": 1258,
+      "rate": 95.95
+     },
+     "vis": {
+      "num": 44020.81971642177,
+      "den": 45323,
+      "rate": 97.13
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 4.46
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1516,
+     "den": 1525,
+     "rate": 99.41
+    },
+    "speed": {
+     "num": 5730,
+     "den": 184063,
+     "rate": 3.11
+    },
+    "redlight": {
+     "num": 5271,
+     "den": 23941,
+     "rate": 22.02
+    },
+    "reverse": {
+     "num": 1594383,
+     "den": 74892930,
+     "rate": 2.13
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1324,
+      "den": 1342,
+      "rate": 98.66
+     },
+     "vis": {
+      "num": 46560.94004614754,
+      "den": 48461,
+      "rate": 96.08
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 6.43
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1423,
+     "den": 1449,
+     "rate": 98.21
+    },
+    "speed": {
+     "num": 7062,
+     "den": 176358,
+     "rate": 4.0
+    },
+    "redlight": {
+     "num": 6071,
+     "den": 24169,
+     "rate": 25.12
+    },
+    "reverse": {
+     "num": 1665397,
+     "den": 71076210,
+     "rate": 2.34
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1253,
+      "den": 1278,
+      "rate": 98.04
+     },
+     "vis": {
+      "num": 47104.45571978088,
+      "den": 49831,
+      "rate": 94.53
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 6.64
+    }
+   }
+  },
+  {
+   "level": "merchant",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "秦皇岛",
+   "name": "秦皇岛",
+   "2026-08": {
+    "helmet": {
+     "num": 41109,
+     "den": 42455,
+     "rate": 96.83
+    },
+    "speed": {
+     "num": 174183,
+     "den": 5054286,
+     "rate": 3.45
+    },
+    "redlight": {
+     "num": 215636,
+     "den": 953962,
+     "rate": 22.6
+    },
+    "reverse": {
+     "num": 73723785,
+     "den": 1975285757,
+     "rate": 3.73
+    },
+    "clothing": {
+     "cloth": {
+      "num": 30462,
+      "den": 32471,
+      "rate": 93.81
+     },
+     "vis": {
+      "num": 1280728.462253603,
+      "den": 1373994,
+      "rate": 93.21
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.23
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 32372,
+     "den": 32872,
+     "rate": 98.48
+    },
+    "speed": {
+     "num": 125478,
+     "den": 3976508,
+     "rate": 3.16
+    },
+    "redlight": {
+     "num": 159930,
+     "den": 753510,
+     "rate": 21.22
+    },
+    "reverse": {
+     "num": 51288598,
+     "den": 1510559218,
+     "rate": 3.4
+    },
+    "clothing": {
+     "cloth": {
+      "num": 27297,
+      "den": 28796,
+      "rate": 94.79
+     },
+     "vis": {
+      "num": 990644.9233454615,
+      "den": 1053723,
+      "rate": 94.01
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.43
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 32884,
+     "den": 33357,
+     "rate": 98.58
+    },
+    "speed": {
+     "num": 124365,
+     "den": 4067604,
+     "rate": 3.06
+    },
+    "redlight": {
+     "num": 159548,
+     "den": 782557,
+     "rate": 20.39
+    },
+    "reverse": {
+     "num": 52877473,
+     "den": 1523705584,
+     "rate": 3.47
+    },
+    "clothing": {
+     "cloth": {
+      "num": 27336,
+      "den": 28771,
+      "rate": 95.01
+     },
+     "vis": {
+      "num": 1005644.7975833692,
+      "den": 1078296,
+      "rate": 93.26
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.68
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "秦皇岛",
+   "name": "兴必达【秦皇岛】东方明珠城二站",
+   "2026-08": {
+    "helmet": {
+     "num": 1970,
+     "den": 2017,
+     "rate": 97.67
+    },
+    "speed": {
+     "num": 7553,
+     "den": 251517,
+     "rate": 3.0
+    },
+    "redlight": {
+     "num": 8791,
+     "den": 41066,
+     "rate": 21.41
+    },
+    "reverse": {
+     "num": 4515145,
+     "den": 111428745,
+     "rate": 4.05
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1452,
+      "den": 1552,
+      "rate": 93.56
+     },
+     "vis": {
+      "num": 57396.54973851472,
+      "den": 59358,
+      "rate": 96.7
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.72
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1709,
+     "den": 1725,
+     "rate": 99.07
+    },
+    "speed": {
+     "num": 5227,
+     "den": 208941,
+     "rate": 2.5
+    },
+    "redlight": {
+     "num": 7264,
+     "den": 35576,
+     "rate": 20.42
+    },
+    "reverse": {
+     "num": 3421758,
+     "den": 91971207,
+     "rate": 3.72
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1442,
+      "den": 1542,
+      "rate": 93.51
+     },
+     "vis": {
+      "num": 48909.486722532114,
+      "den": 50997,
+      "rate": 95.91
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.36
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1376,
+     "den": 1383,
+     "rate": 99.49
+    },
+    "speed": {
+     "num": 3798,
+     "den": 163855,
+     "rate": 2.32
+    },
+    "redlight": {
+     "num": 6052,
+     "den": 28576,
+     "rate": 21.18
+    },
+    "reverse": {
+     "num": 3005218,
+     "den": 74022648,
+     "rate": 4.06
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1120,
+      "den": 1204,
+      "rate": 93.02
+     },
+     "vis": {
+      "num": 39731.43733112606,
+      "den": 42682,
+      "rate": 93.09
+     }
+    },
+    "high_speed": {
+     "days": 25,
+     "pct": 2.13
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "秦皇岛",
+   "name": "兴必达【秦皇岛】东方明珠城站",
+   "2026-08": {
+    "helmet": {
+     "num": 1754,
+     "den": 1810,
+     "rate": 96.91
+    },
+    "speed": {
+     "num": 5676,
+     "den": 239995,
+     "rate": 2.37
+    },
+    "redlight": {
+     "num": 7736,
+     "den": 36497,
+     "rate": 21.2
+    },
+    "reverse": {
+     "num": 5312027,
+     "den": 110041724,
+     "rate": 4.83
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1289,
+      "den": 1524,
+      "rate": 84.58
+     },
+     "vis": {
+      "num": 49914.24608896101,
+      "den": 53916,
+      "rate": 92.58
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.69
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1359,
+     "den": 1391,
+     "rate": 97.7
+    },
+    "speed": {
+     "num": 3707,
+     "den": 181897,
+     "rate": 2.04
+    },
+    "redlight": {
+     "num": 5841,
+     "den": 28452,
+     "rate": 20.53
+    },
+    "reverse": {
+     "num": 3515377,
+     "den": 83477620,
+     "rate": 4.21
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1171,
+      "den": 1430,
+      "rate": 81.89
+     },
+     "vis": {
+      "num": 38451.04089518464,
+      "den": 41582,
+      "rate": 92.47
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.47
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1433,
+     "den": 1461,
+     "rate": 98.08
+    },
+    "speed": {
+     "num": 4026,
+     "den": 207182,
+     "rate": 1.94
+    },
+    "redlight": {
+     "num": 7298,
+     "den": 33734,
+     "rate": 21.63
+    },
+    "reverse": {
+     "num": 4284073,
+     "den": 93183310,
+     "rate": 4.6
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1202,
+      "den": 1569,
+      "rate": 76.61
+     },
+     "vis": {
+      "num": 40914.552975238665,
+      "den": 44481,
+      "rate": 91.98
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.07
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "秦皇岛",
+   "name": "兴必达【秦皇岛】乐购二站",
+   "2026-08": {
+    "helmet": {
+     "num": 2139,
+     "den": 2225,
+     "rate": 96.13
+    },
+    "speed": {
+     "num": 6844,
+     "den": 293100,
+     "rate": 2.34
+    },
+    "redlight": {
+     "num": 14342,
+     "den": 54616,
+     "rate": 26.26
+    },
+    "reverse": {
+     "num": 4403706,
+     "den": 93190021,
+     "rate": 4.73
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1600,
+      "den": 1714,
+      "rate": 93.35
+     },
+     "vis": {
+      "num": 62602.88986847951,
+      "den": 65732,
+      "rate": 95.24
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.43
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1603,
+     "den": 1621,
+     "rate": 98.89
+    },
+    "speed": {
+     "num": 4439,
+     "den": 216381,
+     "rate": 2.05
+    },
+    "redlight": {
+     "num": 9445,
+     "den": 38525,
+     "rate": 24.52
+    },
+    "reverse": {
+     "num": 3021610,
+     "den": 66782768,
+     "rate": 4.52
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1340,
+      "den": 1400,
+      "rate": 95.71
+     },
+     "vis": {
+      "num": 49087.533405329865,
+      "den": 51287,
+      "rate": 95.71
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.58
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1610,
+     "den": 1626,
+     "rate": 99.02
+    },
+    "speed": {
+     "num": 4570,
+     "den": 220929,
+     "rate": 2.07
+    },
+    "redlight": {
+     "num": 8598,
+     "den": 39403,
+     "rate": 21.82
+    },
+    "reverse": {
+     "num": 2878665,
+     "den": 66761002,
+     "rate": 4.31
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1321,
+      "den": 1349,
+      "rate": 97.92
+     },
+     "vis": {
+      "num": 51461.38715177054,
+      "den": 53143,
+      "rate": 96.84
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.54
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "秦皇岛",
+   "name": "兴必达【秦皇岛】乐购站",
+   "2026-08": {
+    "helmet": {
+     "num": 2414,
+     "den": 2579,
+     "rate": 93.6
+    },
+    "speed": {
+     "num": 10335,
+     "den": 337439,
+     "rate": 3.06
+    },
+    "redlight": {
+     "num": 15455,
+     "den": 68271,
+     "rate": 22.64
+    },
+    "reverse": {
+     "num": 4269012,
+     "den": 111029480,
+     "rate": 3.84
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1882,
+      "den": 2073,
+      "rate": 90.79
+     },
+     "vis": {
+      "num": 69684.18058399383,
+      "den": 74762,
+      "rate": 93.21
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 5.97
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1917,
+     "den": 1958,
+     "rate": 97.91
+    },
+    "speed": {
+     "num": 7184,
+     "den": 246820,
+     "rate": 2.91
+    },
+    "redlight": {
+     "num": 11414,
+     "den": 49234,
+     "rate": 23.18
+    },
+    "reverse": {
+     "num": 2910781,
+     "den": 80208002,
+     "rate": 3.63
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1639,
+      "den": 1724,
+      "rate": 95.07
+     },
+     "vis": {
+      "num": 57310.16146541976,
+      "den": 59421,
+      "rate": 96.45
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 6.11
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1873,
+     "den": 1890,
+     "rate": 99.1
+    },
+    "speed": {
+     "num": 5470,
+     "den": 240471,
+     "rate": 2.27
+    },
+    "redlight": {
+     "num": 10307,
+     "den": 48587,
+     "rate": 21.21
+    },
+    "reverse": {
+     "num": 2872321,
+     "den": 76877662,
+     "rate": 3.74
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1565,
+      "den": 1689,
+      "rate": 92.66
+     },
+     "vis": {
+      "num": 54416.87418778326,
+      "den": 56759,
+      "rate": 95.87
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.29
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "秦皇岛",
+   "name": "兴必达【秦皇岛】北戴河站",
+   "2026-08": {
+    "helmet": {
+     "num": 6241,
+     "den": 6486,
+     "rate": 96.22
+    },
+    "speed": {
+     "num": 30010,
+     "den": 580809,
+     "rate": 5.17
+    },
+    "redlight": {
+     "num": 12741,
+     "den": 68656,
+     "rate": 18.56
+    },
+    "reverse": {
+     "num": 9136735,
+     "den": 315757221,
+     "rate": 2.89
+    },
+    "clothing": {
+     "cloth": {
+      "num": 4639,
+      "den": 4760,
+      "rate": 97.46
+     },
+     "vis": {
+      "num": 237834.62557080723,
+      "den": 260732,
+      "rate": 91.22
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.92
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 3672,
+     "den": 3748,
+     "rate": 97.97
+    },
+    "speed": {
+     "num": 18092,
+     "den": 327031,
+     "rate": 5.53
+    },
+    "redlight": {
+     "num": 7842,
+     "den": 36962,
+     "rate": 21.22
+    },
+    "reverse": {
+     "num": 4761216,
+     "den": 191245879,
+     "rate": 2.49
+    },
+    "clothing": {
+     "cloth": {
+      "num": 3156,
+      "den": 3244,
+      "rate": 97.29
+     },
+     "vis": {
+      "num": 111555.814957461,
+      "den": 118915,
+      "rate": 93.81
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 5.07
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 3198,
+     "den": 3291,
+     "rate": 97.17
+    },
+    "speed": {
+     "num": 16134,
+     "den": 295600,
+     "rate": 5.46
+    },
+    "redlight": {
+     "num": 7005,
+     "den": 35381,
+     "rate": 19.8
+    },
+    "reverse": {
+     "num": 4445417,
+     "den": 170087481,
+     "rate": 2.61
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2829,
+      "den": 2907,
+      "rate": 97.32
+     },
+     "vis": {
+      "num": 109918.61634541245,
+      "den": 119316,
+      "rate": 92.12
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 6.4
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "秦皇岛",
+   "name": "兴必达【秦皇岛】北部站",
+   "2026-08": {
+    "helmet": {
+     "num": 1224,
+     "den": 1263,
+     "rate": 96.91
+    },
+    "speed": {
+     "num": 6209,
+     "den": 104180,
+     "rate": 5.96
+    },
+    "redlight": {
+     "num": 3078,
+     "den": 12543,
+     "rate": 24.54
+    },
+    "reverse": {
+     "num": 1954299,
+     "den": 44971075,
+     "rate": 4.35
+    },
+    "clothing": {
+     "cloth": {
+      "num": 909,
+      "den": 963,
+      "rate": 94.39
+     },
+     "vis": {
+      "num": 35856.97507114015,
+      "den": 38852,
+      "rate": 92.29
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.45
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1034,
+     "den": 1055,
+     "rate": 98.01
+    },
+    "speed": {
+     "num": 3934,
+     "den": 81837,
+     "rate": 4.81
+    },
+    "redlight": {
+     "num": 1902,
+     "den": 8481,
+     "rate": 22.43
+    },
+    "reverse": {
+     "num": 1439754,
+     "den": 34964887,
+     "rate": 4.12
+    },
+    "clothing": {
+     "cloth": {
+      "num": 864,
+      "den": 880,
+      "rate": 98.18
+     },
+     "vis": {
+      "num": 30433.166406461092,
+      "den": 33277,
+      "rate": 91.45
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 1.93
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1094,
+     "den": 1105,
+     "rate": 99.0
+    },
+    "speed": {
+     "num": 3418,
+     "den": 90050,
+     "rate": 3.8
+    },
+    "redlight": {
+     "num": 2281,
+     "den": 10687,
+     "rate": 21.34
+    },
+    "reverse": {
+     "num": 1369935,
+     "den": 37600433,
+     "rate": 3.64
+    },
+    "clothing": {
+     "cloth": {
+      "num": 877,
+      "den": 928,
+      "rate": 94.5
+     },
+     "vis": {
+      "num": 33045.34905667212,
+      "den": 35220,
+      "rate": 93.83
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 4.97
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "秦皇岛",
+   "name": "兴必达【秦皇岛】在水一方东站",
+   "2026-08": {
+    "helmet": {
+     "num": 1874,
+     "den": 1922,
+     "rate": 97.5
+    },
+    "speed": {
+     "num": 6078,
+     "den": 324834,
+     "rate": 1.87
+    },
+    "redlight": {
+     "num": 13598,
+     "den": 57323,
+     "rate": 23.72
+    },
+    "reverse": {
+     "num": 4529510,
+     "den": 93643440,
+     "rate": 4.84
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1377,
+      "den": 1456,
+      "rate": 94.57
+     },
+     "vis": {
+      "num": 54484.56207091403,
+      "den": 58846,
+      "rate": 92.59
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.24
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1439,
+     "den": 1460,
+     "rate": 98.56
+    },
+    "speed": {
+     "num": 4353,
+     "den": 247461,
+     "rate": 1.76
+    },
+    "redlight": {
+     "num": 9963,
+     "den": 43855,
+     "rate": 22.72
+    },
+    "reverse": {
+     "num": 3026897,
+     "den": 68725485,
+     "rate": 4.4
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1198,
+      "den": 1282,
+      "rate": 93.45
+     },
+     "vis": {
+      "num": 42124.60054706625,
+      "den": 45092,
+      "rate": 93.42
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.25
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1541,
+     "den": 1548,
+     "rate": 99.55
+    },
+    "speed": {
+     "num": 4330,
+     "den": 259441,
+     "rate": 1.67
+    },
+    "redlight": {
+     "num": 9759,
+     "den": 43513,
+     "rate": 22.43
+    },
+    "reverse": {
+     "num": 3298741,
+     "den": 70818256,
+     "rate": 4.66
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1259,
+      "den": 1318,
+      "rate": 95.52
+     },
+     "vis": {
+      "num": 44285.729619226906,
+      "den": 48082,
+      "rate": 92.1
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.61
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "秦皇岛",
+   "name": "兴必达【秦皇岛】在水一方站",
+   "2026-08": {
+    "helmet": {
+     "num": 2887,
+     "den": 2980,
+     "rate": 96.88
+    },
+    "speed": {
+     "num": 10554,
+     "den": 369993,
+     "rate": 2.85
+    },
+    "redlight": {
+     "num": 20327,
+     "den": 79615,
+     "rate": 25.53
+    },
+    "reverse": {
+     "num": 4990638,
+     "den": 122720414,
+     "rate": 4.07
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2135,
+      "den": 2242,
+      "rate": 95.23
+     },
+     "vis": {
+      "num": 88873.65903642372,
+      "den": 93927,
+      "rate": 94.62
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.04
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2350,
+     "den": 2381,
+     "rate": 98.7
+    },
+    "speed": {
+     "num": 6661,
+     "den": 273254,
+     "rate": 2.44
+    },
+    "redlight": {
+     "num": 13374,
+     "den": 55309,
+     "rate": 24.18
+    },
+    "reverse": {
+     "num": 3378232,
+     "den": 87451697,
+     "rate": 3.86
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1966,
+      "den": 1989,
+      "rate": 98.84
+     },
+     "vis": {
+      "num": 71193.3953918814,
+      "den": 75184,
+      "rate": 94.69
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.14
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2442,
+     "den": 2477,
+     "rate": 98.59
+    },
+    "speed": {
+     "num": 7207,
+     "den": 277428,
+     "rate": 2.6
+    },
+    "redlight": {
+     "num": 12329,
+     "den": 54348,
+     "rate": 22.69
+    },
+    "reverse": {
+     "num": 3484890,
+     "den": 87708894,
+     "rate": 3.97
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1994,
+      "den": 2010,
+      "rate": 99.2
+     },
+     "vis": {
+      "num": 71102.42482834903,
+      "den": 75808,
+      "rate": 93.79
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.62
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "秦皇岛",
+   "name": "兴必达【秦皇岛】大学二站",
+   "2026-08": {
+    "helmet": {
+     "num": 3025,
+     "den": 3142,
+     "rate": 96.28
+    },
+    "speed": {
+     "num": 15927,
+     "den": 407150,
+     "rate": 3.91
+    },
+    "redlight": {
+     "num": 16079,
+     "den": 57309,
+     "rate": 28.06
+    },
+    "reverse": {
+     "num": 6114516,
+     "den": 126636669,
+     "rate": 4.83
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2241,
+      "den": 2283,
+      "rate": 98.16
+     },
+     "vis": {
+      "num": 89283.3254643091,
+      "den": 97585,
+      "rate": 91.49
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.64
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2150,
+     "den": 2177,
+     "rate": 98.76
+    },
+    "speed": {
+     "num": 10476,
+     "den": 290025,
+     "rate": 3.61
+    },
+    "redlight": {
+     "num": 9721,
+     "den": 36342,
+     "rate": 26.75
+    },
+    "reverse": {
+     "num": 4339349,
+     "den": 89303757,
+     "rate": 4.86
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1838,
+      "den": 1847,
+      "rate": 99.51
+     },
+     "vis": {
+      "num": 69932.51746869723,
+      "den": 75411,
+      "rate": 92.74
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 4.3
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2250,
+     "den": 2281,
+     "rate": 98.64
+    },
+    "speed": {
+     "num": 10801,
+     "den": 305761,
+     "rate": 3.53
+    },
+    "redlight": {
+     "num": 9812,
+     "den": 38490,
+     "rate": 25.49
+    },
+    "reverse": {
+     "num": 4561843,
+     "den": 93567422,
+     "rate": 4.88
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1880,
+      "den": 1915,
+      "rate": 98.17
+     },
+     "vis": {
+      "num": 66948.32664410963,
+      "den": 72076,
+      "rate": 92.89
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 5.72
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "秦皇岛",
+   "name": "兴必达【秦皇岛】大学站",
+   "2026-08": {
+    "helmet": {
+     "num": 2734,
+     "den": 2809,
+     "rate": 97.33
+    },
+    "speed": {
+     "num": 12858,
+     "den": 376055,
+     "rate": 3.42
+    },
+    "redlight": {
+     "num": 14037,
+     "den": 51328,
+     "rate": 27.35
+    },
+    "reverse": {
+     "num": 5565609,
+     "den": 113797646,
+     "rate": 4.89
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2014,
+      "den": 2131,
+      "rate": 94.51
+     },
+     "vis": {
+      "num": 79499.12101225209,
+      "den": 84538,
+      "rate": 94.04
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.17
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2070,
+     "den": 2096,
+     "rate": 98.76
+    },
+    "speed": {
+     "num": 10574,
+     "den": 278220,
+     "rate": 3.8
+    },
+    "redlight": {
+     "num": 9663,
+     "den": 35805,
+     "rate": 26.99
+    },
+    "reverse": {
+     "num": 4170835,
+     "den": 87168187,
+     "rate": 4.78
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1737,
+      "den": 1807,
+      "rate": 96.13
+     },
+     "vis": {
+      "num": 66239.77243747275,
+      "den": 70358,
+      "rate": 94.15
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 5.53
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2263,
+     "den": 2288,
+     "rate": 98.91
+    },
+    "speed": {
+     "num": 10745,
+     "den": 297385,
+     "rate": 3.61
+    },
+    "redlight": {
+     "num": 10374,
+     "den": 39878,
+     "rate": 26.01
+    },
+    "reverse": {
+     "num": 4628779,
+     "den": 94681216,
+     "rate": 4.89
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1877,
+      "den": 1911,
+      "rate": 98.22
+     },
+     "vis": {
+      "num": 70625.08652385481,
+      "den": 75251,
+      "rate": 93.85
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 4.24
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "秦皇岛",
+   "name": "兴必达【秦皇岛】孟营二站",
+   "2026-08": {
+    "helmet": {
+     "num": 197,
+     "den": 222,
+     "rate": 88.74
+    },
+    "speed": {
+     "num": 885,
+     "den": 32572,
+     "rate": 2.72
+    },
+    "redlight": {
+     "num": 1529,
+     "den": 7693,
+     "rate": 19.88
+    },
+    "reverse": {
+     "num": 190873,
+     "den": 9248499,
+     "rate": 2.06
+    },
+    "clothing": {
+     "cloth": {
+      "num": 221,
+      "den": 231,
+      "rate": 95.67
+     },
+     "vis": {
+      "num": 7341.246943909821,
+      "den": 8952,
+      "rate": 82.01
+     }
+    },
+    "high_speed": {
+     "days": 3,
+     "pct": 3.89
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1986,
+     "den": 2003,
+     "rate": 99.15
+    },
+    "speed": {
+     "num": 11230,
+     "den": 354431,
+     "rate": 3.17
+    },
+    "redlight": {
+     "num": 12844,
+     "den": 79690,
+     "rate": 16.12
+    },
+    "reverse": {
+     "num": 1623945,
+     "den": 98519418,
+     "rate": 1.65
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1624,
+      "den": 1737,
+      "rate": 93.49
+     },
+     "vis": {
+      "num": 62229.37770794295,
+      "den": 64475,
+      "rate": 96.52
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 3.19
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2450,
+     "den": 2480,
+     "rate": 98.79
+    },
+    "speed": {
+     "num": 13555,
+     "den": 422239,
+     "rate": 3.21
+    },
+    "redlight": {
+     "num": 15009,
+     "den": 96132,
+     "rate": 15.61
+    },
+    "reverse": {
+     "num": 1994426,
+     "den": 116540084,
+     "rate": 1.71
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2011,
+      "den": 2100,
+      "rate": 95.76
+     },
+     "vis": {
+      "num": 75009.76361385317,
+      "den": 77406,
+      "rate": 96.9
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 4.91
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "秦皇岛",
+   "name": "兴必达【秦皇岛】孟营站",
+   "2026-08": {
+    "helmet": {
+     "num": 3658,
+     "den": 3743,
+     "rate": 97.73
+    },
+    "speed": {
+     "num": 23222,
+     "den": 654265,
+     "rate": 3.55
+    },
+    "redlight": {
+     "num": 28114,
+     "den": 154807,
+     "rate": 18.16
+    },
+    "reverse": {
+     "num": 3319762,
+     "den": 184092577,
+     "rate": 1.8
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2682,
+      "den": 3033,
+      "rate": 88.43
+     },
+     "vis": {
+      "num": 104786.71418138326,
+      "den": 109623,
+      "rate": 95.59
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.52
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 3127,
+     "den": 3171,
+     "rate": 98.61
+    },
+    "speed": {
+     "num": 17720,
+     "den": 526885,
+     "rate": 3.36
+    },
+    "redlight": {
+     "num": 20192,
+     "den": 122423,
+     "rate": 16.49
+    },
+    "reverse": {
+     "num": 2657771,
+     "den": 144885342,
+     "rate": 1.83
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2659,
+      "den": 2847,
+      "rate": 93.4
+     },
+     "vis": {
+      "num": 98416.86900231116,
+      "den": 103860,
+      "rate": 94.76
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 3.58
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 3197,
+     "den": 3229,
+     "rate": 99.01
+    },
+    "speed": {
+     "num": 16296,
+     "den": 531014,
+     "rate": 3.07
+    },
+    "redlight": {
+     "num": 19162,
+     "den": 124191,
+     "rate": 15.43
+    },
+    "reverse": {
+     "num": 2599773,
+     "den": 145336148,
+     "rate": 1.79
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2641,
+      "den": 2773,
+      "rate": 95.24
+     },
+     "vis": {
+      "num": 94785.27888474701,
+      "den": 100750,
+      "rate": 94.08
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.36
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "秦皇岛",
+   "name": "兴必达【秦皇岛】山海关站",
+   "2026-08": {
+    "helmet": {
+     "num": 3797,
+     "den": 3833,
+     "rate": 99.06
+    },
+    "speed": {
+     "num": 10804,
+     "den": 294479,
+     "rate": 3.67
+    },
+    "redlight": {
+     "num": 17628,
+     "den": 99943,
+     "rate": 17.64
+    },
+    "reverse": {
+     "num": 4398062,
+     "den": 184061412,
+     "rate": 2.39
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2745,
+      "den": 2916,
+      "rate": 94.14
+     },
+     "vis": {
+      "num": 129272.53848305618,
+      "den": 135512,
+      "rate": 95.4
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.49
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2581,
+     "den": 2601,
+     "rate": 99.23
+    },
+    "speed": {
+     "num": 5602,
+     "den": 188204,
+     "rate": 2.98
+    },
+    "redlight": {
+     "num": 12199,
+     "den": 66474,
+     "rate": 18.35
+    },
+    "reverse": {
+     "num": 2772182,
+     "den": 125286099,
+     "rate": 2.21
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2137,
+      "den": 2323,
+      "rate": 91.99
+     },
+     "vis": {
+      "num": 82143.55185735473,
+      "den": 87663,
+      "rate": 93.7
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.46
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2583,
+     "den": 2602,
+     "rate": 99.27
+    },
+    "speed": {
+     "num": 6623,
+     "den": 184231,
+     "rate": 3.59
+    },
+    "redlight": {
+     "num": 13012,
+     "den": 69734,
+     "rate": 18.66
+    },
+    "reverse": {
+     "num": 2906641,
+     "den": 127682985,
+     "rate": 2.28
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2139,
+      "den": 2291,
+      "rate": 93.37
+     },
+     "vis": {
+      "num": 88834.8464322062,
+      "den": 95479,
+      "rate": 93.04
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.78
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "秦皇岛",
+   "name": "兴必达【秦皇岛】杜庄站",
+   "2026-08": {
+    "helmet": {
+     "num": 694,
+     "den": 724,
+     "rate": 95.86
+    },
+    "speed": {
+     "num": 5842,
+     "den": 57092,
+     "rate": 10.23
+    },
+    "redlight": {
+     "num": 2880,
+     "den": 11819,
+     "rate": 24.37
+    },
+    "reverse": {
+     "num": 525854,
+     "den": 39185139,
+     "rate": 1.34
+    },
+    "clothing": {
+     "cloth": {
+      "num": 513,
+      "den": 560,
+      "rate": 91.61
+     },
+     "vis": {
+      "num": 24524.37498280948,
+      "den": 25673,
+      "rate": 95.53
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 4.4
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 646,
+     "den": 654,
+     "rate": 98.78
+    },
+    "speed": {
+     "num": 1808,
+     "den": 40392,
+     "rate": 4.48
+    },
+    "redlight": {
+     "num": 1649,
+     "den": 8005,
+     "rate": 20.6
+    },
+    "reverse": {
+     "num": 350167,
+     "den": 31436683,
+     "rate": 1.11
+    },
+    "clothing": {
+     "cloth": {
+      "num": 539,
+      "den": 567,
+      "rate": 95.06
+     },
+     "vis": {
+      "num": 17628.719612131546,
+      "den": 19518,
+      "rate": 90.32
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.0
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 657,
+     "den": 664,
+     "rate": 98.95
+    },
+    "speed": {
+     "num": 1554,
+     "den": 41615,
+     "rate": 3.73
+    },
+    "redlight": {
+     "num": 1345,
+     "den": 8698,
+     "rate": 15.46
+    },
+    "reverse": {
+     "num": 346319,
+     "den": 33626333,
+     "rate": 1.03
+    },
+    "clothing": {
+     "cloth": {
+      "num": 556,
+      "den": 581,
+      "rate": 95.7
+     },
+     "vis": {
+      "num": 19016.119977832976,
+      "den": 21131,
+      "rate": 89.99
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.25
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "秦皇岛",
+   "name": "兴必达【秦皇岛】环岛二站",
+   "2026-08": {
+    "helmet": {
+     "num": 2693,
+     "den": 2760,
+     "rate": 97.57
+    },
+    "speed": {
+     "num": 8520,
+     "den": 305158,
+     "rate": 2.79
+    },
+    "redlight": {
+     "num": 17185,
+     "den": 60141,
+     "rate": 28.57
+    },
+    "reverse": {
+     "num": 6526579,
+     "den": 127574277,
+     "rate": 5.12
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1974,
+      "den": 2039,
+      "rate": 96.81
+     },
+     "vis": {
+      "num": 75400.40572440784,
+      "den": 82982,
+      "rate": 90.86
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.29
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1882,
+     "den": 1916,
+     "rate": 98.23
+    },
+    "speed": {
+     "num": 5605,
+     "den": 210390,
+     "rate": 2.66
+    },
+    "redlight": {
+     "num": 10871,
+     "den": 39579,
+     "rate": 27.47
+    },
+    "reverse": {
+     "num": 4472018,
+     "den": 87365920,
+     "rate": 5.12
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1590,
+      "den": 1631,
+      "rate": 97.49
+     },
+     "vis": {
+      "num": 55518.885748471876,
+      "den": 60546,
+      "rate": 91.7
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.43
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1831,
+     "den": 1870,
+     "rate": 97.91
+    },
+    "speed": {
+     "num": 6015,
+     "den": 207457,
+     "rate": 2.9
+    },
+    "redlight": {
+     "num": 10637,
+     "den": 39275,
+     "rate": 27.08
+    },
+    "reverse": {
+     "num": 4458629,
+     "den": 87986416,
+     "rate": 5.07
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1513,
+      "den": 1559,
+      "rate": 97.05
+     },
+     "vis": {
+      "num": 52202.98794035421,
+      "den": 58726,
+      "rate": 88.89
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.37
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "秦皇岛",
+   "name": "兴必达【秦皇岛】环岛站",
+   "2026-08": {
+    "helmet": {
+     "num": 2395,
+     "den": 2507,
+     "rate": 95.53
+    },
+    "speed": {
+     "num": 7054,
+     "den": 286822,
+     "rate": 2.46
+    },
+    "redlight": {
+     "num": 15098,
+     "den": 55813,
+     "rate": 27.05
+    },
+    "reverse": {
+     "num": 6485463,
+     "den": 122218574,
+     "rate": 5.31
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1762,
+      "den": 1918,
+      "rate": 91.87
+     },
+     "vis": {
+      "num": 70091.68345290089,
+      "den": 77510,
+      "rate": 90.43
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.22
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1703,
+     "den": 1756,
+     "rate": 96.98
+    },
+    "speed": {
+     "num": 5057,
+     "den": 197163,
+     "rate": 2.56
+    },
+    "redlight": {
+     "num": 9952,
+     "den": 38245,
+     "rate": 26.02
+    },
+    "reverse": {
+     "num": 4306899,
+     "den": 83826842,
+     "rate": 5.14
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1416,
+      "den": 1507,
+      "rate": 93.96
+     },
+     "vis": {
+      "num": 52539.47401953828,
+      "den": 57732,
+      "rate": 91.01
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.5
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1808,
+     "den": 1853,
+     "rate": 97.57
+    },
+    "speed": {
+     "num": 5850,
+     "den": 209998,
+     "rate": 2.79
+    },
+    "redlight": {
+     "num": 10688,
+     "den": 40056,
+     "rate": 26.68
+    },
+    "reverse": {
+     "num": 4485394,
+     "den": 89474800,
+     "rate": 5.01
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1485,
+      "den": 1549,
+      "rate": 95.87
+     },
+     "vis": {
+      "num": 55098.743492711044,
+      "den": 61260,
+      "rate": 89.94
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.63
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "津冀区域",
+   "city": "秦皇岛",
+   "name": "兴必达【秦皇岛】老龙头站",
+   "2026-08": {
+    "helmet": {
+     "num": 1413,
+     "den": 1433,
+     "rate": 98.6
+    },
+    "speed": {
+     "num": 5812,
+     "den": 138826,
+     "rate": 4.19
+    },
+    "redlight": {
+     "num": 7018,
+     "den": 36522,
+     "rate": 19.22
+    },
+    "reverse": {
+     "num": 1485995,
+     "den": 65688844,
+     "rate": 2.26
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1027,
+      "den": 1076,
+      "rate": 95.45
+     },
+     "vis": {
+      "num": 43881.36397934034,
+      "den": 45494,
+      "rate": 96.46
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.34
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1144,
+     "den": 1159,
+     "rate": 98.71
+    },
+    "speed": {
+     "num": 3809,
+     "den": 107176,
+     "rate": 3.55
+    },
+    "redlight": {
+     "num": 5794,
+     "den": 30553,
+     "rate": 18.96
+    },
+    "reverse": {
+     "num": 1119807,
+     "den": 57939425,
+     "rate": 1.93
+    },
+    "clothing": {
+     "cloth": {
+      "num": 981,
+      "den": 1039,
+      "rate": 94.42
+     },
+     "vis": {
+      "num": 36930.55570020792,
+      "den": 38405,
+      "rate": 96.16
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.38
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1278,
+     "den": 1309,
+     "rate": 97.63
+    },
+    "speed": {
+     "num": 3973,
+     "den": 112948,
+     "rate": 3.52
+    },
+    "redlight": {
+     "num": 5880,
+     "den": 31874,
+     "rate": 18.45
+    },
+    "reverse": {
+     "num": 1256409,
+     "den": 57750494,
+     "rate": 2.18
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1067,
+      "den": 1118,
+      "rate": 95.44
+     },
+     "vis": {
+      "num": 38247.272578125165,
+      "den": 40726,
+      "rate": 93.91
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.51
+    }
+   }
+  },
+  {
+   "level": "subregion",
+   "region": "华北一区",
+   "subregion": "辽宁区域",
+   "city": "",
+   "name": "辽宁区域",
+   "2026-08": {
+    "helmet": {
+     "num": 24932,
+     "den": 25511,
+     "rate": 97.73
+    },
+    "speed": {
+     "num": 107018,
+     "den": 4219445,
+     "rate": 2.54
+    },
+    "redlight": {
+     "num": 203390,
+     "den": 1185113,
+     "rate": 17.16
+    },
+    "reverse": {
+     "num": 24244461,
+     "den": 1393132671,
+     "rate": 1.74
+    },
+    "clothing": {
+     "cloth": {
+      "num": 21142,
+      "den": 22514,
+      "rate": 93.91
+     },
+     "vis": {
+      "num": 843554.7156666946,
+      "den": 898455,
+      "rate": 93.89
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.02
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 20530,
+     "den": 20814,
+     "rate": 98.64
+    },
+    "speed": {
+     "num": 80741,
+     "den": 3468038,
+     "rate": 2.33
+    },
+    "redlight": {
+     "num": 151564,
+     "den": 954569,
+     "rate": 15.88
+    },
+    "reverse": {
+     "num": 17812349,
+     "den": 1124607913,
+     "rate": 1.58
+    },
+    "clothing": {
+     "cloth": {
+      "num": 18711,
+      "den": 19403,
+      "rate": 96.43
+     },
+     "vis": {
+      "num": 678530.5900637943,
+      "den": 727870,
+      "rate": 93.22
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.15
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 21796,
+     "den": 22127,
+     "rate": 98.5
+    },
+    "speed": {
+     "num": 96575,
+     "den": 3746241,
+     "rate": 2.58
+    },
+    "redlight": {
+     "num": 164937,
+     "den": 1031523,
+     "rate": 15.99
+    },
+    "reverse": {
+     "num": 19481776,
+     "den": 1206760020,
+     "rate": 1.61
+    },
+    "clothing": {
+     "cloth": {
+      "num": 20120,
+      "den": 20894,
+      "rate": 96.3
+     },
+     "vis": {
+      "num": 744386.5445404972,
+      "den": 828582,
+      "rate": 89.84
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.63
+    }
+   }
+  },
+  {
+   "level": "merchant",
+   "region": "华北一区",
+   "subregion": "辽宁区域",
+   "city": "锦州",
+   "name": "锦州",
+   "2026-08": {
+    "helmet": {
+     "num": 18237,
+     "den": 18731,
+     "rate": 97.36
+    },
+    "speed": {
+     "num": 70587,
+     "den": 3152157,
+     "rate": 2.24
+    },
+    "redlight": {
+     "num": 161106,
+     "den": 907294,
+     "rate": 17.76
+    },
+    "reverse": {
+     "num": 18161838,
+     "den": 990419010,
+     "rate": 1.83
+    },
+    "clothing": {
+     "cloth": {
+      "num": 16010,
+      "den": 17066,
+      "rate": 93.81
+     },
+     "vis": {
+      "num": 655226.4715699026,
+      "den": 694376,
+      "rate": 94.36
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.91
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 14908,
+     "den": 15134,
+     "rate": 98.51
+    },
+    "speed": {
+     "num": 53929,
+     "den": 2595079,
+     "rate": 2.08
+    },
+    "redlight": {
+     "num": 118723,
+     "den": 736669,
+     "rate": 16.12
+    },
+    "reverse": {
+     "num": 13314710,
+     "den": 801463932,
+     "rate": 1.66
+    },
+    "clothing": {
+     "cloth": {
+      "num": 13766,
+      "den": 14353,
+      "rate": 95.91
+     },
+     "vis": {
+      "num": 507236.75093366613,
+      "den": 547195,
+      "rate": 92.7
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.28
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 16108,
+     "den": 16356,
+     "rate": 98.48
+    },
+    "speed": {
+     "num": 63479,
+     "den": 2804014,
+     "rate": 2.26
+    },
+    "redlight": {
+     "num": 127557,
+     "den": 789719,
+     "rate": 16.15
+    },
+    "reverse": {
+     "num": 14551533,
+     "den": 862605780,
+     "rate": 1.69
+    },
+    "clothing": {
+     "cloth": {
+      "num": 15010,
+      "den": 15513,
+      "rate": 96.76
+     },
+     "vis": {
+      "num": 563199.56176049,
+      "den": 629452,
+      "rate": 89.47
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.22
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "辽宁区域",
+   "city": "锦州",
+   "name": "兴必达【锦州】兴隆和太和站",
+   "2026-08": {
+    "helmet": {
+     "num": 1949,
+     "den": 2009,
+     "rate": 97.01
+    },
+    "speed": {
+     "num": 9272,
+     "den": 295254,
+     "rate": 3.14
+    },
+    "redlight": {
+     "num": 12365,
+     "den": 75647,
+     "rate": 16.35
+    },
+    "reverse": {
+     "num": 2342134,
+     "den": 102955782,
+     "rate": 2.27
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1706,
+      "den": 1806,
+      "rate": 94.46
+     },
+     "vis": {
+      "num": 70417.2966753432,
+      "den": 73979,
+      "rate": 95.19
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.74
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1642,
+     "den": 1669,
+     "rate": 98.38
+    },
+    "speed": {
+     "num": 7855,
+     "den": 251404,
+     "rate": 3.12
+    },
+    "redlight": {
+     "num": 9256,
+     "den": 65357,
+     "rate": 14.16
+    },
+    "reverse": {
+     "num": 1527789,
+     "den": 86145479,
+     "rate": 1.77
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1532,
+      "den": 1575,
+      "rate": 97.27
+     },
+     "vis": {
+      "num": 55264.27467289508,
+      "den": 60431,
+      "rate": 91.45
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.24
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1664,
+     "den": 1711,
+     "rate": 97.25
+    },
+    "speed": {
+     "num": 7811,
+     "den": 267544,
+     "rate": 2.92
+    },
+    "redlight": {
+     "num": 8771,
+     "den": 64738,
+     "rate": 13.55
+    },
+    "reverse": {
+     "num": 1750361,
+     "den": 91718386,
+     "rate": 1.91
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1569,
+      "den": 1613,
+      "rate": 97.27
+     },
+     "vis": {
+      "num": 59877.59026679957,
+      "den": 68343,
+      "rate": 87.61
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.48
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "辽宁区域",
+   "city": "锦州",
+   "name": "兴必达【锦州】凌河站",
+   "2026-08": {
+    "helmet": {
+     "num": 1287,
+     "den": 1337,
+     "rate": 96.26
+    },
+    "speed": {
+     "num": 3046,
+     "den": 236909,
+     "rate": 1.29
+    },
+    "redlight": {
+     "num": 12659,
+     "den": 61225,
+     "rate": 20.68
+    },
+    "reverse": {
+     "num": 1841494,
+     "den": 62366813,
+     "rate": 2.95
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1161,
+      "den": 1226,
+      "rate": 94.7
+     },
+     "vis": {
+      "num": 48557.39237721267,
+      "den": 49199,
+      "rate": 98.7
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.15
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1068,
+     "den": 1084,
+     "rate": 98.52
+    },
+    "speed": {
+     "num": 2264,
+     "den": 206188,
+     "rate": 1.1
+    },
+    "redlight": {
+     "num": 10332,
+     "den": 54422,
+     "rate": 18.98
+    },
+    "reverse": {
+     "num": 1212708,
+     "den": 52373756,
+     "rate": 2.32
+    },
+    "clothing": {
+     "cloth": {
+      "num": 986,
+      "den": 1019,
+      "rate": 96.76
+     },
+     "vis": {
+      "num": 36990.58416407412,
+      "den": 39438,
+      "rate": 93.79
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.0
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1206,
+     "den": 1219,
+     "rate": 98.93
+    },
+    "speed": {
+     "num": 3456,
+     "den": 246293,
+     "rate": 1.4
+    },
+    "redlight": {
+     "num": 13688,
+     "den": 66704,
+     "rate": 20.52
+    },
+    "reverse": {
+     "num": 1482458,
+     "den": 61718285,
+     "rate": 2.4
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1136,
+      "den": 1195,
+      "rate": 95.06
+     },
+     "vis": {
+      "num": 40251.98808690839,
+      "den": 46631,
+      "rate": 86.32
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.0
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "辽宁区域",
+   "city": "锦州",
+   "name": "兴必达【锦州】凌西站",
+   "2026-08": {
+    "helmet": {
+     "num": 2240,
+     "den": 2259,
+     "rate": 99.16
+    },
+    "speed": {
+     "num": 7610,
+     "den": 313535,
+     "rate": 2.43
+    },
+    "redlight": {
+     "num": 14732,
+     "den": 93697,
+     "rate": 15.72
+    },
+    "reverse": {
+     "num": 2110393,
+     "den": 118648695,
+     "rate": 1.78
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1931,
+      "den": 1975,
+      "rate": 97.77
+     },
+     "vis": {
+      "num": 88052.65769200886,
+      "den": 90578,
+      "rate": 97.21
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.62
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1887,
+     "den": 1900,
+     "rate": 99.32
+    },
+    "speed": {
+     "num": 5785,
+     "den": 268395,
+     "rate": 2.16
+    },
+    "redlight": {
+     "num": 9685,
+     "den": 76017,
+     "rate": 12.74
+    },
+    "reverse": {
+     "num": 1603594,
+     "den": 98218285,
+     "rate": 1.63
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1729,
+      "den": 1743,
+      "rate": 99.2
+     },
+     "vis": {
+      "num": 70383.27949582782,
+      "den": 74049,
+      "rate": 95.05
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.16
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2091,
+     "den": 2117,
+     "rate": 98.77
+    },
+    "speed": {
+     "num": 7036,
+     "den": 297008,
+     "rate": 2.37
+    },
+    "redlight": {
+     "num": 11004,
+     "den": 83575,
+     "rate": 13.17
+    },
+    "reverse": {
+     "num": 2113744,
+     "den": 108243442,
+     "rate": 1.95
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1978,
+      "den": 1981,
+      "rate": 99.85
+     },
+     "vis": {
+      "num": 79611.5501275137,
+      "den": 87287,
+      "rate": 91.21
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.13
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "辽宁区域",
+   "city": "锦州",
+   "name": "兴必达【锦州】千盛站",
+   "2026-08": {
+    "helmet": {
+     "num": 1146,
+     "den": 1162,
+     "rate": 98.62
+    },
+    "speed": {
+     "num": 3060,
+     "den": 242306,
+     "rate": 1.26
+    },
+    "redlight": {
+     "num": 11786,
+     "den": 65864,
+     "rate": 17.89
+    },
+    "reverse": {
+     "num": 1309426,
+     "den": 60340707,
+     "rate": 2.17
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1006,
+      "den": 1121,
+      "rate": 89.74
+     },
+     "vis": {
+      "num": 41628.4589251164,
+      "den": 42744,
+      "rate": 97.39
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.0
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1919,
+     "den": 1963,
+     "rate": 97.76
+    },
+    "speed": {
+     "num": 5707,
+     "den": 428683,
+     "rate": 1.33
+    },
+    "redlight": {
+     "num": 22046,
+     "den": 118929,
+     "rate": 18.54
+    },
+    "reverse": {
+     "num": 2027080,
+     "den": 105334281,
+     "rate": 1.92
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1767,
+      "den": 1907,
+      "rate": 92.66
+     },
+     "vis": {
+      "num": 65665.3801373282,
+      "den": 70026,
+      "rate": 93.77
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.08
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2511,
+     "den": 2562,
+     "rate": 98.01
+    },
+    "speed": {
+     "num": 9300,
+     "den": 551973,
+     "rate": 1.68
+    },
+    "redlight": {
+     "num": 31422,
+     "den": 154276,
+     "rate": 20.37
+    },
+    "reverse": {
+     "num": 2560704,
+     "den": 134219156,
+     "rate": 1.91
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2372,
+      "den": 2535,
+      "rate": 93.57
+     },
+     "vis": {
+      "num": 91461.61481762124,
+      "den": 102756,
+      "rate": 89.01
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.25
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "辽宁区域",
+   "city": "锦州",
+   "name": "兴必达【锦州】曼哈顿站",
+   "2026-08": {
+    "helmet": {
+     "num": 1866,
+     "den": 1909,
+     "rate": 97.75
+    },
+    "speed": {
+     "num": 8769,
+     "den": 259913,
+     "rate": 3.37
+    },
+    "redlight": {
+     "num": 13260,
+     "den": 71652,
+     "rate": 18.51
+    },
+    "reverse": {
+     "num": 2019339,
+     "den": 97015253,
+     "rate": 2.08
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1618,
+      "den": 1666,
+      "rate": 97.12
+     },
+     "vis": {
+      "num": 67792.4982388554,
+      "den": 71220,
+      "rate": 95.19
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 4.64
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1529,
+     "den": 1576,
+     "rate": 97.02
+    },
+    "speed": {
+     "num": 6986,
+     "den": 226596,
+     "rate": 3.08
+    },
+    "redlight": {
+     "num": 10242,
+     "den": 62826,
+     "rate": 16.3
+    },
+    "reverse": {
+     "num": 1320000,
+     "den": 82308770,
+     "rate": 1.6
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1395,
+      "den": 1434,
+      "rate": 97.28
+     },
+     "vis": {
+      "num": 51834.90669909585,
+      "den": 57437,
+      "rate": 90.25
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 3.93
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1580,
+     "den": 1601,
+     "rate": 98.69
+    },
+    "speed": {
+     "num": 8006,
+     "den": 235888,
+     "rate": 3.39
+    },
+    "redlight": {
+     "num": 9418,
+     "den": 60939,
+     "rate": 15.45
+    },
+    "reverse": {
+     "num": 1465486,
+     "den": 84340216,
+     "rate": 1.74
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1428,
+      "den": 1507,
+      "rate": 94.76
+     },
+     "vis": {
+      "num": 51885.34805351232,
+      "den": 60852,
+      "rate": 85.26
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.8
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "辽宁区域",
+   "city": "锦州",
+   "name": "兴必达【锦州】玲珑站",
+   "2026-08": {
+    "helmet": {
+     "num": 3233,
+     "den": 3354,
+     "rate": 96.39
+    },
+    "speed": {
+     "num": 13514,
+     "den": 626288,
+     "rate": 2.16
+    },
+    "redlight": {
+     "num": 35810,
+     "den": 192866,
+     "rate": 18.57
+    },
+    "reverse": {
+     "num": 2419611,
+     "den": 183504435,
+     "rate": 1.32
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2825,
+      "den": 3064,
+      "rate": 92.2
+     },
+     "vis": {
+      "num": 111971.48452316294,
+      "den": 126337,
+      "rate": 88.63
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.33
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2539,
+     "den": 2571,
+     "rate": 98.76
+    },
+    "speed": {
+     "num": 10578,
+     "den": 498721,
+     "rate": 2.12
+    },
+    "redlight": {
+     "num": 27815,
+     "den": 151988,
+     "rate": 18.3
+    },
+    "reverse": {
+     "num": 1762453,
+     "den": 146760068,
+     "rate": 1.2
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2315,
+      "den": 2447,
+      "rate": 94.61
+     },
+     "vis": {
+      "num": 88007.17734214678,
+      "den": 96732,
+      "rate": 90.98
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.35
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2805,
+     "den": 2833,
+     "rate": 99.01
+    },
+    "speed": {
+     "num": 11722,
+     "den": 541798,
+     "rate": 2.16
+    },
+    "redlight": {
+     "num": 27145,
+     "den": 161220,
+     "rate": 16.84
+    },
+    "reverse": {
+     "num": 1883539,
+     "den": 162188986,
+     "rate": 1.16
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2567,
+      "den": 2624,
+      "rate": 97.83
+     },
+     "vis": {
+      "num": 106426.50500330773,
+      "den": 114405,
+      "rate": 93.03
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.74
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "辽宁区域",
+   "city": "锦州",
+   "name": "兴必达【锦州】笔架山站",
+   "2026-08": {
+    "helmet": {
+     "num": 1834,
+     "den": 1842,
+     "rate": 99.57
+    },
+    "speed": {
+     "num": 7766,
+     "den": 226474,
+     "rate": 3.43
+    },
+    "redlight": {
+     "num": 4557,
+     "den": 58480,
+     "rate": 7.79
+    },
+    "reverse": {
+     "num": 1995323,
+     "den": 119299246,
+     "rate": 1.67
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1559,
+      "den": 1627,
+      "rate": 95.82
+     },
+     "vis": {
+      "num": 63572.41916396187,
+      "den": 66027,
+      "rate": 96.28
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 9.35
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1694,
+     "den": 1697,
+     "rate": 99.82
+    },
+    "speed": {
+     "num": 6017,
+     "den": 195765,
+     "rate": 3.07
+    },
+    "redlight": {
+     "num": 3151,
+     "den": 49053,
+     "rate": 6.42
+    },
+    "reverse": {
+     "num": 1868222,
+     "den": 97420628,
+     "rate": 1.92
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1523,
+      "den": 1563,
+      "rate": 97.44
+     },
+     "vis": {
+      "num": 51283.087833635494,
+      "den": 54706,
+      "rate": 93.74
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 11.89
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1780,
+     "den": 1795,
+     "rate": 99.16
+    },
+    "speed": {
+     "num": 6466,
+     "den": 206194,
+     "rate": 3.14
+    },
+    "redlight": {
+     "num": 3984,
+     "den": 53477,
+     "rate": 7.45
+    },
+    "reverse": {
+     "num": 1803452,
+     "den": 101962747,
+     "rate": 1.77
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1638,
+      "den": 1687,
+      "rate": 97.1
+     },
+     "vis": {
+      "num": 53309.88156296236,
+      "den": 57310,
+      "rate": 93.02
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 11.24
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "辽宁区域",
+   "city": "锦州",
+   "name": "兴必达【锦州】锦绣前程站",
+   "2026-08": {
+    "helmet": {
+     "num": 2788,
+     "den": 2846,
+     "rate": 97.96
+    },
+    "speed": {
+     "num": 10691,
+     "den": 520703,
+     "rate": 2.05
+    },
+    "redlight": {
+     "num": 28548,
+     "den": 165157,
+     "rate": 17.29
+    },
+    "reverse": {
+     "num": 1758070,
+     "den": 134459363,
+     "rate": 1.31
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2454,
+      "den": 2587,
+      "rate": 94.86
+     },
+     "vis": {
+      "num": 96938.76427436239,
+      "den": 100663,
+      "rate": 96.3
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.35
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2250,
+     "den": 2284,
+     "rate": 98.51
+    },
+    "speed": {
+     "num": 7372,
+     "den": 424057,
+     "rate": 1.74
+    },
+    "redlight": {
+     "num": 20398,
+     "den": 131498,
+     "rate": 15.51
+    },
+    "reverse": {
+     "num": 1531842,
+     "den": 108746105,
+     "rate": 1.41
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2102,
+      "den": 2186,
+      "rate": 96.16
+     },
+     "vis": {
+      "num": 73187.81728980088,
+      "den": 78227,
+      "rate": 93.56
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.34
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2471,
+     "den": 2518,
+     "rate": 98.13
+    },
+    "speed": {
+     "num": 9682,
+     "den": 457316,
+     "rate": 2.12
+    },
+    "redlight": {
+     "num": 22125,
+     "den": 144790,
+     "rate": 15.28
+    },
+    "reverse": {
+     "num": 1491789,
+     "den": 118214562,
+     "rate": 1.26
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2322,
+      "den": 2371,
+      "rate": 97.93
+     },
+     "vis": {
+      "num": 80375.08384186318,
+      "den": 91868,
+      "rate": 87.49
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.16
+    }
+   }
+  },
+  {
+   "level": "merchant",
+   "region": "华北一区",
+   "subregion": "辽宁区域",
+   "city": "阜新",
+   "name": "阜新",
+   "2026-08": {
+    "helmet": {
+     "num": 6695,
+     "den": 6780,
+     "rate": 98.75
+    },
+    "speed": {
+     "num": 36431,
+     "den": 1067288,
+     "rate": 3.41
+    },
+    "redlight": {
+     "num": 42284,
+     "den": 277819,
+     "rate": 15.22
+    },
+    "reverse": {
+     "num": 6082623,
+     "den": 402713661,
+     "rate": 1.51
+    },
+    "clothing": {
+     "cloth": {
+      "num": 5132,
+      "den": 5448,
+      "rate": 94.2
+     },
+     "vis": {
+      "num": 188328.24409679166,
+      "den": 204079,
+      "rate": 92.28
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.27
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 5622,
+     "den": 5680,
+     "rate": 98.98
+    },
+    "speed": {
+     "num": 26812,
+     "den": 872959,
+     "rate": 3.07
+    },
+    "redlight": {
+     "num": 32841,
+     "den": 217900,
+     "rate": 15.07
+    },
+    "reverse": {
+     "num": 4497639,
+     "den": 323143981,
+     "rate": 1.39
+    },
+    "clothing": {
+     "cloth": {
+      "num": 4945,
+      "den": 5050,
+      "rate": 97.92
+     },
+     "vis": {
+      "num": 171293.83913012934,
+      "den": 180675,
+      "rate": 94.81
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 1.89
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 5688,
+     "den": 5771,
+     "rate": 98.56
+    },
+    "speed": {
+     "num": 33096,
+     "den": 942227,
+     "rate": 3.51
+    },
+    "redlight": {
+     "num": 37380,
+     "den": 241804,
+     "rate": 15.46
+    },
+    "reverse": {
+     "num": 4930243,
+     "den": 344154240,
+     "rate": 1.43
+    },
+    "clothing": {
+     "cloth": {
+      "num": 5110,
+      "den": 5381,
+      "rate": 94.96
+     },
+     "vis": {
+      "num": 181186.98278000887,
+      "den": 199130,
+      "rate": 90.99
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.45
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "辽宁区域",
+   "city": "阜新",
+   "name": "兴必达【阜新】开发区站",
+   "2026-08": {
+    "helmet": {
+     "num": 2481,
+     "den": 2494,
+     "rate": 99.48
+    },
+    "speed": {
+     "num": 7824,
+     "den": 332927,
+     "rate": 2.35
+    },
+    "redlight": {
+     "num": 11172,
+     "den": 83766,
+     "rate": 13.34
+    },
+    "reverse": {
+     "num": 1935269,
+     "den": 134442042,
+     "rate": 1.44
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1872,
+      "den": 1917,
+      "rate": 97.65
+     },
+     "vis": {
+      "num": 67995.63517173825,
+      "den": 69420,
+      "rate": 97.95
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.73
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2043,
+     "den": 2061,
+     "rate": 99.13
+    },
+    "speed": {
+     "num": 5730,
+     "den": 273253,
+     "rate": 2.1
+    },
+    "redlight": {
+     "num": 8598,
+     "den": 66405,
+     "rate": 12.95
+    },
+    "reverse": {
+     "num": 1116780,
+     "den": 107351081,
+     "rate": 1.04
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1787,
+      "den": 1821,
+      "rate": 98.13
+     },
+     "vis": {
+      "num": 59198.022548518726,
+      "den": 61352,
+      "rate": 96.49
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 1.82
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2004,
+     "den": 2023,
+     "rate": 99.06
+    },
+    "speed": {
+     "num": 5183,
+     "den": 277301,
+     "rate": 1.87
+    },
+    "redlight": {
+     "num": 8761,
+     "den": 68596,
+     "rate": 12.77
+    },
+    "reverse": {
+     "num": 1307431,
+     "den": 109010177,
+     "rate": 1.2
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1795,
+      "den": 1838,
+      "rate": 97.66
+     },
+     "vis": {
+      "num": 61718.16191276776,
+      "den": 66949,
+      "rate": 92.19
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.52
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "辽宁区域",
+   "city": "阜新",
+   "name": "兴必达【阜新】细河站",
+   "2026-08": {
+    "helmet": {
+     "num": 3079,
+     "den": 3150,
+     "rate": 97.75
+    },
+    "speed": {
+     "num": 23867,
+     "den": 590374,
+     "rate": 4.04
+    },
+    "redlight": {
+     "num": 25891,
+     "den": 162071,
+     "rate": 15.98
+    },
+    "reverse": {
+     "num": 3164497,
+     "den": 200509638,
+     "rate": 1.58
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2416,
+      "den": 2685,
+      "rate": 89.98
+     },
+     "vis": {
+      "num": 87003.90495976676,
+      "den": 100311,
+      "rate": 86.73
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.34
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 2619,
+     "den": 2659,
+     "rate": 98.5
+    },
+    "speed": {
+     "num": 17925,
+     "den": 481485,
+     "rate": 3.72
+    },
+    "redlight": {
+     "num": 21520,
+     "den": 127074,
+     "rate": 16.94
+    },
+    "reverse": {
+     "num": 2636199,
+     "den": 160134853,
+     "rate": 1.65
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2323,
+      "den": 2383,
+      "rate": 97.48
+     },
+     "vis": {
+      "num": 84427.00820417216,
+      "den": 91176,
+      "rate": 92.6
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.98
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 2657,
+     "den": 2716,
+     "rate": 97.83
+    },
+    "speed": {
+     "num": 23651,
+     "den": 531265,
+     "rate": 4.45
+    },
+    "redlight": {
+     "num": 25139,
+     "den": 144396,
+     "rate": 17.41
+    },
+    "reverse": {
+     "num": 2767024,
+     "den": 173048259,
+     "rate": 1.6
+    },
+    "clothing": {
+     "cloth": {
+      "num": 2416,
+      "den": 2622,
+      "rate": 92.14
+     },
+     "vis": {
+      "num": 88877.37146665888,
+      "den": 100256,
+      "rate": 88.65
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 4.22
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "辽宁区域",
+   "city": "阜新",
+   "name": "兴必达【阜新】长虹站",
+   "2026-08": {
+    "helmet": {
+     "num": 1026,
+     "den": 1026,
+     "rate": 100.0
+    },
+    "speed": {
+     "num": 4484,
+     "den": 129628,
+     "rate": 3.46
+    },
+    "redlight": {
+     "num": 4935,
+     "den": 29612,
+     "rate": 16.67
+    },
+    "reverse": {
+     "num": 879205,
+     "den": 61313776,
+     "rate": 1.43
+    },
+    "clothing": {
+     "cloth": {
+      "num": 763,
+      "den": 765,
+      "rate": 99.74
+     },
+     "vis": {
+      "num": 30280.968671168815,
+      "den": 31295,
+      "rate": 96.76
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.02
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 858,
+     "den": 858,
+     "rate": 100.0
+    },
+    "speed": {
+     "num": 2941,
+     "den": 104912,
+     "rate": 2.8
+    },
+    "redlight": {
+     "num": 2475,
+     "den": 22467,
+     "rate": 11.02
+    },
+    "reverse": {
+     "num": 676394,
+     "den": 49785500,
+     "rate": 1.36
+    },
+    "clothing": {
+     "cloth": {
+      "num": 747,
+      "den": 758,
+      "rate": 98.55
+     },
+     "vis": {
+      "num": 24379.301409768505,
+      "den": 24840,
+      "rate": 98.15
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 2.75
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 910,
+     "den": 915,
+     "rate": 99.45
+    },
+    "speed": {
+     "num": 4057,
+     "den": 117832,
+     "rate": 3.44
+    },
+    "redlight": {
+     "num": 3156,
+     "den": 26275,
+     "rate": 12.01
+    },
+    "reverse": {
+     "num": 758206,
+     "den": 54807375,
+     "rate": 1.38
+    },
+    "clothing": {
+     "cloth": {
+      "num": 798,
+      "den": 820,
+      "rate": 97.32
+     },
+     "vis": {
+      "num": 26477.44095414084,
+      "den": 27653,
+      "rate": 95.75
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 9.04
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "辽宁区域",
+   "city": "阜新",
+   "name": "集约配送-兴必达【阜新】开发区站",
+   "2026-08": {
+    "helmet": {
+     "num": 109,
+     "den": 110,
+     "rate": 99.09
+    },
+    "speed": {
+     "num": 256,
+     "den": 14359,
+     "rate": 1.78
+    },
+    "redlight": {
+     "num": 286,
+     "den": 2370,
+     "rate": 12.07
+    },
+    "reverse": {
+     "num": 103652,
+     "den": 6448205,
+     "rate": 1.61
+    },
+    "clothing": {
+     "cloth": {
+      "num": 81,
+      "den": 81,
+      "rate": 100.0
+     },
+     "vis": {
+      "num": 3047.735294117647,
+      "den": 3053,
+      "rate": 99.83
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.0
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 102,
+     "den": 102,
+     "rate": 100.0
+    },
+    "speed": {
+     "num": 216,
+     "den": 13309,
+     "rate": 1.62
+    },
+    "redlight": {
+     "num": 248,
+     "den": 1954,
+     "rate": 12.69
+    },
+    "reverse": {
+     "num": 68266,
+     "den": 5872547,
+     "rate": 1.16
+    },
+    "clothing": {
+     "cloth": {
+      "num": 88,
+      "den": 88,
+      "rate": 100.0
+     },
+     "vis": {
+      "num": 3289.506967670011,
+      "den": 3307,
+      "rate": 99.47
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.0
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 117,
+     "den": 117,
+     "rate": 100.0
+    },
+    "speed": {
+     "num": 205,
+     "den": 15829,
+     "rate": 1.3
+    },
+    "redlight": {
+     "num": 324,
+     "den": 2537,
+     "rate": 12.77
+    },
+    "reverse": {
+     "num": 97582,
+     "den": 7288429,
+     "rate": 1.34
+    },
+    "clothing": {
+     "cloth": {
+      "num": 101,
+      "den": 101,
+      "rate": 100.0
+     },
+     "vis": {
+      "num": 4114.008446441125,
+      "den": 4272,
+      "rate": 96.3
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 0.0
+    }
+   }
+  },
+  {
+   "level": "subregion",
+   "region": "华北一区",
+   "subregion": "黑吉区域",
+   "city": "",
+   "name": "黑吉区域",
+   "2026-08": {
+    "helmet": {
+     "num": 11352,
+     "den": 11535,
+     "rate": 98.41
+    },
+    "speed": {
+     "num": 45784,
+     "den": 1313164,
+     "rate": 3.49
+    },
+    "redlight": {
+     "num": 84676,
+     "den": 449915,
+     "rate": 18.82
+    },
+    "reverse": {
+     "num": 10141910,
+     "den": 635789285,
+     "rate": 1.6
+    },
+    "clothing": {
+     "cloth": {
+      "num": 9459,
+      "den": 9708,
+      "rate": 97.44
+     },
+     "vis": {
+      "num": 341130.4268019865,
+      "den": 365710,
+      "rate": 93.28
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 7.65
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 9134,
+     "den": 9248,
+     "rate": 98.77
+    },
+    "speed": {
+     "num": 34085,
+     "den": 1052231,
+     "rate": 3.24
+    },
+    "redlight": {
+     "num": 66755,
+     "den": 365845,
+     "rate": 18.25
+    },
+    "reverse": {
+     "num": 8808853,
+     "den": 533599534,
+     "rate": 1.65
+    },
+    "clothing": {
+     "cloth": {
+      "num": 8218,
+      "den": 8445,
+      "rate": 97.31
+     },
+     "vis": {
+      "num": 292907.71428581333,
+      "den": 321007,
+      "rate": 91.25
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 7.95
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 9274,
+     "den": 9391,
+     "rate": 98.75
+    },
+    "speed": {
+     "num": 35857,
+     "den": 1040942,
+     "rate": 3.44
+    },
+    "redlight": {
+     "num": 75953,
+     "den": 380021,
+     "rate": 19.99
+    },
+    "reverse": {
+     "num": 9666685,
+     "den": 532276337,
+     "rate": 1.82
+    },
+    "clothing": {
+     "cloth": {
+      "num": 9091,
+      "den": 9292,
+      "rate": 97.84
+     },
+     "vis": {
+      "num": 333505.3081385872,
+      "den": 369914,
+      "rate": 90.16
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 9.95
+    }
+   }
+  },
+  {
+   "level": "merchant",
+   "region": "华北一区",
+   "subregion": "黑吉区域",
+   "city": "通辽",
+   "name": "通辽",
+   "2026-08": {
+    "helmet": {
+     "num": 3734,
+     "den": 3809,
+     "rate": 98.03
+    },
+    "speed": {
+     "num": 24459,
+     "den": 770692,
+     "rate": 3.17
+    },
+    "redlight": {
+     "num": 40134,
+     "den": 212882,
+     "rate": 18.85
+    },
+    "reverse": {
+     "num": 3051380,
+     "den": 194689071,
+     "rate": 1.57
+    },
+    "clothing": {
+     "cloth": {
+      "num": 3549,
+      "den": 3641,
+      "rate": 97.47
+     },
+     "vis": {
+      "num": 122941.39341438346,
+      "den": 134963,
+      "rate": 91.09
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 5.88
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 3063,
+     "den": 3135,
+     "rate": 97.7
+    },
+    "speed": {
+     "num": 18454,
+     "den": 618681,
+     "rate": 2.98
+    },
+    "redlight": {
+     "num": 30664,
+     "den": 166932,
+     "rate": 18.37
+    },
+    "reverse": {
+     "num": 2338185,
+     "den": 156528979,
+     "rate": 1.49
+    },
+    "clothing": {
+     "cloth": {
+      "num": 3213,
+      "den": 3306,
+      "rate": 97.19
+     },
+     "vis": {
+      "num": 104174.6921917573,
+      "den": 115047,
+      "rate": 90.55
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 5.09
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 3183,
+     "den": 3246,
+     "rate": 98.06
+    },
+    "speed": {
+     "num": 21252,
+     "den": 647449,
+     "rate": 3.28
+    },
+    "redlight": {
+     "num": 34900,
+     "den": 178233,
+     "rate": 19.58
+    },
+    "reverse": {
+     "num": 2642469,
+     "den": 164926632,
+     "rate": 1.6
+    },
+    "clothing": {
+     "cloth": {
+      "num": 3327,
+      "den": 3438,
+      "rate": 96.77
+     },
+     "vis": {
+      "num": 115143.65512856835,
+      "den": 127290,
+      "rate": 90.46
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 5.79
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "黑吉区域",
+   "city": "通辽",
+   "name": "兴必达【通辽】东城站",
+   "2026-08": {
+    "helmet": {
+     "num": 1545,
+     "den": 1584,
+     "rate": 97.54
+    },
+    "speed": {
+     "num": 8717,
+     "den": 324501,
+     "rate": 2.69
+    },
+    "redlight": {
+     "num": 20193,
+     "den": 100490,
+     "rate": 20.09
+    },
+    "reverse": {
+     "num": 1183917,
+     "den": 77745617,
+     "rate": 1.52
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1501,
+      "den": 1537,
+      "rate": 97.66
+     },
+     "vis": {
+      "num": 53718.208584953885,
+      "den": 59596,
+      "rate": 90.14
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.06
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1252,
+     "den": 1284,
+     "rate": 97.51
+    },
+    "speed": {
+     "num": 6196,
+     "den": 259447,
+     "rate": 2.39
+    },
+    "redlight": {
+     "num": 15236,
+     "den": 79220,
+     "rate": 19.23
+    },
+    "reverse": {
+     "num": 918684,
+     "den": 62908079,
+     "rate": 1.46
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1348,
+      "den": 1387,
+      "rate": 97.19
+     },
+     "vis": {
+      "num": 47376.72364327731,
+      "den": 50796,
+      "rate": 93.27
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.23
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1320,
+     "den": 1354,
+     "rate": 97.49
+    },
+    "speed": {
+     "num": 7730,
+     "den": 273809,
+     "rate": 2.82
+    },
+    "redlight": {
+     "num": 16203,
+     "den": 84648,
+     "rate": 19.14
+    },
+    "reverse": {
+     "num": 975449,
+     "den": 67667427,
+     "rate": 1.44
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1421,
+      "den": 1459,
+      "rate": 97.4
+     },
+     "vis": {
+      "num": 53392.0524142991,
+      "den": 57211,
+      "rate": 93.32
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.64
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "黑吉区域",
+   "city": "通辽",
+   "name": "兴必达【通辽】西城站",
+   "2026-08": {
+    "helmet": {
+     "num": 932,
+     "den": 944,
+     "rate": 98.73
+    },
+    "speed": {
+     "num": 5590,
+     "den": 130678,
+     "rate": 4.28
+    },
+    "redlight": {
+     "num": 5283,
+     "den": 34678,
+     "rate": 15.23
+    },
+    "reverse": {
+     "num": 516984,
+     "den": 45102753,
+     "rate": 1.15
+    },
+    "clothing": {
+     "cloth": {
+      "num": 890,
+      "den": 910,
+      "rate": 97.8
+     },
+     "vis": {
+      "num": 29059.95571388419,
+      "den": 30940,
+      "rate": 93.92
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 10.04
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 750,
+     "den": 772,
+     "rate": 97.15
+    },
+    "speed": {
+     "num": 5243,
+     "den": 107192,
+     "rate": 4.89
+    },
+    "redlight": {
+     "num": 5073,
+     "den": 28510,
+     "rate": 17.79
+    },
+    "reverse": {
+     "num": 423972,
+     "den": 36958047,
+     "rate": 1.15
+    },
+    "clothing": {
+     "cloth": {
+      "num": 789,
+      "den": 812,
+      "rate": 97.17
+     },
+     "vis": {
+      "num": 25511.814070593697,
+      "den": 27322,
+      "rate": 93.37
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 8.87
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 777,
+     "den": 788,
+     "rate": 98.6
+    },
+    "speed": {
+     "num": 6075,
+     "den": 116847,
+     "rate": 5.2
+    },
+    "redlight": {
+     "num": 6783,
+     "den": 33111,
+     "rate": 20.49
+    },
+    "reverse": {
+     "num": 533984,
+     "den": 38722363,
+     "rate": 1.38
+    },
+    "clothing": {
+     "cloth": {
+      "num": 803,
+      "den": 845,
+      "rate": 95.03
+     },
+     "vis": {
+      "num": 28808.02182699528,
+      "den": 31230,
+      "rate": 92.24
+     }
+    },
+    "high_speed": {
+     "days": 30,
+     "pct": 11.92
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "黑吉区域",
+   "city": "通辽",
+   "name": "兴必达【通辽】通达一站",
+   "2026-08": {
+    "helmet": {
+     "num": 1257,
+     "den": 1281,
+     "rate": 98.13
+    },
+    "speed": {
+     "num": 10152,
+     "den": 315513,
+     "rate": 3.22
+    },
+    "redlight": {
+     "num": 14658,
+     "den": 77714,
+     "rate": 18.86
+    },
+    "reverse": {
+     "num": 1350479,
+     "den": 71840701,
+     "rate": 1.88
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1158,
+      "den": 1194,
+      "rate": 96.98
+     },
+     "vis": {
+      "num": 40163.22911554554,
+      "den": 44427,
+      "rate": 90.4
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 6.53
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1061,
+     "den": 1079,
+     "rate": 98.33
+    },
+    "speed": {
+     "num": 7015,
+     "den": 252042,
+     "rate": 2.78
+    },
+    "redlight": {
+     "num": 10355,
+     "den": 59202,
+     "rate": 17.49
+    },
+    "reverse": {
+     "num": 995529,
+     "den": 56662853,
+     "rate": 1.76
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1076,
+      "den": 1107,
+      "rate": 97.2
+     },
+     "vis": {
+      "num": 31286.154477886386,
+      "den": 36929,
+      "rate": 84.72
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 6.17
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1086,
+     "den": 1104,
+     "rate": 98.37
+    },
+    "speed": {
+     "num": 7447,
+     "den": 256793,
+     "rate": 2.9
+    },
+    "redlight": {
+     "num": 11914,
+     "den": 60474,
+     "rate": 19.7
+    },
+    "reverse": {
+     "num": 1133036,
+     "den": 58536842,
+     "rate": 1.94
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1103,
+      "den": 1134,
+      "rate": 97.27
+     },
+     "vis": {
+      "num": 32943.580887273936,
+      "den": 38849,
+      "rate": 84.8
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 4.17
+    }
+   }
+  },
+  {
+   "level": "merchant",
+   "region": "华北一区",
+   "subregion": "黑吉区域",
+   "city": "长春",
+   "name": "长春",
+   "2026-08": {
+    "helmet": {
+     "num": 7618,
+     "den": 7726,
+     "rate": 98.6
+    },
+    "speed": {
+     "num": 21325,
+     "den": 542472,
+     "rate": 3.93
+    },
+    "redlight": {
+     "num": 44542,
+     "den": 237033,
+     "rate": 18.79
+    },
+    "reverse": {
+     "num": 7090530,
+     "den": 441100214,
+     "rate": 1.61
+    },
+    "clothing": {
+     "cloth": {
+      "num": 5910,
+      "den": 6067,
+      "rate": 97.41
+     },
+     "vis": {
+      "num": 218189.03338760373,
+      "den": 230747,
+      "rate": 94.56
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 8.71
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 6071,
+     "den": 6113,
+     "rate": 99.31
+    },
+    "speed": {
+     "num": 15631,
+     "den": 433550,
+     "rate": 3.61
+    },
+    "redlight": {
+     "num": 36091,
+     "den": 198913,
+     "rate": 18.14
+    },
+    "reverse": {
+     "num": 6470668,
+     "den": 377070555,
+     "rate": 1.72
+    },
+    "clothing": {
+     "cloth": {
+      "num": 5005,
+      "den": 5139,
+      "rate": 97.39
+     },
+     "vis": {
+      "num": 188733.0220940563,
+      "den": 205960,
+      "rate": 91.64
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 9.66
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 6091,
+     "den": 6145,
+     "rate": 99.12
+    },
+    "speed": {
+     "num": 14605,
+     "den": 393493,
+     "rate": 3.71
+    },
+    "redlight": {
+     "num": 41053,
+     "den": 201788,
+     "rate": 20.34
+    },
+    "reverse": {
+     "num": 7024216,
+     "den": 367349705,
+     "rate": 1.91
+    },
+    "clothing": {
+     "cloth": {
+      "num": 5764,
+      "den": 5854,
+      "rate": 98.46
+     },
+     "vis": {
+      "num": 218361.65301001872,
+      "den": 242624,
+      "rate": 90.0
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 12.4
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "黑吉区域",
+   "city": "长春",
+   "name": "兴必达【长春】安庆路站",
+   "2026-08": {
+    "helmet": {
+     "num": 1574,
+     "den": 1606,
+     "rate": 98.01
+    },
+    "speed": {
+     "num": 7015,
+     "den": 207824,
+     "rate": 3.38
+    },
+    "redlight": {
+     "num": 14346,
+     "den": 84607,
+     "rate": 16.96
+    },
+    "reverse": {
+     "num": 905429,
+     "den": 84155574,
+     "rate": 1.08
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1246,
+      "den": 1308,
+      "rate": 95.26
+     },
+     "vis": {
+      "num": 43264.61862118865,
+      "den": 46065,
+      "rate": 93.92
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 3.85
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1238,
+     "den": 1244,
+     "rate": 99.52
+    },
+    "speed": {
+     "num": 5329,
+     "den": 167270,
+     "rate": 3.19
+    },
+    "redlight": {
+     "num": 9246,
+     "den": 66513,
+     "rate": 13.9
+    },
+    "reverse": {
+     "num": 997219,
+     "den": 67965451,
+     "rate": 1.47
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1019,
+      "den": 1078,
+      "rate": 94.53
+     },
+     "vis": {
+      "num": 34499.618979688625,
+      "den": 39725,
+      "rate": 86.85
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 3.08
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1233,
+     "den": 1248,
+     "rate": 98.8
+    },
+    "speed": {
+     "num": 5002,
+     "den": 149484,
+     "rate": 3.35
+    },
+    "redlight": {
+     "num": 12493,
+     "den": 67605,
+     "rate": 18.48
+    },
+    "reverse": {
+     "num": 1253607,
+     "den": 65860319,
+     "rate": 1.9
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1168,
+      "den": 1229,
+      "rate": 95.04
+     },
+     "vis": {
+      "num": 39136.018253236194,
+      "den": 46622,
+      "rate": 83.94
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 7.06
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "黑吉区域",
+   "city": "长春",
+   "name": "兴必达【长春】巴黎春天站",
+   "2026-08": {
+    "helmet": {
+     "num": 1531,
+     "den": 1568,
+     "rate": 97.64
+    },
+    "speed": {
+     "num": 5647,
+     "den": 148337,
+     "rate": 3.81
+    },
+    "redlight": {
+     "num": 5600,
+     "den": 22134,
+     "rate": 25.3
+    },
+    "reverse": {
+     "num": 2390484,
+     "den": 72029499,
+     "rate": 3.32
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1189,
+      "den": 1230,
+      "rate": 96.67
+     },
+     "vis": {
+      "num": 42760.18879388112,
+      "den": 45074,
+      "rate": 94.87
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 1.25
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1044,
+     "den": 1062,
+     "rate": 98.31
+    },
+    "speed": {
+     "num": 4134,
+     "den": 116629,
+     "rate": 3.54
+    },
+    "redlight": {
+     "num": 4545,
+     "den": 16671,
+     "rate": 27.26
+    },
+    "reverse": {
+     "num": 1960418,
+     "den": 55012829,
+     "rate": 3.56
+    },
+    "clothing": {
+     "cloth": {
+      "num": 886,
+      "den": 914,
+      "rate": 96.94
+     },
+     "vis": {
+      "num": 33863.76154667835,
+      "den": 35881,
+      "rate": 94.38
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 0.64
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1054,
+     "den": 1065,
+     "rate": 98.97
+    },
+    "speed": {
+     "num": 3882,
+     "den": 105903,
+     "rate": 3.67
+    },
+    "redlight": {
+     "num": 5374,
+     "den": 18171,
+     "rate": 29.57
+    },
+    "reverse": {
+     "num": 1986831,
+     "den": 55154493,
+     "rate": 3.6
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1001,
+      "den": 1011,
+      "rate": 99.01
+     },
+     "vis": {
+      "num": 39182.04143849712,
+      "den": 43351,
+      "rate": 90.38
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 2.03
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "黑吉区域",
+   "city": "长春",
+   "name": "兴必达【长春】开运站",
+   "2026-08": {
+    "helmet": {
+     "num": 1317,
+     "den": 1330,
+     "rate": 99.02
+    },
+    "speed": {
+     "num": 2469,
+     "den": 51921,
+     "rate": 4.76
+    },
+    "redlight": {
+     "num": 7937,
+     "den": 33882,
+     "rate": 23.43
+    },
+    "reverse": {
+     "num": 1824739,
+     "den": 95939006,
+     "rate": 1.9
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1009,
+      "den": 1019,
+      "rate": 99.02
+     },
+     "vis": {
+      "num": 38335.700537767625,
+      "den": 41206,
+      "rate": 93.03
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 19.37
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1081,
+     "den": 1088,
+     "rate": 99.36
+    },
+    "speed": {
+     "num": 2063,
+     "den": 41037,
+     "rate": 5.03
+    },
+    "redlight": {
+     "num": 7761,
+     "den": 30887,
+     "rate": 25.13
+    },
+    "reverse": {
+     "num": 1622205,
+     "den": 86456828,
+     "rate": 1.88
+    },
+    "clothing": {
+     "cloth": {
+      "num": 882,
+      "den": 883,
+      "rate": 99.89
+     },
+     "vis": {
+      "num": 37829.15487884447,
+      "den": 41081,
+      "rate": 92.08
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 27.17
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1111,
+     "den": 1117,
+     "rate": 99.46
+    },
+    "speed": {
+     "num": 1976,
+     "den": 37971,
+     "rate": 5.2
+    },
+    "redlight": {
+     "num": 7742,
+     "den": 29235,
+     "rate": 26.48
+    },
+    "reverse": {
+     "num": 1761958,
+     "den": 83121928,
+     "rate": 2.12
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1045,
+      "den": 1051,
+      "rate": 99.43
+     },
+     "vis": {
+      "num": 41838.55763176501,
+      "den": 46547,
+      "rate": 89.88
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 29.7
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "黑吉区域",
+   "city": "长春",
+   "name": "兴必达【长春】欧亚卖场站",
+   "2026-08": {
+    "helmet": {
+     "num": 1090,
+     "den": 1101,
+     "rate": 99.0
+    },
+    "speed": {
+     "num": 3190,
+     "den": 56086,
+     "rate": 5.69
+    },
+    "redlight": {
+     "num": 4096,
+     "den": 18739,
+     "rate": 21.86
+    },
+    "reverse": {
+     "num": 567217,
+     "den": 61633628,
+     "rate": 0.92
+    },
+    "clothing": {
+     "cloth": {
+      "num": 851,
+      "den": 874,
+      "rate": 97.37
+     },
+     "vis": {
+      "num": 30348.194934319086,
+      "den": 32831,
+      "rate": 92.44
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 10.19
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 905,
+     "den": 912,
+     "rate": 99.23
+    },
+    "speed": {
+     "num": 2422,
+     "den": 49786,
+     "rate": 4.86
+    },
+    "redlight": {
+     "num": 3733,
+     "den": 16717,
+     "rate": 22.33
+    },
+    "reverse": {
+     "num": 604868,
+     "den": 56474754,
+     "rate": 1.07
+    },
+    "clothing": {
+     "cloth": {
+      "num": 753,
+      "den": 792,
+      "rate": 95.08
+     },
+     "vis": {
+      "num": 23954.485667577614,
+      "den": 27457,
+      "rate": 87.24
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 8.73
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 950,
+     "den": 965,
+     "rate": 98.45
+    },
+    "speed": {
+     "num": 1909,
+     "den": 44441,
+     "rate": 4.3
+    },
+    "redlight": {
+     "num": 4153,
+     "den": 17061,
+     "rate": 24.34
+    },
+    "reverse": {
+     "num": 692270,
+     "den": 55923445,
+     "rate": 1.24
+    },
+    "clothing": {
+     "cloth": {
+      "num": 927,
+      "den": 930,
+      "rate": 99.68
+     },
+     "vis": {
+      "num": 31602.70693725892,
+      "den": 35164,
+      "rate": 89.87
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 8.95
+    }
+   }
+  },
+  {
+   "level": "site",
+   "region": "华北一区",
+   "subregion": "黑吉区域",
+   "city": "长春",
+   "name": "兴必达【长春】活力汇站",
+   "2026-08": {
+    "helmet": {
+     "num": 2106,
+     "den": 2121,
+     "rate": 99.29
+    },
+    "speed": {
+     "num": 3004,
+     "den": 78304,
+     "rate": 3.84
+    },
+    "redlight": {
+     "num": 12563,
+     "den": 77671,
+     "rate": 16.17
+    },
+    "reverse": {
+     "num": 1402661,
+     "den": 127342507,
+     "rate": 1.1
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1615,
+      "den": 1636,
+      "rate": 98.72
+     },
+     "vis": {
+      "num": 63480.33050044698,
+      "den": 65571,
+      "rate": 96.81
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 8.9
+    }
+   },
+   "2026-09": {
+    "helmet": {
+     "num": 1803,
+     "den": 1807,
+     "rate": 99.78
+    },
+    "speed": {
+     "num": 1683,
+     "den": 58828,
+     "rate": 2.86
+    },
+    "redlight": {
+     "num": 10806,
+     "den": 68125,
+     "rate": 15.86
+    },
+    "reverse": {
+     "num": 1285958,
+     "den": 111160693,
+     "rate": 1.16
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1465,
+      "den": 1472,
+      "rate": 99.52
+     },
+     "vis": {
+      "num": 58586.00102126697,
+      "den": 61816,
+      "rate": 94.77
+     }
+    },
+    "high_speed": {
+     "days": 29,
+     "pct": 8.7
+    }
+   },
+   "2026-10": {
+    "helmet": {
+     "num": 1743,
+     "den": 1750,
+     "rate": 99.6
+    },
+    "speed": {
+     "num": 1836,
+     "den": 55694,
+     "rate": 3.3
+    },
+    "redlight": {
+     "num": 11291,
+     "den": 69716,
+     "rate": 16.2
+    },
+    "reverse": {
+     "num": 1329550,
+     "den": 107289520,
+     "rate": 1.24
+    },
+    "clothing": {
+     "cloth": {
+      "num": 1623,
+      "den": 1633,
+      "rate": 99.39
+     },
+     "vis": {
+      "num": 66602.32874926164,
+      "den": 70940,
+      "rate": 93.89
+     }
+    },
+    "high_speed": {
+     "days": 31,
+     "pct": 14.28
     }
    }
   },

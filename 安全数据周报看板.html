@@ -1373,15 +1373,26 @@ function renderSafetyScoreAttention(data) {
 // 未加载时回退原 store.safety(safety_rights.json)，保证任何时刻都有数据。
 // 周维度折线图：由 dayNumDen 日分子/分母按「本月第几周」(周一起始，1日~首个周日为第1周)分组，
 // 每周 Σnum/Σden —— 绝不对日率求均值（口径红线）。
+function _wdYear(mm) {
+    // MM-DD 没有年份，按运行日推断：数据月份比当前月大 6 个月以上 = 去年 12 月的跨年数据
+    var now = new Date();
+    var y = now.getFullYear();
+    if (parseInt(mm, 10) - (now.getMonth() + 1) > 6) y -= 1;
+    return y;
+}
 function weekOfMonth(dateStr) {
-    // dateStr 形如 "09-08"（MM-DD），基于当前年份计算星期
+    // 【2026-11-01 改口径】自然周（周一~周日）分组键：返回该日所在周的周一 "MM-DD"。
+    // 原口径是「本月第几周」，跨月周会被劈成两段（10/26~10/31 归 10 月第 5 周、
+    // 11/01 单独成 11 月第 1 周），周报永远看不到完整的一周。改为自然周后跨月自动合并。
     var parts = String(dateStr).split('-');
     var m = parseInt(parts[0], 10), d = parseInt(parts[1], 10);
     if (isNaN(m) || isNaN(d)) return null;
-    var now = new Date();
-    var dow1 = new Date(now.getFullYear(), m - 1, 1).getDay(); // 1日是周几（Sun=0）
-    var firstSunday = 1 + ((7 - dow1) % 7);                    // 第1周的最后一个周日
-    return d <= firstSunday ? 1 : Math.ceil((d - firstSunday) / 7) + 1;
+    var dt = new Date(_wdYear(m), m - 1, d);   // 必须用真实年份，否则星期几会算错
+    var dow = dt.getDay();                     // 0=周日
+    dt.setDate(dt.getDate() - (dow === 0 ? 6 : dow - 1));   // 回退到本周一
+    var mm = ('0' + (dt.getMonth() + 1)).slice(-2);
+    var dd = ('0' + dt.getDate()).slice(-2);
+    return mm + '-' + dd;
 }
 function aggregateWeekly(dayNumDen) {
     var weeks = {};
@@ -1395,10 +1406,10 @@ function aggregateWeekly(dayNumDen) {
         weeks[w].num += num;
         weeks[w].den += den;
     });
-    var keys = Object.keys(weeks).sort(function (a, b) { return Number(a) - Number(b); });
-    var CN = ['第一周', '第二周', '第三周', '第四周', '第五周'];
+    var keys = Object.keys(weeks).sort();      // "MM-DD" 字符串排序即时间排序
+    var CN = ['第一周', '第二周', '第三周', '第四周', '第五周', '第六周'];
     return {
-        labels: keys.map(function (k) { return CN[Number(k) - 1] || ('第' + k + '周'); }),
+        labels: keys.map(function (k, i) { return CN[i] || ('第' + (i + 1) + '周'); }),
         values: keys.map(function (k) { return weeks[k].den > 0 ? weeks[k].num / weeks[k].den : null; })
     };
 }

@@ -85,6 +85,70 @@ function buildRatingClothingRows() {
 
 d.RATING_CLOTHING_ROWS = buildRatingClothingRows();
 
+// ── 跨月补数（2026-11-01）────────────────────────────────────────────────
+// 工作台 data.js 是「单月纯净」窗口（update_data.py 的 run_month 过滤），换月时上月日维度
+// 会被全部清掉。而周报的周维度按自然周跨月，必须拿到上月尾巴。
+// 由 _daily_digest.py 维护的 daily_history.js 是只增不删的日维度永久库，这里把它补进来。
+// 规则：data.js 里已有的日期以 data.js 为准，只补缺的（绝不覆盖）。
+const histPath = process.argv[5] || 'D:\\兴达数据库\\交通安全行为看板\\daily_history.js';
+
+function mergeDailyHistory() {
+  if (!histPath || !fs.existsSync(histPath)) return 0;
+  let hist = null;
+  try {
+    const fakeWindow = {};
+    hist = new Function('window', fs.readFileSync(histPath, 'utf8') +
+      ';\nreturn window.DAILY_HISTORY;')(fakeWindow);
+  } catch (e) {
+    console.warn('WARN: 历史库读取失败(' + e.message + ')，跳过跨月补数');
+    return 0;
+  }
+  if (!hist || !hist.data) return 0;
+
+  // 只取最近 2 个月：跨年时 2025-10-26 与 2026-10-26 的 MM-DD 相同，多取会互相覆盖
+  const months = Object.keys(hist.data).sort().slice(-2);
+  const byKey = {};   // "level|name" -> { MM-DD: [h,s,r,v] }
+  for (const ym of months) {
+    const block = hist.data[ym] || {};
+    for (const full of Object.keys(block)) {
+      const md = full.slice(5);
+      for (const k of Object.keys(block[full])) {
+        (byKey[k] || (byKey[k] = {}))[md] = block[full][k];
+      }
+    }
+  }
+
+  const MET = ['helmet_dayNumDen', 'speed_dayNumDen', 'redlight_dayNumDen', 'reverse_dayNumDen'];
+  const dateSet = new Set(d.DATES || []);
+  let filled = 0;
+
+  function apply(rows, idxList) {
+    for (const r of (rows || [])) {
+      const h = byKey[r.level + '|' + r.name];
+      if (!h) continue;
+      for (const i of idxList) {
+        const fld = MET[i];
+        if (!r[fld]) r[fld] = {};
+        for (const md of Object.keys(h)) {
+          const v = h[md][i];
+          if (!v || !v[1]) continue;
+          if (!r[fld][md]) { r[fld][md] = [v[0], v[1]]; filled++; }
+          dateSet.add(md);
+        }
+      }
+    }
+  }
+  apply(d.TAB1_ROWS, [0, 1]);   // 戴盔 / 超速
+  apply(d.TAB2_ROWS, [2, 3]);   // 闯红灯 / 逆行
+
+  d.DATES = Array.from(dateSet).sort();
+  console.log('跨月补数: 补入 ' + filled + ' 个日数据点, DATES=' + d.DATES.length +
+    ' 天 (' + d.DATES[0] + '~' + d.DATES[d.DATES.length - 1] + ')');
+  return filled;
+}
+
+d.__histFilled = mergeDailyHistory();
+
 let out = '// 自动生成：站维度精简数据（不含全量骑手明细）— build_equity_slim.js\n';
 out += '// 源: ' + srcPath + '\n';
 out += '// 生成时间: ' + new Date().toISOString() + '\n';

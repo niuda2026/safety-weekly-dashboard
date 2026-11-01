@@ -107,6 +107,10 @@ def _ensure_equity_slim():
         escort_js = os.path.join(HUHU_FU_DIR, "data_excluded.js")
         if os.path.isfile(escort_js):
             src_mt = max(src_mt, os.path.getmtime(escort_js))
+        # 跨月日维度永久库（2026-11-01）：新日期入库后必须重建精简版，否则补数看不到
+        hist_js = os.path.join(TRAFFIC_BOARD_DIR, "daily_history.js")
+        if os.path.isfile(hist_js):
+            src_mt = max(src_mt, os.path.getmtime(hist_js))
         if os.path.isfile(EQUITY_SLIM_JS) and os.path.getmtime(EQUITY_SLIM_JS) >= src_mt:
             return True
         node = _find_node()
@@ -115,7 +119,7 @@ def _ensure_equity_slim():
         # 先写到临时文件再原子替换，避免生成中途被请求读到半截
         tmp = EQUITY_SLIM_JS + ".tmp"
         r = subprocess.run(
-            [node, EQUITY_SLIM_BUILDER, TRAFFIC_DATA_JS, tmp, escort_js],
+            [node, EQUITY_SLIM_BUILDER, TRAFFIC_DATA_JS, tmp, escort_js, hist_js],
             capture_output=True, timeout=120,
             creationflags=0x08000000,  # CREATE_NO_WINDOW：pythonw 环境下防止弹黑窗
         )
