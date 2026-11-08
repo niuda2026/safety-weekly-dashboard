@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
+<head><script>window.__PUBLIC_STATIC=true;window.__PUB_VER='1793596893';</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="public, max-age=60">
+    
+    
     <title>履约安全周报看板</title>
     <!-- 本地库优先（8421 /_libs/ 直供，毫秒级）；公网静态托管无此路径时自动回退 CDN -->
     <script src="/_libs/xlsx-0.18.5.full.min.js" onerror="var s=document.createElement('script');s.src='https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js';document.head.appendChild(s)"></script>
@@ -232,6 +232,13 @@
 
         /* Data Table */
         .table-wrap { overflow-x: auto; overflow-y: auto; max-height: 65vh; }
+        /* 嵌入型明细表 iframe 的加载遮罩（2026-11-02）：没加载完时给出明确反馈，避免被误认为"空白/没数据" */
+        .frame-wrap { position: relative; }
+        .frame-loading { display: none; position: absolute; inset: 0; z-index: 5; align-items: center; justify-content: center; flex-direction: column; gap: 8px; background: #f8fafc; color: #475569; font-size: 0.92rem; }
+        .frame-loading.show { display: flex; }
+        .frame-loading .spinner { width: 22px; height: 22px; border: 3px solid #cbd5e1; border-top-color: var(--primary); border-radius: 50%; animation: frameSpin 0.9s linear infinite; }
+        .frame-loading .tip { font-size: 0.76rem; color: #94a3b8; }
+        @keyframes frameSpin { to { transform: rotate(360deg); } }
         .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
         .data-table th { background: #f8fafc; color: var(--text); text-align: left; padding: 10px 12px; font-weight: 600; border-bottom: 2px solid var(--card-border); white-space: nowrap; position: sticky; top: 0; z-index: 2; box-shadow: 0 1px 0 var(--card-border); }
         .data-table th.wrap-th { white-space: normal; word-break: break-all; line-height: 1.3; min-width: 70px; vertical-align: middle; }
@@ -552,7 +559,7 @@
             <th>健康证处罚金额</th>
         </tr></thead><tbody></tbody></table></div>
         <!-- 嵌入履约项目看板「履约达成处罚-周度」原样明细表（只读透出，数据随源自动同步；切到本 Tab 才懒加载） -->
-        <div class="table-wrap"><iframe id="framePenalty" data-src="/penalty-board/" src="about:blank" style="width:100%;height:82vh;border:0"></iframe></div>
+        <div class="table-wrap frame-wrap"><div class="frame-loading" id="loadingPenalty"><div class="spinner"></div><div>明细表加载中…</div><div class="tip">首次加载需读取履约项目全部数据，约 3~8 秒</div></div><iframe id="framePenalty" data-src="/penalty-board/" src="about:blank" style="width:100%;height:82vh;border:0"></iframe></div>
     </div>
 
     <!-- Accident（2026-09-27 改版：对齐履约达成处罚-周度的组织层级表样式与筛选） -->
@@ -1457,7 +1464,7 @@ function getSafetyAttentionRows() {
 function loadEquityDataScript() {
     return new Promise(function (resolve, reject) {
         var s = document.createElement('script');
-        s.src = '/equity-board/data.js?t=' + Date.now();
+        s.src = '/equity-board/data.js?v=' + (window.__PUB_VER||Date.now());
         s.onload = function () { try { s.remove(); } catch (e) {} resolve(); };
         s.onerror = function () { try { s.remove(); } catch (e) {} reject(); };
         document.head.appendChild(s);
@@ -1758,6 +1765,24 @@ function renderGroupedSafetySites(grouped, prefix, containerId) {
 }
 
 // 从明细表(redlight_data.json)按站点聚合周维度闯红灯率：Σ闯红灯次数/Σ遇到红灯次数，按"本月第几周"分组
+// 2026-11-02：闯红灯/逆行两张明细表（公网约 1.4MB）改为首屏后台加载，
+// 只服务「站点明细弹窗趋势图」和「导出 Excel」，不参与首屏渲染。
+let _trafficDetailPromise = null;
+function loadTrafficDetailInBackground() {
+    if (_trafficDetailPromise) return _trafficDetailPromise;
+    const files = { redlight: 'data/redlight_data.json', reverse: 'data/reverse_data.json' };
+    _trafficDetailPromise = Promise.all(Object.entries(files).map(async ([key, path]) => {
+        try {
+            const resp = await fetch(path + '?v=' + (window.__PUB_VER||Date.now()), { cache: 'default' });
+            if (resp.ok) {
+                const parsed = await resp.json();
+                if (Array.isArray(parsed) && parsed.length) store.detailData[key] = parsed;
+            }
+        } catch (e) {}
+    }));
+    return _trafficDetailPromise;
+}
+
 function getDetailWeeklyRedlight(siteName) {
     const detail = store.detailData && store.detailData.redlight;
     if (!detail || detail.length < 2) return { labels: [], values: [] };
@@ -3814,18 +3839,57 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     });
 });
 
-// 保险看板 iframe 懒加载：切到该 Tab 时才真正加载，避免拖慢首屏
-function loadInsuranceFrame(tab) {
+// 保险/履约看板 iframe 懒加载：切到该 Tab 时才真正加载，避免拖慢首屏
+// 2026-11-02 修复「进去以后不更新或者很慢」：
+//   ① 之前只在 click 时设 src → 直接打开页面（默认 Tab 就是履约数据）时明细表永远是 about:blank，
+//      看到条数但没有表体；现在首屏也会加载默认 Tab 的 iframe（见文件末尾 initActiveTabFrame）。
+//   ② 之前 dataset.loaded='1' 后永不重载 → 源数据更新后切回来还是旧表；现在按 FRAME_TTL_MS 判过期，
+//      过期切回即带新 ?t= 重新加载。
+//   ③ 加载期间显示遮罩（frame-loading），避免被误判成"空白/没数据"。
+var FRAME_TTL_MS = 120000;
+function loadInsuranceFrame(tab, force) {
     const panel = document.getElementById('panel-' + tab);
     if (!panel) return;
     const frame = panel.querySelector('iframe[data-src]');
     if (!frame) return;
-    if (frame.dataset.loaded === '1') return;
+    const now = Date.now();
+    const loadedAt = parseInt(frame.dataset.loadedAt || '0', 10);
+    const stale = !loadedAt || (now - loadedAt > FRAME_TTL_MS);
+    if (frame.dataset.loaded === '1' && !force && !stale) return;   // 未过期，复用当前内容
+    const mask = frame.parentElement ? frame.parentElement.querySelector('.frame-loading') : null;
+    if (mask) mask.classList.add('show');
     frame.dataset.loaded = '1';
-    // 履约类明细表 iframe 加载完成后，按当前周报筛选条件同步一次
-    if (tab === 'compliance') frame.onload = () => { setTimeout(syncPenaltyIframe, 300); };
-    frame.src = frame.dataset.src + '?t=' + Date.now();
+    frame.dataset.loadedAt = String(now);
+    frame.onload = function () {
+        if (mask) mask.classList.remove('show');
+        // 履约类明细表 iframe 加载完成后，按当前周报筛选条件同步一次
+        if (tab === 'compliance') setTimeout(syncPenaltyIframe, 300);
+    };
+    frame.onerror = function () { if (mask) mask.classList.remove('show'); };
+    // 公网静态托管（WorkBuddy sites）对带 query 的子路径返回 403 空页 → iframe 必须用裸路径；
+    // 本地 8421 则靠 ?t= 破缓存。标志由 _refresh_public.py 写入 window.__PUBLIC_STATIC。
+    var isStatic = !!window.__PUBLIC_STATIC;
+    var firstLoad = (frame.getAttribute('src') || 'about:blank') === 'about:blank';
+    if (isStatic) {
+        if (firstLoad) frame.src = frame.dataset.src;
+        else { try { frame.contentWindow.location.reload(); } catch (e) { frame.src = frame.dataset.src; } }
+    } else {
+        frame.src = frame.dataset.src + '?t=' + now;
+    }
 }
+// 首屏：默认激活的 Tab（通常是「履约数据」）也立即加载，不能等用户点击
+(function initActiveTabFrame() {
+    function run() {
+        try {
+            const btn = document.querySelector('.tab-btn.active');
+            if (btn && btn.dataset.tab && (btn.dataset.tab === 'compliance' || btn.dataset.tab.indexOf('insurance') === 0)) {
+                loadInsuranceFrame(btn.dataset.tab);
+            }
+        } catch (e) {}
+    }
+    if (document.readyState === 'complete' || document.readyState === 'interactive') setTimeout(run, 200);
+    else document.addEventListener('DOMContentLoaded', function () { setTimeout(run, 200); });
+})();
 
 // Filter events
 // 注：accident 不走这里——它用面板头部下拉（accHeaderFilter）与明细表多选筛选（accMsCheck）
@@ -4367,21 +4431,22 @@ async function loadData() {
             disinfect: 'data/disinfect_data.json',
             equipment: 'data/equipment_rate.json',
             equipmentDetail: 'data/equipment_detail.json',
-            health: 'data/health_violation.json',
-            redlight: 'data/redlight_data.json',
-            reverse: 'data/reverse_data.json'
+            health: 'data/health_violation.json'
         };
         // Load detail data from JSON files, always refreshing from disk (data/ is authoritative)
         // 始终从磁盘刷新明细数据，避免旧 localStorage 缓存阻隔最新明细
         await Promise.all(Object.entries(detailFiles).map(async ([key, path]) => {
             try {
-                const resp = await fetch(path + '?t=' + Date.now(), { cache: 'no-store' });
+                const resp = await fetch(path + '?v=' + (window.__PUB_VER||Date.now()), { cache: 'default' });
                 if (resp.ok) {
                     const parsed = await resp.json();
                     if (Array.isArray(parsed) && parsed.length) store.detailData[key] = parsed;
                 }
             } catch(e) {}
         }));
+        // 2026-11-02 提速：闯红灯/逆行明细（公网合计约 1.4MB）只用于「站点明细弹窗趋势图」
+        // 与导出 Excel，不参与首屏渲染 → 改为首屏之后后台加载，不再堵住出数。
+        loadTrafficDetailInBackground();
 
         // 优先从本地 JSON 文件加载最新数据（保证 data/ 下修正后的数据生效）
         const files = {
@@ -4396,7 +4461,7 @@ async function loadData() {
         let diskLoaded = true;
         try {
             await Promise.all(Object.entries(files).map(async ([key, path]) => {
-                const resp = await fetch(path + '?t=' + Date.now(), { cache: 'no-store' });
+                const resp = await fetch(path + '?v=' + (window.__PUB_VER||Date.now()), { cache: 'default' });
                 if (!resp.ok) throw new Error('加载 ' + path + ' 失败');
                 const raw = await resp.json();
                 let processed = processors[key](raw);
@@ -4411,8 +4476,8 @@ async function loadData() {
         // 加载安全事故明细表所需的可选数据：站维度完成单量(M盘) + 手填单元格持久化（缺失不阻断）
         try {
             const [osResp, amResp] = await Promise.all([
-                fetch('data/orders_site.json?t=' + Date.now(), { cache: 'no-store' }),
-                fetch('data/accident_manual.json?t=' + Date.now(), { cache: 'no-store' }).catch(() => null)
+                fetch('data/orders_site.json?v=' + (window.__PUB_VER||Date.now()), { cache: 'default' }),
+                fetch('data/accident_manual.json?v=' + (window.__PUB_VER||Date.now()), { cache: 'default' }).catch(() => null)
             ]);
             if (osResp && osResp.ok) { try { ORDERS_SITE = await osResp.json(); } catch (e) { console.warn('orders_site.json 解析失败:', e); } }
             if (amResp && amResp.ok) { try { ACC_MANUAL = await amResp.json(); } catch (e) { console.warn('accident_manual.json 解析失败:', e); } }
@@ -4457,7 +4522,12 @@ async function loadData() {
         renderAll();
         // 履约达成处罚周度：从只读透出的 penalty_weekly.js 覆盖合规面板数据
         // （明细表 + KPI 卡片 + 重点关注 直接从此数据取值；仅读取不改写原工作台文件）
-        loadPenaltyCompliance();
+        // 2026-11-02：等处罚周度覆盖渲染完成再撤遮罩 —— 否则会先闪一帧
+        // compliance.json 里的旧罚款数（如 ¥2,750），看起来像"没更新"。
+        await Promise.race([
+            loadPenaltyCompliance(),
+            new Promise(function (r) { setTimeout(r, 6000); })
+        ]);
         document.getElementById('loadingOverlay').classList.add('hidden');
         // Update date display for default data (use current date)
         updateDataDateDisplay(null);
@@ -4495,7 +4565,7 @@ setInterval(refreshRatingAttention, 5 * 60 * 1000);
 // 仅读取，绝不改写履约工作台任何文件。
 async function loadPenaltyCompliance() {
     try {
-        const resp = await fetch('/penalty-board/penalty_weekly.js?t=' + Date.now(), { cache: 'no-store' });
+        const resp = await fetch('/penalty-board/penalty_weekly.js?v=' + (window.__PUB_VER||Date.now()), { cache: 'default' });
         if (!resp.ok) throw new Error('HTTP ' + resp.status);
         const text = await resp.text();
         // 解析 PENALTY_WEEKLY_ROWS（含 var 声明，用 Function 沙箱取出数组）

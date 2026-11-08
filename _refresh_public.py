@@ -30,6 +30,7 @@ _refresh_public.py —— 公网 _public 静态快照一键刷新（2026-09-28 �
                 （加 --with-pdf 才生成；依赖本机 8421 服务在跑）
 """
 import glob
+import json
 import os
 import re
 import shutil
@@ -57,11 +58,17 @@ PUB_SLIM = os.path.join(PUB, "equity-board", "data.js")
 
 PEN_JS = ["penalty_weekly.js", "penalty_monthly.js", "data.js", "knife_rider_data.js",
           "box_rider_data.js", "inspection_data.js", "inspection_daily_data.js",
-          "morning_review_data.js"]
+          "morning_review_data.js",
+          # 2026-11-02 补：此前漏拷，公网嵌入明细表里这两个一直 404
+          "training_projects_config.js", "morning_rej_m.js",
+          # 2026-11-02 补：M盘早会罚款明细
+          "morning_penalty_m.js"]
 
 # 内嵌「交通安全四项」看板（与 server.py /four-board/ 注入完全一致：postMessage 联动 + 隐藏 KPI/大区卡）
 # 2026-10-19：同步隐藏「骑手明细」tab —— 公网只保留站维度，骑手个人级明细不外露
 FOUR_BOARD_HTML = os.path.join(D, "交通安全行为看板", "骑手交通行为明细看板.html")
+# 2026-11-02：跨月自然周依赖「站维度日数据永久库」（data.js 是单月窗口，换月后上月日维度会被清掉）
+FOUR_DAILY_HIST = os.path.join(D, "交通安全行为看板", "daily_history.js")
 FOUR_XLSX = os.path.join(D, "交通安全行为看板", "xlsx.full.min.js")
 FOUR_FILTER_INJECT = (
     '<style>#panel-four .summary-row,#panel-four .region-cards-row{display:none!important}'
@@ -98,6 +105,46 @@ def cp(src, dst):
     shutil.copyfile(src, dst)
     log("  cp %s -> %s (%d B)" % (os.path.basename(src), os.path.relpath(dst, PROJECT), os.path.getsize(dst)))
     return True
+
+
+def cp_json_min(src, dst):
+    """JSON 去空白后写入公网目录（体积可省 30~60%），解析失败则原样拷贝。
+
+    2026-11-02：redlight/reverse 这类大 JSON 缩进占了一半体积，
+    压掉后公网首屏少传 2~3MB。内容语义完全不变。
+    """
+    if not os.path.isfile(src):
+        log("  [缺失!] %s" % src)
+        return False
+    try:
+        with open(src, encoding="utf-8-sig") as fh:
+            data = json.load(fh)
+        raw = json.dumps(data, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        with open(dst, "wb") as fh:
+            fh.write(raw)
+        log("  cp(min) %s -> %s (%d B)" % (os.path.basename(src), os.path.relpath(dst, PROJECT), len(raw)))
+        return True
+    except Exception as e:
+        log("  [JSON 压缩失败，退回原样] %s: %s" % (os.path.basename(src), e))
+        return cp(src, dst)
+
+
+def public_version():
+    """公网资源版本号 = 关键源文件的最新 mtime。
+
+    数据一变版本号就变 → 浏览器自动重新拉；数据没变则全部走缓存。
+    """
+    paths = [os.path.join(PROJECT, "index.html"), SLIM_OUT, TRAFFIC_DATA_JS,
+             os.path.join(PEN_DIR, "penalty_weekly.js"), PUB_SLIM]
+    paths += glob.glob(os.path.join(PROJECT, "data", "*.json"))
+    v = 0
+    for p in paths:
+        try:
+            v = max(v, int(os.path.getmtime(p)))
+        except OSError:
+            pass
+    return str(v)
 
 
 def find_node():
@@ -169,6 +216,8 @@ def build_penalty_index():
     # 1) 中文名数据文件先改名（静态沙箱不支持中文文件名）
     text = text.replace('src="D:/兴达数据库/履约项目/充换电血压_data.js"',
                         'src="/penalty-board/chargebp_data.js"')
+    text = text.replace('src="D:/兴达数据库/履约项目/血压审核_extra.js"',
+                        'src="/penalty-board/bp_audit_extra.js"')
     # 2) 履约项目 js → /penalty-board/
     text = re.sub(r'src="D:/兴达数据库/履约项目/([^"]+\.js)"',
                   lambda m: 'src="/penalty-board/%s"' % m.group(1), text)
@@ -177,6 +226,18 @@ def build_penalty_index():
                         'src="/equity-board/data.js?t=' + t + '"')
     # 4) ../_libs → /_libs
     text = re.sub(r'src="\.\./_libs/([^"]+)"', r'src="/_libs/\1"', text)
+    # 4.1) 数据 js 加内容版本串（2026-11-02）：公网是静态托管，浏览器/CDN 会缓存无参 URL 的 js，
+    #      源数据更新后嵌入明细表仍是旧表（用户反馈"进去以后不更新"）。版本串取 PEN_JS 最新 mtime，
+    #      内容不变则 URL 不变（缓存可复用），内容一变就自动换新 URL。
+    try:
+        _ver = str(int(max(os.path.getmtime(os.path.join(PEN_DIR, f)) for f in PEN_JS)))
+    except Exception:
+        _ver = str(int(time.time()))
+    text = re.sub(r'src="(/penalty-board/[^"?]+\.js)"',
+                  lambda m: 'src="%s?v=%s"' % (m.group(1), _ver), text)
+    # 相对路径引用（training_projects_config.js 在源页里就是相对路径）显式落到 /penalty-board/ 并带版本串
+    text = re.sub(r'src="(training_projects_config\.js)"',
+                  lambda m: 'src="/penalty-board/%s?v=%s"' % (m.group(1), _ver), text)
     # 5) 注入与 server.py 完全一致的隐藏样式 + 自动切到 履约安全检查→履约达成处罚-周度
     #    2026-10-11 加固：switchTab 与 switchSafetySub 拆成独立 try（此前 switchTab 渲染巡检子页
     #    读缺失数据抛错会把整个 try 块打断，导致永远停在默认的巡检平台子页）；并在切换后校验实际
@@ -250,6 +311,8 @@ def step3b_four_board():
     # ⚠ 必须用全量 data.js（18MB）：四项表 getFourRows 依赖全量骑手明细，slim 的 TAB1_ROWS 映射后得 0 行
     #   （2026-10-19 Playwright 实测：slim 副本 table-four 0 行，全量副本 221 行）
     cp(TRAFFIC_DATA_JS, os.path.join(PUB_FOUR, "data.js"))
+    # 日数据永久库：供跨月自然周（如 10-26~11-01）补齐上月日数据
+    cp(FOUR_DAILY_HIST, os.path.join(PUB_FOUR, "daily_history.js"))
     # 导出 Excel 用的 xlsx
     cp(FOUR_XLSX, os.path.join(PUB_FOUR, "xlsx.full.min.js"))
 
@@ -259,6 +322,10 @@ def step4_penalty():
     for f in PEN_JS:
         cp(os.path.join(PEN_DIR, f), os.path.join(PUB, "penalty-board", f))
     cp(os.path.join(PEN_DIR, "充换电血压_data.js"), os.path.join(PUB, "penalty-board", "chargebp_data.js"))
+    # 中文名 → ASCII（静态沙箱不支持中文文件名），与 index.html 里的改写一一对应
+    _bp_src = os.path.join(PEN_DIR, "血压审核_extra.js")
+    if os.path.isfile(_bp_src):
+        cp(_bp_src, os.path.join(PUB, "penalty-board", "bp_audit_extra.js"))
     build_penalty_index()
 
 
@@ -267,7 +334,9 @@ def step5_libs():
     ⚠ 不能只靠 index.html 里的 onerror 回退 CDN：onerror 里 appendChild 是异步的，
       主脚本早已执行完 → `Chart is not defined`，公网整页图表全废（2026-10-24 实测）。"""
     log("[5] 共享库 _libs")
-    for name in ("html2canvas-1.4.1.min.js", "chart.umd-4.4.7.min.js", "xlsx-0.18.5.full.min.js"):
+    for name in ("html2canvas-1.4.1.min.js", "chart.umd-4.4.7.min.js", "xlsx-0.18.5.full.min.js",
+                 # 2026-11-02 补：履约看板（penalty-board）引用 echarts，缺了公网 404
+                 "echarts-5.5.0.min.js"):
         cp(os.path.join(LIBS, name), os.path.join(PUB, "_libs", name))
 
 
@@ -333,16 +402,39 @@ def publicize_index(src_html):
     end = src_html.find(end_mark, start)
     if end < 0:
         raise RuntimeError("index.html 里找不到 downloadAllData 结束标记，公网适配失败")
-    return src_html[:start] + PUBLIC_DOWNLOAD_FN + src_html[end:]
+    out = src_html[:start] + PUBLIC_DOWNLOAD_FN + src_html[end:]
+    # 2026-11-02：公网静态托管（WorkBuddy sites）对「带 query 的子路径」返回 403 空页，
+    #   iframe 加 ?t= 会白屏（本地 8421 才需要 ?t= 破缓存）。注入标志让 loadInsuranceFrame 走裸路径。
+    #
+    # 2026-11-02 二次提速：公网首屏十几秒，原因是「每次访问都强制重下约 10MB」——
+    #   ① head 里 no-cache/no-store 的 meta 让整页不可缓存
+    #   ② 所有数据 fetch 都用 ?t=Date.now() + cache:'no-store'
+    # 改成「部署版本号」：数据不变则全部命中浏览器缓存，重新发布会自动换版本号重新拉。
+    ver = public_version()
+    out = out.replace('<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">',
+                      '<meta http-equiv="Cache-Control" content="public, max-age=60">')
+    out = out.replace('<meta http-equiv="Pragma" content="no-cache">', '')
+    out = out.replace('<meta http-equiv="Expires" content="0">', '')
+    out = re.sub(r"\?t=' \+ Date\.now\(\), \{ cache: 'no-store' \}",
+                 "?v=' + (window.__PUB_VER||Date.now()), { cache: 'default' }", out)
+    out = out.replace("'/equity-board/data.js?t=' + Date.now()",
+                      "'/equity-board/data.js?v=' + (window.__PUB_VER||Date.now())")
+    flag = "<script>window.__PUBLIC_STATIC=true;window.__PUB_VER='%s';</script>" % ver
+    if '<head>' in out:
+        out = out.replace('<head>', '<head>' + flag, 1)
+    else:
+        out = flag + out
+    log("  公网版本号 __PUB_VER=%s（数据不变则走浏览器缓存）" % ver)
+    return out
 
 
 def step6_weekly(with_pdf=False):
     log("[6] 周报本体 data/*.json + index.html + monthly_summary")
     n = 0
     for f in glob.glob(os.path.join(PROJECT, "data", "*.json")):
-        if cp(f, os.path.join(PUB, "data", os.path.basename(f))):
+        if cp_json_min(f, os.path.join(PUB, "data", os.path.basename(f))):
             n += 1
-    log("  data/*.json 共 %d 个" % n)
+    log("  data/*.json 共 %d 个（已去空白压缩）" % n)
     with open(os.path.join(PROJECT, "index.html"), encoding="utf-8") as fh:
         html = fh.read()
     out = os.path.join(PUB, "index.html")
@@ -401,7 +493,9 @@ def step6b_weekly_pdf():
 
 CLEANUP_FILES = ["server.py", "start_server.bat", "start_silent.vbs", "sync.bat",
                  "update_data.bat", "update_insurance.bat", "gen_dashboard_data.py",
-                 "使用说明.txt", "日常操作速查.txt", "开机自启.bat", "注册开机自启.bat"]
+                 "使用说明.txt", "日常操作速查.txt", "开机自启.bat", "注册开机自启.bat",
+                 # 2026-11-02：早期残留，页面从不引用，1.3MB 白占上传体积
+                 "data/equity_slim_data.js"]
 
 
 def step7_cleanup():

@@ -80,6 +80,13 @@ PENALTY_JS_WHITELIST = {
     "penalty_weekly.js", "penalty_monthly.js", "box_rider_data.js", "data.js",
     "inspection_data.js", "inspection_daily_data.js", "knife_rider_data.js",
     "morning_review_data.js", "充换电血压_data.js",
+    # 2026-11-02 补：这两个此前被白名单漏掉，嵌入明细表里一直 404
+    #   training_projects_config.js = 考培项目列配置（拿不到就回退 data.js/默认，列会不一致）
+    #   morning_rej_m.js = M盘早会驳回清单（拿不到则早会明细缺 MR_REJ_M 合并行）
+    #   morning_penalty_m.js = M盘早会罚款明细（缺了早会罚款弹窗少明细）
+    #   血压审核_extra.js = 充换电血压审核 6 列数据（缺了充换电页那些列是空的）
+    "training_projects_config.js", "morning_rej_m.js", "morning_penalty_m.js",
+    "血压审核_extra.js",
 }
 
 

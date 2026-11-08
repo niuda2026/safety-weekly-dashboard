@@ -151,7 +151,11 @@ table.dt td.spark-td .spark-img{display:block;margin:0 auto}
 </style>
 <script src="/_libs/html2canvas-1.4.1.min.js"></script>
 
-<script src="data.js?t=1793587089247"></script>
+<!-- 2026-11-02：交通四项「站维度日数据永久库」（_daily_digest.py 自动维护，只增不删）。
+     data.js 是单月纯净窗口，换月当天上月日维度会被清掉 → 跨月自然周（如 10-26~11-01）只剩 1 天。
+     引入本库后由 fourMergeHistory() 补齐周维度所需的上月日数据，月累计口径不变。 -->
+<script src="daily_history.js?11-02"></script>
+<script src="data.js?t=1793596893409"></script>
 </head>
 <body>
 
@@ -2676,24 +2680,29 @@ function egYearOf(mm){
   return y;
 }
 function buildMonthWeeks(ascDates){
+  // 【2026-11-02 改口径】自然周（周一~周日）分组，跨月自动合并。
+  // 原口径「本月第几周」= 1日~首个周日为第1周，跨月周会被劈成两段：
+  // 10/26~10/31 归 10 月第 5 周、11/01 单独成 11 月第 1 周 → 周报永远看不到完整的一周。
+  // 改后：11 月第 1 周 = 10-26~11-01（7 天），数据由 daily_history.js 补齐上月部分。
   if(!ascDates.length)return [];
-  var mm=parseInt(ascDates[ascDates.length-1].slice(0,2),10);
-  var y=egYearOf(mm);
-  var lastDay=new Date(y,mm,0).getDate();
-  var dow=new Date(y,mm-1,1).getDay();
-  var w1end=1+((7-dow)%7);
-  var bounds=[[1,Math.min(w1end,lastDay)]];
-  var s=w1end+1;
-  while(s<=lastDay){bounds.push([s,Math.min(s+6,lastDay)]);s+=7;}
-  var weeks=[];
-  bounds.forEach(function(b,i){
-    var days=ascDates.filter(function(d){
-      return parseInt(d.slice(0,2),10)===mm&&parseInt(d.slice(3,5),10)>=b[0]&&parseInt(d.slice(3,5),10)<=b[1];
-    });
-    if(!days.length)return;
-    weeks.push({label:'第'+(EG_CN[i]||i+1)+'周',range:egPad(mm)+'-'+egPad(b[0])+'~'+egPad(mm)+'-'+egPad(b[1]),days:days});
+  var order=[],byKey={};
+  ascDates.forEach(function(d){
+    var mm=parseInt(d.slice(0,2),10), dd=parseInt(d.slice(3,5),10);
+    if(isNaN(mm)||isNaN(dd))return;
+    var y=egYearOf(mm);
+    var dt=new Date(y,mm-1,dd);
+    var dow=dt.getDay();                        // 0=周日
+    var mon=new Date(y,mm-1,dd-(dow===0?6:dow-1));// 回退到本周一
+    var sun=new Date(mon.getFullYear(),mon.getMonth(),mon.getDate()+6);
+    var key=mon.getFullYear()+egPad(mon.getMonth()+1)+egPad(mon.getDate());
+    if(!byKey[key]){ byKey[key]={sortKey:key,mon:mon,sun:sun,days:[]}; order.push(byKey[key]); }
+    byKey[key].days.push(d);
   });
-  return weeks;
+  order.sort(function(a,b){return a.sortKey<b.sortKey?-1:a.sortKey>b.sortKey?1:0;});
+  return order.map(function(w,i){
+    var rng=egPad(w.mon.getMonth()+1)+'-'+egPad(w.mon.getDate())+'~'+egPad(w.sun.getMonth()+1)+'-'+egPad(w.sun.getDate());
+    return {label:'第'+(EG_CN[i]||i+1)+'周',range:rng,days:w.days.sort()};
+  });
 }
 function weekAvgOf(r,key,w){
   // 周维度值 = 该周各日 Σ分子/Σ分母（累计口径，与日维度、月累计口径完全一致）
@@ -2755,9 +2764,70 @@ function buildFourRows(){
   METRIC_CFG.four.rows=(TAB1_ROWS||[]).map(function(r){
     var m=map[r.level+'|'+(r.name||'')+'|'+(r.city||'')];
     if(m)RK.forEach(function(k){if(m[k]!==undefined)r[k]=m[k];});
+    fourMergeHistory(r);   // 2026-11-02：补跨月自然周里属于上月的日数据
     return r;
   });
   return METRIC_CFG.four.rows;
+}
+// ══ 跨月周维度：用 daily_history.js 补齐上月日数据（2026-11-02）══
+// 行 key 格式与 _daily_digest.py 一致：level|name，四元组顺序 [戴盔,超速,闯红灯,逆行]，
+// 每个是 [分子,分母]。只补 data.js 里没有的日期，绝不覆盖当月已有值；月累计/月度 num、den 一律不动。
+var FOUR_HIST_IDX={helmet:0,speed:1,redlight:2,reverse:3};
+function fourHistData(){
+  return (typeof DAILY_HISTORY!=='undefined'&&DAILY_HISTORY&&DAILY_HISTORY.data)?DAILY_HISTORY.data:null;
+}
+function fourMergeHistory(r){
+  var H=fourHistData(); if(!H)return false;
+  var key=r.level+'|'+(r.name||'');
+  var hit=false;
+  FOUR_METRICS.forEach(function(m,mi){
+    var idx=(FOUR_HIST_IDX[m.key]!==undefined)?FOUR_HIST_IDX[m.key]:mi;
+    var dnKey=m.key+'_dayNumDen', dKey=m.key+'_daily';
+    var dn=r[dnKey]||(r[dnKey]={});
+    var dl=r[dKey]||(r[dKey]={});
+    Object.keys(H).forEach(function(mo){
+      var days=H[mo]; if(!days)return;
+      Object.keys(days).forEach(function(fullDay){
+        var shortDay=fullDay.slice(5,10);                 // "YYYY-MM-DD" → "MM-DD"
+        if(dl[shortDay]!==undefined&&dn[shortDay])return;  // data.js 优先，不覆盖
+        var rec=days[fullDay]&&days[fullDay][key];
+        if(!rec||!rec[idx])return;
+        var num=rec[idx][0], den=rec[idx][1];
+        if(!(den>0))return;
+        dn[shortDay]=[num,den];
+        dl[shortDay]=Math.round(num/den*10000)/100;
+        hit=true;
+      });
+    });
+  });
+  return hit;
+}
+// 需要补哪几天：以 DATES 最早一天所在自然周的周一为下界，只补 data.js 窗口之前的那段。
+// 例：DATES=["11-01"] → 周一=10-26 → 补 10-26~10-31，11 月第 1 周即为完整 7 天。
+function fourHistDates(){
+  var H=fourHistData(); if(!H)return [];
+  var have=(typeof DATES!=='undefined'&&DATES)?DATES.filter(function(d){return d&&d.length===5;}):[];
+  if(!have.length)return [];
+  var first=have.slice().sort()[0];
+  var fm=parseInt(first.slice(0,2),10), fd=parseInt(first.slice(3,5),10);
+  if(isNaN(fm)||isNaN(fd))return [];
+  var fy=egYearOf(fm);
+  var fdt=new Date(fy,fm-1,fd);
+  var dow=fdt.getDay();
+  var mon=new Date(fy,fm-1,fd-(dow===0?6:dow-1));
+  var out=[];
+  Object.keys(H).forEach(function(mo){
+    Object.keys(H[mo]||{}).forEach(function(fullDay){
+      var y=parseInt(fullDay.slice(0,4),10),mm=parseInt(fullDay.slice(5,7),10),dd=parseInt(fullDay.slice(8,10),10);
+      if(!y||!mm||!dd)return;
+      var dt=new Date(y,mm-1,dd);
+      if(dt<mon||dt>=fdt)return;                      // 只补「首个数据日所在周」里属于上月的部分
+      var s=egPad(mm)+'-'+egPad(dd);
+      if(have.indexOf(s)>=0)return;
+      if(out.indexOf(s)<0)out.push(s);
+    });
+  });
+  return out;
 }
 function renderFour(){
   buildFourRows();
@@ -2773,7 +2843,10 @@ function renderFour(){
     return ra-rb;
   });
   var selDate=(stationFilter.four||{}).date||[];
-  var allDates=DATES.filter(function(d){return d&&d.length===5;}).sort(function(a,b){return b>a?1:b<a?-1:0;});
+  var allDates=DATES.filter(function(d){return d&&d.length===5;})
+    .concat(fourHistDates())                 // 2026-11-02：并入跨月周的上月日期
+    .filter(function(d,i,a){return a.indexOf(d)===i;})
+    .sort(function(a,b){return b>a?1:b<a?-1:0;});
   var dispDates=(selDate&&selDate.length)?selDate.slice().sort(function(a,b){return b>a?1:b<a?-1:0;}):allDates;
 
   renderFourSummary(rows);

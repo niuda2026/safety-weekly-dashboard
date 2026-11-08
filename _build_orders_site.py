@@ -52,7 +52,7 @@ def fv(x):
 
 def pick_source():
     """M 盘扫 _数据明细_*.xlsx，取 mtime 最新；返回 (path, date_range)"""
-    cands = glob.glob(os.path.join(M_DIR, "_数据明细_*.xlsx"))
+    cands = glob.glob(os.path.join(M_DIR, "*数据明细_*.xlsx"))
     if not cands:
         return None, None
     cands.sort(key=os.path.getmtime, reverse=True)
@@ -94,7 +94,7 @@ def main():
     else:
         src, rng = pick_source()
     if not src or not os.path.isfile(src):
-        raise SystemExit("M 盘未找到 _数据明细_*.xlsx 源文件")
+        raise SystemExit("M 盘未找到 *数据明细_*.xlsx 源文件")
     sites, total, null_rows = build(src)
     data = {
         "meta": {
