@@ -203,6 +203,13 @@ def step3_insurance():
     cp(INS_BI_LATEST, os.path.join(PUB, "bi_data", "latest.json"))
     cp(BI_PREMIUM, os.path.join(PUB, "premium_latest.json"))
     cp(os.path.join(INS_DIR, "v3_data.js"), os.path.join(PUB, "v3_data.js"))
+    # 🔴 2026-11-08 补：公网 V3 会请求 bi_data/snap_YYYYMM.json（月度对比）与 premium_history.json
+    #    （保费月档案/环比），此前没随包发布 → 线上一直 404，月度对比与保费历史取不到值。
+    for _sn in sorted(glob.glob(os.path.join(INS_DIR, "bi_data", "snap_*.json"))):
+        cp(_sn, os.path.join(PUB, "bi_data", os.path.basename(_sn)))
+    _ph = os.path.join(INS_DIR, "premium_history.json")
+    if os.path.isfile(_ph):
+        cp(_ph, os.path.join(PUB, "premium_history.json"))
     cp(os.path.join(PROJECT, "insurance_subsidy_v2.html"), os.path.join(PUB, "insurance_subsidy_v2.html"))
     cp(os.path.join(PROJECT, "insurance_subsidy_monitor.html"), os.path.join(PUB, "insurance_subsidy_monitor.html"))
     cp(os.path.join(PROJECT, "insurance_rate_analysis.html"), os.path.join(PUB, "insurance_rate_analysis.html"))
@@ -213,17 +220,21 @@ def build_penalty_index():
     with open(PEN_BOARD_HTML, encoding="utf-8") as fh:
         text = fh.read()
     t = str(int(time.time() * 1000))
-    # 1) 中文名数据文件先改名（静态沙箱不支持中文文件名）
-    text = text.replace('src="D:/兴达数据库/履约项目/充换电血压_data.js"',
-                        'src="/penalty-board/chargebp_data.js"')
-    text = text.replace('src="D:/兴达数据库/履约项目/血压审核_extra.js"',
-                        'src="/penalty-board/bp_audit_extra.js"')
+    # 1) 中文名数据文件先改名（静态沙箱不支持中文文件名）；容忍 ?v= 版本戳
+    text = re.sub(r'src="D:/兴达数据库/履约项目/充换电血压_data\.js(\?[^"]*)?"',
+                  'src="/penalty-board/chargebp_data.js"', text)
+    text = re.sub(r'src="D:/兴达数据库/履约项目/血压审核_extra\.js(\?[^"]*)?"',
+                  'src="/penalty-board/bp_audit_extra.js"', text)
     # 2) 履约项目 js → /penalty-board/
-    text = re.sub(r'src="D:/兴达数据库/履约项目/([^"]+\.js)"',
+    #    🔴 必须容忍 ?v=版本戳（2026-11-09）：源 HTML 里 box_rider_data.js / penalty_weekly.js
+    #    已带 ?v=YYYYMMDDHHMM，旧正则要求 .js 后紧跟引号 → 失配 → 绝对路径残留进公网静态页
+    #    → 浏览器按相对路径 404 → 处罚表整表空。这里统一剥掉原戳，由下面 4.1 用 _ver 重加。
+    text = re.sub(r'src="D:/兴达数据库/履约项目/([^"?]+\.js)(\?[^"]*)?"',
                   lambda m: 'src="/penalty-board/%s"' % m.group(1), text)
     # 3) 交通安全 data.js → slim（公网加 ?t= 防 CDN 缓存旧 slim；本地 server.py 靠 no-store）
-    text = text.replace('src="D:/兴达数据库/交通安全行为看板/data.js"',
-                        'src="/equity-board/data.js?t=' + t + '"')
+    #    同样容忍源片段的 ?v= 版本戳
+    text = re.sub(r'src="D:/兴达数据库/交通安全行为看板/data\.js(\?[^"]*)?"',
+                  'src="/equity-board/data.js?t=' + t + '"', text)
     # 4) ../_libs → /_libs
     text = re.sub(r'src="\.\./_libs/([^"]+)"', r'src="/_libs/\1"', text)
     # 4.1) 数据 js 加内容版本串（2026-11-02）：公网是静态托管，浏览器/CDN 会缓存无参 URL 的 js，
@@ -297,17 +308,27 @@ def step3b_four_board():
     with open(out_html, "w", encoding="utf-8", newline="") as fh:
         fh.write(html)
     log("  生成 %s (%d B)" % (os.path.relpath(out_html, PROJECT), os.path.getsize(out_html)))
-    # 同步改写公网 V3 副本的 fourFrameSrc：中文名 → ride_four.html
+    # 同步改写公网 V3 副本的四项弹窗地址：中文名 → ride_four.html
+    # 🔴 2026-11-08 修复：原实现用 v3.replace('"/four-board/" + encodeURIComponent(...)')，
+    #    但源文件里是 '"/four-board/"+encodeURIComponent(...)'（加号两侧没有空格）→
+    #    永远匹配不上、且没有任何告警，于是公网副本一直指向中文文件名，
+    #    点「四项」直接 404 File not found（本地 /four-board/ 路由能服务中文名，所以本地正常）。
+    #    改为正则（容许空白）+ 匹配失败必须告警。
     pub_v3 = os.path.join(PUB, "insurance_subsidy_v3.html")
     if os.path.isfile(pub_v3):
         with open(pub_v3, encoding="utf-8") as fh:
             v3 = fh.read()
-        v3b = v3.replace('"/four-board/" + encodeURIComponent("骑手交通行为明细看板.html")',
-                         '"/four-board/ride_four.html"')
-        if v3b != v3:
+        v3b, n_sub = re.subn(
+            r'"\s*/four-board/\s*"\s*\+\s*encodeURIComponent\(\s*"骑手交通行为明细看板\.html"\s*\)',
+            '"/four-board/ride_four.html"', v3)
+        if n_sub:
             with open(pub_v3, "w", encoding="utf-8", newline="") as fh:
                 fh.write(v3b)
-            log("  公网 V3 fourFrameSrc 已改写为 ride_four.html")
+            log("  公网 V3 四项弹窗地址已改写为 ride_four.html（%d 处）" % n_sub)
+        else:
+            still_cn = 'encodeURIComponent("骑手交通行为明细看板.html")' in v3
+            log("  [警告] 公网 V3 未找到四项弹窗地址改写点（剩余中文名引用=%s），点「四项」会 404"
+                % still_cn)
     # ⚠ 必须用全量 data.js（18MB）：四项表 getFourRows 依赖全量骑手明细，slim 的 TAB1_ROWS 映射后得 0 行
     #   （2026-10-19 Playwright 实测：slim 副本 table-four 0 行，全量副本 221 行）
     cp(TRAFFIC_DATA_JS, os.path.join(PUB_FOUR, "data.js"))

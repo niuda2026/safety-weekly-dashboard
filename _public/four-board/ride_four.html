@@ -120,6 +120,9 @@ tr.lv-merchant td.cell-bad{background:rgba(198,40,40,.16)!important;color:#c6282
 #four-table{border-collapse:separate;border-spacing:0;contain:paint;border-top:1px solid #1E88E5;border-left:1px solid #1E88E5}
 #four-table th{border-style:solid;border-color:#1E88E5;border-width:0 1px 1px 0}
 #four-table td{border-style:solid;border-color:#e3edf7;border-width:0 1px 1px 0}
+/* 2026-11-07：四项站维度表行高放宽（原 31px 太紧凑），实测行高 31→42；趋势图单元格同步留白 */
+#four-table tbody td{padding:12px 10px;line-height:1.4}
+#four-table tbody td.spark-td{padding:6px 6px}
 #four-thead tr.eg-grp th{top:var(--hdfix,0px);height:32px;padding:4px 10px;font-size:12px;letter-spacing:1px;vertical-align:middle;border-color:rgba(255,255,255,.35);white-space:nowrap}
 #four-thead tr.eg-grp th small{font-size:10px;font-weight:400;opacity:.85;letter-spacing:0}
 #four-thead tr.eg-sub th{top:calc(var(--hdfix,0px) + 32px);padding:4px 5px;font-size:11px;letter-spacing:.3px;line-height:1.25;border-color:rgba(255,255,255,.3)}
@@ -155,7 +158,7 @@ table.dt td.spark-td .spark-img{display:block;margin:0 auto}
      data.js 是单月纯净窗口，换月当天上月日维度会被清掉 → 跨月自然周（如 10-26~11-01）只剩 1 天。
      引入本库后由 fourMergeHistory() 补齐周维度所需的上月日数据，月累计口径不变。 -->
 <script src="daily_history.js?11-02"></script>
-<script src="data.js?t=1793596893409"></script>
+<script src="data.js?t=1794115560581"></script>
 </head>
 <body>
 
@@ -2806,6 +2809,9 @@ function fourMergeHistory(r){
 // 例：DATES=["11-01"] → 周一=10-26 → 补 10-26~10-31，11 月第 1 周即为完整 7 天。
 function fourHistDates(){
   var H=fourHistData(); if(!H)return [];
+  // 仅在中国时区当前日为周一时补齐上周；普通工作日默认不展示归档历史。
+  var chinaToday=new Date(new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date())+'T00:00:00');
+  if(chinaToday.getDay()!==1)return [];
   var have=(typeof DATES!=='undefined'&&DATES)?DATES.filter(function(d){return d&&d.length===5;}):[];
   if(!have.length)return [];
   var first=have.slice().sort()[0];
@@ -2815,6 +2821,9 @@ function fourHistDates(){
   var fdt=new Date(fy,fm-1,fd);
   var dow=fdt.getDay();
   var mon=new Date(fy,fm-1,fd-(dow===0?6:dow-1));
+  var lastMon=new Date(chinaToday.getFullYear(),chinaToday.getMonth(),chinaToday.getDate()-7);
+  var lastSun=new Date(chinaToday.getFullYear(),chinaToday.getMonth(),chinaToday.getDate()-1);
+  if(mon.getTime()!==lastMon.getTime()||lastMon.getMonth()===lastSun.getMonth())return [];
   var out=[];
   Object.keys(H).forEach(function(mo){
     Object.keys(H[mo]||{}).forEach(function(fullDay){
@@ -2863,8 +2872,9 @@ function renderFour(){
     return 'class="sticky-col'+(isLast?' sticky-last':'')+'" style="left:'+stickyLefts[i]+'px'+(extraStyle?';'+extraStyle:'')+'"';
   }
   var ascAll=dispDates.slice().sort(function(a,b){return a>b?1:a<b?-1:0;});
-  var egDays=((selDate&&selDate.length)?ascAll:ascAll.slice(-7)).slice(); // 日期由小到大
   var egWeeks=buildMonthWeeks(ascAll);
+  var defaultDays=fourHistDates().length&&egWeeks.length?egWeeks[0].days:ascAll.slice(-7);
+  var egDays=((selDate&&selDate.length)?ascAll:defaultDays).slice(); // 日期由小到大；跨月周一默认完整上周
   var grpName=function(label){return label.replace(/率$/,'');};
   var nw=Math.max(egWeeks.length,1), nd=Math.max(egDays.length,1);
 

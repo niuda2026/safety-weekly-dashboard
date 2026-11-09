@@ -6,13 +6,14 @@
 每周要等周报上传才更新）→ 周中跑 M 盘更新时弹窗还是上周旧明细，与看板汇总对不上。
 本脚本用本周 M 盘源文件直接重建，保证弹窗与看板同周同口径。
 
-生成 4 个（health_violation.json 保持不动，与看板「健康证处罚金额=0」口径一致）：
+生成 5 个：
   meeting_reject.json   <- _报备和日常早会驳回清单_*        （罚款：签到100/仪容仪表100/其余50，报备500）
   inspection_detail.json<- _【巡检平台站点检核】_子项检核明细查询_*（罚款同 _build_penalty_m.py：
       站长=自检100/项，整改不通过双倍200；督导=子项罚款表；健康证过期/证件不符按站人次分档300/400/500双倍；
       安全员行剔除、申诉通过行剔除——与看板聚合口径一致，保证弹窗=看板）
   disinfect_data.json   <- _餐箱消毒-违约金预计算_*          （12列直拷）
   equipment_detail.json <- _抽检不合格的骑手明细_*           （按早会文件名周窗口过滤，罚款：头盔200/服装100/餐箱100，盗版·其他平台150）
+  health_violation.json <- bm_*_虚假注册违规报表*            （12列直拷，只取类型含「健康证」的行；2026-11-09 起接入）
 
 json 列布局与周报 Excel 管线（_gen_details_from_excel.py）产物一致，
 周报看板 index.html 与履约项目看板弹窗按相同列号渲染，两边通用。
@@ -34,6 +35,8 @@ warnings.filterwarnings("ignore")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
+# 履约项目看板弹窗的同目录兜底（见 sync_to_workbench）
+WB_DATA_DIR = r"D:\兴达数据库\履约项目\data"
 M_DIR = r"M:\下载"
 SERIAL_EPOCH = datetime.datetime(1899, 12, 30)
 
@@ -95,7 +98,16 @@ def num(v):
 
 
 def find_newest(prefix):
-    cands = [c for c in glob.glob(os.path.join(M_DIR, prefix + "*.xlsx"))
+    """按**中段匹配**找 M 盘最新源文件。
+
+    🔴 2026-11-09：平台改名后写死前导下划线的 glob 会静默失配——
+       `_报备和日常早会驳回清单_` 实际已导出成 `报备和日常早会驳回清单_报备和...`，
+       `_抽检不合格的骑手明细_` 变成 `服装标准化对商看板_抽检不合格的骑手明细_...`，
+       于是弹窗明细 JSON 整段重建失败（与 2026-11-07 那批同类问题）。
+       统一改成 `*关键字*.xlsx`，只认文件名中段的特征串。
+    """
+    key = prefix.strip("_")
+    cands = [c for c in glob.glob(os.path.join(M_DIR, "*" + key + "*.xlsx"))
              if not os.path.basename(c).startswith("~$")]
     if not cands:
         raise FileNotFoundError("M盘找不到源文件: " + prefix)
@@ -104,6 +116,24 @@ def find_newest(prefix):
 
 def read_sheet(path):
     wb = openpyxl.load_workbook(path, read_only=True, data_only=True)
+    ws = wb.worksheets[0]
+    it = ws.iter_rows(values_only=True)
+    hdr = [str(h).strip() if h is not None else "" for h in next(it)]
+    idx = {h: i for i, h in enumerate(hdr)}
+    rows = []
+    for r in it:
+        rows.append({h: (r[idx[h]] if idx[h] < len(r) else None) for h in hdr})
+    wb.close()
+    return rows
+
+
+def read_sheet_noro(path):
+    """非只读方式读表。
+
+    🔴 read_only=True 对平台导出的「虚假注册违规报表」会读到 0 行（静默空表），
+       与 _build_penalty_m.load_health 的坑同源，健康证明细必须用这个。
+    """
+    wb = openpyxl.load_workbook(path, data_only=True)
     ws = wb.worksheets[0]
     it = ws.iter_rows(values_only=True)
     hdr = [str(h).strip() if h is not None else "" for h in next(it)]
@@ -356,6 +386,72 @@ def gen_equipment(dry, w0, w1):
     return out
 
 
+def gen_health(dry):
+    """健康证明细（2026-11-09 新增）<- bm_*_虚假注册违规报表*.xlsx
+
+    背景：履约看板「履约达成处罚-周度」的健康证处罚金额已从该源文件接入
+    （_build_penalty_m.load_health），但弹窗读的 health_violation.json 一直是
+    2026-09-27 的空壳（只有表头）→ 点单元格永远显示「暂无健康证违规记录」。
+    源表 12 列与 json 列布局完全一致，直拷即可，不做周窗口过滤
+    （源文件本身是 T-1 月全量）。
+    """
+    src = find_newest("虚假注册违规报表")
+    keys = ["日期", "区域id", "区域名称", "站点id", "站点名称", "违规时间",
+            "骑手姓名", "身份证号码", "虚假违规类型", "骑手id", "处罚金额", "任务id"]
+    out = [list(keys)]
+    skipped = {}
+    for r in read_sheet_noro(src):
+        typ = str(r.get("虚假违规类型") or "").strip()
+        if r.get("站点名称") in (None, ""):
+            continue
+        if "健康证" not in typ:
+            skipped[typ or "(空)"] = skipped.get(typ or "(空)", 0) + 1
+            continue
+        vals = []
+        for k in keys:
+            v = r.get(k)
+            if k == "日期":
+                d = ymd(v)
+                v = d.strftime("%Y-%m-%d") if d else ""
+            elif isinstance(v, float) and v.is_integer():
+                v = int(v)
+            elif v is None:
+                v = ""
+            vals.append(v)
+        out.append(vals)
+    if skipped:
+        print("[health_violation.json] 非健康证类型已跳过 %s" % skipped)
+    print("[health_violation.json] %d 行 <- %s" % (len(out) - 1, os.path.basename(src)))
+    if not dry:
+        p = os.path.join(DATA_DIR, "health_violation.json")
+        backup(p)
+        json.dump(out, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    return out
+
+
+def sync_to_workbench():
+    """把 data/*.json 复制一份到工作台「履约项目/data/」。
+
+    履约项目看板弹窗取数顺序：/data/ → 同目录 data/ → http://127.0.0.1:8421/data/。
+    工作台（8777/本地静态）前三者只有 8421 那条通，一旦周报服务没起，所有弹窗
+    立刻全空（2026-11-09 健康证弹窗就是这么空的）。补一份到同目录 data/ 后，
+    本地静态服务直连即可，8421 只作最后兜底。公网由 sync_workbench.py 的
+    DATA_FILES 同步同一份文件。
+    """
+    dst_dir = WB_DATA_DIR
+    if not os.path.isdir(dst_dir):
+        os.makedirs(dst_dir)
+    n = 0
+    for f in ("meeting_reject.json", "inspection_detail.json", "disinfect_data.json",
+              "equipment_detail.json", "health_violation.json"):
+        src = os.path.join(DATA_DIR, f)
+        if not os.path.exists(src):
+            continue
+        shutil.copy2(src, os.path.join(dst_dir, f))
+        n += 1
+    print("[工作台副本] %d 个 json -> %s" % (n, dst_dir))
+
+
 def main():
     dry = "--dry-run" in sys.argv
     print("== 周报明细 JSON 重建（M盘源，%s）==" % ("dry-run" if dry else "写入"))
@@ -364,6 +460,9 @@ def main():
     gen_inspection(dry, w0, w1)
     gen_disinfect(dry)
     gen_equipment(dry, w0, w1)
+    gen_health(dry)
+    if not dry:
+        sync_to_workbench()
     print("DONE")
 
 

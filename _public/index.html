@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head><script>window.__PUBLIC_STATIC=true;window.__PUB_VER='1793596893';</script>
+<head><script>window.__PUBLIC_STATIC=true;window.__PUB_VER='1794115560';</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="public, max-age=60">
@@ -460,7 +460,8 @@
 <!-- Main -->
 <div class="page-wrapper" id="pageWrapper">
 <div class="container">
-    <div class="stats-grid" id="statsGrid"></div>
+    <!-- 顶部说明卡：履约数据/安全事故 已按需求下线（2026-11-07），容器保持隐藏 -->
+    <div class="stats-grid" id="statsGrid" style="display:none"></div>
     <div class="stats-grid" id="statsGridInsurance" style="display:none"></div>
     <div class="tabs">
         <button class="tab-btn mod-hidden" data-tab="safety">安全权益</button>
@@ -3831,11 +3832,14 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
         this.classList.add('active');
         document.getElementById('panel-' + this.dataset.tab).classList.add('active');
         loadInsuranceFrame(this.dataset.tab);
-        // 保险 KPI 卡：只在保险两个 Tab 显示
-        const isIns = this.dataset.tab === 'insurance-monitor' || this.dataset.tab === 'insurance-rate';
-        document.getElementById('statsGrid').style.display = isIns ? 'none' : '';
-        document.getElementById('statsGridInsurance').style.display = isIns ? '' : 'none';
-        if (isIns) renderInsuranceStats();
+        // 顶部说明卡（2026-11-07 按需求精简）：
+        //   履约数据 / 安全事故        → 不再显示卡片
+        //   保险赔付补贴监控           → 不再显示卡片
+        //   保险赔付率解读             → 仅此处保留 4 张口径说明卡
+        document.getElementById('statsGrid').style.display = 'none';
+        const isRate = this.dataset.tab === 'insurance-rate';
+        document.getElementById('statsGridInsurance').style.display = isRate ? '' : 'none';
+        if (isRate) renderInsuranceStats();
     });
 });
 

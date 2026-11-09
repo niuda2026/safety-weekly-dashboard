@@ -568,10 +568,14 @@ class SyncHandler(http.server.SimpleHTTPRequestHandler):
         except Exception:
             self.send_error(404)
             return
-        text = _re.sub(r'src="D:/兴达数据库/履约项目/([^"]+\.js)"',
-                       lambda m: 'src="/penalty-board/%s"' % m.group(1), text)
-        text = text.replace('src="D:/兴达数据库/交通安全行为看板/data.js"',
-                            'src="/equity-board/data.js"')
+        # 🔴 必须容忍 ?v=版本戳：2026-11-09 给 box_rider_data.js / penalty_weekly.js 加了
+        #   ?v=YYYYMMDDHHMM，旧正则要求 .js 后紧跟引号 → 带戳的 src 原样留在页面里，
+        #   在 http 语境下被解析成 /penalty-board/D:/兴达数据库/... → 404 → 处罚表整表空。
+        text = _re.sub(r'src="D:/兴达数据库/履约项目/([^"?]+\.js)(\?[^"]*)?"',
+                       lambda m: 'src="/penalty-board/%s%s"' % (m.group(1), m.group(2) or ''), text)
+        # 交通安全站维度精简版：同样容忍 ?v= 版本戳
+        text = _re.sub(r'src="D:/兴达数据库/交通安全行为看板/data\.js(\?[^"]*)?"',
+                       r'src="/equity-board/data.js\1"', text)
         text = _re.sub(r'src="\.\./_libs/([^"]+)"', r'src="/_libs/\1"', text)
         inject = (
             '<style>.header,.tab-bar,#summary-cards-penalty-week,#summary-cards-penalty-month'
