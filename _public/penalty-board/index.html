@@ -1068,22 +1068,22 @@ table.dt td.cb-audit-col{min-width:96px}
   <div class="pagination" id="pagination-rider"></div>
 </div>
 
-<script src="/equity-board/data.js?t=1794192638773"></script>
-<script src="/penalty-board/data.js?v=1794192561"></script>
-<script src="/penalty-board/training_projects_config.js?v=1794192561"></script>
-<script src="/penalty-board/chargebp_data.js?v=1794192561"></script>
+<script src="/equity-board/data.js?t=1794204270816"></script>
+<script src="/penalty-board/data.js?v=1794195205"></script>
+<script src="/penalty-board/training_projects_config.js?v=1794195205"></script>
+<script src="/penalty-board/chargebp_data.js?v=1794195205"></script>
 <!-- 血压审核/异常跟进 6 列（2026-10-25）：独立数据文件，重建 充换电血压_data.js 不会覆盖 -->
-<script src="/penalty-board/bp_audit_extra.js?v=1794192561"></script>
-<script src="/penalty-board/knife_rider_data.js?v=1794192561"></script>
-<script src="/penalty-board/box_rider_data.js?v=1794192561"></script>
-<script src="/penalty-board/inspection_data.js?v=1794192561"></script>
+<script src="/penalty-board/bp_audit_extra.js?v=1794195205"></script>
+<script src="/penalty-board/knife_rider_data.js?v=1794195205"></script>
+<script src="/penalty-board/box_rider_data.js?v=1794195205"></script>
+<script src="/penalty-board/inspection_data.js?v=1794195205"></script>
 <!-- 巡检平台 · 日维度实时数据（烽火巡检平台抓取聚合，inspection/build_inspection_v2.py 生成） -->
-<script src="/penalty-board/inspection_daily_data.js?v=1794192561"></script>
-<script src="/penalty-board/penalty_weekly.js?v=1794192561"></script>
-<script src="/penalty-board/penalty_monthly.js?v=1794192561"></script>
-<script src="/penalty-board/morning_review_data.js?v=1794192561"></script>
-<script src="/penalty-board/morning_rej_m.js?v=1794192561"></script>
-<script src="/penalty-board/morning_penalty_m.js?v=1794192561"></script>
+<script src="/penalty-board/inspection_daily_data.js?v=1794195205"></script>
+<script src="/penalty-board/penalty_weekly.js?v=1794195205"></script>
+<script src="/penalty-board/penalty_monthly.js?v=1794195205"></script>
+<script src="/penalty-board/morning_review_data.js?v=1794195205"></script>
+<script src="/penalty-board/morning_rej_m.js?v=1794195205"></script>
+<script src="/penalty-board/morning_penalty_m.js?v=1794195205"></script>
 <!-- 截图库 -->
 <script src="/_libs/echarts-5.5.0.min.js"></script>
 <script src="/_libs/html2canvas-1.4.1.min.js"></script>
@@ -7303,6 +7303,38 @@ function pwMatchRow(r, i, level, areaKey, fields) {
   else hit = pwEq(vals.station, areaKey) || pwEq(vals.region, areaKey) || pwEq(vals.city, areaKey);
   return hit;
 }
+// 2026-11-09：健康证源表只有「区域名称（…【城市】）」和「站点名称」两列，没有大区/区域列，
+// 所以大区行/区域行点开时不能用区域名去匹配（永远匹配不到 → 有金额却弹空）。
+// 改为：先由周度表反查出该节点下辖的城市集合，再用城市名去命中区域名称/站点名称。
+function pwNodeCities(level, areaKey) {
+  var rows = (typeof PENALTY_WEEKLY_ROWS !== 'undefined' && PENALTY_WEEKLY_ROWS) ? PENALTY_WEEKLY_ROWS : {};
+  var key = pwS(areaKey), out = {};
+  Object.keys(rows).forEach(function(k) {
+    var r = rows[k];
+    if (!r || r.__level === 'company') return;
+    if (pwS(r.大区) !== key && pwS(r.分区) !== key) return;
+    if (pwS(r.__城市)) out[r.__城市] = 1;
+    var m = pwS(r.区域).match(/【(.+?)】/);
+    if (m) out[m[1]] = 1;
+  });
+  var list = Object.keys(out);
+  return list.length ? list : null;
+}
+function pwHealthHit(r, level, areaKey) {
+  if (level === 'company') return true;
+  var area = pwS(r[2]), site = pwS(r[4]);
+  if (level === 'station') return pwEq(site, areaKey);
+  if (level === 'city') return pwEq(area, areaKey) || pwEq(site, areaKey);
+  var cities = pwNodeCities(level, areaKey);
+  if (cities && cities.length) {
+    for (var i = 0; i < cities.length; i++) {
+      var c = cities[i];
+      if (c && (area.indexOf(c) !== -1 || site.indexOf(c) !== -1)) return true;
+    }
+    return false;
+  }
+  return pwEq(area, areaKey) || pwEq(site, areaKey);
+}
 function pwTable(headers, rowsHtml) {
   return '<table><thead><tr>' + headers.map(function(h) { return '<th>' + h + '</th>'; }).join('') + '</tr></thead><tbody>' + rowsHtml + '</tbody></table>';
 }
@@ -7347,7 +7379,7 @@ function pwRenderTyped(type, level, areaKey, D) {
           rows4.map(function(r) { return '<tr>' + r.slice(0, 24).map(function(c) { return '<td>' + pwEsc(c) + '</td>'; }).join('') + '<td>' + pwMoney(r[24]) + '</td></tr>'; }).join(''))
       : pwNoRec('该区域暂无装备不合规明细记录');
   } else if (type === 'health') {
-    var rows5 = (D.health || []).filter(function(r, i) { return pwMatchRow(r, i, level, areaKey, { station: 4, region: 2, city: 2 }); });
+    var rows5 = (D.health || []).filter(function(r, i) { return i !== 0 && pwHealthHit(r, level, areaKey); });
     html = rows5.length
       ? pwTable(['日期', '区域名称', '站点名称', '骑手姓名', '违规类型', '处罚金额'],
           rows5.map(function(r) { return '<tr><td>' + pwEsc(r[0]) + '</td><td>' + pwEsc(r[2]) + '</td><td>' + pwEsc(r[4]) + '</td><td>' + pwEsc(r[6]) + '</td><td>' + pwEsc(r[8]) + '</td><td>' + pwMoney(r[10]) + '</td></tr>'; }).join(''))
