@@ -1068,22 +1068,22 @@ table.dt td.cb-audit-col{min-width:96px}
   <div class="pagination" id="pagination-rider"></div>
 </div>
 
-<script src="/equity-board/data.js?t=1794204270816"></script>
-<script src="/penalty-board/data.js?v=1794195205"></script>
-<script src="/penalty-board/training_projects_config.js?v=1794195205"></script>
-<script src="/penalty-board/chargebp_data.js?v=1794195205"></script>
+<script src="/equity-board/data.js?t=1794711274614"></script>
+<script src="/penalty-board/data.js?v=1794711241"></script>
+<script src="/penalty-board/training_projects_config.js?v=1794711241"></script>
+<script src="/penalty-board/chargebp_data.js?v=1794711241"></script>
 <!-- 血压审核/异常跟进 6 列（2026-10-25）：独立数据文件，重建 充换电血压_data.js 不会覆盖 -->
-<script src="/penalty-board/bp_audit_extra.js?v=1794195205"></script>
-<script src="/penalty-board/knife_rider_data.js?v=1794195205"></script>
-<script src="/penalty-board/box_rider_data.js?v=1794195205"></script>
-<script src="/penalty-board/inspection_data.js?v=1794195205"></script>
+<script src="/penalty-board/bp_audit_extra.js?v=1794711241"></script>
+<script src="/penalty-board/knife_rider_data.js?v=1794711241"></script>
+<script src="/penalty-board/box_rider_data.js?v=1794711241"></script>
+<script src="/penalty-board/inspection_data.js?v=1794711241"></script>
 <!-- 巡检平台 · 日维度实时数据（烽火巡检平台抓取聚合，inspection/build_inspection_v2.py 生成） -->
-<script src="/penalty-board/inspection_daily_data.js?v=1794195205"></script>
-<script src="/penalty-board/penalty_weekly.js?v=1794195205"></script>
-<script src="/penalty-board/penalty_monthly.js?v=1794195205"></script>
-<script src="/penalty-board/morning_review_data.js?v=1794195205"></script>
-<script src="/penalty-board/morning_rej_m.js?v=1794195205"></script>
-<script src="/penalty-board/morning_penalty_m.js?v=1794195205"></script>
+<script src="/penalty-board/inspection_daily_data.js?v=1794711241"></script>
+<script src="/penalty-board/penalty_weekly.js?v=1794711241"></script>
+<script src="/penalty-board/penalty_monthly.js?v=1794711241"></script>
+<script src="/penalty-board/morning_review_data.js?v=1794711241"></script>
+<script src="/penalty-board/morning_rej_m.js?v=1794711241"></script>
+<script src="/penalty-board/morning_penalty_m.js?v=1794711241"></script>
 <!-- 截图库 -->
 <script src="/_libs/echarts-5.5.0.min.js"></script>
 <script src="/_libs/html2canvas-1.4.1.min.js"></script>
@@ -2997,6 +2997,7 @@ function inspRenderDeduct(days) {
   var dsub = document.getElementById('insp-ddetail-sub');
   if (dsub) dsub.textContent = (rows.length ? '共 ' + rows.length + ' 张扣分单' : '')
     + (_inspDeductSite ? ' · 已筛选站点「' + _inspDeductSite + '」' : '')
+    + ((M.deduct && M.deduct.reasonTotal) ? ' · 原因覆盖 ' + fr(M.deduct.reasonCovered || 0) + '/' + fr(M.deduct.reasonTotal) : '')
     + (ready ? '' : ' · 扣分原因待工单详情抓取接入后显示');
   var hint = document.getElementById('insp-ddetail-hint');
   if (hint) hint.style.display = 'none';
