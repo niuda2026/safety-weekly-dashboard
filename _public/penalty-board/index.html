@@ -336,6 +336,16 @@ table.dt td.cb-audit-col{min-width:96px}
 .pwd-empty{padding:28px;text-align:center;color:#8aa2b8}
 .pwd-sum{background:#f8fafc;font-weight:700}
 .pwd-sum td{color:#dc2626 !important}
+/* 2026-11-16 餐箱消毒「仅问题明细」过滤条 */
+.pwd-filterbar{display:flex;align-items:center;gap:10px;padding:8px 11px;margin:0 0 10px;background:#f4f8fc;border:1px solid #d9e6f3;border-radius:6px;font-size:12px;color:#334e68;flex-wrap:wrap}
+.pwd-fb-num{font-weight:700;color:#dc2626}
+.pwd-toggle{margin-left:auto;padding:3px 11px;border:1px solid #0B4F8A;background:#fff;color:#0B4F8A;border-radius:12px;font-size:12px;cursor:pointer;font-family:inherit}
+.pwd-toggle:hover{background:#0B4F8A;color:#fff}
+/* 2026-11-16 健康证列一键清空（列头小按钮） */
+.pen-hc-clear{margin-left:6px;padding:1px 7px;font-size:10px;line-height:1.5;border:1px solid #c9d8e8;background:#fff;color:#0B4F8A;border-radius:9px;cursor:pointer;font-weight:600;white-space:nowrap;font-family:inherit;vertical-align:middle}
+.pen-hc-clear:hover{background:#0B4F8A;color:#fff}
+.pen-hc-clear.on{background:#fff1f0;border-color:#f0a9a0;color:#c0392b}
+.pen-hc-clear.on:hover{background:#c0392b;color:#fff;border-color:#c0392b}
 
 </style>
 </head>
@@ -1068,22 +1078,22 @@ table.dt td.cb-audit-col{min-width:96px}
   <div class="pagination" id="pagination-rider"></div>
 </div>
 
-<script src="/equity-board/data.js?t=1794711274614"></script>
-<script src="/penalty-board/data.js?v=1794711241"></script>
-<script src="/penalty-board/training_projects_config.js?v=1794711241"></script>
-<script src="/penalty-board/chargebp_data.js?v=1794711241"></script>
+<script src="/equity-board/data.js?t=1794806664756"></script>
+<script src="/penalty-board/data.js?v=1794799947"></script>
+<script src="/penalty-board/training_projects_config.js?v=1794799947"></script>
+<script src="/penalty-board/chargebp_data.js?v=1794799947"></script>
 <!-- 血压审核/异常跟进 6 列（2026-10-25）：独立数据文件，重建 充换电血压_data.js 不会覆盖 -->
-<script src="/penalty-board/bp_audit_extra.js?v=1794711241"></script>
-<script src="/penalty-board/knife_rider_data.js?v=1794711241"></script>
-<script src="/penalty-board/box_rider_data.js?v=1794711241"></script>
-<script src="/penalty-board/inspection_data.js?v=1794711241"></script>
+<script src="/penalty-board/bp_audit_extra.js?v=1794799947"></script>
+<script src="/penalty-board/knife_rider_data.js?v=1794799947"></script>
+<script src="/penalty-board/box_rider_data.js?v=1794799947"></script>
+<script src="/penalty-board/inspection_data.js?v=1794799947"></script>
 <!-- 巡检平台 · 日维度实时数据（烽火巡检平台抓取聚合，inspection/build_inspection_v2.py 生成） -->
-<script src="/penalty-board/inspection_daily_data.js?v=1794711241"></script>
-<script src="/penalty-board/penalty_weekly.js?v=1794711241"></script>
-<script src="/penalty-board/penalty_monthly.js?v=1794711241"></script>
-<script src="/penalty-board/morning_review_data.js?v=1794711241"></script>
-<script src="/penalty-board/morning_rej_m.js?v=1794711241"></script>
-<script src="/penalty-board/morning_penalty_m.js?v=1794711241"></script>
+<script src="/penalty-board/inspection_daily_data.js?v=1794799947"></script>
+<script src="/penalty-board/penalty_weekly.js?v=1794799947"></script>
+<script src="/penalty-board/penalty_monthly.js?v=1794799947"></script>
+<script src="/penalty-board/morning_review_data.js?v=1794799947"></script>
+<script src="/penalty-board/morning_rej_m.js?v=1794799947"></script>
+<script src="/penalty-board/morning_penalty_m.js?v=1794799947"></script>
 <!-- 截图库 -->
 <script src="/_libs/echarts-5.5.0.min.js"></script>
 <script src="/_libs/html2canvas-1.4.1.min.js"></script>
@@ -3029,6 +3039,69 @@ var PENALTY_COLS = [
   {key:'健康证处罚金额', label:'健康证处罚金额（含虚假和P图）', money:true, hl:true}
 ];
 
+// ════════════════════════════════════════════════════════════════
+// 2026-11-16 健康证处罚金额列「一键清空」（11-16 调整：总罚款联动扣减）
+//   背景：该列每月第一周匹配进上月（T-1月）数据，第二周起不再需要，需手动清理。
+//   口径：清空时本看板按「源总罚款 - 本行健康证金额」重算展示总金额，表格总金额列、
+//         KPI 卡片汇总、总金额弹窗合计同步扣减；源数据文件不写回，点「恢复」原样还原。
+//   持久：localStorage 记录清空状态 + 数据生成戳；脚本重新生成数据后
+//         生成戳变化 → 自动失效并恢复显示新数据，无需手动恢复。
+// ════════════════════════════════════════════════════════════════
+var PENALTY_HC_KEY = '健康证处罚金额';
+function penaltyHcStamp(kind) {
+  var m = (kind === 'week')
+    ? (typeof PENALTY_WEEKLY_META !== 'undefined' ? PENALTY_WEEKLY_META : null)
+    : (typeof PENALTY_MONTHLY_META !== 'undefined' ? PENALTY_MONTHLY_META : null);
+  return (m && (m.generated_at || m.week_window)) ? String(m.generated_at || m.week_window) : 'static';
+}
+function penaltyHcCleared(kind) {
+  try {
+    var raw = localStorage.getItem('xdPenaltyHcClear_' + kind);
+    if (!raw) return false;
+    var o = JSON.parse(raw);
+    if (!o || !o.cleared) return false;
+    if (o.stamp !== penaltyHcStamp(kind)) {   // 数据已重新生成 → 自动恢复
+      localStorage.removeItem('xdPenaltyHcClear_' + kind);
+      return false;
+    }
+    return true;
+  } catch (e) { return false; }
+}
+// 健康证金额参与总罚款的展示扣减（源行对象不修改，可随时恢复）
+function penaltyHcAmt(r) {
+  var v = r ? r[PENALTY_HC_KEY] : 0;
+  var n = parseFloat(v);
+  return isNaN(n) ? 0 : n;
+}
+function penaltyTotalOf(r, kind) {
+  var t = parseFloat(r ? r['上周预计总罚款'] : 0);
+  if (isNaN(t)) t = 0;
+  return penaltyHcCleared(kind) ? (t - penaltyHcAmt(r)) : t;
+}
+// 2026-11-16：把本列的清空状态同步给安全数据周报看板（8421），使其金额口径与工作台一致。
+// 跨域 best-effort：8421 全站开了 CORS；失败只影响周报联动，不影响本看板本地清空功能。
+function penaltyHcShareState(kind, cleared) {
+  try {
+    var body = JSON.stringify({cleared: cleared, stamp: penaltyHcStamp(kind),
+      kind: kind, at: new Date().toISOString()});
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://127.0.0.1:8421/api/penalty-hc-clear', true);
+    xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+    xhr.onreadystatechange = function(){ /* best-effort, 无需处理回包 */ };
+    xhr.send(body);
+  } catch (e) {}
+}
+function penaltyToggleHcClear(kind) {
+  var on = penaltyHcCleared(kind);
+  var next = !on;
+  try {
+    localStorage.setItem('xdPenaltyHcClear_' + kind,
+      JSON.stringify({cleared: next, stamp: penaltyHcStamp(kind), at: new Date().toISOString()}));
+  } catch (e) {}
+  penaltyHcShareState(kind, next);
+  renderPenaltyTab(kind);
+}
+
 // 一级分组表头（对应源 Excel 合并单元格，带分类底色）
 function penaltyGetDates(kind) {
   var def = (kind === 'week') ? {box:'36周31日~6日', eq:'9月W4周', hc:'9月'} : {box:'月度', eq:'月度', hc:'月度'};
@@ -3244,7 +3317,9 @@ function penaltyClearFilter(kind) {
 }
 
 function penaltyCell(r, col, kind) {
+  if (col.key === PENALTY_HC_KEY && penaltyHcCleared(kind)) return '<td class="rn">-</td>';
   var v = r[col.key];
+  if (col.key === '上周预计总罚款' && v !== '' && v !== null && v !== undefined && v !== '-') v = penaltyTotalOf(r, kind);
   if (col.pct) {
     if (v === '' || v === null || v === undefined || v === '-') return '<td class="rn">-</td>';
     var pct = parseFloat(v) * 100;
@@ -3310,7 +3385,7 @@ function penaltySummaryRow(kind) {
   var agg = {}, pctList = {}, totalFines = 0;
   targets.forEach(function(r){
     var tf = r['上周预计总罚款'];
-    if (tf !== '' && tf !== null && tf !== undefined) totalFines += parseFloat(tf) || 0;
+    if (tf !== '' && tf !== null && tf !== undefined) totalFines += penaltyTotalOf(r, kind);
     PENALTY_COLS.forEach(function(col){
       var v = r[col.key];
       if (v === '' || v === null || v === undefined) v = 0; else v = parseFloat(v) || 0;
@@ -3356,7 +3431,7 @@ function penaltyColFilterClick(ev, kind, key) {
   var rows = penaltyGetRows(kind).filter(function(r){ return r.__level !== 'company'; });
   var cntMap = {};
   rows.forEach(function(r){
-    var d = penaltyColDisp(key, r[key]);
+    var d = penaltyColDisp(key, (key === '上周预计总罚款') ? penaltyTotalOf(r, kind) : r[key]);
     cntMap[d] = (cntMap[d] || 0) + 1;
   });
   var list = Object.keys(cntMap);
@@ -3476,7 +3551,7 @@ function renderPenaltyTab(kind) {
     if (r.__level === 'company') return true;
     for (var ck in colF) {
       var selCk = colF[ck];
-      if (selCk && selCk.length && selCk.indexOf(penaltyColDisp(ck, r[ck])) < 0) return false;
+      if (selCk && selCk.length && selCk.indexOf(penaltyColDisp(ck, (ck === '上周预计总罚款') ? penaltyTotalOf(r, kind) : r[ck])) < 0) return false;
     }
     // 城市/站点 筛选：分区汇总行始终展示（便于看层级合计），仅过滤城市/站点行
     if (r.__level === 'area') return true;
@@ -3507,7 +3582,17 @@ function renderPenaltyTab(kind) {
     thead += '<th colspan="' + groups[g].span + '" style="background:' + groups[g].color + ';color:#333333;font-weight:700;white-space:nowrap">' + grpHtml + '</th>';
   }
   thead += '</tr><tr>';
-  for (var c=0;c<PENALTY_COLS.length;c++) thead += '<th style="background:' + colColors[c] + ';color:#333333">' + PENALTY_COLS[c].label + tri(PENALTY_COLS[c].key) + '</th>';
+  for (var c=0;c<PENALTY_COLS.length;c++) {
+    var hcBtn = '';
+    if (PENALTY_COLS[c].key === PENALTY_HC_KEY) {
+      var hcOn = penaltyHcCleared(kind);
+      hcBtn = '<button class="pen-hc-clear' + (hcOn ? ' on' : '') + '"'
+        + ' title="' + (hcOn ? '已清空（总罚款已扣减健康证金额），点击恢复' : '一键清空本列，并从总罚款中扣减健康证金额；不改源文件，下期数据生成后自动恢复') + '"'
+        + ' onclick="event.stopPropagation();penaltyToggleHcClear(\'' + kind + '\')">'
+        + (hcOn ? '↺ 恢复' : '✕ 清空') + '</button>';
+    }
+    thead += '<th style="background:' + colColors[c] + ';color:#333333">' + PENALTY_COLS[c].label + tri(PENALTY_COLS[c].key) + hcBtn + '</th>';
+  }
   thead += '</tr>';
   document.getElementById(theadId).innerHTML = thead;
 
@@ -3540,7 +3625,8 @@ function renderPenaltyTab(kind) {
   var cards = penaltyCard('上周预计总罚款', comp['上周预计总罚款'], false, true);
   for (var pc=0;pc<PENALTY_COLS.length;pc++) {
     var col = PENALTY_COLS[pc];
-    cards += penaltyCard(col.label, comp[col.key], col.pct, col.hl);
+    var cv = (col.key === PENALTY_HC_KEY && penaltyHcCleared(kind)) ? '' : comp[col.key];
+    cards += penaltyCard(col.label, cv, col.pct, col.hl);
   }
   document.getElementById('summary-cards-penalty-' + kind).innerHTML = cards;
 
@@ -6616,6 +6702,8 @@ window.onload = function() {
   if (updTrain) updTrain.innerHTML = '数据更新于 <b>' + genTime + '</b>';
   // Render default tab (morning)
   switchTab('morning');
+  // 2026-11-16：页面加载即预取弹窗明细数据（8421），避免首次点击时加载延迟/空窗期拉空
+  if (typeof pwEnsureDetail === 'function') { try { pwEnsureDetail(function(){}); } catch (e) {} }
 };
 
 /* ─── 审核规则弹窗 ─── */
@@ -7240,23 +7328,39 @@ function pwFetchFirst(urls, cb) {
   (function next() {
     if (i >= urls.length) { cb(null); return; }
     var u = urls[i++];
+    var settled = false;
+    // 单 URL 5s 超时：file:// 下 fetch 可能挂起而非立即失败，避免弹窗卡在"加载中"
+    var timer = setTimeout(function(){ if (!settled) { settled = true; next(); } }, 5000);
     try {
       fetch(u, { cache: 'no-store' }).then(function(r) {
         if (!r.ok) throw new Error('http ' + r.status);
         return r.json();
-      }).then(function(j) { cb(Object.prototype.toString.call(j) === '[object Array]' ? j : null); })
-        .catch(function() { next(); });
-    } catch (e) { next(); }
+      }).then(function(j) {
+        if (settled) return;
+        settled = true; clearTimeout(timer);
+        cb(Object.prototype.toString.call(j) === '[object Array]' ? j : null);
+      }).catch(function() {
+        if (settled) return;
+        settled = true; clearTimeout(timer);
+        next();
+      });
+    } catch (e) { if (!settled) { settled = true; clearTimeout(timer); next(); } }
   })();
 }
 function pwEnsureDetail(cb) {
   if (PW_DETAIL_DATA) { cb(PW_DETAIL_DATA); return; }
-  var out = {}, keys = Object.keys(PW_DETAIL_FILES), left = keys.length;
+  // 2026-11-16 修复：8421 放首位（file:// 下唯一可靠源，实测 /data/ 与 data/ 均 Failed to fetch）；
+  // 拉取结果全空时不固化缓存，下次点击可重试——避免服务空窗期拉空后永久显示"暂无记录"。
+  var out = {}, keys = Object.keys(PW_DETAIL_FILES), left = keys.length, anyOk = false;
   keys.forEach(function(k) {
     var f = PW_DETAIL_FILES[k];
-    pwFetchFirst(['/data/' + f, 'data/' + f, 'http://127.0.0.1:8421/data/' + f], function(rows) {
+    pwFetchFirst(['http://127.0.0.1:8421/data/' + f, '/data/' + f, 'data/' + f], function(rows) {
       out[k] = rows || [];
-      if (--left === 0) { PW_DETAIL_DATA = out; cb(out); }
+      if (rows && rows.length) anyOk = true;
+      if (--left === 0) {
+        if (anyOk) PW_DETAIL_DATA = out;   // 只有拉到真实数据才缓存
+        cb(out);
+      }
     });
   });
 }
@@ -7284,7 +7388,7 @@ function pwShowDetail(ev, kind, rid, colKey) {
   ov.style.display = 'flex';
   var areaKey = pwS(row.区域);
   var level = row.__level === 'site' ? 'station' : row.__level;   // company/city/area 原样
-  if (type === 'total') { pwRenderTotal(row); return; }
+  if (type === 'total') { pwRenderTotal(row, kind); return; }
   pwEnsureDetail(function(D) {
     try { pwRenderTyped(type, level, areaKey, D); }
     catch (e) {
@@ -7340,7 +7444,29 @@ function pwTable(headers, rowsHtml) {
   return '<table><thead><tr>' + headers.map(function(h) { return '<th>' + h + '</th>'; }).join('') + '</tr></thead><tbody>' + rowsHtml + '</tbody></table>';
 }
 function pwNoRec(msg) { return '<div class="pwd-empty">' + msg + '</div>'; }
+// ════════════════════════════════════════════════════════════════
+// 2026-11-16 餐箱消毒违约明细：默认只显示「问题明细」
+//   源表是全站点清单（每站一行），绝大多数站无任何违规；此前总商行点开
+//   会把 179 个站点全部铺出来。现在只保留有违规事实的行，并允许切换回全部。
+// ════════════════════════════════════════════════════════════════
+var PW_DETAIL_ONLY_PROBLEM = true;
+var PW_DETAIL_CTX = null;
+function pwNum0(v) {
+  var n = parseFloat(String(v == null ? 0 : v).replace(/[¥￥,%\s]/g, ''));
+  return isNaN(n) ? 0 : n;
+}
+function pwDisinfectProblem(r) {
+  // 源列：6 因虚假消毒降低档位 / 7 不安全违禁物违约金额 /
+  //       9 标准化率不达标违约金额 / 10 虚假消毒数 / 11 不安全违禁物数
+  return pwNum0(r[6]) > 0 || pwNum0(r[7]) > 0 || pwNum0(r[9]) > 0
+      || pwNum0(r[10]) > 0 || pwNum0(r[11]) > 0;
+}
+function pwToggleDetailProblem() {
+  PW_DETAIL_ONLY_PROBLEM = !PW_DETAIL_ONLY_PROBLEM;
+  if (PW_DETAIL_CTX) pwRenderTyped(PW_DETAIL_CTX.type, PW_DETAIL_CTX.level, PW_DETAIL_CTX.areaKey, PW_DETAIL_CTX.D);
+}
 function pwRenderTyped(type, level, areaKey, D) {
+  PW_DETAIL_CTX = {type: type, level: level, areaKey: areaKey, D: D};
   var titleMap = {
     meeting: '早会驳回明细', inspection_self: '自检驳回明细', inspection_supervise: '督导驳回明细',
     disinfect: '餐箱消毒违约明细', equipment: '装备违规明细', health: '健康证违规报表（T-1月）'
@@ -7367,12 +7493,20 @@ function pwRenderTyped(type, level, areaKey, D) {
           rows2.map(function(r) { return '<tr><td>' + pwEsc(r[7]) + '</td><td>' + pwEsc(r[4]) + '</td><td>' + pwEsc(r[2]) + '</td><td>' + pwEsc(r[10]) + '</td><td>' + pwEsc(r[11]) + '</td><td>' + pwEsc(r[12]) + '</td><td>' + pwEsc(r[20]) + (r[21] ? '（' + pwEsc(r[21]) + '）' : '') + '</td><td>' + pwMoney(type === 'inspection_self' ? r[24] : r[25]) + '</td></tr>'; }).join(''))
       : pwNoRec('该区域暂无' + (type === 'inspection_self' ? '自检' : '督导') + '驳回记录');
   } else if (type === 'disinfect') {
-    // 源文件 12 列：0站点 2城市 3区域 5不达标挡位 7不安全违禁物违约金额 8标准化率 9标准化率不达标违约金额 10虚假消毒数 11不安全违禁物数
-    var rows3 = (D.disinfect || []).filter(function(r, i) { return pwMatchRow(r, i, level, areaKey, { station: 0, region: 3, city: 2 }); });
-    html = rows3.length
+    // 源文件 12 列：0站点 2城市 3区域 5不达标挡位 6因虚假消毒降档 7不安全违禁物违约金额 8标准化率 9标准化率不达标违约金额 10虚假消毒数 11不安全违禁物数
+    var all3 = (D.disinfect || []).filter(function(r, i) { return pwMatchRow(r, i, level, areaKey, { station: 0, region: 3, city: 2 }); });
+    var prob3 = all3.filter(pwDisinfectProblem);
+    var rows3 = PW_DETAIL_ONLY_PROBLEM ? prob3 : all3;
+    var bar3 = '<div class="pwd-filterbar">'
+      + '<span>餐箱消毒' + (PW_DETAIL_ONLY_PROBLEM ? '问题明细' : '全部明细') + '：'
+      + '<span class="pwd-fb-num">' + rows3.length + '</span> 条'
+      + '（有违规事实 <span class="pwd-fb-num">' + prob3.length + '</span> 条 / 源表共 ' + all3.length + ' 条）</span>'
+      + '<button class="pwd-toggle" onclick="pwToggleDetailProblem()">'
+      + (PW_DETAIL_ONLY_PROBLEM ? '显示全部明细' : '仅看问题明细') + '</button></div>';
+    html = bar3 + (rows3.length
       ? pwTable(['站点', '城市', '区域', '标准化率', '不达标档位', '不达标罚款', '虚假消毒数', '不安全违禁物违约金额'],
           rows3.map(function(r) { return '<tr><td>' + pwEsc(r[0]) + '</td><td>' + pwEsc(r[2]) + '</td><td>' + pwEsc(r[3]) + '</td><td>' + pwPct(r[8]) + '</td><td>' + pwEsc(r[5]) + '</td><td>' + pwMoney(r[9]) + '</td><td>' + pwNum(r[10]) + '</td><td>' + pwMoney(r[7]) + '</td></tr>'; }).join(''))
-      : pwNoRec('该区域暂无餐箱消毒违约记录');
+      : pwNoRec(PW_DETAIL_ONLY_PROBLEM ? '该区域暂无餐箱消毒违规问题明细' : '该区域暂无餐箱消毒违约记录'));
   } else if (type === 'equipment') {
     var rows4 = (D.equipmentDetail || []).filter(function(r, i) { return pwMatchRow(r, i, level, areaKey, { station: 12, region: 3, city: 7 }); });
     html = rows4.length
@@ -7388,8 +7522,9 @@ function pwRenderTyped(type, level, areaKey, D) {
   }
   document.getElementById('pwdBody').innerHTML = html;
 }
-function pwRenderTotal(row) {
-  document.getElementById('pwdTitle').textContent = '上周预计总罚款明细 · ' + pwS(row.区域);
+function pwRenderTotal(row, kind) {
+  document.getElementById('pwdTitle').textContent = '上周预计总罚款明细 · ' + pwS(row.区域)
+    + (penaltyHcCleared(kind) ? '（健康证已清空，金额已扣减）' : '');
   var items = [
     { label: '早会罚款', val: row['上周罚款'] },
     { label: '自检罚款', val: row['上周自检罚款'] },
@@ -7397,7 +7532,7 @@ function pwRenderTotal(row) {
     { label: '标准化不达标罚款', val: row['标准化率不达标违约金额'] },
     { label: '虚假消毒罚款', val: row['虚假消毒罚款'] },
     { label: '装备罚款', val: row['装备罚款'] },
-    { label: '健康证处罚金额', val: row['健康证处罚金额'] }
+    { label: '健康证处罚金额', val: (penaltyHcCleared(kind) ? 0 : row['健康证处罚金额']) }
   ];
   var total = 0, rowsHtml = '';
   items.forEach(function(it) {

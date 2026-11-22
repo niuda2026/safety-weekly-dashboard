@@ -4560,11 +4560,30 @@ async function loadPenaltyCompliance() {
         // 解析 PENALTY_WEEKLY_ROWS（含 var 声明，用 Function 沙箱取出数组）
         const rows = (new Function(text + '\n;return PENALTY_WEEKLY_ROWS;'))();
         if (!Array.isArray(rows) || !rows.length) throw new Error('空数据');
+        // 2026-11-16 健康证一键清空共享状态：工作台点清空/恢复时会把口径写到 8421。
+        // 生成戳必须与当前 penalty_weekly.js 一致才生效；下期数据重生成后自动失效（不用手动恢复）。
+        let hcClear = null;
+        try {
+            const hcResp = await fetch('/api/penalty-hc-clear', { cache: 'no-store' });
+            if (hcResp.ok) hcClear = await hcResp.json();
+        } catch (e) {}
+        // 公网静态托管没有后端 API：兜底读 _refresh_public.py 同步来的静态状态文件
+        if (!hcClear) {
+            try {
+                const hcResp2 = await fetch('/data/penalty_hc_clear_state.json', { cache: 'no-store' });
+                if (hcResp2.ok) hcClear = await hcResp2.json();
+            } catch (e) {}
+        }
+        let meta = null;
+        try { meta = (new Function(text + '\n;return (typeof PENALTY_WEEKLY_META!=="undefined"?PENALTY_WEEKLY_META:null);'))(); } catch (e) {}
+        const curStamp = (meta && (meta.generated_at || meta.week_window)) ? String(meta.generated_at || meta.week_window) : '';
+        const hcCleared = !!(hcClear && hcClear.cleared === true && curStamp && String(hcClear.stamp || '') === curStamp);
         const F = (v) => (v === undefined || v === '' || v === null) ? 0 : v;
         const blankRate = (v) => (v === '' || v === undefined || v === null) ? '' : v;
         const mapped = rows.map(r => ({
             大区: r['大区'] || '', 分区: r['分区'] || '', 区域: r['区域'] || '',
-            甲方预计总罚款: F(r['上周预计总罚款']),
+            // 健康证清空时：总罚款扣掉健康证那一项，健康证列本身置空（与工作台同口径，源数据 r 不变）
+            甲方预计总罚款: F(r['上周预计总罚款']) - (hcCleared ? F(r['健康证处罚金额']) : 0),
             早会驳回数: F(r['上周驳回数']), 早会罚款: F(r['上周罚款']),
             自检驳回: F(r['上周自检驳回']), 自检罚款: F(r['上周自检罚款']),
             督导驳回: F(r['上周督导履约驳回']), 督导罚款: F(r['上周督导履约罚款']),
@@ -4573,7 +4592,7 @@ async function loadPenaltyCompliance() {
             虚假消毒数: F(r['虚假消毒数']), 虚假消毒罚款: F(r['虚假消毒罚款']),
             装备不合格数: F(r['装备不合格数']), 装备罚款: F(r['装备罚款']),
             装备合规率: blankRate(r['装备标准化合规率']),
-            健康证处罚金额: F(r['健康证处罚金额'])
+            健康证处罚金额: hcCleared ? 0 : F(r['健康证处罚金额'])
         }));
         fillHierarchy(mapped, ['大区', '分区']);
         store.compliance = mapped;
