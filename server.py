@@ -80,6 +80,10 @@ PENALTY_BOARD_HTML = "兴达履约项目看板.html"
 # 工作台「履约达成处罚周度」点清空/恢复时 POST 到此，周报看板加载时 GET 读取并按同口径扣减。
 # 只读透出的 penalty_weekly.js 源数据一律不改写；状态单独落在本文件，带生成戳，戳不匹配自动失效。
 HC_CLEAR_STATE_FILE = os.path.join(DATA_DIR, "penalty_hc_clear_state.json")
+# 履约分组表头日期（餐箱消毒/装备类/健康证）跨看板共享状态（2026-11-22）
+# 工作台「履约达成处罚」点编辑分组日期时 POST 到此；周报公网版加载时 GET 读取，
+# 使本地手动编辑的日期能同步到公网（localStorage 受 origin 隔离，本地改公网看不到）。
+GROUP_DATES_STATE_FILE = os.path.join(DATA_DIR, "penalty_group_dates_state.json")
 
 PENALTY_JS_WHITELIST = {
     "penalty_weekly.js", "penalty_monthly.js", "box_rider_data.js", "data.js",
@@ -394,6 +398,34 @@ class SyncHandler(http.server.SimpleHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(json.dumps({"ok": False, "message": str(e)}, ensure_ascii=False).encode("utf-8"))
 
+        elif parsed.path == "/api/penalty-group-dates":
+            # 履约分组表头日期共享写入（2026-11-22）
+            # body: {week:{box,eq,hc}, month:{box,eq,hc}, at:ISO}
+            # 只写状态文件，绝不动 penalty_weekly.js 源数据。
+            try:
+                length = int(self.headers.get("Content-Length", 0))
+                data = json.loads(self.rfile.read(length))
+                def _clean(o):
+                    o = o if isinstance(o, dict) else {}
+                    return {k: str(o.get(k, "")) for k in ("box", "eq", "hc")}
+                state = {
+                    "week": _clean(data.get("week")),
+                    "month": _clean(data.get("month")),
+                    "at": str(data.get("at") or ""),
+                }
+                with open(GROUP_DATES_STATE_FILE, "w", encoding="utf-8") as f:
+                    json.dump(state, f, ensure_ascii=False)
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Cache-Control", "no-store")
+                self.end_headers()
+                self.wfile.write(json.dumps({"ok": True, "state": state}, ensure_ascii=False).encode("utf-8"))
+            except Exception as e:
+                self.send_response(500)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.end_headers()
+                self.wfile.write(json.dumps({"ok": False, "message": str(e)}, ensure_ascii=False).encode("utf-8"))
+
         elif parsed.path == "/export-pdf":
             # 同一时刻只允许一个导出任务（Playwright 起了浏览器，并发会互相拖慢/抢端口）
             if not _EXPORT_LOCK.acquire(blocking=False):
@@ -649,6 +681,22 @@ class SyncHandler(http.server.SimpleHTTPRequestHandler):
             try:
                 if os.path.isfile(HC_CLEAR_STATE_FILE):
                     with open(HC_CLEAR_STATE_FILE, "r", encoding="utf-8") as f:
+                        state = json.load(f)
+            except Exception:
+                pass
+            body = json.dumps(state, ensure_ascii=False).encode("utf-8")
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.wfile.write(body)
+            return
+        # 履约分组表头日期共享状态读取（2026-11-22）
+        if path == "/api/penalty-group-dates":
+            state = {"week": {}, "month": {}, "at": ""}
+            try:
+                if os.path.isfile(GROUP_DATES_STATE_FILE):
+                    with open(GROUP_DATES_STATE_FILE, "r", encoding="utf-8") as f:
                         state = json.load(f)
             except Exception:
                 pass

@@ -249,6 +249,34 @@ def build_penalty_index():
     # 相对路径引用（training_projects_config.js 在源页里就是相对路径）显式落到 /penalty-board/ 并带版本串
     text = re.sub(r'src="(training_projects_config\.js)"',
                   lambda m: 'src="/penalty-board/%s?v=%s"' % (m.group(1), _ver), text)
+    # 4.2) 2026-11-22 用户定：公网分组日期「写死」——工作台同步公网时把当前日期固化进 HTML，
+    #      公网固定显示，不再读访客浏览器 localStorage / 动态共享 state（否则跳回旧默认日期）。
+    #      数据源 = data/penalty_group_dates_state.json（本地工作台编辑日期时 POST 到 8421 的当前值）。
+    _gd_path = os.path.join(PROJECT, "data", "penalty_group_dates_state.json")
+    _wk = {"box": "36周31日~6日", "eq": "9月W4周", "hc": "9月"}
+    _mo = {"box": "月度", "eq": "月度", "hc": "月度"}
+    try:
+        with open(_gd_path, encoding="utf-8") as fh:
+            _gd = json.load(fh)
+        if (_gd.get("week") or {}).get("box"):
+            for _k in ("box", "eq", "hc"):
+                if _gd["week"].get(_k):
+                    _wk[_k] = _gd["week"][_k]
+        if (_gd.get("month") or {}).get("box"):
+            for _k in ("box", "eq", "hc"):
+                if _gd["month"].get(_k):
+                    _mo[_k] = _gd["month"][_k]
+    except Exception as _e:
+        log("  [警告] 读分组日期 state 失败(%s)，用兜底默认" % _e)
+    _fixed = {"week": _wk, "month": _mo}
+    _fixed_js = json.dumps(_fixed, ensure_ascii=False)
+    _new_pgd = ("function penaltyGetDates(kind) {\n"
+                "  var FIXED = " + _fixed_js + ";\n"
+                "  return FIXED[kind] || FIXED.week;\n"
+                "}")
+    text, _n = re.subn(r"function penaltyGetDates\(kind\) \{.*?\n\}",
+                      lambda m: _new_pgd, text, count=1, flags=re.S)
+    log("  分组日期写死(%d 处): %s" % (_n, _fixed_js))
     # 5) 注入与 server.py 完全一致的隐藏样式 + 自动切到 履约安全检查→履约达成处罚-周度
     #    2026-10-11 加固：switchTab 与 switchSafetySub 拆成独立 try（此前 switchTab 渲染巡检子页
     #    读缺失数据抛错会把整个 try 块打断，导致永远停在默认的巡检平台子页）；并在切换后校验实际

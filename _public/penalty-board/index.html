@@ -1078,22 +1078,22 @@ table.dt td.cb-audit-col{min-width:96px}
   <div class="pagination" id="pagination-rider"></div>
 </div>
 
-<script src="/equity-board/data.js?t=1794806664756"></script>
-<script src="/penalty-board/data.js?v=1794799947"></script>
-<script src="/penalty-board/training_projects_config.js?v=1794799947"></script>
-<script src="/penalty-board/chargebp_data.js?v=1794799947"></script>
+<script src="/equity-board/data.js?t=1795401985725"></script>
+<script src="/penalty-board/data.js?v=1795401936"></script>
+<script src="/penalty-board/training_projects_config.js?v=1795401936"></script>
+<script src="/penalty-board/chargebp_data.js?v=1795401936"></script>
 <!-- 血压审核/异常跟进 6 列（2026-10-25）：独立数据文件，重建 充换电血压_data.js 不会覆盖 -->
-<script src="/penalty-board/bp_audit_extra.js?v=1794799947"></script>
-<script src="/penalty-board/knife_rider_data.js?v=1794799947"></script>
-<script src="/penalty-board/box_rider_data.js?v=1794799947"></script>
-<script src="/penalty-board/inspection_data.js?v=1794799947"></script>
+<script src="/penalty-board/bp_audit_extra.js?v=1795401936"></script>
+<script src="/penalty-board/knife_rider_data.js?v=1795401936"></script>
+<script src="/penalty-board/box_rider_data.js?v=1795401936"></script>
+<script src="/penalty-board/inspection_data.js?v=1795401936"></script>
 <!-- 巡检平台 · 日维度实时数据（烽火巡检平台抓取聚合，inspection/build_inspection_v2.py 生成） -->
-<script src="/penalty-board/inspection_daily_data.js?v=1794799947"></script>
-<script src="/penalty-board/penalty_weekly.js?v=1794799947"></script>
-<script src="/penalty-board/penalty_monthly.js?v=1794799947"></script>
-<script src="/penalty-board/morning_review_data.js?v=1794799947"></script>
-<script src="/penalty-board/morning_rej_m.js?v=1794799947"></script>
-<script src="/penalty-board/morning_penalty_m.js?v=1794799947"></script>
+<script src="/penalty-board/inspection_daily_data.js?v=1795401936"></script>
+<script src="/penalty-board/penalty_weekly.js?v=1795401936"></script>
+<script src="/penalty-board/penalty_monthly.js?v=1795401936"></script>
+<script src="/penalty-board/morning_review_data.js?v=1795401936"></script>
+<script src="/penalty-board/morning_rej_m.js?v=1795401936"></script>
+<script src="/penalty-board/morning_penalty_m.js?v=1795401936"></script>
 <!-- 截图库 -->
 <script src="/_libs/echarts-5.5.0.min.js"></script>
 <script src="/_libs/html2canvas-1.4.1.min.js"></script>
@@ -3044,8 +3044,9 @@ var PENALTY_COLS = [
 //   背景：该列每月第一周匹配进上月（T-1月）数据，第二周起不再需要，需手动清理。
 //   口径：清空时本看板按「源总罚款 - 本行健康证金额」重算展示总金额，表格总金额列、
 //         KPI 卡片汇总、总金额弹窗合计同步扣减；源数据文件不写回，点「恢复」原样还原。
-//   持久：localStorage 记录清空状态 + 数据生成戳；脚本重新生成数据后
-//         生成戳变化 → 自动失效并恢复显示新数据，无需手动恢复。
+//   持久：localStorage 记录清空状态；2026-11-22 用户定「清空保持到手动恢复」——
+//         数据每天重建（generated_at 变化）不再让清空失效，只有自己点「↺ 恢复」才还原。
+//         旧版按 generated_at 戳判定，导致清空撑不过一天（今早 06:31/06:34 两次重建即失效），已废弃。
 // ════════════════════════════════════════════════════════════════
 var PENALTY_HC_KEY = '健康证处罚金额';
 function penaltyHcStamp(kind) {
@@ -3060,10 +3061,8 @@ function penaltyHcCleared(kind) {
     if (!raw) return false;
     var o = JSON.parse(raw);
     if (!o || !o.cleared) return false;
-    if (o.stamp !== penaltyHcStamp(kind)) {   // 数据已重新生成 → 自动恢复
-      localStorage.removeItem('xdPenaltyHcClear_' + kind);
-      return false;
-    }
+    // 2026-11-22 改「保持到手动恢复」：不再因 generated_at 变化自动失效。
+    // 只有用户主动点「↺ 恢复」（cleared=false）才会返回 false。
     return true;
   } catch (e) { return false; }
 }
@@ -3103,19 +3102,117 @@ function penaltyToggleHcClear(kind) {
 }
 
 // 一级分组表头（对应源 Excel 合并单元格，带分类底色）
+// 2026-11-22 分组日期跨端同步：本地工作台手动编辑的日期（餐箱消毒/装备类/健康证）
+// 存 localStorage，但本地与公网是不同 origin、互不共享 → 公网看不到本地编辑值。
+// 方案照搬健康证清空通道：编辑时 POST 到 8421 共享 state；加载时 API 优先、
+// 静态 data/penalty_group_dates_state.json 兜底（公网无后端），载入后覆盖 localStorage。
+var _penaltySharedDates = null;
+function penaltyDefaultDates(kind) {
+  return (kind === 'week') ? {box:'36周31日~6日', eq:'9月W4周', hc:'9月'} : {box:'月度', eq:'月度', hc:'月度'};
+}
 function penaltyGetDates(kind) {
-  var def = (kind === 'week') ? {box:'36周31日~6日', eq:'9月W4周', hc:'9月'} : {box:'月度', eq:'月度', hc:'月度'};
+  var FIXED = {"week": {"box": "43周19日~25日", "eq": "11月W3周", "hc": "11月"}, "month": {"box": "月度", "eq": "月度", "hc": "月度"}};
+  return FIXED[kind] || FIXED.week;
+}
+// 编辑保存时把全量 week/month 日期 POST 到 8421 共享 state（best-effort，失败不影响本地）
+function penaltyShareDates() {
+  // 只在本地工作台写共享 state；公网静态页是只读展示，不回写（否则会 POST 到访客本机 127.0.0.1）
   try {
-    var saved = JSON.parse(localStorage.getItem('penaltyGroupDates_' + kind) || '{}');
-    for (var k in def) if (!(k in saved)) saved[k] = def[k];
-    return saved;
-  } catch(e) { return def; }
+    if (location.protocol !== 'file:' && location.hostname !== '127.0.0.1' && location.hostname !== 'localhost') return;
+  } catch(e) { return; }
+  try {
+    var body = JSON.stringify({
+      week: penaltyGetDates('week'), month: penaltyGetDates('month'),
+      at: new Date().toISOString()
+    });
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://127.0.0.1:8421/api/penalty-group-dates', true);
+    xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+    xhr.onreadystatechange = function(){};
+    xhr.send(body);
+  } catch(e) {}
 }
 function penaltySaveDate(kind, key, val) {
   var d = penaltyGetDates(kind);
   d[key] = val;
   try { localStorage.setItem('penaltyGroupDates_' + kind, JSON.stringify(d)); } catch(e) {}
+  // 同步到共享 state，使公网也能拿到本次编辑
+  if (!_penaltySharedDates) _penaltySharedDates = {};
+  _penaltySharedDates[kind] = d;
+  penaltyShareDates();
   renderPenaltyTab(kind);
+}
+// 启动加载：API 优先，公网静态兜底；拿到后覆盖 localStorage + 重渲染当前 tab
+function penaltyLoadSharedDates() {
+  var apply = function(state) {
+    if (!state || typeof state !== 'object') return;
+    _penaltySharedDates = state;
+    ['week','month'].forEach(function(kind){
+      if (!state[kind]) return;
+      try { localStorage.setItem('penaltyGroupDates_' + kind, JSON.stringify(state[kind])); } catch(e) {}
+    });
+    var active = 'week';
+    try {
+      if (typeof curSafetySub !== 'undefined' && curSafetySub === 'penalty-month') active = 'month';
+    } catch(e) {}
+    try { renderPenaltyTab(active); } catch(e) {}
+  };
+  // 共享 state 为空时，把本机 localStorage 已有的编辑值上传（首启迁移：用户此前改过但从未同步）
+  var hasShared = function(state) {
+    return !!(state && ((state.week && Object.keys(state.week).length) ||
+                        (state.month && Object.keys(state.month).length)));
+  };
+  var uploadLocalIfAny = function() {
+    var w = {}, m = {}, has = false;
+    try { w = JSON.parse(localStorage.getItem('penaltyGroupDates_week') || '{}'); } catch(e) {}
+    try { m = JSON.parse(localStorage.getItem('penaltyGroupDates_month') || '{}'); } catch(e) {}
+    if (Object.keys(w).length || Object.keys(m).length) {
+      _penaltySharedDates = {week: w, month: m};
+      has = true;
+    }
+    if (has) penaltyShareDates();
+  };
+  var fetchStatic = function() {
+    try {
+      var x2 = new XMLHttpRequest();
+      x2.open('GET', '/data/penalty_group_dates_state.json', true);
+      var _done = false;
+      x2.onreadystatechange = function(){
+        if (x2.readyState === 4 && !_done) {
+          _done = true;
+          if (x2.status === 200) {
+            try { apply(JSON.parse(x2.responseText)); return; } catch(e) {}
+          }
+          uploadLocalIfAny();  // 静态也没有 → 本机有编辑值则上传
+        }
+      };
+      x2.onerror = function(){ if (!_done) { _done = true; uploadLocalIfAny(); } };
+      x2.send();
+    } catch(e) { uploadLocalIfAny(); }
+  };
+  // 公网静态页（https）不发 http://127.0.0.1 请求（mixed content 会被拦），直接读静态 json。
+  var isPublic = false;
+  try { isPublic = (location.protocol === 'https:'); } catch(e) {}
+  if (isPublic) { fetchStatic(); return; }
+  try {
+    var x = new XMLHttpRequest();
+    x.open('GET', 'http://127.0.0.1:8421/api/penalty-group-dates', true);
+    x.onreadystatechange = function(){
+      if (x.readyState === 4) {
+        if (x.status === 200) {
+          try {
+            var st = JSON.parse(x.responseText);
+            if (hasShared(st)) { apply(st); return; }
+            uploadLocalIfAny();  // 共享为空 → 迁移本机已有编辑
+            return;
+          } catch(e) {}
+        }
+        fetchStatic();  // API 不可用 → 兜底静态 json
+      }
+    };
+    x.onerror = function(){ fetchStatic(); };
+    x.send();
+  } catch(e) { fetchStatic(); }
 }
 var _penaltyDateEditing = false;
 function penaltyEditDate(kind, key, el) {
@@ -3587,7 +3684,7 @@ function renderPenaltyTab(kind) {
     if (PENALTY_COLS[c].key === PENALTY_HC_KEY) {
       var hcOn = penaltyHcCleared(kind);
       hcBtn = '<button class="pen-hc-clear' + (hcOn ? ' on' : '') + '"'
-        + ' title="' + (hcOn ? '已清空（总罚款已扣减健康证金额），点击恢复' : '一键清空本列，并从总罚款中扣减健康证金额；不改源文件，下期数据生成后自动恢复') + '"'
+        + ' title="' + (hcOn ? '已清空（总罚款已扣减健康证金额），点击恢复' : '一键清空本列，并从总罚款中扣减健康证金额；不改源文件，清空后一直保持，点此按钮或「↺ 恢复」才还原') + '"'
         + ' onclick="event.stopPropagation();penaltyToggleHcClear(\'' + kind + '\')">'
         + (hcOn ? '↺ 恢复' : '✕ 清空') + '</button>';
     }
@@ -6704,6 +6801,8 @@ window.onload = function() {
   switchTab('morning');
   // 2026-11-16：页面加载即预取弹窗明细数据（8421），避免首次点击时加载延迟/空窗期拉空
   if (typeof pwEnsureDetail === 'function') { try { pwEnsureDetail(function(){}); } catch (e) {} }
+  // 2026-11-22：加载共享分组日期（本地 8421 API / 公网静态 json），覆盖 localStorage 后重渲染
+  if (typeof penaltyLoadSharedDates === 'function') { try { penaltyLoadSharedDates(); } catch (e) {} }
 };
 
 /* ─── 审核规则弹窗 ─── */

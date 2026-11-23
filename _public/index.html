@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head><script>window.__PUBLIC_STATIC=true;window.__PUB_VER='1794806664';</script>
+<head><script>window.__PUBLIC_STATIC=true;window.__PUB_VER='1795401985';</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="public, max-age=60">
@@ -4591,8 +4591,9 @@ async function loadPenaltyCompliance() {
         }
         let meta = null;
         try { meta = (new Function(text + '\n;return (typeof PENALTY_WEEKLY_META!=="undefined"?PENALTY_WEEKLY_META:null);'))(); } catch (e) {}
-        const curStamp = (meta && (meta.generated_at || meta.week_window)) ? String(meta.generated_at || meta.week_window) : '';
-        const hcCleared = !!(hcClear && hcClear.cleared === true && curStamp && String(hcClear.stamp || '') === curStamp);
+        // 2026-11-22 改「保持到手动恢复」：只看共享 state 的 cleared，不再比对 curStamp。
+        // 旧逻辑用 generated_at 比对，数据每天重建就自动失效，清空撑不过一天。
+        const hcCleared = !!(hcClear && hcClear.cleared === true);
         const F = (v) => (v === undefined || v === '' || v === null) ? 0 : v;
         const blankRate = (v) => (v === '' || v === undefined || v === null) ? '' : v;
         const mapped = rows.map(r => ({
